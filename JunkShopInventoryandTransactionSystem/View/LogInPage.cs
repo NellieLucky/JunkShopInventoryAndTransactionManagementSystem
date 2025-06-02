@@ -1,3 +1,5 @@
+using JunkShopInventoryandTransactionSystem.View;
+
 namespace JunkShopInventoryandTransactionSystem
 {
     public partial class LogInPage : Form
@@ -5,6 +7,27 @@ namespace JunkShopInventoryandTransactionSystem
         public LogInPage()
         {
             InitializeComponent();
+        }
+
+
+        private void ForgotPasswordPageClick_Click(object sender, EventArgs e)
+        {
+            ForgotPasswordPage forgotPasswordPage = new ForgotPasswordPage();
+            forgotPasswordPage.Dock = DockStyle.Fill;
+            forgotPasswordPage.TopLevel = false;
+            MainForm.MainPanel.Controls.Clear();
+            MainForm.MainPanel.Controls.Add(forgotPasswordPage);
+            forgotPasswordPage.Show();
+        }
+
+        private void LogInButton_Click(object sender, EventArgs e)
+        {
+            DashboardPage dashboardPage = new DashboardPage();
+            dashboardPage.Dock = DockStyle.Fill;
+            dashboardPage.TopLevel = false;
+            MainForm.MainPanel.Controls.Clear();
+            MainForm.MainPanel.Controls.Add(dashboardPage);
+            dashboardPage.Show();
         }
     }
 }

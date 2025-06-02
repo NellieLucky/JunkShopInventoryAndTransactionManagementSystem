@@ -1,6 +1,6 @@
-﻿namespace JunkShopInventoryandTransactionSystem.View
+﻿namespace JunkShopInventoryandTransactionSystem
 {
-    partial class DashboardPage
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -33,21 +33,21 @@
             // 
             // panel1
             // 
-            panel1.BackColor = Color.FromArgb(13, 158, 169);
+            panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(262, 753);
+            panel1.Size = new Size(1182, 753);
             panel1.TabIndex = 0;
             // 
-            // DashboardPage
+            // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1182, 753);
             Controls.Add(panel1);
-            FormBorderStyle = FormBorderStyle.None;
-            Name = "DashboardPage";
-            Text = "DashboardPage";
+            Name = "MainForm";
+            Text = "MainForm";
+            Load += MainForm_Load;
             ResumeLayout(false);
         }
 

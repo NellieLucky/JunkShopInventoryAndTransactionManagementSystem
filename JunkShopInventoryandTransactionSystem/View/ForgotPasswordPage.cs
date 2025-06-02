@@ -26,5 +26,26 @@ namespace JunkShopInventoryandTransactionSystem.View
         {
 
         }
+
+        private void GoBack_Click(object sender, EventArgs e)
+        {
+            LogInPage loginpage = new LogInPage();
+            loginpage.Dock = DockStyle.Fill;
+            loginpage.TopLevel = false;
+            MainForm.MainPanel.Controls.Clear();
+            MainForm.MainPanel.Controls.Add(loginpage);
+            loginpage.Show();
+
+        }
+
+        private void GoBack_MouseEnter(object sender, EventArgs e)
+        {
+            GoBack.ForeColor = Color.FromArgb(13, 158, 169);
+        }
+
+        private void GoBack_MouseLeave(object sender, EventArgs e)
+        {
+            GoBack.ForeColor = Color.FromArgb(7, 96, 14);
+        }
     }
 }
