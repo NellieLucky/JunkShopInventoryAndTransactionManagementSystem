@@ -22,7 +22,7 @@ namespace JunkShopInventoryandTransactionSystem
 
         private void LogInButton_Click(object sender, EventArgs e)
         {
-            DashboardPage dashboardPage = new DashboardPage();
+            MainNavigationPage dashboardPage = new MainNavigationPage();
             dashboardPage.Dock = DockStyle.Fill;
             dashboardPage.TopLevel = false;
             MainForm.MainPanel.Controls.Clear();

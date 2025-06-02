@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace JunkShopInventoryandTransactionSystem.View
 {
-    public partial class DashboardPage : UserControl
+    public partial class EmployeeManagementPage : UserControl
     {
-        public DashboardPage()
+        public EmployeeManagementPage()
         {
             InitializeComponent();
         }
