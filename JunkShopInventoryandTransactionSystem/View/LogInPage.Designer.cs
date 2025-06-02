@@ -216,6 +216,7 @@
             SigInLabel.Size = new Size(181, 55);
             SigInLabel.TabIndex = 0;
             SigInLabel.Text = "Sign In";
+            SigInLabel.Click += SigInLabel_Click;
             // 
             // LogInPage
             // 

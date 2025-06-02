@@ -29,5 +29,10 @@ namespace JunkShopInventoryandTransactionSystem
             MainForm.MainPanel.Controls.Add(dashboardPage);
             dashboardPage.Show();
         }
+
+        private void SigInLabel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
