@@ -1,6 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Compile Update="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\CustomerRecordsPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="View\DashboardPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="View\EmployeeManagementPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="View\FinancialReportsPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="View\GenerateTransactionPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="View\InventoryPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="View\MainNavigationPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="View\ForgotPasswordPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -15,6 +39,9 @@
     </Compile>
     <Compile Update="Resources\UserDefinedComponents\TextFieldwithDesign.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="View\TransactionRecordsPage.cs">
+      <SubType>UserControl</SubType>
     </Compile>
   </ItemGroup>
 </Project>
