@@ -1,6 +1,6 @@
 ﻿namespace JunkShopInventoryandTransactionSystem.View
 {
-    partial class DashboardPage
+    partial class FinancialReportsPage
     {
         /// <summary> 
         /// Required designer variable.
@@ -37,19 +37,18 @@
             DashboardTitlePage.BackColor = Color.FromArgb(0, 0, 0, 0);
             DashboardTitlePage.Font = new Font("Arial", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
             DashboardTitlePage.ForeColor = Color.FromArgb(16, 107, 23);
-            DashboardTitlePage.Location = new Point(26, 26);
+            DashboardTitlePage.Location = new Point(30, 28);
             DashboardTitlePage.Name = "DashboardTitlePage";
-            DashboardTitlePage.Size = new Size(376, 46);
-            DashboardTitlePage.TabIndex = 0;
-            DashboardTitlePage.Text = "WELCOME, USER!";
+            DashboardTitlePage.Size = new Size(359, 46);
+            DashboardTitlePage.TabIndex = 5;
+            DashboardTitlePage.Text = "Financial Records";
             // 
-            // DashboardPage
+            // FinancialReport
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.White;
             Controls.Add(DashboardTitlePage);
-            Name = "DashboardPage";
+            Name = "FinancialReport";
             Size = new Size(916, 753);
             ResumeLayout(false);
             PerformLayout();

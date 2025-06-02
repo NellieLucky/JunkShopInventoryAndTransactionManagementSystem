@@ -205,8 +205,8 @@
 
         public Label FEmailLabel { get; private set; }
 
-        private Label label2;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox2;
+        //private Label label2;
+        //private Guna.UI2.WinForms.Guna2TextBox guna2TextBox2;
         private Guna.UI2.WinForms.Guna2TextBox FEmailTextBox;
         private Label SigInLabel;
         private Label label1;
