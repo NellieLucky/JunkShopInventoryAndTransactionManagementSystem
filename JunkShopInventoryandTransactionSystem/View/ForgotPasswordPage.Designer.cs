@@ -28,108 +28,137 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ForgotPasswordPage));
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
-            Logo = new Guna.UI2.WinForms.Guna2CirclePictureBox();
-            LogIn_Panel = new JUNKSHOP.Resources.UserDefinedComponents.Gradient_Panel();
+            codeeloGradientPanel1 = new CodeeloUI.Controls.CodeeloGradientPanel();
+            cuiPictureBox1 = new CuoreUI.Controls.cuiPictureBox();
+            cuiPanel1 = new CuoreUI.Controls.cuiPanel();
+            SigInLabel = new Label();
+            cuiPanel2 = new CuoreUI.Controls.cuiPanel();
+            EmailTextBox = new CuoreUI.Controls.cuiTextBox();
+            SendLinkButton = new Guna.UI2.WinForms.Guna2Button();
             label1 = new Label();
             GoBack = new Label();
-            SendLinkButton = new Guna.UI2.WinForms.Guna2Button();
-            FEmailTextBox = new Guna.UI2.WinForms.Guna2TextBox();
-            SigInLabel = new Label();
-            guna2GradientPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)Logo).BeginInit();
-            LogIn_Panel.SuspendLayout();
+            codeeloGradientPanel1.SuspendLayout();
+            cuiPanel1.SuspendLayout();
+            cuiPanel2.SuspendLayout();
             SuspendLayout();
             // 
-            // guna2GradientPanel1
+            // codeeloGradientPanel1
             // 
-            guna2GradientPanel1.Controls.Add(Logo);
-            guna2GradientPanel1.Controls.Add(LogIn_Panel);
-            guna2GradientPanel1.CustomizableEdges = customizableEdges6;
-            guna2GradientPanel1.Dock = DockStyle.Fill;
-            guna2GradientPanel1.FillColor = Color.FromArgb(13, 158, 169);
-            guna2GradientPanel1.FillColor2 = Color.FromArgb(115, 211, 95);
-            guna2GradientPanel1.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
-            guna2GradientPanel1.Location = new Point(0, 0);
-            guna2GradientPanel1.Name = "guna2GradientPanel1";
-            guna2GradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges7;
-            guna2GradientPanel1.Size = new Size(1182, 753);
-            guna2GradientPanel1.TabIndex = 1;
+            codeeloGradientPanel1.AccessibleRole = null;
+            codeeloGradientPanel1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            codeeloGradientPanel1.BorderRadius = 0;
+            codeeloGradientPanel1.BorderThickness = 0;
+            codeeloGradientPanel1.CausesValidation = false;
+            codeeloGradientPanel1.ColorBorderFirst = Color.Empty;
+            codeeloGradientPanel1.ColorBorderSecond = Color.Empty;
+            codeeloGradientPanel1.ColorFillFirst = Color.FromArgb(13, 158, 169);
+            codeeloGradientPanel1.ColorFillSecond = Color.FromArgb(115, 211, 95);
+            codeeloGradientPanel1.Controls.Add(cuiPictureBox1);
+            codeeloGradientPanel1.Controls.Add(cuiPanel1);
+            codeeloGradientPanel1.DrawBorderGradient = true;
+            codeeloGradientPanel1.DrawGradient = true;
+            codeeloGradientPanel1.GradientBorderDirection = System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal;
+            codeeloGradientPanel1.GradientDirection = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
+            codeeloGradientPanel1.Location = new Point(-1, 0);
+            codeeloGradientPanel1.Name = "codeeloGradientPanel1";
+            codeeloGradientPanel1.Size = new Size(1401, 800);
+            codeeloGradientPanel1.TabIndex = 0;
             // 
-            // Logo
+            // cuiPictureBox1
             // 
-            Logo.BackColor = Color.FromArgb(0, 0, 0, 0);
-            Logo.BackgroundImageLayout = ImageLayout.Center;
-            Logo.Image = (Image)resources.GetObject("Logo.Image");
-            Logo.ImageRotate = 0F;
-            Logo.Location = new Point(76, 277);
-            Logo.Name = "Logo";
-            Logo.ShadowDecoration.CustomizableEdges = customizableEdges1;
-            Logo.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            Logo.Size = new Size(231, 217);
-            Logo.SizeMode = PictureBoxSizeMode.CenterImage;
-            Logo.TabIndex = 1;
-            Logo.TabStop = false;
+            cuiPictureBox1.BackColor = Color.FromArgb(0, 0, 0, 0);
+            cuiPictureBox1.Content = (Image)resources.GetObject("cuiPictureBox1.Content");
+            cuiPictureBox1.ImageTint = Color.White;
+            cuiPictureBox1.Location = new Point(89, 261);
+            cuiPictureBox1.Margin = new Padding(4, 5, 4, 5);
+            cuiPictureBox1.Name = "cuiPictureBox1";
+            cuiPictureBox1.OutlineThickness = 1F;
+            cuiPictureBox1.PanelOutlineColor = Color.Empty;
+            cuiPictureBox1.Rotation = 0;
+            cuiPictureBox1.Rounding = new Padding(125);
+            cuiPictureBox1.Size = new Size(250, 250);
+            cuiPictureBox1.TabIndex = 10;
             // 
-            // LogIn_Panel
+            // cuiPanel1
             // 
-            LogIn_Panel.BackColor = Color.FromArgb(0, 0, 0, 0);
-            LogIn_Panel.ColorBottom = Color.White;
-            LogIn_Panel.ColorPosition = 0.7F;
-            LogIn_Panel.ColorTop = Color.White;
-            LogIn_Panel.Controls.Add(label1);
-            LogIn_Panel.Controls.Add(GoBack);
-            LogIn_Panel.Controls.Add(SendLinkButton);
-            LogIn_Panel.Controls.Add(FEmailTextBox);
-            LogIn_Panel.Controls.Add(SigInLabel);
-            LogIn_Panel.CornerRadius = 50;
-            LogIn_Panel.GradientAngle = 0F;
-            LogIn_Panel.Location = new Point(391, 0);
-            LogIn_Panel.Name = "LogIn_Panel";
-            LogIn_Panel.RoundBottomLeft = true;
-            LogIn_Panel.RoundBottomRight = false;
-            LogIn_Panel.RoundTopLeft = true;
-            LogIn_Panel.RoundTopRight = false;
-            LogIn_Panel.Size = new Size(791, 753);
-            LogIn_Panel.TabIndex = 0;
+            cuiPanel1.BackColor = Color.FromArgb(0, 0, 0, 0);
+            cuiPanel1.Controls.Add(SigInLabel);
+            cuiPanel1.Controls.Add(cuiPanel2);
+            cuiPanel1.Controls.Add(SendLinkButton);
+            cuiPanel1.Controls.Add(label1);
+            cuiPanel1.Controls.Add(GoBack);
+            cuiPanel1.Location = new Point(420, 0);
+            cuiPanel1.Margin = new Padding(0);
+            cuiPanel1.Name = "cuiPanel1";
+            cuiPanel1.OutlineThickness = 1F;
+            cuiPanel1.PanelColor = Color.White;
+            cuiPanel1.PanelOutlineColor = Color.Empty;
+            cuiPanel1.Rounding = new Padding(0, 50, 50, 0);
+            cuiPanel1.Size = new Size(980, 800);
+            cuiPanel1.TabIndex = 9;
             // 
-            // label1
+            // SigInLabel
             // 
-            label1.Font = new Font("Arial", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.FromArgb(16, 107, 23);
-            label1.Location = new Point(82, 181);
-            label1.Name = "label1";
-            label1.Size = new Size(657, 77);
-            label1.TabIndex = 7;
-            label1.Text = "Enter the email associated with  your account. We will send you a link to reset your password.\n";
-            label1.Click += label1_Click;
+            SigInLabel.AutoSize = true;
+            SigInLabel.Font = new Font("Arial", 28.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            SigInLabel.ForeColor = Color.FromArgb(16, 107, 23);
+            SigInLabel.Location = new Point(172, 132);
+            SigInLabel.Name = "SigInLabel";
+            SigInLabel.Size = new Size(411, 55);
+            SigInLabel.TabIndex = 0;
+            SigInLabel.Text = "Forgot Password";
             // 
-            // GoBack
+            // cuiPanel2
             // 
-            GoBack.AutoSize = true;
-            GoBack.Font = new Font("Arial", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            GoBack.ForeColor = Color.FromArgb(16, 107, 23);
-            GoBack.Location = new Point(262, 608);
-            GoBack.Name = "GoBack";
-            GoBack.Size = new Size(330, 33);
-            GoBack.TabIndex = 6;
-            GoBack.Text = "Go Back to Log In Page";
-            GoBack.Click += GoBack_Click;
-            GoBack.MouseEnter += GoBack_MouseEnter;
-            GoBack.MouseLeave += GoBack_MouseLeave;
+            cuiPanel2.Controls.Add(EmailTextBox);
+            cuiPanel2.Location = new Point(200, 355);
+            cuiPanel2.Name = "cuiPanel2";
+            cuiPanel2.OutlineThickness = 1F;
+            cuiPanel2.PanelColor = Color.Green;
+            cuiPanel2.PanelOutlineColor = Color.Green;
+            cuiPanel2.Rounding = new Padding(24);
+            cuiPanel2.Size = new Size(643, 75);
+            cuiPanel2.TabIndex = 8;
+            // 
+            // EmailTextBox
+            // 
+            EmailTextBox.AutoScroll = true;
+            EmailTextBox.AutoValidate = AutoValidate.EnablePreventFocusChange;
+            EmailTextBox.BackgroundColor = Color.White;
+            EmailTextBox.BorderColor = Color.Green;
+            EmailTextBox.Content = "";
+            EmailTextBox.FocusBackgroundColor = Color.White;
+            EmailTextBox.FocusBorderColor = Color.Green;
+            EmailTextBox.FocusImageTint = Color.Empty;
+            EmailTextBox.Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            EmailTextBox.ForeColor = Color.Black;
+            EmailTextBox.Image = null;
+            EmailTextBox.ImageExpand = new Point(0, 0);
+            EmailTextBox.ImageOffset = new Point(0, 0);
+            EmailTextBox.ImeMode = ImeMode.Off;
+            EmailTextBox.Location = new Point(2, 3);
+            EmailTextBox.Margin = new Padding(0);
+            EmailTextBox.Multiline = false;
+            EmailTextBox.Name = "EmailTextBox";
+            EmailTextBox.NormalImageTint = Color.White;
+            EmailTextBox.Padding = new Padding(23, 23, 23, 0);
+            EmailTextBox.PasswordChar = false;
+            EmailTextBox.PlaceholderColor = Color.Gray;
+            EmailTextBox.PlaceholderText = "Enter your email...";
+            EmailTextBox.Rounding = new Padding(24);
+            EmailTextBox.Size = new Size(638, 68);
+            EmailTextBox.TabIndex = 2;
+            EmailTextBox.TextOffset = new Size(0, 0);
+            EmailTextBox.UnderlinedStyle = false;
+            EmailTextBox.UseWaitCursor = true;
             // 
             // SendLinkButton
             // 
             SendLinkButton.AutoRoundedCorners = true;
-            SendLinkButton.CustomizableEdges = customizableEdges2;
+            SendLinkButton.CustomizableEdges = customizableEdges1;
             SendLinkButton.DisabledState.BorderColor = Color.DarkGray;
             SendLinkButton.DisabledState.CustomBorderColor = Color.DarkGray;
             SendLinkButton.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -137,78 +166,65 @@
             SendLinkButton.FillColor = Color.FromArgb(7, 96, 14);
             SendLinkButton.Font = new Font("Arial", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             SendLinkButton.ForeColor = SystemColors.Window;
-            SendLinkButton.Location = new Point(95, 478);
+            SendLinkButton.Location = new Point(203, 504);
             SendLinkButton.Name = "SendLinkButton";
-            SendLinkButton.ShadowDecoration.CustomizableEdges = customizableEdges3;
-            SendLinkButton.Size = new Size(617, 79);
+            SendLinkButton.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            SendLinkButton.Size = new Size(640, 79);
             SendLinkButton.TabIndex = 5;
             SendLinkButton.Text = "Send Link";
             // 
-            // FEmailTextBox
+            // label1
             // 
-            FEmailTextBox.BorderColor = Color.FromArgb(16, 107, 23);
-            FEmailTextBox.BorderRadius = 30;
-            FEmailTextBox.BorderThickness = 3;
-            FEmailTextBox.CustomizableEdges = customizableEdges4;
-            FEmailTextBox.DefaultText = "";
-            FEmailTextBox.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            FEmailTextBox.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            FEmailTextBox.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            FEmailTextBox.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            FEmailTextBox.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            FEmailTextBox.Font = new Font("Arial", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            FEmailTextBox.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            FEmailTextBox.Location = new Point(95, 342);
-            FEmailTextBox.Margin = new Padding(6);
-            FEmailTextBox.Name = "FEmailTextBox";
-            FEmailTextBox.PlaceholderText = "Enter your email...";
-            FEmailTextBox.SelectedText = "";
-            FEmailTextBox.ShadowDecoration.CustomizableEdges = customizableEdges5;
-            FEmailTextBox.Size = new Size(617, 79);
-            FEmailTextBox.TabIndex = 1;
+            label1.Font = new Font("Arial", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.FromArgb(16, 107, 23);
+            label1.Location = new Point(182, 219);
+            label1.Name = "label1";
+            label1.Size = new Size(643, 77);
+            label1.TabIndex = 7;
+            label1.Text = "Enter the email associated with  your account. We will send you a link to reset your password.\n";
             // 
-            // SigInLabel
+            // GoBack
             // 
-            SigInLabel.AutoSize = true;
-            SigInLabel.Font = new Font("Arial", 28.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            SigInLabel.ForeColor = Color.FromArgb(16, 107, 23);
-            SigInLabel.Location = new Point(82, 111);
-            SigInLabel.Name = "SigInLabel";
-            SigInLabel.Size = new Size(411, 55);
-            SigInLabel.TabIndex = 0;
-            SigInLabel.Text = "Forgot Password";
-            SigInLabel.Click += SigInLabel_Click;
+            GoBack.AutoSize = true;
+            GoBack.Font = new Font("Arial", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            GoBack.ForeColor = Color.FromArgb(16, 107, 23);
+            GoBack.Location = new Point(380, 629);
+            GoBack.Name = "GoBack";
+            GoBack.Size = new Size(330, 33);
+            GoBack.TabIndex = 6;
+            GoBack.Text = "Go Back to Log In Page";
+            GoBack.Click += GoBack_Click_1;
+            GoBack.MouseEnter += GoBack_MouseEnter_1;
+            GoBack.MouseLeave += GoBack_MouseLeave_1;
             // 
             // ForgotPasswordPage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1182, 753);
-            Controls.Add(guna2GradientPanel1);
+            ClientSize = new Size(1400, 800);
+            Controls.Add(codeeloGradientPanel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "ForgotPasswordPage";
             Text = "ForgotPasswordPage";
-            guna2GradientPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)Logo).EndInit();
-            LogIn_Panel.ResumeLayout(false);
-            LogIn_Panel.PerformLayout();
+            codeeloGradientPanel1.ResumeLayout(false);
+            cuiPanel1.ResumeLayout(false);
+            cuiPanel1.PerformLayout();
+            cuiPanel2.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
 
-        private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel1;
-        private Guna.UI2.WinForms.Guna2CirclePictureBox Logo;
-        private JUNKSHOP.Resources.UserDefinedComponents.Gradient_Panel LogIn_Panel;
+        private CodeeloUI.Controls.CodeeloGradientPanel codeeloGradientPanel1;
+        private Label label1;
         private Label GoBack;
         private Guna.UI2.WinForms.Guna2Button SendLinkButton;
+        private Label SigInLabel;
+        private CuoreUI.Controls.cuiPanel cuiPanel2;
+        private CuoreUI.Controls.cuiTextBox EmailTextBox;
+        private CuoreUI.Controls.cuiPanel cuiPanel1;
+        private CuoreUI.Controls.cuiPictureBox cuiPictureBox1;
 
         public Label FEmailLabel { get; private set; }
-
-        //private Label label2;
-        //private Guna.UI2.WinForms.Guna2TextBox guna2TextBox2;
-        private Guna.UI2.WinForms.Guna2TextBox FEmailTextBox;
-        private Label SigInLabel;
-        private Label label1;
     }
 }

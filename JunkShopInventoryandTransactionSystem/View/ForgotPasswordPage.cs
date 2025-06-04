@@ -17,17 +17,17 @@ namespace JunkShopInventoryandTransactionSystem.View
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void GoBack_MouseEnter_1(object sender, EventArgs e)
         {
-
+            GoBack.ForeColor = Color.FromArgb(13, 158, 169);
         }
 
-        private void SigInLabel_Click(object sender, EventArgs e)
+        private void GoBack_MouseLeave_1(object sender, EventArgs e)
         {
-
+            GoBack.ForeColor = Color.FromArgb(7, 96, 14);
         }
 
-        private void GoBack_Click(object sender, EventArgs e)
+        private void GoBack_Click_1(object sender, EventArgs e)
         {
             LogInPage loginpage = new LogInPage();
             loginpage.Dock = DockStyle.Fill;
@@ -35,17 +35,6 @@ namespace JunkShopInventoryandTransactionSystem.View
             MainForm.MainPanel.Controls.Clear();
             MainForm.MainPanel.Controls.Add(loginpage);
             loginpage.Show();
-
-        }
-
-        private void GoBack_MouseEnter(object sender, EventArgs e)
-        {
-            GoBack.ForeColor = Color.FromArgb(13, 158, 169);
-        }
-
-        private void GoBack_MouseLeave(object sender, EventArgs e)
-        {
-            GoBack.ForeColor = Color.FromArgb(7, 96, 14);
         }
     }
 }

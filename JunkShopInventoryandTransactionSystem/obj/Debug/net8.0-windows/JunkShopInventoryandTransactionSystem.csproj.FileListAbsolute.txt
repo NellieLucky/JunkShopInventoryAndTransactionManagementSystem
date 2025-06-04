@@ -80,3 +80,12 @@ C:\Users\Sandara Fillartos\Source\Repos\JunkShopInventoryAndTransactionManagemen
 C:\Users\Sandara Fillartos\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\obj\Debug\net8.0-windows\JunkShopInventoryandTransactionSystem.pdb
 C:\Users\Sandara Fillartos\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\obj\Debug\net8.0-windows\JunkShopInventoryandTransactionSystem.genruntimeconfig.cache
 C:\Users\Sandara Fillartos\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\obj\Debug\net8.0-windows\ref\JunkShopInventoryandTransactionSystem.dll
+C:\Users\HP\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\bin\Debug\net8.0-windows\CuoreUI.dll
+C:\Users\HP\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\bin\Debug\net8.0-windows\Krypton.Toolkit.dll
+C:\Users\HP\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\bin\Debug\net8.0-windows\CodeeloUI.dll
+C:\Users\HP\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\bin\Debug\net8.0-windows\ActiproSoftware.Shared.WinForms.dll
+C:\Users\HP\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\bin\Debug\net8.0-windows\FluentDragDrop.dll
+C:\Users\HP\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\bin\Debug\net8.0-windows\FluentDragDrop.Effects.dll
+C:\Users\HP\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\bin\Debug\net8.0-windows\FluentTransitions.dll
+C:\Users\HP\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\bin\Debug\net8.0-windows\NonoUI.dll
+C:\Users\HP\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\bin\Debug\net8.0-windows\MaterialSkin.dll
