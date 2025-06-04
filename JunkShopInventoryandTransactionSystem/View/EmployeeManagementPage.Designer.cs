@@ -49,7 +49,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(DashboardTitlePage);
             Name = "EmployeeManagementPage";
-            Size = new Size(916, 753);
+            Size = new Size(1084, 798);
             ResumeLayout(false);
             PerformLayout();
         }
