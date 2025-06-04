@@ -2,6 +2,98 @@
   "version": 3,
   "targets": {
     "net8.0-windows7.0": {
+      "ActiproSoftware.Controls.WinForms.Shared/24.1.1": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0-windows/ActiproSoftware.Shared.WinForms.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-windows/ActiproSoftware.Shared.WinForms.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WindowsForms"
+        ]
+      },
+      "CodeeloUI/1.3.1": {
+        "type": "package",
+        "dependencies": {
+          "System.Drawing.Common": "7.0.0"
+        },
+        "compile": {
+          "lib/net8.0-windows7.0/CodeeloUI.dll": {}
+        },
+        "runtime": {
+          "lib/net8.0-windows7.0/CodeeloUI.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WindowsForms"
+        ]
+      },
+      "CuoreUI.Winforms/2025.5.7": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/CuoreUI.dll": {}
+        },
+        "runtime": {
+          "lib/net8.0/CuoreUI.dll": {}
+        }
+      },
+      "FluentDragDrop/2.2.0": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0-windows7.0/FluentDragDrop.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-windows7.0/FluentDragDrop.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WindowsForms"
+        ]
+      },
+      "FluentDragDrop.Effects/2.2.0": {
+        "type": "package",
+        "dependencies": {
+          "FluentDragDrop": "2.2.0",
+          "FluentTransitions": "2.0.1"
+        },
+        "compile": {
+          "lib/net8.0-windows7.0/FluentDragDrop.Effects.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-windows7.0/FluentDragDrop.Effects.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WindowsForms"
+        ]
+      },
+      "FluentTransitions/2.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp3.1/FluentTransitions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/FluentTransitions.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WindowsForms"
+        ]
+      },
       "Guna.UI2.WinForms/2.0.4.7": {
         "type": "package",
         "dependencies": {
@@ -12,6 +104,68 @@
         },
         "runtime": {
           "lib/net7.0-windows7.0/Guna.UI2.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WindowsForms"
+        ]
+      },
+      "Krypton.Toolkit/95.25.4.111": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0-windows7.0/Krypton.Toolkit.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-windows7.0/Krypton.Toolkit.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WindowsForms"
+        ]
+      },
+      "MaterialSkin.2/2.3.1": {
+        "type": "package",
+        "compile": {
+          "lib/net5.0-windows7.0/MaterialSkin.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0-windows7.0/MaterialSkin.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WindowsForms"
+        ]
+      },
+      "Microsoft.Win32.SystemEvents/7.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0/Microsoft.Win32.SystemEvents.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0/Microsoft.Win32.SystemEvents.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/net7.0/Microsoft.Win32.SystemEvents.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
+        }
+      },
+      "NonoUI/1.0.9": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0-windows7.0/NonoUI.dll": {}
+        },
+        "runtime": {
+          "lib/net7.0-windows7.0/NonoUI.dll": {}
         },
         "frameworkReferences": [
           "Microsoft.WindowsDesktop.App.WindowsForms"
@@ -31,6 +185,31 @@
         },
         "build": {
           "buildTransitive/net6.0/_._": {}
+        }
+      },
+      "System.Drawing.Common/7.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Win32.SystemEvents": "7.0.0"
+        },
+        "compile": {
+          "lib/net7.0/System.Drawing.Common.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0/System.Drawing.Common.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/net7.0/System.Drawing.Common.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
         }
       },
       "System.Management/7.0.0": {
@@ -61,6 +240,120 @@
     }
   },
   "libraries": {
+    "ActiproSoftware.Controls.WinForms.Shared/24.1.1": {
+      "sha512": "aNdvikoBMNvbKcZjDG5b2/N+1jEQ8AkWeiH7qq8AnKUAEozR9J2goDfCvCGUMcRyBOoaw3c4PO+VKYEaeXRclA==",
+      "type": "package",
+      "path": "actiprosoftware.controls.winforms.shared/24.1.1",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "License.txt",
+        "actiprosoftware.controls.winforms.shared.24.1.1.nupkg.sha512",
+        "actiprosoftware.controls.winforms.shared.nuspec",
+        "images/ActiproIcon.png",
+        "lib/net462/ActiproSoftware.Shared.WinForms.dll",
+        "lib/net462/ActiproSoftware.Shared.WinForms.xml",
+        "lib/net6.0-windows/ActiproSoftware.Shared.WinForms.dll",
+        "lib/net6.0-windows/ActiproSoftware.Shared.WinForms.xml",
+        "lib/net6.0-windows/Design/WinForms/17.0/ActiproSoftware.Shared.WinForms.DesignTools.Client.dll",
+        "lib/net6.0-windows/Design/WinForms/17.0/ActiproSoftware.Shared.WinForms.dll",
+        "lib/net6.0-windows/Design/WinForms/17.0/Server/ActiproSoftware.Shared.WinForms.DesignTools.Server.dll",
+        "lib/net6.0-windows/Design/WinForms/ActiproSoftware.Shared.WinForms.DesignTools.Client.dll",
+        "lib/net6.0-windows/Design/WinForms/ActiproSoftware.Shared.WinForms.dll",
+        "lib/net6.0-windows/Design/WinForms/Server/ActiproSoftware.Shared.WinForms.DesignTools.Server.dll",
+        "lib/netcoreapp3.1/ActiproSoftware.Shared.WinForms.dll",
+        "lib/netcoreapp3.1/ActiproSoftware.Shared.WinForms.xml",
+        "lib/netcoreapp3.1/Design/WinForms/17.0/ActiproSoftware.Shared.WinForms.DesignTools.Client.dll",
+        "lib/netcoreapp3.1/Design/WinForms/17.0/ActiproSoftware.Shared.WinForms.dll",
+        "lib/netcoreapp3.1/Design/WinForms/17.0/Server/ActiproSoftware.Shared.WinForms.DesignTools.Server.dll",
+        "lib/netcoreapp3.1/Design/WinForms/ActiproSoftware.Shared.WinForms.DesignTools.Client.dll",
+        "lib/netcoreapp3.1/Design/WinForms/ActiproSoftware.Shared.WinForms.dll",
+        "lib/netcoreapp3.1/Design/WinForms/Server/ActiproSoftware.Shared.WinForms.DesignTools.Server.dll",
+        "tools/VisualStudioToolsManifest.xml"
+      ]
+    },
+    "CodeeloUI/1.3.1": {
+      "sha512": "Wu3cKxkv7HkjqDrA9fbI0EsvpuT+20rdUCc9l8sg2dfKq39k/D4YuGhQ/kmq/EEtCTFmzFXwl20KU6FwiF2m9A==",
+      "type": "package",
+      "path": "codeeloui/1.3.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "codeeloui.1.3.1.nupkg.sha512",
+        "codeeloui.nuspec",
+        "lib/net462/CodeeloUI.dll",
+        "lib/net47/CodeeloUI.dll",
+        "lib/net471/CodeeloUI.dll",
+        "lib/net472/CodeeloUI.dll",
+        "lib/net48/CodeeloUI.dll",
+        "lib/net6.0-windows7.0/CodeeloUI.dll",
+        "lib/net8.0-windows7.0/CodeeloUI.dll",
+        "smallLogo.png"
+      ]
+    },
+    "CuoreUI.Winforms/2025.5.7": {
+      "sha512": "TFlTIjzuVHM4o69i1lhhQrOm0WadG3k2tM+C0FpT3lHLiFi2Fsv2l0BfxY7M5mJwVdsAE42iJXKIHlmNZkY33g==",
+      "type": "package",
+      "path": "cuoreui.winforms/2025.5.7",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "cuoreui.winforms.2025.5.7.nupkg.sha512",
+        "cuoreui.winforms.nuspec",
+        "icon.png",
+        "lib/net8.0/CuoreUI.dll",
+        "lib/netstandard2.0/CuoreUI.dll"
+      ]
+    },
+    "FluentDragDrop/2.2.0": {
+      "sha512": "v3O386vbkrHUNU6b6nA8CM6kOjc5dCGtjIqscThJLlWWkfBzoO4IENJCs6/igVK/kNgYxR5KxwSGOK2jAW73gQ==",
+      "type": "package",
+      "path": "fluentdragdrop/2.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "FluentDragDrop.png",
+        "fluentdragdrop.2.2.0.nupkg.sha512",
+        "fluentdragdrop.nuspec",
+        "lib/net6.0-windows7.0/FluentDragDrop.dll",
+        "lib/net6.0-windows7.0/FluentDragDrop.xml",
+        "lib/net8.0-windows7.0/FluentDragDrop.dll",
+        "lib/net8.0-windows7.0/FluentDragDrop.xml"
+      ]
+    },
+    "FluentDragDrop.Effects/2.2.0": {
+      "sha512": "aVEMqzyeg5mCqmMeZSEQCsp+8LtVQTxhU+87tchW4jfrCnx8H2v7YMciA4wgxT93tsPTbSxsLdZzZyvgOBW+hg==",
+      "type": "package",
+      "path": "fluentdragdrop.effects/2.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "FluentDragDrop.Effects.png",
+        "fluentdragdrop.effects.2.2.0.nupkg.sha512",
+        "fluentdragdrop.effects.nuspec",
+        "lib/net6.0-windows7.0/FluentDragDrop.Effects.dll",
+        "lib/net6.0-windows7.0/FluentDragDrop.Effects.xml",
+        "lib/net8.0-windows7.0/FluentDragDrop.Effects.dll",
+        "lib/net8.0-windows7.0/FluentDragDrop.Effects.xml"
+      ]
+    },
+    "FluentTransitions/2.0.1": {
+      "sha512": "cKl3MzP/SvOLXEwML9KORVMF9N3eaPsEZRVN5CNV+JtSnw1OL09wA1uAdsdH2NqAqPzmKbU3P043oLfRSH12nw==",
+      "type": "package",
+      "path": "fluenttransitions/2.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "FluentTransitions.png",
+        "fluenttransitions.2.0.1.nupkg.sha512",
+        "fluenttransitions.nuspec",
+        "lib/net45/FluentTransitions.dll",
+        "lib/net45/FluentTransitions.xml",
+        "lib/netcoreapp3.1/FluentTransitions.dll",
+        "lib/netcoreapp3.1/FluentTransitions.xml"
+      ]
+    },
     "Guna.UI2.WinForms/2.0.4.7": {
       "sha512": "8BdBYsfnntuICbFMHIZsd5morwURN8Ucsvq7wJeyLV1Z1ze6CAIxVKEirufgjGIiXfF0M0sCr9EVFloZSazWew==",
       "type": "package",
@@ -81,6 +374,99 @@
         "lib/net6.0-windows7.0/Guna.UI2.dll",
         "lib/net7.0-windows7.0/Guna.UI2.dll",
         "lib/netcoreapp3.1/Guna.UI2.dll"
+      ]
+    },
+    "Krypton.Toolkit/95.25.4.111": {
+      "sha512": "f+3IaPFmuJGVDwGks1UAWtUaVy2yuBG483kjew7FsZ7DeXxdC9NO+h438WvLifmrIC7w5AlHlOVf0MynVONyMQ==",
+      "type": "package",
+      "path": "krypton.toolkit/95.25.4.111",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Krypton Stable.png",
+        "License.md",
+        "README.md",
+        "krypton.toolkit.95.25.4.111.nupkg.sha512",
+        "krypton.toolkit.nuspec",
+        "lib/net462/Krypton.Toolkit.dll",
+        "lib/net462/Krypton.Toolkit.xml",
+        "lib/net47/Krypton.Toolkit.dll",
+        "lib/net47/Krypton.Toolkit.xml",
+        "lib/net471/Krypton.Toolkit.dll",
+        "lib/net471/Krypton.Toolkit.xml",
+        "lib/net472/Krypton.Toolkit.dll",
+        "lib/net472/Krypton.Toolkit.xml",
+        "lib/net48/Krypton.Toolkit.dll",
+        "lib/net48/Krypton.Toolkit.xml",
+        "lib/net481/Krypton.Toolkit.dll",
+        "lib/net481/Krypton.Toolkit.xml",
+        "lib/net8.0-windows7.0/Krypton.Toolkit.dll",
+        "lib/net8.0-windows7.0/Krypton.Toolkit.xml",
+        "lib/net9.0-windows7.0/Krypton.Toolkit.dll",
+        "lib/net9.0-windows7.0/Krypton.Toolkit.xml"
+      ]
+    },
+    "MaterialSkin.2/2.3.1": {
+      "sha512": "w2vFxLNk4InCDU7pXDfBqPfv55HhBtuu8HRfEqQpeS3sNTS1pUzDs/hS0b5JW2/tKvt+P1of9OINP8a9omWDBg==",
+      "type": "package",
+      "path": "materialskin.2/2.3.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net45/MaterialSkin.dll",
+        "lib/net461/MaterialSkin.dll",
+        "lib/net48/MaterialSkin.dll",
+        "lib/net5.0-windows7.0/MaterialSkin.dll",
+        "materialskin.2.2.3.1.nupkg.sha512",
+        "materialskin.2.nuspec",
+        "nugetIcon.png"
+      ]
+    },
+    "Microsoft.Win32.SystemEvents/7.0.0": {
+      "sha512": "2nXPrhdAyAzir0gLl8Yy8S5Mnm/uBSQQA7jEsILOS1MTyS7DbmV1NgViMtvV1sfCD1ebITpNwb1NIinKeJgUVQ==",
+      "type": "package",
+      "path": "microsoft.win32.systemevents/7.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/Microsoft.Win32.SystemEvents.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
+        "buildTransitive/netcoreapp2.0/Microsoft.Win32.SystemEvents.targets",
+        "lib/net462/Microsoft.Win32.SystemEvents.dll",
+        "lib/net462/Microsoft.Win32.SystemEvents.xml",
+        "lib/net6.0/Microsoft.Win32.SystemEvents.dll",
+        "lib/net6.0/Microsoft.Win32.SystemEvents.xml",
+        "lib/net7.0/Microsoft.Win32.SystemEvents.dll",
+        "lib/net7.0/Microsoft.Win32.SystemEvents.xml",
+        "lib/netstandard2.0/Microsoft.Win32.SystemEvents.dll",
+        "lib/netstandard2.0/Microsoft.Win32.SystemEvents.xml",
+        "microsoft.win32.systemevents.7.0.0.nupkg.sha512",
+        "microsoft.win32.systemevents.nuspec",
+        "runtimes/win/lib/net6.0/Microsoft.Win32.SystemEvents.dll",
+        "runtimes/win/lib/net6.0/Microsoft.Win32.SystemEvents.xml",
+        "runtimes/win/lib/net7.0/Microsoft.Win32.SystemEvents.dll",
+        "runtimes/win/lib/net7.0/Microsoft.Win32.SystemEvents.xml",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "NonoUI/1.0.9": {
+      "sha512": "ik7Li7gH0nkQF5t43/KrToIs2z+f9r+t5K73HX9qAIAcvoak78Qt4194yXxQV1gg+2TSJMzzkIv0GMxDNpmo0g==",
+      "type": "package",
+      "path": "nonoui/1.0.9",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net7.0-windows7.0/NonoUI.dll",
+        "license",
+        "logo.png",
+        "nonoui.1.0.9.nupkg.sha512",
+        "nonoui.nuspec"
       ]
     },
     "System.CodeDom/7.0.0": {
@@ -107,6 +493,43 @@
         "lib/netstandard2.0/System.CodeDom.xml",
         "system.codedom.7.0.0.nupkg.sha512",
         "system.codedom.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "System.Drawing.Common/7.0.0": {
+      "sha512": "KIX+oBU38pxkKPxvLcLfIkOV5Ien8ReN78wro7OF5/erwcmortzeFx+iBswlh2Vz6gVne0khocQudGwaO1Ey6A==",
+      "type": "package",
+      "path": "system.drawing.common/7.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/System.Drawing.Common.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
+        "buildTransitive/netcoreapp2.0/System.Drawing.Common.targets",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net462/System.Drawing.Common.dll",
+        "lib/net462/System.Drawing.Common.xml",
+        "lib/net6.0/System.Drawing.Common.dll",
+        "lib/net6.0/System.Drawing.Common.xml",
+        "lib/net7.0/System.Drawing.Common.dll",
+        "lib/net7.0/System.Drawing.Common.xml",
+        "lib/netstandard2.0/System.Drawing.Common.dll",
+        "lib/netstandard2.0/System.Drawing.Common.xml",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "runtimes/win/lib/net6.0/System.Drawing.Common.dll",
+        "runtimes/win/lib/net6.0/System.Drawing.Common.xml",
+        "runtimes/win/lib/net7.0/System.Drawing.Common.dll",
+        "runtimes/win/lib/net7.0/System.Drawing.Common.xml",
+        "system.drawing.common.7.0.0.nupkg.sha512",
+        "system.drawing.common.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
@@ -141,7 +564,14 @@
   },
   "projectFileDependencyGroups": {
     "net8.0-windows7.0": [
-      "Guna.UI2.WinForms >= 2.0.4.7"
+      "ActiproSoftware.Controls.WinForms.Shared >= 24.1.1",
+      "CodeeloUI >= 1.3.1",
+      "CuoreUI.Winforms >= 2025.5.7",
+      "FluentDragDrop.Effects >= 2.2.0",
+      "Guna.UI2.WinForms >= 2.0.4.7",
+      "Krypton.Toolkit >= 95.25.4.111",
+      "MaterialSkin.2 >= 2.3.1",
+      "NonoUI >= 1.0.9"
     ]
   },
   "packageFolders": {
@@ -195,9 +625,37 @@
       "net8.0-windows7.0": {
         "targetAlias": "net8.0-windows",
         "dependencies": {
+          "ActiproSoftware.Controls.WinForms.Shared": {
+            "target": "Package",
+            "version": "[24.1.1, )"
+          },
+          "CodeeloUI": {
+            "target": "Package",
+            "version": "[1.3.1, )"
+          },
+          "CuoreUI.Winforms": {
+            "target": "Package",
+            "version": "[2025.5.7, )"
+          },
+          "FluentDragDrop.Effects": {
+            "target": "Package",
+            "version": "[2.2.0, )"
+          },
           "Guna.UI2.WinForms": {
             "target": "Package",
             "version": "[2.0.4.7, )"
+          },
+          "Krypton.Toolkit": {
+            "target": "Package",
+            "version": "[95.25.4.111, )"
+          },
+          "MaterialSkin.2": {
+            "target": "Package",
+            "version": "[2.3.1, )"
+          },
+          "NonoUI": {
+            "target": "Package",
+            "version": "[1.0.9, )"
           }
         },
         "imports": [

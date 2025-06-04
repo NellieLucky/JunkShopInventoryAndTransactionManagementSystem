@@ -5,95 +5,111 @@ namespace JunkShopInventoryandTransactionSystem.View
 {
     public partial class MainNavigationPage : Form
     {
+
+        // This is the main navigation page that contains all the navigation buttons and panels for different pages.
         public MainNavigationPage()
         {
             InitializeComponent();
-            SetNavButtonChecked(dashboardNavButton);
+
+            SetNavButtonChecked(dashBoardNavButton1);
             navControlPanel.Controls.Clear();
             var dashboardPage = new DashboardPage();
             dashboardPage.Dock = DockStyle.Fill;
             navControlPanel.Controls.Add(dashboardPage);
         }
 
-        private void dashboardNavButton_Click(object sender, EventArgs e)
+        private void dashBoardNavButton1_Click(object sender, EventArgs e)
         {
-            SetNavButtonChecked(dashboardNavButton);
+            SetNavButtonChecked(dashBoardNavButton1);
             navControlPanel.Controls.Clear();
             var dashboardPage = new DashboardPage();
             dashboardPage.Dock = DockStyle.Fill;
             navControlPanel.Controls.Add(dashboardPage);
         }
 
-        private void inventoryNavButton_Click(object sender, EventArgs e)
+        private void InventoryNavButton_Click(object sender, EventArgs e)
         {
-            SetNavButtonChecked(inventoryNavButton);
+            SetNavButtonChecked(InventoryNavButton);
             navControlPanel.Controls.Clear();
             var inventoryPage = new InventoryPage();
             inventoryPage.Dock = DockStyle.Fill;
             navControlPanel.Controls.Add(inventoryPage);
         }
-
-        private void transactionNavButton_Click(object sender, EventArgs e)
+        private void TransactionNavButton_Click(object sender, EventArgs e)
         {
-            SetNavButtonChecked(transactionNavButton);
+            SetNavButtonChecked(TransactionNavButton);
             navControlPanel.Controls.Clear();
-            var transactionPage = new GenerateTransactionPage();
-            transactionPage.Dock = DockStyle.Fill;
-            navControlPanel.Controls.Add(transactionPage);
+            var generateTransactionPage = new GenerateTransactionPage();
+            generateTransactionPage.Dock = DockStyle.Fill;
+            navControlPanel.Controls.Add(generateTransactionPage);
         }
 
-        private void transacRecordsNavButton_Click(object sender, EventArgs e)
+        private void TransacRecordsNavButton_Click(object sender, EventArgs e)
         {
-            SetNavButtonChecked(transacRecordsNavButton);
+            SetNavButtonChecked(TransacRecordsNavButton);
             navControlPanel.Controls.Clear();
-            var transacRecordsPage = new TransactionRecordsPage();
-            transacRecordsPage.Dock = DockStyle.Fill;
-            navControlPanel.Controls.Add(transacRecordsPage);
+            var transactionRecordsPage = new TransactionRecordsPage();
+            transactionRecordsPage.Dock = DockStyle.Fill;
+            navControlPanel.Controls.Add(transactionRecordsPage);
         }
 
-        private void custRecNavButton_Click(object sender, EventArgs e)
+        private void CustRecordsNavButton_Click(object sender, EventArgs e)
         {
-            SetNavButtonChecked(custRecNavButton);
+            SetNavButtonChecked(CustRecordsNavButton);
             navControlPanel.Controls.Clear();
             var customerRecordsPage = new CustomerRecordsPage();
             customerRecordsPage.Dock = DockStyle.Fill;
             navControlPanel.Controls.Add(customerRecordsPage);
         }
 
-        private void financeRecNavButton_Click(object sender, EventArgs e)
+        private void FinancialRecNavButton_Click(object sender, EventArgs e)
         {
-            SetNavButtonChecked(financeRecNavButton);
+            SetNavButtonChecked(FinancialRecNavButton);
             navControlPanel.Controls.Clear();
-            var financialReportsPage = new FinancialReportsPage();
-            financialReportsPage.Dock = DockStyle.Fill;
-            navControlPanel.Controls.Add(financialReportsPage);
+            var financialRecordsPage = new FinancialReportsPage();
+            financialRecordsPage.Dock = DockStyle.Fill;
+            navControlPanel.Controls.Add(financialRecordsPage);
         }
 
-        private void empManageNavButton_Click(object sender, EventArgs e)
+        private void EmployeeManagementNavButton_Click(object sender, EventArgs e)
         {
-            SetNavButtonChecked(empManageNavButton);
+            SetNavButtonChecked(EmployeeManagementNavButton);
             navControlPanel.Controls.Clear();
             var employeeManagementPage = new EmployeeManagementPage();
             employeeManagementPage.Dock = DockStyle.Fill;
             navControlPanel.Controls.Add(employeeManagementPage);
         }
-
         /// <summary>
-        /// Helper to set only the selected nav button as checked.
+        /// For UI lang yung code na nasa baba, para ma-set yung background color ng mga navigation buttons if they are checked or not.
         /// </summary>
         /// <param name="checkedButton"></param>
-        private void SetNavButtonChecked(Guna.UI2.WinForms.Guna2Button checkedButton)
+        private void SetNavButtonChecked(CuoreUI.Controls.cuiButton checkedButton)
         {
-            dashboardNavButton.Checked = checkedButton == dashboardNavButton;
-            inventoryNavButton.Checked = checkedButton == inventoryNavButton;
-            transactionNavButton.Checked = checkedButton == transactionNavButton;
-            transacRecordsNavButton.Checked = checkedButton == transacRecordsNavButton;
-            custRecNavButton.Checked = checkedButton == custRecNavButton;
-            financeRecNavButton.Checked = checkedButton == financeRecNavButton;
-            empManageNavButton.Checked = checkedButton == empManageNavButton;
-        }
+            var activeColor = System.Drawing.Color.FromArgb(25, 219, 138); // active color
+            var inactiveColor = System.Drawing.Color.Transparent; // inactive color
 
-        private void logOutButton_Click(object sender, EventArgs e)
+            dashBoardNavButton1.Checked = checkedButton == dashBoardNavButton1;
+            dashBoardNavButton1.BackColor = dashBoardNavButton1.Checked ? activeColor : inactiveColor;
+
+            InventoryNavButton.Checked = checkedButton == InventoryNavButton;
+            InventoryNavButton.BackColor = InventoryNavButton.Checked ? activeColor : inactiveColor;
+
+            TransactionNavButton.Checked = checkedButton == TransactionNavButton;
+            TransactionNavButton.BackColor = TransactionNavButton.Checked ? activeColor : inactiveColor;
+
+            TransacRecordsNavButton.Checked = checkedButton == TransacRecordsNavButton;
+            TransacRecordsNavButton.BackColor = TransacRecordsNavButton.Checked ? activeColor : inactiveColor;
+
+            CustRecordsNavButton.Checked = checkedButton == CustRecordsNavButton;
+            CustRecordsNavButton.BackColor = CustRecordsNavButton.Checked ? activeColor : inactiveColor;
+
+            FinancialRecNavButton.Checked = checkedButton == FinancialRecNavButton;
+            FinancialRecNavButton.BackColor = FinancialRecNavButton.Checked ? activeColor : inactiveColor;
+
+            EmployeeManagementNavButton.Checked = checkedButton == EmployeeManagementNavButton;
+            EmployeeManagementNavButton.BackColor = EmployeeManagementNavButton.Checked ? activeColor : inactiveColor;
+        }
+        private void LogOutButton1_Click(object sender, EventArgs e)
         {
             LogInPage loginPage = new LogInPage();
             loginPage.Dock = DockStyle.Fill;
