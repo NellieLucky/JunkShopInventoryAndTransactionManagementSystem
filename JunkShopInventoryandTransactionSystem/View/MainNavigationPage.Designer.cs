@@ -59,7 +59,7 @@
             panel1.Controls.Add(panel2);
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(262, 753);
+            panel1.Size = new Size(312, 801);
             panel1.TabIndex = 0;
             // 
             // LogOutButton1
@@ -83,7 +83,7 @@
             LogOutButton1.ImageAutoCenter = true;
             LogOutButton1.ImageExpand = new Point(0, 0);
             LogOutButton1.ImageOffset = new Point(0, 0);
-            LogOutButton1.Location = new Point(22, 694);
+            LogOutButton1.Location = new Point(24, 722);
             LogOutButton1.Name = "LogOutButton1";
             LogOutButton1.NormalBackground = Color.FromArgb(7, 96, 14);
             LogOutButton1.NormalForeColor = Color.White;
@@ -95,7 +95,7 @@
             LogOutButton1.PressedImageTint = Color.White;
             LogOutButton1.PressedOutline = Color.FromArgb(64, 128, 128, 128);
             LogOutButton1.Rounding = new Padding(12);
-            LogOutButton1.Size = new Size(219, 34);
+            LogOutButton1.Size = new Size(263, 34);
             LogOutButton1.TabIndex = 0;
             LogOutButton1.TextAlignment = StringAlignment.Center;
             LogOutButton1.TextOffset = new Point(0, 0);
@@ -135,10 +135,10 @@
             TransacRecordsNavButton.PressedImageTint = Color.White;
             TransacRecordsNavButton.PressedOutline = Color.FromArgb(64, 128, 128, 128);
             TransacRecordsNavButton.Rounding = new Padding(0);
-            TransacRecordsNavButton.Size = new Size(262, 80);
+            TransacRecordsNavButton.Size = new Size(312, 80);
             TransacRecordsNavButton.TabIndex = 11;
             TransacRecordsNavButton.TextAlignment = StringAlignment.Near;
-            TransacRecordsNavButton.TextOffset = new Point(50, -10);
+            TransacRecordsNavButton.TextOffset = new Point(70, -10);
             TransacRecordsNavButton.Click += TransacRecordsNavButton_Click;
             // 
             // EmployeeManagementNavButton
@@ -174,10 +174,10 @@
             EmployeeManagementNavButton.PressedImageTint = Color.White;
             EmployeeManagementNavButton.PressedOutline = Color.FromArgb(64, 128, 128, 128);
             EmployeeManagementNavButton.Rounding = new Padding(0);
-            EmployeeManagementNavButton.Size = new Size(262, 80);
+            EmployeeManagementNavButton.Size = new Size(312, 80);
             EmployeeManagementNavButton.TabIndex = 14;
             EmployeeManagementNavButton.TextAlignment = StringAlignment.Near;
-            EmployeeManagementNavButton.TextOffset = new Point(50, -10);
+            EmployeeManagementNavButton.TextOffset = new Point(70, -10);
             EmployeeManagementNavButton.Click += EmployeeManagementNavButton_Click;
             // 
             // FinancialRecNavButton
@@ -213,10 +213,10 @@
             FinancialRecNavButton.PressedImageTint = Color.White;
             FinancialRecNavButton.PressedOutline = Color.FromArgb(64, 128, 128, 128);
             FinancialRecNavButton.Rounding = new Padding(0);
-            FinancialRecNavButton.Size = new Size(262, 80);
+            FinancialRecNavButton.Size = new Size(312, 80);
             FinancialRecNavButton.TabIndex = 13;
             FinancialRecNavButton.TextAlignment = StringAlignment.Near;
-            FinancialRecNavButton.TextOffset = new Point(50, -10);
+            FinancialRecNavButton.TextOffset = new Point(70, -10);
             FinancialRecNavButton.Click += FinancialRecNavButton_Click;
             // 
             // CustRecordsNavButton
@@ -252,10 +252,10 @@
             CustRecordsNavButton.PressedImageTint = Color.White;
             CustRecordsNavButton.PressedOutline = Color.FromArgb(64, 128, 128, 128);
             CustRecordsNavButton.Rounding = new Padding(0);
-            CustRecordsNavButton.Size = new Size(262, 80);
+            CustRecordsNavButton.Size = new Size(312, 80);
             CustRecordsNavButton.TabIndex = 12;
             CustRecordsNavButton.TextAlignment = StringAlignment.Near;
-            CustRecordsNavButton.TextOffset = new Point(50, -10);
+            CustRecordsNavButton.TextOffset = new Point(70, -10);
             CustRecordsNavButton.Click += CustRecordsNavButton_Click;
             // 
             // TransactionNavButton
@@ -291,7 +291,7 @@
             TransactionNavButton.PressedImageTint = Color.White;
             TransactionNavButton.PressedOutline = Color.FromArgb(64, 128, 128, 128);
             TransactionNavButton.Rounding = new Padding(0);
-            TransactionNavButton.Size = new Size(262, 80);
+            TransactionNavButton.Size = new Size(312, 80);
             TransactionNavButton.TabIndex = 10;
             TransactionNavButton.TextAlignment = StringAlignment.Center;
             TransactionNavButton.TextOffset = new Point(5, 0);
@@ -330,10 +330,10 @@
             InventoryNavButton.PressedImageTint = Color.White;
             InventoryNavButton.PressedOutline = Color.FromArgb(64, 128, 128, 128);
             InventoryNavButton.Rounding = new Padding(0);
-            InventoryNavButton.Size = new Size(262, 80);
+            InventoryNavButton.Size = new Size(312, 80);
             InventoryNavButton.TabIndex = 9;
             InventoryNavButton.TextAlignment = StringAlignment.Center;
-            InventoryNavButton.TextOffset = new Point(-5, 0);
+            InventoryNavButton.TextOffset = new Point(-10, 0);
             InventoryNavButton.Click += InventoryNavButton_Click;
             // 
             // dashBoardNavButton1
@@ -370,7 +370,7 @@
             dashBoardNavButton1.PressedImageTint = Color.White;
             dashBoardNavButton1.PressedOutline = Color.FromArgb(64, 128, 128, 128);
             dashBoardNavButton1.Rounding = new Padding(0);
-            dashBoardNavButton1.Size = new Size(262, 80);
+            dashBoardNavButton1.Size = new Size(312, 80);
             dashBoardNavButton1.TabIndex = 0;
             dashBoardNavButton1.TextAlignment = StringAlignment.Center;
             dashBoardNavButton1.TextOffset = new Point(-5, 0);
@@ -386,9 +386,9 @@
             // navControlPanel
             // 
             navControlPanel.BackColor = Color.White;
-            navControlPanel.Location = new Point(265, 0);
+            navControlPanel.Location = new Point(315, 3);
             navControlPanel.Name = "navControlPanel";
-            navControlPanel.Size = new Size(916, 753);
+            navControlPanel.Size = new Size(1084, 798);
             navControlPanel.TabIndex = 1;
             // 
             // cuiControlDrag1
@@ -399,7 +399,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1182, 753);
+            ClientSize = new Size(1400, 800);
             Controls.Add(navControlPanel);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;

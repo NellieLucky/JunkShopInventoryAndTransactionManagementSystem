@@ -61,7 +61,7 @@
             Controls.Add(guna2RadialGauge1);
             Controls.Add(DashboardTitlePage);
             Name = "FinancialReportsPage";
-            Size = new Size(916, 753);
+            Size = new Size(1084, 798);
             ResumeLayout(false);
             PerformLayout();
         }
