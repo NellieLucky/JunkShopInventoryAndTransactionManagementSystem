@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             DashboardTitlePage = new Label();
-            guna2RadialGauge1 = new Guna.UI2.WinForms.Guna2RadialGauge();
             SuspendLayout();
             // 
             // DashboardTitlePage
@@ -44,21 +43,10 @@
             DashboardTitlePage.TabIndex = 5;
             DashboardTitlePage.Text = "Financial Records";
             // 
-            // guna2RadialGauge1
-            // 
-            guna2RadialGauge1.Font = new Font("Verdana", 8.2F);
-            guna2RadialGauge1.ForeColor = Color.FromArgb(139, 152, 166);
-            guna2RadialGauge1.Location = new Point(296, 118);
-            guna2RadialGauge1.MinimumSize = new Size(30, 30);
-            guna2RadialGauge1.Name = "guna2RadialGauge1";
-            guna2RadialGauge1.Size = new Size(300, 300);
-            guna2RadialGauge1.TabIndex = 6;
-            // 
             // FinancialReportsPage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(guna2RadialGauge1);
             Controls.Add(DashboardTitlePage);
             Name = "FinancialReportsPage";
             Size = new Size(1084, 798);
@@ -69,6 +57,5 @@
         #endregion
 
         private Label DashboardTitlePage;
-        private Guna.UI2.WinForms.Guna2RadialGauge guna2RadialGauge1;
     }
 }
