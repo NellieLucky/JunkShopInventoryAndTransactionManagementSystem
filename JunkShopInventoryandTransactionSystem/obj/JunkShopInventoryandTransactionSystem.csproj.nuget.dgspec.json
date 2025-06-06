@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\HP\\Source\\Repos\\JunkShopInventoryAndTransactionManagementSystem\\JunkShopInventoryandTransactionSystem\\JunkShopInventoryandTransactionSystem.csproj": {}
+    "C:\\Users\\Sandara Fillartos\\Source\\Repos\\JunkShopInventoryAndTransactionManagementS ystem\\JunkShopInventoryandTransactionSystem\\JunkShopInventoryandTransactionSystem.csproj": {}
   },
   "projects": {
-    "C:\\Users\\HP\\Source\\Repos\\JunkShopInventoryAndTransactionManagementSystem\\JunkShopInventoryandTransactionSystem\\JunkShopInventoryandTransactionSystem.csproj": {
+    "C:\\Users\\Sandara Fillartos\\Source\\Repos\\JunkShopInventoryAndTransactionManagementS ystem\\JunkShopInventoryandTransactionSystem\\JunkShopInventoryandTransactionSystem.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\HP\\Source\\Repos\\JunkShopInventoryAndTransactionManagementSystem\\JunkShopInventoryandTransactionSystem\\JunkShopInventoryandTransactionSystem.csproj",
+        "projectUniqueName": "C:\\Users\\Sandara Fillartos\\Source\\Repos\\JunkShopInventoryAndTransactionManagementS ystem\\JunkShopInventoryandTransactionSystem\\JunkShopInventoryandTransactionSystem.csproj",
         "projectName": "JunkShopInventoryandTransactionSystem",
-        "projectPath": "C:\\Users\\HP\\Source\\Repos\\JunkShopInventoryAndTransactionManagementSystem\\JunkShopInventoryandTransactionSystem\\JunkShopInventoryandTransactionSystem.csproj",
-        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\HP\\Source\\Repos\\JunkShopInventoryAndTransactionManagementSystem\\JunkShopInventoryandTransactionSystem\\obj\\",
+        "projectPath": "C:\\Users\\Sandara Fillartos\\Source\\Repos\\JunkShopInventoryAndTransactionManagementS ystem\\JunkShopInventoryandTransactionSystem\\JunkShopInventoryandTransactionSystem.csproj",
+        "packagesPath": "C:\\Users\\Sandara Fillartos\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Sandara Fillartos\\Source\\Repos\\JunkShopInventoryAndTransactionManagementS ystem\\JunkShopInventoryandTransactionSystem\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Sandara Fillartos\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,7 +26,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
