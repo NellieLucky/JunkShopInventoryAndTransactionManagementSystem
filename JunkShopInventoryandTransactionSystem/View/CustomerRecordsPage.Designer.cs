@@ -50,7 +50,7 @@
             BackColor = Color.White;
             Controls.Add(DashboardTitlePage);
             Name = "CustomerRecordsPage";
-            Size = new Size(916, 753);
+            Size = new Size(1084, 798);
             ResumeLayout(false);
             PerformLayout();
         }
