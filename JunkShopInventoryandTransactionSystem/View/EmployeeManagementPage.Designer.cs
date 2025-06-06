@@ -46,6 +46,10 @@
             button4 = new Button();
             vScrollBar1 = new VScrollBar();
             dataGridView2 = new DataGridView();
+            textBox1 = new TextBox();
+            textBox2 = new TextBox();
+            textBox3 = new TextBox();
+            textBox4 = new TextBox();
             tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             SuspendLayout();
@@ -287,11 +291,44 @@
             dataGridView2.Size = new Size(1269, 642);
             dataGridView2.TabIndex = 30;
             // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(81, 157);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(209, 31);
+            textBox1.TabIndex = 31;
+            textBox1.TextChanged += textBox1_TextChanged;
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(400, 157);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(209, 31);
+            textBox2.TabIndex = 32;
+            // 
+            // textBox3
+            // 
+            textBox3.Location = new Point(737, 157);
+            textBox3.Name = "textBox3";
+            textBox3.Size = new Size(209, 31);
+            textBox3.TabIndex = 33;
+            // 
+            // textBox4
+            // 
+            textBox4.Location = new Point(1072, 157);
+            textBox4.Name = "textBox4";
+            textBox4.Size = new Size(209, 31);
+            textBox4.TabIndex = 34;
+            // 
             // EmployeeManagementPage
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(192, 255, 192);
+            Controls.Add(textBox4);
+            Controls.Add(textBox3);
+            Controls.Add(textBox2);
+            Controls.Add(textBox1);
             Controls.Add(vScrollBar1);
             Controls.Add(button4);
             Controls.Add(button3);
@@ -337,5 +374,9 @@
         private VScrollBar vScrollBar1;
         private DataGridView dataGridView1;
         private DataGridView dataGridView2;
+        private TextBox textBox1;
+        private TextBox textBox2;
+        private TextBox textBox3;
+        private TextBox textBox4;
     }
 }
