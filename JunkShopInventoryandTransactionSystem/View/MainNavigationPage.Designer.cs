@@ -31,6 +31,8 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainNavigationPage));
             panel1 = new Panel();
+            codeeloGradientPanel1 = new CodeeloUI.Controls.CodeeloGradientPanel();
+            cuiPictureBox1 = new CuoreUI.Controls.cuiPictureBox();
             LogOutButton1 = new CuoreUI.Controls.cuiButton();
             TransacRecordsNavButton = new CuoreUI.Controls.cuiButton();
             EmployeeManagementNavButton = new CuoreUI.Controls.cuiButton();
@@ -40,10 +42,8 @@
             InventoryNavButton = new CuoreUI.Controls.cuiButton();
             dashBoardNavButton1 = new CuoreUI.Controls.cuiButton();
             panel2 = new Panel();
-            cuiPictureBox1 = new CuoreUI.Controls.cuiPictureBox();
             navControlPanel = new Panel();
             cuiControlDrag1 = new CuoreUI.Components.cuiControlDrag(components);
-            codeeloGradientPanel1 = new CodeeloUI.Controls.CodeeloGradientPanel();
             panel1.SuspendLayout();
             codeeloGradientPanel1.SuspendLayout();
             SuspendLayout();
@@ -51,6 +51,7 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(13, 158, 169);
+            panel1.Controls.Add(codeeloGradientPanel1);
             panel1.Controls.Add(LogOutButton1);
             panel1.Controls.Add(TransacRecordsNavButton);
             panel1.Controls.Add(EmployeeManagementNavButton);
@@ -64,6 +65,45 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(312, 801);
             panel1.TabIndex = 0;
+            // 
+            // codeeloGradientPanel1
+            // 
+            codeeloGradientPanel1.AccessibleRole = null;
+            codeeloGradientPanel1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            codeeloGradientPanel1.BackColor = Color.FromArgb(0, 0, 0, 0);
+            codeeloGradientPanel1.BorderRadius = 0;
+            codeeloGradientPanel1.BorderThickness = 0;
+            codeeloGradientPanel1.CausesValidation = false;
+            codeeloGradientPanel1.ColorBorderFirst = Color.FromArgb(0, 0, 0, 0);
+            codeeloGradientPanel1.ColorBorderSecond = Color.FromArgb(0, 0, 0, 0);
+            codeeloGradientPanel1.ColorFillFirst = Color.FromArgb(0, 0, 0, 0);
+            codeeloGradientPanel1.ColorFillSecond = Color.FromArgb(0, 0, 0, 0);
+            codeeloGradientPanel1.Controls.Add(cuiPictureBox1);
+            codeeloGradientPanel1.DrawBorderGradient = true;
+            codeeloGradientPanel1.DrawGradient = true;
+            codeeloGradientPanel1.GradientBorderDirection = System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal;
+            codeeloGradientPanel1.GradientDirection = System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal;
+            codeeloGradientPanel1.Location = new Point(3, 3);
+            codeeloGradientPanel1.Name = "codeeloGradientPanel1";
+            codeeloGradientPanel1.Size = new Size(85, 86);
+            codeeloGradientPanel1.TabIndex = 0;
+            // 
+            // cuiPictureBox1
+            // 
+            cuiPictureBox1.BackColor = Color.FromArgb(0, 0, 0, 0);
+            cuiPictureBox1.BackgroundImage = (Image)resources.GetObject("cuiPictureBox1.BackgroundImage");
+            cuiPictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
+            cuiPictureBox1.Content = null;
+            cuiPictureBox1.ImageTint = Color.White;
+            cuiPictureBox1.Location = new Point(7, 8);
+            cuiPictureBox1.Margin = new Padding(4, 5, 4, 5);
+            cuiPictureBox1.Name = "cuiPictureBox1";
+            cuiPictureBox1.OutlineThickness = 1F;
+            cuiPictureBox1.PanelOutlineColor = Color.Empty;
+            cuiPictureBox1.Rotation = 0;
+            cuiPictureBox1.Rounding = new Padding(8);
+            cuiPictureBox1.Size = new Size(74, 70);
+            cuiPictureBox1.TabIndex = 15;
             // 
             // LogOutButton1
             // 
@@ -386,63 +426,23 @@
             panel2.Size = new Size(250, 125);
             panel2.TabIndex = 1;
             // 
-            // cuiPictureBox1
-            // 
-            cuiPictureBox1.BackColor = Color.FromArgb(0, 0, 0, 0);
-            cuiPictureBox1.BackgroundImage = (Image)resources.GetObject("cuiPictureBox1.BackgroundImage");
-            cuiPictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
-            cuiPictureBox1.Content = null;
-            cuiPictureBox1.ImageTint = Color.White;
-            cuiPictureBox1.Location = new Point(7, 8);
-            cuiPictureBox1.Margin = new Padding(4, 5, 4, 5);
-            cuiPictureBox1.Name = "cuiPictureBox1";
-            cuiPictureBox1.OutlineThickness = 1F;
-            cuiPictureBox1.PanelOutlineColor = Color.Empty;
-            cuiPictureBox1.Rotation = 0;
-            cuiPictureBox1.Rounding = new Padding(8);
-            cuiPictureBox1.Size = new Size(74, 70);
-            cuiPictureBox1.TabIndex = 15;
-            // 
             // navControlPanel
             // 
             navControlPanel.BackColor = Color.White;
-            navControlPanel.Location = new Point(315, 3);
+            navControlPanel.Location = new Point(309, 0);
             navControlPanel.Name = "navControlPanel";
-            navControlPanel.Size = new Size(1084, 798);
+            navControlPanel.Size = new Size(1090, 801);
             navControlPanel.TabIndex = 1;
             // 
             // cuiControlDrag1
             // 
             cuiControlDrag1.TargetControl = null;
             // 
-            // codeeloGradientPanel1
-            // 
-            codeeloGradientPanel1.AccessibleRole = null;
-            codeeloGradientPanel1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            codeeloGradientPanel1.BackColor = Color.FromArgb(0, 0, 0, 0);
-            codeeloGradientPanel1.BorderRadius = 0;
-            codeeloGradientPanel1.BorderThickness = 0;
-            codeeloGradientPanel1.CausesValidation = false;
-            codeeloGradientPanel1.ColorBorderFirst = Color.FromArgb(0, 0, 0, 0);
-            codeeloGradientPanel1.ColorBorderSecond = Color.FromArgb(0, 0, 0, 0);
-            codeeloGradientPanel1.ColorFillFirst = Color.FromArgb(0, 0, 0, 0);
-            codeeloGradientPanel1.ColorFillSecond = Color.FromArgb(0, 0, 0, 0);
-            codeeloGradientPanel1.Controls.Add(cuiPictureBox1);
-            codeeloGradientPanel1.DrawBorderGradient = true;
-            codeeloGradientPanel1.DrawGradient = true;
-            codeeloGradientPanel1.GradientBorderDirection = System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal;
-            codeeloGradientPanel1.GradientDirection = System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal;
-            codeeloGradientPanel1.Location = new Point(1314, 0);
-            codeeloGradientPanel1.Name = "codeeloGradientPanel1";
-            codeeloGradientPanel1.Size = new Size(85, 86);
-            codeeloGradientPanel1.TabIndex = 0;
-            // 
             // MainNavigationPage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1400, 800);
-            Controls.Add(codeeloGradientPanel1);
             Controls.Add(navControlPanel);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;

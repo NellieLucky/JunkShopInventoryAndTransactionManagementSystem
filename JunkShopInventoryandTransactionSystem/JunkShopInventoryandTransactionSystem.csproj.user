@@ -4,6 +4,9 @@
     <Compile Update="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="View\CategoryPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="View\CustomerRecordsPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -19,7 +22,10 @@
     <Compile Update="View\GenerateTransactionPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="View\InventoryPage.cs">
+    <Compile Update="View\ItemRecordsPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="View\MainInventoryPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="View\MainNavigationPage.cs">

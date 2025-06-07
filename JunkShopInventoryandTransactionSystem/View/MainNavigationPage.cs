@@ -31,7 +31,7 @@ namespace JunkShopInventoryandTransactionSystem.View
         {
             SetNavButtonChecked(InventoryNavButton);
             navControlPanel.Controls.Clear();
-            var inventoryPage = new InventoryPage();
+            var inventoryPage = new MainInventoryPage();
             inventoryPage.Dock = DockStyle.Fill;
             navControlPanel.Controls.Add(inventoryPage);
         }
