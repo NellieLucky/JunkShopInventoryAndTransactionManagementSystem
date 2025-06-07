@@ -79,7 +79,7 @@
             cuiPanel1.PanelColor = Color.FromArgb(227, 244, 238);
             cuiPanel1.PanelOutlineColor = Color.White;
             cuiPanel1.Rounding = new Padding(8);
-            cuiPanel1.Size = new Size(1035, 682);
+            cuiPanel1.Size = new Size(1035, 656);
             cuiPanel1.TabIndex = 3;
             cuiPanel1.Paint += cuiPanel1_Paint;
             // 
@@ -104,7 +104,7 @@
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 79F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 82F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 76F));
-            tableLayoutPanel2.Size = new Size(1002, 491);
+            tableLayoutPanel2.Size = new Size(1002, 509);
             tableLayoutPanel2.TabIndex = 4;
             // 
             // label1

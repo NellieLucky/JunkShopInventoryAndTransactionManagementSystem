@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("JunkShopInventoryandTransactionSystem")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d3bebd21eea33faeb8d253c7e14dc9f23e7b45b6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c071af0d5bc09cfd01215f981b558b639eba488f")]
 [assembly: System.Reflection.AssemblyProductAttribute("JunkShopInventoryandTransactionSystem")]
 [assembly: System.Reflection.AssemblyTitleAttribute("JunkShopInventoryandTransactionSystem")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
