@@ -10,7 +10,7 @@ no sql reading
 using System;
 using System.Text.RegularExpressions; //to access special characters 
 
-class Program
+class Auth_ForgotPw //renamed class
 {
     static bool checkUser(string username_Input)
     {

@@ -10,7 +10,7 @@ exit button destroy/close app/window will be easy to add when frontend okay
 
 using System;
 
-class Program
+class Auth_Backend //renamed class
 {
     static (bool, int) checkLoggedAcc()
     {
