@@ -54,7 +54,7 @@
             DashboardTitlePage.AutoSize = true;
             DashboardTitlePage.BackColor = Color.FromArgb(0, 0, 0, 0);
             DashboardTitlePage.Font = new Font("Arial", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            DashboardTitlePage.ForeColor = Color.FromArgb(16, 107, 23);
+            DashboardTitlePage.ForeColor = Color.FromArgb(0, 157, 209);
             DashboardTitlePage.Location = new Point(14, 20);
             DashboardTitlePage.Name = "DashboardTitlePage";
             DashboardTitlePage.Size = new Size(171, 35);
