@@ -44,6 +44,8 @@
             panel2 = new Panel();
             navControlPanel = new Panel();
             cuiControlDrag1 = new CuoreUI.Components.cuiControlDrag(components);
+            label2 = new Label();
+            label1 = new Label();
             panel1.SuspendLayout();
             codeeloGradientPanel1.SuspendLayout();
             SuspendLayout();
@@ -51,6 +53,8 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(13, 158, 169);
+            panel1.Controls.Add(label1);
+            panel1.Controls.Add(label2);
             panel1.Controls.Add(codeeloGradientPanel1);
             panel1.Controls.Add(LogOutButton1);
             panel1.Controls.Add(TransacRecordsNavButton);
@@ -83,7 +87,7 @@
             codeeloGradientPanel1.DrawGradient = true;
             codeeloGradientPanel1.GradientBorderDirection = System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal;
             codeeloGradientPanel1.GradientDirection = System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal;
-            codeeloGradientPanel1.Location = new Point(3, 3);
+            codeeloGradientPanel1.Location = new Point(3, 12);
             codeeloGradientPanel1.Name = "codeeloGradientPanel1";
             codeeloGradientPanel1.Size = new Size(85, 86);
             codeeloGradientPanel1.TabIndex = 0;
@@ -438,6 +442,28 @@
             // 
             cuiControlDrag1.TargetControl = null;
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Arial Black", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.White;
+            label2.Location = new Point(94, 31);
+            label2.Name = "label2";
+            label2.Size = new Size(81, 28);
+            label2.TabIndex = 15;
+            label2.Text = "Admin";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(94, 71);
+            label1.Name = "label1";
+            label1.Size = new Size(61, 19);
+            label1.TabIndex = 16;
+            label1.Text = "Owner";
+            // 
             // MainNavigationPage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -449,6 +475,7 @@
             Name = "MainNavigationPage";
             Text = "DashboardPage";
             panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             codeeloGradientPanel1.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -468,7 +495,8 @@
         private CuoreUI.Components.cuiControlDrag cuiControlDrag1;
         private CuoreUI.Controls.cuiButton LogOutButton1;
         private CuoreUI.Controls.cuiPictureBox cuiPictureBox1;
-        private Label label1;
         private CodeeloUI.Controls.CodeeloGradientPanel codeeloGradientPanel1;
+        private Label label2;
+        private Label label1;
     }
 }

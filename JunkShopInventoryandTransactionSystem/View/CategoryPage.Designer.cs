@@ -68,7 +68,7 @@
             dataGridView1.AllowUserToResizeColumns = false;
             dataGridView1.AllowUserToResizeRows = false;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.BackgroundColor = Color.FromArgb(99, 99, 99);
+            dataGridView1.BackgroundColor = Color.White;
             dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.SunkenHorizontal;
             dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Sunken;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -200,7 +200,7 @@
             cuiTextBox1.BorderColor = Color.Empty;
             cuiTextBox1.Content = "";
             cuiTextBox1.FocusBackgroundColor = Color.White;
-            cuiTextBox1.FocusBorderColor = Color.FromArgb(255, 106, 0);
+            cuiTextBox1.FocusBorderColor = Color.Empty;
             cuiTextBox1.FocusImageTint = Color.White;
             cuiTextBox1.Font = new Font("Microsoft Sans Serif", 9.5F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cuiTextBox1.ForeColor = Color.Gray;

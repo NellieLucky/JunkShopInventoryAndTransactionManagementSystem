@@ -28,16 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ItemRecordsPage));
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
             cuiTextBox1 = new CuoreUI.Controls.cuiTextBox();
             cuiButton1 = new CuoreUI.Controls.cuiButton();
             panel1 = new Panel();
-            cuiButton2 = new CuoreUI.Controls.cuiButton();
+            AddItemButton = new CuoreUI.Controls.cuiButton();
             DashboardTitlePage = new Label();
             dataGridView1 = new DataGridView();
             ItemID = new DataGridViewTextBoxColumn();
@@ -60,7 +60,7 @@
             cuiTextBox1.BorderColor = Color.Empty;
             cuiTextBox1.Content = "";
             cuiTextBox1.FocusBackgroundColor = Color.White;
-            cuiTextBox1.FocusBorderColor = Color.FromArgb(255, 106, 0);
+            cuiTextBox1.FocusBorderColor = Color.Empty;
             cuiTextBox1.FocusImageTint = Color.White;
             cuiTextBox1.Font = new Font("Microsoft Sans Serif", 9.5F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cuiTextBox1.ForeColor = Color.Gray;
@@ -129,43 +129,44 @@
             panel1.Size = new Size(376, 40);
             panel1.TabIndex = 25;
             // 
-            // cuiButton2
+            // AddItemButton
             // 
-            cuiButton2.BackColor = Color.FromArgb(0, 0, 0, 0);
-            cuiButton2.CheckButton = false;
-            cuiButton2.Checked = false;
-            cuiButton2.CheckedBackground = Color.FromArgb(255, 106, 0);
-            cuiButton2.CheckedForeColor = Color.White;
-            cuiButton2.CheckedImageTint = Color.White;
-            cuiButton2.CheckedOutline = Color.FromArgb(255, 106, 0);
-            cuiButton2.Content = "Add Item";
-            cuiButton2.DialogResult = DialogResult.None;
-            cuiButton2.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            cuiButton2.ForeColor = Color.White;
-            cuiButton2.HoverBackground = Color.White;
-            cuiButton2.HoveredImageTint = Color.White;
-            cuiButton2.HoverForeColor = Color.Black;
-            cuiButton2.HoverOutline = Color.FromArgb(32, 128, 128, 128);
-            cuiButton2.Image = null;
-            cuiButton2.ImageAutoCenter = true;
-            cuiButton2.ImageExpand = new Point(0, 0);
-            cuiButton2.ImageOffset = new Point(0, 0);
-            cuiButton2.Location = new Point(541, 22);
-            cuiButton2.Name = "cuiButton2";
-            cuiButton2.NormalBackground = Color.FromArgb(0, 157, 209);
-            cuiButton2.NormalForeColor = Color.White;
-            cuiButton2.NormalImageTint = Color.White;
-            cuiButton2.NormalOutline = Color.FromArgb(64, 128, 128, 128);
-            cuiButton2.OutlineThickness = 1F;
-            cuiButton2.PressedBackground = Color.WhiteSmoke;
-            cuiButton2.PressedForeColor = Color.FromArgb(32, 32, 32);
-            cuiButton2.PressedImageTint = Color.White;
-            cuiButton2.PressedOutline = Color.FromArgb(64, 128, 128, 128);
-            cuiButton2.Rounding = new Padding(8);
-            cuiButton2.Size = new Size(146, 40);
-            cuiButton2.TabIndex = 26;
-            cuiButton2.TextAlignment = StringAlignment.Center;
-            cuiButton2.TextOffset = new Point(0, 0);
+            AddItemButton.BackColor = Color.FromArgb(0, 0, 0, 0);
+            AddItemButton.CheckButton = false;
+            AddItemButton.Checked = false;
+            AddItemButton.CheckedBackground = Color.FromArgb(255, 106, 0);
+            AddItemButton.CheckedForeColor = Color.White;
+            AddItemButton.CheckedImageTint = Color.White;
+            AddItemButton.CheckedOutline = Color.FromArgb(255, 106, 0);
+            AddItemButton.Content = "Add Item";
+            AddItemButton.DialogResult = DialogResult.None;
+            AddItemButton.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            AddItemButton.ForeColor = Color.White;
+            AddItemButton.HoverBackground = Color.White;
+            AddItemButton.HoveredImageTint = Color.White;
+            AddItemButton.HoverForeColor = Color.Black;
+            AddItemButton.HoverOutline = Color.FromArgb(32, 128, 128, 128);
+            AddItemButton.Image = null;
+            AddItemButton.ImageAutoCenter = true;
+            AddItemButton.ImageExpand = new Point(0, 0);
+            AddItemButton.ImageOffset = new Point(0, 0);
+            AddItemButton.Location = new Point(541, 22);
+            AddItemButton.Name = "AddItemButton";
+            AddItemButton.NormalBackground = Color.FromArgb(0, 157, 209);
+            AddItemButton.NormalForeColor = Color.White;
+            AddItemButton.NormalImageTint = Color.White;
+            AddItemButton.NormalOutline = Color.FromArgb(64, 128, 128, 128);
+            AddItemButton.OutlineThickness = 1F;
+            AddItemButton.PressedBackground = Color.WhiteSmoke;
+            AddItemButton.PressedForeColor = Color.FromArgb(32, 32, 32);
+            AddItemButton.PressedImageTint = Color.White;
+            AddItemButton.PressedOutline = Color.FromArgb(64, 128, 128, 128);
+            AddItemButton.Rounding = new Padding(8);
+            AddItemButton.Size = new Size(146, 40);
+            AddItemButton.TabIndex = 26;
+            AddItemButton.TextAlignment = StringAlignment.Center;
+            AddItemButton.TextOffset = new Point(0, 0);
+            AddItemButton.Click += AddItemButton_Click;
             // 
             // DashboardTitlePage
             // 
@@ -185,17 +186,17 @@
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.AllowUserToResizeColumns = false;
             dataGridView1.AllowUserToResizeRows = false;
-            dataGridView1.BackgroundColor = Color.FromArgb(99, 99, 99);
+            dataGridView1.BackgroundColor = Color.White;
             dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.SunkenHorizontal;
             dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(163, 244, 215);
-            dataGridViewCellStyle1.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(163, 244, 215);
-            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = Color.FromArgb(163, 244, 215);
+            dataGridViewCellStyle6.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle6.ForeColor = Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(163, 244, 215);
+            dataGridViewCellStyle6.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             dataGridView1.ColumnHeadersHeight = 60;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { ItemID, ItemName, Category, QtyType, Quantity, BuyingPrice, SellingPrice, Edit, Delete });
@@ -205,20 +206,20 @@
             dataGridView1.Location = new Point(14, 82);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle9.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
+            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.RowHeadersWidth = 50;
-            dataGridViewCellStyle5.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle5.ForeColor = Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(0, 157, 209);
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle10.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle10.ForeColor = Color.Black;
+            dataGridViewCellStyle10.SelectionBackColor = Color.FromArgb(0, 157, 209);
+            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.True;
+            dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle10;
             dataGridView1.RowTemplate.Height = 50;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.Size = new Size(1056, 538);
@@ -281,10 +282,10 @@
             // Edit
             // 
             Edit.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.NullValue = resources.GetObject("dataGridViewCellStyle2.NullValue");
-            dataGridViewCellStyle2.Padding = new Padding(10);
-            Edit.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.NullValue = resources.GetObject("dataGridViewCellStyle7.NullValue");
+            dataGridViewCellStyle7.Padding = new Padding(10);
+            Edit.DefaultCellStyle = dataGridViewCellStyle7;
             Edit.FillWeight = 5.618882F;
             Edit.HeaderText = "Edit";
             Edit.Image = Properties.Resources.pen;
@@ -296,10 +297,10 @@
             // Delete
             // 
             Delete.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.NullValue = resources.GetObject("dataGridViewCellStyle3.NullValue");
-            dataGridViewCellStyle3.Padding = new Padding(10);
-            Delete.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.NullValue = resources.GetObject("dataGridViewCellStyle8.NullValue");
+            dataGridViewCellStyle8.Padding = new Padding(10);
+            Delete.DefaultCellStyle = dataGridViewCellStyle8;
             Delete.FillWeight = 5.618882F;
             Delete.HeaderText = "Delete";
             Delete.Image = Properties.Resources.delete;
@@ -314,7 +315,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(dataGridView1);
             Controls.Add(DashboardTitlePage);
-            Controls.Add(cuiButton2);
+            Controls.Add(AddItemButton);
             Controls.Add(panel1);
             Name = "ItemRecordsPage";
             Size = new Size(1084, 668);
@@ -328,7 +329,7 @@
         private CuoreUI.Controls.cuiTextBox cuiTextBox1;
         private CuoreUI.Controls.cuiButton cuiButton1;
         private Panel panel1;
-        private CuoreUI.Controls.cuiButton cuiButton2;
+        private CuoreUI.Controls.cuiButton AddItemButton;
         private Label DashboardTitlePage;
         private DataGridView dataGridView1;
         private DataGridViewTextBoxColumn ItemID;
