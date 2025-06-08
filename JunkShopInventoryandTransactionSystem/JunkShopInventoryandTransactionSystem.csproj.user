@@ -4,6 +4,9 @@
     <Compile Update="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="View\Add_Edit Panel\AddEditCategoryDialogBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="View\CategoryPage.cs">
       <SubType>UserControl</SubType>
     </Compile>

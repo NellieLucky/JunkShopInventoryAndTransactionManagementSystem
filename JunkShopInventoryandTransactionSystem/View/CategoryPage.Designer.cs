@@ -29,17 +29,21 @@
         private void InitializeComponent()
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CategoryPage));
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DashboardTitlePage = new Label();
             dataGridView1 = new DataGridView();
             ItemID = new DataGridViewTextBoxColumn();
             ItemName = new DataGridViewTextBoxColumn();
             Category = new DataGridViewTextBoxColumn();
-            Edit = new DataGridViewButtonColumn();
-            Delete = new DataGridViewButtonColumn();
+            Edit = new DataGridViewImageColumn();
+            Delete = new DataGridViewImageColumn();
             cuiButton1 = new CuoreUI.Controls.cuiButton();
             cuiTextBox1 = new CuoreUI.Controls.cuiTextBox();
-            cuiButton2 = new CuoreUI.Controls.cuiButton();
+            AddCategoryButton = new CuoreUI.Controls.cuiButton();
             panel1 = new Panel();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel1.SuspendLayout();
@@ -59,37 +63,47 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.AllowUserToResizeColumns = false;
             dataGridView1.AllowUserToResizeRows = false;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.BackgroundColor = Color.FromArgb(99, 99, 99);
-            dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.SunkenHorizontal;
+            dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Sunken;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = Color.FromArgb(163, 244, 215);
             dataGridViewCellStyle1.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = Color.MediumSeaGreen;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.ForeColor = Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(163, 244, 215);
+            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.ColumnHeadersHeight = 60;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { ItemID, ItemName, Category, Edit, Delete });
+            dataGridView1.EditMode = DataGridViewEditMode.EditProgrammatically;
             dataGridView1.EnableHeadersVisualStyles = false;
             dataGridView1.GridColor = Color.FromArgb(99, 99, 99);
             dataGridView1.Location = new Point(14, 78);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dataGridView1.RowHeadersVisible = false;
-            dataGridView1.RowHeadersWidth = 60;
+            dataGridView1.RowHeadersWidth = 50;
+            dataGridViewCellStyle5.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle5.ForeColor = Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(0, 157, 209);
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridView1.RowTemplate.Height = 50;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.Size = new Size(1056, 571);
             dataGridView1.TabIndex = 28;
             // 
@@ -116,17 +130,31 @@
             // 
             // Edit
             // 
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.NullValue = resources.GetObject("dataGridViewCellStyle2.NullValue");
+            dataGridViewCellStyle2.Padding = new Padding(10);
+            Edit.DefaultCellStyle = dataGridViewCellStyle2;
             Edit.FillWeight = 9.49495F;
             Edit.HeaderText = "Edit";
+            Edit.Image = Properties.Resources.pen;
+            Edit.ImageLayout = DataGridViewImageCellLayout.Zoom;
             Edit.MinimumWidth = 6;
             Edit.Name = "Edit";
+            Edit.Resizable = DataGridViewTriState.False;
             // 
             // Delete
             // 
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.NullValue = resources.GetObject("dataGridViewCellStyle3.NullValue");
+            dataGridViewCellStyle3.Padding = new Padding(10);
+            Delete.DefaultCellStyle = dataGridViewCellStyle3;
             Delete.FillWeight = 9.49495F;
             Delete.HeaderText = "Delete";
+            Delete.Image = Properties.Resources.delete;
+            Delete.ImageLayout = DataGridViewImageCellLayout.Zoom;
             Delete.MinimumWidth = 6;
             Delete.Name = "Delete";
+            Delete.Resizable = DataGridViewTriState.False;
             // 
             // cuiButton1
             // 
@@ -194,43 +222,44 @@
             cuiTextBox1.TextOffset = new Size(0, 0);
             cuiTextBox1.UnderlinedStyle = false;
             // 
-            // cuiButton2
+            // AddCategoryButton
             // 
-            cuiButton2.BackColor = Color.FromArgb(0, 0, 0, 0);
-            cuiButton2.CheckButton = false;
-            cuiButton2.Checked = false;
-            cuiButton2.CheckedBackground = Color.FromArgb(255, 106, 0);
-            cuiButton2.CheckedForeColor = Color.White;
-            cuiButton2.CheckedImageTint = Color.White;
-            cuiButton2.CheckedOutline = Color.FromArgb(255, 106, 0);
-            cuiButton2.Content = "Add Category";
-            cuiButton2.DialogResult = DialogResult.None;
-            cuiButton2.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            cuiButton2.ForeColor = Color.White;
-            cuiButton2.HoverBackground = Color.White;
-            cuiButton2.HoveredImageTint = Color.White;
-            cuiButton2.HoverForeColor = Color.Black;
-            cuiButton2.HoverOutline = Color.FromArgb(32, 128, 128, 128);
-            cuiButton2.Image = null;
-            cuiButton2.ImageAutoCenter = true;
-            cuiButton2.ImageExpand = new Point(0, 0);
-            cuiButton2.ImageOffset = new Point(0, 0);
-            cuiButton2.Location = new Point(542, 20);
-            cuiButton2.Name = "cuiButton2";
-            cuiButton2.NormalBackground = Color.FromArgb(0, 157, 209);
-            cuiButton2.NormalForeColor = Color.White;
-            cuiButton2.NormalImageTint = Color.White;
-            cuiButton2.NormalOutline = Color.FromArgb(64, 128, 128, 128);
-            cuiButton2.OutlineThickness = 1F;
-            cuiButton2.PressedBackground = Color.WhiteSmoke;
-            cuiButton2.PressedForeColor = Color.FromArgb(32, 32, 32);
-            cuiButton2.PressedImageTint = Color.White;
-            cuiButton2.PressedOutline = Color.FromArgb(64, 128, 128, 128);
-            cuiButton2.Rounding = new Padding(8);
-            cuiButton2.Size = new Size(146, 40);
-            cuiButton2.TabIndex = 30;
-            cuiButton2.TextAlignment = StringAlignment.Center;
-            cuiButton2.TextOffset = new Point(0, 0);
+            AddCategoryButton.BackColor = Color.FromArgb(0, 0, 0, 0);
+            AddCategoryButton.CheckButton = false;
+            AddCategoryButton.Checked = false;
+            AddCategoryButton.CheckedBackground = Color.FromArgb(255, 106, 0);
+            AddCategoryButton.CheckedForeColor = Color.White;
+            AddCategoryButton.CheckedImageTint = Color.White;
+            AddCategoryButton.CheckedOutline = Color.FromArgb(255, 106, 0);
+            AddCategoryButton.Content = "Add Category";
+            AddCategoryButton.DialogResult = DialogResult.None;
+            AddCategoryButton.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            AddCategoryButton.ForeColor = Color.White;
+            AddCategoryButton.HoverBackground = Color.White;
+            AddCategoryButton.HoveredImageTint = Color.White;
+            AddCategoryButton.HoverForeColor = Color.Black;
+            AddCategoryButton.HoverOutline = Color.FromArgb(32, 128, 128, 128);
+            AddCategoryButton.Image = null;
+            AddCategoryButton.ImageAutoCenter = true;
+            AddCategoryButton.ImageExpand = new Point(0, 0);
+            AddCategoryButton.ImageOffset = new Point(0, 0);
+            AddCategoryButton.Location = new Point(542, 20);
+            AddCategoryButton.Name = "AddCategoryButton";
+            AddCategoryButton.NormalBackground = Color.FromArgb(0, 157, 209);
+            AddCategoryButton.NormalForeColor = Color.White;
+            AddCategoryButton.NormalImageTint = Color.White;
+            AddCategoryButton.NormalOutline = Color.FromArgb(64, 128, 128, 128);
+            AddCategoryButton.OutlineThickness = 1F;
+            AddCategoryButton.PressedBackground = Color.WhiteSmoke;
+            AddCategoryButton.PressedForeColor = Color.FromArgb(32, 32, 32);
+            AddCategoryButton.PressedImageTint = Color.White;
+            AddCategoryButton.PressedOutline = Color.FromArgb(64, 128, 128, 128);
+            AddCategoryButton.Rounding = new Padding(8);
+            AddCategoryButton.Size = new Size(146, 40);
+            AddCategoryButton.TabIndex = 30;
+            AddCategoryButton.TextAlignment = StringAlignment.Center;
+            AddCategoryButton.TextOffset = new Point(0, 0);
+            AddCategoryButton.Click += AddCategoryButton_Click;
             // 
             // panel1
             // 
@@ -248,7 +277,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(DashboardTitlePage);
             Controls.Add(dataGridView1);
-            Controls.Add(cuiButton2);
+            Controls.Add(AddCategoryButton);
             Controls.Add(panel1);
             Name = "CategoryPage";
             Size = new Size(1084, 668);
@@ -264,12 +293,12 @@
         private DataGridView dataGridView1;
         private CuoreUI.Controls.cuiButton cuiButton1;
         private CuoreUI.Controls.cuiTextBox cuiTextBox1;
-        private CuoreUI.Controls.cuiButton cuiButton2;
+        private CuoreUI.Controls.cuiButton AddCategoryButton;
         private Panel panel1;
         private DataGridViewTextBoxColumn ItemID;
         private DataGridViewTextBoxColumn ItemName;
         private DataGridViewTextBoxColumn Category;
-        private DataGridViewButtonColumn Edit;
-        private DataGridViewButtonColumn Delete;
+        private DataGridViewImageColumn Edit;
+        private DataGridViewImageColumn Delete;
     }
 }

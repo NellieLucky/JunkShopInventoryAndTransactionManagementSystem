@@ -29,7 +29,16 @@
         private void InitializeComponent()
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ItemRecordsPage));
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            cuiTextBox1 = new CuoreUI.Controls.cuiTextBox();
+            cuiButton1 = new CuoreUI.Controls.cuiButton();
+            panel1 = new Panel();
+            cuiButton2 = new CuoreUI.Controls.cuiButton();
+            DashboardTitlePage = new Label();
             dataGridView1 = new DataGridView();
             ItemID = new DataGridViewTextBoxColumn();
             ItemName = new DataGridViewTextBoxColumn();
@@ -38,115 +47,11 @@
             Quantity = new DataGridViewTextBoxColumn();
             BuyingPrice = new DataGridViewTextBoxColumn();
             SellingPrice = new DataGridViewTextBoxColumn();
-            Edit = new DataGridViewButtonColumn();
-            Delete = new DataGridViewButtonColumn();
-            cuiTextBox1 = new CuoreUI.Controls.cuiTextBox();
-            cuiButton1 = new CuoreUI.Controls.cuiButton();
-            panel1 = new Panel();
-            cuiButton2 = new CuoreUI.Controls.cuiButton();
-            DashboardTitlePage = new Label();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            Edit = new DataGridViewImageColumn();
+            Delete = new DataGridViewImageColumn();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.AllowUserToResizeColumns = false;
-            dataGridView1.AllowUserToResizeRows = false;
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.BackgroundColor = Color.FromArgb(99, 99, 99);
-            dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(163, 244, 215);
-            dataGridViewCellStyle1.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = Color.MediumSeaGreen;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridView1.ColumnHeadersHeight = 60;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { ItemID, ItemName, Category, QtyType, Quantity, BuyingPrice, SellingPrice, Edit, Delete });
-            dataGridView1.EnableHeadersVisualStyles = false;
-            dataGridView1.GridColor = Color.FromArgb(99, 99, 99);
-            dataGridView1.Location = new Point(13, 80);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            dataGridView1.RowHeadersVisible = false;
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(1056, 571);
-            dataGridView1.TabIndex = 22;
-            // 
-            // ItemID
-            // 
-            ItemID.FillWeight = 60.1758423F;
-            ItemID.HeaderText = "ItemId";
-            ItemID.MinimumWidth = 6;
-            ItemID.Name = "ItemID";
-            // 
-            // ItemName
-            // 
-            ItemName.FillWeight = 67.99225F;
-            ItemName.HeaderText = "Item Name";
-            ItemName.MinimumWidth = 6;
-            ItemName.Name = "ItemName";
-            // 
-            // Category
-            // 
-            Category.FillWeight = 72.59462F;
-            Category.HeaderText = "Category";
-            Category.MinimumWidth = 6;
-            Category.Name = "Category";
-            // 
-            // QtyType
-            // 
-            QtyType.FillWeight = 76.74243F;
-            QtyType.HeaderText = "Qty. Type";
-            QtyType.MinimumWidth = 6;
-            QtyType.Name = "QtyType";
-            // 
-            // Quantity
-            // 
-            Quantity.FillWeight = 81.254425F;
-            Quantity.HeaderText = "Quantity";
-            Quantity.MinimumWidth = 6;
-            Quantity.Name = "Quantity";
-            // 
-            // BuyingPrice
-            // 
-            BuyingPrice.FillWeight = 83.77312F;
-            BuyingPrice.HeaderText = "Buying Price";
-            BuyingPrice.MinimumWidth = 6;
-            BuyingPrice.Name = "BuyingPrice";
-            // 
-            // SellingPrice
-            // 
-            SellingPrice.FillWeight = 86.81687F;
-            SellingPrice.HeaderText = "Selling Price";
-            SellingPrice.MinimumWidth = 6;
-            SellingPrice.Name = "SellingPrice";
-            // 
-            // Edit
-            // 
-            Edit.FillWeight = 51.6692467F;
-            Edit.HeaderText = "Edit";
-            Edit.MinimumWidth = 6;
-            Edit.Name = "Edit";
-            // 
-            // Delete
-            // 
-            Delete.FillWeight = 51.6692467F;
-            Delete.HeaderText = "Delete";
-            Delete.MinimumWidth = 6;
-            Delete.Name = "Delete";
             // 
             // cuiTextBox1
             // 
@@ -274,30 +179,158 @@
             DashboardTitlePage.TabIndex = 27;
             DashboardTitlePage.Text = "Item Records";
             // 
+            // dataGridView1
+            // 
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.AllowUserToResizeColumns = false;
+            dataGridView1.AllowUserToResizeRows = false;
+            dataGridView1.BackgroundColor = Color.FromArgb(99, 99, 99);
+            dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.SunkenHorizontal;
+            dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Sunken;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(163, 244, 215);
+            dataGridViewCellStyle1.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(163, 244, 215);
+            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridView1.ColumnHeadersHeight = 60;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { ItemID, ItemName, Category, QtyType, Quantity, BuyingPrice, SellingPrice, Edit, Delete });
+            dataGridView1.EditMode = DataGridViewEditMode.EditProgrammatically;
+            dataGridView1.EnableHeadersVisualStyles = false;
+            dataGridView1.GridColor = Color.FromArgb(99, 99, 99);
+            dataGridView1.Location = new Point(14, 82);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridView1.RowHeadersVisible = false;
+            dataGridView1.RowHeadersWidth = 50;
+            dataGridViewCellStyle5.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle5.ForeColor = Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(0, 157, 209);
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridView1.RowTemplate.Height = 50;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.Size = new Size(1056, 538);
+            dataGridView1.TabIndex = 29;
+            // 
+            // ItemID
+            // 
+            ItemID.HeaderText = "ItemID";
+            ItemID.MinimumWidth = 6;
+            ItemID.Name = "ItemID";
+            ItemID.Width = 70;
+            // 
+            // ItemName
+            // 
+            ItemName.HeaderText = "Item Name";
+            ItemName.MinimumWidth = 6;
+            ItemName.Name = "ItemName";
+            ItemName.Width = 150;
+            // 
+            // Category
+            // 
+            Category.FillWeight = 150F;
+            Category.HeaderText = "Category";
+            Category.MinimumWidth = 6;
+            Category.Name = "Category";
+            Category.Width = 150;
+            // 
+            // QtyType
+            // 
+            QtyType.FillWeight = 125F;
+            QtyType.HeaderText = "QtyType";
+            QtyType.MinimumWidth = 6;
+            QtyType.Name = "QtyType";
+            QtyType.Width = 125;
+            // 
+            // Quantity
+            // 
+            Quantity.FillWeight = 59.177578F;
+            Quantity.HeaderText = "Quantity";
+            Quantity.MinimumWidth = 6;
+            Quantity.Name = "Quantity";
+            Quantity.Width = 130;
+            // 
+            // BuyingPrice
+            // 
+            BuyingPrice.FillWeight = 59.177578F;
+            BuyingPrice.HeaderText = "BuyingPrice";
+            BuyingPrice.MinimumWidth = 6;
+            BuyingPrice.Name = "BuyingPrice";
+            BuyingPrice.Width = 130;
+            // 
+            // SellingPrice
+            // 
+            SellingPrice.FillWeight = 59.177578F;
+            SellingPrice.HeaderText = "SellingPrice";
+            SellingPrice.MinimumWidth = 6;
+            SellingPrice.Name = "SellingPrice";
+            SellingPrice.Width = 130;
+            // 
+            // Edit
+            // 
+            Edit.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.NullValue = resources.GetObject("dataGridViewCellStyle2.NullValue");
+            dataGridViewCellStyle2.Padding = new Padding(10);
+            Edit.DefaultCellStyle = dataGridViewCellStyle2;
+            Edit.FillWeight = 5.618882F;
+            Edit.HeaderText = "Edit";
+            Edit.Image = Properties.Resources.pen;
+            Edit.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            Edit.MinimumWidth = 6;
+            Edit.Name = "Edit";
+            Edit.Resizable = DataGridViewTriState.False;
+            // 
+            // Delete
+            // 
+            Delete.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.NullValue = resources.GetObject("dataGridViewCellStyle3.NullValue");
+            dataGridViewCellStyle3.Padding = new Padding(10);
+            Delete.DefaultCellStyle = dataGridViewCellStyle3;
+            Delete.FillWeight = 5.618882F;
+            Delete.HeaderText = "Delete";
+            Delete.Image = Properties.Resources.delete;
+            Delete.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            Delete.MinimumWidth = 6;
+            Delete.Name = "Delete";
+            Delete.Resizable = DataGridViewTriState.False;
+            // 
             // ItemRecordsPage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(dataGridView1);
             Controls.Add(DashboardTitlePage);
             Controls.Add(cuiButton2);
             Controls.Add(panel1);
-            Controls.Add(dataGridView1);
             Name = "ItemRecordsPage";
             Size = new Size(1084, 668);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private DataGridView dataGridView1;
         private CuoreUI.Controls.cuiTextBox cuiTextBox1;
         private CuoreUI.Controls.cuiButton cuiButton1;
         private Panel panel1;
         private CuoreUI.Controls.cuiButton cuiButton2;
         private Label DashboardTitlePage;
+        private DataGridView dataGridView1;
         private DataGridViewTextBoxColumn ItemID;
         private DataGridViewTextBoxColumn ItemName;
         private DataGridViewTextBoxColumn Category;
@@ -305,7 +338,7 @@
         private DataGridViewTextBoxColumn Quantity;
         private DataGridViewTextBoxColumn BuyingPrice;
         private DataGridViewTextBoxColumn SellingPrice;
-        private DataGridViewButtonColumn Edit;
-        private DataGridViewButtonColumn Delete;
+        private DataGridViewImageColumn Edit;
+        private DataGridViewImageColumn Delete;
     }
 }

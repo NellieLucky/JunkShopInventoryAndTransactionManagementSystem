@@ -15,6 +15,24 @@ namespace JunkShopInventoryandTransactionSystem.View
         public ItemRecordsPage()
         {
             InitializeComponent();
+
+            //Pangtest lang to if msgkakalaman
+            dataGridView1.Rows.Add("1", "Copper A", "Tanso", "PerWeight", "10", "100", "1" );
+            dataGridView1.Rows.Add("1", "3F", "Batteries", "PerPiece", "10", "100", "1");
+            dataGridView1.Rows.Add("1", "Copper A", "Tanso", "PerWeight", "10", "100", "1");
+            dataGridView1.Rows.Add("1", "3F", "Batteries", "PerPiece", "10", "100", "1");
+            dataGridView1.Rows.Add("1", "Copper A", "Tanso", "PerWeight", "10", "100", "1");
+            dataGridView1.Rows.Add("1", "3F", "Batteries", "PerPiece", "10", "100", "1");
+            dataGridView1.Rows.Add("1", "Copper A", "Tanso", "PerWeight", "10", "100", "1");
+            dataGridView1.Rows.Add("1", "3F", "Batteries", "PerPiece", "10", "100", "1");
+            dataGridView1.Rows.Add("1", "Copper A", "Tanso", "PerWeight", "10", "100", "1");
+            dataGridView1.Rows.Add("1", "3F", "Batteries", "PerPiece", "10", "100", "1");
+            dataGridView1.Rows.Add("1", "Copper A", "Tanso", "PerWeight", "10", "100", "1");
+            dataGridView1.Rows.Add("1", "3F", "Batteries", "PerPiece", "10", "100", "1");
+            dataGridView1.Rows.Add("1", "Copper A", "Tanso", "PerWeight", "10", "100", "1");
+            dataGridView1.Rows.Add("1", "3F", "Batteries", "PerPiece", "10", "100", "1");
         }
+
+
     }
 }
