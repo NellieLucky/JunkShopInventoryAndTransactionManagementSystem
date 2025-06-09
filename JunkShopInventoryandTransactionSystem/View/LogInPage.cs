@@ -22,8 +22,6 @@ namespace JunkShopInventoryandTransactionSystem
 
             foreach (var emp in employees)
             {
-                Console.WriteLine($"DB Email: '{emp.empEmail}'");
-                Console.WriteLine($"Input Email: '{emailInput}'");
                 if (emp.empEmail == emailInput && emp.empPassword == passwordInput)
                 {
                     return true;
@@ -50,6 +48,7 @@ namespace JunkShopInventoryandTransactionSystem
             }
             else {
                 //MessageBox.Show("Invalid username or password.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //for checking
                 MessageBox.Show($"Email input : '{emailInput}' , Pw Input : '{pwInput}' ", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
