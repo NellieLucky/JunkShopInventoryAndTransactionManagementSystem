@@ -51,5 +51,10 @@ namespace JunkShopInventoryandTransactionSystem.View
         {
 
         }
+
+        private void cuiLabel4_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

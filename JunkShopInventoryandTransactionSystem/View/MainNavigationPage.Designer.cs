@@ -31,6 +31,8 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainNavigationPage));
             panel1 = new Panel();
+            label1 = new Label();
+            label2 = new Label();
             codeeloGradientPanel1 = new CodeeloUI.Controls.CodeeloGradientPanel();
             cuiPictureBox1 = new CuoreUI.Controls.cuiPictureBox();
             LogOutButton1 = new CuoreUI.Controls.cuiButton();
@@ -44,8 +46,6 @@
             panel2 = new Panel();
             navControlPanel = new Panel();
             cuiControlDrag1 = new CuoreUI.Components.cuiControlDrag(components);
-            label2 = new Label();
-            label1 = new Label();
             panel1.SuspendLayout();
             codeeloGradientPanel1.SuspendLayout();
             SuspendLayout();
@@ -69,6 +69,28 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(312, 801);
             panel1.TabIndex = 0;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(94, 71);
+            label1.Name = "label1";
+            label1.Size = new Size(61, 19);
+            label1.TabIndex = 16;
+            label1.Text = "Owner";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Arial Black", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.White;
+            label2.Location = new Point(94, 31);
+            label2.Name = "label2";
+            label2.Size = new Size(81, 28);
+            label2.TabIndex = 15;
+            label2.Text = "Admin";
             // 
             // codeeloGradientPanel1
             // 
@@ -98,6 +120,7 @@
             cuiPictureBox1.BackgroundImage = (Image)resources.GetObject("cuiPictureBox1.BackgroundImage");
             cuiPictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
             cuiPictureBox1.Content = null;
+            cuiPictureBox1.Cursor = Cursors.Hand;
             cuiPictureBox1.ImageTint = Color.White;
             cuiPictureBox1.Location = new Point(7, 8);
             cuiPictureBox1.Margin = new Padding(4, 5, 4, 5);
@@ -108,6 +131,7 @@
             cuiPictureBox1.Rounding = new Padding(8);
             cuiPictureBox1.Size = new Size(74, 70);
             cuiPictureBox1.TabIndex = 15;
+            cuiPictureBox1.Click += cuiPictureBox1_Click;
             // 
             // LogOutButton1
             // 
@@ -441,28 +465,6 @@
             // cuiControlDrag1
             // 
             cuiControlDrag1.TargetControl = null;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Arial Black", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.ForeColor = Color.White;
-            label2.Location = new Point(94, 31);
-            label2.Name = "label2";
-            label2.Size = new Size(81, 28);
-            label2.TabIndex = 15;
-            label2.Text = "Admin";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(94, 71);
-            label1.Name = "label1";
-            label1.Size = new Size(61, 19);
-            label1.TabIndex = 16;
-            label1.Text = "Owner";
             // 
             // MainNavigationPage
             // 

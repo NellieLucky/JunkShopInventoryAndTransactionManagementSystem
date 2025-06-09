@@ -79,6 +79,16 @@ namespace JunkShopInventoryandTransactionSystem.View
             employeeManagementPage.Dock = DockStyle.Fill;
             navControlPanel.Controls.Add(employeeManagementPage);
         }
+
+        private void cuiPictureBox1_Click(object sender, EventArgs e)
+        {
+            navControlPanel.Controls.Clear();
+            var userInfoPage = new UserInformationPage();
+            userInfoPage.Dock = DockStyle.Fill;
+            navControlPanel.Controls.Add(userInfoPage);
+
+        }
+
         /// <summary>
         /// For UI lang yung code na nasa baba, para ma-set yung background color ng mga navigation buttons if they are checked or not.
         /// </summary>
@@ -109,6 +119,8 @@ namespace JunkShopInventoryandTransactionSystem.View
             EmployeeManagementNavButton.Checked = checkedButton == EmployeeManagementNavButton;
             EmployeeManagementNavButton.BackColor = EmployeeManagementNavButton.Checked ? activeColor : inactiveColor;
         }
+
+        //Pang logout button, this will clear the main panel and show the login page again.
         private void LogOutButton1_Click(object sender, EventArgs e)
         {
             LogInPage loginPage = new LogInPage();
@@ -118,5 +130,7 @@ namespace JunkShopInventoryandTransactionSystem.View
             MainForm.MainPanel.Controls.Add(loginPage);
             loginPage.Show();
         }
+
+        
     }
 }

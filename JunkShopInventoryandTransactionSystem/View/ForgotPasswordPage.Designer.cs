@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ForgotPasswordPage));
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             codeeloGradientPanel1 = new CodeeloUI.Controls.CodeeloGradientPanel();
             cuiPictureBox1 = new CuoreUI.Controls.cuiPictureBox();
             cuiPanel1 = new CuoreUI.Controls.cuiPanel();
@@ -158,7 +158,7 @@
             // SendLinkButton
             // 
             SendLinkButton.AutoRoundedCorners = true;
-            SendLinkButton.CustomizableEdges = customizableEdges1;
+            SendLinkButton.CustomizableEdges = customizableEdges3;
             SendLinkButton.DisabledState.BorderColor = Color.DarkGray;
             SendLinkButton.DisabledState.CustomBorderColor = Color.DarkGray;
             SendLinkButton.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -168,10 +168,11 @@
             SendLinkButton.ForeColor = SystemColors.Window;
             SendLinkButton.Location = new Point(203, 504);
             SendLinkButton.Name = "SendLinkButton";
-            SendLinkButton.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            SendLinkButton.ShadowDecoration.CustomizableEdges = customizableEdges4;
             SendLinkButton.Size = new Size(640, 79);
             SendLinkButton.TabIndex = 5;
             SendLinkButton.Text = "Send Link";
+            SendLinkButton.Click += SendLinkButton_Click;
             // 
             // label1
             // 
