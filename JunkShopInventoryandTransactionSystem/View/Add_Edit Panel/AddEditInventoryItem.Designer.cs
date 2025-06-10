@@ -29,40 +29,40 @@
         private void InitializeComponent()
         {
             cuiPanel1 = new CuoreUI.Controls.cuiPanel();
-            CategoryComboBox = new CuoreUI.Controls.cuiComboBox();
-            label5 = new Label();
-            label6 = new Label();
-            label3 = new Label();
-            label4 = new Label();
-            label2 = new Label();
-            label1 = new Label();
-            cuiButton1 = new CuoreUI.Controls.cuiButton();
-            cuiButton2 = new CuoreUI.Controls.cuiButton();
-            cuiTextBox5 = new CuoreUI.Controls.cuiTextBox();
-            cuiTextBox4 = new CuoreUI.Controls.cuiTextBox();
-            cuiTextBox3 = new CuoreUI.Controls.cuiTextBox();
-            cuiComboBox1 = new CuoreUI.Controls.cuiComboBox();
-            cuiTextBox1 = new CuoreUI.Controls.cuiTextBox();
+            ComboBox_ofCategoryLabel = new CuoreUI.Controls.cuiComboBox();
+            LabelRow3_SellingPriceLabel = new Label();
+            LabelRow3_BuyingPriceLabel = new Label();
+            LabelRow2_QtyLabel = new Label();
+            LabelRow2_CategoryLabel = new Label();
+            LabelRow1_QtyTypeLabel = new Label();
+            LabelRow1_ItemNameLabel = new Label();
+            CancelButton = new CuoreUI.Controls.cuiButton();
+            AddEditButton = new CuoreUI.Controls.cuiButton();
+            TextBox_ofSellingPriceLabel = new CuoreUI.Controls.cuiTextBox();
+            TextBox_ofBuyingPriceLabel = new CuoreUI.Controls.cuiTextBox();
+            TextBox_ofQtyLabel = new CuoreUI.Controls.cuiTextBox();
+            ComboBox_ofQtyTypeLabel = new CuoreUI.Controls.cuiComboBox();
+            TextBox_ofItemNameLabel = new CuoreUI.Controls.cuiTextBox();
             DashboardTitlePage = new Label();
             cuiPanel1.SuspendLayout();
             SuspendLayout();
             // 
             // cuiPanel1
             // 
-            cuiPanel1.Controls.Add(CategoryComboBox);
-            cuiPanel1.Controls.Add(label5);
-            cuiPanel1.Controls.Add(label6);
-            cuiPanel1.Controls.Add(label3);
-            cuiPanel1.Controls.Add(label4);
-            cuiPanel1.Controls.Add(label2);
-            cuiPanel1.Controls.Add(label1);
-            cuiPanel1.Controls.Add(cuiButton1);
-            cuiPanel1.Controls.Add(cuiButton2);
-            cuiPanel1.Controls.Add(cuiTextBox5);
-            cuiPanel1.Controls.Add(cuiTextBox4);
-            cuiPanel1.Controls.Add(cuiTextBox3);
-            cuiPanel1.Controls.Add(cuiComboBox1);
-            cuiPanel1.Controls.Add(cuiTextBox1);
+            cuiPanel1.Controls.Add(ComboBox_ofCategoryLabel);
+            cuiPanel1.Controls.Add(LabelRow3_SellingPriceLabel);
+            cuiPanel1.Controls.Add(LabelRow3_BuyingPriceLabel);
+            cuiPanel1.Controls.Add(LabelRow2_QtyLabel);
+            cuiPanel1.Controls.Add(LabelRow2_CategoryLabel);
+            cuiPanel1.Controls.Add(LabelRow1_QtyTypeLabel);
+            cuiPanel1.Controls.Add(LabelRow1_ItemNameLabel);
+            cuiPanel1.Controls.Add(CancelButton);
+            cuiPanel1.Controls.Add(AddEditButton);
+            cuiPanel1.Controls.Add(TextBox_ofSellingPriceLabel);
+            cuiPanel1.Controls.Add(TextBox_ofBuyingPriceLabel);
+            cuiPanel1.Controls.Add(TextBox_ofQtyLabel);
+            cuiPanel1.Controls.Add(ComboBox_ofQtyTypeLabel);
+            cuiPanel1.Controls.Add(TextBox_ofItemNameLabel);
             cuiPanel1.Location = new Point(27, 83);
             cuiPanel1.Name = "cuiPanel1";
             cuiPanel1.OutlineThickness = 3F;
@@ -72,326 +72,328 @@
             cuiPanel1.Size = new Size(750, 347);
             cuiPanel1.TabIndex = 31;
             // 
-            // CategoryComboBox
+            // ComboBox_ofCategoryLabel
             // 
-            CategoryComboBox.BackgroundColor = Color.FromArgb(255, 255, 255);
-            CategoryComboBox.ButtonCursor = Cursors.Arrow;
-            CategoryComboBox.ButtonHoverBackground = Color.FromArgb(192, 255, 255);
-            CategoryComboBox.ButtonHoverOutline = Color.Empty;
-            CategoryComboBox.ButtonNormalBackground = Color.FromArgb(0, 192, 192);
-            CategoryComboBox.ButtonNormalOutline = Color.Empty;
-            CategoryComboBox.ButtonPressedBackground = Color.Teal;
-            CategoryComboBox.ButtonPressedOutline = Color.Empty;
-            CategoryComboBox.DropDownBackgroundColor = Color.White;
-            CategoryComboBox.DropDownOutlineColor = Color.FromArgb(30, 255, 255, 255);
-            CategoryComboBox.ExpandArrowColor = Color.Gray;
-            CategoryComboBox.ForeColor = Color.Gray;
-            CategoryComboBox.Items = new string[]
+            ComboBox_ofCategoryLabel.BackgroundColor = Color.FromArgb(255, 255, 255);
+            ComboBox_ofCategoryLabel.ButtonCursor = Cursors.Arrow;
+            ComboBox_ofCategoryLabel.ButtonHoverBackground = Color.FromArgb(192, 255, 255);
+            ComboBox_ofCategoryLabel.ButtonHoverOutline = Color.Empty;
+            ComboBox_ofCategoryLabel.ButtonNormalBackground = Color.FromArgb(0, 192, 192);
+            ComboBox_ofCategoryLabel.ButtonNormalOutline = Color.Empty;
+            ComboBox_ofCategoryLabel.ButtonPressedBackground = Color.Teal;
+            ComboBox_ofCategoryLabel.ButtonPressedOutline = Color.Empty;
+            ComboBox_ofCategoryLabel.DropDownBackgroundColor = Color.White;
+            ComboBox_ofCategoryLabel.DropDownOutlineColor = Color.FromArgb(30, 255, 255, 255);
+            ComboBox_ofCategoryLabel.ExpandArrowColor = Color.Gray;
+            ComboBox_ofCategoryLabel.ForeColor = Color.Gray;
+            ComboBox_ofCategoryLabel.Items = new string[]
     {
-    "None"
+    "Category 1",
+    "Category 2"
     };
-            CategoryComboBox.Location = new Point(24, 122);
-            CategoryComboBox.Margin = new Padding(4, 5, 4, 5);
-            CategoryComboBox.Name = "CategoryComboBox";
-            CategoryComboBox.NoSelectionDropdownText = "Empty";
-            CategoryComboBox.NoSelectionText = "Please select category...";
-            CategoryComboBox.OutlineColor = Color.FromArgb(0, 0, 192);
-            CategoryComboBox.OutlineThickness = 1F;
-            CategoryComboBox.RightToLeft = RightToLeft.No;
-            CategoryComboBox.Rounding = 8;
-            CategoryComboBox.Size = new Size(332, 44);
-            CategoryComboBox.TabIndex = 35;
+            ComboBox_ofCategoryLabel.Location = new Point(24, 122);
+            ComboBox_ofCategoryLabel.Margin = new Padding(4, 5, 4, 5);
+            ComboBox_ofCategoryLabel.Name = "ComboBox_ofCategoryLabel";
+            ComboBox_ofCategoryLabel.NoSelectionDropdownText = "Empty";
+            ComboBox_ofCategoryLabel.NoSelectionText = "Please select category...";
+            ComboBox_ofCategoryLabel.OutlineColor = Color.FromArgb(0, 0, 192);
+            ComboBox_ofCategoryLabel.OutlineThickness = 1F;
+            ComboBox_ofCategoryLabel.RightToLeft = RightToLeft.No;
+            ComboBox_ofCategoryLabel.Rounding = 8;
+            ComboBox_ofCategoryLabel.Size = new Size(332, 44);
+            ComboBox_ofCategoryLabel.TabIndex = 35;
             // 
-            // label5
+            // LabelRow3_SellingPriceLabel
             // 
-            label5.AutoSize = true;
-            label5.BackColor = Color.FromArgb(0, 0, 0, 0);
-            label5.Font = new Font("Arial", 10.2F, FontStyle.Bold);
-            label5.ForeColor = Color.FromArgb(0, 157, 209);
-            label5.Location = new Point(382, 183);
-            label5.Name = "label5";
-            label5.Size = new Size(106, 19);
-            label5.TabIndex = 34;
-            label5.Text = "Selling Price";
+            LabelRow3_SellingPriceLabel.AutoSize = true;
+            LabelRow3_SellingPriceLabel.BackColor = Color.FromArgb(0, 0, 0, 0);
+            LabelRow3_SellingPriceLabel.Font = new Font("Arial", 10.2F, FontStyle.Bold);
+            LabelRow3_SellingPriceLabel.ForeColor = Color.FromArgb(0, 157, 209);
+            LabelRow3_SellingPriceLabel.Location = new Point(382, 183);
+            LabelRow3_SellingPriceLabel.Name = "LabelRow3_SellingPriceLabel";
+            LabelRow3_SellingPriceLabel.Size = new Size(106, 19);
+            LabelRow3_SellingPriceLabel.TabIndex = 34;
+            LabelRow3_SellingPriceLabel.Text = "Selling Price";
             // 
-            // label6
+            // LabelRow3_BuyingPriceLabel
             // 
-            label6.AutoSize = true;
-            label6.BackColor = Color.FromArgb(0, 0, 0, 0);
-            label6.Font = new Font("Arial", 10.2F, FontStyle.Bold);
-            label6.ForeColor = Color.FromArgb(0, 157, 209);
-            label6.Location = new Point(24, 183);
-            label6.Name = "label6";
-            label6.Size = new Size(109, 19);
-            label6.TabIndex = 33;
-            label6.Text = "Buying Price";
+            LabelRow3_BuyingPriceLabel.AutoSize = true;
+            LabelRow3_BuyingPriceLabel.BackColor = Color.FromArgb(0, 0, 0, 0);
+            LabelRow3_BuyingPriceLabel.Font = new Font("Arial", 10.2F, FontStyle.Bold);
+            LabelRow3_BuyingPriceLabel.ForeColor = Color.FromArgb(0, 157, 209);
+            LabelRow3_BuyingPriceLabel.Location = new Point(24, 183);
+            LabelRow3_BuyingPriceLabel.Name = "LabelRow3_BuyingPriceLabel";
+            LabelRow3_BuyingPriceLabel.Size = new Size(109, 19);
+            LabelRow3_BuyingPriceLabel.TabIndex = 33;
+            LabelRow3_BuyingPriceLabel.Text = "Buying Price";
             // 
-            // label3
+            // LabelRow2_QtyLabel
             // 
-            label3.AutoSize = true;
-            label3.BackColor = Color.FromArgb(0, 0, 0, 0);
-            label3.Font = new Font("Arial", 10.2F, FontStyle.Bold);
-            label3.ForeColor = Color.FromArgb(0, 157, 209);
-            label3.Location = new Point(382, 98);
-            label3.Name = "label3";
-            label3.Size = new Size(76, 19);
-            label3.TabIndex = 32;
-            label3.Text = "Quantity";
+            LabelRow2_QtyLabel.AutoSize = true;
+            LabelRow2_QtyLabel.BackColor = Color.FromArgb(0, 0, 0, 0);
+            LabelRow2_QtyLabel.Font = new Font("Arial", 10.2F, FontStyle.Bold);
+            LabelRow2_QtyLabel.ForeColor = Color.FromArgb(0, 157, 209);
+            LabelRow2_QtyLabel.Location = new Point(382, 98);
+            LabelRow2_QtyLabel.Name = "LabelRow2_QtyLabel";
+            LabelRow2_QtyLabel.Size = new Size(76, 19);
+            LabelRow2_QtyLabel.TabIndex = 32;
+            LabelRow2_QtyLabel.Text = "Quantity";
             // 
-            // label4
+            // LabelRow2_CategoryLabel
             // 
-            label4.AutoSize = true;
-            label4.BackColor = Color.FromArgb(0, 0, 0, 0);
-            label4.Font = new Font("Arial", 10.2F, FontStyle.Bold);
-            label4.ForeColor = Color.FromArgb(0, 157, 209);
-            label4.Location = new Point(24, 98);
-            label4.Name = "label4";
-            label4.Size = new Size(81, 19);
-            label4.TabIndex = 31;
-            label4.Text = "Category";
+            LabelRow2_CategoryLabel.AutoSize = true;
+            LabelRow2_CategoryLabel.BackColor = Color.FromArgb(0, 0, 0, 0);
+            LabelRow2_CategoryLabel.Font = new Font("Arial", 10.2F, FontStyle.Bold);
+            LabelRow2_CategoryLabel.ForeColor = Color.FromArgb(0, 157, 209);
+            LabelRow2_CategoryLabel.Location = new Point(24, 98);
+            LabelRow2_CategoryLabel.Name = "LabelRow2_CategoryLabel";
+            LabelRow2_CategoryLabel.Size = new Size(81, 19);
+            LabelRow2_CategoryLabel.TabIndex = 31;
+            LabelRow2_CategoryLabel.Text = "Category";
             // 
-            // label2
+            // LabelRow1_QtyTypeLabel
             // 
-            label2.AutoSize = true;
-            label2.BackColor = Color.FromArgb(0, 0, 0, 0);
-            label2.Font = new Font("Arial", 10.2F, FontStyle.Bold);
-            label2.ForeColor = Color.FromArgb(0, 157, 209);
-            label2.Location = new Point(382, 18);
-            label2.Name = "label2";
-            label2.Size = new Size(118, 19);
-            label2.TabIndex = 30;
-            label2.Text = "Quantity Type";
+            LabelRow1_QtyTypeLabel.AutoSize = true;
+            LabelRow1_QtyTypeLabel.BackColor = Color.FromArgb(0, 0, 0, 0);
+            LabelRow1_QtyTypeLabel.Font = new Font("Arial", 10.2F, FontStyle.Bold);
+            LabelRow1_QtyTypeLabel.ForeColor = Color.FromArgb(0, 157, 209);
+            LabelRow1_QtyTypeLabel.Location = new Point(382, 18);
+            LabelRow1_QtyTypeLabel.Name = "LabelRow1_QtyTypeLabel";
+            LabelRow1_QtyTypeLabel.Size = new Size(118, 19);
+            LabelRow1_QtyTypeLabel.TabIndex = 30;
+            LabelRow1_QtyTypeLabel.Text = "Quantity Type";
             // 
-            // label1
+            // LabelRow1_ItemNameLabel
             // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.FromArgb(0, 0, 0, 0);
-            label1.Font = new Font("Arial", 10.2F, FontStyle.Bold);
-            label1.ForeColor = Color.FromArgb(0, 157, 209);
-            label1.Location = new Point(24, 19);
-            label1.Name = "label1";
-            label1.Size = new Size(91, 19);
-            label1.TabIndex = 29;
-            label1.Text = "Item Name";
+            LabelRow1_ItemNameLabel.AutoSize = true;
+            LabelRow1_ItemNameLabel.BackColor = Color.FromArgb(0, 0, 0, 0);
+            LabelRow1_ItemNameLabel.Font = new Font("Arial", 10.2F, FontStyle.Bold);
+            LabelRow1_ItemNameLabel.ForeColor = Color.FromArgb(0, 157, 209);
+            LabelRow1_ItemNameLabel.Location = new Point(24, 19);
+            LabelRow1_ItemNameLabel.Name = "LabelRow1_ItemNameLabel";
+            LabelRow1_ItemNameLabel.Size = new Size(91, 19);
+            LabelRow1_ItemNameLabel.TabIndex = 29;
+            LabelRow1_ItemNameLabel.Text = "Item Name";
             // 
-            // cuiButton1
+            // CancelButton
             // 
-            cuiButton1.BackColor = Color.FromArgb(0, 0, 0, 0);
-            cuiButton1.CheckButton = false;
-            cuiButton1.Checked = false;
-            cuiButton1.CheckedBackground = Color.FromArgb(255, 106, 0);
-            cuiButton1.CheckedForeColor = Color.White;
-            cuiButton1.CheckedImageTint = Color.White;
-            cuiButton1.CheckedOutline = Color.FromArgb(255, 106, 0);
-            cuiButton1.Content = "Cancel";
-            cuiButton1.DialogResult = DialogResult.None;
-            cuiButton1.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            cuiButton1.ForeColor = Color.Black;
-            cuiButton1.HoverBackground = Color.White;
-            cuiButton1.HoveredImageTint = Color.White;
-            cuiButton1.HoverForeColor = Color.Black;
-            cuiButton1.HoverOutline = Color.FromArgb(32, 128, 128, 128);
-            cuiButton1.Image = null;
-            cuiButton1.ImageAutoCenter = true;
-            cuiButton1.ImageExpand = new Point(0, 0);
-            cuiButton1.ImageOffset = new Point(0, 0);
-            cuiButton1.Location = new Point(454, 274);
-            cuiButton1.Name = "cuiButton1";
-            cuiButton1.NormalBackground = Color.White;
-            cuiButton1.NormalForeColor = Color.Black;
-            cuiButton1.NormalImageTint = Color.White;
-            cuiButton1.NormalOutline = Color.FromArgb(64, 128, 128, 128);
-            cuiButton1.OutlineThickness = 1F;
-            cuiButton1.PressedBackground = Color.WhiteSmoke;
-            cuiButton1.PressedForeColor = Color.FromArgb(32, 32, 32);
-            cuiButton1.PressedImageTint = Color.White;
-            cuiButton1.PressedOutline = Color.FromArgb(64, 128, 128, 128);
-            cuiButton1.Rounding = new Padding(8);
-            cuiButton1.Size = new Size(127, 40);
-            cuiButton1.TabIndex = 28;
-            cuiButton1.TextAlignment = StringAlignment.Center;
-            cuiButton1.TextOffset = new Point(0, 0);
+            CancelButton.BackColor = Color.FromArgb(0, 0, 0, 0);
+            CancelButton.CheckButton = false;
+            CancelButton.Checked = false;
+            CancelButton.CheckedBackground = Color.FromArgb(255, 106, 0);
+            CancelButton.CheckedForeColor = Color.White;
+            CancelButton.CheckedImageTint = Color.White;
+            CancelButton.CheckedOutline = Color.FromArgb(255, 106, 0);
+            CancelButton.Content = "Cancel";
+            CancelButton.DialogResult = DialogResult.None;
+            CancelButton.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            CancelButton.ForeColor = Color.Black;
+            CancelButton.HoverBackground = Color.White;
+            CancelButton.HoveredImageTint = Color.White;
+            CancelButton.HoverForeColor = Color.Black;
+            CancelButton.HoverOutline = Color.FromArgb(32, 128, 128, 128);
+            CancelButton.Image = null;
+            CancelButton.ImageAutoCenter = true;
+            CancelButton.ImageExpand = new Point(0, 0);
+            CancelButton.ImageOffset = new Point(0, 0);
+            CancelButton.Location = new Point(454, 274);
+            CancelButton.Name = "CancelButton";
+            CancelButton.NormalBackground = Color.White;
+            CancelButton.NormalForeColor = Color.Black;
+            CancelButton.NormalImageTint = Color.White;
+            CancelButton.NormalOutline = Color.FromArgb(64, 128, 128, 128);
+            CancelButton.OutlineThickness = 1F;
+            CancelButton.PressedBackground = Color.WhiteSmoke;
+            CancelButton.PressedForeColor = Color.FromArgb(32, 32, 32);
+            CancelButton.PressedImageTint = Color.White;
+            CancelButton.PressedOutline = Color.FromArgb(64, 128, 128, 128);
+            CancelButton.Rounding = new Padding(8);
+            CancelButton.Size = new Size(127, 40);
+            CancelButton.TabIndex = 28;
+            CancelButton.TextAlignment = StringAlignment.Center;
+            CancelButton.TextOffset = new Point(0, 0);
             // 
-            // cuiButton2
+            // AddEditButton
             // 
-            cuiButton2.BackColor = Color.FromArgb(0, 0, 0, 0);
-            cuiButton2.CheckButton = false;
-            cuiButton2.Checked = false;
-            cuiButton2.CheckedBackground = Color.FromArgb(255, 106, 0);
-            cuiButton2.CheckedForeColor = Color.White;
-            cuiButton2.CheckedImageTint = Color.White;
-            cuiButton2.CheckedOutline = Color.FromArgb(255, 106, 0);
-            cuiButton2.Content = "OK";
-            cuiButton2.DialogResult = DialogResult.None;
-            cuiButton2.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            cuiButton2.ForeColor = Color.White;
-            cuiButton2.HoverBackground = Color.White;
-            cuiButton2.HoveredImageTint = Color.White;
-            cuiButton2.HoverForeColor = Color.Black;
-            cuiButton2.HoverOutline = Color.FromArgb(32, 128, 128, 128);
-            cuiButton2.Image = null;
-            cuiButton2.ImageAutoCenter = true;
-            cuiButton2.ImageExpand = new Point(0, 0);
-            cuiButton2.ImageOffset = new Point(0, 0);
-            cuiButton2.Location = new Point(587, 274);
-            cuiButton2.Name = "cuiButton2";
-            cuiButton2.NormalBackground = Color.FromArgb(0, 157, 209);
-            cuiButton2.NormalForeColor = Color.White;
-            cuiButton2.NormalImageTint = Color.White;
-            cuiButton2.NormalOutline = Color.FromArgb(64, 128, 128, 128);
-            cuiButton2.OutlineThickness = 1F;
-            cuiButton2.PressedBackground = Color.WhiteSmoke;
-            cuiButton2.PressedForeColor = Color.FromArgb(32, 32, 32);
-            cuiButton2.PressedImageTint = Color.White;
-            cuiButton2.PressedOutline = Color.FromArgb(64, 128, 128, 128);
-            cuiButton2.Rounding = new Padding(8);
-            cuiButton2.Size = new Size(127, 40);
-            cuiButton2.TabIndex = 27;
-            cuiButton2.TextAlignment = StringAlignment.Center;
-            cuiButton2.TextOffset = new Point(0, 0);
+            AddEditButton.BackColor = Color.FromArgb(0, 0, 0, 0);
+            AddEditButton.CheckButton = false;
+            AddEditButton.Checked = false;
+            AddEditButton.CheckedBackground = Color.FromArgb(255, 106, 0);
+            AddEditButton.CheckedForeColor = Color.White;
+            AddEditButton.CheckedImageTint = Color.White;
+            AddEditButton.CheckedOutline = Color.FromArgb(255, 106, 0);
+            AddEditButton.Content = "OK";
+            AddEditButton.DialogResult = DialogResult.None;
+            AddEditButton.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            AddEditButton.ForeColor = Color.White;
+            AddEditButton.HoverBackground = Color.White;
+            AddEditButton.HoveredImageTint = Color.White;
+            AddEditButton.HoverForeColor = Color.Black;
+            AddEditButton.HoverOutline = Color.FromArgb(32, 128, 128, 128);
+            AddEditButton.Image = null;
+            AddEditButton.ImageAutoCenter = true;
+            AddEditButton.ImageExpand = new Point(0, 0);
+            AddEditButton.ImageOffset = new Point(0, 0);
+            AddEditButton.Location = new Point(587, 274);
+            AddEditButton.Name = "AddEditButton";
+            AddEditButton.NormalBackground = Color.FromArgb(0, 157, 209);
+            AddEditButton.NormalForeColor = Color.White;
+            AddEditButton.NormalImageTint = Color.White;
+            AddEditButton.NormalOutline = Color.FromArgb(64, 128, 128, 128);
+            AddEditButton.OutlineThickness = 1F;
+            AddEditButton.PressedBackground = Color.WhiteSmoke;
+            AddEditButton.PressedForeColor = Color.FromArgb(32, 32, 32);
+            AddEditButton.PressedImageTint = Color.White;
+            AddEditButton.PressedOutline = Color.FromArgb(64, 128, 128, 128);
+            AddEditButton.Rounding = new Padding(8);
+            AddEditButton.Size = new Size(127, 40);
+            AddEditButton.TabIndex = 27;
+            AddEditButton.TextAlignment = StringAlignment.Center;
+            AddEditButton.TextOffset = new Point(0, 0);
+            AddEditButton.Click += AddEditButton_Click;
             // 
-            // cuiTextBox5
+            // TextBox_ofSellingPriceLabel
             // 
-            cuiTextBox5.BackgroundColor = Color.White;
-            cuiTextBox5.BorderColor = Color.FromArgb(0, 0, 192);
-            cuiTextBox5.Content = "";
-            cuiTextBox5.FocusBackgroundColor = Color.White;
-            cuiTextBox5.FocusBorderColor = Color.Empty;
-            cuiTextBox5.FocusImageTint = Color.White;
-            cuiTextBox5.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            cuiTextBox5.ForeColor = Color.Gray;
-            cuiTextBox5.Image = null;
-            cuiTextBox5.ImageExpand = new Point(0, 0);
-            cuiTextBox5.ImageOffset = new Point(0, 0);
-            cuiTextBox5.Location = new Point(382, 206);
-            cuiTextBox5.Margin = new Padding(4);
-            cuiTextBox5.Multiline = false;
-            cuiTextBox5.Name = "cuiTextBox5";
-            cuiTextBox5.NormalImageTint = Color.White;
-            cuiTextBox5.Padding = new Padding(20, 12, 20, 0);
-            cuiTextBox5.PasswordChar = false;
-            cuiTextBox5.PlaceholderColor = Color.Gray;
-            cuiTextBox5.PlaceholderText = "Selling Price";
-            cuiTextBox5.Rounding = new Padding(8);
-            cuiTextBox5.Size = new Size(332, 44);
-            cuiTextBox5.TabIndex = 6;
-            cuiTextBox5.TextOffset = new Size(0, 0);
-            cuiTextBox5.UnderlinedStyle = false;
+            TextBox_ofSellingPriceLabel.BackgroundColor = Color.White;
+            TextBox_ofSellingPriceLabel.BorderColor = Color.FromArgb(0, 0, 192);
+            TextBox_ofSellingPriceLabel.Content = "";
+            TextBox_ofSellingPriceLabel.FocusBackgroundColor = Color.White;
+            TextBox_ofSellingPriceLabel.FocusBorderColor = Color.Empty;
+            TextBox_ofSellingPriceLabel.FocusImageTint = Color.White;
+            TextBox_ofSellingPriceLabel.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TextBox_ofSellingPriceLabel.ForeColor = Color.Gray;
+            TextBox_ofSellingPriceLabel.Image = null;
+            TextBox_ofSellingPriceLabel.ImageExpand = new Point(0, 0);
+            TextBox_ofSellingPriceLabel.ImageOffset = new Point(0, 0);
+            TextBox_ofSellingPriceLabel.Location = new Point(382, 206);
+            TextBox_ofSellingPriceLabel.Margin = new Padding(4);
+            TextBox_ofSellingPriceLabel.Multiline = false;
+            TextBox_ofSellingPriceLabel.Name = "TextBox_ofSellingPriceLabel";
+            TextBox_ofSellingPriceLabel.NormalImageTint = Color.White;
+            TextBox_ofSellingPriceLabel.Padding = new Padding(20, 12, 20, 0);
+            TextBox_ofSellingPriceLabel.PasswordChar = false;
+            TextBox_ofSellingPriceLabel.PlaceholderColor = Color.Gray;
+            TextBox_ofSellingPriceLabel.PlaceholderText = "Selling Price";
+            TextBox_ofSellingPriceLabel.Rounding = new Padding(8);
+            TextBox_ofSellingPriceLabel.Size = new Size(332, 44);
+            TextBox_ofSellingPriceLabel.TabIndex = 6;
+            TextBox_ofSellingPriceLabel.TextOffset = new Size(0, 0);
+            TextBox_ofSellingPriceLabel.UnderlinedStyle = false;
             // 
-            // cuiTextBox4
+            // TextBox_ofBuyingPriceLabel
             // 
-            cuiTextBox4.BackgroundColor = Color.White;
-            cuiTextBox4.BorderColor = Color.FromArgb(0, 0, 192);
-            cuiTextBox4.Content = "";
-            cuiTextBox4.FocusBackgroundColor = Color.White;
-            cuiTextBox4.FocusBorderColor = Color.Empty;
-            cuiTextBox4.FocusImageTint = Color.White;
-            cuiTextBox4.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            cuiTextBox4.ForeColor = Color.Gray;
-            cuiTextBox4.Image = null;
-            cuiTextBox4.ImageExpand = new Point(0, 0);
-            cuiTextBox4.ImageOffset = new Point(0, 0);
-            cuiTextBox4.Location = new Point(24, 206);
-            cuiTextBox4.Margin = new Padding(4);
-            cuiTextBox4.Multiline = false;
-            cuiTextBox4.Name = "cuiTextBox4";
-            cuiTextBox4.NormalImageTint = Color.White;
-            cuiTextBox4.Padding = new Padding(20, 12, 20, 0);
-            cuiTextBox4.PasswordChar = false;
-            cuiTextBox4.PlaceholderColor = Color.Gray;
-            cuiTextBox4.PlaceholderText = "Buying Price";
-            cuiTextBox4.Rounding = new Padding(8);
-            cuiTextBox4.Size = new Size(332, 44);
-            cuiTextBox4.TabIndex = 5;
-            cuiTextBox4.TextOffset = new Size(0, 0);
-            cuiTextBox4.UnderlinedStyle = false;
+            TextBox_ofBuyingPriceLabel.BackgroundColor = Color.White;
+            TextBox_ofBuyingPriceLabel.BorderColor = Color.FromArgb(0, 0, 192);
+            TextBox_ofBuyingPriceLabel.Content = "";
+            TextBox_ofBuyingPriceLabel.FocusBackgroundColor = Color.White;
+            TextBox_ofBuyingPriceLabel.FocusBorderColor = Color.Empty;
+            TextBox_ofBuyingPriceLabel.FocusImageTint = Color.White;
+            TextBox_ofBuyingPriceLabel.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TextBox_ofBuyingPriceLabel.ForeColor = Color.Gray;
+            TextBox_ofBuyingPriceLabel.Image = null;
+            TextBox_ofBuyingPriceLabel.ImageExpand = new Point(0, 0);
+            TextBox_ofBuyingPriceLabel.ImageOffset = new Point(0, 0);
+            TextBox_ofBuyingPriceLabel.Location = new Point(24, 206);
+            TextBox_ofBuyingPriceLabel.Margin = new Padding(4);
+            TextBox_ofBuyingPriceLabel.Multiline = false;
+            TextBox_ofBuyingPriceLabel.Name = "TextBox_ofBuyingPriceLabel";
+            TextBox_ofBuyingPriceLabel.NormalImageTint = Color.White;
+            TextBox_ofBuyingPriceLabel.Padding = new Padding(20, 12, 20, 0);
+            TextBox_ofBuyingPriceLabel.PasswordChar = false;
+            TextBox_ofBuyingPriceLabel.PlaceholderColor = Color.Gray;
+            TextBox_ofBuyingPriceLabel.PlaceholderText = "Buying Price";
+            TextBox_ofBuyingPriceLabel.Rounding = new Padding(8);
+            TextBox_ofBuyingPriceLabel.Size = new Size(332, 44);
+            TextBox_ofBuyingPriceLabel.TabIndex = 5;
+            TextBox_ofBuyingPriceLabel.TextOffset = new Size(0, 0);
+            TextBox_ofBuyingPriceLabel.UnderlinedStyle = false;
             // 
-            // cuiTextBox3
+            // TextBox_ofQtyLabel
             // 
-            cuiTextBox3.BackgroundColor = Color.White;
-            cuiTextBox3.BorderColor = Color.FromArgb(0, 0, 192);
-            cuiTextBox3.Content = "";
-            cuiTextBox3.FocusBackgroundColor = Color.White;
-            cuiTextBox3.FocusBorderColor = Color.Empty;
-            cuiTextBox3.FocusImageTint = Color.White;
-            cuiTextBox3.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            cuiTextBox3.ForeColor = Color.Gray;
-            cuiTextBox3.Image = null;
-            cuiTextBox3.ImageExpand = new Point(0, 0);
-            cuiTextBox3.ImageOffset = new Point(0, 0);
-            cuiTextBox3.Location = new Point(382, 121);
-            cuiTextBox3.Margin = new Padding(4);
-            cuiTextBox3.Multiline = false;
-            cuiTextBox3.Name = "cuiTextBox3";
-            cuiTextBox3.NormalImageTint = Color.White;
-            cuiTextBox3.Padding = new Padding(20, 12, 20, 0);
-            cuiTextBox3.PasswordChar = false;
-            cuiTextBox3.PlaceholderColor = Color.Gray;
-            cuiTextBox3.PlaceholderText = "Quantity";
-            cuiTextBox3.Rounding = new Padding(8);
-            cuiTextBox3.Size = new Size(332, 44);
-            cuiTextBox3.TabIndex = 4;
-            cuiTextBox3.TextOffset = new Size(0, 0);
-            cuiTextBox3.UnderlinedStyle = false;
+            TextBox_ofQtyLabel.BackgroundColor = Color.White;
+            TextBox_ofQtyLabel.BorderColor = Color.FromArgb(0, 0, 192);
+            TextBox_ofQtyLabel.Content = "";
+            TextBox_ofQtyLabel.FocusBackgroundColor = Color.White;
+            TextBox_ofQtyLabel.FocusBorderColor = Color.Empty;
+            TextBox_ofQtyLabel.FocusImageTint = Color.White;
+            TextBox_ofQtyLabel.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TextBox_ofQtyLabel.ForeColor = Color.Gray;
+            TextBox_ofQtyLabel.Image = null;
+            TextBox_ofQtyLabel.ImageExpand = new Point(0, 0);
+            TextBox_ofQtyLabel.ImageOffset = new Point(0, 0);
+            TextBox_ofQtyLabel.Location = new Point(382, 121);
+            TextBox_ofQtyLabel.Margin = new Padding(4);
+            TextBox_ofQtyLabel.Multiline = false;
+            TextBox_ofQtyLabel.Name = "TextBox_ofQtyLabel";
+            TextBox_ofQtyLabel.NormalImageTint = Color.White;
+            TextBox_ofQtyLabel.Padding = new Padding(20, 12, 20, 0);
+            TextBox_ofQtyLabel.PasswordChar = false;
+            TextBox_ofQtyLabel.PlaceholderColor = Color.Gray;
+            TextBox_ofQtyLabel.PlaceholderText = "Quantity";
+            TextBox_ofQtyLabel.Rounding = new Padding(8);
+            TextBox_ofQtyLabel.Size = new Size(332, 44);
+            TextBox_ofQtyLabel.TabIndex = 4;
+            TextBox_ofQtyLabel.TextOffset = new Size(0, 0);
+            TextBox_ofQtyLabel.UnderlinedStyle = false;
             // 
-            // cuiComboBox1
+            // ComboBox_ofQtyTypeLabel
             // 
-            cuiComboBox1.BackgroundColor = Color.FromArgb(255, 255, 255);
-            cuiComboBox1.ButtonCursor = Cursors.Arrow;
-            cuiComboBox1.ButtonHoverBackground = Color.FromArgb(192, 255, 255);
-            cuiComboBox1.ButtonHoverOutline = Color.Empty;
-            cuiComboBox1.ButtonNormalBackground = Color.FromArgb(0, 192, 192);
-            cuiComboBox1.ButtonNormalOutline = Color.Empty;
-            cuiComboBox1.ButtonPressedBackground = Color.Teal;
-            cuiComboBox1.ButtonPressedOutline = Color.Empty;
-            cuiComboBox1.DropDownBackgroundColor = Color.White;
-            cuiComboBox1.DropDownOutlineColor = Color.FromArgb(30, 255, 255, 255);
-            cuiComboBox1.ExpandArrowColor = Color.Gray;
-            cuiComboBox1.ForeColor = Color.Gray;
-            cuiComboBox1.Items = new string[]
+            ComboBox_ofQtyTypeLabel.BackgroundColor = Color.FromArgb(255, 255, 255);
+            ComboBox_ofQtyTypeLabel.ButtonCursor = Cursors.Arrow;
+            ComboBox_ofQtyTypeLabel.ButtonHoverBackground = Color.FromArgb(192, 255, 255);
+            ComboBox_ofQtyTypeLabel.ButtonHoverOutline = Color.Empty;
+            ComboBox_ofQtyTypeLabel.ButtonNormalBackground = Color.FromArgb(0, 192, 192);
+            ComboBox_ofQtyTypeLabel.ButtonNormalOutline = Color.Empty;
+            ComboBox_ofQtyTypeLabel.ButtonPressedBackground = Color.Teal;
+            ComboBox_ofQtyTypeLabel.ButtonPressedOutline = Color.Empty;
+            ComboBox_ofQtyTypeLabel.DropDownBackgroundColor = Color.White;
+            ComboBox_ofQtyTypeLabel.DropDownOutlineColor = Color.FromArgb(30, 255, 255, 255);
+            ComboBox_ofQtyTypeLabel.ExpandArrowColor = Color.Gray;
+            ComboBox_ofQtyTypeLabel.ForeColor = Color.Gray;
+            ComboBox_ofQtyTypeLabel.Items = new string[]
     {
     "Per Weight",
     "Per Piece"
     };
-            cuiComboBox1.Location = new Point(382, 42);
-            cuiComboBox1.Margin = new Padding(4, 5, 4, 5);
-            cuiComboBox1.Name = "cuiComboBox1";
-            cuiComboBox1.NoSelectionDropdownText = "Empty";
-            cuiComboBox1.NoSelectionText = "Please select quantity type";
-            cuiComboBox1.OutlineColor = Color.FromArgb(0, 0, 192);
-            cuiComboBox1.OutlineThickness = 1F;
-            cuiComboBox1.RightToLeft = RightToLeft.No;
-            cuiComboBox1.Rounding = 8;
-            cuiComboBox1.Size = new Size(332, 44);
-            cuiComboBox1.TabIndex = 2;
+            ComboBox_ofQtyTypeLabel.Location = new Point(382, 42);
+            ComboBox_ofQtyTypeLabel.Margin = new Padding(4, 5, 4, 5);
+            ComboBox_ofQtyTypeLabel.Name = "ComboBox_ofQtyTypeLabel";
+            ComboBox_ofQtyTypeLabel.NoSelectionDropdownText = "Empty";
+            ComboBox_ofQtyTypeLabel.NoSelectionText = "Please select quantity type";
+            ComboBox_ofQtyTypeLabel.OutlineColor = Color.FromArgb(0, 0, 192);
+            ComboBox_ofQtyTypeLabel.OutlineThickness = 1F;
+            ComboBox_ofQtyTypeLabel.RightToLeft = RightToLeft.No;
+            ComboBox_ofQtyTypeLabel.Rounding = 8;
+            ComboBox_ofQtyTypeLabel.Size = new Size(332, 44);
+            ComboBox_ofQtyTypeLabel.TabIndex = 2;
             // 
-            // cuiTextBox1
+            // TextBox_ofItemNameLabel
             // 
-            cuiTextBox1.BackgroundColor = Color.White;
-            cuiTextBox1.BorderColor = Color.FromArgb(0, 0, 192);
-            cuiTextBox1.Content = "";
-            cuiTextBox1.FocusBackgroundColor = Color.White;
-            cuiTextBox1.FocusBorderColor = Color.Empty;
-            cuiTextBox1.FocusImageTint = Color.White;
-            cuiTextBox1.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            cuiTextBox1.ForeColor = Color.Gray;
-            cuiTextBox1.Image = null;
-            cuiTextBox1.ImageExpand = new Point(0, 0);
-            cuiTextBox1.ImageOffset = new Point(0, 0);
-            cuiTextBox1.Location = new Point(24, 42);
-            cuiTextBox1.Margin = new Padding(4);
-            cuiTextBox1.Multiline = false;
-            cuiTextBox1.Name = "cuiTextBox1";
-            cuiTextBox1.NormalImageTint = Color.White;
-            cuiTextBox1.Padding = new Padding(20, 12, 20, 0);
-            cuiTextBox1.PasswordChar = false;
-            cuiTextBox1.PlaceholderColor = Color.Gray;
-            cuiTextBox1.PlaceholderText = "Item Name";
-            cuiTextBox1.Rounding = new Padding(8);
-            cuiTextBox1.Size = new Size(332, 44);
-            cuiTextBox1.TabIndex = 0;
-            cuiTextBox1.TextOffset = new Size(0, 0);
-            cuiTextBox1.UnderlinedStyle = false;
+            TextBox_ofItemNameLabel.BackgroundColor = Color.White;
+            TextBox_ofItemNameLabel.BorderColor = Color.FromArgb(0, 0, 192);
+            TextBox_ofItemNameLabel.Content = "";
+            TextBox_ofItemNameLabel.FocusBackgroundColor = Color.White;
+            TextBox_ofItemNameLabel.FocusBorderColor = Color.Empty;
+            TextBox_ofItemNameLabel.FocusImageTint = Color.White;
+            TextBox_ofItemNameLabel.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TextBox_ofItemNameLabel.ForeColor = Color.Gray;
+            TextBox_ofItemNameLabel.Image = null;
+            TextBox_ofItemNameLabel.ImageExpand = new Point(0, 0);
+            TextBox_ofItemNameLabel.ImageOffset = new Point(0, 0);
+            TextBox_ofItemNameLabel.Location = new Point(24, 42);
+            TextBox_ofItemNameLabel.Margin = new Padding(4);
+            TextBox_ofItemNameLabel.Multiline = false;
+            TextBox_ofItemNameLabel.Name = "TextBox_ofItemNameLabel";
+            TextBox_ofItemNameLabel.NormalImageTint = Color.White;
+            TextBox_ofItemNameLabel.Padding = new Padding(20, 12, 20, 0);
+            TextBox_ofItemNameLabel.PasswordChar = false;
+            TextBox_ofItemNameLabel.PlaceholderColor = Color.Gray;
+            TextBox_ofItemNameLabel.PlaceholderText = "Item Name";
+            TextBox_ofItemNameLabel.Rounding = new Padding(8);
+            TextBox_ofItemNameLabel.Size = new Size(332, 44);
+            TextBox_ofItemNameLabel.TabIndex = 0;
+            TextBox_ofItemNameLabel.TextOffset = new Size(0, 0);
+            TextBox_ofItemNameLabel.UnderlinedStyle = false;
             // 
             // DashboardTitlePage
             // 
@@ -427,20 +429,20 @@
         #endregion
 
         private CuoreUI.Controls.cuiPanel cuiPanel1;
-        private Label label5;
-        private Label label6;
-        private Label label3;
-        private Label label4;
-        private Label label2;
-        private Label label1;
-        private CuoreUI.Controls.cuiButton cuiButton1;
-        private CuoreUI.Controls.cuiButton cuiButton2;
-        private CuoreUI.Controls.cuiTextBox cuiTextBox5;
-        private CuoreUI.Controls.cuiTextBox cuiTextBox4;
-        private CuoreUI.Controls.cuiTextBox cuiTextBox3;
-        private CuoreUI.Controls.cuiComboBox cuiComboBox1;
-        private CuoreUI.Controls.cuiTextBox cuiTextBox1;
+        private Label LabelRow3_SellingPriceLabel;
+        private Label LabelRow3_BuyingPriceLabel;
+        private Label LabelRow2_QtyLabel;
+        private Label LabelRow2_CategoryLabel;
+        private Label LabelRow1_QtyTypeLabel;
+        private Label LabelRow1_ItemNameLabel;
+        private CuoreUI.Controls.cuiButton CancelButton;
+        private CuoreUI.Controls.cuiButton AddEditButton;
+        private CuoreUI.Controls.cuiTextBox TextBox_ofSellingPriceLabel;
+        private CuoreUI.Controls.cuiTextBox TextBox_ofBuyingPriceLabel;
+        private CuoreUI.Controls.cuiTextBox TextBox_ofQtyLabel;
+        private CuoreUI.Controls.cuiComboBox ComboBox_ofQtyTypeLabel;
+        private CuoreUI.Controls.cuiTextBox TextBox_ofItemNameLabel;
         private Label DashboardTitlePage;
-        private CuoreUI.Controls.cuiComboBox CategoryComboBox;
+        private CuoreUI.Controls.cuiComboBox ComboBox_ofCategoryLabel;
     }
 }
