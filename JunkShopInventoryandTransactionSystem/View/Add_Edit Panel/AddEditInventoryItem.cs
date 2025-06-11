@@ -1,6 +1,4 @@
-﻿//imports the backend file InventoryCrud.cs
-using JunkShopInventoryandTransactionSystem.BackendFiles.AddToInventory;
-
+﻿
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,6 +8,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
+//imports the backend file AddToInventory.cs
+using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Add;
+using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Edit;
 
 namespace JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel
 {
@@ -48,6 +50,7 @@ namespace JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel
 
         private void AddEditButton_Click(object sender, EventArgs e)
         {
+            //stores the values of the widgets in variables
             string itemName = TextBox_ofItemNameLabel.Content;
             string itemCategory = ComboBox_ofCategoryLabel.SelectedItem as string;
             string itemQtyType = ComboBox_ofQtyTypeLabel.SelectedItem as string;
@@ -79,8 +82,8 @@ namespace JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel
                     TextBox_ofBuyingPriceLabel.Content = string.Empty;
                     TextBox_ofSellingPriceLabel.Content = string.Empty;
 
-                    //Close the form
-                    //this.Close();
+                    //Closes the form
+                    this.Close();
                 }
             }
             /*

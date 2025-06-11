@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using System.Collections.Generic;
-using Microsoft.Data.SqlClient; // Use Microsoft.Data.SqlClient for .NET Core and .NET 5+
+using Microsoft.Data.SqlClient;
 
 /*  RUN THIS QUERY IN YOUR MS SQL SERVER MANAGEMENT STUDIO (SSMS) TO CREATE THE TABLE
          *  
@@ -32,7 +32,7 @@ using Microsoft.Data.SqlClient; // Use Microsoft.Data.SqlClient for .NET Core an
             SELECT * FROM Inventory
         */
 
-namespace JunkShopInventoryandTransactionSystem.BackendFiles.InventoryCrudToDatabase
+namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
 {
     //is referencing to the data/holds the data
     public class InventoryItem
@@ -46,29 +46,30 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.InventoryCrudToData
         public int itemSellingPrice { get; set; }
 
         // Parameterless constructor: Needed by InventoryRead when creating an empty object from DB reader
+        // i actually dont know what this does, but is needed for the InventoryRead class to work properly 
         public InventoryItem() { }
 
         // withoutID
         public InventoryItem(string name, string category, string qtyType, int quantity, int buyingPrice, int sellingPrice)
         {
-            this.itemName = name;
-            this.itemCategory = category;
-            this.itemQtyType = qtyType;
-            this.itemQuantity = quantity;
-            this.itemBuyingPrice = buyingPrice;
-            this.itemSellingPrice = sellingPrice;
+            itemName = name;
+            itemCategory = category;
+            itemQtyType = qtyType;
+            itemQuantity = quantity;
+            itemBuyingPrice = buyingPrice;
+            itemSellingPrice = sellingPrice;
         }
 
         // with ID
         public InventoryItem(int id, string name, string category, string qtyType, int quantity, int buyingPrice, int sellingPrice)
         {
-            this.itemId = id;
-            this.itemName = name;
-            this.itemCategory = category;
-            this.itemQtyType = qtyType;
-            this.itemQuantity = quantity;
-            this.itemBuyingPrice = buyingPrice;
-            this.itemSellingPrice = sellingPrice;
+            itemId = id;
+            itemName = name;
+            itemCategory = category;
+            itemQtyType = qtyType;
+            itemQuantity = quantity;
+            itemBuyingPrice = buyingPrice;
+            itemSellingPrice = sellingPrice;
         }
     }
     // eND of InventoryItem CLASS

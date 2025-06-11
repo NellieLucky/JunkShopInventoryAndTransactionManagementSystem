@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using JunkShopInventoryandTransactionSystem.BackendFiles.InventoryCrudToDatabase;
-using JunkShopInventoryandTransactionSystem.BackendFiles.ReloadInventory;
+//import backend file InventoryItem.cs
+using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud;
 
-namespace JunkShopInventoryandTransactionSystem.BackendFiles.AddToInventory
+namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Add
 {
     public class AddToInventory
     {
@@ -126,7 +126,8 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.AddToInventory
             if (targetDataGridView != null)
             {
                 //namespace.class.method since theyre both on the same folder
-                ReloadInventory.ReloadInventory.LoadInventoryData(targetDataGridView);
+                Reload.ReloadInventory.LoadInventoryData(targetDataGridView);
+                //<skip namespace>.class.method if not on the same folder
             }
 
             return true; // Indicate that the operation was successful

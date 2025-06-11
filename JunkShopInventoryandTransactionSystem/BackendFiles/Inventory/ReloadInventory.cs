@@ -2,9 +2,9 @@
 using System.Windows.Forms;
 
 // imports the backend file InventoryCrud.cs
-using JunkShopInventoryandTransactionSystem.BackendFiles.InventoryCrudToDatabase;
+using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud;
 
-namespace JunkShopInventoryandTransactionSystem.BackendFiles.ReloadInventory
+namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Reload
 {
     public class ReloadInventory
     {

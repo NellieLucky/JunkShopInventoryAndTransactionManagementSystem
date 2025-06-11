@@ -1,6 +1,4 @@
-﻿//imports the backend file InventoryCrud.cs
-using JunkShopInventoryandTransactionSystem.BackendFiles.ReloadInventory;
-
+﻿
 using JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel;
 using System;
 using System.Collections.Generic;
@@ -11,6 +9,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
+//imports the backend file ReloadInventory.cs
+using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Reload;
 
 namespace JunkShopInventoryandTransactionSystem.View
 {
@@ -48,6 +49,7 @@ namespace JunkShopInventoryandTransactionSystem.View
 
         private void AddItemButton_Click(object sender, EventArgs e)
         {
+            // this .IsDisposed is causing the combobox error - have to do something with this
             if ( addEditInventoryItemDialogBox == null || addEditInventoryItemDialogBox.IsDisposed ) // Check if it's already open  
             {
                 string value = "Add"; // Set the mode to "Add"
