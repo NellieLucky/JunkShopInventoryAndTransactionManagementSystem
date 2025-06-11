@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "xgyEwchB3KI=",
+  "dgSpecHash": "jNFD7FF8nyw=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Beetoy\\Source\\Repos\\JunkShopInventoryAndTransactionManagementSystem\\JunkShopInventoryandTransactionSystem\\JunkShopInventoryandTransactionSystem.csproj",
+  "projectFilePath": "C:\\Users\\Beetoy\\source\\repos\\JunkShopInventoryandTransactionSystem\\JunkShopInventoryandTransactionSystem.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Beetoy\\.nuget\\packages\\actiprosoftware.controls.winforms.shared\\24.1.1\\actiprosoftware.controls.winforms.shared.24.1.1.nupkg.sha512",
     "C:\\Users\\Beetoy\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
