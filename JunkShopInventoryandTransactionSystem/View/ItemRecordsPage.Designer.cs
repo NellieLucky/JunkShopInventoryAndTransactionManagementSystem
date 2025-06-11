@@ -39,7 +39,7 @@
             panel1 = new Panel();
             AddItemButton = new CuoreUI.Controls.cuiButton();
             DashboardTitlePage = new Label();
-            dataGridView1 = new DataGridView();
+            ItemRecordsTable = new DataGridView();
             ItemID = new DataGridViewTextBoxColumn();
             ItemName = new DataGridViewTextBoxColumn();
             Category = new DataGridViewTextBoxColumn();
@@ -50,7 +50,7 @@
             Edit = new DataGridViewImageColumn();
             Delete = new DataGridViewImageColumn();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)ItemRecordsTable).BeginInit();
             SuspendLayout();
             // 
             // cuiTextBox1
@@ -180,15 +180,15 @@
             DashboardTitlePage.TabIndex = 27;
             DashboardTitlePage.Text = "Item Records";
             // 
-            // dataGridView1
+            // ItemRecordsTable
             // 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.AllowUserToResizeColumns = false;
-            dataGridView1.AllowUserToResizeRows = false;
-            dataGridView1.BackgroundColor = Color.White;
-            dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.SunkenHorizontal;
-            dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Sunken;
+            ItemRecordsTable.AllowUserToAddRows = false;
+            ItemRecordsTable.AllowUserToDeleteRows = false;
+            ItemRecordsTable.AllowUserToResizeColumns = false;
+            ItemRecordsTable.AllowUserToResizeRows = false;
+            ItemRecordsTable.BackgroundColor = Color.White;
+            ItemRecordsTable.CellBorderStyle = DataGridViewCellBorderStyle.SunkenHorizontal;
+            ItemRecordsTable.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Sunken;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = Color.FromArgb(163, 244, 215);
             dataGridViewCellStyle1.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -196,34 +196,35 @@
             dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(163, 244, 215);
             dataGridViewCellStyle1.SelectionForeColor = Color.Black;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridView1.ColumnHeadersHeight = 60;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { ItemID, ItemName, Category, QtyType, Quantity, BuyingPrice, SellingPrice, Edit, Delete });
-            dataGridView1.EditMode = DataGridViewEditMode.EditProgrammatically;
-            dataGridView1.EnableHeadersVisualStyles = false;
-            dataGridView1.GridColor = Color.FromArgb(99, 99, 99);
-            dataGridView1.Location = new Point(14, 82);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            ItemRecordsTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            ItemRecordsTable.ColumnHeadersHeight = 60;
+            ItemRecordsTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            ItemRecordsTable.Columns.AddRange(new DataGridViewColumn[] { ItemID, ItemName, Category, QtyType, Quantity, BuyingPrice, SellingPrice, Edit, Delete });
+            ItemRecordsTable.EditMode = DataGridViewEditMode.EditProgrammatically;
+            ItemRecordsTable.EnableHeadersVisualStyles = false;
+            ItemRecordsTable.GridColor = Color.FromArgb(99, 99, 99);
+            ItemRecordsTable.Location = new Point(14, 82);
+            ItemRecordsTable.Name = "ItemRecordsTable";
+            ItemRecordsTable.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
             dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            dataGridView1.RowHeadersVisible = false;
-            dataGridView1.RowHeadersWidth = 50;
+            ItemRecordsTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            ItemRecordsTable.RowHeadersVisible = false;
+            ItemRecordsTable.RowHeadersWidth = 50;
             dataGridViewCellStyle5.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dataGridViewCellStyle5.ForeColor = Color.Black;
             dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(0, 157, 209);
             dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
-            dataGridView1.RowTemplate.Height = 50;
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(1056, 538);
-            dataGridView1.TabIndex = 29;
+            ItemRecordsTable.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            ItemRecordsTable.RowTemplate.Height = 50;
+            ItemRecordsTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            ItemRecordsTable.Size = new Size(1056, 538);
+            ItemRecordsTable.TabIndex = 29;
+            ItemRecordsTable.CellClick += ItemRecordsTable_CellClick;
             // 
             // ItemID
             // 
@@ -313,14 +314,14 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(dataGridView1);
+            Controls.Add(ItemRecordsTable);
             Controls.Add(DashboardTitlePage);
             Controls.Add(AddItemButton);
             Controls.Add(panel1);
             Name = "ItemRecordsPage";
             Size = new Size(1084, 668);
             panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)ItemRecordsTable).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -331,7 +332,7 @@
         private Panel panel1;
         private CuoreUI.Controls.cuiButton AddItemButton;
         private Label DashboardTitlePage;
-        private DataGridView dataGridView1;
+        private DataGridView ItemRecordsTable;
         private DataGridViewTextBoxColumn ItemID;
         private DataGridViewTextBoxColumn ItemName;
         private DataGridViewTextBoxColumn Category;

@@ -78,7 +78,11 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
     public class InventoryRead
     {
         //copy this to other classes that will use this connection string
-        private string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+
+        //comms ko muna
+        //private string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+        private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkshopDB.mdf;Integrated Security=True";
+
 
         // Method to get a connection object
         public SqlConnection GetConnection()
@@ -106,9 +110,15 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
                                 InventoryItem item = new InventoryItem
                                 {
                                     itemId = Convert.ToInt32(reader["itemId"]),
-                                    itemName = reader["itemName"].ToString(),
-                                    itemCategory = reader["itemCategory"].ToString(),
-                                    itemQtyType = reader["itemQtyType"].ToString(),
+                                    // Fix for CS8601: Possible null reference assignment.
+                                    // The issue occurs because the `reader["itemCategory"].ToString()` might return null.
+                                    // To fix this, we can use the null-coalescing operator (`??`) to provide a default value.
+
+                                    
+                                    itemName = reader["itemName"].ToString() ?? string.Empty,
+                                    itemCategory = reader["itemCategory"]?.ToString() ?? string.Empty,
+                                    //itemCategory = reader["itemCategory"].ToString(),
+                                    itemQtyType = reader["itemQtyType"].ToString() ?? string.Empty,
                                     itemQuantity = Convert.ToInt32(reader["itemQuantity"]),
                                     itemBuyingPrice = Convert.ToInt32(reader["itemBuyingPrice"]),
                                     itemSellingPrice = Convert.ToInt32(reader["itemSellingPrice"])
@@ -134,7 +144,9 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
     // inventory add aaa
     public class InventoryAdd
     {
-        private string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+        //comms ko muna
+        //private string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+        private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkshopDB.mdf;Integrated Security=True";
 
         public SqlConnection GetConnection()
         {

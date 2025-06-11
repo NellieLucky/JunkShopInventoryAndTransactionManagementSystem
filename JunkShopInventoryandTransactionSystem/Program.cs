@@ -20,6 +20,8 @@ namespace JunkShopInventoryandTransactionSystem
                System.ObjectDisposedException: 'Cannot access a disposed object.
                Object name: 'CuoreUI.Controls.cuiComboBox'.'
             */
+
+            //I think the problem is yung combobox, I'll change it
         }
     }
 }

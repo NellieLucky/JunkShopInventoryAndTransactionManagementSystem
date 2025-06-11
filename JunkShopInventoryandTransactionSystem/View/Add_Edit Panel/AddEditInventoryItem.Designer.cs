@@ -29,7 +29,8 @@
         private void InitializeComponent()
         {
             cuiPanel1 = new CuoreUI.Controls.cuiPanel();
-            ComboBox_ofCategoryLabel = new CuoreUI.Controls.cuiComboBox();
+            QtyTypeComboBox = new ComboBox();
+            CategoryComboBox = new ComboBox();
             LabelRow3_SellingPriceLabel = new Label();
             LabelRow3_BuyingPriceLabel = new Label();
             LabelRow2_QtyLabel = new Label();
@@ -41,7 +42,6 @@
             TextBox_ofSellingPriceLabel = new CuoreUI.Controls.cuiTextBox();
             TextBox_ofBuyingPriceLabel = new CuoreUI.Controls.cuiTextBox();
             TextBox_ofQtyLabel = new CuoreUI.Controls.cuiTextBox();
-            ComboBox_ofQtyTypeLabel = new CuoreUI.Controls.cuiComboBox();
             TextBox_ofItemNameLabel = new CuoreUI.Controls.cuiTextBox();
             DashboardTitlePage = new Label();
             cuiPanel1.SuspendLayout();
@@ -49,7 +49,8 @@
             // 
             // cuiPanel1
             // 
-            cuiPanel1.Controls.Add(ComboBox_ofCategoryLabel);
+            cuiPanel1.Controls.Add(QtyTypeComboBox);
+            cuiPanel1.Controls.Add(CategoryComboBox);
             cuiPanel1.Controls.Add(LabelRow3_SellingPriceLabel);
             cuiPanel1.Controls.Add(LabelRow3_BuyingPriceLabel);
             cuiPanel1.Controls.Add(LabelRow2_QtyLabel);
@@ -61,7 +62,6 @@
             cuiPanel1.Controls.Add(TextBox_ofSellingPriceLabel);
             cuiPanel1.Controls.Add(TextBox_ofBuyingPriceLabel);
             cuiPanel1.Controls.Add(TextBox_ofQtyLabel);
-            cuiPanel1.Controls.Add(ComboBox_ofQtyTypeLabel);
             cuiPanel1.Controls.Add(TextBox_ofItemNameLabel);
             cuiPanel1.Location = new Point(27, 83);
             cuiPanel1.Name = "cuiPanel1";
@@ -72,36 +72,37 @@
             cuiPanel1.Size = new Size(750, 347);
             cuiPanel1.TabIndex = 31;
             // 
-            // ComboBox_ofCategoryLabel
+            // QtyTypeComboBox
             // 
-            ComboBox_ofCategoryLabel.BackgroundColor = Color.FromArgb(255, 255, 255);
-            ComboBox_ofCategoryLabel.ButtonCursor = Cursors.Arrow;
-            ComboBox_ofCategoryLabel.ButtonHoverBackground = Color.FromArgb(192, 255, 255);
-            ComboBox_ofCategoryLabel.ButtonHoverOutline = Color.Empty;
-            ComboBox_ofCategoryLabel.ButtonNormalBackground = Color.FromArgb(0, 192, 192);
-            ComboBox_ofCategoryLabel.ButtonNormalOutline = Color.Empty;
-            ComboBox_ofCategoryLabel.ButtonPressedBackground = Color.Teal;
-            ComboBox_ofCategoryLabel.ButtonPressedOutline = Color.Empty;
-            ComboBox_ofCategoryLabel.DropDownBackgroundColor = Color.White;
-            ComboBox_ofCategoryLabel.DropDownOutlineColor = Color.FromArgb(30, 255, 255, 255);
-            ComboBox_ofCategoryLabel.ExpandArrowColor = Color.Gray;
-            ComboBox_ofCategoryLabel.ForeColor = Color.Gray;
-            ComboBox_ofCategoryLabel.Items = new string[]
-    {
-    "Category 1",
-    "Category 2"
-    };
-            ComboBox_ofCategoryLabel.Location = new Point(24, 122);
-            ComboBox_ofCategoryLabel.Margin = new Padding(4, 5, 4, 5);
-            ComboBox_ofCategoryLabel.Name = "ComboBox_ofCategoryLabel";
-            ComboBox_ofCategoryLabel.NoSelectionDropdownText = "Empty";
-            ComboBox_ofCategoryLabel.NoSelectionText = "Please select category...";
-            ComboBox_ofCategoryLabel.OutlineColor = Color.FromArgb(0, 0, 192);
-            ComboBox_ofCategoryLabel.OutlineThickness = 1F;
-            ComboBox_ofCategoryLabel.RightToLeft = RightToLeft.No;
-            ComboBox_ofCategoryLabel.Rounding = 8;
-            ComboBox_ofCategoryLabel.Size = new Size(332, 44);
-            ComboBox_ofCategoryLabel.TabIndex = 35;
+            QtyTypeComboBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            QtyTypeComboBox.BackColor = Color.White;
+            QtyTypeComboBox.DropDownHeight = 120;
+            QtyTypeComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            QtyTypeComboBox.DropDownWidth = 324;
+            QtyTypeComboBox.Font = new Font("Arial", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            QtyTypeComboBox.ForeColor = Color.Gray;
+            QtyTypeComboBox.FormattingEnabled = true;
+            QtyTypeComboBox.IntegralHeight = false;
+            QtyTypeComboBox.Items.AddRange(new object[] { "Per Kilo", "Per Piece" });
+            QtyTypeComboBox.Location = new Point(382, 40);
+            QtyTypeComboBox.Margin = new Padding(0);
+            QtyTypeComboBox.Name = "QtyTypeComboBox";
+            QtyTypeComboBox.Size = new Size(332, 46);
+            QtyTypeComboBox.TabIndex = 36;
+            // 
+            // CategoryComboBox
+            // 
+            CategoryComboBox.DropDownHeight = 120;
+            CategoryComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            CategoryComboBox.Font = new Font("Arial", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            CategoryComboBox.ForeColor = Color.Gray;
+            CategoryComboBox.FormattingEnabled = true;
+            CategoryComboBox.IntegralHeight = false;
+            CategoryComboBox.Items.AddRange(new object[] { "Category 1", "Category 2" });
+            CategoryComboBox.Location = new Point(24, 121);
+            CategoryComboBox.Name = "CategoryComboBox";
+            CategoryComboBox.Size = new Size(332, 46);
+            CategoryComboBox.TabIndex = 37;
             // 
             // LabelRow3_SellingPriceLabel
             // 
@@ -157,7 +158,7 @@
             LabelRow1_QtyTypeLabel.BackColor = Color.FromArgb(0, 0, 0, 0);
             LabelRow1_QtyTypeLabel.Font = new Font("Arial", 10.2F, FontStyle.Bold);
             LabelRow1_QtyTypeLabel.ForeColor = Color.FromArgb(0, 157, 209);
-            LabelRow1_QtyTypeLabel.Location = new Point(382, 18);
+            LabelRow1_QtyTypeLabel.Location = new Point(382, 19);
             LabelRow1_QtyTypeLabel.Name = "LabelRow1_QtyTypeLabel";
             LabelRow1_QtyTypeLabel.Size = new Size(118, 19);
             LabelRow1_QtyTypeLabel.TabIndex = 30;
@@ -212,6 +213,7 @@
             CancelButton.TabIndex = 28;
             CancelButton.TextAlignment = StringAlignment.Center;
             CancelButton.TextOffset = new Point(0, 0);
+            CancelButton.Click += CancelButton_Click;
             // 
             // AddEditButton
             // 
@@ -336,37 +338,6 @@
             TextBox_ofQtyLabel.TextOffset = new Size(0, 0);
             TextBox_ofQtyLabel.UnderlinedStyle = false;
             // 
-            // ComboBox_ofQtyTypeLabel
-            // 
-            ComboBox_ofQtyTypeLabel.BackgroundColor = Color.FromArgb(255, 255, 255);
-            ComboBox_ofQtyTypeLabel.ButtonCursor = Cursors.Arrow;
-            ComboBox_ofQtyTypeLabel.ButtonHoverBackground = Color.FromArgb(192, 255, 255);
-            ComboBox_ofQtyTypeLabel.ButtonHoverOutline = Color.Empty;
-            ComboBox_ofQtyTypeLabel.ButtonNormalBackground = Color.FromArgb(0, 192, 192);
-            ComboBox_ofQtyTypeLabel.ButtonNormalOutline = Color.Empty;
-            ComboBox_ofQtyTypeLabel.ButtonPressedBackground = Color.Teal;
-            ComboBox_ofQtyTypeLabel.ButtonPressedOutline = Color.Empty;
-            ComboBox_ofQtyTypeLabel.DropDownBackgroundColor = Color.White;
-            ComboBox_ofQtyTypeLabel.DropDownOutlineColor = Color.FromArgb(30, 255, 255, 255);
-            ComboBox_ofQtyTypeLabel.ExpandArrowColor = Color.Gray;
-            ComboBox_ofQtyTypeLabel.ForeColor = Color.Gray;
-            ComboBox_ofQtyTypeLabel.Items = new string[]
-    {
-    "Per Weight",
-    "Per Piece"
-    };
-            ComboBox_ofQtyTypeLabel.Location = new Point(382, 42);
-            ComboBox_ofQtyTypeLabel.Margin = new Padding(4, 5, 4, 5);
-            ComboBox_ofQtyTypeLabel.Name = "ComboBox_ofQtyTypeLabel";
-            ComboBox_ofQtyTypeLabel.NoSelectionDropdownText = "Empty";
-            ComboBox_ofQtyTypeLabel.NoSelectionText = "Please select quantity type";
-            ComboBox_ofQtyTypeLabel.OutlineColor = Color.FromArgb(0, 0, 192);
-            ComboBox_ofQtyTypeLabel.OutlineThickness = 1F;
-            ComboBox_ofQtyTypeLabel.RightToLeft = RightToLeft.No;
-            ComboBox_ofQtyTypeLabel.Rounding = 8;
-            ComboBox_ofQtyTypeLabel.Size = new Size(332, 44);
-            ComboBox_ofQtyTypeLabel.TabIndex = 2;
-            // 
             // TextBox_ofItemNameLabel
             // 
             TextBox_ofItemNameLabel.BackgroundColor = Color.White;
@@ -431,18 +402,18 @@
         private CuoreUI.Controls.cuiPanel cuiPanel1;
         private Label LabelRow3_SellingPriceLabel;
         private Label LabelRow3_BuyingPriceLabel;
-        private Label LabelRow2_QtyLabel;
-        private Label LabelRow2_CategoryLabel;
         private Label LabelRow1_QtyTypeLabel;
         private Label LabelRow1_ItemNameLabel;
         private CuoreUI.Controls.cuiButton CancelButton;
         private CuoreUI.Controls.cuiButton AddEditButton;
         private CuoreUI.Controls.cuiTextBox TextBox_ofSellingPriceLabel;
         private CuoreUI.Controls.cuiTextBox TextBox_ofBuyingPriceLabel;
-        private CuoreUI.Controls.cuiTextBox TextBox_ofQtyLabel;
-        private CuoreUI.Controls.cuiComboBox ComboBox_ofQtyTypeLabel;
         private CuoreUI.Controls.cuiTextBox TextBox_ofItemNameLabel;
         private Label DashboardTitlePage;
-        private CuoreUI.Controls.cuiComboBox ComboBox_ofCategoryLabel;
+        private Label LabelRow2_QtyLabel;
+        private Label LabelRow2_CategoryLabel;
+        private CuoreUI.Controls.cuiTextBox TextBox_ofQtyLabel;
+        private ComboBox QtyTypeComboBox;
+        private ComboBox CategoryComboBox;
     }
 }

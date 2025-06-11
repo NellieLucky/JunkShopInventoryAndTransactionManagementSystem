@@ -52,8 +52,9 @@ namespace JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel
         {
             //stores the values of the widgets in variables
             string itemName = TextBox_ofItemNameLabel.Content;
-            string itemCategory = ComboBox_ofCategoryLabel.SelectedItem as string;
-            string itemQtyType = ComboBox_ofQtyTypeLabel.SelectedItem as string;
+
+            string itemCategory = CategoryComboBox.SelectedItem as string ?? string.Empty;
+            string itemQtyType = QtyTypeComboBox.SelectedItem as string ?? string.Empty;
 
             string STRitemQuantity = TextBox_ofQtyLabel.Content;
             string STRitemBuyingPrice = TextBox_ofBuyingPriceLabel.Content;
@@ -76,8 +77,8 @@ namespace JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel
                 if (success) // Only clear and close if the item was added successfully
                 {
                     TextBox_ofItemNameLabel.Content = string.Empty;
-                    ComboBox_ofCategoryLabel.Text = string.Empty;
-                    ComboBox_ofQtyTypeLabel.Text = string.Empty;    //this isnt working
+                    QtyTypeComboBox.Text = string.Empty;
+                    QtyTypeComboBox.Text = string.Empty;    //this isnt working
                     TextBox_ofQtyLabel.Content = string.Empty;      //this isnt working too
                     TextBox_ofBuyingPriceLabel.Content = string.Empty;
                     TextBox_ofSellingPriceLabel.Content = string.Empty;
@@ -115,6 +116,12 @@ namespace JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel
                 MessageBox.Show("Unknown button state: " + AddEditButton.Text, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+        }
+
+        // Close Button
+        private void CancelButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
