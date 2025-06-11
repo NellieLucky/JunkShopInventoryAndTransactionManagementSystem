@@ -80,9 +80,9 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
         //copy this to other classes that will use this connection string
 
         //comms ko muna
-        //private string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
-        private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkshopDB.mdf;Integrated Security=True";
-
+        private string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+        //private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkshopDB.mdf;Integrated Security=True";
+        //arnels string
 
         // Method to get a connection object
         public SqlConnection GetConnection()
@@ -91,6 +91,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
         }
 
         // Method to SELECT all rows from the Inventory table
+        // get all inventory items method
         public List<InventoryItem> GetAllInventoryItems()
         {
             List<InventoryItem> items = new List<InventoryItem>(); // Initialize an empty list
@@ -138,6 +139,54 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
             }
             return items;
         }
+        // end of read all
+
+        // just get one
+        public InventoryItem? GetOneInventoryItem(int itemId)
+        {
+            InventoryItem? item = null; // Will remain null if no match is found
+
+            using (SqlConnection conn = GetConnection())
+            {
+                string query = "SELECT itemId, itemName, itemCategory, itemQtyType, itemQuantity, itemBuyingPrice, itemSellingPrice " +
+                               "FROM Inventory WHERE itemId = @itemId";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@itemId", itemId); // Add the parameter safely
+
+                    try
+                    {
+                        conn.Open();
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read()) // Read just one row
+                            {
+                                item = new InventoryItem
+                                {
+                                    itemId = Convert.ToInt32(reader["itemId"]),
+                                    itemName = reader["itemName"].ToString() ?? string.Empty,
+                                    itemCategory = reader["itemCategory"]?.ToString() ?? string.Empty,
+                                    itemQtyType = reader["itemQtyType"].ToString() ?? string.Empty,
+                                    itemQuantity = Convert.ToInt32(reader["itemQuantity"]),
+                                    itemBuyingPrice = Convert.ToInt32(reader["itemBuyingPrice"]),
+                                    itemSellingPrice = Convert.ToInt32(reader["itemSellingPrice"])
+                                };
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("❌ Error reading Inventory item: " + ex.Message);
+                        throw new Exception("Failed to retrieve the inventory item from the database.", ex);
+                    }
+                }
+            }
+
+            return item; // Could be null if not found
+        }
+        //end of fetchone()
+
     }
     // End of inventory Read
 
@@ -145,8 +194,9 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
     public class InventoryAdd
     {
         //comms ko muna
-        //private string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
-        private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkshopDB.mdf;Integrated Security=True";
+        private string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+        //private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkshopDB.mdf;Integrated Security=True";
+        //arnels string
 
         public SqlConnection GetConnection()
         {
@@ -195,7 +245,6 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
     // end of InventoryAdd
 
     //inventory edit
-    /* commented for now base gpt code not yet debugged
     public class InventoryEdit
     {
         private string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
@@ -206,23 +255,24 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
         }
 
         // Add your UpdateItemToInventory method here
-        public void UpdateItemInInventory(InventoryItem item)
+        public void EditItemInInventory(InventoryItem item)
         {
-            // Example:
-            string query = "UPDATE Inventory SET " +
-                           "itemName = @itemName, " +
-                           "itemCategory = @itemCategory, " +
-                           "itemQtyType = @itemQtyType, " +
-                           "itemQuantity = @itemQuantity, " +
-                           "itemBuyingPrice = @itemBuyingPrice, " +
-                           "itemSellingPrice = @itemSellingPrice " +
-                           "WHERE itemId = @itemId;"; // Don't forget the WHERE clause!
+            string query = @"
+                UPDATE Inventory SET 
+                    itemName = @itemName, 
+                    itemCategory = @itemCategory, 
+                    itemQtyType = @itemQtyType, 
+                    itemQuantity = @itemQuantity, 
+                    itemBuyingPrice = @itemBuyingPrice, 
+                    itemSellingPrice = @itemSellingPrice 
+                WHERE itemId = @itemId;
+            ";
 
-            using (SqlConnection conn = GetConnection())
+            using ( SqlConnection conn = GetConnection() )
             {
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
-                    cmd.Parameters.AddWithValue("@itemId", item.itemId); // Crucial for update
+                    cmd.Parameters.AddWithValue("@itemId", item.itemId);
                     cmd.Parameters.AddWithValue("@itemName", item.itemName);
                     cmd.Parameters.AddWithValue("@itemCategory", item.itemCategory);
                     cmd.Parameters.AddWithValue("@itemQtyType", item.itemQtyType);
@@ -230,7 +280,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
                     cmd.Parameters.AddWithValue("@itemBuyingPrice", item.itemBuyingPrice);
                     cmd.Parameters.AddWithValue("@itemSellingPrice", item.itemSellingPrice);
 
-                    try
+                    try     //for debugging
                     {
                         conn.Open();
                         int rowsAffected = cmd.ExecuteNonQuery();
@@ -246,11 +296,10 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
                         Console.WriteLine("An unexpected error occurred: " + ex.Message);
                         throw;
                     }
-                }
-            }
-        }
+                }   // end of the second using in the nested using stuff
+            }   //end of the first using
+        }   //end of method EditItemInInventory
     }
-    */
     // end of InventoryEdit
 
 }
