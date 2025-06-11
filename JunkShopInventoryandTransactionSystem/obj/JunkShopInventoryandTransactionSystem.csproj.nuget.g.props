@@ -13,6 +13,9 @@
     <SourceRoot Include="C:\Users\HP\.nuget\packages\" />
     <SourceRoot Include="C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages\" />
   </ItemGroup>
+  <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)microsoft.entityframeworkcore\9.0.5\buildTransitive\net8.0\Microsoft.EntityFrameworkCore.props" Condition="Exists('$(NuGetPackageRoot)microsoft.entityframeworkcore\9.0.5\buildTransitive\net8.0\Microsoft.EntityFrameworkCore.props')" />
+  </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <PkgActiproSoftware_Controls_WinForms_Shared Condition=" '$(PkgActiproSoftware_Controls_WinForms_Shared)' == '' ">C:\Users\HP\.nuget\packages\actiprosoftware.controls.winforms.shared\24.1.1</PkgActiproSoftware_Controls_WinForms_Shared>
   </PropertyGroup>

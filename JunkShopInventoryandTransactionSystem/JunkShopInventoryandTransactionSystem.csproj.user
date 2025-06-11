@@ -4,6 +4,15 @@
     <Compile Update="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="View\Add_Edit Panel\AddEditCategoryDialogBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\Add_Edit Panel\AddEditInventoryItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\CategoryPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="View\CustomerRecordsPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -19,7 +28,10 @@
     <Compile Update="View\GenerateTransactionPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="View\InventoryPage.cs">
+    <Compile Update="View\ItemRecordsPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="View\MainInventoryPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="View\MainNavigationPage.cs">
@@ -40,8 +52,19 @@
     <Compile Update="Resources\UserDefinedComponents\TextFieldwithDesign.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Update="View\NewPasswordPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="View\TransactionRecordsPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="View\UserInformationPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

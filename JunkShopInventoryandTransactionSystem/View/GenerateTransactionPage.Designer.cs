@@ -28,22 +28,38 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GenerateTransactionPage));
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DashboardTitlePage = new Label();
-            cuiColorPicker1 = new CuoreUI.Components.cuiColorPicker(components);
-            cuiPanel1 = new CuoreUI.Controls.cuiPanel();
-            tableLayoutPanel2 = new TableLayoutPanel();
-            label1 = new Label();
-            tableLayoutPanel1 = new TableLayoutPanel();
-            cuiLabel6 = new CuoreUI.Controls.cuiLabel();
-            cuiLabel5 = new CuoreUI.Controls.cuiLabel();
-            cuiLabel4 = new CuoreUI.Controls.cuiLabel();
-            cuiLabel3 = new CuoreUI.Controls.cuiLabel();
-            cuiLabel2 = new CuoreUI.Controls.cuiLabel();
-            cuiLabel1 = new CuoreUI.Controls.cuiLabel();
-            cuiScrollbar1 = new CuoreUI.Controls.cuiScrollbar();
-            cuiPanel1.SuspendLayout();
-            tableLayoutPanel1.SuspendLayout();
+            dataGridView1 = new DataGridView();
+            ItemID = new DataGridViewTextBoxColumn();
+            ItemName = new DataGridViewTextBoxColumn();
+            Category = new DataGridViewTextBoxColumn();
+            QtyType = new DataGridViewTextBoxColumn();
+            TransacQuantity = new DataGridViewTextBoxColumn();
+            ExchangeAmount = new DataGridViewTextBoxColumn();
+            Edit = new DataGridViewImageColumn();
+            Delete = new DataGridViewImageColumn();
+            cuiTextBox1 = new CuoreUI.Controls.cuiTextBox();
+            TransactionID = new Label();
+            CustomerType = new Label();
+            cuiTextBox2 = new CuoreUI.Controls.cuiTextBox();
+            IdItem = new Label();
+            cuiTextBox3 = new CuoreUI.Controls.cuiTextBox();
+            TransactionQuantity = new Label();
+            cuiTextBox4 = new CuoreUI.Controls.cuiTextBox();
+            CustomerName = new Label();
+            cuiTextBox5 = new CuoreUI.Controls.cuiTextBox();
+            CustomerContact = new Label();
+            cuiTextBox6 = new CuoreUI.Controls.cuiTextBox();
+            cuiButton2 = new CuoreUI.Controls.cuiButton();
+            cuiButton1 = new CuoreUI.Controls.cuiButton();
+            cuiButton3 = new CuoreUI.Controls.cuiButton();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // DashboardTitlePage
@@ -52,207 +68,512 @@
             DashboardTitlePage.BackColor = Color.FromArgb(0, 0, 0, 0);
             DashboardTitlePage.Font = new Font("Arial", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
             DashboardTitlePage.ForeColor = Color.FromArgb(16, 107, 23);
-            DashboardTitlePage.Location = new Point(20, 24);
+            DashboardTitlePage.Location = new Point(25, 26);
             DashboardTitlePage.Name = "DashboardTitlePage";
-            DashboardTitlePage.Size = new Size(444, 46);
-            DashboardTitlePage.TabIndex = 2;
-            DashboardTitlePage.Text = "Generate Transactions";
+            DashboardTitlePage.Size = new Size(422, 46);
+            DashboardTitlePage.TabIndex = 6;
+            DashboardTitlePage.Text = "Generate Transaction";
             // 
-            // cuiColorPicker1
+            // dataGridView1
             // 
-            cuiColorPicker1.Color = Color.Empty;
-            cuiColorPicker1.EnableThemeChangeButton = true;
-            cuiColorPicker1.Theme = CuoreUI.Components.Forms.ColorPickerForm.Themes.Light;
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.AllowUserToResizeColumns = false;
+            dataGridView1.AllowUserToResizeRows = false;
+            dataGridView1.BackgroundColor = Color.White;
+            dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.SunkenHorizontal;
+            dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Sunken;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(16, 107, 23);
+            dataGridViewCellStyle1.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(16, 107, 23);
+            dataGridViewCellStyle1.SelectionForeColor = Color.White;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridView1.ColumnHeadersHeight = 60;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { ItemID, ItemName, Category, QtyType, TransacQuantity, ExchangeAmount, Edit, Delete });
+            dataGridView1.EditMode = DataGridViewEditMode.EditProgrammatically;
+            dataGridView1.EnableHeadersVisualStyles = false;
+            dataGridView1.GridColor = Color.FromArgb(99, 99, 99);
+            dataGridView1.Location = new Point(14, 175);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridView1.RowHeadersVisible = false;
+            dataGridView1.RowHeadersWidth = 50;
+            dataGridViewCellStyle5.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle5.ForeColor = Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(0, 157, 209);
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridView1.RowTemplate.Height = 50;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.Size = new Size(1056, 421);
+            dataGridView1.TabIndex = 30;
             // 
-            // cuiPanel1
+            // ItemID
             // 
-            cuiPanel1.AutoScroll = true;
-            cuiPanel1.BackColor = SystemColors.GrayText;
-            cuiPanel1.Controls.Add(tableLayoutPanel2);
-            cuiPanel1.Controls.Add(label1);
-            cuiPanel1.Controls.Add(tableLayoutPanel1);
-            cuiPanel1.ForeColor = Color.FromArgb(5, 84, 11);
-            cuiPanel1.Location = new Point(22, 117);
-            cuiPanel1.Margin = new Padding(2);
-            cuiPanel1.Name = "cuiPanel1";
-            cuiPanel1.OutlineThickness = 1F;
-            cuiPanel1.PanelColor = Color.FromArgb(227, 244, 238);
-            cuiPanel1.PanelOutlineColor = Color.White;
-            cuiPanel1.Rounding = new Padding(8);
-            cuiPanel1.Size = new Size(1035, 682);
-            cuiPanel1.TabIndex = 3;
-            cuiPanel1.Paint += cuiPanel1_Paint;
+            ItemID.HeaderText = "ItemID";
+            ItemID.MinimumWidth = 6;
+            ItemID.Name = "ItemID";
+            ItemID.Width = 125;
             // 
-            // tableLayoutPanel2
+            // ItemName
             // 
-            tableLayoutPanel2.BackColor = Color.FromArgb(250, 250, 250);
-            tableLayoutPanel2.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
-            tableLayoutPanel2.ColumnCount = 6;
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 66.6666641F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 188F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 167F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 186F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 166F));
-            tableLayoutPanel2.Location = new Point(19, 129);
-            tableLayoutPanel2.Margin = new Padding(2);
-            tableLayoutPanel2.Name = "tableLayoutPanel2";
-            tableLayoutPanel2.RowCount = 6;
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50.4717F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 49.5283F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 84F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 79F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 82F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 76F));
-            tableLayoutPanel2.Size = new Size(1002, 491);
-            tableLayoutPanel2.TabIndex = 4;
+            ItemName.HeaderText = "Item Name";
+            ItemName.MinimumWidth = 6;
+            ItemName.Name = "ItemName";
+            ItemName.Width = 175;
             // 
-            // label1
+            // Category
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(299, 208);
-            label1.Margin = new Padding(2, 0, 2, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(0, 20);
-            label1.TabIndex = 3;
-            label1.Click += label1_Click;
+            Category.FillWeight = 150F;
+            Category.HeaderText = "Category";
+            Category.MinimumWidth = 6;
+            Category.Name = "Category";
+            Category.Width = 175;
             // 
-            // tableLayoutPanel1
+            // QtyType
             // 
-            tableLayoutPanel1.BackColor = Color.FromArgb(163, 244, 215);
-            tableLayoutPanel1.ColumnCount = 6;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30.6233063F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 69.37669F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 187F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 170F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 185F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 165F));
-            tableLayoutPanel1.Controls.Add(cuiLabel6, 5, 0);
-            tableLayoutPanel1.Controls.Add(cuiLabel5, 4, 0);
-            tableLayoutPanel1.Controls.Add(cuiLabel4, 3, 0);
-            tableLayoutPanel1.Controls.Add(cuiLabel3, 2, 0);
-            tableLayoutPanel1.Controls.Add(cuiLabel2, 1, 0);
-            tableLayoutPanel1.Controls.Add(cuiLabel1, 0, 0);
-            tableLayoutPanel1.Location = new Point(19, 12);
-            tableLayoutPanel1.Margin = new Padding(2);
-            tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 1;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 48.68421F));
-            tableLayoutPanel1.Size = new Size(1002, 87);
-            tableLayoutPanel1.TabIndex = 2;
-            tableLayoutPanel1.Paint += tableLayoutPanel1_Paint;
+            QtyType.FillWeight = 125F;
+            QtyType.HeaderText = "QtyType";
+            QtyType.MinimumWidth = 6;
+            QtyType.Name = "QtyType";
+            QtyType.Width = 125;
             // 
-            // cuiLabel6
+            // TransacQuantity
             // 
-            cuiLabel6.BackColor = Color.Transparent;
-            cuiLabel6.Content = "Payment\\ Method";
-            cuiLabel6.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            cuiLabel6.HorizontalAlignment = StringAlignment.Center;
-            cuiLabel6.Location = new Point(840, 5);
-            cuiLabel6.Margin = new Padding(4, 5, 4, 5);
-            cuiLabel6.Name = "cuiLabel6";
-            cuiLabel6.Size = new Size(157, 69);
-            cuiLabel6.TabIndex = 9;
-            cuiLabel6.VerticalAlignment = StringAlignment.Center;
+            TransacQuantity.FillWeight = 59.177578F;
+            TransacQuantity.HeaderText = "Exchange Quantity";
+            TransacQuantity.MinimumWidth = 6;
+            TransacQuantity.Name = "TransacQuantity";
+            TransacQuantity.Width = 130;
             // 
-            // cuiLabel5
+            // ExchangeAmount
             // 
-            cuiLabel5.BackColor = Color.Transparent;
-            cuiLabel5.Content = "Total\\ Amount";
-            cuiLabel5.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            cuiLabel5.HorizontalAlignment = StringAlignment.Center;
-            cuiLabel5.Location = new Point(655, 5);
-            cuiLabel5.Margin = new Padding(4, 5, 4, 5);
-            cuiLabel5.Name = "cuiLabel5";
-            cuiLabel5.Size = new Size(177, 69);
-            cuiLabel5.TabIndex = 8;
-            cuiLabel5.VerticalAlignment = StringAlignment.Center;
-            cuiLabel5.Load += cuiLabel5_Load;
+            ExchangeAmount.FillWeight = 59.177578F;
+            ExchangeAmount.HeaderText = "Exchange Amount";
+            ExchangeAmount.MinimumWidth = 6;
+            ExchangeAmount.Name = "ExchangeAmount";
+            ExchangeAmount.Width = 130;
             // 
-            // cuiLabel4
+            // Edit
             // 
-            cuiLabel4.BackColor = Color.Transparent;
-            cuiLabel4.Content = "Item\\ Name";
-            cuiLabel4.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            cuiLabel4.HorizontalAlignment = StringAlignment.Center;
-            cuiLabel4.Location = new Point(485, 5);
-            cuiLabel4.Margin = new Padding(4, 5, 4, 5);
-            cuiLabel4.Name = "cuiLabel4";
-            cuiLabel4.Size = new Size(162, 69);
-            cuiLabel4.TabIndex = 7;
-            cuiLabel4.VerticalAlignment = StringAlignment.Center;
-            cuiLabel4.Load += cuiLabel4_Load;
+            Edit.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.NullValue = resources.GetObject("dataGridViewCellStyle2.NullValue");
+            dataGridViewCellStyle2.Padding = new Padding(10);
+            Edit.DefaultCellStyle = dataGridViewCellStyle2;
+            Edit.FillWeight = 5.618882F;
+            Edit.HeaderText = "Edit";
+            Edit.Image = Properties.Resources.pen;
+            Edit.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            Edit.MinimumWidth = 6;
+            Edit.Name = "Edit";
+            Edit.Resizable = DataGridViewTriState.False;
             // 
-            // cuiLabel3
+            // Delete
             // 
-            cuiLabel3.BackColor = Color.Transparent;
-            cuiLabel3.Content = "Item\\ Type";
-            cuiLabel3.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            cuiLabel3.HorizontalAlignment = StringAlignment.Center;
-            cuiLabel3.Location = new Point(298, 5);
-            cuiLabel3.Margin = new Padding(4, 5, 4, 5);
-            cuiLabel3.Name = "cuiLabel3";
-            cuiLabel3.Size = new Size(179, 69);
-            cuiLabel3.TabIndex = 6;
-            cuiLabel3.VerticalAlignment = StringAlignment.Center;
+            Delete.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.NullValue = resources.GetObject("dataGridViewCellStyle3.NullValue");
+            dataGridViewCellStyle3.Padding = new Padding(10);
+            Delete.DefaultCellStyle = dataGridViewCellStyle3;
+            Delete.FillWeight = 5.618882F;
+            Delete.HeaderText = "Delete";
+            Delete.Image = Properties.Resources.delete;
+            Delete.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            Delete.MinimumWidth = 6;
+            Delete.Name = "Delete";
+            Delete.Resizable = DataGridViewTriState.False;
             // 
-            // cuiLabel2
+            // cuiTextBox1
             // 
-            cuiLabel2.BackColor = Color.Transparent;
-            cuiLabel2.Content = "Customer\\ Type:\\ Supplier\\ \\n\\|\\ Buyer";
-            cuiLabel2.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            cuiLabel2.HorizontalAlignment = StringAlignment.Center;
-            cuiLabel2.Location = new Point(94, 5);
-            cuiLabel2.Margin = new Padding(4, 5, 4, 5);
-            cuiLabel2.Name = "cuiLabel2";
-            cuiLabel2.Size = new Size(196, 75);
-            cuiLabel2.TabIndex = 5;
-            cuiLabel2.VerticalAlignment = StringAlignment.Center;
+            cuiTextBox1.BackgroundColor = Color.White;
+            cuiTextBox1.BorderColor = Color.FromArgb(16, 107, 23);
+            cuiTextBox1.Content = "";
+            cuiTextBox1.FocusBackgroundColor = Color.White;
+            cuiTextBox1.FocusBorderColor = Color.Empty;
+            cuiTextBox1.FocusImageTint = Color.White;
+            cuiTextBox1.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            cuiTextBox1.ForeColor = Color.Gray;
+            cuiTextBox1.Image = null;
+            cuiTextBox1.ImageExpand = new Point(0, 0);
+            cuiTextBox1.ImageOffset = new Point(0, 0);
+            cuiTextBox1.Location = new Point(25, 113);
+            cuiTextBox1.Margin = new Padding(4);
+            cuiTextBox1.Multiline = false;
+            cuiTextBox1.Name = "cuiTextBox1";
+            cuiTextBox1.NormalImageTint = Color.White;
+            cuiTextBox1.Padding = new Padding(20, 12, 20, 0);
+            cuiTextBox1.PasswordChar = false;
+            cuiTextBox1.PlaceholderColor = Color.Gray;
+            cuiTextBox1.PlaceholderText = "Transaction ID";
+            cuiTextBox1.Rounding = new Padding(8);
+            cuiTextBox1.Size = new Size(187, 44);
+            cuiTextBox1.TabIndex = 31;
+            cuiTextBox1.TextOffset = new Size(0, 0);
+            cuiTextBox1.UnderlinedStyle = false;
             // 
-            // cuiLabel1
+            // TransactionID
             // 
-            cuiLabel1.BackColor = Color.Transparent;
-            cuiLabel1.Content = "Date";
-            cuiLabel1.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            cuiLabel1.HorizontalAlignment = StringAlignment.Center;
-            cuiLabel1.Location = new Point(4, 5);
-            cuiLabel1.Margin = new Padding(4, 5, 4, 5);
-            cuiLabel1.Name = "cuiLabel1";
-            cuiLabel1.Size = new Size(82, 75);
-            cuiLabel1.TabIndex = 4;
-            cuiLabel1.VerticalAlignment = StringAlignment.Center;
-            cuiLabel1.Load += cuiLabel1_Load;
+            TransactionID.AutoSize = true;
+            TransactionID.BackColor = Color.FromArgb(0, 0, 0, 0);
+            TransactionID.Font = new Font("Arial", 10.2F, FontStyle.Bold);
+            TransactionID.ForeColor = Color.FromArgb(16, 107, 23);
+            TransactionID.Location = new Point(25, 90);
+            TransactionID.Name = "TransactionID";
+            TransactionID.Size = new Size(122, 19);
+            TransactionID.TabIndex = 32;
+            TransactionID.Text = "Transaction ID";
             // 
-            // cuiScrollbar1
+            // CustomerType
             // 
-            cuiScrollbar1.Background = Color.Transparent;
-            cuiScrollbar1.HoveredThumbColor = Color.FromArgb(192, 255, 106, 0);
-            cuiScrollbar1.Location = new Point(1062, 114);
-            cuiScrollbar1.Margin = new Padding(2);
-            cuiScrollbar1.MinimumSize = new Size(16, 40);
-            cuiScrollbar1.Name = "cuiScrollbar1";
-            cuiScrollbar1.PressedThumbColor = Color.FromArgb(192, 255, 106, 0);
-            cuiScrollbar1.Rounding = 5;
-            cuiScrollbar1.Size = new Size(16, 682);
-            cuiScrollbar1.TabIndex = 4;
-            cuiScrollbar1.TargetControl = null;
-            cuiScrollbar1.ThumbColor = Color.FromArgb(255, 106, 0);
-            cuiScrollbar1.ThumbHeight = 50;
+            CustomerType.AutoSize = true;
+            CustomerType.BackColor = Color.FromArgb(0, 0, 0, 0);
+            CustomerType.Font = new Font("Arial", 10.2F, FontStyle.Bold);
+            CustomerType.ForeColor = Color.FromArgb(16, 107, 23);
+            CustomerType.Location = new Point(18, 622);
+            CustomerType.Name = "CustomerType";
+            CustomerType.Size = new Size(128, 19);
+            CustomerType.TabIndex = 34;
+            CustomerType.Text = "Customer Type";
+            // 
+            // cuiTextBox2
+            // 
+            cuiTextBox2.BackgroundColor = Color.White;
+            cuiTextBox2.BorderColor = Color.FromArgb(16, 107, 23);
+            cuiTextBox2.Content = "";
+            cuiTextBox2.FocusBackgroundColor = Color.White;
+            cuiTextBox2.FocusBorderColor = Color.Empty;
+            cuiTextBox2.FocusImageTint = Color.White;
+            cuiTextBox2.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            cuiTextBox2.ForeColor = Color.Gray;
+            cuiTextBox2.Image = null;
+            cuiTextBox2.ImageExpand = new Point(0, 0);
+            cuiTextBox2.ImageOffset = new Point(0, 0);
+            cuiTextBox2.Location = new Point(18, 645);
+            cuiTextBox2.Margin = new Padding(4);
+            cuiTextBox2.Multiline = false;
+            cuiTextBox2.Name = "cuiTextBox2";
+            cuiTextBox2.NormalImageTint = Color.White;
+            cuiTextBox2.Padding = new Padding(20, 12, 20, 0);
+            cuiTextBox2.PasswordChar = false;
+            cuiTextBox2.PlaceholderColor = Color.Gray;
+            cuiTextBox2.PlaceholderText = "Item Name";
+            cuiTextBox2.Rounding = new Padding(8);
+            cuiTextBox2.Size = new Size(332, 44);
+            cuiTextBox2.TabIndex = 33;
+            cuiTextBox2.TextOffset = new Size(0, 0);
+            cuiTextBox2.UnderlinedStyle = false;
+            // 
+            // IdItem
+            // 
+            IdItem.AutoSize = true;
+            IdItem.BackColor = Color.FromArgb(0, 0, 0, 0);
+            IdItem.Font = new Font("Arial", 10.2F, FontStyle.Bold);
+            IdItem.ForeColor = Color.FromArgb(16, 107, 23);
+            IdItem.Location = new Point(220, 90);
+            IdItem.Name = "IdItem";
+            IdItem.Size = new Size(63, 19);
+            IdItem.TabIndex = 36;
+            IdItem.Text = "Item ID";
+            // 
+            // cuiTextBox3
+            // 
+            cuiTextBox3.BackgroundColor = Color.White;
+            cuiTextBox3.BorderColor = Color.FromArgb(16, 107, 23);
+            cuiTextBox3.Content = "";
+            cuiTextBox3.FocusBackgroundColor = Color.White;
+            cuiTextBox3.FocusBorderColor = Color.Empty;
+            cuiTextBox3.FocusImageTint = Color.White;
+            cuiTextBox3.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            cuiTextBox3.ForeColor = Color.Gray;
+            cuiTextBox3.Image = null;
+            cuiTextBox3.ImageExpand = new Point(0, 0);
+            cuiTextBox3.ImageOffset = new Point(0, 0);
+            cuiTextBox3.Location = new Point(220, 113);
+            cuiTextBox3.Margin = new Padding(4);
+            cuiTextBox3.Multiline = false;
+            cuiTextBox3.Name = "cuiTextBox3";
+            cuiTextBox3.NormalImageTint = Color.White;
+            cuiTextBox3.Padding = new Padding(20, 12, 20, 0);
+            cuiTextBox3.PasswordChar = false;
+            cuiTextBox3.PlaceholderColor = Color.Gray;
+            cuiTextBox3.PlaceholderText = "Item ID";
+            cuiTextBox3.Rounding = new Padding(8);
+            cuiTextBox3.Size = new Size(187, 44);
+            cuiTextBox3.TabIndex = 35;
+            cuiTextBox3.TextOffset = new Size(0, 0);
+            cuiTextBox3.UnderlinedStyle = false;
+            // 
+            // TransactionQuantity
+            // 
+            TransactionQuantity.AutoSize = true;
+            TransactionQuantity.BackColor = Color.FromArgb(0, 0, 0, 0);
+            TransactionQuantity.Font = new Font("Arial", 10.2F, FontStyle.Bold);
+            TransactionQuantity.ForeColor = Color.FromArgb(16, 107, 23);
+            TransactionQuantity.Location = new Point(415, 90);
+            TransactionQuantity.Name = "TransactionQuantity";
+            TransactionQuantity.Size = new Size(76, 19);
+            TransactionQuantity.TabIndex = 38;
+            TransactionQuantity.Text = "Quantity";
+            // 
+            // cuiTextBox4
+            // 
+            cuiTextBox4.BackgroundColor = Color.White;
+            cuiTextBox4.BorderColor = Color.FromArgb(16, 107, 23);
+            cuiTextBox4.Content = "";
+            cuiTextBox4.FocusBackgroundColor = Color.White;
+            cuiTextBox4.FocusBorderColor = Color.Empty;
+            cuiTextBox4.FocusImageTint = Color.White;
+            cuiTextBox4.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            cuiTextBox4.ForeColor = Color.Gray;
+            cuiTextBox4.Image = null;
+            cuiTextBox4.ImageExpand = new Point(0, 0);
+            cuiTextBox4.ImageOffset = new Point(0, 0);
+            cuiTextBox4.Location = new Point(415, 113);
+            cuiTextBox4.Margin = new Padding(4);
+            cuiTextBox4.Multiline = false;
+            cuiTextBox4.Name = "cuiTextBox4";
+            cuiTextBox4.NormalImageTint = Color.White;
+            cuiTextBox4.Padding = new Padding(20, 12, 20, 0);
+            cuiTextBox4.PasswordChar = false;
+            cuiTextBox4.PlaceholderColor = Color.Gray;
+            cuiTextBox4.PlaceholderText = "Quantity";
+            cuiTextBox4.Rounding = new Padding(8);
+            cuiTextBox4.Size = new Size(187, 44);
+            cuiTextBox4.TabIndex = 37;
+            cuiTextBox4.TextOffset = new Size(0, 0);
+            cuiTextBox4.UnderlinedStyle = false;
+            // 
+            // CustomerName
+            // 
+            CustomerName.AutoSize = true;
+            CustomerName.BackColor = Color.FromArgb(0, 0, 0, 0);
+            CustomerName.Font = new Font("Arial", 10.2F, FontStyle.Bold);
+            CustomerName.ForeColor = Color.FromArgb(16, 107, 23);
+            CustomerName.Location = new Point(360, 622);
+            CustomerName.Name = "CustomerName";
+            CustomerName.Size = new Size(135, 19);
+            CustomerName.TabIndex = 40;
+            CustomerName.Text = "Customer Name";
+            // 
+            // cuiTextBox5
+            // 
+            cuiTextBox5.BackgroundColor = Color.White;
+            cuiTextBox5.BorderColor = Color.FromArgb(16, 107, 23);
+            cuiTextBox5.Content = "";
+            cuiTextBox5.FocusBackgroundColor = Color.White;
+            cuiTextBox5.FocusBorderColor = Color.Empty;
+            cuiTextBox5.FocusImageTint = Color.White;
+            cuiTextBox5.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            cuiTextBox5.ForeColor = Color.Gray;
+            cuiTextBox5.Image = null;
+            cuiTextBox5.ImageExpand = new Point(0, 0);
+            cuiTextBox5.ImageOffset = new Point(0, 0);
+            cuiTextBox5.Location = new Point(360, 645);
+            cuiTextBox5.Margin = new Padding(4);
+            cuiTextBox5.Multiline = false;
+            cuiTextBox5.Name = "cuiTextBox5";
+            cuiTextBox5.NormalImageTint = Color.White;
+            cuiTextBox5.Padding = new Padding(20, 12, 20, 0);
+            cuiTextBox5.PasswordChar = false;
+            cuiTextBox5.PlaceholderColor = Color.Gray;
+            cuiTextBox5.PlaceholderText = "Item Name";
+            cuiTextBox5.Rounding = new Padding(8);
+            cuiTextBox5.Size = new Size(332, 44);
+            cuiTextBox5.TabIndex = 39;
+            cuiTextBox5.TextOffset = new Size(0, 0);
+            cuiTextBox5.UnderlinedStyle = false;
+            // 
+            // CustomerContact
+            // 
+            CustomerContact.AutoSize = true;
+            CustomerContact.BackColor = Color.FromArgb(0, 0, 0, 0);
+            CustomerContact.Font = new Font("Arial", 10.2F, FontStyle.Bold);
+            CustomerContact.ForeColor = Color.FromArgb(16, 107, 23);
+            CustomerContact.Location = new Point(704, 622);
+            CustomerContact.Name = "CustomerContact";
+            CustomerContact.Size = new Size(153, 19);
+            CustomerContact.TabIndex = 42;
+            CustomerContact.Text = "Customer Contact";
+            // 
+            // cuiTextBox6
+            // 
+            cuiTextBox6.BackgroundColor = Color.White;
+            cuiTextBox6.BorderColor = Color.FromArgb(16, 107, 23);
+            cuiTextBox6.Content = "";
+            cuiTextBox6.FocusBackgroundColor = Color.White;
+            cuiTextBox6.FocusBorderColor = Color.Empty;
+            cuiTextBox6.FocusImageTint = Color.White;
+            cuiTextBox6.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            cuiTextBox6.ForeColor = Color.Gray;
+            cuiTextBox6.Image = null;
+            cuiTextBox6.ImageExpand = new Point(0, 0);
+            cuiTextBox6.ImageOffset = new Point(0, 0);
+            cuiTextBox6.Location = new Point(704, 645);
+            cuiTextBox6.Margin = new Padding(4);
+            cuiTextBox6.Multiline = false;
+            cuiTextBox6.Name = "cuiTextBox6";
+            cuiTextBox6.NormalImageTint = Color.White;
+            cuiTextBox6.Padding = new Padding(20, 12, 20, 0);
+            cuiTextBox6.PasswordChar = false;
+            cuiTextBox6.PlaceholderColor = Color.Gray;
+            cuiTextBox6.PlaceholderText = "Item Name";
+            cuiTextBox6.Rounding = new Padding(8);
+            cuiTextBox6.Size = new Size(332, 44);
+            cuiTextBox6.TabIndex = 41;
+            cuiTextBox6.TextOffset = new Size(0, 0);
+            cuiTextBox6.UnderlinedStyle = false;
+            // 
+            // cuiButton2
+            // 
+            cuiButton2.BackColor = Color.FromArgb(0, 0, 0, 0);
+            cuiButton2.CheckButton = false;
+            cuiButton2.Checked = false;
+            cuiButton2.CheckedBackground = Color.FromArgb(255, 106, 0);
+            cuiButton2.CheckedForeColor = Color.White;
+            cuiButton2.CheckedImageTint = Color.White;
+            cuiButton2.CheckedOutline = Color.FromArgb(255, 106, 0);
+            cuiButton2.Content = "Add";
+            cuiButton2.DialogResult = DialogResult.None;
+            cuiButton2.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            cuiButton2.ForeColor = Color.White;
+            cuiButton2.HoverBackground = Color.White;
+            cuiButton2.HoveredImageTint = Color.White;
+            cuiButton2.HoverForeColor = Color.Black;
+            cuiButton2.HoverOutline = Color.FromArgb(32, 128, 128, 128);
+            cuiButton2.Image = null;
+            cuiButton2.ImageAutoCenter = true;
+            cuiButton2.ImageExpand = new Point(0, 0);
+            cuiButton2.ImageOffset = new Point(0, 0);
+            cuiButton2.Location = new Point(621, 113);
+            cuiButton2.Name = "cuiButton2";
+            cuiButton2.NormalBackground = Color.FromArgb(16, 107, 23);
+            cuiButton2.NormalForeColor = Color.White;
+            cuiButton2.NormalImageTint = Color.White;
+            cuiButton2.NormalOutline = Color.FromArgb(64, 128, 128, 128);
+            cuiButton2.OutlineThickness = 1F;
+            cuiButton2.PressedBackground = Color.WhiteSmoke;
+            cuiButton2.PressedForeColor = Color.FromArgb(32, 32, 32);
+            cuiButton2.PressedImageTint = Color.White;
+            cuiButton2.PressedOutline = Color.FromArgb(64, 128, 128, 128);
+            cuiButton2.Rounding = new Padding(8);
+            cuiButton2.Size = new Size(127, 40);
+            cuiButton2.TabIndex = 43;
+            cuiButton2.TextAlignment = StringAlignment.Center;
+            cuiButton2.TextOffset = new Point(0, 0);
+            // 
+            // cuiButton1
+            // 
+            cuiButton1.BackColor = Color.FromArgb(0, 0, 0, 0);
+            cuiButton1.CheckButton = false;
+            cuiButton1.Checked = false;
+            cuiButton1.CheckedBackground = Color.FromArgb(255, 106, 0);
+            cuiButton1.CheckedForeColor = Color.White;
+            cuiButton1.CheckedImageTint = Color.White;
+            cuiButton1.CheckedOutline = Color.FromArgb(255, 106, 0);
+            cuiButton1.Content = "Clear";
+            cuiButton1.DialogResult = DialogResult.None;
+            cuiButton1.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            cuiButton1.ForeColor = Color.White;
+            cuiButton1.HoverBackground = Color.White;
+            cuiButton1.HoveredImageTint = Color.White;
+            cuiButton1.HoverForeColor = Color.Black;
+            cuiButton1.HoverOutline = Color.FromArgb(32, 128, 128, 128);
+            cuiButton1.Image = null;
+            cuiButton1.ImageAutoCenter = true;
+            cuiButton1.ImageExpand = new Point(0, 0);
+            cuiButton1.ImageOffset = new Point(0, 0);
+            cuiButton1.Location = new Point(927, 728);
+            cuiButton1.Name = "cuiButton1";
+            cuiButton1.NormalBackground = Color.FromArgb(16, 107, 23);
+            cuiButton1.NormalForeColor = Color.White;
+            cuiButton1.NormalImageTint = Color.White;
+            cuiButton1.NormalOutline = Color.FromArgb(64, 128, 128, 128);
+            cuiButton1.OutlineThickness = 1F;
+            cuiButton1.PressedBackground = Color.WhiteSmoke;
+            cuiButton1.PressedForeColor = Color.FromArgb(32, 32, 32);
+            cuiButton1.PressedImageTint = Color.White;
+            cuiButton1.PressedOutline = Color.FromArgb(64, 128, 128, 128);
+            cuiButton1.Rounding = new Padding(8);
+            cuiButton1.Size = new Size(127, 40);
+            cuiButton1.TabIndex = 44;
+            cuiButton1.TextAlignment = StringAlignment.Center;
+            cuiButton1.TextOffset = new Point(0, 0);
+            // 
+            // cuiButton3
+            // 
+            cuiButton3.BackColor = Color.FromArgb(0, 0, 0, 0);
+            cuiButton3.CheckButton = false;
+            cuiButton3.Checked = false;
+            cuiButton3.CheckedBackground = Color.FromArgb(255, 106, 0);
+            cuiButton3.CheckedForeColor = Color.White;
+            cuiButton3.CheckedImageTint = Color.White;
+            cuiButton3.CheckedOutline = Color.FromArgb(255, 106, 0);
+            cuiButton3.Content = "Save";
+            cuiButton3.DialogResult = DialogResult.None;
+            cuiButton3.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            cuiButton3.ForeColor = Color.White;
+            cuiButton3.HoverBackground = Color.White;
+            cuiButton3.HoveredImageTint = Color.White;
+            cuiButton3.HoverForeColor = Color.Black;
+            cuiButton3.HoverOutline = Color.FromArgb(32, 128, 128, 128);
+            cuiButton3.Image = null;
+            cuiButton3.ImageAutoCenter = true;
+            cuiButton3.ImageExpand = new Point(0, 0);
+            cuiButton3.ImageOffset = new Point(0, 0);
+            cuiButton3.Location = new Point(794, 728);
+            cuiButton3.Name = "cuiButton3";
+            cuiButton3.NormalBackground = Color.FromArgb(16, 107, 23);
+            cuiButton3.NormalForeColor = Color.White;
+            cuiButton3.NormalImageTint = Color.White;
+            cuiButton3.NormalOutline = Color.FromArgb(64, 128, 128, 128);
+            cuiButton3.OutlineThickness = 1F;
+            cuiButton3.PressedBackground = Color.WhiteSmoke;
+            cuiButton3.PressedForeColor = Color.FromArgb(32, 32, 32);
+            cuiButton3.PressedImageTint = Color.White;
+            cuiButton3.PressedOutline = Color.FromArgb(64, 128, 128, 128);
+            cuiButton3.Rounding = new Padding(8);
+            cuiButton3.Size = new Size(127, 40);
+            cuiButton3.TabIndex = 45;
+            cuiButton3.TextAlignment = StringAlignment.Center;
+            cuiButton3.TextOffset = new Point(0, 0);
             // 
             // GenerateTransactionPage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(192, 255, 192);
-            Controls.Add(cuiScrollbar1);
-            Controls.Add(cuiPanel1);
+            BackColor = Color.FromArgb(227, 244, 238);
+            Controls.Add(cuiButton3);
+            Controls.Add(cuiButton1);
+            Controls.Add(cuiButton2);
+            Controls.Add(CustomerContact);
+            Controls.Add(cuiTextBox6);
+            Controls.Add(CustomerName);
+            Controls.Add(cuiTextBox5);
+            Controls.Add(TransactionQuantity);
+            Controls.Add(cuiTextBox4);
+            Controls.Add(IdItem);
+            Controls.Add(cuiTextBox3);
+            Controls.Add(CustomerType);
+            Controls.Add(cuiTextBox2);
+            Controls.Add(TransactionID);
+            Controls.Add(cuiTextBox1);
+            Controls.Add(dataGridView1);
             Controls.Add(DashboardTitlePage);
             Name = "GenerateTransactionPage";
             Size = new Size(1084, 798);
-            Load += GenerateTransactionPage_Load;
-            cuiPanel1.ResumeLayout(false);
-            cuiPanel1.PerformLayout();
-            tableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -260,17 +581,29 @@
         #endregion
 
         private Label DashboardTitlePage;
-        private CuoreUI.Controls.cuiPanel cuiPanel1;
-        private CuoreUI.Components.cuiColorPicker cuiColorPicker1;
-        private CuoreUI.Controls.cuiScrollbar cuiScrollbar1;
-        private TableLayoutPanel tableLayoutPanel1;
-        private Label label1;
-        private CuoreUI.Controls.cuiLabel cuiLabel1;
-        private CuoreUI.Controls.cuiLabel cuiLabel3;
-        private CuoreUI.Controls.cuiLabel cuiLabel2;
-        private CuoreUI.Controls.cuiLabel cuiLabel4;
-        private CuoreUI.Controls.cuiLabel cuiLabel5;
-        private CuoreUI.Controls.cuiLabel cuiLabel6;
-        private TableLayoutPanel tableLayoutPanel2;
+        private DataGridView dataGridView1;
+        private CuoreUI.Controls.cuiTextBox cuiTextBox1;
+        private Label TransactionID;
+        private Label CustomerType;
+        private CuoreUI.Controls.cuiTextBox cuiTextBox2;
+        private Label IdItem;
+        private CuoreUI.Controls.cuiTextBox cuiTextBox3;
+        private Label TransactionQuantity;
+        private CuoreUI.Controls.cuiTextBox cuiTextBox4;
+        private Label CustomerName;
+        private CuoreUI.Controls.cuiTextBox cuiTextBox5;
+        private Label CustomerContact;
+        private CuoreUI.Controls.cuiTextBox cuiTextBox6;
+        private CuoreUI.Controls.cuiButton cuiButton2;
+        private DataGridViewTextBoxColumn ItemID;
+        private DataGridViewTextBoxColumn ItemName;
+        private DataGridViewTextBoxColumn Category;
+        private DataGridViewTextBoxColumn QtyType;
+        private DataGridViewTextBoxColumn TransacQuantity;
+        private DataGridViewTextBoxColumn ExchangeAmount;
+        private DataGridViewImageColumn Edit;
+        private DataGridViewImageColumn Delete;
+        private CuoreUI.Controls.cuiButton cuiButton1;
+        private CuoreUI.Controls.cuiButton cuiButton3;
     }
 }
