@@ -12,6 +12,14 @@ namespace JunkShopInventoryandTransactionSystem
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new MainForm());
+
+            /* this error appeared here, i do not know why, probably because i renamed the widgets in
+               AddEditInventoryItem.cs, click the widgets to check em
+            //check  records page, line 52 comment
+
+               System.ObjectDisposedException: 'Cannot access a disposed object.
+               Object name: 'CuoreUI.Controls.cuiComboBox'.'
+            */
         }
     }
 }

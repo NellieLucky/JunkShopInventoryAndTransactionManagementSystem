@@ -36,5 +36,15 @@ namespace JunkShopInventoryandTransactionSystem.View
             MainForm.MainPanel.Controls.Add(loginpage);
             loginpage.Show();
         }
+
+        private void SendLinkButton_Click(object sender, EventArgs e)
+        {
+            NewPasswordPage newPasswordPage = new NewPasswordPage();
+            newPasswordPage.Dock = DockStyle.Fill;
+            newPasswordPage.TopLevel = false;
+            MainForm.MainPanel.Controls.Clear();
+            MainForm.MainPanel.Controls.Add(newPasswordPage);
+            newPasswordPage.Show();
+        }
     }
 }
