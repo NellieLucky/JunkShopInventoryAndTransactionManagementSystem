@@ -12,13 +12,8 @@
       }
     ],
     "additionalProbingPaths": [
-<<<<<<< HEAD
-      "C:\\Users\\Remo\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\Remo\\.nuget\\packages",
-=======
-      "C:\\Users\\Beetoy\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\Beetoy\\.nuget\\packages",
->>>>>>> LoginAuthB.E
+      "C:\\Users\\HP\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\HP\\.nuget\\packages",
       "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
     ],
     "configProperties": {
