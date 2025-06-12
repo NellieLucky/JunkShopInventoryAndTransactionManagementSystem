@@ -105,9 +105,8 @@ namespace JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel
                 if (addSuccess) // Only clear and close if the item was added successfully
                 {
                     TextBox_ofItemNameLabel.Content = string.Empty;
-                    // WILL CHECK IF THIS IS WORKING LATER
-                    QtyTypeComboBox.Text = string.Empty;    //this isnt working
-                    QtyTypeComboBox.Text = string.Empty;    //this isnt working too
+                    QtyTypeComboBox.Text = string.Empty;
+                    QtyTypeComboBox.Text = string.Empty;
                     TextBox_ofQtyLabel.Content = string.Empty;      
                     TextBox_ofBuyingPriceLabel.Content = string.Empty;
                     TextBox_ofSellingPriceLabel.Content = string.Empty;

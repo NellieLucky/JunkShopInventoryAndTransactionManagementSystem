@@ -302,4 +302,60 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
     }
     // end of InventoryEdit
 
+    // inventory delete
+    public class InventoryDelete
+    {
+        private string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+
+        public SqlConnection GetConnection()
+        {
+            return new SqlConnection(connectionString);
+        }
+
+        public void DeleteItemFromInventory(int itemId)
+        {
+            string query = "DELETE FROM Inventory WHERE itemId = @itemId;";
+            using (SqlConnection conn = GetConnection())
+            {
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@itemId", itemId);
+                    try
+                    {
+                        conn.Open();
+                        int rowsAffected = cmd.ExecuteNonQuery();
+
+                        // Inform the user via MessageBox
+                        MessageBox.Show(
+                            $"{rowsAffected} row(s) deleted successfully.",
+                            "Deletion Result",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information
+                        );
+                    }
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show(
+                            "Database error during DeleteItemFromInventory:\n" + ex.Message,
+                            "SQL Error",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error
+                        );
+                        throw new Exception("An error occurred while deleting the item from the database.", ex);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(
+                            "An unexpected error occurred:\n" + ex.Message,
+                            "Unexpected Error",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error
+                        );
+                        throw;
+                    }
+                }
+            }
+        }
+    }
+    //end of inventory delete
 }
