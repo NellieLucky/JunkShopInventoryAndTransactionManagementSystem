@@ -30,9 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewPasswordPage));
             cuiPanel1 = new CuoreUI.Controls.cuiPanel();
+            VerifyTokenLabel = new Label();
+            cuiPanel4 = new CuoreUI.Controls.cuiPanel();
+            VerifyTokenTextBox = new CuoreUI.Controls.cuiTextBox();
             label1 = new Label();
             cuiPanel2 = new CuoreUI.Controls.cuiPanel();
-            cuiTextBox1 = new CuoreUI.Controls.cuiTextBox();
+            ConfirmPasswordTextBox = new CuoreUI.Controls.cuiTextBox();
             UpdatePass_Button = new CuoreUI.Controls.cuiButton();
             PasswordLabel = new Label();
             cuiPanel3 = new CuoreUI.Controls.cuiPanel();
@@ -41,6 +44,7 @@
             codeeloGradientPanel1 = new CodeeloUI.Controls.CodeeloGradientPanel();
             cuiPictureBox1 = new CuoreUI.Controls.cuiPictureBox();
             cuiPanel1.SuspendLayout();
+            cuiPanel4.SuspendLayout();
             cuiPanel2.SuspendLayout();
             cuiPanel3.SuspendLayout();
             codeeloGradientPanel1.SuspendLayout();
@@ -49,75 +53,135 @@
             // cuiPanel1
             // 
             cuiPanel1.BackColor = Color.FromArgb(0, 0, 0, 0);
+            cuiPanel1.Controls.Add(VerifyTokenLabel);
+            cuiPanel1.Controls.Add(cuiPanel4);
             cuiPanel1.Controls.Add(label1);
             cuiPanel1.Controls.Add(cuiPanel2);
             cuiPanel1.Controls.Add(UpdatePass_Button);
             cuiPanel1.Controls.Add(PasswordLabel);
             cuiPanel1.Controls.Add(cuiPanel3);
             cuiPanel1.Controls.Add(SignInLabel);
-            cuiPanel1.Location = new Point(420, 0);
+            cuiPanel1.Location = new Point(368, 0);
             cuiPanel1.Margin = new Padding(0);
             cuiPanel1.Name = "cuiPanel1";
             cuiPanel1.OutlineThickness = 1F;
             cuiPanel1.PanelColor = Color.White;
             cuiPanel1.PanelOutlineColor = Color.Empty;
             cuiPanel1.Rounding = new Padding(0, 50, 50, 0);
-            cuiPanel1.Size = new Size(980, 800);
+            cuiPanel1.Size = new Size(858, 600);
             cuiPanel1.TabIndex = 0;
+            // 
+            // VerifyTokenLabel
+            // 
+            VerifyTokenLabel.AutoSize = true;
+            VerifyTokenLabel.Font = new Font("Arial", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            VerifyTokenLabel.ForeColor = Color.FromArgb(16, 107, 23);
+            VerifyTokenLabel.Location = new Point(161, 122);
+            VerifyTokenLabel.Name = "VerifyTokenLabel";
+            VerifyTokenLabel.Size = new Size(161, 29);
+            VerifyTokenLabel.TabIndex = 12;
+            VerifyTokenLabel.Text = "Verify Token:";
+            // 
+            // cuiPanel4
+            // 
+            cuiPanel4.Controls.Add(VerifyTokenTextBox);
+            cuiPanel4.Location = new Point(159, 150);
+            cuiPanel4.Margin = new Padding(3, 2, 3, 2);
+            cuiPanel4.Name = "cuiPanel4";
+            cuiPanel4.OutlineThickness = 1F;
+            cuiPanel4.PanelColor = Color.Green;
+            cuiPanel4.PanelOutlineColor = Color.Green;
+            cuiPanel4.Rounding = new Padding(24);
+            cuiPanel4.Size = new Size(563, 56);
+            cuiPanel4.TabIndex = 11;
+            // 
+            // VerifyTokenTextBox
+            // 
+            VerifyTokenTextBox.AutoScroll = true;
+            VerifyTokenTextBox.AutoValidate = AutoValidate.EnablePreventFocusChange;
+            VerifyTokenTextBox.BackgroundColor = Color.White;
+            VerifyTokenTextBox.BorderColor = Color.Green;
+            VerifyTokenTextBox.Content = "";
+            VerifyTokenTextBox.FocusBackgroundColor = Color.White;
+            VerifyTokenTextBox.FocusBorderColor = Color.Green;
+            VerifyTokenTextBox.FocusImageTint = Color.Empty;
+            VerifyTokenTextBox.Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            VerifyTokenTextBox.ForeColor = Color.Black;
+            VerifyTokenTextBox.Image = null;
+            VerifyTokenTextBox.ImageExpand = new Point(0, 0);
+            VerifyTokenTextBox.ImageOffset = new Point(0, 0);
+            VerifyTokenTextBox.ImeMode = ImeMode.Off;
+            VerifyTokenTextBox.Location = new Point(2, 2);
+            VerifyTokenTextBox.Margin = new Padding(0);
+            VerifyTokenTextBox.Multiline = false;
+            VerifyTokenTextBox.Name = "VerifyTokenTextBox";
+            VerifyTokenTextBox.NormalImageTint = Color.White;
+            VerifyTokenTextBox.Padding = new Padding(19, 16, 19, 0);
+            VerifyTokenTextBox.PasswordChar = false;
+            VerifyTokenTextBox.PlaceholderColor = Color.Gray;
+            VerifyTokenTextBox.PlaceholderText = "Enter your reset token...";
+            VerifyTokenTextBox.Rounding = new Padding(24);
+            VerifyTokenTextBox.Size = new Size(558, 51);
+            VerifyTokenTextBox.TabIndex = 2;
+            VerifyTokenTextBox.TextOffset = new Size(0, 0);
+            VerifyTokenTextBox.UnderlinedStyle = false;
+            VerifyTokenTextBox.ContentChanged += VerifyTokenTextBox_ContentChanged;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Arial", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.FromArgb(16, 107, 23);
-            label1.Location = new Point(184, 378);
+            label1.Location = new Point(161, 333);
             label1.Name = "label1";
-            label1.Size = new Size(291, 35);
+            label1.Size = new Size(232, 29);
             label1.TabIndex = 10;
             label1.Text = "Confirm Password:";
             // 
             // cuiPanel2
             // 
-            cuiPanel2.Controls.Add(cuiTextBox1);
-            cuiPanel2.Location = new Point(182, 416);
+            cuiPanel2.Controls.Add(ConfirmPasswordTextBox);
+            cuiPanel2.Location = new Point(159, 361);
+            cuiPanel2.Margin = new Padding(3, 2, 3, 2);
             cuiPanel2.Name = "cuiPanel2";
             cuiPanel2.OutlineThickness = 1F;
             cuiPanel2.PanelColor = Color.Green;
             cuiPanel2.PanelOutlineColor = Color.Green;
             cuiPanel2.Rounding = new Padding(24);
-            cuiPanel2.Size = new Size(643, 75);
+            cuiPanel2.Size = new Size(563, 56);
             cuiPanel2.TabIndex = 9;
             // 
-            // cuiTextBox1
+            // ConfirmPasswordTextBox
             // 
-            cuiTextBox1.AutoScroll = true;
-            cuiTextBox1.AutoValidate = AutoValidate.EnablePreventFocusChange;
-            cuiTextBox1.BackgroundColor = Color.White;
-            cuiTextBox1.BorderColor = Color.Green;
-            cuiTextBox1.Content = "";
-            cuiTextBox1.FocusBackgroundColor = Color.White;
-            cuiTextBox1.FocusBorderColor = Color.Green;
-            cuiTextBox1.FocusImageTint = Color.Empty;
-            cuiTextBox1.Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            cuiTextBox1.ForeColor = Color.Black;
-            cuiTextBox1.Image = null;
-            cuiTextBox1.ImageExpand = new Point(0, 0);
-            cuiTextBox1.ImageOffset = new Point(0, 0);
-            cuiTextBox1.ImeMode = ImeMode.Off;
-            cuiTextBox1.Location = new Point(2, 3);
-            cuiTextBox1.Margin = new Padding(0);
-            cuiTextBox1.Multiline = false;
-            cuiTextBox1.Name = "cuiTextBox1";
-            cuiTextBox1.NormalImageTint = Color.White;
-            cuiTextBox1.Padding = new Padding(23, 23, 23, 0);
-            cuiTextBox1.PasswordChar = true;
-            cuiTextBox1.PlaceholderColor = Color.Gray;
-            cuiTextBox1.PlaceholderText = "Re-enter your password...";
-            cuiTextBox1.Rounding = new Padding(24);
-            cuiTextBox1.Size = new Size(638, 68);
-            cuiTextBox1.TabIndex = 2;
-            cuiTextBox1.TextOffset = new Size(0, 0);
-            cuiTextBox1.UnderlinedStyle = false;
+            ConfirmPasswordTextBox.AutoScroll = true;
+            ConfirmPasswordTextBox.AutoValidate = AutoValidate.EnablePreventFocusChange;
+            ConfirmPasswordTextBox.BackgroundColor = Color.White;
+            ConfirmPasswordTextBox.BorderColor = Color.Green;
+            ConfirmPasswordTextBox.Content = "";
+            ConfirmPasswordTextBox.FocusBackgroundColor = Color.White;
+            ConfirmPasswordTextBox.FocusBorderColor = Color.Green;
+            ConfirmPasswordTextBox.FocusImageTint = Color.Empty;
+            ConfirmPasswordTextBox.Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            ConfirmPasswordTextBox.ForeColor = Color.Black;
+            ConfirmPasswordTextBox.Image = null;
+            ConfirmPasswordTextBox.ImageExpand = new Point(0, 0);
+            ConfirmPasswordTextBox.ImageOffset = new Point(0, 0);
+            ConfirmPasswordTextBox.ImeMode = ImeMode.Off;
+            ConfirmPasswordTextBox.Location = new Point(2, 2);
+            ConfirmPasswordTextBox.Margin = new Padding(0);
+            ConfirmPasswordTextBox.Multiline = false;
+            ConfirmPasswordTextBox.Name = "ConfirmPasswordTextBox";
+            ConfirmPasswordTextBox.NormalImageTint = Color.White;
+            ConfirmPasswordTextBox.Padding = new Padding(19, 16, 19, 0);
+            ConfirmPasswordTextBox.PasswordChar = false;
+            ConfirmPasswordTextBox.PlaceholderColor = Color.Gray;
+            ConfirmPasswordTextBox.PlaceholderText = "Re-enter your password...";
+            ConfirmPasswordTextBox.Rounding = new Padding(24);
+            ConfirmPasswordTextBox.Size = new Size(558, 51);
+            ConfirmPasswordTextBox.TabIndex = 2;
+            ConfirmPasswordTextBox.TextOffset = new Size(0, 0);
+            ConfirmPasswordTextBox.UnderlinedStyle = false;
+            ConfirmPasswordTextBox.ContentChanged += ConfirmPasswordTextBox_ContentChanged;
             // 
             // UpdatePass_Button
             // 
@@ -139,7 +203,8 @@
             UpdatePass_Button.ImageAutoCenter = true;
             UpdatePass_Button.ImageExpand = new Point(0, 0);
             UpdatePass_Button.ImageOffset = new Point(0, 0);
-            UpdatePass_Button.Location = new Point(184, 540);
+            UpdatePass_Button.Location = new Point(161, 450);
+            UpdatePass_Button.Margin = new Padding(3, 2, 3, 2);
             UpdatePass_Button.Name = "UpdatePass_Button";
             UpdatePass_Button.NormalBackground = Color.FromArgb(7, 96, 14);
             UpdatePass_Button.NormalForeColor = Color.White;
@@ -151,7 +216,7 @@
             UpdatePass_Button.PressedImageTint = Color.White;
             UpdatePass_Button.PressedOutline = Color.FromArgb(64, 128, 128, 128);
             UpdatePass_Button.Rounding = new Padding(24);
-            UpdatePass_Button.Size = new Size(641, 79);
+            UpdatePass_Button.Size = new Size(561, 59);
             UpdatePass_Button.TabIndex = 7;
             UpdatePass_Button.TextAlignment = StringAlignment.Center;
             UpdatePass_Button.TextOffset = new Point(0, 0);
@@ -162,22 +227,23 @@
             PasswordLabel.AutoSize = true;
             PasswordLabel.Font = new Font("Arial", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             PasswordLabel.ForeColor = Color.FromArgb(16, 107, 23);
-            PasswordLabel.Location = new Point(184, 234);
+            PasswordLabel.Location = new Point(161, 225);
             PasswordLabel.Name = "PasswordLabel";
-            PasswordLabel.Size = new Size(241, 35);
+            PasswordLabel.Size = new Size(189, 29);
             PasswordLabel.TabIndex = 6;
             PasswordLabel.Text = "New Password:";
             // 
             // cuiPanel3
             // 
             cuiPanel3.Controls.Add(PasswordTextBox);
-            cuiPanel3.Location = new Point(182, 272);
+            cuiPanel3.Location = new Point(159, 253);
+            cuiPanel3.Margin = new Padding(3, 2, 3, 2);
             cuiPanel3.Name = "cuiPanel3";
             cuiPanel3.OutlineThickness = 1F;
             cuiPanel3.PanelColor = Color.Green;
             cuiPanel3.PanelOutlineColor = Color.Green;
             cuiPanel3.Rounding = new Padding(24);
-            cuiPanel3.Size = new Size(643, 75);
+            cuiPanel3.Size = new Size(563, 56);
             cuiPanel3.TabIndex = 4;
             // 
             // PasswordTextBox
@@ -196,29 +262,30 @@
             PasswordTextBox.ImageExpand = new Point(0, 0);
             PasswordTextBox.ImageOffset = new Point(0, 0);
             PasswordTextBox.ImeMode = ImeMode.Off;
-            PasswordTextBox.Location = new Point(2, 3);
+            PasswordTextBox.Location = new Point(2, 2);
             PasswordTextBox.Margin = new Padding(0);
             PasswordTextBox.Multiline = false;
             PasswordTextBox.Name = "PasswordTextBox";
             PasswordTextBox.NormalImageTint = Color.White;
-            PasswordTextBox.Padding = new Padding(23, 23, 23, 0);
-            PasswordTextBox.PasswordChar = true;
+            PasswordTextBox.Padding = new Padding(19, 16, 19, 0);
+            PasswordTextBox.PasswordChar = false;
             PasswordTextBox.PlaceholderColor = Color.Gray;
             PasswordTextBox.PlaceholderText = "Enter a new password...";
             PasswordTextBox.Rounding = new Padding(24);
-            PasswordTextBox.Size = new Size(638, 68);
+            PasswordTextBox.Size = new Size(558, 51);
             PasswordTextBox.TabIndex = 2;
             PasswordTextBox.TextOffset = new Size(0, 0);
             PasswordTextBox.UnderlinedStyle = false;
+            PasswordTextBox.ContentChanged += PasswordTextBox_ContentChanged;
             // 
             // SignInLabel
             // 
             SignInLabel.AutoSize = true;
             SignInLabel.Font = new Font("Arial", 28.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             SignInLabel.ForeColor = Color.FromArgb(16, 107, 23);
-            SignInLabel.Location = new Point(172, 132);
+            SignInLabel.Location = new Point(144, 58);
             SignInLabel.Name = "SignInLabel";
-            SignInLabel.Size = new Size(484, 55);
+            SignInLabel.Size = new Size(388, 45);
             SignInLabel.TabIndex = 0;
             SignInLabel.Text = "Set a New Password";
             // 
@@ -241,8 +308,9 @@
             codeeloGradientPanel1.GradientBorderDirection = System.Drawing.Drawing2D.LinearGradientMode.Horizontal;
             codeeloGradientPanel1.GradientDirection = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             codeeloGradientPanel1.Location = new Point(-1, 0);
+            codeeloGradientPanel1.Margin = new Padding(3, 2, 3, 2);
             codeeloGradientPanel1.Name = "codeeloGradientPanel1";
-            codeeloGradientPanel1.Size = new Size(1418, 848);
+            codeeloGradientPanel1.Size = new Size(1241, 636);
             codeeloGradientPanel1.TabIndex = 1;
             // 
             // cuiPictureBox1
@@ -250,29 +318,31 @@
             cuiPictureBox1.BackColor = Color.FromArgb(0, 0, 0, 0);
             cuiPictureBox1.Content = (Image)resources.GetObject("cuiPictureBox1.Content");
             cuiPictureBox1.ImageTint = Color.White;
-            cuiPictureBox1.Location = new Point(89, 261);
-            cuiPictureBox1.Margin = new Padding(4, 5, 4, 5);
+            cuiPictureBox1.Location = new Point(78, 196);
+            cuiPictureBox1.Margin = new Padding(4);
             cuiPictureBox1.Name = "cuiPictureBox1";
             cuiPictureBox1.OutlineThickness = 1F;
             cuiPictureBox1.PanelOutlineColor = Color.Empty;
             cuiPictureBox1.Rotation = 0;
             cuiPictureBox1.Rounding = new Padding(125);
-            cuiPictureBox1.Size = new Size(250, 250);
+            cuiPictureBox1.Size = new Size(219, 188);
             cuiPictureBox1.TabIndex = 1;
             // 
             // NewPasswordPage
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1400, 800);
+            ClientSize = new Size(1225, 600);
             ControlBox = false;
             Controls.Add(codeeloGradientPanel1);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(3, 2, 3, 2);
             MaximizeBox = false;
             Name = "NewPasswordPage";
             Text = "NewPasswordPage";
             cuiPanel1.ResumeLayout(false);
             cuiPanel1.PerformLayout();
+            cuiPanel4.ResumeLayout(false);
             cuiPanel2.ResumeLayout(false);
             cuiPanel3.ResumeLayout(false);
             codeeloGradientPanel1.ResumeLayout(false);
@@ -284,7 +354,7 @@
         private CuoreUI.Controls.cuiPanel cuiPanel1;
         private Label label1;
         private CuoreUI.Controls.cuiPanel cuiPanel2;
-        private CuoreUI.Controls.cuiTextBox cuiTextBox1;
+        private CuoreUI.Controls.cuiTextBox ConfirmPasswordTextBox;
         private CuoreUI.Controls.cuiButton UpdatePass_Button;
         private Label PasswordLabel;
         private CuoreUI.Controls.cuiPanel cuiPanel3;
@@ -292,5 +362,8 @@
         private Label SignInLabel;
         private CodeeloUI.Controls.CodeeloGradientPanel codeeloGradientPanel1;
         private CuoreUI.Controls.cuiPictureBox cuiPictureBox1;
+        private Label VerifyTokenLabel;
+        private CuoreUI.Controls.cuiPanel cuiPanel4;
+        private CuoreUI.Controls.cuiTextBox VerifyTokenTextBox;
     }
 }
