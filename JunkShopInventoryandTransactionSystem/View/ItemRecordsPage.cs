@@ -1,4 +1,9 @@
 ﻿
+//imports delete here
+using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Delete;
+
+//imports the backend file ReloadInventory.cs
+using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Reload;
 using JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel;
 using System;
 using System.Collections.Generic;
@@ -9,9 +14,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
-//imports the backend file ReloadInventory.cs
-using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Reload;
 
 namespace JunkShopInventoryandTransactionSystem.View
 {
@@ -63,22 +65,53 @@ namespace JunkShopInventoryandTransactionSystem.View
             }
         }
 
-
         // Eto yung para sa Edit Delete naka img siya, bale eto yung lalagyan ng logic for edit and delete
         private void ItemRecordsTable_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            // Check if the clicked cell is an image column
+            // if e.ColumnIndex value is 8 then its Delete
+            // if e.ColumnIndex value is 7 then its Edit
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
+                // Get the itemID from the appropriate cell (e.g., column 0)
+                // Get the current row using e.RowIndex
+                DataGridViewRow selectedRow = ItemRecordsTable.Rows[e.RowIndex];
+                int itemId = Convert.ToInt32(selectedRow.Cells["itemID"].Value);
 
-                // Check if the clicked cell is an image column
                 if (ItemRecordsTable.Columns[e.ColumnIndex] is DataGridViewImageColumn)
                 {
-                    MessageBox.Show($"Image clicked in row {e.RowIndex}");
-                    // Perform delete or edit action here
-                }
+                    if (e.ColumnIndex == 7)
+                    {
+                        //calls the add edit window
+                        if (addEditInventoryItemDialogBox == null || addEditInventoryItemDialogBox.IsDisposed) // Check if it's already open  
+                        {
+                            string value = "Edit"; // Set the mode to "Edit"
 
+                            //pass the data grid view to allow refreshing of inventory after adding/editing an item
+                            addEditInventoryItemDialogBox = new AddEditInventoryItem(value, ItemRecordsTable, itemId);
+                            addEditInventoryItemDialogBox.Show();
+                        }
+                        else
+                        {
+                            addEditInventoryItemDialogBox.Focus(); // Bring existing form to front 
+                        }
+                    }   // shows a temporary messagebox.show for delete confirmation
+                    else if (e.ColumnIndex == 8)
+                    {
+                        // since theres no frontend for the deletion confirmation
+                        // temporary messagebox.show for now
+                        // handles all the logic inside this method
+                        bool itemDeleteSuccess = DeleteItemInInventory.HandleDeleteItem(itemId, ItemRecordsTable);
+
+                        if (itemDeleteSuccess) 
+                        {
+                            // if true then reload the inventory data
+                        } // else do nothing
+                    }
+                }
                 else
                 {
+                    //empty for now
                 }
             }
         }

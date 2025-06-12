@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 //imports the backend file AddToInventory.cs
+using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud;
 using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Add;
 using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Edit;
 
@@ -20,17 +21,18 @@ namespace JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel
         // will hold the value passed to the constructor
         private string value;
         private DataGridView _targetDataGridView;
+        private int? itemId; // This will hold the item ID if editing
+        //added ? to make it nullable, useful for edit mode as per gpt
 
-        private int itemId; // This will hold the item ID if editing
-
+        // constructor for Add function only
         // Modified constructor to accept the DataGridView
         public AddEditInventoryItem(string value, DataGridView dgv)
         {
             InitializeComponent();
-            // Store the passed DataGridView instance
-            _targetDataGridView = dgv;
 
             this.value = value;
+            // Store the passed DataGridView instance
+            _targetDataGridView = dgv;
 
             // checks the value
             if (this.value == "Add")
@@ -39,6 +41,23 @@ namespace JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel
                 DashboardTitlePage.Text = "Add Item";
                 AddEditButton.Content = "Add Item";
             }
+            else
+            {
+                // for checking
+                DashboardTitlePage.Text = "ADD ERROR DO NOT PROCEED";
+                AddEditButton.Content = "ERROR DO NOT CLICK-INFORM BACK-ENDERS IMMEDIATELY";
+            }
+            
+        }
+
+        // constructor for Edit function only
+        public AddEditInventoryItem(string value, DataGridView dgv, int itemId)
+        {
+            InitializeComponent();
+
+            this.value = value;     //receives "Edit"
+            _targetDataGridView = dgv;  // receives the grid view to allow refresh after editing
+            this.itemId = itemId;   //receives the item ID to edit
 
             if (this.value == "Edit")
             {
@@ -46,24 +65,33 @@ namespace JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel
                 DashboardTitlePage.Text = "Edit Item";
                 AddEditButton.Content = "Edit Item";
             }
+            else
+            {
+                // for checking
+                DashboardTitlePage.Text = "EDIT ERROR DO NOT PROCEED";
+                AddEditButton.Content = "ERROR DO NOT CLICK-INFORM BACK-ENDERS IMMEDIATELY";
+            }
+
+            LoadItemDetails();
         }
 
         private void AddEditButton_Click(object sender, EventArgs e)
         {
-            //stores the values of the widgets in variables
-            string itemName = TextBox_ofItemNameLabel.Content;
-
-            string itemCategory = CategoryComboBox.SelectedItem as string ?? string.Empty;
-            string itemQtyType = QtyTypeComboBox.SelectedItem as string ?? string.Empty;
-
-            string STRitemQuantity = TextBox_ofQtyLabel.Content;
-            string STRitemBuyingPrice = TextBox_ofBuyingPriceLabel.Content;
-            string STRitemSellingPrice = TextBox_ofSellingPriceLabel.Content;
-
             if (AddEditButton.Content == "Add Item")
             {
+                //moved them here to ensure they are only executed when adding an item
+                //stores the values of the widgets in variables
+                string itemName = TextBox_ofItemNameLabel.Content;
+
+                string itemCategory = CategoryComboBox.SelectedItem as string ?? string.Empty;
+                string itemQtyType = QtyTypeComboBox.SelectedItem as string ?? string.Empty;
+
+                string STRitemQuantity = TextBox_ofQtyLabel.Content;
+                string STRitemBuyingPrice = TextBox_ofBuyingPriceLabel.Content;
+                string STRitemSellingPrice = TextBox_ofSellingPriceLabel.Content;
+
                 // passes the values of the widgets to the AddToInventoryHandler 
-                bool success = AddToInventory.HandleAddItem(
+                bool addSuccess = AddToInventory.HandleAddItem(
                     itemName,
                     itemCategory,
                     itemQtyType,
@@ -74,48 +102,75 @@ namespace JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel
                 );
 
                 //clear the input fields after adding and close the window
-                if (success) // Only clear and close if the item was added successfully
+                if (addSuccess) // Only clear and close if the item was added successfully
                 {
                     TextBox_ofItemNameLabel.Content = string.Empty;
                     QtyTypeComboBox.Text = string.Empty;
-                    QtyTypeComboBox.Text = string.Empty;    //this isnt working
-                    TextBox_ofQtyLabel.Content = string.Empty;      //this isnt working too
+                    QtyTypeComboBox.Text = string.Empty;
+                    TextBox_ofQtyLabel.Content = string.Empty;      
                     TextBox_ofBuyingPriceLabel.Content = string.Empty;
                     TextBox_ofSellingPriceLabel.Content = string.Empty;
 
                     //Closes the form
                     this.Close();
                 }
+                else
+                {
+                    // added this for checking incase of error
+                    MessageBox.Show("Cannot add item: Unknown Error.", "Add Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            /*
             else if (AddEditButton.Content == "Edit Item")
             {
-                // 
-                // For editing, you'll typically need an ID of the item being edited.
-                // This ID would usually be passed to this dialog when it's opened in "Edit" mode,
-                // or stored in a private field of the AddEditInventoryItem form.
-                int itemIdToEdit = GetItemIdFromForm(); // Placeholder: You need to implement this
-
-                if (itemIdToEdit == 0) // Basic check: Ensure you have an ID to edit
+                if (itemId.HasValue)
                 {
-                    MessageBox.Show("Cannot edit item: Item ID not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                    string upName = TextBox_ofItemNameLabel.Content;
+                    string upCat = CategoryComboBox.Text;
+                    string upQtyT = QtyTypeComboBox.Text;
+                    string upQty = TextBox_ofQtyLabel.Content;
+                    string upBuy = TextBox_ofBuyingPriceLabel.Content;
+                    string upSell = TextBox_ofSellingPriceLabel.Content;
+
+                    bool success = EditInventory.HandleEditItem(
+                        itemId.Value, upName, upCat, upQtyT, upQty, upBuy, upSell, _targetDataGridView
+                    );
+
+                    if (success)
+                    {
+                        //closes the form
+                        Close();
+                    }
+                    else
+                    {
+                        // Handle validation errors inside HandleEditItem
+                    }
                 }
-
-                // Assuming you have an InventoryCrud class with an UpdateItem method
-                InventoryEdit edit = new InventoryEdit();
-
-                // Call the UpdateItem method, passing the ID and all six variables
-                edit.UpdateItem(itemIdToEdit, itemName, itemCategory, itemQtyType, itemQuantity, itemBuyingPrice, itemSellingPrice);
-
-                MessageBox.Show("Item updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            */
             else
             {
                 MessageBox.Show("Unknown button state: " + AddEditButton.Text, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+        }
+        private void LoadItemDetails()
+        {
+            if (!itemId.HasValue) return;
+            InventoryItem? item = new InventoryRead().GetOneInventoryItem(itemId.Value);
+
+            if (item == null)
+            {
+                MessageBox.Show("Item not found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Close();
+                return;
+            }
+
+            // Populate widgets using .Text, not .Content
+            TextBox_ofItemNameLabel.Content = item.itemName;
+            CategoryComboBox.Text = item.itemCategory;
+            QtyTypeComboBox.Text = item.itemQtyType;
+            TextBox_ofQtyLabel.Content = item.itemQuantity.ToString();
+            TextBox_ofBuyingPriceLabel.Content = item.itemBuyingPrice.ToString();
+            TextBox_ofSellingPriceLabel.Content = item.itemSellingPrice.ToString();
         }
 
         // Close Button

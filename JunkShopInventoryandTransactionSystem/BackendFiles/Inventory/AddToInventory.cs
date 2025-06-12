@@ -18,37 +18,38 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Add
             string itemNameContent,
             string itemCategorySelectedItem,
             string itemQtyTypeSelectedItem,
-            string strItemQuantity,
-            string strItemBuyingPrice,
-            string strItemSellingPrice,
+            string itemQuantity,
+            string itemBuyingPrice,
+            string itemSellingPrice,
             DataGridView targetDataGridView) // Pass the DataGridView to refresh
         {
-            // --- Retrieve String Values ---
-            // (These are now parameters to the method)
-            string itemName = itemNameContent;
-            string itemCategory = itemCategorySelectedItem;
-            string itemQtyType = itemQtyTypeSelectedItem;
+            //updated the validation for cleaner version
+            // --- Retrieve and Trim the Values to remove the spaces ---
+            string itemName = itemNameContent.Trim();
+            string itemCategory = itemCategorySelectedItem.Trim();
+            string itemQtyType = itemQtyTypeSelectedItem.Trim();
 
-            string STRitemQuantity = strItemQuantity;
-            string STRitemBuyingPrice = strItemBuyingPrice;
-            string STRitemSellingPrice = strItemSellingPrice;
+            string STRitemQuantity = itemQuantity.Trim();
+            string STRitemBuyingPrice = itemBuyingPrice.Trim();
+            string STRitemSellingPrice = itemSellingPrice.Trim();
 
-            // --- Parse to correct types ---
-            int itemQuantity;
-            int itemBuyingPrice;
-            int itemSellingPrice;
+            // where to store them after converting them
+            // Declare converted integer variables with different names
+            int parsedItemQuantity;
+            int parsedItemBuyingPrice;
+            int parsedItemSellingPrice;
 
             // --- Validation ---
             bool isValidInput = true;
             string errorMessage = "";
 
-            //validation for strings
+            // String validations
             if (string.IsNullOrWhiteSpace(itemName))
             {
                 errorMessage += "Item Name cannot be empty.\n";
                 isValidInput = false;
             }
-            if (string.IsNullOrWhiteSpace(itemCategory) || itemCategory == "None")
+            if (string.IsNullOrWhiteSpace(itemCategory) || itemCategory.Equals("None", StringComparison.OrdinalIgnoreCase))
             {
                 errorMessage += "Item Category cannot be empty or 'None'.\n";
                 isValidInput = false;
@@ -58,53 +59,39 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Add
                 errorMessage += "Quantity Type cannot be empty.\n";
                 isValidInput = false;
             }
-            //end of validation for strings
 
-            //validation for integers
-            if (!int.TryParse(STRitemQuantity, out itemQuantity) || itemQuantity <= 0)
+            // Integer validations using single TryParse
+            bool parsedQty = int.TryParse(STRitemQuantity, out parsedItemQuantity);
+            if (!parsedQty || parsedItemQuantity <= 0)
             {
-                if (!int.TryParse(STRitemQuantity, out itemQuantity))
-                {
-                    errorMessage += "Invalid quantity entered. Please enter a whole number.\n";
-                }
-                else
-                {
-                    errorMessage += "Quantity must be greater than zero.\n";
-                }
+                errorMessage += !parsedQty
+                    ? "Invalid quantity entered. Please enter a whole number.\n"
+                    : "Quantity must be greater than zero.\n";
                 isValidInput = false;
             }
 
-            if (!int.TryParse(STRitemBuyingPrice, out itemBuyingPrice) || itemBuyingPrice < 0)
+            bool parsedBuying = int.TryParse(STRitemBuyingPrice, out parsedItemBuyingPrice);
+            if (!parsedBuying || parsedItemBuyingPrice < 0)
             {
-                if (!int.TryParse(STRitemBuyingPrice, out itemBuyingPrice))
-                {
-                    errorMessage += "Invalid buying price entered. Please enter a whole number.\n";
-                }
-                else
-                {
-                    errorMessage += "Buying price cannot be negative.\n";
-                }
+                errorMessage += !parsedBuying
+                    ? "Invalid buying price entered. Please enter a whole number.\n"
+                    : "Buying price cannot be negative.\n";
                 isValidInput = false;
             }
 
-            if (!int.TryParse(STRitemSellingPrice, out itemSellingPrice) || itemSellingPrice < 0)
+            bool parsedSelling = int.TryParse(STRitemSellingPrice, out parsedItemSellingPrice);
+            if (!parsedSelling || parsedItemSellingPrice < 0)
             {
-                if (!int.TryParse(STRitemSellingPrice, out itemSellingPrice))
-                {
-                    errorMessage += "Invalid selling price entered. Please enter a whole number.\n";
-                }
-                else
-                {
-                    errorMessage += "Selling price cannot be negative.\n";
-                }
+                errorMessage += !parsedSelling
+                    ? "Invalid selling price entered. Please enter a whole number.\n"
+                    : "Selling price cannot be negative.\n";
                 isValidInput = false;
             }
-            //end of validation for integers
 
             if (!isValidInput)
             {
                 MessageBox.Show(errorMessage, "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false; // returns immediately if any of the validation fails
+                return false;
             }
 
             // --- If validation passes, proceed with adding the item ---
@@ -112,15 +99,15 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Add
                 itemName,
                 itemCategory,
                 itemQtyType,
-                itemQuantity,
-                itemBuyingPrice,
-                itemSellingPrice
+                parsedItemQuantity,
+                parsedItemBuyingPrice,
+                parsedItemSellingPrice
             );
 
             InventoryAdd add = new InventoryAdd();
             add.AddItemToInventory(newItem);
 
-            MessageBox.Show("Item added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Item added successfully!", "Item Addition Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             // --- Reload DataGridView ---
             if (targetDataGridView != null)
