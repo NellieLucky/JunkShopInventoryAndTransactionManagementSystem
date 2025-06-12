@@ -155,6 +155,7 @@
             EmailTextBox.TabIndex = 2;
             EmailTextBox.TextOffset = new Size(0, 0);
             EmailTextBox.UnderlinedStyle = false;
+            EmailTextBox.ContentChanged += EmailTextBox_ContentChanged;
             // 
             // SendLinkButton
             // 

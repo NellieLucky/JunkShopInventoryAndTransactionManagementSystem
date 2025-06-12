@@ -27,7 +27,11 @@ namespace JunkShopInventoryandTransactionSystem
 
                 // Combine Employee and Management tables for authentication
                 string query = @"
-                    SELECT TOP 1 empEmail FROM Employees WHERE empEmail = @Email AND empPassword = @Password";
+                    SELECT TOP 1 empEmail FROM Employees 
+                    WHERE empEmail = @Email AND empPassword = @Password
+                    UNION ALL   
+                    SELECT TOP 1 admEmail FROM Management 
+                    WHERE admEmail = @Email AND admPassword = @Password";
                 //TOP 1 is used to limit the result to one record, as we only need to check if a match exists.
                 using (SqlCommand cmd = new SqlCommand(query, connect))
                 {

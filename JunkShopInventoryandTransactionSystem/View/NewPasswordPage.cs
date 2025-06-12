@@ -16,9 +16,8 @@ namespace JunkShopInventoryandTransactionSystem.View
     {
         //private readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Beetoy\source\repos\JunkShopInventoryandTransactionSystem\Users.mdf;Integrated Security=True";
         //arnel's connstring
-        private readonly string connectionString = @"Data Source = (LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\source\repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkshopDB.mdf;Integrated Security = True";
 
-        private static int attemptCount = 0; // Track the number of attempts
+        private readonly string connectionString = @"Data Source = (LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\source\repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkshopDB.mdf;Integrated Security = True";
 
         public NewPasswordPage()
         {
@@ -27,7 +26,6 @@ namespace JunkShopInventoryandTransactionSystem.View
         protected override void OnFormClosed(FormClosedEventArgs e)
         {
             base.OnFormClosed(e);
-            attemptCount = 0;
         }
         private void UpdatePass_Button_Click(object sender, EventArgs e)
         {
@@ -51,18 +49,38 @@ namespace JunkShopInventoryandTransactionSystem.View
             {
                 connect.Open();
 
-                string query = @"SELECT TOP 1 empEmail FROM Employees WHERE token = @Token";
                 string? email = null;
+                string? userType = null; // "Employee" or "Admin"
 
-                using (SqlCommand selectCmd = new SqlCommand(query, connect))
+                // Check Employees table
+                string empQuery = @"SELECT TOP 1 empEmail FROM Employees WHERE token = @Token";
+                using (SqlCommand empCmd = new SqlCommand(empQuery, connect))
                 {
-                    selectCmd.Parameters.AddWithValue("@Token", token);
-
-                    using (SqlDataReader reader = selectCmd.ExecuteReader())
+                    empCmd.Parameters.AddWithValue("@Token", token);
+                    using (SqlDataReader reader = empCmd.ExecuteReader())
                     {
                         if (reader.Read())
                         {
                             email = reader["empEmail"].ToString();
+                            userType = "Employee";
+                        }
+                    }
+                }
+
+                // If not found in Employees, check Management
+                if (string.IsNullOrEmpty(email))
+                {
+                    string admQuery = @"SELECT TOP 1 admEmail FROM Management WHERE admToken = @Token";
+                    using (SqlCommand admCmd = new SqlCommand(admQuery, connect))
+                    {
+                        admCmd.Parameters.AddWithValue("@Token", token);
+                        using (SqlDataReader reader = admCmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                email = reader["admEmail"].ToString();
+                                userType = "Admin";
+                            }
                         }
                     }
                 }
@@ -74,7 +92,11 @@ namespace JunkShopInventoryandTransactionSystem.View
                     return;
                 }
 
-                string update = "UPDATE Employees SET empPassword = @Password, token = NULL WHERE empEmail = @Email";
+                // Update the appropriate table
+                string update = userType == "Employee"
+                    ? "UPDATE Employees SET empPassword = @Password, token = NULL WHERE empEmail = @Email"
+                    : "UPDATE Management SET admPassword = @Password, admToken = NULL WHERE admEmail = @Email";
+
                 using (SqlCommand cmd = new SqlCommand(update, connect))
                 {
                     cmd.Parameters.AddWithValue("@Password", newPassword);

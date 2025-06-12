@@ -17,10 +17,10 @@ namespace JunkShopInventoryandTransactionSystem.View
     public partial class ForgotPasswordPage : Form
     {
         //private readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Beetoy\source\repos\JunkShopInventoryandTransactionSystem\Users.mdf;Integrated Security=True";
-        
+
         //arnel's connstring
         private readonly string connectionString = @"Data Source = (LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\source\repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkshopDB.mdf;Integrated Security = True";
-       
+
         public ForgotPasswordPage()
         {
             InitializeComponent();
@@ -51,27 +51,42 @@ namespace JunkShopInventoryandTransactionSystem.View
             using (SqlConnection connect = new SqlConnection(connectionString))
             {
                 connect.Open();
-                string query = @"SELECT TOP 1 empEmail FROM Employees WHERE empEmail = @Email";
-                using (SqlCommand cmd = new SqlCommand(query, connect))
+
+                string[] queries = {
+                    "SELECT TOP 1 empEmail FROM Employees WHERE empEmail = @Email",
+                    "SELECT TOP 1 admEmail FROM Management WHERE admEmail = @Email"
+                };
+
+                foreach (var query in queries)
                 {
-                    cmd.Parameters.AddWithValue("@Email", email);
-                    object result = cmd.ExecuteScalar();
-                    return result != null;
+                    using (SqlCommand cmd = new SqlCommand(query, connect))
+                    {
+                        cmd.Parameters.Add("@Email", SqlDbType.VarChar).Value = email;
+                        object result = cmd.ExecuteScalar();
+                        if (result != null)
+                        {
+                            return true;
+                        }
+                    }
                 }
+                return false;
             }
         }
 
         private void SendLinkButton_Click(object sender, EventArgs e)
         {
-            string email = EmailTextBox.Content.ToLower();
+            string email = EmailTextBox.Content.Trim().ToLower();
 
             if (string.IsNullOrEmpty(email))
             {
                 MessageBox.Show("Please enter your email address.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
             try
             {
+                var validEmail = new MailAddress(email);
+
                 if (IsEmailRegistered(email))
                 {
                     string token = Guid.NewGuid().ToString();
@@ -83,7 +98,6 @@ namespace JunkShopInventoryandTransactionSystem.View
 
                     SmtpClient client = new SmtpClient("smtp.gmail.com", 587)
                     {
-                        Port = 587,
                         Credentials = new NetworkCredential("junkshopinventorysystem@gmail.com", "wazb rivy ncad fdxq"),
                         EnableSsl = true,
                     };
@@ -113,11 +127,31 @@ namespace JunkShopInventoryandTransactionSystem.View
             {
                 connect.Open();
 
-                string query = "UPDATE Employees SET token = @Token WHERE empEmail = @Email";
-                using (SqlCommand cmd = new SqlCommand(query, connect))
+                string employeeCheck = "SELECT COUNT(*) FROM Employees WHERE empEmail = @Email";
+                using (SqlCommand checkCmd = new SqlCommand(employeeCheck, connect))
                 {
-                    cmd.Parameters.AddWithValue("@Token", token);
-                    cmd.Parameters.AddWithValue("@Email", email);
+                    checkCmd.Parameters.Add("@Email", SqlDbType.VarChar).Value = email;
+                    int count = (int)checkCmd.ExecuteScalar();
+
+                    if (count > 0)
+                    {
+                        string updateEmp = "UPDATE Employees SET token = @Token WHERE empEmail = @Email";
+                        using (SqlCommand cmd = new SqlCommand(updateEmp, connect))
+                        {
+                            cmd.Parameters.Add("@Token", SqlDbType.VarChar).Value = token;
+                            cmd.Parameters.Add("@Email", SqlDbType.VarChar).Value = email;
+                            cmd.ExecuteNonQuery();
+                            return;
+                        }
+                    }
+                }
+
+                // If not found in Employees, update Management
+                string updateAdm = "UPDATE Management SET admToken = @Token WHERE admEmail = @Email";
+                using (SqlCommand cmd = new SqlCommand(updateAdm, connect))
+                {
+                    cmd.Parameters.Add("@Token", SqlDbType.VarChar).Value = token;
+                    cmd.Parameters.Add("@Email", SqlDbType.VarChar).Value = email;
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -125,6 +159,7 @@ namespace JunkShopInventoryandTransactionSystem.View
 
         private void EmailTextBox_ContentChanged(object sender, EventArgs e)
         {
+
         }
     }
 }
