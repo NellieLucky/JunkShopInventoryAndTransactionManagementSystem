@@ -1,10 +1,8 @@
 ﻿
-//imports delete here
-using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Delete;
-
 //imports the backend file ReloadInventory.cs
 using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Reload;
 using JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel;
+using JunkShopInventoryandTransactionSystem.View.DeletionDialogs;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,6 +18,7 @@ namespace JunkShopInventoryandTransactionSystem.View
     public partial class ItemRecordsPage : UserControl
     {
         private AddEditInventoryItem addEditInventoryItemDialogBox = null!; // Initialize with null-forgiving operator 
+        private DeleteItemDialogBox deleteItemDialogBox = null!;
 
         //placed that in a backend file named as ReloadInventory.cs
 
@@ -98,15 +97,17 @@ namespace JunkShopInventoryandTransactionSystem.View
                     }   // shows a temporary messagebox.show for delete confirmation
                     else if (e.ColumnIndex == 8)
                     {
-                        // since theres no frontend for the deletion confirmation
-                        // temporary messagebox.show for now
-                        // handles all the logic inside this method
-                        bool itemDeleteSuccess = DeleteItemInInventory.HandleDeleteItem(itemId, ItemRecordsTable);
-
-                        if (itemDeleteSuccess) 
+                        //calls the add edit window
+                        if (deleteItemDialogBox == null || deleteItemDialogBox.IsDisposed)
                         {
-                            // if true then reload the inventory data
-                        } // else do nothing
+                            deleteItemDialogBox = new DeleteItemDialogBox(itemId, ItemRecordsTable);
+                            deleteItemDialogBox.Show();
+                        }
+                        else
+                        {
+                            deleteItemDialogBox.Focus(); // Bring to front if it's already open
+                        }
+                        
                     }
                 }
                 else
