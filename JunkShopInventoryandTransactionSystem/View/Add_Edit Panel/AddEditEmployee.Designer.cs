@@ -354,7 +354,6 @@
             DashboardTitlePage.Size = new Size(268, 43);
             DashboardTitlePage.TabIndex = 32;
             DashboardTitlePage.Text = "Add Employee";
-            DashboardTitlePage.Click += this.DashboardTitlePage_Click;
             // 
             // cuiTextBox2
             // 

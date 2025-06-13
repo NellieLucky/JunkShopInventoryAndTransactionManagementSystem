@@ -227,3 +227,4 @@ C:\Users\Sandara Fillartos\Source\Repos\JunkShopInventoryAndTransaction Manageme
 C:\Users\Sandara Fillartos\Source\Repos\JunkShopInventoryAndTransaction ManagementSystem\JunkShopInventoryandTransactionSystem\obj\Debug\net8.0-windows\JunkShopInventoryandTransactionSystem.pdb
 C:\Users\Sandara Fillartos\Source\Repos\JunkShopInventoryAndTransaction ManagementSystem\JunkShopInventoryandTransactionSystem\obj\Debug\net8.0-windows\JunkShopInventoryandTransactionSystem.genruntimeconfig.cache
 C:\Users\Sandara Fillartos\Source\Repos\JunkShopInventoryAndTransaction ManagementSystem\JunkShopInventoryandTransactionSystem\obj\Debug\net8.0-windows\ref\JunkShopInventoryandTransactionSystem.dll
+C:\Users\Sandara Fillartos\Source\Repos\JunkShopInventoryAndTransaction ManagementSystem\JunkShopInventoryandTransactionSystem\obj\Debug\net8.0-windows\JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel.AddEditEmployee.resources

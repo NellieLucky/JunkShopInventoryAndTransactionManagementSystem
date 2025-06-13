@@ -54,12 +54,12 @@
             // 
             DashboardTitlePage.AutoSize = true;
             DashboardTitlePage.BackColor = Color.FromArgb(0, 0, 0, 0);
-            DashboardTitlePage.Font = new Font("Arial", 18F, FontStyle.Bold);
-            DashboardTitlePage.ForeColor = Color.FromArgb(0, 157, 209);
+            DashboardTitlePage.Font = new Font("Arial", 24F, FontStyle.Bold);
+            DashboardTitlePage.ForeColor = Color.FromArgb(16, 107, 23);
             DashboardTitlePage.Location = new Point(19, 28);
             DashboardTitlePage.Margin = new Padding(4, 0, 4, 0);
             DashboardTitlePage.Name = "DashboardTitlePage";
-            DashboardTitlePage.Size = new Size(373, 43);
+            DashboardTitlePage.Size = new Size(500, 56);
             DashboardTitlePage.TabIndex = 5;
             DashboardTitlePage.Text = "Transaction Records";
             // 
@@ -86,7 +86,7 @@
             dataGridView1.EditMode = DataGridViewEditMode.EditProgrammatically;
             dataGridView1.EnableHeadersVisualStyles = false;
             dataGridView1.GridColor = Color.FromArgb(99, 99, 99);
-            dataGridView1.Location = new Point(19, 75);
+            dataGridView1.Location = new Point(19, 102);
             dataGridView1.Margin = new Padding(4);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
@@ -106,7 +106,7 @@
             dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle3;
             dataGridView1.RowTemplate.Height = 50;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(1320, 850);
+            dataGridView1.Size = new Size(1320, 795);
             dataGridView1.TabIndex = 31;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick_1;
             // 
@@ -166,7 +166,7 @@
             BackColor = Color.FromArgb(227, 244, 238);
             Controls.Add(dataGridView1);
             Controls.Add(DashboardTitlePage);
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             Name = "TransactionRecordsPage";
             Size = new Size(1355, 998);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();

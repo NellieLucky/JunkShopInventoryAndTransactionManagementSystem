@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle21 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle24 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle25 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle22 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GenerateTransactionPage));
-            DataGridViewCellStyle dataGridViewCellStyle23 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DashboardTitlePage = new Label();
             dataGridView1 = new DataGridView();
             ItemID = new DataGridViewTextBoxColumn();
@@ -66,12 +66,12 @@
             // 
             DashboardTitlePage.AutoSize = true;
             DashboardTitlePage.BackColor = Color.FromArgb(0, 0, 0, 0);
-            DashboardTitlePage.Font = new Font("Arial", 18F, FontStyle.Bold);
-            DashboardTitlePage.ForeColor = Color.FromArgb(0, 157, 209);
+            DashboardTitlePage.Font = new Font("Arial", 24F, FontStyle.Bold);
+            DashboardTitlePage.ForeColor = Color.FromArgb(16, 107, 23);
             DashboardTitlePage.Location = new Point(31, 32);
             DashboardTitlePage.Margin = new Padding(4, 0, 4, 0);
             DashboardTitlePage.Name = "DashboardTitlePage";
-            DashboardTitlePage.Size = new Size(386, 43);
+            DashboardTitlePage.Size = new Size(516, 56);
             DashboardTitlePage.TabIndex = 6;
             DashboardTitlePage.Text = "Generate Transaction";
             // 
@@ -84,14 +84,14 @@
             dataGridView1.BackgroundColor = Color.White;
             dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.SunkenHorizontal;
             dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle21.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle21.BackColor = Color.FromArgb(163, 244, 215);
-            dataGridViewCellStyle21.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle21.ForeColor = Color.Black;
-            dataGridViewCellStyle21.SelectionBackColor = Color.FromArgb(163, 244, 215);
-            dataGridViewCellStyle21.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle21.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(163, 244, 215);
+            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(163, 244, 215);
+            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.ColumnHeadersHeight = 60;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { ItemID, ItemName, Category, QtyType, TransacQuantity, ExchangeAmount, Edit, Delete });
@@ -99,23 +99,23 @@
             dataGridView1.EnableHeadersVisualStyles = false;
             dataGridView1.GridColor = Color.FromArgb(99, 99, 99);
             dataGridView1.Location = new Point(18, 219);
-            dataGridView1.Margin = new Padding(4, 4, 4, 4);
+            dataGridView1.Margin = new Padding(4);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle24.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle24.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle24.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle24.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle24.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle24.WrapMode = DataGridViewTriState.True;
-            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.RowHeadersWidth = 50;
-            dataGridViewCellStyle25.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle25.ForeColor = Color.Black;
-            dataGridViewCellStyle25.SelectionBackColor = Color.FromArgb(0, 157, 209);
-            dataGridViewCellStyle25.WrapMode = DataGridViewTriState.True;
-            dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle5.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle5.ForeColor = Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(0, 157, 209);
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
             dataGridView1.RowTemplate.Height = 50;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.Size = new Size(1320, 526);
@@ -170,10 +170,10 @@
             // Edit
             // 
             Edit.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle22.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle22.NullValue = resources.GetObject("dataGridViewCellStyle22.NullValue");
-            dataGridViewCellStyle22.Padding = new Padding(10);
-            Edit.DefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.NullValue = resources.GetObject("dataGridViewCellStyle2.NullValue");
+            dataGridViewCellStyle2.Padding = new Padding(10);
+            Edit.DefaultCellStyle = dataGridViewCellStyle2;
             Edit.FillWeight = 5.618882F;
             Edit.HeaderText = "Edit";
             Edit.Image = Properties.Resources.pen;
@@ -185,10 +185,10 @@
             // Delete
             // 
             Delete.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle23.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle23.NullValue = resources.GetObject("dataGridViewCellStyle23.NullValue");
-            dataGridViewCellStyle23.Padding = new Padding(10);
-            Delete.DefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.NullValue = resources.GetObject("dataGridViewCellStyle3.NullValue");
+            dataGridViewCellStyle3.Padding = new Padding(10);
+            Delete.DefaultCellStyle = dataGridViewCellStyle3;
             Delete.FillWeight = 5.618882F;
             Delete.HeaderText = "Delete";
             Delete.Image = Properties.Resources.delete;
@@ -211,7 +211,7 @@
             cuiTextBox1.ImageExpand = new Point(0, 0);
             cuiTextBox1.ImageOffset = new Point(0, 0);
             cuiTextBox1.Location = new Point(31, 141);
-            cuiTextBox1.Margin = new Padding(5, 5, 5, 5);
+            cuiTextBox1.Margin = new Padding(5);
             cuiTextBox1.Multiline = false;
             cuiTextBox1.Name = "cuiTextBox1";
             cuiTextBox1.NormalImageTint = Color.White;
@@ -265,7 +265,7 @@
             cuiTextBox2.ImageExpand = new Point(0, 0);
             cuiTextBox2.ImageOffset = new Point(0, 0);
             cuiTextBox2.Location = new Point(22, 806);
-            cuiTextBox2.Margin = new Padding(5, 5, 5, 5);
+            cuiTextBox2.Margin = new Padding(5);
             cuiTextBox2.Multiline = false;
             cuiTextBox2.Name = "cuiTextBox2";
             cuiTextBox2.NormalImageTint = Color.White;
@@ -306,7 +306,7 @@
             cuiTextBox3.ImageExpand = new Point(0, 0);
             cuiTextBox3.ImageOffset = new Point(0, 0);
             cuiTextBox3.Location = new Point(275, 141);
-            cuiTextBox3.Margin = new Padding(5, 5, 5, 5);
+            cuiTextBox3.Margin = new Padding(5);
             cuiTextBox3.Multiline = false;
             cuiTextBox3.Name = "cuiTextBox3";
             cuiTextBox3.NormalImageTint = Color.White;
@@ -347,7 +347,7 @@
             cuiTextBox4.ImageExpand = new Point(0, 0);
             cuiTextBox4.ImageOffset = new Point(0, 0);
             cuiTextBox4.Location = new Point(519, 141);
-            cuiTextBox4.Margin = new Padding(5, 5, 5, 5);
+            cuiTextBox4.Margin = new Padding(5);
             cuiTextBox4.Multiline = false;
             cuiTextBox4.Name = "cuiTextBox4";
             cuiTextBox4.NormalImageTint = Color.White;
@@ -388,7 +388,7 @@
             cuiTextBox5.ImageExpand = new Point(0, 0);
             cuiTextBox5.ImageOffset = new Point(0, 0);
             cuiTextBox5.Location = new Point(450, 806);
-            cuiTextBox5.Margin = new Padding(5, 5, 5, 5);
+            cuiTextBox5.Margin = new Padding(5);
             cuiTextBox5.Multiline = false;
             cuiTextBox5.Name = "cuiTextBox5";
             cuiTextBox5.NormalImageTint = Color.White;
@@ -429,7 +429,7 @@
             cuiTextBox6.ImageExpand = new Point(0, 0);
             cuiTextBox6.ImageOffset = new Point(0, 0);
             cuiTextBox6.Location = new Point(880, 806);
-            cuiTextBox6.Margin = new Padding(5, 5, 5, 5);
+            cuiTextBox6.Margin = new Padding(5);
             cuiTextBox6.Multiline = false;
             cuiTextBox6.Name = "cuiTextBox6";
             cuiTextBox6.NormalImageTint = Color.White;
@@ -465,7 +465,7 @@
             cuiButton2.ImageExpand = new Point(0, 0);
             cuiButton2.ImageOffset = new Point(0, 0);
             cuiButton2.Location = new Point(776, 141);
-            cuiButton2.Margin = new Padding(4, 4, 4, 4);
+            cuiButton2.Margin = new Padding(4);
             cuiButton2.Name = "cuiButton2";
             cuiButton2.NormalBackground = Color.FromArgb(0, 157, 209);
             cuiButton2.NormalForeColor = Color.White;
@@ -504,7 +504,7 @@
             cuiButton1.ImageExpand = new Point(0, 0);
             cuiButton1.ImageOffset = new Point(0, 0);
             cuiButton1.Location = new Point(1159, 910);
-            cuiButton1.Margin = new Padding(4, 4, 4, 4);
+            cuiButton1.Margin = new Padding(4);
             cuiButton1.Name = "cuiButton1";
             cuiButton1.NormalBackground = Color.White;
             cuiButton1.NormalForeColor = Color.Black;
@@ -543,7 +543,7 @@
             cuiButton3.ImageExpand = new Point(0, 0);
             cuiButton3.ImageOffset = new Point(0, 0);
             cuiButton3.Location = new Point(992, 910);
-            cuiButton3.Margin = new Padding(4, 4, 4, 4);
+            cuiButton3.Margin = new Padding(4);
             cuiButton3.Name = "cuiButton3";
             cuiButton3.NormalBackground = Color.FromArgb(0, 157, 209);
             cuiButton3.NormalForeColor = Color.White;
@@ -582,7 +582,7 @@
             Controls.Add(cuiTextBox1);
             Controls.Add(dataGridView1);
             Controls.Add(DashboardTitlePage);
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             Name = "GenerateTransactionPage";
             Size = new Size(1355, 998);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
