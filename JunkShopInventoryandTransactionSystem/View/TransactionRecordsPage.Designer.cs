@@ -106,7 +106,7 @@
             dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle3;
             dataGridView1.RowTemplate.Height = 50;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(1320, 795);
+            dataGridView1.Size = new Size(1320, 830);
             dataGridView1.TabIndex = 31;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick_1;
             // 
