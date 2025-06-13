@@ -17,7 +17,9 @@ namespace JunkShopInventoryandTransactionSystem
             InitializeComponent();
         }
 
+        private void BuyerRec_Click(object sender, EventArgs e)
+        {
 
-
+        }
     }
 }

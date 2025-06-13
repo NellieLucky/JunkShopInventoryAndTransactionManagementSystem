@@ -15,6 +15,10 @@ namespace JunkShopInventoryandTransactionSystem.View
         public CustomerRecordsPage()
         {
             InitializeComponent();
+            CustomerPanel.Controls.Clear();
+            var BuyerRecordsPage = new BuyerRecordsPage();
+            BuyerRecordsPage.Dock = DockStyle.Fill;
+            CustomerPanel.Controls.Add(BuyerRecordsPage);
         }
 
         private void SupplierButton_Click(object sender, EventArgs e)

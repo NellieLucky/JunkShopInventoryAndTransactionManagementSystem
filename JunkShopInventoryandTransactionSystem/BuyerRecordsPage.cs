@@ -16,5 +16,10 @@ namespace JunkShopInventoryandTransactionSystem
         {
             InitializeComponent();
         }
+
+        private void DashboardTitlePage_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
