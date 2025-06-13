@@ -209,3 +209,5 @@ C:\Users\Beetoy\source\repos\JunkShopInventoryandTransactionSystem\obj\Debug\net
 C:\Users\Beetoy\source\repos\JunkShopInventoryandTransactionSystem\obj\Debug\net8.0-windows\JunkShopInventoryandTransactionSystem.pdb
 C:\Users\Beetoy\source\repos\JunkShopInventoryandTransactionSystem\obj\Debug\net8.0-windows\JunkShopInventoryandTransactionSystem.genruntimeconfig.cache
 C:\Users\Beetoy\source\repos\JunkShopInventoryandTransactionSystem\obj\Debug\net8.0-windows\ref\JunkShopInventoryandTransactionSystem.dll
+C:\Users\HP\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\obj\Debug\net8.0-windows\JunkShopInventoryandTransactionSystem.View.AdminSignUpPage.resources
+C:\Users\HP\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\obj\Debug\net8.0-windows\JunkShopInventoryandTransactionSystem.View.DeletionDialogs.DeleteItemDialogBox.resources

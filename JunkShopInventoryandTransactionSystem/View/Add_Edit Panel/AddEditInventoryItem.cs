@@ -40,6 +40,8 @@ namespace JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel
                 //replaces the dashboard title and button with "Add Item"
                 DashboardTitlePage.Text = "Add Item";
                 AddEditButton.Content = "Add Item";
+                this.Text = "Add Item";
+                this.Icon = Icon.FromHandle(Properties.Resources.add.GetHicon());
             }
             else
             {
@@ -64,6 +66,8 @@ namespace JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel
                 //replaces the dashboard title and button with "Edit Item" 
                 DashboardTitlePage.Text = "Edit Item";
                 AddEditButton.Content = "Edit Item";
+                this.Text = "Edit Item";
+                this.Icon = Icon.FromHandle(Properties.Resources.pen.GetHicon());
             }
             else
             {
