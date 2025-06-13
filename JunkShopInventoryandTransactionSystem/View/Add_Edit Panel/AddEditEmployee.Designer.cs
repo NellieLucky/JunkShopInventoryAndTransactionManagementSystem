@@ -122,9 +122,9 @@
             label4.Location = new Point(30, 122);
             label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
-            label4.Size = new Size(308, 24);
+            label4.Size = new Size(109, 24);
             label4.TabIndex = 31;
-            label4.Text = "JunkShop Account Password";
+            label4.Text = "Password";
             // 
             // label2
             // 
@@ -377,7 +377,7 @@
             cuiTextBox2.Padding = new Padding(24, 15, 24, 0);
             cuiTextBox2.PasswordChar = false;
             cuiTextBox2.PlaceholderColor = Color.Gray;
-            cuiTextBox2.PlaceholderText = "JunkShop Account Password";
+            cuiTextBox2.PlaceholderText = "Password";
             cuiTextBox2.Rounding = new Padding(8);
             cuiTextBox2.Size = new Size(415, 55);
             cuiTextBox2.TabIndex = 35;
