@@ -66,11 +66,12 @@
             // 
             DashboardTitlePage.AutoSize = true;
             DashboardTitlePage.BackColor = Color.FromArgb(0, 0, 0, 0);
-            DashboardTitlePage.Font = new Font("Arial", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            DashboardTitlePage.ForeColor = Color.FromArgb(16, 107, 23);
-            DashboardTitlePage.Location = new Point(25, 26);
+            DashboardTitlePage.Font = new Font("Arial", 18F, FontStyle.Bold);
+            DashboardTitlePage.ForeColor = Color.FromArgb(0, 157, 209);
+            DashboardTitlePage.Location = new Point(31, 32);
+            DashboardTitlePage.Margin = new Padding(4, 0, 4, 0);
             DashboardTitlePage.Name = "DashboardTitlePage";
-            DashboardTitlePage.Size = new Size(422, 46);
+            DashboardTitlePage.Size = new Size(386, 43);
             DashboardTitlePage.TabIndex = 6;
             DashboardTitlePage.Text = "Generate Transaction";
             // 
@@ -84,11 +85,11 @@
             dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.SunkenHorizontal;
             dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Sunken;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(16, 107, 23);
-            dataGridViewCellStyle1.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(16, 107, 23);
-            dataGridViewCellStyle1.SelectionForeColor = Color.White;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(163, 244, 215);
+            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(163, 244, 215);
+            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.ColumnHeadersHeight = 60;
@@ -97,7 +98,8 @@
             dataGridView1.EditMode = DataGridViewEditMode.EditProgrammatically;
             dataGridView1.EnableHeadersVisualStyles = false;
             dataGridView1.GridColor = Color.FromArgb(99, 99, 99);
-            dataGridView1.Location = new Point(14, 175);
+            dataGridView1.Location = new Point(18, 219);
+            dataGridView1.Margin = new Padding(4, 4, 4, 4);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -109,14 +111,14 @@
             dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.RowHeadersWidth = 50;
-            dataGridViewCellStyle5.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle5.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dataGridViewCellStyle5.ForeColor = Color.Black;
             dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(0, 157, 209);
             dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
             dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
             dataGridView1.RowTemplate.Height = 50;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(1056, 421);
+            dataGridView1.Size = new Size(1320, 526);
             dataGridView1.TabIndex = 30;
             // 
             // ItemID
@@ -208,17 +210,17 @@
             cuiTextBox1.Image = null;
             cuiTextBox1.ImageExpand = new Point(0, 0);
             cuiTextBox1.ImageOffset = new Point(0, 0);
-            cuiTextBox1.Location = new Point(25, 113);
-            cuiTextBox1.Margin = new Padding(4);
+            cuiTextBox1.Location = new Point(31, 141);
+            cuiTextBox1.Margin = new Padding(5, 5, 5, 5);
             cuiTextBox1.Multiline = false;
             cuiTextBox1.Name = "cuiTextBox1";
             cuiTextBox1.NormalImageTint = Color.White;
-            cuiTextBox1.Padding = new Padding(20, 12, 20, 0);
+            cuiTextBox1.Padding = new Padding(24, 15, 24, 0);
             cuiTextBox1.PasswordChar = false;
             cuiTextBox1.PlaceholderColor = Color.Gray;
             cuiTextBox1.PlaceholderText = "Transaction ID";
             cuiTextBox1.Rounding = new Padding(8);
-            cuiTextBox1.Size = new Size(187, 44);
+            cuiTextBox1.Size = new Size(234, 55);
             cuiTextBox1.TabIndex = 31;
             cuiTextBox1.TextOffset = new Size(0, 0);
             cuiTextBox1.UnderlinedStyle = false;
@@ -229,9 +231,10 @@
             TransactionID.BackColor = Color.FromArgb(0, 0, 0, 0);
             TransactionID.Font = new Font("Arial", 10.2F, FontStyle.Bold);
             TransactionID.ForeColor = Color.FromArgb(16, 107, 23);
-            TransactionID.Location = new Point(25, 90);
+            TransactionID.Location = new Point(31, 112);
+            TransactionID.Margin = new Padding(4, 0, 4, 0);
             TransactionID.Name = "TransactionID";
-            TransactionID.Size = new Size(122, 19);
+            TransactionID.Size = new Size(155, 24);
             TransactionID.TabIndex = 32;
             TransactionID.Text = "Transaction ID";
             // 
@@ -241,9 +244,10 @@
             CustomerType.BackColor = Color.FromArgb(0, 0, 0, 0);
             CustomerType.Font = new Font("Arial", 10.2F, FontStyle.Bold);
             CustomerType.ForeColor = Color.FromArgb(16, 107, 23);
-            CustomerType.Location = new Point(18, 622);
+            CustomerType.Location = new Point(22, 778);
+            CustomerType.Margin = new Padding(4, 0, 4, 0);
             CustomerType.Name = "CustomerType";
-            CustomerType.Size = new Size(128, 19);
+            CustomerType.Size = new Size(162, 24);
             CustomerType.TabIndex = 34;
             CustomerType.Text = "Customer Type";
             // 
@@ -260,17 +264,17 @@
             cuiTextBox2.Image = null;
             cuiTextBox2.ImageExpand = new Point(0, 0);
             cuiTextBox2.ImageOffset = new Point(0, 0);
-            cuiTextBox2.Location = new Point(18, 645);
-            cuiTextBox2.Margin = new Padding(4);
+            cuiTextBox2.Location = new Point(22, 806);
+            cuiTextBox2.Margin = new Padding(5, 5, 5, 5);
             cuiTextBox2.Multiline = false;
             cuiTextBox2.Name = "cuiTextBox2";
             cuiTextBox2.NormalImageTint = Color.White;
-            cuiTextBox2.Padding = new Padding(20, 12, 20, 0);
+            cuiTextBox2.Padding = new Padding(25, 15, 25, 0);
             cuiTextBox2.PasswordChar = false;
             cuiTextBox2.PlaceholderColor = Color.Gray;
             cuiTextBox2.PlaceholderText = "Item Name";
             cuiTextBox2.Rounding = new Padding(8);
-            cuiTextBox2.Size = new Size(332, 44);
+            cuiTextBox2.Size = new Size(415, 55);
             cuiTextBox2.TabIndex = 33;
             cuiTextBox2.TextOffset = new Size(0, 0);
             cuiTextBox2.UnderlinedStyle = false;
@@ -281,9 +285,10 @@
             IdItem.BackColor = Color.FromArgb(0, 0, 0, 0);
             IdItem.Font = new Font("Arial", 10.2F, FontStyle.Bold);
             IdItem.ForeColor = Color.FromArgb(16, 107, 23);
-            IdItem.Location = new Point(220, 90);
+            IdItem.Location = new Point(275, 112);
+            IdItem.Margin = new Padding(4, 0, 4, 0);
             IdItem.Name = "IdItem";
-            IdItem.Size = new Size(63, 19);
+            IdItem.Size = new Size(79, 24);
             IdItem.TabIndex = 36;
             IdItem.Text = "Item ID";
             // 
@@ -300,17 +305,17 @@
             cuiTextBox3.Image = null;
             cuiTextBox3.ImageExpand = new Point(0, 0);
             cuiTextBox3.ImageOffset = new Point(0, 0);
-            cuiTextBox3.Location = new Point(220, 113);
-            cuiTextBox3.Margin = new Padding(4);
+            cuiTextBox3.Location = new Point(275, 141);
+            cuiTextBox3.Margin = new Padding(5, 5, 5, 5);
             cuiTextBox3.Multiline = false;
             cuiTextBox3.Name = "cuiTextBox3";
             cuiTextBox3.NormalImageTint = Color.White;
-            cuiTextBox3.Padding = new Padding(20, 12, 20, 0);
+            cuiTextBox3.Padding = new Padding(24, 15, 24, 0);
             cuiTextBox3.PasswordChar = false;
             cuiTextBox3.PlaceholderColor = Color.Gray;
             cuiTextBox3.PlaceholderText = "Item ID";
             cuiTextBox3.Rounding = new Padding(8);
-            cuiTextBox3.Size = new Size(187, 44);
+            cuiTextBox3.Size = new Size(234, 55);
             cuiTextBox3.TabIndex = 35;
             cuiTextBox3.TextOffset = new Size(0, 0);
             cuiTextBox3.UnderlinedStyle = false;
@@ -321,9 +326,10 @@
             TransactionQuantity.BackColor = Color.FromArgb(0, 0, 0, 0);
             TransactionQuantity.Font = new Font("Arial", 10.2F, FontStyle.Bold);
             TransactionQuantity.ForeColor = Color.FromArgb(16, 107, 23);
-            TransactionQuantity.Location = new Point(415, 90);
+            TransactionQuantity.Location = new Point(519, 112);
+            TransactionQuantity.Margin = new Padding(4, 0, 4, 0);
             TransactionQuantity.Name = "TransactionQuantity";
-            TransactionQuantity.Size = new Size(76, 19);
+            TransactionQuantity.Size = new Size(94, 24);
             TransactionQuantity.TabIndex = 38;
             TransactionQuantity.Text = "Quantity";
             // 
@@ -340,17 +346,17 @@
             cuiTextBox4.Image = null;
             cuiTextBox4.ImageExpand = new Point(0, 0);
             cuiTextBox4.ImageOffset = new Point(0, 0);
-            cuiTextBox4.Location = new Point(415, 113);
-            cuiTextBox4.Margin = new Padding(4);
+            cuiTextBox4.Location = new Point(519, 141);
+            cuiTextBox4.Margin = new Padding(5, 5, 5, 5);
             cuiTextBox4.Multiline = false;
             cuiTextBox4.Name = "cuiTextBox4";
             cuiTextBox4.NormalImageTint = Color.White;
-            cuiTextBox4.Padding = new Padding(20, 12, 20, 0);
+            cuiTextBox4.Padding = new Padding(24, 15, 24, 0);
             cuiTextBox4.PasswordChar = false;
             cuiTextBox4.PlaceholderColor = Color.Gray;
             cuiTextBox4.PlaceholderText = "Quantity";
             cuiTextBox4.Rounding = new Padding(8);
-            cuiTextBox4.Size = new Size(187, 44);
+            cuiTextBox4.Size = new Size(234, 55);
             cuiTextBox4.TabIndex = 37;
             cuiTextBox4.TextOffset = new Size(0, 0);
             cuiTextBox4.UnderlinedStyle = false;
@@ -361,9 +367,10 @@
             CustomerName.BackColor = Color.FromArgb(0, 0, 0, 0);
             CustomerName.Font = new Font("Arial", 10.2F, FontStyle.Bold);
             CustomerName.ForeColor = Color.FromArgb(16, 107, 23);
-            CustomerName.Location = new Point(360, 622);
+            CustomerName.Location = new Point(450, 778);
+            CustomerName.Margin = new Padding(4, 0, 4, 0);
             CustomerName.Name = "CustomerName";
-            CustomerName.Size = new Size(135, 19);
+            CustomerName.Size = new Size(172, 24);
             CustomerName.TabIndex = 40;
             CustomerName.Text = "Customer Name";
             // 
@@ -380,17 +387,17 @@
             cuiTextBox5.Image = null;
             cuiTextBox5.ImageExpand = new Point(0, 0);
             cuiTextBox5.ImageOffset = new Point(0, 0);
-            cuiTextBox5.Location = new Point(360, 645);
-            cuiTextBox5.Margin = new Padding(4);
+            cuiTextBox5.Location = new Point(450, 806);
+            cuiTextBox5.Margin = new Padding(5, 5, 5, 5);
             cuiTextBox5.Multiline = false;
             cuiTextBox5.Name = "cuiTextBox5";
             cuiTextBox5.NormalImageTint = Color.White;
-            cuiTextBox5.Padding = new Padding(20, 12, 20, 0);
+            cuiTextBox5.Padding = new Padding(25, 15, 25, 0);
             cuiTextBox5.PasswordChar = false;
             cuiTextBox5.PlaceholderColor = Color.Gray;
             cuiTextBox5.PlaceholderText = "Item Name";
             cuiTextBox5.Rounding = new Padding(8);
-            cuiTextBox5.Size = new Size(332, 44);
+            cuiTextBox5.Size = new Size(415, 55);
             cuiTextBox5.TabIndex = 39;
             cuiTextBox5.TextOffset = new Size(0, 0);
             cuiTextBox5.UnderlinedStyle = false;
@@ -401,9 +408,10 @@
             CustomerContact.BackColor = Color.FromArgb(0, 0, 0, 0);
             CustomerContact.Font = new Font("Arial", 10.2F, FontStyle.Bold);
             CustomerContact.ForeColor = Color.FromArgb(16, 107, 23);
-            CustomerContact.Location = new Point(704, 622);
+            CustomerContact.Location = new Point(880, 778);
+            CustomerContact.Margin = new Padding(4, 0, 4, 0);
             CustomerContact.Name = "CustomerContact";
-            CustomerContact.Size = new Size(153, 19);
+            CustomerContact.Size = new Size(194, 24);
             CustomerContact.TabIndex = 42;
             CustomerContact.Text = "Customer Contact";
             // 
@@ -420,17 +428,17 @@
             cuiTextBox6.Image = null;
             cuiTextBox6.ImageExpand = new Point(0, 0);
             cuiTextBox6.ImageOffset = new Point(0, 0);
-            cuiTextBox6.Location = new Point(704, 645);
-            cuiTextBox6.Margin = new Padding(4);
+            cuiTextBox6.Location = new Point(880, 806);
+            cuiTextBox6.Margin = new Padding(5, 5, 5, 5);
             cuiTextBox6.Multiline = false;
             cuiTextBox6.Name = "cuiTextBox6";
             cuiTextBox6.NormalImageTint = Color.White;
-            cuiTextBox6.Padding = new Padding(20, 12, 20, 0);
+            cuiTextBox6.Padding = new Padding(25, 15, 25, 0);
             cuiTextBox6.PasswordChar = false;
             cuiTextBox6.PlaceholderColor = Color.Gray;
             cuiTextBox6.PlaceholderText = "Item Name";
             cuiTextBox6.Rounding = new Padding(8);
-            cuiTextBox6.Size = new Size(332, 44);
+            cuiTextBox6.Size = new Size(415, 55);
             cuiTextBox6.TabIndex = 41;
             cuiTextBox6.TextOffset = new Size(0, 0);
             cuiTextBox6.UnderlinedStyle = false;
@@ -456,9 +464,10 @@
             cuiButton2.ImageAutoCenter = true;
             cuiButton2.ImageExpand = new Point(0, 0);
             cuiButton2.ImageOffset = new Point(0, 0);
-            cuiButton2.Location = new Point(621, 113);
+            cuiButton2.Location = new Point(776, 141);
+            cuiButton2.Margin = new Padding(4, 4, 4, 4);
             cuiButton2.Name = "cuiButton2";
-            cuiButton2.NormalBackground = Color.FromArgb(16, 107, 23);
+            cuiButton2.NormalBackground = Color.FromArgb(0, 157, 209);
             cuiButton2.NormalForeColor = Color.White;
             cuiButton2.NormalImageTint = Color.White;
             cuiButton2.NormalOutline = Color.FromArgb(64, 128, 128, 128);
@@ -468,7 +477,7 @@
             cuiButton2.PressedImageTint = Color.White;
             cuiButton2.PressedOutline = Color.FromArgb(64, 128, 128, 128);
             cuiButton2.Rounding = new Padding(8);
-            cuiButton2.Size = new Size(127, 40);
+            cuiButton2.Size = new Size(159, 50);
             cuiButton2.TabIndex = 43;
             cuiButton2.TextAlignment = StringAlignment.Center;
             cuiButton2.TextOffset = new Point(0, 0);
@@ -494,7 +503,8 @@
             cuiButton1.ImageAutoCenter = true;
             cuiButton1.ImageExpand = new Point(0, 0);
             cuiButton1.ImageOffset = new Point(0, 0);
-            cuiButton1.Location = new Point(927, 728);
+            cuiButton1.Location = new Point(1159, 910);
+            cuiButton1.Margin = new Padding(4, 4, 4, 4);
             cuiButton1.Name = "cuiButton1";
             cuiButton1.NormalBackground = Color.FromArgb(16, 107, 23);
             cuiButton1.NormalForeColor = Color.White;
@@ -506,7 +516,7 @@
             cuiButton1.PressedImageTint = Color.White;
             cuiButton1.PressedOutline = Color.FromArgb(64, 128, 128, 128);
             cuiButton1.Rounding = new Padding(8);
-            cuiButton1.Size = new Size(127, 40);
+            cuiButton1.Size = new Size(159, 50);
             cuiButton1.TabIndex = 44;
             cuiButton1.TextAlignment = StringAlignment.Center;
             cuiButton1.TextOffset = new Point(0, 0);
@@ -532,7 +542,8 @@
             cuiButton3.ImageAutoCenter = true;
             cuiButton3.ImageExpand = new Point(0, 0);
             cuiButton3.ImageOffset = new Point(0, 0);
-            cuiButton3.Location = new Point(794, 728);
+            cuiButton3.Location = new Point(992, 910);
+            cuiButton3.Margin = new Padding(4, 4, 4, 4);
             cuiButton3.Name = "cuiButton3";
             cuiButton3.NormalBackground = Color.FromArgb(16, 107, 23);
             cuiButton3.NormalForeColor = Color.White;
@@ -544,14 +555,14 @@
             cuiButton3.PressedImageTint = Color.White;
             cuiButton3.PressedOutline = Color.FromArgb(64, 128, 128, 128);
             cuiButton3.Rounding = new Padding(8);
-            cuiButton3.Size = new Size(127, 40);
+            cuiButton3.Size = new Size(159, 50);
             cuiButton3.TabIndex = 45;
             cuiButton3.TextAlignment = StringAlignment.Center;
             cuiButton3.TextOffset = new Point(0, 0);
             // 
             // GenerateTransactionPage
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(227, 244, 238);
             Controls.Add(cuiButton3);
@@ -571,8 +582,9 @@
             Controls.Add(cuiTextBox1);
             Controls.Add(dataGridView1);
             Controls.Add(DashboardTitlePage);
+            Margin = new Padding(4, 4, 4, 4);
             Name = "GenerateTransactionPage";
-            Size = new Size(1084, 798);
+            Size = new Size(1355, 998);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();

@@ -80,7 +80,7 @@
             label5.BackColor = Color.FromArgb(0, 0, 0, 0);
             label5.Font = new Font("Arial", 10.2F, FontStyle.Bold);
             label5.ForeColor = Color.FromArgb(0, 157, 209);
-            label5.Location = new Point(478, 229);
+            label5.Location = new Point(489, 229);
             label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
             label5.Size = new Size(119, 24);
@@ -106,7 +106,7 @@
             label3.BackColor = Color.FromArgb(0, 0, 0, 0);
             label3.Font = new Font("Arial", 10.2F, FontStyle.Bold);
             label3.ForeColor = Color.FromArgb(0, 157, 209);
-            label3.Location = new Point(478, 122);
+            label3.Location = new Point(489, 122);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
             label3.Size = new Size(128, 24);
@@ -132,7 +132,7 @@
             label2.BackColor = Color.FromArgb(0, 0, 0, 0);
             label2.Font = new Font("Arial", 10.2F, FontStyle.Bold);
             label2.ForeColor = Color.FromArgb(0, 157, 209);
-            label2.Location = new Point(478, 22);
+            label2.Location = new Point(489, 22);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
             label2.Size = new Size(67, 24);
@@ -243,7 +243,7 @@
             cuiTextBox5.Image = null;
             cuiTextBox5.ImageExpand = new Point(0, 0);
             cuiTextBox5.ImageOffset = new Point(0, 0);
-            cuiTextBox5.Location = new Point(478, 258);
+            cuiTextBox5.Location = new Point(489, 258);
             cuiTextBox5.Margin = new Padding(5);
             cuiTextBox5.Multiline = false;
             cuiTextBox5.Name = "cuiTextBox5";
@@ -299,7 +299,7 @@
             cuiTextBox3.Image = null;
             cuiTextBox3.ImageExpand = new Point(0, 0);
             cuiTextBox3.ImageOffset = new Point(0, 0);
-            cuiTextBox3.Location = new Point(478, 151);
+            cuiTextBox3.Location = new Point(489, 151);
             cuiTextBox3.Margin = new Padding(5);
             cuiTextBox3.Multiline = false;
             cuiTextBox3.Name = "cuiTextBox3";
@@ -348,7 +348,7 @@
             DashboardTitlePage.BackColor = Color.FromArgb(0, 0, 0, 0);
             DashboardTitlePage.Font = new Font("Arial", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             DashboardTitlePage.ForeColor = Color.FromArgb(0, 157, 209);
-            DashboardTitlePage.Location = new Point(35, 42);
+            DashboardTitlePage.Location = new Point(35, 36);
             DashboardTitlePage.Margin = new Padding(4, 0, 4, 0);
             DashboardTitlePage.Name = "DashboardTitlePage";
             DashboardTitlePage.Size = new Size(268, 43);
@@ -397,7 +397,7 @@
             cuiTextBox6.Image = null;
             cuiTextBox6.ImageExpand = new Point(0, 0);
             cuiTextBox6.ImageOffset = new Point(0, 0);
-            cuiTextBox6.Location = new Point(464, 51);
+            cuiTextBox6.Location = new Point(489, 51);
             cuiTextBox6.Margin = new Padding(5);
             cuiTextBox6.Multiline = false;
             cuiTextBox6.Name = "cuiTextBox6";

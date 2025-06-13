@@ -52,10 +52,10 @@
             cuiLabel4.Content = "Item\\ Name";
             cuiLabel4.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             cuiLabel4.HorizontalAlignment = StringAlignment.Center;
-            cuiLabel4.Location = new Point(485, 5);
-            cuiLabel4.Margin = new Padding(4, 5, 4, 5);
+            cuiLabel4.Location = new Point(605, 6);
+            cuiLabel4.Margin = new Padding(5, 6, 5, 6);
             cuiLabel4.Name = "cuiLabel4";
-            cuiLabel4.Size = new Size(162, 69);
+            cuiLabel4.Size = new Size(202, 86);
             cuiLabel4.TabIndex = 7;
             cuiLabel4.VerticalAlignment = StringAlignment.Center;
             // 
@@ -73,14 +73,14 @@
             cuiPanel1.Controls.Add(label1);
             cuiPanel1.Controls.Add(tableLayoutPanel1);
             cuiPanel1.ForeColor = Color.FromArgb(5, 84, 11);
-            cuiPanel1.Location = new Point(15, 106);
+            cuiPanel1.Location = new Point(19, 132);
             cuiPanel1.Margin = new Padding(2);
             cuiPanel1.Name = "cuiPanel1";
             cuiPanel1.OutlineThickness = 1F;
             cuiPanel1.PanelColor = Color.FromArgb(227, 244, 238);
             cuiPanel1.PanelOutlineColor = Color.White;
             cuiPanel1.Rounding = new Padding(8);
-            cuiPanel1.Size = new Size(1035, 656);
+            cuiPanel1.Size = new Size(1294, 820);
             cuiPanel1.TabIndex = 6;
             // 
             // tableLayoutPanel2
@@ -90,30 +90,30 @@
             tableLayoutPanel2.ColumnCount = 6;
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 66.6666641F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 188F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 167F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 186F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 166F));
-            tableLayoutPanel2.Location = new Point(19, 129);
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 235F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 209F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 232F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 209F));
+            tableLayoutPanel2.Location = new Point(24, 161);
             tableLayoutPanel2.Margin = new Padding(2);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 6;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50.4717F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 49.5283F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 84F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 79F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 82F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 76F));
-            tableLayoutPanel2.Size = new Size(1002, 509);
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 105F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 99F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 102F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 95F));
+            tableLayoutPanel2.Size = new Size(1252, 636);
             tableLayoutPanel2.TabIndex = 4;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(299, 208);
+            label1.Location = new Point(374, 260);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(0, 20);
+            label1.Size = new Size(0, 25);
             label1.TabIndex = 3;
             // 
             // tableLayoutPanel1
@@ -122,22 +122,22 @@
             tableLayoutPanel1.ColumnCount = 6;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30.6233063F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 69.37669F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 187F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 170F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 185F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 165F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 234F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 212F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 231F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 208F));
             tableLayoutPanel1.Controls.Add(cuiLabel6, 5, 0);
             tableLayoutPanel1.Controls.Add(cuiLabel5, 4, 0);
             tableLayoutPanel1.Controls.Add(cuiLabel4, 3, 0);
             tableLayoutPanel1.Controls.Add(cuiLabel3, 2, 0);
             tableLayoutPanel1.Controls.Add(cuiLabel2, 1, 0);
             tableLayoutPanel1.Controls.Add(cuiLabel1, 0, 0);
-            tableLayoutPanel1.Location = new Point(19, 12);
+            tableLayoutPanel1.Location = new Point(24, 15);
             tableLayoutPanel1.Margin = new Padding(2);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 48.68421F));
-            tableLayoutPanel1.Size = new Size(1002, 87);
+            tableLayoutPanel1.Size = new Size(1252, 109);
             tableLayoutPanel1.TabIndex = 2;
             // 
             // cuiLabel6
@@ -146,10 +146,10 @@
             cuiLabel6.Content = "Payment\\ Method";
             cuiLabel6.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             cuiLabel6.HorizontalAlignment = StringAlignment.Center;
-            cuiLabel6.Location = new Point(840, 5);
-            cuiLabel6.Margin = new Padding(4, 5, 4, 5);
+            cuiLabel6.Location = new Point(1048, 6);
+            cuiLabel6.Margin = new Padding(5, 6, 5, 6);
             cuiLabel6.Name = "cuiLabel6";
-            cuiLabel6.Size = new Size(157, 69);
+            cuiLabel6.Size = new Size(196, 86);
             cuiLabel6.TabIndex = 9;
             cuiLabel6.VerticalAlignment = StringAlignment.Center;
             // 
@@ -159,10 +159,10 @@
             cuiLabel5.Content = "Total\\ Amount";
             cuiLabel5.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             cuiLabel5.HorizontalAlignment = StringAlignment.Center;
-            cuiLabel5.Location = new Point(655, 5);
-            cuiLabel5.Margin = new Padding(4, 5, 4, 5);
+            cuiLabel5.Location = new Point(817, 6);
+            cuiLabel5.Margin = new Padding(5, 6, 5, 6);
             cuiLabel5.Name = "cuiLabel5";
-            cuiLabel5.Size = new Size(177, 69);
+            cuiLabel5.Size = new Size(221, 86);
             cuiLabel5.TabIndex = 8;
             cuiLabel5.VerticalAlignment = StringAlignment.Center;
             // 
@@ -172,10 +172,10 @@
             cuiLabel3.Content = "Item\\ Type";
             cuiLabel3.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             cuiLabel3.HorizontalAlignment = StringAlignment.Center;
-            cuiLabel3.Location = new Point(298, 5);
-            cuiLabel3.Margin = new Padding(4, 5, 4, 5);
+            cuiLabel3.Location = new Point(371, 6);
+            cuiLabel3.Margin = new Padding(5, 6, 5, 6);
             cuiLabel3.Name = "cuiLabel3";
-            cuiLabel3.Size = new Size(179, 69);
+            cuiLabel3.Size = new Size(224, 86);
             cuiLabel3.TabIndex = 6;
             cuiLabel3.VerticalAlignment = StringAlignment.Center;
             // 
@@ -185,10 +185,10 @@
             cuiLabel2.Content = "Customer\\ Type:\\ Supplier\\ \\n\\|\\ Buyer";
             cuiLabel2.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             cuiLabel2.HorizontalAlignment = StringAlignment.Center;
-            cuiLabel2.Location = new Point(94, 5);
-            cuiLabel2.Margin = new Padding(4, 5, 4, 5);
+            cuiLabel2.Location = new Point(117, 6);
+            cuiLabel2.Margin = new Padding(5, 6, 5, 6);
             cuiLabel2.Name = "cuiLabel2";
-            cuiLabel2.Size = new Size(196, 75);
+            cuiLabel2.Size = new Size(244, 94);
             cuiLabel2.TabIndex = 5;
             cuiLabel2.VerticalAlignment = StringAlignment.Center;
             // 
@@ -198,10 +198,10 @@
             cuiLabel1.Content = "Date";
             cuiLabel1.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             cuiLabel1.HorizontalAlignment = StringAlignment.Center;
-            cuiLabel1.Location = new Point(4, 5);
-            cuiLabel1.Margin = new Padding(4, 5, 4, 5);
+            cuiLabel1.Location = new Point(5, 6);
+            cuiLabel1.Margin = new Padding(5, 6, 5, 6);
             cuiLabel1.Name = "cuiLabel1";
-            cuiLabel1.Size = new Size(82, 75);
+            cuiLabel1.Size = new Size(102, 94);
             cuiLabel1.TabIndex = 4;
             cuiLabel1.VerticalAlignment = StringAlignment.Center;
             // 
@@ -211,9 +211,10 @@
             DashboardTitlePage.BackColor = Color.FromArgb(0, 0, 0, 0);
             DashboardTitlePage.Font = new Font("Arial", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
             DashboardTitlePage.ForeColor = Color.FromArgb(16, 107, 23);
-            DashboardTitlePage.Location = new Point(15, 22);
+            DashboardTitlePage.Location = new Point(19, 28);
+            DashboardTitlePage.Margin = new Padding(4, 0, 4, 0);
             DashboardTitlePage.Name = "DashboardTitlePage";
-            DashboardTitlePage.Size = new Size(410, 46);
+            DashboardTitlePage.Size = new Size(500, 56);
             DashboardTitlePage.TabIndex = 5;
             DashboardTitlePage.Text = "Transaction Records";
             // 
@@ -221,13 +222,13 @@
             // 
             cuiScrollbar1.Background = Color.Transparent;
             cuiScrollbar1.HoveredThumbColor = Color.FromArgb(192, 255, 106, 0);
-            cuiScrollbar1.Location = new Point(1055, 103);
+            cuiScrollbar1.Location = new Point(1319, 129);
             cuiScrollbar1.Margin = new Padding(2);
-            cuiScrollbar1.MinimumSize = new Size(16, 40);
+            cuiScrollbar1.MinimumSize = new Size(20, 50);
             cuiScrollbar1.Name = "cuiScrollbar1";
             cuiScrollbar1.PressedThumbColor = Color.FromArgb(192, 255, 106, 0);
             cuiScrollbar1.Rounding = 5;
-            cuiScrollbar1.Size = new Size(16, 682);
+            cuiScrollbar1.Size = new Size(20, 852);
             cuiScrollbar1.TabIndex = 7;
             cuiScrollbar1.TargetControl = null;
             cuiScrollbar1.ThumbColor = Color.FromArgb(255, 106, 0);
@@ -235,14 +236,15 @@
             // 
             // TransactionRecordsPage
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(227, 244, 238);
             Controls.Add(cuiPanel1);
             Controls.Add(DashboardTitlePage);
             Controls.Add(cuiScrollbar1);
+            Margin = new Padding(4, 4, 4, 4);
             Name = "TransactionRecordsPage";
-            Size = new Size(1084, 798);
+            Size = new Size(1355, 998);
             cuiPanel1.ResumeLayout(false);
             cuiPanel1.PerformLayout();
             tableLayoutPanel1.ResumeLayout(false);
