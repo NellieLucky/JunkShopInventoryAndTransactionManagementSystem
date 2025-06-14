@@ -29,129 +29,96 @@
         private void InitializeComponent()
         {
             cuiPanel1 = new CuoreUI.Controls.cuiPanel();
-            cuiTextBox6 = new CuoreUI.Controls.cuiTextBox();
-            cuiTextBox2 = new CuoreUI.Controls.cuiTextBox();
-            label5 = new Label();
-            label6 = new Label();
+            NameTextBox = new CuoreUI.Controls.cuiTextBox();
+            PaaswordTextBox = new CuoreUI.Controls.cuiTextBox();
             label3 = new Label();
             label4 = new Label();
             label2 = new Label();
             label1 = new Label();
             cuiButton1 = new CuoreUI.Controls.cuiButton();
             cuiButton2 = new CuoreUI.Controls.cuiButton();
-            cuiTextBox5 = new CuoreUI.Controls.cuiTextBox();
-            cuiTextBox4 = new CuoreUI.Controls.cuiTextBox();
-            cuiTextBox3 = new CuoreUI.Controls.cuiTextBox();
-            cuiTextBox1 = new CuoreUI.Controls.cuiTextBox();
-            DashboardTitlePage = new Label();
+            ContactNoTextBox = new CuoreUI.Controls.cuiTextBox();
+            EmailAccTextBox = new CuoreUI.Controls.cuiTextBox();
+            RegEmployeeTitlePage = new Label();
             cuiPanel1.SuspendLayout();
             SuspendLayout();
             // 
             // cuiPanel1
             // 
-            cuiPanel1.Controls.Add(cuiTextBox6);
-            cuiPanel1.Controls.Add(cuiTextBox2);
-            cuiPanel1.Controls.Add(label5);
-            cuiPanel1.Controls.Add(label6);
+            cuiPanel1.Controls.Add(NameTextBox);
+            cuiPanel1.Controls.Add(PaaswordTextBox);
             cuiPanel1.Controls.Add(label3);
             cuiPanel1.Controls.Add(label4);
             cuiPanel1.Controls.Add(label2);
             cuiPanel1.Controls.Add(label1);
             cuiPanel1.Controls.Add(cuiButton1);
             cuiPanel1.Controls.Add(cuiButton2);
-            cuiPanel1.Controls.Add(cuiTextBox5);
-            cuiPanel1.Controls.Add(cuiTextBox4);
-            cuiPanel1.Controls.Add(cuiTextBox3);
-            cuiPanel1.Controls.Add(cuiTextBox1);
+            cuiPanel1.Controls.Add(ContactNoTextBox);
+            cuiPanel1.Controls.Add(EmailAccTextBox);
             cuiPanel1.Location = new Point(28, 85);
             cuiPanel1.Name = "cuiPanel1";
             cuiPanel1.OutlineThickness = 3F;
             cuiPanel1.PanelColor = Color.White;
             cuiPanel1.PanelOutlineColor = Color.FromArgb(0, 192, 192);
             cuiPanel1.Rounding = new Padding(8);
-            cuiPanel1.Size = new Size(750, 347);
+            cuiPanel1.Size = new Size(750, 253);
             cuiPanel1.TabIndex = 33;
-            cuiPanel1.Paint += cuiPanel1_Paint;
             // 
-            // cuiTextBox6
+            // NameTextBox
             // 
-            cuiTextBox6.BackgroundColor = Color.White;
-            cuiTextBox6.BorderColor = Color.FromArgb(0, 0, 192);
-            cuiTextBox6.Content = "";
-            cuiTextBox6.FocusBackgroundColor = Color.White;
-            cuiTextBox6.FocusBorderColor = Color.Empty;
-            cuiTextBox6.FocusImageTint = Color.White;
-            cuiTextBox6.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            cuiTextBox6.ForeColor = Color.Gray;
-            cuiTextBox6.Image = null;
-            cuiTextBox6.ImageExpand = new Point(0, 0);
-            cuiTextBox6.ImageOffset = new Point(0, 0);
-            cuiTextBox6.Location = new Point(391, 41);
-            cuiTextBox6.Margin = new Padding(4, 4, 4, 4);
-            cuiTextBox6.Multiline = false;
-            cuiTextBox6.Name = "cuiTextBox6";
-            cuiTextBox6.NormalImageTint = Color.White;
-            cuiTextBox6.Padding = new Padding(20, 12, 20, 0);
-            cuiTextBox6.PasswordChar = false;
-            cuiTextBox6.PlaceholderColor = Color.Gray;
-            cuiTextBox6.PlaceholderText = "Name";
-            cuiTextBox6.Rounding = new Padding(8);
-            cuiTextBox6.Size = new Size(332, 44);
-            cuiTextBox6.TabIndex = 36;
-            cuiTextBox6.TextOffset = new Size(0, 0);
-            cuiTextBox6.UnderlinedStyle = false;
+            NameTextBox.BackgroundColor = Color.White;
+            NameTextBox.BorderColor = Color.FromArgb(0, 0, 192);
+            NameTextBox.Content = "";
+            NameTextBox.FocusBackgroundColor = Color.White;
+            NameTextBox.FocusBorderColor = Color.Empty;
+            NameTextBox.FocusImageTint = Color.White;
+            NameTextBox.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            NameTextBox.ForeColor = Color.Gray;
+            NameTextBox.Image = null;
+            NameTextBox.ImageExpand = new Point(0, 0);
+            NameTextBox.ImageOffset = new Point(0, 0);
+            NameTextBox.Location = new Point(391, 41);
+            NameTextBox.Margin = new Padding(4);
+            NameTextBox.Multiline = false;
+            NameTextBox.Name = "NameTextBox";
+            NameTextBox.NormalImageTint = Color.White;
+            NameTextBox.Padding = new Padding(20, 12, 20, 0);
+            NameTextBox.PasswordChar = false;
+            NameTextBox.PlaceholderColor = Color.Gray;
+            NameTextBox.PlaceholderText = "Name";
+            NameTextBox.Rounding = new Padding(8);
+            NameTextBox.Size = new Size(332, 44);
+            NameTextBox.TabIndex = 36;
+            NameTextBox.TextOffset = new Size(0, 0);
+            NameTextBox.UnderlinedStyle = false;
             // 
-            // cuiTextBox2
+            // PaaswordTextBox
             // 
-            cuiTextBox2.BackgroundColor = Color.White;
-            cuiTextBox2.BorderColor = Color.FromArgb(0, 0, 192);
-            cuiTextBox2.Content = "";
-            cuiTextBox2.FocusBackgroundColor = Color.White;
-            cuiTextBox2.FocusBorderColor = Color.Empty;
-            cuiTextBox2.FocusImageTint = Color.White;
-            cuiTextBox2.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            cuiTextBox2.ForeColor = Color.Gray;
-            cuiTextBox2.Image = null;
-            cuiTextBox2.ImageExpand = new Point(0, 0);
-            cuiTextBox2.ImageOffset = new Point(0, 0);
-            cuiTextBox2.Location = new Point(24, 121);
-            cuiTextBox2.Margin = new Padding(4, 4, 4, 4);
-            cuiTextBox2.Multiline = false;
-            cuiTextBox2.Name = "cuiTextBox2";
-            cuiTextBox2.NormalImageTint = Color.White;
-            cuiTextBox2.Padding = new Padding(20, 12, 20, 0);
-            cuiTextBox2.PasswordChar = false;
-            cuiTextBox2.PlaceholderColor = Color.Gray;
-            cuiTextBox2.PlaceholderText = "Password";
-            cuiTextBox2.Rounding = new Padding(8);
-            cuiTextBox2.Size = new Size(332, 44);
-            cuiTextBox2.TabIndex = 35;
-            cuiTextBox2.TextOffset = new Size(0, 0);
-            cuiTextBox2.UnderlinedStyle = false;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.BackColor = Color.FromArgb(0, 0, 0, 0);
-            label5.Font = new Font("Arial", 10.2F, FontStyle.Bold);
-            label5.ForeColor = Color.FromArgb(0, 157, 209);
-            label5.Location = new Point(391, 183);
-            label5.Name = "label5";
-            label5.Size = new Size(94, 19);
-            label5.TabIndex = 34;
-            label5.Text = "Job Status";
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.BackColor = Color.FromArgb(0, 0, 0, 0);
-            label6.Font = new Font("Arial", 10.2F, FontStyle.Bold);
-            label6.ForeColor = Color.FromArgb(0, 157, 209);
-            label6.Location = new Point(24, 183);
-            label6.Name = "label6";
-            label6.Size = new Size(76, 19);
-            label6.TabIndex = 33;
-            label6.Text = "Job Title";
+            PaaswordTextBox.BackgroundColor = Color.White;
+            PaaswordTextBox.BorderColor = Color.FromArgb(0, 0, 192);
+            PaaswordTextBox.Content = "";
+            PaaswordTextBox.FocusBackgroundColor = Color.White;
+            PaaswordTextBox.FocusBorderColor = Color.Empty;
+            PaaswordTextBox.FocusImageTint = Color.White;
+            PaaswordTextBox.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            PaaswordTextBox.ForeColor = Color.Gray;
+            PaaswordTextBox.Image = null;
+            PaaswordTextBox.ImageExpand = new Point(0, 0);
+            PaaswordTextBox.ImageOffset = new Point(0, 0);
+            PaaswordTextBox.Location = new Point(24, 121);
+            PaaswordTextBox.Margin = new Padding(4);
+            PaaswordTextBox.Multiline = false;
+            PaaswordTextBox.Name = "PaaswordTextBox";
+            PaaswordTextBox.NormalImageTint = Color.White;
+            PaaswordTextBox.Padding = new Padding(20, 12, 20, 0);
+            PaaswordTextBox.PasswordChar = false;
+            PaaswordTextBox.PlaceholderColor = Color.Gray;
+            PaaswordTextBox.PlaceholderText = "Password";
+            PaaswordTextBox.Rounding = new Padding(8);
+            PaaswordTextBox.Size = new Size(332, 44);
+            PaaswordTextBox.TabIndex = 35;
+            PaaswordTextBox.TextOffset = new Size(0, 0);
+            PaaswordTextBox.UnderlinedStyle = false;
             // 
             // label3
             // 
@@ -222,7 +189,7 @@
             cuiButton1.ImageAutoCenter = true;
             cuiButton1.ImageExpand = new Point(0, 0);
             cuiButton1.ImageOffset = new Point(0, 0);
-            cuiButton1.Location = new Point(454, 274);
+            cuiButton1.Location = new Point(453, 187);
             cuiButton1.Name = "cuiButton1";
             cuiButton1.NormalBackground = Color.White;
             cuiButton1.NormalForeColor = Color.Black;
@@ -260,7 +227,7 @@
             cuiButton2.ImageAutoCenter = true;
             cuiButton2.ImageExpand = new Point(0, 0);
             cuiButton2.ImageOffset = new Point(0, 0);
-            cuiButton2.Location = new Point(587, 274);
+            cuiButton2.Location = new Point(596, 187);
             cuiButton2.Name = "cuiButton2";
             cuiButton2.NormalBackground = Color.FromArgb(0, 157, 209);
             cuiButton2.NormalForeColor = Color.White;
@@ -277,139 +244,86 @@
             cuiButton2.TextAlignment = StringAlignment.Center;
             cuiButton2.TextOffset = new Point(0, 0);
             // 
-            // cuiTextBox5
+            // ContactNoTextBox
             // 
-            cuiTextBox5.BackgroundColor = Color.White;
-            cuiTextBox5.BorderColor = Color.FromArgb(0, 0, 192);
-            cuiTextBox5.Content = "";
-            cuiTextBox5.FocusBackgroundColor = Color.White;
-            cuiTextBox5.FocusBorderColor = Color.Empty;
-            cuiTextBox5.FocusImageTint = Color.White;
-            cuiTextBox5.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            cuiTextBox5.ForeColor = Color.Gray;
-            cuiTextBox5.Image = null;
-            cuiTextBox5.ImageExpand = new Point(0, 0);
-            cuiTextBox5.ImageOffset = new Point(0, 0);
-            cuiTextBox5.Location = new Point(391, 206);
-            cuiTextBox5.Margin = new Padding(4, 4, 4, 4);
-            cuiTextBox5.Multiline = false;
-            cuiTextBox5.Name = "cuiTextBox5";
-            cuiTextBox5.NormalImageTint = Color.White;
-            cuiTextBox5.Padding = new Padding(20, 12, 20, 0);
-            cuiTextBox5.PasswordChar = false;
-            cuiTextBox5.PlaceholderColor = Color.Gray;
-            cuiTextBox5.PlaceholderText = "Job Status";
-            cuiTextBox5.Rounding = new Padding(8);
-            cuiTextBox5.Size = new Size(332, 44);
-            cuiTextBox5.TabIndex = 6;
-            cuiTextBox5.TextOffset = new Size(0, 0);
-            cuiTextBox5.UnderlinedStyle = false;
+            ContactNoTextBox.BackgroundColor = Color.White;
+            ContactNoTextBox.BorderColor = Color.FromArgb(0, 0, 192);
+            ContactNoTextBox.Content = "";
+            ContactNoTextBox.FocusBackgroundColor = Color.White;
+            ContactNoTextBox.FocusBorderColor = Color.Empty;
+            ContactNoTextBox.FocusImageTint = Color.White;
+            ContactNoTextBox.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            ContactNoTextBox.ForeColor = Color.Gray;
+            ContactNoTextBox.Image = null;
+            ContactNoTextBox.ImageExpand = new Point(0, 0);
+            ContactNoTextBox.ImageOffset = new Point(0, 0);
+            ContactNoTextBox.Location = new Point(391, 121);
+            ContactNoTextBox.Margin = new Padding(4);
+            ContactNoTextBox.Multiline = false;
+            ContactNoTextBox.Name = "ContactNoTextBox";
+            ContactNoTextBox.NormalImageTint = Color.White;
+            ContactNoTextBox.Padding = new Padding(20, 12, 20, 0);
+            ContactNoTextBox.PasswordChar = false;
+            ContactNoTextBox.PlaceholderColor = Color.Gray;
+            ContactNoTextBox.PlaceholderText = "Contact No.";
+            ContactNoTextBox.Rounding = new Padding(8);
+            ContactNoTextBox.Size = new Size(332, 44);
+            ContactNoTextBox.TabIndex = 4;
+            ContactNoTextBox.TextOffset = new Size(0, 0);
+            ContactNoTextBox.UnderlinedStyle = false;
             // 
-            // cuiTextBox4
+            // EmailAccTextBox
             // 
-            cuiTextBox4.BackgroundColor = Color.White;
-            cuiTextBox4.BorderColor = Color.FromArgb(0, 0, 192);
-            cuiTextBox4.Content = "";
-            cuiTextBox4.FocusBackgroundColor = Color.White;
-            cuiTextBox4.FocusBorderColor = Color.Empty;
-            cuiTextBox4.FocusImageTint = Color.White;
-            cuiTextBox4.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            cuiTextBox4.ForeColor = Color.Gray;
-            cuiTextBox4.Image = null;
-            cuiTextBox4.ImageExpand = new Point(0, 0);
-            cuiTextBox4.ImageOffset = new Point(0, 0);
-            cuiTextBox4.Location = new Point(24, 206);
-            cuiTextBox4.Margin = new Padding(4, 4, 4, 4);
-            cuiTextBox4.Multiline = false;
-            cuiTextBox4.Name = "cuiTextBox4";
-            cuiTextBox4.NormalImageTint = Color.White;
-            cuiTextBox4.Padding = new Padding(20, 12, 20, 0);
-            cuiTextBox4.PasswordChar = false;
-            cuiTextBox4.PlaceholderColor = Color.Gray;
-            cuiTextBox4.PlaceholderText = "Job Title";
-            cuiTextBox4.Rounding = new Padding(8);
-            cuiTextBox4.Size = new Size(332, 44);
-            cuiTextBox4.TabIndex = 5;
-            cuiTextBox4.TextOffset = new Size(0, 0);
-            cuiTextBox4.UnderlinedStyle = false;
+            EmailAccTextBox.BackgroundColor = Color.White;
+            EmailAccTextBox.BorderColor = Color.FromArgb(0, 0, 192);
+            EmailAccTextBox.Content = "";
+            EmailAccTextBox.FocusBackgroundColor = Color.White;
+            EmailAccTextBox.FocusBorderColor = Color.Empty;
+            EmailAccTextBox.FocusImageTint = Color.White;
+            EmailAccTextBox.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            EmailAccTextBox.ForeColor = Color.Gray;
+            EmailAccTextBox.Image = null;
+            EmailAccTextBox.ImageExpand = new Point(0, 0);
+            EmailAccTextBox.ImageOffset = new Point(0, 0);
+            EmailAccTextBox.Location = new Point(24, 42);
+            EmailAccTextBox.Margin = new Padding(4);
+            EmailAccTextBox.Multiline = false;
+            EmailAccTextBox.Name = "EmailAccTextBox";
+            EmailAccTextBox.NormalImageTint = Color.White;
+            EmailAccTextBox.Padding = new Padding(20, 12, 20, 0);
+            EmailAccTextBox.PasswordChar = false;
+            EmailAccTextBox.PlaceholderColor = Color.Gray;
+            EmailAccTextBox.PlaceholderText = "Email Account";
+            EmailAccTextBox.Rounding = new Padding(8);
+            EmailAccTextBox.Size = new Size(332, 44);
+            EmailAccTextBox.TabIndex = 0;
+            EmailAccTextBox.TextOffset = new Size(0, 0);
+            EmailAccTextBox.UnderlinedStyle = false;
             // 
-            // cuiTextBox3
+            // RegEmployeeTitlePage
             // 
-            cuiTextBox3.BackgroundColor = Color.White;
-            cuiTextBox3.BorderColor = Color.FromArgb(0, 0, 192);
-            cuiTextBox3.Content = "";
-            cuiTextBox3.FocusBackgroundColor = Color.White;
-            cuiTextBox3.FocusBorderColor = Color.Empty;
-            cuiTextBox3.FocusImageTint = Color.White;
-            cuiTextBox3.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            cuiTextBox3.ForeColor = Color.Gray;
-            cuiTextBox3.Image = null;
-            cuiTextBox3.ImageExpand = new Point(0, 0);
-            cuiTextBox3.ImageOffset = new Point(0, 0);
-            cuiTextBox3.Location = new Point(391, 121);
-            cuiTextBox3.Margin = new Padding(4, 4, 4, 4);
-            cuiTextBox3.Multiline = false;
-            cuiTextBox3.Name = "cuiTextBox3";
-            cuiTextBox3.NormalImageTint = Color.White;
-            cuiTextBox3.Padding = new Padding(20, 12, 20, 0);
-            cuiTextBox3.PasswordChar = false;
-            cuiTextBox3.PlaceholderColor = Color.Gray;
-            cuiTextBox3.PlaceholderText = "Contact No.";
-            cuiTextBox3.Rounding = new Padding(8);
-            cuiTextBox3.Size = new Size(332, 44);
-            cuiTextBox3.TabIndex = 4;
-            cuiTextBox3.TextOffset = new Size(0, 0);
-            cuiTextBox3.UnderlinedStyle = false;
-            // 
-            // cuiTextBox1
-            // 
-            cuiTextBox1.BackgroundColor = Color.White;
-            cuiTextBox1.BorderColor = Color.FromArgb(0, 0, 192);
-            cuiTextBox1.Content = "";
-            cuiTextBox1.FocusBackgroundColor = Color.White;
-            cuiTextBox1.FocusBorderColor = Color.Empty;
-            cuiTextBox1.FocusImageTint = Color.White;
-            cuiTextBox1.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            cuiTextBox1.ForeColor = Color.Gray;
-            cuiTextBox1.Image = null;
-            cuiTextBox1.ImageExpand = new Point(0, 0);
-            cuiTextBox1.ImageOffset = new Point(0, 0);
-            cuiTextBox1.Location = new Point(24, 42);
-            cuiTextBox1.Margin = new Padding(4, 4, 4, 4);
-            cuiTextBox1.Multiline = false;
-            cuiTextBox1.Name = "cuiTextBox1";
-            cuiTextBox1.NormalImageTint = Color.White;
-            cuiTextBox1.Padding = new Padding(20, 12, 20, 0);
-            cuiTextBox1.PasswordChar = false;
-            cuiTextBox1.PlaceholderColor = Color.Gray;
-            cuiTextBox1.PlaceholderText = "Email Account";
-            cuiTextBox1.Rounding = new Padding(8);
-            cuiTextBox1.Size = new Size(332, 44);
-            cuiTextBox1.TabIndex = 0;
-            cuiTextBox1.TextOffset = new Size(0, 0);
-            cuiTextBox1.UnderlinedStyle = false;
-            // 
-            // DashboardTitlePage
-            // 
-            DashboardTitlePage.AutoSize = true;
-            DashboardTitlePage.BackColor = Color.FromArgb(0, 0, 0, 0);
-            DashboardTitlePage.Font = new Font("Arial", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            DashboardTitlePage.ForeColor = Color.FromArgb(0, 157, 209);
-            DashboardTitlePage.Location = new Point(28, 29);
-            DashboardTitlePage.Name = "DashboardTitlePage";
-            DashboardTitlePage.Size = new Size(284, 35);
-            DashboardTitlePage.TabIndex = 32;
-            DashboardTitlePage.Text = "Register Employee";
+            RegEmployeeTitlePage.AutoSize = true;
+            RegEmployeeTitlePage.BackColor = Color.FromArgb(0, 0, 0, 0);
+            RegEmployeeTitlePage.Font = new Font("Arial", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            RegEmployeeTitlePage.ForeColor = Color.FromArgb(0, 157, 209);
+            RegEmployeeTitlePage.Location = new Point(28, 29);
+            RegEmployeeTitlePage.Name = "RegEmployeeTitlePage";
+            RegEmployeeTitlePage.Size = new Size(284, 35);
+            RegEmployeeTitlePage.TabIndex = 32;
+            RegEmployeeTitlePage.Text = "Register Employee";
             // 
             // AddEditEmployee
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(807, 466);
+            ClientSize = new Size(807, 364);
             Controls.Add(cuiPanel1);
-            Controls.Add(DashboardTitlePage);
-            Margin = new Padding(2, 2, 2, 2);
+            Controls.Add(RegEmployeeTitlePage);
+            FormBorderStyle = FormBorderStyle.Fixed3D;
+            Margin = new Padding(2);
+            MinimizeBox = false;
             Name = "AddEditEmployee";
+            SizeGripStyle = SizeGripStyle.Hide;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "AddEditEmployee";
             cuiPanel1.ResumeLayout(false);
@@ -421,20 +335,16 @@
         #endregion
 
         private CuoreUI.Controls.cuiPanel cuiPanel1;
-        private Label label5;
-        private Label label6;
         private Label label3;
         private Label label4;
         private Label label2;
         private Label label1;
         private CuoreUI.Controls.cuiButton cuiButton1;
         private CuoreUI.Controls.cuiButton cuiButton2;
-        private CuoreUI.Controls.cuiTextBox cuiTextBox5;
-        private CuoreUI.Controls.cuiTextBox cuiTextBox4;
-        private CuoreUI.Controls.cuiTextBox cuiTextBox3;
-        private CuoreUI.Controls.cuiTextBox cuiTextBox1;
-        private Label DashboardTitlePage;
-        private CuoreUI.Controls.cuiTextBox cuiTextBox6;
-        private CuoreUI.Controls.cuiTextBox cuiTextBox2;
+        private CuoreUI.Controls.cuiTextBox EmailAccTextBox;
+        private Label RegEmployeeTitlePage;
+        private CuoreUI.Controls.cuiTextBox NameTextBox;
+        private CuoreUI.Controls.cuiTextBox PaaswordTextBox;
+        private CuoreUI.Controls.cuiTextBox ContactNoTextBox;
     }
 }

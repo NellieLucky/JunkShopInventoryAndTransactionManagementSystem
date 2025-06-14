@@ -16,10 +16,5 @@ namespace JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel
         {
             InitializeComponent();
         }
-
-        private void cuiPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }
