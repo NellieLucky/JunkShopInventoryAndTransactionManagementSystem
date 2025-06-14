@@ -16,7 +16,7 @@ namespace JunkShopInventoryandTransactionSystem.View
 {
     public partial class ForgotPasswordPage : Form
     {
-        //private readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Beetoy\source\repos\JunkShopInventoryandTransactionSystem\Users.mdf;Integrated Security=True";
+        //private readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Beetoy\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\Database1.mdf;Integrated Security=True";
 
         //arnel's connstring
         //private readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShop.mdf;Integrated Security=True";
@@ -93,17 +93,20 @@ namespace JunkShopInventoryandTransactionSystem.View
 
                 if (IsEmailRegistered(email))
                 {
-                    string token = Guid.NewGuid().ToString();
+                    string token = new Random().Next(100000, 1000000).ToString();
                     StoreToken(email, token);
 
                     MailMessage mail = new MailMessage("junkshopinventorysystem@gmail.com", email);
                     mail.Subject = "Junk Shop Inventory and Transaction System: Password Reset Token";
                     mail.Body = $"Your password reset token is:\n\n{token}\n\nEnter this token while setting up your new password to reset your password.";
 
-                    SmtpClient client = new SmtpClient("smtp.gmail.com", 587)
+                    SmtpClient client = new SmtpClient
                     {
-                        Credentials = new NetworkCredential("junkshopinventorysystem@gmail.com", "wazb rivy ncad fdxq"),
+                        Host = "smtp.gmail.com",
+                        Port = 587,
+                        Credentials = new NetworkCredential("junkshopinventorysystem@gmail.com", "xsec ztzz gkcq sytw"),
                         EnableSsl = true,
+                        UseDefaultCredentials = false
                     };
                     client.Send(mail);
                     MessageBox.Show("Password reset token has been sent to your email.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -120,9 +123,13 @@ namespace JunkShopInventoryandTransactionSystem.View
                     MessageBox.Show("This email is not registered.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
+            catch (SmtpException smtpEx)
+            {
+                MessageBox.Show($"SMTP Error: {smtpEx.StatusCode} - {smtpEx.Message}", "SMTP Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             catch (Exception ex)
             {
-                MessageBox.Show($"An error occurred while sending the email: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Unexpected error: {ex.GetType().Name} - {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void StoreToken(string email, string token)
