@@ -1,6 +1,6 @@
-﻿namespace JunkShopInventoryandTransactionSystem.View
+﻿namespace JunkShopInventoryandTransactionSystem
 {
-    partial class TransactionRecordsPage
+    partial class SupplierRecordsPage
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,40 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            cuiColorPicker1 = new CuoreUI.Components.cuiColorPicker(components);
-            DashboardTitlePage = new Label();
+            BuyerRec = new Label();
             dataGridView1 = new DataGridView();
-            Date = new DataGridViewTextBoxColumn();
-            ItemName = new DataGridViewTextBoxColumn();
-            Category = new DataGridViewTextBoxColumn();
-            QtyType = new DataGridViewTextBoxColumn();
-            TransacQuantity = new DataGridViewTextBoxColumn();
-            ExchangeAmount = new DataGridViewImageColumn();
+            CustID = new DataGridViewTextBoxColumn();
+            CustName = new DataGridViewTextBoxColumn();
+            ContactNo = new DataGridViewTextBoxColumn();
+            CustomerDelete = new DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
-            // cuiColorPicker1
+            // BuyerRec
             // 
-            cuiColorPicker1.Color = Color.Empty;
-            cuiColorPicker1.EnableThemeChangeButton = true;
-            cuiColorPicker1.Theme = CuoreUI.Components.Forms.ColorPickerForm.Themes.Light;
-            // 
-            // DashboardTitlePage
-            // 
-            DashboardTitlePage.AutoSize = true;
-            DashboardTitlePage.BackColor = Color.FromArgb(0, 0, 0, 0);
-            DashboardTitlePage.Font = new Font("Arial", 24F, FontStyle.Bold);
-            DashboardTitlePage.ForeColor = Color.FromArgb(16, 107, 23);
-            DashboardTitlePage.Location = new Point(19, 28);
-            DashboardTitlePage.Margin = new Padding(4, 0, 4, 0);
-            DashboardTitlePage.Name = "DashboardTitlePage";
-            DashboardTitlePage.Size = new Size(500, 56);
-            DashboardTitlePage.TabIndex = 5;
-            DashboardTitlePage.Text = "Transaction Records";
+            BuyerRec.AutoSize = true;
+            BuyerRec.BackColor = Color.FromArgb(0, 0, 0, 0);
+            BuyerRec.Font = new Font("Arial", 18F, FontStyle.Bold);
+            BuyerRec.ForeColor = Color.FromArgb(0, 157, 209);
+            BuyerRec.Location = new Point(29, 17);
+            BuyerRec.Margin = new Padding(4, 0, 4, 0);
+            BuyerRec.Name = "BuyerRec";
+            BuyerRec.Size = new Size(313, 43);
+            BuyerRec.TabIndex = 34;
+            BuyerRec.Text = "Supplier Records";
+            BuyerRec.Click += BuyerRec_Click;
             // 
             // dataGridView1
             // 
@@ -74,7 +65,7 @@
             dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Sunken;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = Color.FromArgb(163, 244, 215);
-            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dataGridViewCellStyle1.ForeColor = Color.Black;
             dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(163, 244, 215);
             dataGridViewCellStyle1.SelectionForeColor = Color.Black;
@@ -82,11 +73,11 @@
             dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.ColumnHeadersHeight = 60;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Date, ItemName, Category, QtyType, TransacQuantity, ExchangeAmount });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { CustID, CustName, ContactNo, CustomerDelete });
             dataGridView1.EditMode = DataGridViewEditMode.EditProgrammatically;
             dataGridView1.EnableHeadersVisualStyles = false;
             dataGridView1.GridColor = Color.FromArgb(99, 99, 99);
-            dataGridView1.Location = new Point(19, 102);
+            dataGridView1.Location = new Point(29, 64);
             dataGridView1.Margin = new Padding(4);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
@@ -99,90 +90,67 @@
             dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.RowHeadersWidth = 50;
-            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dataGridViewCellStyle3.ForeColor = Color.Black;
             dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(0, 157, 209);
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
             dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle3;
             dataGridView1.RowTemplate.Height = 50;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(1320, 830);
-            dataGridView1.TabIndex = 31;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick_1;
+            dataGridView1.Size = new Size(1233, 450);
+            dataGridView1.TabIndex = 33;
             // 
-            // Date
+            // CustID
             // 
-            Date.HeaderText = "Item Name";
-            Date.MinimumWidth = 6;
-            Date.Name = "Date";
-            Date.Width = 200;
+            CustID.HeaderText = "CustomerID";
+            CustID.MinimumWidth = 6;
+            CustID.Name = "CustID";
+            CustID.Width = 300;
             // 
-            // ItemName
+            // CustName
             // 
-            ItemName.HeaderText = "Category";
-            ItemName.MinimumWidth = 6;
-            ItemName.Name = "ItemName";
-            ItemName.Width = 200;
+            CustName.HeaderText = "Name";
+            CustName.MinimumWidth = 8;
+            CustName.Name = "CustName";
+            CustName.Width = 400;
             // 
-            // Category
+            // ContactNo
             // 
-            Category.FillWeight = 150F;
-            Category.HeaderText = "Qty Type";
-            Category.MinimumWidth = 6;
-            Category.Name = "Category";
-            Category.Width = 220;
+            ContactNo.HeaderText = "Contact Number";
+            ContactNo.MinimumWidth = 6;
+            ContactNo.Name = "ContactNo";
+            ContactNo.Width = 380;
             // 
-            // QtyType
+            // CustomerDelete
             // 
-            QtyType.FillWeight = 125F;
-            QtyType.HeaderText = "Exchange Quantity";
-            QtyType.MinimumWidth = 6;
-            QtyType.Name = "QtyType";
-            QtyType.Width = 250;
+            CustomerDelete.HeaderText = "Delete";
+            CustomerDelete.Image = Properties.Resources.delete;
+            CustomerDelete.MinimumWidth = 8;
+            CustomerDelete.Name = "CustomerDelete";
+            CustomerDelete.Resizable = DataGridViewTriState.True;
+            CustomerDelete.SortMode = DataGridViewColumnSortMode.Automatic;
+            CustomerDelete.Width = 150;
             // 
-            // TransacQuantity
-            // 
-            TransacQuantity.FillWeight = 59.177578F;
-            TransacQuantity.HeaderText = "Exchange Amount";
-            TransacQuantity.MinimumWidth = 6;
-            TransacQuantity.Name = "TransacQuantity";
-            TransacQuantity.Width = 250;
-            // 
-            // ExchangeAmount
-            // 
-            ExchangeAmount.FillWeight = 59.177578F;
-            ExchangeAmount.HeaderText = "Delete";
-            ExchangeAmount.Image = Properties.Resources.delete;
-            ExchangeAmount.MinimumWidth = 6;
-            ExchangeAmount.Name = "ExchangeAmount";
-            ExchangeAmount.Resizable = DataGridViewTriState.True;
-            ExchangeAmount.SortMode = DataGridViewColumnSortMode.Automatic;
-            ExchangeAmount.Width = 210;
-            // 
-            // TransactionRecordsPage
+            // SupplierRecordsPage
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(227, 244, 238);
+            Controls.Add(BuyerRec);
             Controls.Add(dataGridView1);
-            Controls.Add(DashboardTitlePage);
-            Margin = new Padding(4);
-            Name = "TransactionRecordsPage";
-            Size = new Size(1355, 998);
+            Name = "SupplierRecordsPage";
+            Size = new Size(1302, 530);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-        private CuoreUI.Components.cuiColorPicker cuiColorPicker1;
-        private Label DashboardTitlePage;
+
+        private Label BuyerRec;
         private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn Date;
-        private DataGridViewTextBoxColumn ItemName;
-        private DataGridViewTextBoxColumn Category;
-        private DataGridViewTextBoxColumn QtyType;
-        private DataGridViewTextBoxColumn TransacQuantity;
-        private DataGridViewImageColumn ExchangeAmount;
+        private DataGridViewTextBoxColumn CustID;
+        private DataGridViewTextBoxColumn CustName;
+        private DataGridViewTextBoxColumn ContactNo;
+        private DataGridViewImageColumn CustomerDelete;
     }
 }

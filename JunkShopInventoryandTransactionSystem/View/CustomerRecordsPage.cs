@@ -15,66 +15,27 @@ namespace JunkShopInventoryandTransactionSystem.View
         public CustomerRecordsPage()
         {
             InitializeComponent();
+            CustomerPanel.Controls.Clear();
+            var BuyerRecordsPage = new BuyerRecordsPage();
+            BuyerRecordsPage.Dock = DockStyle.Fill;
+            CustomerPanel.Controls.Add(BuyerRecordsPage);
         }
 
-        private void CustomerRecordsPage_Load(object sender, EventArgs e)
+        private void SupplierButton_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void DashboardTitlePage_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void codeeloTextBox1_TextWasChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cuiLabel1_Load(object sender, EventArgs e)
-        {
+            CustomerPanel.Controls.Clear();
+            var SupplierRecordsPage = new SupplierRecordsPage();
+            SupplierRecordsPage.Dock = DockStyle.Fill;
+            CustomerPanel.Controls.Add(SupplierRecordsPage);
 
         }
 
-        private void kryptonLabel1_Click(object sender, EventArgs e)
+        private void BuyerButton_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void cuiLabel1_Load_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cuiTextBox2_ContentChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void codeeloGradientPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void cuiLabel2_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cuiLabel3_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cuiTextBox5_ContentChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cuiLabel11_Load(object sender, EventArgs e)
-        {
-
+            CustomerPanel.Controls.Clear();
+            var BuyerRecordsPage = new BuyerRecordsPage();
+            BuyerRecordsPage.Dock = DockStyle.Fill;
+            CustomerPanel.Controls.Add(BuyerRecordsPage);
         }
     }
 }
