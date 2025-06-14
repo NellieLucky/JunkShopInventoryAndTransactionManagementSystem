@@ -353,11 +353,8 @@
         private CuoreUI.Controls.cuiTextBox cuiTextBox4;
         private CuoreUI.Controls.cuiTextBox cuiTextBox5;
         private CuoreUI.Controls.cuiLabel cuiLabel4;
-        private CuoreUI.Controls.cuiButtonGroup CustomerAdd;
         private CuoreUI.Controls.cuiButton BuyerButton;
         private CuoreUI.Controls.cuiButton SupplierButton;
         private Panel CustomerPanel;
-        private CuoreUI.Controls.cuiButton CustomerEdit;
-        private CuoreUI.Controls.cuiButton cuiButton1;
     }
 }

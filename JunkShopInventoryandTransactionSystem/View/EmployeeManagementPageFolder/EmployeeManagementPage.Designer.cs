@@ -56,6 +56,7 @@
             NameColumn = new DataGridViewTextBoxColumn();
             PasswordColumn = new DataGridViewTextBoxColumn();
             ContactColumn = new DataGridViewTextBoxColumn();
+            Address = new DataGridViewTextBoxColumn();
             EditColumn = new DataGridViewImageColumn();
             RemoveColumn = new DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -183,7 +184,7 @@
             dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridView1.ColumnHeadersHeight = 60;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { DateRegisteredColumn, EmailColumn, NameColumn, PasswordColumn, ContactColumn, EditColumn, RemoveColumn });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { DateRegisteredColumn, EmailColumn, NameColumn, PasswordColumn, ContactColumn, Address, EditColumn, RemoveColumn });
             dataGridView1.EditMode = DataGridViewEditMode.EditProgrammatically;
             dataGridView1.EnableHeadersVisualStyles = false;
             dataGridView1.GridColor = Color.FromArgb(99, 99, 99);
@@ -320,7 +321,7 @@
             DateRegisteredColumn.HeaderText = "Date Registered";
             DateRegisteredColumn.MinimumWidth = 6;
             DateRegisteredColumn.Name = "DateRegisteredColumn";
-            DateRegisteredColumn.Width = 125;
+            DateRegisteredColumn.Width = 105;
             // 
             // EmailColumn
             // 
@@ -328,31 +329,37 @@
             EmailColumn.HeaderText = "Email Account";
             EmailColumn.MinimumWidth = 6;
             EmailColumn.Name = "EmailColumn";
-            EmailColumn.Width = 200;
+            EmailColumn.Width = 170;
             // 
             // NameColumn
             // 
-            NameColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             NameColumn.FillWeight = 120F;
             NameColumn.HeaderText = "Name";
             NameColumn.MinimumWidth = 6;
             NameColumn.Name = "NameColumn";
+            NameColumn.Width = 170;
             // 
             // PasswordColumn
             // 
-            PasswordColumn.FillWeight = 120F;
+            PasswordColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            PasswordColumn.FillWeight = 130F;
             PasswordColumn.HeaderText = "Password";
             PasswordColumn.MinimumWidth = 6;
             PasswordColumn.Name = "PasswordColumn";
-            PasswordColumn.Width = 135;
             // 
             // ContactColumn
             // 
-            ContactColumn.FillWeight = 120F;
             ContactColumn.HeaderText = "Contact Number";
             ContactColumn.MinimumWidth = 6;
             ContactColumn.Name = "ContactColumn";
-            ContactColumn.Width = 200;
+            ContactColumn.Width = 140;
+            // 
+            // Address
+            // 
+            Address.HeaderText = "Address";
+            Address.MinimumWidth = 6;
+            Address.Name = "Address";
+            Address.Width = 200;
             // 
             // EditColumn
             // 
@@ -425,6 +432,7 @@
         private DataGridViewTextBoxColumn NameColumn;
         private DataGridViewTextBoxColumn PasswordColumn;
         private DataGridViewTextBoxColumn ContactColumn;
+        private DataGridViewTextBoxColumn Address;
         private DataGridViewImageColumn EditColumn;
         private DataGridViewImageColumn RemoveColumn;
     }

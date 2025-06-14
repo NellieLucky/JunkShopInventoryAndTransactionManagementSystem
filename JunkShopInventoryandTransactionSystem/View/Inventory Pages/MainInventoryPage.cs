@@ -37,26 +37,20 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
             InventoryPanel.Controls.Add(ItemInventoryPage);
         }
 
-        private void CategoryNavButton_Click(object sender, EventArgs e)
+
+        private void SetNavButtonChecked(CuoreUI.Controls.cuiButton checkedButton)
+        {
+            var activeColor = System.Drawing.Color.FromArgb(25, 219, 138); // active color
+            var inactiveColor = System.Drawing.Color.Transparent; // inactive color
+        }
+
+        private void CategoryNavButton_Click_1(object sender, EventArgs e)
         {
             SetNavButtonChecked(CategoryNavButton);  // Set the clicked button as checked
             InventoryPanel.Controls.Clear();
             var CategoryInventoryPage = new CategoryPage();
             CategoryInventoryPage.Dock = DockStyle.Fill;
             InventoryPanel.Controls.Add(CategoryInventoryPage);
-        }
-
-        private void SetNavButtonChecked(CuoreUI.Controls.cuiButton checkedButton)
-        {
-            var activeColor = System.Drawing.Color.FromArgb(25, 219, 138); // active color
-            var inactiveColor = System.Drawing.Color.Transparent; // inactive color
-
-
-        }
-
-        private void InventoryPanel_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }

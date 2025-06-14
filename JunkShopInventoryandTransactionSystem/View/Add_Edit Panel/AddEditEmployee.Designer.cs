@@ -40,11 +40,15 @@
             ContactNoTextBox = new CuoreUI.Controls.cuiTextBox();
             EmailAccTextBox = new CuoreUI.Controls.cuiTextBox();
             RegEmployeeTitlePage = new Label();
+            label5 = new Label();
+            AddressTextBox = new CuoreUI.Controls.cuiTextBox();
             cuiPanel1.SuspendLayout();
             SuspendLayout();
             // 
             // cuiPanel1
             // 
+            cuiPanel1.Controls.Add(label5);
+            cuiPanel1.Controls.Add(AddressTextBox);
             cuiPanel1.Controls.Add(NameTextBox);
             cuiPanel1.Controls.Add(PaaswordTextBox);
             cuiPanel1.Controls.Add(label3);
@@ -61,7 +65,7 @@
             cuiPanel1.PanelColor = Color.White;
             cuiPanel1.PanelOutlineColor = Color.FromArgb(0, 192, 192);
             cuiPanel1.Rounding = new Padding(8);
-            cuiPanel1.Size = new Size(750, 253);
+            cuiPanel1.Size = new Size(750, 331);
             cuiPanel1.TabIndex = 33;
             // 
             // NameTextBox
@@ -189,7 +193,7 @@
             cuiButton1.ImageAutoCenter = true;
             cuiButton1.ImageExpand = new Point(0, 0);
             cuiButton1.ImageOffset = new Point(0, 0);
-            cuiButton1.Location = new Point(453, 187);
+            cuiButton1.Location = new Point(453, 266);
             cuiButton1.Name = "cuiButton1";
             cuiButton1.NormalBackground = Color.White;
             cuiButton1.NormalForeColor = Color.Black;
@@ -227,7 +231,7 @@
             cuiButton2.ImageAutoCenter = true;
             cuiButton2.ImageExpand = new Point(0, 0);
             cuiButton2.ImageOffset = new Point(0, 0);
-            cuiButton2.Location = new Point(596, 187);
+            cuiButton2.Location = new Point(596, 266);
             cuiButton2.Name = "cuiButton2";
             cuiButton2.NormalBackground = Color.FromArgb(0, 157, 209);
             cuiButton2.NormalForeColor = Color.White;
@@ -312,15 +316,56 @@
             RegEmployeeTitlePage.TabIndex = 32;
             RegEmployeeTitlePage.Text = "Register Employee";
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.BackColor = Color.FromArgb(0, 0, 0, 0);
+            label5.Font = new Font("Arial", 10.2F, FontStyle.Bold);
+            label5.ForeColor = Color.FromArgb(0, 157, 209);
+            label5.Location = new Point(24, 182);
+            label5.Name = "label5";
+            label5.Size = new Size(74, 19);
+            label5.TabIndex = 38;
+            label5.Text = "Address";
+            // 
+            // AddressTextBox
+            // 
+            AddressTextBox.BackgroundColor = Color.White;
+            AddressTextBox.BorderColor = Color.FromArgb(0, 0, 192);
+            AddressTextBox.Content = "";
+            AddressTextBox.FocusBackgroundColor = Color.White;
+            AddressTextBox.FocusBorderColor = Color.Empty;
+            AddressTextBox.FocusImageTint = Color.White;
+            AddressTextBox.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            AddressTextBox.ForeColor = Color.Gray;
+            AddressTextBox.Image = null;
+            AddressTextBox.ImageExpand = new Point(0, 0);
+            AddressTextBox.ImageOffset = new Point(0, 0);
+            AddressTextBox.Location = new Point(24, 205);
+            AddressTextBox.Margin = new Padding(4);
+            AddressTextBox.Multiline = false;
+            AddressTextBox.Name = "AddressTextBox";
+            AddressTextBox.NormalImageTint = Color.White;
+            AddressTextBox.Padding = new Padding(20, 12, 20, 0);
+            AddressTextBox.PasswordChar = false;
+            AddressTextBox.PlaceholderColor = Color.Gray;
+            AddressTextBox.PlaceholderText = "Address";
+            AddressTextBox.Rounding = new Padding(8);
+            AddressTextBox.Size = new Size(332, 44);
+            AddressTextBox.TabIndex = 37;
+            AddressTextBox.TextOffset = new Size(0, 0);
+            AddressTextBox.UnderlinedStyle = false;
+            // 
             // AddEditEmployee
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(807, 364);
+            ClientSize = new Size(807, 436);
             Controls.Add(cuiPanel1);
             Controls.Add(RegEmployeeTitlePage);
             FormBorderStyle = FormBorderStyle.Fixed3D;
             Margin = new Padding(2);
+            MaximizeBox = false;
             MinimizeBox = false;
             Name = "AddEditEmployee";
             SizeGripStyle = SizeGripStyle.Hide;
@@ -346,5 +391,7 @@
         private CuoreUI.Controls.cuiTextBox NameTextBox;
         private CuoreUI.Controls.cuiTextBox PaaswordTextBox;
         private CuoreUI.Controls.cuiTextBox ContactNoTextBox;
+        private Label label5;
+        private CuoreUI.Controls.cuiTextBox AddressTextBox;
     }
 }
