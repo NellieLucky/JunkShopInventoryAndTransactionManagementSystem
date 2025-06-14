@@ -1,4 +1,9 @@
-﻿using System;
+﻿using JunkShopInventoryandTransactionSystem.View.CustomerRecordsPage;
+using JunkShopInventoryandTransactionSystem.View.EmployeeManagementPageFolder;
+using JunkShopInventoryandTransactionSystem.View.FinancialReportsPageFolder;
+using JunkShopInventoryandTransactionSystem.View.Inventory_Pages;
+using JunkShopInventoryandTransactionSystem.View.LogInAuthFolder;
+using System;
 using System.Windows.Forms;
 
 namespace JunkShopInventoryandTransactionSystem.View
@@ -13,7 +18,7 @@ namespace JunkShopInventoryandTransactionSystem.View
 
             SetNavButtonChecked(dashBoardNavButton1);
             navControlPanel.Controls.Clear();
-            var dashboardPage = new DashboardPage();
+            var dashboardPage = new DashBoardPageFolder.DashboardPage();
             dashboardPage.Dock = DockStyle.Fill;
             navControlPanel.Controls.Add(dashboardPage);
         }
@@ -22,7 +27,7 @@ namespace JunkShopInventoryandTransactionSystem.View
         {
             SetNavButtonChecked(dashBoardNavButton1);
             navControlPanel.Controls.Clear();
-            var dashboardPage = new DashboardPage();
+            var dashboardPage = new DashBoardPageFolder.DashboardPage();
             dashboardPage.Dock = DockStyle.Fill;
             navControlPanel.Controls.Add(dashboardPage);
         }
@@ -31,7 +36,7 @@ namespace JunkShopInventoryandTransactionSystem.View
         {
             SetNavButtonChecked(InventoryNavButton);
             navControlPanel.Controls.Clear();
-            var inventoryPage = new MainInventoryPage();
+            var inventoryPage = new Inventory_Pages.MainInventoryPage();
             inventoryPage.Dock = DockStyle.Fill;
             navControlPanel.Controls.Add(inventoryPage);
         }
@@ -39,7 +44,7 @@ namespace JunkShopInventoryandTransactionSystem.View
         {
             SetNavButtonChecked(TransactionNavButton);
             navControlPanel.Controls.Clear();
-            var generateTransactionPage = new GenerateTransactionPage();
+            var generateTransactionPage = new GenerateTransactionPageFolder.GenerateTransactionPage();
             generateTransactionPage.Dock = DockStyle.Fill;
             navControlPanel.Controls.Add(generateTransactionPage);
         }
@@ -48,7 +53,7 @@ namespace JunkShopInventoryandTransactionSystem.View
         {
             SetNavButtonChecked(TransacRecordsNavButton);
             navControlPanel.Controls.Clear();
-            var transactionRecordsPage = new TransactionRecordsPage();
+            var transactionRecordsPage = new TransactionRecordsPageFolder.TransactionRecordsPage();
             transactionRecordsPage.Dock = DockStyle.Fill;
             navControlPanel.Controls.Add(transactionRecordsPage);
         }
@@ -57,7 +62,7 @@ namespace JunkShopInventoryandTransactionSystem.View
         {
             SetNavButtonChecked(CustRecordsNavButton);
             navControlPanel.Controls.Clear();
-            var customerRecordsPage = new CustomerRecordsPage();
+            var customerRecordsPage = new CustomerRecordsPage.CustomerRecordsPage();
             customerRecordsPage.Dock = DockStyle.Fill;
             navControlPanel.Controls.Add(customerRecordsPage);
         }
@@ -66,7 +71,7 @@ namespace JunkShopInventoryandTransactionSystem.View
         {
             SetNavButtonChecked(FinancialRecNavButton);
             navControlPanel.Controls.Clear();
-            var financialRecordsPage = new FinancialReportsPage();
+            var financialRecordsPage = new FinancialReportsPageFolder.FinancialReportsPage();
             financialRecordsPage.Dock = DockStyle.Fill;
             navControlPanel.Controls.Add(financialRecordsPage);
         }
@@ -75,7 +80,7 @@ namespace JunkShopInventoryandTransactionSystem.View
         {
             SetNavButtonChecked(EmployeeManagementNavButton);
             navControlPanel.Controls.Clear();
-            var employeeManagementPage = new EmployeeManagementPage();
+            var employeeManagementPage = new EmployeeManagementPageFolder.EmployeeManagementPage();
             employeeManagementPage.Dock = DockStyle.Fill;
             navControlPanel.Controls.Add(employeeManagementPage);
         }
@@ -83,7 +88,7 @@ namespace JunkShopInventoryandTransactionSystem.View
         private void cuiPictureBox1_Click(object sender, EventArgs e)
         {
             navControlPanel.Controls.Clear();
-            var userInfoPage = new UserInformationPage();
+            var userInfoPage = new UserInfo.UserInformationPage();
             userInfoPage.Dock = DockStyle.Fill;
             navControlPanel.Controls.Add(userInfoPage);
 
@@ -123,7 +128,7 @@ namespace JunkShopInventoryandTransactionSystem.View
         //Pang logout button, this will clear the main panel and show the login page again.
         private void LogOutButton1_Click(object sender, EventArgs e)
         {
-            LogInPage loginPage = new LogInPage();
+            LogInPage loginPage = new LogInAuthFolder.LogInPage();
             loginPage.Dock = DockStyle.Fill;
             loginPage.TopLevel = false;
             MainForm.MainPanel.Controls.Clear();

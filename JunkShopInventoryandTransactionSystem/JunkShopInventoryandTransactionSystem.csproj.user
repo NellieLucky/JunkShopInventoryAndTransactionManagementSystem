@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Compile Update="BuyerRecordsPage.cs">
+    <Compile Update="View\CustomerRecordsPage\BuyerRecordsPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="SupplierRecordsPage.cs">
+    <Compile Update="View\CustomerRecordsPage\SupplierRecordsPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="View\Add_Edit Panel\AddEditCategoryDialogBox.cs">
@@ -19,43 +19,43 @@
     <Compile Update="View\Add_Edit Panel\AddEditInventoryItem.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="View\AdminSignUpPage.cs">
+    <Compile Update="View\LogInAuthFolder\AdminSignUpPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="View\CategoryPage.cs">
+    <Compile Update="View\Inventory Pages\CategoryPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="View\CustomerRecordsPage.cs">
+    <Compile Update="View\CustomerRecordsPage\CustomerRecordsPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="View\DashboardPage.cs">
+    <Compile Update="View\DashBoardPageFolder\DashboardPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="View\DeletionDialogs\DeleteItemDialogBox.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="View\EmployeeManagementPage.cs">
+    <Compile Update="View\EmployeeManagementPageFolder\EmployeeManagementPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="View\FinancialReportsPage.cs">
+    <Compile Update="View\FinancialRecordsPageFolder\FinancialReportsPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="View\GenerateTransactionPage.cs">
+    <Compile Update="View\GenerateTransactionPageFolder\GenerateTransactionPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="View\ItemRecordsPage.cs">
+    <Compile Update="View\Inventory Pages\ItemRecordsPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="View\MainInventoryPage.cs">
+    <Compile Update="View\Inventory Pages\MainInventoryPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="View\MainNavigationPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="View\ForgotPasswordPage.cs">
+    <Compile Update="View\LogInAuthFolder\ForgotPasswordPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="View\LogInPage.cs">
+    <Compile Update="View\LogInAuthFolder\LogInPage.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Resources\UserDefinedComponents\CirclePanelClass.cs">
@@ -67,13 +67,13 @@
     <Compile Update="Resources\UserDefinedComponents\TextFieldwithDesign.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Update="View\NewPasswordPage.cs">
+    <Compile Update="View\LogInAuthFolder\NewPasswordPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="View\TransactionRecordsPage.cs">
+    <Compile Update="View\TransactionRecordsPageFolder\TransactionRecordsPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="View\UserInformationPage.cs">
+    <Compile Update="View\UserInfo\UserInformationPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
   </ItemGroup>

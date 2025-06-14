@@ -250,6 +250,7 @@
             ClientSize = new Size(575, 423);
             Controls.Add(cuiPanel1);
             Name = "DeleteItemDialogBox";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Delete Item";
             cuiPanel1.ResumeLayout(false);
             cuiPanel1.PerformLayout();
