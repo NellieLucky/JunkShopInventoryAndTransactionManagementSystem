@@ -1,4 +1,4 @@
-﻿namespace JunkShopInventoryandTransactionSystem.View
+﻿namespace JunkShopInventoryandTransactionSystem.View.LogInAuthFolder
 {
     partial class AdminSignUpPage
     {
