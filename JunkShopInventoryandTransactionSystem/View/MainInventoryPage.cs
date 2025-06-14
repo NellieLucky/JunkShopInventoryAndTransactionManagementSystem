@@ -54,6 +54,9 @@ namespace JunkShopInventoryandTransactionSystem.View
 
         }
 
-        
+        private void InventoryPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

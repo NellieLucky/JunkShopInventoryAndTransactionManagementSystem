@@ -43,9 +43,10 @@
             DashboardTitlePage.BackColor = Color.FromArgb(0, 0, 0, 0);
             DashboardTitlePage.Font = new Font("Arial", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
             DashboardTitlePage.ForeColor = Color.FromArgb(16, 107, 23);
-            DashboardTitlePage.Location = new Point(17, 17);
+            DashboardTitlePage.Location = new Point(21, 21);
+            DashboardTitlePage.Margin = new Padding(4, 0, 4, 0);
             DashboardTitlePage.Name = "DashboardTitlePage";
-            DashboardTitlePage.Size = new Size(194, 46);
+            DashboardTitlePage.Size = new Size(240, 56);
             DashboardTitlePage.TabIndex = 1;
             DashboardTitlePage.Text = "Inventory";
             // 
@@ -55,9 +56,10 @@
             panel1.Controls.Add(AuditNavButton);
             panel1.Controls.Add(CategoryNavButton);
             panel1.Controls.Add(DashboardTitlePage);
-            panel1.Location = new Point(3, 0);
+            panel1.Location = new Point(4, 0);
+            panel1.Margin = new Padding(4, 4, 4, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1081, 128);
+            panel1.Size = new Size(1351, 160);
             panel1.TabIndex = 2;
             // 
             // ItemNavButton
@@ -81,7 +83,8 @@
             ItemNavButton.ImageAutoCenter = true;
             ItemNavButton.ImageExpand = new Point(0, 0);
             ItemNavButton.ImageOffset = new Point(0, 0);
-            ItemNavButton.Location = new Point(17, 81);
+            ItemNavButton.Location = new Point(21, 101);
+            ItemNavButton.Margin = new Padding(4, 4, 4, 4);
             ItemNavButton.Name = "ItemNavButton";
             ItemNavButton.NormalBackground = Color.FromArgb(0, 157, 209);
             ItemNavButton.NormalForeColor = Color.White;
@@ -93,7 +96,7 @@
             ItemNavButton.PressedImageTint = Color.White;
             ItemNavButton.PressedOutline = Color.FromArgb(64, 128, 128, 128);
             ItemNavButton.Rounding = new Padding(8);
-            ItemNavButton.Size = new Size(146, 40);
+            ItemNavButton.Size = new Size(182, 50);
             ItemNavButton.TabIndex = 4;
             ItemNavButton.TextAlignment = StringAlignment.Center;
             ItemNavButton.TextOffset = new Point(0, 0);
@@ -120,7 +123,8 @@
             AuditNavButton.ImageAutoCenter = true;
             AuditNavButton.ImageExpand = new Point(0, 0);
             AuditNavButton.ImageOffset = new Point(0, 0);
-            AuditNavButton.Location = new Point(321, 81);
+            AuditNavButton.Location = new Point(401, 101);
+            AuditNavButton.Margin = new Padding(4, 4, 4, 4);
             AuditNavButton.Name = "AuditNavButton";
             AuditNavButton.NormalBackground = Color.FromArgb(0, 157, 209);
             AuditNavButton.NormalForeColor = Color.White;
@@ -132,7 +136,7 @@
             AuditNavButton.PressedImageTint = Color.White;
             AuditNavButton.PressedOutline = Color.FromArgb(64, 128, 128, 128);
             AuditNavButton.Rounding = new Padding(8);
-            AuditNavButton.Size = new Size(146, 40);
+            AuditNavButton.Size = new Size(182, 50);
             AuditNavButton.TabIndex = 3;
             AuditNavButton.TextAlignment = StringAlignment.Center;
             AuditNavButton.TextOffset = new Point(0, 0);
@@ -158,7 +162,8 @@
             CategoryNavButton.ImageAutoCenter = true;
             CategoryNavButton.ImageExpand = new Point(0, 0);
             CategoryNavButton.ImageOffset = new Point(0, 0);
-            CategoryNavButton.Location = new Point(169, 81);
+            CategoryNavButton.Location = new Point(211, 101);
+            CategoryNavButton.Margin = new Padding(4, 4, 4, 4);
             CategoryNavButton.Name = "CategoryNavButton";
             CategoryNavButton.NormalBackground = Color.FromArgb(0, 157, 209);
             CategoryNavButton.NormalForeColor = Color.White;
@@ -170,28 +175,30 @@
             CategoryNavButton.PressedImageTint = Color.White;
             CategoryNavButton.PressedOutline = Color.FromArgb(64, 128, 128, 128);
             CategoryNavButton.Rounding = new Padding(8);
-            CategoryNavButton.Size = new Size(146, 40);
+            CategoryNavButton.Size = new Size(182, 50);
             CategoryNavButton.TabIndex = 2;
             CategoryNavButton.TextAlignment = StringAlignment.Center;
             CategoryNavButton.TextOffset = new Point(0, 0);
-            CategoryNavButton.Click += CategoryNavButton_Click;
             // 
             // InventoryPanel
             // 
-            InventoryPanel.Location = new Point(0, 127);
+            InventoryPanel.Location = new Point(0, 159);
+            InventoryPanel.Margin = new Padding(4, 4, 4, 4);
             InventoryPanel.Name = "InventoryPanel";
-            InventoryPanel.Size = new Size(1084, 668);
+            InventoryPanel.Size = new Size(1355, 835);
             InventoryPanel.TabIndex = 3;
+            InventoryPanel.Paint += InventoryPanel_Paint;
             // 
             // MainInventoryPage
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(227, 244, 238);
             Controls.Add(InventoryPanel);
             Controls.Add(panel1);
+            Margin = new Padding(4, 4, 4, 4);
             Name = "MainInventoryPage";
-            Size = new Size(1084, 798);
+            Size = new Size(1355, 998);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);
