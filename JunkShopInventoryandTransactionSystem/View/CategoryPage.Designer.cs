@@ -53,11 +53,12 @@
             // 
             DashboardTitlePage.AutoSize = true;
             DashboardTitlePage.BackColor = Color.FromArgb(0, 0, 0, 0);
-            DashboardTitlePage.Font = new Font("Arial", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            DashboardTitlePage.ForeColor = Color.FromArgb(0, 157, 209);
-            DashboardTitlePage.Location = new Point(14, 20);
+            DashboardTitlePage.Font = new Font("Arial", 24F, FontStyle.Bold);
+            DashboardTitlePage.ForeColor = Color.FromArgb(16, 107, 23);
+            DashboardTitlePage.Location = new Point(18, 25);
+            DashboardTitlePage.Margin = new Padding(4, 0, 4, 0);
             DashboardTitlePage.Name = "DashboardTitlePage";
-            DashboardTitlePage.Size = new Size(171, 35);
+            DashboardTitlePage.Size = new Size(273, 56);
             DashboardTitlePage.TabIndex = 31;
             DashboardTitlePage.Text = "Categories";
             // 
@@ -73,7 +74,7 @@
             dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Sunken;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = Color.FromArgb(163, 244, 215);
-            dataGridViewCellStyle1.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dataGridViewCellStyle1.ForeColor = Color.Black;
             dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(163, 244, 215);
             dataGridViewCellStyle1.SelectionForeColor = Color.Black;
@@ -85,7 +86,8 @@
             dataGridView1.EditMode = DataGridViewEditMode.EditProgrammatically;
             dataGridView1.EnableHeadersVisualStyles = false;
             dataGridView1.GridColor = Color.FromArgb(99, 99, 99);
-            dataGridView1.Location = new Point(14, 78);
+            dataGridView1.Location = new Point(18, 98);
+            dataGridView1.Margin = new Padding(4, 4, 4, 4);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -97,14 +99,14 @@
             dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.RowHeadersWidth = 50;
-            dataGridViewCellStyle5.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle5.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dataGridViewCellStyle5.ForeColor = Color.Black;
             dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(0, 157, 209);
             dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
             dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
             dataGridView1.RowTemplate.Height = 50;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(1056, 571);
+            dataGridView1.Size = new Size(1320, 714);
             dataGridView1.TabIndex = 28;
             // 
             // ItemID
@@ -177,6 +179,7 @@
             cuiButton1.ImageExpand = new Point(5, 5);
             cuiButton1.ImageOffset = new Point(0, 0);
             cuiButton1.Location = new Point(0, 0);
+            cuiButton1.Margin = new Padding(4, 4, 4, 4);
             cuiButton1.Name = "cuiButton1";
             cuiButton1.NormalBackground = Color.FromArgb(0, 157, 209);
             cuiButton1.NormalForeColor = Color.Black;
@@ -188,7 +191,7 @@
             cuiButton1.PressedImageTint = Color.White;
             cuiButton1.PressedOutline = Color.FromArgb(64, 128, 128, 128);
             cuiButton1.Rounding = new Padding(0, 5, 5, 0);
-            cuiButton1.Size = new Size(43, 39);
+            cuiButton1.Size = new Size(54, 49);
             cuiButton1.TabIndex = 24;
             cuiButton1.TextAlignment = StringAlignment.Center;
             cuiButton1.TextOffset = new Point(0, 0);
@@ -207,17 +210,17 @@
             cuiTextBox1.Image = null;
             cuiTextBox1.ImageExpand = new Point(0, 0);
             cuiTextBox1.ImageOffset = new Point(0, 0);
-            cuiTextBox1.Location = new Point(41, 2);
-            cuiTextBox1.Margin = new Padding(4);
+            cuiTextBox1.Location = new Point(51, 2);
+            cuiTextBox1.Margin = new Padding(5, 5, 5, 5);
             cuiTextBox1.Multiline = false;
             cuiTextBox1.Name = "cuiTextBox1";
             cuiTextBox1.NormalImageTint = Color.White;
-            cuiTextBox1.Padding = new Padding(18, 8, 18, 0);
+            cuiTextBox1.Padding = new Padding(22, 11, 22, 0);
             cuiTextBox1.PasswordChar = false;
             cuiTextBox1.PlaceholderColor = Color.Gray;
             cuiTextBox1.PlaceholderText = "Search...";
             cuiTextBox1.Rounding = new Padding(2);
-            cuiTextBox1.Size = new Size(333, 35);
+            cuiTextBox1.Size = new Size(416, 44);
             cuiTextBox1.TabIndex = 23;
             cuiTextBox1.TextOffset = new Size(0, 0);
             cuiTextBox1.UnderlinedStyle = false;
@@ -243,7 +246,8 @@
             AddCategoryButton.ImageAutoCenter = true;
             AddCategoryButton.ImageExpand = new Point(0, 0);
             AddCategoryButton.ImageOffset = new Point(0, 0);
-            AddCategoryButton.Location = new Point(542, 20);
+            AddCategoryButton.Location = new Point(678, 25);
+            AddCategoryButton.Margin = new Padding(4, 4, 4, 4);
             AddCategoryButton.Name = "AddCategoryButton";
             AddCategoryButton.NormalBackground = Color.FromArgb(0, 157, 209);
             AddCategoryButton.NormalForeColor = Color.White;
@@ -255,7 +259,7 @@
             AddCategoryButton.PressedImageTint = Color.White;
             AddCategoryButton.PressedOutline = Color.FromArgb(64, 128, 128, 128);
             AddCategoryButton.Rounding = new Padding(8);
-            AddCategoryButton.Size = new Size(146, 40);
+            AddCategoryButton.Size = new Size(182, 50);
             AddCategoryButton.TabIndex = 30;
             AddCategoryButton.TextAlignment = StringAlignment.Center;
             AddCategoryButton.TextOffset = new Point(0, 0);
@@ -266,21 +270,23 @@
             panel1.BackColor = Color.FromArgb(0, 157, 209);
             panel1.Controls.Add(cuiButton1);
             panel1.Controls.Add(cuiTextBox1);
-            panel1.Location = new Point(694, 20);
+            panel1.Location = new Point(868, 25);
+            panel1.Margin = new Padding(4, 4, 4, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(376, 40);
+            panel1.Size = new Size(470, 50);
             panel1.TabIndex = 29;
             // 
             // CategoryPage
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(DashboardTitlePage);
             Controls.Add(dataGridView1);
             Controls.Add(AddCategoryButton);
             Controls.Add(panel1);
+            Margin = new Padding(4, 4, 4, 4);
             Name = "CategoryPage";
-            Size = new Size(1084, 668);
+            Size = new Size(1355, 835);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             panel1.ResumeLayout(false);
             ResumeLayout(false);

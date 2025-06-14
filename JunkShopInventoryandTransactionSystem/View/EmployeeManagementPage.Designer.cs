@@ -28,407 +28,390 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EmployeeManagementPage));
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             DashboardTitlePage = new Label();
-            label1 = new Label();
-            label2 = new Label();
-            label3 = new Label();
-            label4 = new Label();
-            label5 = new Label();
-            tableLayoutPanel1 = new TableLayoutPanel();
-            tableLayoutPanel2 = new TableLayoutPanel();
-            cuiLabel4 = new CuoreUI.Controls.cuiLabel();
-            cuiLabel3 = new CuoreUI.Controls.cuiLabel();
-            cuiLabel2 = new CuoreUI.Controls.cuiLabel();
-            cuiLabel1 = new CuoreUI.Controls.cuiLabel();
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
-            button4 = new Button();
             vScrollBar1 = new VScrollBar();
-            dataGridView2 = new DataGridView();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
-            textBox5 = new TextBox();
-            textBox6 = new TextBox();
-            label6 = new Label();
-            label7 = new Label();
-            cuiLabel5 = new CuoreUI.Controls.cuiLabel();
-            tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            ItemID = new DataGridViewTextBoxColumn();
+            ItemName = new DataGridViewTextBoxColumn();
+            Category = new DataGridViewTextBoxColumn();
+            QtyType = new DataGridViewTextBoxColumn();
+            Quantity = new DataGridViewTextBoxColumn();
+            BuyingPrice = new DataGridViewTextBoxColumn();
+            SellingPrice = new DataGridViewTextBoxColumn();
+            Edit = new DataGridViewImageColumn();
+            Delete = new DataGridViewImageColumn();
+            dataGridView1 = new DataGridView();
+            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
+            dataGridViewImageColumn1 = new DataGridViewImageColumn();
+            dataGridViewImageColumn2 = new DataGridViewImageColumn();
+            AddItemButton = new CuoreUI.Controls.cuiButton();
+            cuiTextBox1 = new CuoreUI.Controls.cuiTextBox();
+            cuiButton1 = new CuoreUI.Controls.cuiButton();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // DashboardTitlePage
             // 
             DashboardTitlePage.AutoSize = true;
             DashboardTitlePage.BackColor = Color.FromArgb(0, 0, 0, 0);
-            DashboardTitlePage.Font = new Font("Arial", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            DashboardTitlePage.Font = new Font("Arial", 24F, FontStyle.Bold);
             DashboardTitlePage.ForeColor = Color.FromArgb(16, 107, 23);
-            DashboardTitlePage.Location = new Point(23, 22);
+            DashboardTitlePage.Location = new Point(29, 28);
+            DashboardTitlePage.Margin = new Padding(4, 0, 4, 0);
             DashboardTitlePage.Name = "DashboardTitlePage";
-            DashboardTitlePage.Size = new Size(459, 46);
+            DashboardTitlePage.Size = new Size(559, 56);
             DashboardTitlePage.TabIndex = 6;
             DashboardTitlePage.Text = "Employee Management";
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.FromArgb(7, 96, 14);
-            label1.Location = new Point(481, 82);
-            label1.Margin = new Padding(2, 0, 2, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(232, 24);
-            label1.TabIndex = 7;
-            label1.Text = "Employee's Information";
-            label1.Click += label1_Click;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.ForeColor = Color.FromArgb(7, 96, 14);
-            label2.Location = new Point(111, 153);
-            label2.Margin = new Padding(2, 0, 2, 0);
-            label2.Name = "label2";
-            label2.Size = new Size(63, 24);
-            label2.TabIndex = 12;
-            label2.Text = "Name";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.ForeColor = Color.FromArgb(7, 96, 14);
-            label3.Location = new Point(291, 153);
-            label3.Margin = new Padding(2, 0, 2, 0);
-            label3.Name = "label3";
-            label3.Size = new Size(122, 24);
-            label3.TabIndex = 13;
-            label3.Text = "Contact No.";
-            label3.Click += label3_Click;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.ForeColor = Color.FromArgb(7, 96, 14);
-            label4.Location = new Point(522, 153);
-            label4.Margin = new Padding(2, 0, 2, 0);
-            label4.Name = "label4";
-            label4.Size = new Size(92, 24);
-            label4.TabIndex = 14;
-            label4.Text = "Job Title";
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.ForeColor = Color.FromArgb(7, 96, 14);
-            label5.Location = new Point(706, 155);
-            label5.Margin = new Padding(2, 0, 2, 0);
-            label5.Name = "label5";
-            label5.Size = new Size(112, 24);
-            label5.TabIndex = 15;
-            label5.Text = "Job Status";
-            // 
-            // tableLayoutPanel1
-            // 
-            tableLayoutPanel1.BackColor = Color.White;
-            tableLayoutPanel1.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
-            tableLayoutPanel1.ColumnCount = 5;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
-            tableLayoutPanel1.ForeColor = Color.FromArgb(48, 212, 119);
-            tableLayoutPanel1.Location = new Point(12, 326);
-            tableLayoutPanel1.Margin = new Padding(2);
-            tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 13;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 8.333624F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 8.333624F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 8.333624F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 8.333624F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 8.333624F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 8.333624F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 8.332791F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 8.332791F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 8.333416F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 8.332583F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 8.333332F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 8.333332F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.Size = new Size(1014, 458);
-            tableLayoutPanel1.TabIndex = 20;
-            // 
-            // tableLayoutPanel2
-            // 
-            tableLayoutPanel2.BackColor = Color.FromArgb(163, 244, 215);
-            tableLayoutPanel2.ColumnCount = 5;
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
-            tableLayoutPanel2.Controls.Add(cuiLabel5, 0, 0);
-            tableLayoutPanel2.Controls.Add(cuiLabel4, 4, 0);
-            tableLayoutPanel2.Controls.Add(cuiLabel3, 3, 0);
-            tableLayoutPanel2.Controls.Add(cuiLabel2, 2, 0);
-            tableLayoutPanel2.Controls.Add(cuiLabel1, 1, 0);
-            tableLayoutPanel2.Location = new Point(12, 284);
-            tableLayoutPanel2.Margin = new Padding(2);
-            tableLayoutPanel2.Name = "tableLayoutPanel2";
-            tableLayoutPanel2.RowCount = 1;
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel2.Size = new Size(1014, 37);
-            tableLayoutPanel2.TabIndex = 23;
-            // 
-            // cuiLabel4
-            // 
-            cuiLabel4.Content = "Job\\ Status";
-            cuiLabel4.Font = new Font("Arial", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            cuiLabel4.ForeColor = Color.FromArgb(7, 96, 14);
-            cuiLabel4.HorizontalAlignment = StringAlignment.Center;
-            cuiLabel4.Location = new Point(812, 5);
-            cuiLabel4.Margin = new Padding(4, 5, 4, 5);
-            cuiLabel4.Name = "cuiLabel4";
-            cuiLabel4.Size = new Size(193, 25);
-            cuiLabel4.TabIndex = 26;
-            cuiLabel4.VerticalAlignment = StringAlignment.Center;
-            cuiLabel4.Load += cuiLabel4_Load;
-            // 
-            // cuiLabel3
-            // 
-            cuiLabel3.Content = "Job\\ Title";
-            cuiLabel3.Font = new Font("Arial", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            cuiLabel3.ForeColor = Color.FromArgb(7, 96, 14);
-            cuiLabel3.HorizontalAlignment = StringAlignment.Center;
-            cuiLabel3.Location = new Point(610, 5);
-            cuiLabel3.Margin = new Padding(4, 5, 4, 5);
-            cuiLabel3.Name = "cuiLabel3";
-            cuiLabel3.Size = new Size(194, 27);
-            cuiLabel3.TabIndex = 25;
-            cuiLabel3.VerticalAlignment = StringAlignment.Center;
-            // 
-            // cuiLabel2
-            // 
-            cuiLabel2.Content = "Contact\\ \\ No\\.";
-            cuiLabel2.Font = new Font("Arial", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            cuiLabel2.ForeColor = Color.FromArgb(7, 96, 14);
-            cuiLabel2.HorizontalAlignment = StringAlignment.Center;
-            cuiLabel2.Location = new Point(408, 5);
-            cuiLabel2.Margin = new Padding(4, 5, 4, 5);
-            cuiLabel2.Name = "cuiLabel2";
-            cuiLabel2.Size = new Size(194, 27);
-            cuiLabel2.TabIndex = 25;
-            cuiLabel2.VerticalAlignment = StringAlignment.Center;
-            // 
-            // cuiLabel1
-            // 
-            cuiLabel1.Content = "Name";
-            cuiLabel1.Font = new Font("Arial", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            cuiLabel1.ForeColor = Color.FromArgb(7, 96, 14);
-            cuiLabel1.HorizontalAlignment = StringAlignment.Center;
-            cuiLabel1.Location = new Point(206, 5);
-            cuiLabel1.Margin = new Padding(4, 5, 4, 5);
-            cuiLabel1.Name = "cuiLabel1";
-            cuiLabel1.Size = new Size(194, 27);
-            cuiLabel1.TabIndex = 24;
-            cuiLabel1.VerticalAlignment = StringAlignment.Center;
-            cuiLabel1.Load += cuiLabel1_Load;
-            // 
-            // button1
-            // 
-            button1.BackColor = Color.FromArgb(48, 212, 119);
-            button1.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.ForeColor = Color.White;
-            button1.Location = new Point(621, 234);
-            button1.Margin = new Padding(2);
-            button1.Name = "button1";
-            button1.Size = new Size(90, 31);
-            button1.TabIndex = 24;
-            button1.Text = "ADD";
-            button1.UseVisualStyleBackColor = false;
-            // 
-            // button2
-            // 
-            button2.BackColor = Color.FromArgb(82, 113, 255);
-            button2.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button2.ForeColor = Color.White;
-            button2.Location = new Point(715, 234);
-            button2.Margin = new Padding(2);
-            button2.Name = "button2";
-            button2.Size = new Size(90, 31);
-            button2.TabIndex = 25;
-            button2.Text = "EDIT";
-            button2.UseVisualStyleBackColor = false;
-            // 
-            // button3
-            // 
-            button3.BackColor = Color.FromArgb(0, 74, 173);
-            button3.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button3.ForeColor = Color.White;
-            button3.Location = new Point(819, 234);
-            button3.Margin = new Padding(2);
-            button3.Name = "button3";
-            button3.Size = new Size(90, 31);
-            button3.TabIndex = 26;
-            button3.Text = "SAVE";
-            button3.UseVisualStyleBackColor = false;
-            // 
-            // button4
-            // 
-            button4.BackColor = Color.Red;
-            button4.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button4.ForeColor = Color.White;
-            button4.Location = new Point(922, 234);
-            button4.Margin = new Padding(2);
-            button4.Name = "button4";
-            button4.Size = new Size(105, 31);
-            button4.TabIndex = 27;
-            button4.Text = "REMOVE";
-            button4.UseVisualStyleBackColor = false;
-            button4.Click += button4_Click;
-            // 
             // vScrollBar1
             // 
-            vScrollBar1.Location = new Point(1029, 335);
+            vScrollBar1.Location = new Point(1286, 419);
             vScrollBar1.Name = "vScrollBar1";
-            vScrollBar1.Size = new Size(36, 431);
+            vScrollBar1.Size = new Size(36, 539);
             vScrollBar1.TabIndex = 29;
             // 
-            // dataGridView2
+            // ItemID
             // 
-            dataGridView2.BackgroundColor = Color.FromArgb(224, 224, 224);
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.GridColor = Color.FromArgb(224, 224, 224);
-            dataGridView2.Location = new Point(11, 270);
-            dataGridView2.Margin = new Padding(2);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.RowHeadersWidth = 62;
-            dataGridView2.Size = new Size(1015, 514);
-            dataGridView2.TabIndex = 30;
+            ItemID.HeaderText = "ItemID";
+            ItemID.MinimumWidth = 6;
+            ItemID.Name = "ItemID";
+            ItemID.Width = 70;
             // 
-            // textBox1
+            // ItemName
             // 
-            textBox1.Location = new Point(65, 126);
-            textBox1.Margin = new Padding(2);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(168, 27);
-            textBox1.TabIndex = 31;
-            textBox1.TextChanged += textBox1_TextChanged;
+            ItemName.HeaderText = "Item Name";
+            ItemName.MinimumWidth = 6;
+            ItemName.Name = "ItemName";
+            ItemName.Width = 150;
             // 
-            // textBox2
+            // Category
             // 
-            textBox2.Location = new Point(269, 126);
-            textBox2.Margin = new Padding(2);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(168, 27);
-            textBox2.TabIndex = 32;
+            Category.FillWeight = 150F;
+            Category.HeaderText = "Category";
+            Category.MinimumWidth = 6;
+            Category.Name = "Category";
+            Category.Width = 150;
             // 
-            // textBox3
+            // QtyType
             // 
-            textBox3.Location = new Point(481, 126);
-            textBox3.Margin = new Padding(2);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(168, 27);
-            textBox3.TabIndex = 33;
+            QtyType.FillWeight = 125F;
+            QtyType.HeaderText = "QtyType";
+            QtyType.MinimumWidth = 6;
+            QtyType.Name = "QtyType";
+            QtyType.Width = 125;
             // 
-            // textBox4
+            // Quantity
             // 
-            textBox4.Location = new Point(681, 126);
-            textBox4.Margin = new Padding(2);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(168, 27);
-            textBox4.TabIndex = 34;
+            Quantity.FillWeight = 59.177578F;
+            Quantity.HeaderText = "Quantity";
+            Quantity.MinimumWidth = 6;
+            Quantity.Name = "Quantity";
+            Quantity.Width = 130;
             // 
-            // textBox5
+            // BuyingPrice
             // 
-            textBox5.Location = new Point(269, 196);
-            textBox5.Margin = new Padding(2);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(168, 27);
-            textBox5.TabIndex = 38;
+            BuyingPrice.FillWeight = 59.177578F;
+            BuyingPrice.HeaderText = "BuyingPrice";
+            BuyingPrice.MinimumWidth = 6;
+            BuyingPrice.Name = "BuyingPrice";
+            BuyingPrice.Width = 130;
             // 
-            // textBox6
+            // SellingPrice
             // 
-            textBox6.Location = new Point(65, 196);
-            textBox6.Margin = new Padding(2);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(168, 27);
-            textBox6.TabIndex = 37;
+            SellingPrice.FillWeight = 59.177578F;
+            SellingPrice.HeaderText = "SellingPrice";
+            SellingPrice.MinimumWidth = 6;
+            SellingPrice.Name = "SellingPrice";
+            SellingPrice.Width = 130;
             // 
-            // label6
+            // Edit
             // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.ForeColor = Color.FromArgb(7, 96, 14);
-            label6.Location = new Point(291, 223);
-            label6.Margin = new Padding(2, 0, 2, 0);
-            label6.Name = "label6";
-            label6.Size = new Size(103, 24);
-            label6.TabIndex = 36;
-            label6.Text = "Password";
+            Edit.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.NullValue = resources.GetObject("dataGridViewCellStyle1.NullValue");
+            dataGridViewCellStyle1.Padding = new Padding(10);
+            Edit.DefaultCellStyle = dataGridViewCellStyle1;
+            Edit.FillWeight = 5.618882F;
+            Edit.HeaderText = "Edit";
+            Edit.Image = Properties.Resources.pen;
+            Edit.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            Edit.MinimumWidth = 6;
+            Edit.Name = "Edit";
+            Edit.Resizable = DataGridViewTriState.False;
             // 
-            // label7
+            // Delete
             // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.ForeColor = Color.FromArgb(7, 96, 14);
-            label7.Location = new Point(111, 223);
-            label7.Margin = new Padding(2, 0, 2, 0);
-            label7.Name = "label7";
-            label7.Size = new Size(105, 24);
-            label7.TabIndex = 35;
-            label7.Text = "Username";
+            Delete.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.NullValue = resources.GetObject("dataGridViewCellStyle2.NullValue");
+            dataGridViewCellStyle2.Padding = new Padding(10);
+            Delete.DefaultCellStyle = dataGridViewCellStyle2;
+            Delete.FillWeight = 5.618882F;
+            Delete.HeaderText = "Delete";
+            Delete.Image = Properties.Resources.delete;
+            Delete.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            Delete.MinimumWidth = 6;
+            Delete.Name = "Delete";
+            Delete.Resizable = DataGridViewTriState.False;
             // 
-            // cuiLabel5
+            // dataGridView1
             // 
-            cuiLabel5.Content = "Username";
-            cuiLabel5.Font = new Font("Arial", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            cuiLabel5.ForeColor = Color.FromArgb(7, 96, 14);
-            cuiLabel5.HorizontalAlignment = StringAlignment.Center;
-            cuiLabel5.Location = new Point(4, 5);
-            cuiLabel5.Margin = new Padding(4, 5, 4, 5);
-            cuiLabel5.Name = "cuiLabel5";
-            cuiLabel5.Size = new Size(194, 27);
-            cuiLabel5.TabIndex = 27;
-            cuiLabel5.VerticalAlignment = StringAlignment.Center;
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.AllowUserToResizeColumns = false;
+            dataGridView1.AllowUserToResizeRows = false;
+            dataGridView1.BackgroundColor = Color.White;
+            dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.SunkenHorizontal;
+            dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Sunken;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(163, 244, 215);
+            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(163, 244, 215);
+            dataGridViewCellStyle3.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridView1.ColumnHeadersHeight = 60;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn6, dataGridViewImageColumn1, dataGridViewImageColumn2 });
+            dataGridView1.EditMode = DataGridViewEditMode.EditProgrammatically;
+            dataGridView1.EnableHeadersVisualStyles = false;
+            dataGridView1.GridColor = Color.FromArgb(99, 99, 99);
+            dataGridView1.Location = new Point(17, 170);
+            dataGridView1.Margin = new Padding(4);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridView1.RowHeadersVisible = false;
+            dataGridView1.RowHeadersWidth = 50;
+            dataGridViewCellStyle7.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle7.ForeColor = Color.Black;
+            dataGridViewCellStyle7.SelectionBackColor = Color.FromArgb(0, 157, 209);
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
+            dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridView1.RowTemplate.Height = 50;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.Size = new Size(1320, 768);
+            dataGridView1.TabIndex = 39;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            dataGridViewTextBoxColumn1.FillWeight = 120F;
+            dataGridViewTextBoxColumn1.HeaderText = "Email Account";
+            dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            dataGridViewTextBoxColumn1.Width = 200;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            dataGridViewTextBoxColumn2.FillWeight = 120F;
+            dataGridViewTextBoxColumn2.HeaderText = "Name";
+            dataGridViewTextBoxColumn2.MinimumWidth = 6;
+            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            dataGridViewTextBoxColumn2.Width = 160;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            dataGridViewTextBoxColumn3.FillWeight = 120F;
+            dataGridViewTextBoxColumn3.HeaderText = "Password";
+            dataGridViewTextBoxColumn3.MinimumWidth = 6;
+            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            dataGridViewTextBoxColumn3.Width = 160;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            dataGridViewTextBoxColumn4.FillWeight = 120F;
+            dataGridViewTextBoxColumn4.HeaderText = "Contact Number";
+            dataGridViewTextBoxColumn4.MinimumWidth = 6;
+            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            dataGridViewTextBoxColumn4.Width = 200;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            dataGridViewTextBoxColumn5.FillWeight = 120F;
+            dataGridViewTextBoxColumn5.HeaderText = "Job Title";
+            dataGridViewTextBoxColumn5.MinimumWidth = 6;
+            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            dataGridViewTextBoxColumn5.Width = 180;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            dataGridViewTextBoxColumn6.FillWeight = 120F;
+            dataGridViewTextBoxColumn6.HeaderText = "Job Status";
+            dataGridViewTextBoxColumn6.MinimumWidth = 6;
+            dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            dataGridViewTextBoxColumn6.Width = 180;
+            // 
+            // dataGridViewImageColumn1
+            // 
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.NullValue = resources.GetObject("dataGridViewCellStyle4.NullValue");
+            dataGridViewCellStyle4.Padding = new Padding(10);
+            dataGridViewImageColumn1.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewImageColumn1.FillWeight = 5.618882F;
+            dataGridViewImageColumn1.HeaderText = "Edit";
+            dataGridViewImageColumn1.Image = Properties.Resources.pen;
+            dataGridViewImageColumn1.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            dataGridViewImageColumn1.MinimumWidth = 6;
+            dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            dataGridViewImageColumn1.Resizable = DataGridViewTriState.False;
+            dataGridViewImageColumn1.Width = 120;
+            // 
+            // dataGridViewImageColumn2
+            // 
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.NullValue = resources.GetObject("dataGridViewCellStyle5.NullValue");
+            dataGridViewCellStyle5.Padding = new Padding(10);
+            dataGridViewImageColumn2.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewImageColumn2.FillWeight = 5.618882F;
+            dataGridViewImageColumn2.HeaderText = "Delete";
+            dataGridViewImageColumn2.Image = Properties.Resources.delete;
+            dataGridViewImageColumn2.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            dataGridViewImageColumn2.MinimumWidth = 6;
+            dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
+            dataGridViewImageColumn2.Resizable = DataGridViewTriState.False;
+            dataGridViewImageColumn2.Width = 120;
+            // 
+            // AddItemButton
+            // 
+            AddItemButton.BackColor = Color.FromArgb(0, 0, 0, 0);
+            AddItemButton.CheckButton = false;
+            AddItemButton.Checked = false;
+            AddItemButton.CheckedBackground = Color.FromArgb(255, 106, 0);
+            AddItemButton.CheckedForeColor = Color.White;
+            AddItemButton.CheckedImageTint = Color.White;
+            AddItemButton.CheckedOutline = Color.FromArgb(255, 106, 0);
+            AddItemButton.Content = "Add Item";
+            AddItemButton.DialogResult = DialogResult.None;
+            AddItemButton.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            AddItemButton.ForeColor = Color.White;
+            AddItemButton.HoverBackground = Color.White;
+            AddItemButton.HoveredImageTint = Color.White;
+            AddItemButton.HoverForeColor = Color.Black;
+            AddItemButton.HoverOutline = Color.FromArgb(32, 128, 128, 128);
+            AddItemButton.Image = null;
+            AddItemButton.ImageAutoCenter = true;
+            AddItemButton.ImageExpand = new Point(0, 0);
+            AddItemButton.ImageOffset = new Point(0, 0);
+            AddItemButton.Location = new Point(670, 100);
+            AddItemButton.Margin = new Padding(4);
+            AddItemButton.Name = "AddItemButton";
+            AddItemButton.NormalBackground = Color.FromArgb(0, 157, 209);
+            AddItemButton.NormalForeColor = Color.White;
+            AddItemButton.NormalImageTint = Color.White;
+            AddItemButton.NormalOutline = Color.FromArgb(64, 128, 128, 128);
+            AddItemButton.OutlineThickness = 1F;
+            AddItemButton.PressedBackground = Color.WhiteSmoke;
+            AddItemButton.PressedForeColor = Color.FromArgb(32, 32, 32);
+            AddItemButton.PressedImageTint = Color.White;
+            AddItemButton.PressedOutline = Color.FromArgb(64, 128, 128, 128);
+            AddItemButton.Rounding = new Padding(8);
+            AddItemButton.Size = new Size(182, 50);
+            AddItemButton.TabIndex = 40;
+            AddItemButton.TextAlignment = StringAlignment.Center;
+            AddItemButton.TextOffset = new Point(0, 0);
+            // 
+            // cuiTextBox1
+            // 
+            cuiTextBox1.BackColor = Color.FromArgb(0, 0, 0, 0);
+            cuiTextBox1.BackgroundColor = Color.White;
+            cuiTextBox1.BorderColor = Color.Empty;
+            cuiTextBox1.Content = "";
+            cuiTextBox1.FocusBackgroundColor = Color.White;
+            cuiTextBox1.FocusBorderColor = Color.Empty;
+            cuiTextBox1.FocusImageTint = Color.White;
+            cuiTextBox1.Font = new Font("Microsoft Sans Serif", 9.5F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            cuiTextBox1.ForeColor = Color.Gray;
+            cuiTextBox1.Image = null;
+            cuiTextBox1.ImageExpand = new Point(0, 0);
+            cuiTextBox1.ImageOffset = new Point(0, 0);
+            cuiTextBox1.Location = new Point(921, 106);
+            cuiTextBox1.Margin = new Padding(5);
+            cuiTextBox1.Multiline = false;
+            cuiTextBox1.Name = "cuiTextBox1";
+            cuiTextBox1.NormalImageTint = Color.White;
+            cuiTextBox1.Padding = new Padding(22, 11, 22, 0);
+            cuiTextBox1.PasswordChar = false;
+            cuiTextBox1.PlaceholderColor = Color.Gray;
+            cuiTextBox1.PlaceholderText = "Search...";
+            cuiTextBox1.Rounding = new Padding(2);
+            cuiTextBox1.Size = new Size(416, 44);
+            cuiTextBox1.TabIndex = 41;
+            cuiTextBox1.TextOffset = new Size(0, 0);
+            cuiTextBox1.UnderlinedStyle = false;
+            // 
+            // cuiButton1
+            // 
+            cuiButton1.CheckButton = false;
+            cuiButton1.Checked = false;
+            cuiButton1.CheckedBackground = Color.FromArgb(255, 106, 0);
+            cuiButton1.CheckedForeColor = Color.White;
+            cuiButton1.CheckedImageTint = Color.White;
+            cuiButton1.CheckedOutline = Color.FromArgb(255, 106, 0);
+            cuiButton1.Content = "";
+            cuiButton1.DialogResult = DialogResult.None;
+            cuiButton1.Font = new Font("Microsoft Sans Serif", 9.75F);
+            cuiButton1.ForeColor = Color.Black;
+            cuiButton1.HoverBackground = Color.White;
+            cuiButton1.HoveredImageTint = Color.White;
+            cuiButton1.HoverForeColor = Color.Black;
+            cuiButton1.HoverOutline = Color.FromArgb(32, 128, 128, 128);
+            cuiButton1.Image = Properties.Resources.magnifying_glass;
+            cuiButton1.ImageAutoCenter = true;
+            cuiButton1.ImageExpand = new Point(5, 5);
+            cuiButton1.ImageOffset = new Point(0, 0);
+            cuiButton1.Location = new Point(872, 106);
+            cuiButton1.Margin = new Padding(4);
+            cuiButton1.Name = "cuiButton1";
+            cuiButton1.NormalBackground = Color.FromArgb(0, 157, 209);
+            cuiButton1.NormalForeColor = Color.Black;
+            cuiButton1.NormalImageTint = Color.White;
+            cuiButton1.NormalOutline = Color.FromArgb(64, 128, 128, 128);
+            cuiButton1.OutlineThickness = 1F;
+            cuiButton1.PressedBackground = Color.WhiteSmoke;
+            cuiButton1.PressedForeColor = Color.FromArgb(32, 32, 32);
+            cuiButton1.PressedImageTint = Color.White;
+            cuiButton1.PressedOutline = Color.FromArgb(64, 128, 128, 128);
+            cuiButton1.Rounding = new Padding(0, 5, 5, 0);
+            cuiButton1.Size = new Size(54, 44);
+            cuiButton1.TabIndex = 42;
+            cuiButton1.TextAlignment = StringAlignment.Center;
+            cuiButton1.TextOffset = new Point(0, 0);
             // 
             // EmployeeManagementPage
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(227, 244, 238);
-            Controls.Add(textBox5);
-            Controls.Add(textBox6);
-            Controls.Add(label6);
-            Controls.Add(label7);
-            Controls.Add(textBox4);
-            Controls.Add(textBox3);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(cuiButton1);
+            Controls.Add(cuiTextBox1);
+            Controls.Add(AddItemButton);
+            Controls.Add(dataGridView1);
             Controls.Add(vScrollBar1);
-            Controls.Add(button4);
-            Controls.Add(button3);
-            Controls.Add(button2);
-            Controls.Add(button1);
-            Controls.Add(tableLayoutPanel2);
-            Controls.Add(tableLayoutPanel1);
-            Controls.Add(label5);
-            Controls.Add(label4);
-            Controls.Add(label3);
-            Controls.Add(label2);
-            Controls.Add(label1);
             Controls.Add(DashboardTitlePage);
-            Controls.Add(dataGridView2);
+            Margin = new Padding(4);
             Name = "EmployeeManagementPage";
-            Size = new Size(1084, 798);
-            tableLayoutPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            Size = new Size(1355, 998);
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -436,33 +419,28 @@
         #endregion
 
         private Label DashboardTitlePage;
-        private Label label1;
-        private Label label2;
-        private Label label3;
-        private Label label4;
-        private Label label5;
-        private TableLayoutPanel tableLayoutPanel1;
-        private TableLayoutPanel tableLayoutPanel2;
-        private CuoreUI.Controls.cuiLabel cuiLabel1;
-        private CuoreUI.Controls.cuiLabel cuiLabel4;
-        private CuoreUI.Controls.cuiLabel cuiLabel3;
-        private CuoreUI.Controls.cuiLabel cuiLabel2;
-        private Button button1;
-        private Button button2;
-        private Button button3;
-        private Button button4;
         private ActiproSoftware.UI.WinForms.Controls.ScrollBar scrollBar1;
         private VScrollBar vScrollBar1;
         private DataGridView dataGridView1;
-        private DataGridView dataGridView2;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private TextBox textBox4;
-        private TextBox textBox5;
-        private TextBox textBox6;
-        private Label label6;
-        private Label label7;
-        private CuoreUI.Controls.cuiLabel cuiLabel5;
+        private DataGridViewTextBoxColumn ItemID;
+        private DataGridViewTextBoxColumn ItemName;
+        private DataGridViewTextBoxColumn Category;
+        private DataGridViewTextBoxColumn QtyType;
+        private DataGridViewTextBoxColumn Quantity;
+        private DataGridViewTextBoxColumn BuyingPrice;
+        private DataGridViewTextBoxColumn SellingPrice;
+        private DataGridViewImageColumn Edit;
+        private DataGridViewImageColumn Delete;
+        private CuoreUI.Controls.cuiButton AddItemButton;
+        private CuoreUI.Controls.cuiTextBox cuiTextBox1;
+        private CuoreUI.Controls.cuiButton cuiButton1;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private DataGridViewImageColumn dataGridViewImageColumn1;
+        private DataGridViewImageColumn dataGridViewImageColumn2;
     }
 }
