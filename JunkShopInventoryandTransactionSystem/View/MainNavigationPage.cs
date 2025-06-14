@@ -5,16 +5,30 @@ using JunkShopInventoryandTransactionSystem.View.Inventory_Pages;
 using JunkShopInventoryandTransactionSystem.View.LogInAuthFolder;
 using System;
 using System.Windows.Forms;
+using Microsoft.Data.SqlClient;
+using static JunkShopInventoryandTransactionSystem.BackendFiles.UserSession.ForUser;
 
 namespace JunkShopInventoryandTransactionSystem.View
 {
     public partial class MainNavigationPage : Form
     {
+        //private readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Beetoy\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\Database1.mdf;Integrated Security=True";
+
+        //arnel's connstring
+        private readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
 
         // This is the main navigation page that contains all the navigation buttons and panels for different pages.
         public MainNavigationPage()
         {
             InitializeComponent();
+            int userId = UserSession.UserId;
+
+            // Fetch user info based on userId
+            var userInfo = GetUserInfo(userId);
+
+            // Set labels
+            label2.Text = userInfo.Name;  // Set name to label2
+            label1.Text = userInfo.Role;  // Set role to label1
 
             SetNavButtonChecked(dashBoardNavButton1);
             navControlPanel.Controls.Clear();
@@ -22,7 +36,39 @@ namespace JunkShopInventoryandTransactionSystem.View
             dashboardPage.Dock = DockStyle.Fill;
             navControlPanel.Controls.Add(dashboardPage);
         }
+        // Method to get user information (name and role) based on userId
+        private (string Name, string Role) GetUserInfo(int userId)
+        {
+            using (SqlConnection connect = new SqlConnection(connectionString))
+            {
+                connect.Open();
 
+                // Query to fetch employee or admin name and role based on userId
+                string query = @"
+                    SELECT empName, 'Employee' AS Role FROM Employees WHERE empId = @UserId
+                    UNION ALL
+                    SELECT admName, 'Admin' AS Role FROM Management WHERE admId = @UserId";
+
+                using (SqlCommand cmd = new SqlCommand(query, connect))
+                {
+                    cmd.Parameters.AddWithValue("@UserId", userId);
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            string name = reader.GetString(0);  // First column: Name
+                            string role = reader.GetString(1);  // Second column: Role
+                            return (name, role);  // Return both name and role
+                        }
+                        else
+                        {
+                            return (string.Empty, string.Empty); // Return empty if no user found
+                        }
+                    }
+                }
+            }
+        }
         private void dashBoardNavButton1_Click(object sender, EventArgs e)
         {
             SetNavButtonChecked(dashBoardNavButton1);
@@ -128,6 +174,8 @@ namespace JunkShopInventoryandTransactionSystem.View
         //Pang logout button, this will clear the main panel and show the login page again.
         private void LogOutButton1_Click(object sender, EventArgs e)
         {
+            UserSession.UserId = 0;  //To reset the logged-in user id
+
             LogInPage loginPage = new LogInAuthFolder.LogInPage();
             loginPage.Dock = DockStyle.Fill;
             loginPage.TopLevel = false;

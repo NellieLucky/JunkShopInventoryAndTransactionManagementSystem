@@ -86,7 +86,7 @@ namespace JunkShopInventoryandTransactionSystem.View.LogInAuthFolder
                             return;
                         }
                     }
-                    string insertquery = "INSERT INTO Management (admEmail, admPassword, admName, admContact, admAddress, admPosition) VALUES (@Email, @Password, @Name, @Contact, @Address, @Position)";
+                    string insertquery = "INSERT INTO Management (admEmail, admPassword, admName, admContact, admAddress, admRole) VALUES (@Email, @Password, @Name, @Contact, @Address, @Role)";
                     using (SqlCommand cmd = new SqlCommand(insertquery, connect))
                     {
                         cmd.Parameters.AddWithValue("@Email", email);
@@ -94,7 +94,7 @@ namespace JunkShopInventoryandTransactionSystem.View.LogInAuthFolder
                         cmd.Parameters.AddWithValue("@Name", name);
                         cmd.Parameters.AddWithValue("@Contact", contact);
                         cmd.Parameters.AddWithValue("@Address", address);
-                        cmd.Parameters.AddWithValue("@Position", 1); // Autogenerate admin position
+                        cmd.Parameters.AddWithValue("@Role", "Admin"); //Automatic Admin role assignment for Admin Sign Up
                         cmd.ExecuteNonQuery();
                     }
                 }

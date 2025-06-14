@@ -1,6 +1,7 @@
 using JunkShopInventoryandTransactionSystem.View;
 using JunkShopInventoryandTransactionSystem.View.LogInAuthFolder;
 using Microsoft.Data.SqlClient;
+using static JunkShopInventoryandTransactionSystem.BackendFiles.UserSession.ForUser;
 
 namespace JunkShopInventoryandTransactionSystem.View.LogInAuthFolder
 {
@@ -23,7 +24,7 @@ namespace JunkShopInventoryandTransactionSystem.View.LogInAuthFolder
         }
 
         // Validates login credentials against Employee and Management tables
-        private bool LoginValidation(string email, string password)
+        private int? GetUserId(string email, string password)
         {
             using (SqlConnection connect = new SqlConnection(connectionString))
             {
@@ -31,10 +32,10 @@ namespace JunkShopInventoryandTransactionSystem.View.LogInAuthFolder
 
                 // Combine Employee and Management tables for authentication
                 string query = @"
-                    SELECT TOP 1 empEmail FROM Employees 
+                    SELECT TOP 1 empId FROM Employees 
                     WHERE empEmail = @Email AND empPassword = @Password
                     UNION ALL   
-                    SELECT TOP 1 admEmail FROM Management 
+                    SELECT TOP 1 admId FROM Management 
                     WHERE admEmail = @Email AND admPassword = @Password";
                 //TOP 1 is used to limit the result to one record, as we only need to check if a match exists.
                 using (SqlCommand cmd = new SqlCommand(query, connect))
@@ -42,8 +43,18 @@ namespace JunkShopInventoryandTransactionSystem.View.LogInAuthFolder
                     cmd.Parameters.AddWithValue("@Email", email);
                     cmd.Parameters.AddWithValue("@Password", password);
 
-                    object result = cmd.ExecuteScalar();
-                    return result != null;
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            int id = reader.GetInt32(0);
+                            return id; // Return the user ID if a match is found
+                        }
+                        else
+                        {
+                            return null;
+                        }
+                    }
                 }
             }
         }
@@ -63,9 +74,14 @@ namespace JunkShopInventoryandTransactionSystem.View.LogInAuthFolder
             }
             try
             {
-                if (LoginValidation(email, password))
+                var userId = GetUserId(email, password);
+
+                if (userId.HasValue)
                 {
+                    UserSession.UserId = userId.Value;
+
                     MessageBox.Show("Login successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                     MainNavigationPage dashboardPage = new MainNavigationPage();
                     dashboardPage.Dock = DockStyle.Fill;
                     dashboardPage.TopLevel = false;
@@ -77,6 +93,7 @@ namespace JunkShopInventoryandTransactionSystem.View.LogInAuthFolder
                 {
                     // If login fails, show an error message and clear the password field
                     MessageBox.Show("Invalid email or password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                     PasswordTextBox.Content = string.Empty;
                 }
             }
