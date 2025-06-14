@@ -19,7 +19,7 @@
     <Compile Update="View\Add_Edit Panel\AddEditInventoryItem.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="View\AdminSignUpPage.cs">
+    <Compile Update="View\LogInAuthFolder\AdminSignUpPage.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="View\CategoryPage.cs">
