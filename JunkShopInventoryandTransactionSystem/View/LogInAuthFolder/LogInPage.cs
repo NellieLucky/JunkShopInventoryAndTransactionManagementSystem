@@ -8,10 +8,10 @@ namespace JunkShopInventoryandTransactionSystem.View.LogInAuthFolder
     public partial class LogInPage : Form
     {
         // Connection string to connect to the local SQL Server database
-        //private readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Beetoy\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\Database1.mdf;Integrated Security=True";
+        private readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Beetoy\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\Database1.mdf;Integrated Security=True";
 
         //arnel's connstring
-        private readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
+        //private readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
 
         //remo string
         //private readonly string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
@@ -21,42 +21,6 @@ namespace JunkShopInventoryandTransactionSystem.View.LogInAuthFolder
         {
             InitializeComponent();
             // Make sure the cursor is not a wait cursor for the email textbox
-        }
-
-        // Validates login credentials against Employee and Management tables
-        private int? GetUserId(string email, string password)
-        {
-            using (SqlConnection connect = new SqlConnection(connectionString))
-            {
-                connect.Open();
-
-                // Combine Employee and Management tables for authentication
-                string query = @"
-                    SELECT TOP 1 empId FROM Employees 
-                    WHERE empEmail = @Email AND empPassword = @Password
-                    UNION ALL   
-                    SELECT TOP 1 admId FROM Management 
-                    WHERE admEmail = @Email AND admPassword = @Password";
-                //TOP 1 is used to limit the result to one record, as we only need to check if a match exists.
-                using (SqlCommand cmd = new SqlCommand(query, connect))
-                {
-                    cmd.Parameters.AddWithValue("@Email", email);
-                    cmd.Parameters.AddWithValue("@Password", password);
-
-                    using (SqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            int id = reader.GetInt32(0);
-                            return id; // Return the user ID if a match is found
-                        }
-                        else
-                        {
-                            return null;
-                        }
-                    }
-                }
-            }
         }
 
         // This method is called when the Log In button is clicked
@@ -74,7 +38,7 @@ namespace JunkShopInventoryandTransactionSystem.View.LogInAuthFolder
             }
             try
             {
-                var userId = GetUserId(email, password);
+                int? userId = AuthenticateUser(email, password);
 
                 if (userId.HasValue)
                 {

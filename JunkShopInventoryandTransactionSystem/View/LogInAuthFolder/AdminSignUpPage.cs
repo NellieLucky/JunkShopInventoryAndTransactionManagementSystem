@@ -7,22 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.Data.SqlClient;
+using JunkShopInventoryandTransactionSystem.BackendFiles.UserSession;
 
 namespace JunkShopInventoryandTransactionSystem.View.LogInAuthFolder
 {
     public partial class AdminSignUpPage : Form
     {
-        //Connection string to connect to the local SQL Server database
-        //private readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Beetoy\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\Database1.mdf;Integrated Security=True";
-
-        //arnel's connstring
-        private readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
-
-        //remo string
-        //private readonly string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
-
-
         public AdminSignUpPage()
         {
             InitializeComponent();
@@ -70,47 +60,28 @@ namespace JunkShopInventoryandTransactionSystem.View.LogInAuthFolder
             }
             try
             {
-                using (SqlConnection connect = new SqlConnection(connectionString))
+                bool success = ForUser.RegisterAdmin(email, password, name, contact, address, out string errorMessage);
+
+                if (success)
                 {
-                    connect.Open();
-                    string selectquery = "SELECT TOP 1 admEmail FROM Management WHERE admEmail = @Email";
-                    using (SqlCommand cmd = new SqlCommand(selectquery, connect))
-                    {
-                        cmd.Parameters.AddWithValue("@Email", email);
+                    MessageBox.Show("Sign up successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        //if result is null, it returns 0
-                        int count = Convert.ToInt32(cmd.ExecuteScalar());
-                        if (count > 0)
-                        {
-                            MessageBox.Show("Email already exists. Please use a different email.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
-                    }
-                    string insertquery = "INSERT INTO Management (admEmail, admPassword, admName, admContact, admAddress, admRole) VALUES (@Email, @Password, @Name, @Contact, @Address, @Role)";
-                    using (SqlCommand cmd = new SqlCommand(insertquery, connect))
-                    {
-                        cmd.Parameters.AddWithValue("@Email", email);
-                        cmd.Parameters.AddWithValue("@Password", password);
-                        cmd.Parameters.AddWithValue("@Name", name);
-                        cmd.Parameters.AddWithValue("@Contact", contact);
-                        cmd.Parameters.AddWithValue("@Address", address);
-                        cmd.Parameters.AddWithValue("@Role", "Admin"); //Automatic Admin role assignment for Admin Sign Up
-                        cmd.ExecuteNonQuery();
-                    }
+                    //redirect to login page
+                    LogInPage loginPage = new LogInPage();
+                    loginPage.Dock = DockStyle.Fill;
+                    loginPage.TopLevel = false;
+                    MainForm.MainPanel.Controls.Clear();
+                    MainForm.MainPanel.Controls.Add(loginPage);
+                    loginPage.Show();
                 }
-                MessageBox.Show("Sign up successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // Optionally: redirect to login page
-                LogInPage loginPage = new LogInPage();
-                loginPage.Dock = DockStyle.Fill;
-                loginPage.TopLevel = false;
-                MainForm.MainPanel.Controls.Clear();
-                MainForm.MainPanel.Controls.Add(loginPage);
-                loginPage.Show();
+                else
+                {
+                    MessageBox.Show(errorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            catch (SqlException ex)
+            catch (Exception ex)
             {
-                MessageBox.Show("An error occurred while signing up. Please try again later.\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

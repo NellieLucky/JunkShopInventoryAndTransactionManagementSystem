@@ -1,22 +1,17 @@
-﻿using JunkShopInventoryandTransactionSystem.View.CustomerRecordsPage;
+﻿using JunkShopInventoryandTransactionSystem.BackendFiles.UserSession;
+using JunkShopInventoryandTransactionSystem.View.CustomerRecordsPage;
 using JunkShopInventoryandTransactionSystem.View.EmployeeManagementPageFolder;
 using JunkShopInventoryandTransactionSystem.View.FinancialReportsPageFolder;
 using JunkShopInventoryandTransactionSystem.View.Inventory_Pages;
 using JunkShopInventoryandTransactionSystem.View.LogInAuthFolder;
 using System;
 using System.Windows.Forms;
-using Microsoft.Data.SqlClient;
 using static JunkShopInventoryandTransactionSystem.BackendFiles.UserSession.ForUser;
 
 namespace JunkShopInventoryandTransactionSystem.View
 {
     public partial class MainNavigationPage : Form
     {
-        //private readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Beetoy\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\Database1.mdf;Integrated Security=True";
-
-        //arnel's connstring
-        private readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
-
         // This is the main navigation page that contains all the navigation buttons and panels for different pages.
         public MainNavigationPage()
         {
@@ -24,7 +19,7 @@ namespace JunkShopInventoryandTransactionSystem.View
             int userId = UserSession.UserId;
 
             // Fetch user info based on userId
-            var userInfo = GetUserInfo(userId);
+            var userInfo = ForUser.GetUserInfo(userId);
 
             // Set labels
             label2.Text = userInfo.Name;  // Set name to label2
@@ -35,40 +30,14 @@ namespace JunkShopInventoryandTransactionSystem.View
             var dashboardPage = new DashBoardPageFolder.DashboardPage();
             dashboardPage.Dock = DockStyle.Fill;
             navControlPanel.Controls.Add(dashboardPage);
-        }
-        // Method to get user information (name and role) based on userId
-        private (string Name, string Role) GetUserInfo(int userId)
-        {
-            using (SqlConnection connect = new SqlConnection(connectionString))
+
+            if (userInfo.Role.ToLower() == "employee")
             {
-                connect.Open();
-
-                // Query to fetch employee or admin name and role based on userId
-                string query = @"
-                    SELECT empName, 'Employee' AS Role FROM Employees WHERE empId = @UserId
-                    UNION ALL
-                    SELECT admName, 'Admin' AS Role FROM Management WHERE admId = @UserId";
-
-                using (SqlCommand cmd = new SqlCommand(query, connect))
-                {
-                    cmd.Parameters.AddWithValue("@UserId", userId);
-
-                    using (SqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            string name = reader.GetString(0);  // First column: Name
-                            string role = reader.GetString(1);  // Second column: Role
-                            return (name, role);  // Return both name and role
-                        }
-                        else
-                        {
-                            return (string.Empty, string.Empty); // Return empty if no user found
-                        }
-                    }
-                }
+                EmployeeManagementNavButton.Enabled = false;
+                EmployeeManagementNavButton.Visible = false;
             }
         }
+
         private void dashBoardNavButton1_Click(object sender, EventArgs e)
         {
             SetNavButtonChecked(dashBoardNavButton1);

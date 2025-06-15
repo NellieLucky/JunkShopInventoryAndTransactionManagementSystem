@@ -7,24 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.Data.SqlClient;
 using JunkShopInventoryandTransactionSystem.View;
 using JunkShopInventoryandTransactionSystem.View.LogInAuthFolder;
+using JunkShopInventoryandTransactionSystem.BackendFiles.UserSession;
+using static JunkShopInventoryandTransactionSystem.BackendFiles.UserSession.ForUser;
 
 namespace JunkShopInventoryandTransactionSystem
 {
     public partial class MainForm : Form
     {
-        // Connection string to connect to the local SQL Server database
-        //private readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Beetoy\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\Database1.mdf;Integrated Security=True";
-
-        //arnel's connstring
-        private readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
-
-        //remo string
-        //private readonly string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
-
-
         public static Panel MainPanel;
         public MainForm()
         {
@@ -34,26 +25,7 @@ namespace JunkShopInventoryandTransactionSystem
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            bool isManagementTableEmpty = true;
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                try
-                {
-                    connection.Open();
-                    string query = "SELECT COUNT(*) FROM Management";
-                    using (SqlCommand command = new SqlCommand(query, connection))
-                    {
-                        int count = (int)command.ExecuteScalar();
-                        isManagementTableEmpty = count == 0;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Database error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-            }
+            bool isManagementTableEmpty = ForUser.IsManagementTableEmpty();
 
             panel1.Controls.Clear();
 

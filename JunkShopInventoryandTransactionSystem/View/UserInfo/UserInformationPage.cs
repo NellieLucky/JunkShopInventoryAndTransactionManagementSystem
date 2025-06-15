@@ -1,4 +1,6 @@
 ﻿using CuoreUI.Controls;
+using JunkShopInventoryandTransactionSystem.BackendFiles.UserSession;
+using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,18 +10,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.Data.SqlClient;
 using static JunkShopInventoryandTransactionSystem.BackendFiles.UserSession.ForUser;
 
 namespace JunkShopInventoryandTransactionSystem.View.UserInfo
 {
     public partial class UserInformationPage : UserControl
     {
-        //private readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Beetoy\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\Database1.mdf;Integrated Security=True";
-        
-        //arnel's connstring
-        private readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
-
         // To track if the user is editing or not
         private bool isEditing = false;
 
@@ -29,7 +25,7 @@ namespace JunkShopInventoryandTransactionSystem.View.UserInfo
         {
             InitializeComponent();
             // Fetch user information based on userId
-            var userInfo = GetUserInfo(userId);
+            var userInfo = GetDetailedUserInfo(userId);
 
             // Set textboxes to the values from the database
             cuiTextBox2.Content = userInfo.Name;    // Set Name to TextBox1
@@ -48,44 +44,6 @@ namespace JunkShopInventoryandTransactionSystem.View.UserInfo
             cuiTextBox2.Enabled = false;
             cuiTextBox3.Enabled = false;
             cuiTextBox4.Enabled = false;
-        }
-        private (string Name, string Role, string Contact, string Address, DateTime DateRegistered) GetUserInfo(int userId)
-        {
-            using (SqlConnection connect = new SqlConnection(connectionString))
-            {
-                connect.Open();
-
-                // Query to fetch user info from Employees or Management based on UserId
-                string query = @"
-                    SELECT empName, 'Employee' AS Role, empContact, empAddress, empDateRegistered
-                    FROM Employees WHERE empId = @UserId
-                    UNION ALL
-                    SELECT admName, 'Admin' AS Role, admContact, admAddress, admDateRegistered
-                    FROM Management WHERE admId = @UserId";
-
-                using (SqlCommand cmd = new SqlCommand(query, connect))
-                {
-                    cmd.Parameters.AddWithValue("@UserId", userId);
-
-                    using (SqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            string name = reader.GetString(0);   // Name
-                            string role = reader.GetString(1);   // Role
-                            string contact = reader.GetString(2); // Contact
-                            string address = reader.GetString(3); // Address
-                            DateTime dateRegistered = reader.GetDateTime(4);
-
-                            return (name, role, contact, address, dateRegistered);  // Return all details
-                        }
-                        else
-                        {
-                            return (string.Empty, string.Empty, string.Empty, string.Empty, DateTime.MinValue); // Return empty if no user found
-                        }
-                    }
-                }
-            }
         }
         private void cuiButton2_Click(object sender, EventArgs e)
         {
@@ -122,7 +80,7 @@ namespace JunkShopInventoryandTransactionSystem.View.UserInfo
                 Address = cuiTextBox4.Content
             };
 
-            bool success = UpdateUserInfoInDatabase(updatedUserInfo);
+            bool success = ForUser.UpdateUserInfoInDatabase(updatedUserInfo);
 
             if (success)
             {
@@ -131,31 +89,6 @@ namespace JunkShopInventoryandTransactionSystem.View.UserInfo
             else
             {
                 MessageBox.Show("Failed to update user information.");
-            }
-        }
-        private bool UpdateUserInfoInDatabase(UserDetails userInfo)
-        {
-            using (SqlConnection connect = new SqlConnection(connectionString))
-            {
-                connect.Open();
-                string query = @"
-                    UPDATE Employees
-                    SET empName = @Name, empContact = @Contact, empAddress = @Address
-                    WHERE empId = @UserId;
-                    UPDATE Management
-                    SET admName = @Name, admContact = @Contact, admAddress = @Address
-                    WHERE admId = @UserId;";
-
-                using (SqlCommand cmd = new SqlCommand(query, connect))
-                {
-                    cmd.Parameters.AddWithValue("@Name", userInfo.Name);
-                    cmd.Parameters.AddWithValue("@Contact", userInfo.Contact);
-                    cmd.Parameters.AddWithValue("@Address", userInfo.Address);
-                    cmd.Parameters.AddWithValue("@UserId", userInfo.UserId);
-
-                    int rowsAffected = cmd.ExecuteNonQuery();
-                    return rowsAffected > 0;  // Return true if rows were updated
-                }
             }
         }
 
