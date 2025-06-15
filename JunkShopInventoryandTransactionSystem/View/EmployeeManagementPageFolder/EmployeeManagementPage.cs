@@ -16,11 +16,6 @@ namespace JunkShopInventoryandTransactionSystem.View.EmployeeManagementPageFolde
 {
     public partial class EmployeeManagementPage : UserControl
     {
-        //private readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Beetoy\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\Database1.mdf;Integrated Security=True";
-
-        //arnel's connstring
-        private readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
-
         private AddEditEmployee addEditEmployeeDialogBox = null!; // Initialize with null-forgiving operator  
 
         public EmployeeManagementPage()
@@ -34,31 +29,20 @@ namespace JunkShopInventoryandTransactionSystem.View.EmployeeManagementPageFolde
         {
             try
             {
-                using (SqlConnection connect = new SqlConnection(connectionString))
-                {
-                    connect.Open();
+                DataTable dataTable = ForUser.GetAllEmployees();
 
-                    // SQL query to fetch employee details
-                    string query = "SELECT empDateRegistered, empEmail, empName, empContact, empAddress FROM Employees WHERE IsRemoved = 0";
+                //It auto creates new columns idunno why
+                dataGridView1.AutoGenerateColumns = false;
 
-                    // Use SqlDataAdapter to execute the query and fill it into a DataTable
-                    SqlDataAdapter dataAdapter = new SqlDataAdapter(query, connect);
-                    DataTable dataTable = new DataTable();
+                // Bind the DataTable to the DataGridView
+                dataGridView1.DataSource = dataTable;
 
-                    dataAdapter.Fill(dataTable);
-
-                    //It auto creates new columns idunno why
-                    dataGridView1.AutoGenerateColumns = false;
-
-                    // Bind the DataTable to the DataGridView
-                    dataGridView1.DataSource = dataTable;
-
-                    dataGridView1.Columns["DateRegisteredColumn"].DataPropertyName = "empDateRegistered";
-                    dataGridView1.Columns["EmailColumn"].DataPropertyName = "empEmail";
-                    dataGridView1.Columns["NameColumn"].DataPropertyName = "empName";
-                    dataGridView1.Columns["ContactColumn"].DataPropertyName = "empContact";
-                    dataGridView1.Columns["AddressColumn"].DataPropertyName = "empAddress";
-                }
+                dataGridView1.Columns["DateRegisteredColumn"].DataPropertyName = "empDateRegistered";
+                dataGridView1.Columns["EmailColumn"].DataPropertyName = "empEmail";
+                dataGridView1.Columns["NameColumn"].DataPropertyName = "empName";
+                dataGridView1.Columns["PasswordColumn"].DataPropertyName = "empPassword";
+                dataGridView1.Columns["ContactColumn"].DataPropertyName = "empContact";
+                dataGridView1.Columns["AddressColumn"].DataPropertyName = "empAddress";
             }
             catch (Exception ex)
             {
@@ -76,11 +60,28 @@ namespace JunkShopInventoryandTransactionSystem.View.EmployeeManagementPageFolde
                 // Handle the Edit button click
                 if (columnIndex == dataGridView1.Columns["EditColumn"].Index)
                 {
-                    // Get the selected row
                     DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
-                    string? employeeName = row.Cells["NameColumn"].Value.ToString();
-                    string? employeeEmail = row.Cells["EmailColumn"].Value.ToString();
-                    MessageBox.Show($"Edit Employee: {employeeName}, {employeeEmail}");
+
+                    string? name = row.Cells["NameColumn"].Value?.ToString();
+                    string? email = row.Cells["EmailColumn"].Value?.ToString();
+                    string? password = row.Cells["PasswordColumn"].Value?.ToString();
+                    string? contact = row.Cells["ContactColumn"].Value?.ToString();
+                    string? address = row.Cells["AddressColumn"].Value?.ToString();
+                    string? dateRegistered = row.Cells["DateRegisteredColumn"].Value?.ToString();
+
+                    if (addEditEmployeeDialogBox == null || addEditEmployeeDialogBox.IsDisposed)
+                    {
+                        addEditEmployeeDialogBox = new AddEditEmployee(name!, email!, contact!, password!, address!, dateRegistered!);
+                        addEditEmployeeDialogBox.EmployeeAdded += (s, args) =>
+                        {
+                            LoadEmployeeData(); // Refresh after editing
+                        };
+                        addEditEmployeeDialogBox.Show();
+                    }
+                    else
+                    {
+                        addEditEmployeeDialogBox.Focus();
+                    }
                 }
 
                 // Handle the Delete button click

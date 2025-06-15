@@ -344,11 +344,11 @@
             // 
             // PasswordColumn
             // 
-            PasswordColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             PasswordColumn.FillWeight = 130F;
             PasswordColumn.HeaderText = "Password";
             PasswordColumn.MinimumWidth = 6;
             PasswordColumn.Name = "PasswordColumn";
+            PasswordColumn.Width = 150;
             // 
             // ContactColumn
             // 

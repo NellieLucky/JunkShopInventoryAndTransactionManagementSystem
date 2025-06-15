@@ -18,9 +18,27 @@ namespace JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel
 
         public event EventHandler EmployeeAdded;
 
+        private readonly bool isEditMode;
+        private readonly string originalEmail;
+
         public AddEditEmployee()
         {
             InitializeComponent();
+            isEditMode = false;
+        }
+
+        public AddEditEmployee(string name, string email, string contact, string password, string address, string dateRegistered = "")
+        {
+            InitializeComponent();
+            isEditMode = true;
+            originalEmail = email;
+
+            // Populate the fields
+            NameTextBox.Content = name;
+            EmailAccTextBox.Content = email;
+            ContactNoTextBox.Content = contact;
+            PaaswordTextBox.Content = password;
+            AddressTextBox.Content = address;
         }
 
         private void cuiButton2_Click(object sender, EventArgs e)
@@ -31,24 +49,52 @@ namespace JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel
             string name = NameTextBox.Content;
             string contactNo = ContactNoTextBox.Content;
 
-            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(name) || string.IsNullOrEmpty(contactNo))
+            if (string.IsNullOrEmpty(email) || 
+                string.IsNullOrEmpty(name) || 
+                string.IsNullOrEmpty(contactNo) || 
+                string.IsNullOrEmpty(address) || 
+                string.IsNullOrEmpty(password))
             {
                 MessageBox.Show("Please fill in all required fields.");
                 return;
             }
 
-            // Call the method to insert the data into the database
-            bool success = ForUser.InsertEmployee(email, password, address, name, contactNo);
-
-            if (success)
+            bool success;
+            if (isEditMode)
             {
-                MessageBox.Show("Employee added successfully!");
-                EmployeeAdded?.Invoke(this, EventArgs.Empty); // Trigger the event after adding
-                this.Close(); // Close the AddEditEmployee form
+                // Function call to update method
+                success = ForUser.UpdateEmployee(originalEmail, name, contactNo, address, password);
+                if (success)
+                {
+                    MessageBox.Show("Employee info updated successfully!");
+                    EmployeeAdded?.Invoke(this, EventArgs.Empty);
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Failed to update employee. Please try again.");
+                }
             }
             else
             {
-                MessageBox.Show("Failed to add employee. Please try again.");
+                // Require password in add mode
+                if (string.IsNullOrEmpty(password))
+                {
+                    MessageBox.Show("Password is required when adding an employee.");
+                    return;
+                }
+
+                success = ForUser.InsertEmployee(email, password, address, name, contactNo);
+                if (success)
+                {
+                    MessageBox.Show("Employee added successfully!");
+                    EmployeeAdded?.Invoke(this, EventArgs.Empty);
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Failed to add employee. Please try again.");
+                }
             }
         }
 

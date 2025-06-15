@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace JunkShopInventoryandTransactionSystem.BackendFiles.UserSession
 {
@@ -22,7 +24,30 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.UserSession
             public static int UserId { get; set; }
         }
 
-        //Funtion Used to insert employee data into the database (EmployeeManagementPage.cs)
+        //Function to update information of employee in edit mode(AddEditEmployee.cs)
+        public static bool UpdateEmployee(string email, string name, string contact, string address, string password)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string query = @"UPDATE Employees
+                         SET empName = @name, empContact = @contact, empAddress = @address, empPassword = @Password
+                         WHERE empEmail = @originalEmail AND IsRemoved = 0";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@name", name);
+                    cmd.Parameters.AddWithValue("@contact", contact);
+                    cmd.Parameters.AddWithValue("@address", address);
+                    cmd.Parameters.AddWithValue("@Password", password);
+                    cmd.Parameters.AddWithValue("@originalEmail", email);
+
+                    conn.Open();
+                    return cmd.ExecuteNonQuery() > 0;
+                }
+            }
+        }
+
+        //Funtion Used to insert employee data into the database (AddEditEmployee.cs)
         public static bool InsertEmployee(string email, string password, string address, string name, string contactNo)
         {
             try
@@ -58,7 +83,34 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.UserSession
             }
         }
 
-        //Funtion used to retrieve employee details based on email (AddEditEmployee.cs)
+        //Function for DataGrid Information into columns(EmployeeManagementPage).
+        public static DataTable GetAllEmployees()
+        {
+            DataTable dataTable = new DataTable();
+
+            try
+            {
+                using (SqlConnection connect = new SqlConnection(connectionString))
+                {
+                    connect.Open();
+
+                    string query = "SELECT empDateRegistered, empEmail, empPassword, empName, empContact, empAddress FROM Employees WHERE IsRemoved = 0";
+
+                    using (SqlDataAdapter dataAdapter = new SqlDataAdapter(query, connect))
+                    {
+                        dataAdapter.Fill(dataTable);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading employee data: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return dataTable;
+        }
+
+        //Funtion used to soft-delete users from Admin view(EmployeeManagementPage.cs)
         public static bool SoftDeleteEmployee(string? email)
         {
             try
@@ -269,8 +321,8 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.UserSession
 
                     // Insert new admin
                     string insertQuery = @"
-                INSERT INTO Management (admEmail, admPassword, admName, admContact, admAddress, admRole)
-                VALUES (@Email, @Password, @Name, @Contact, @Address, @Role)";
+                            INSERT INTO Management (admEmail, admPassword, admName, admContact, admAddress, admRole)
+                            VALUES (@Email, @Password, @Name, @Contact, @Address, @Role)";
 
                     using (SqlCommand insertCmd = new SqlCommand(insertQuery, connect))
                     {
