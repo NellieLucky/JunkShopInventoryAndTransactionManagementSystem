@@ -1,4 +1,5 @@
-﻿using JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel;
+﻿
+using JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,6 +11,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.DataFormats;
 
+//imports the backend file ReloadCategory.cs
+using JunkShopInventoryandTransactionSystem.BackendFiles.Category.Reload;
+
 namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
 {
     public partial class CategoryPage : UserControl
@@ -20,6 +24,10 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
         {
             InitializeComponent();
 
+            // Call the static LoadInventoryData method from ReloadInventory
+            ReloadCategory.LoadCategoryData(dataGridView1);
+
+            /*
             //Pangtest lang to if msgkakalaman  
             dataGridView1.Rows.Add("1", "Metal", "All types of scrap metal", Properties.Resources.pen, Properties.Resources.delete);
             dataGridView1.Rows.Add("2", "Plastic", "Bottles, containers, and more", Properties.Resources.pen, Properties.Resources.delete);
@@ -37,6 +45,7 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
             dataGridView1.Rows.Add("2", "Plastic", "Bottles, containers, and more", Properties.Resources.pen, Properties.Resources.delete);
             dataGridView1.Rows.Add("1", "Metal", "All types of scrap metal", Properties.Resources.pen, Properties.Resources.delete);
             dataGridView1.Rows.Add("2", "Plastic", "Bottles, containers, and more", Properties.Resources.pen, Properties.Resources.delete);
+            */
 
             // Set header text for Edit and Delete columns to empty  
             dataGridView1.Columns["Edit"].HeaderText = "";
@@ -78,7 +87,8 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
         {
             if (addEditCategoryDialogBox == null || addEditCategoryDialogBox.IsDisposed) // Check if it's already open  
             {
-                addEditCategoryDialogBox = new AddEditCategoryDialogBox();
+                string value = "Add"; // Set the mode to "Add"
+                addEditCategoryDialogBox = new AddEditCategoryDialogBox(value, dataGridView1);
                 addEditCategoryDialogBox.Show();
             }
             else
@@ -86,5 +96,8 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
                 addEditCategoryDialogBox.Focus(); // Bring existing form to front  
             }
         }
+
+        //input cell click action here later
+
     }
 }
