@@ -52,7 +52,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Category.Add
             CategoryAdd add = new CategoryAdd();
             add.AddCategory(newCat);
 
-            MessageBox.Show("Category added successfully!", "Category Addition Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //MessageBox.Show("Category added successfully!", "Category Addition Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             // reload cat dashboard here
             if ( targetDataGridView != null )

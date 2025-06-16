@@ -12,28 +12,54 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Category.Edit
     public class EditCategory
     {
         public static bool HandleEditCategory(
-            CategoryItem category
+            int categoryId,
+            string categoryNameContent,
+            string categoryDescriptionContent,
+            DataGridView targetDataGridView
             )
         {
             //validation of values
+            string categoryName = categoryNameContent.Trim();
+            string categoryDescription = categoryDescriptionContent.Trim();
+
+            // --- Validation ---
+            bool isValidInput = true;
+            string errorMessage = "";
+
+            if (string.IsNullOrWhiteSpace(categoryName))
+            {
+                errorMessage += "Category Name cannot be empty.\n";
+                isValidInput = false;
+            }
+            if (string.IsNullOrWhiteSpace(categoryDescription))
+            {
+                errorMessage += "Category Description cannot be empty.\n";
+                isValidInput = false;
+            }
+
+            if (!isValidInput)
+            {
+                MessageBox.Show(errorMessage, "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
 
             // --- If validation passes, proceed with adding the item ---
-            CategoryItem newCat = new CategoryItem("Metal", "Scrap metal category");
+            CategoryItem catToEdit = new CategoryItem(
+                categoryId,
+                categoryName,
+                categoryDescription
+            );
 
             CategoryEdit edit = new CategoryEdit();
-            edit.EditCategory(newCat);
+            edit.EditCategory(catToEdit);
 
-            MessageBox.Show("Category edited successfully!", "Category Editing Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //MessageBox.Show("Category edited successfully!", "Category Editing Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            /*
             // reload cat dashboard here
-            if ( cat grid view != null )
+            if (targetDataGridView != null)
             {
-                //namespace.class.method since theyre both on the same folder
-                //Reload.ReloadInventory.LoadInventoryData(targetDataGridView);
-                //<skip namespace>.class.method if not on the same folder
+                Reload.ReloadCategory.LoadCategoryData(targetDataGridView);
             }
-            */
 
             return true; // Indicate that the operation was successful
 

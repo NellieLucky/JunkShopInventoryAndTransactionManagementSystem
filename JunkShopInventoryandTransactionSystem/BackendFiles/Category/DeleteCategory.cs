@@ -13,29 +13,21 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Category.Delete
     public class DeleteCategory
     {
         public static bool HandleDeleteCategory(
-            int catId, // category id to be deleted
+            int categoryId,
             DataGridView targetDataGridView
             )
         {
-            //validation of values
-
             // --- If validation passes, proceed with adding the item ---
-            CategoryItem newCat = new CategoryItem("Metal", "Scrap metal category");
-
             CategoryDelete delete = new CategoryDelete();
-            delete.DeleteCategory(catId);
+            delete.DeleteCategory(categoryId);
 
-            MessageBox.Show("Category edited successfully!", "Category Editing Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //MessageBox.Show("Category deleted successfully!", "Category Deleting Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            /*
             // reload cat dashboard here
-            if ( cat grid view != null )
+            if (targetDataGridView != null)
             {
-                //namespace.class.method since theyre both on the same folder
-                //Reload.ReloadInventory.LoadInventoryData(targetDataGridView);
-                //<skip namespace>.class.method if not on the same folder
+                Reload.ReloadCategory.LoadCategoryData(targetDataGridView);
             }
-            */
 
             return true; // Indicate that the operation was successful
 

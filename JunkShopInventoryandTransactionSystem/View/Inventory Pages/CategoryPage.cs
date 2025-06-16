@@ -1,5 +1,8 @@
 ﻿
+//imports the backend file ReloadCategory.cs
+using JunkShopInventoryandTransactionSystem.BackendFiles.Category.Reload;
 using JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel;
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,9 +13,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.DataFormats;
-
-//imports the backend file ReloadCategory.cs
-using JunkShopInventoryandTransactionSystem.BackendFiles.Category.Reload;
 
 namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
 {
@@ -25,7 +25,7 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
             InitializeComponent();
 
             // Call the static LoadInventoryData method from ReloadInventory
-            ReloadCategory.LoadCategoryData(dataGridView1);
+            ReloadCategory.LoadCategoryData(CategoryRecordsTable);
 
             /*
             //Pangtest lang to if msgkakalaman  
@@ -48,18 +48,18 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
             */
 
             // Set header text for Edit and Delete columns to empty  
-            dataGridView1.Columns["Edit"].HeaderText = "";
-            dataGridView1.Columns["Delete"].HeaderText = "";
+            CategoryRecordsTable.Columns["Edit"].HeaderText = "";
+            CategoryRecordsTable.Columns["Delete"].HeaderText = "";
 
-            dataGridView1.Paint += DataGridView1_Paint;
+            CategoryRecordsTable.Paint += DataGridView1_Paint;
         }
 
         //Para to sa pag-merge ng Edit at Delete header cells kasi walang built-in support sa DataGridView para here  
         private void DataGridView1_Paint(object sender, PaintEventArgs e)
         {
             // Get the rectangles for the Edit and Delete header cells  
-            var editRect = dataGridView1.GetCellDisplayRectangle(dataGridView1.Columns["Edit"].Index, -1, true);
-            var deleteRect = dataGridView1.GetCellDisplayRectangle(dataGridView1.Columns["Delete"].Index, -1, true);
+            var editRect = CategoryRecordsTable.GetCellDisplayRectangle(CategoryRecordsTable.Columns["Edit"].Index, -1, true);
+            var deleteRect = CategoryRecordsTable.GetCellDisplayRectangle(CategoryRecordsTable.Columns["Delete"].Index, -1, true);
 
             // Calculate the merged rectangle  
             Rectangle mergedRect = new Rectangle(
@@ -70,16 +70,16 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
             );
 
             // Draw the merged header background  
-            using (SolidBrush backColorBrush = new SolidBrush(dataGridView1.ColumnHeadersDefaultCellStyle.BackColor))
+            using (SolidBrush backColorBrush = new SolidBrush(CategoryRecordsTable.ColumnHeadersDefaultCellStyle.BackColor))
             {
                 e.Graphics.FillRectangle(backColorBrush, mergedRect);
             }
 
             // Draw the header text centered  
             using (StringFormat format = new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center })
-            using (SolidBrush foreColorBrush = new SolidBrush(dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor))
+            using (SolidBrush foreColorBrush = new SolidBrush(CategoryRecordsTable.ColumnHeadersDefaultCellStyle.ForeColor))
             {
-                e.Graphics.DrawString("Actions", dataGridView1.ColumnHeadersDefaultCellStyle.Font, foreColorBrush, mergedRect, format);
+                e.Graphics.DrawString("Actions", CategoryRecordsTable.ColumnHeadersDefaultCellStyle.Font, foreColorBrush, mergedRect, format);
             }
         }
 
@@ -88,7 +88,7 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
             if (addEditCategoryDialogBox == null || addEditCategoryDialogBox.IsDisposed) // Check if it's already open  
             {
                 string value = "Add"; // Set the mode to "Add"
-                addEditCategoryDialogBox = new AddEditCategoryDialogBox(value, dataGridView1);
+                addEditCategoryDialogBox = new AddEditCategoryDialogBox(value, CategoryRecordsTable);
                 addEditCategoryDialogBox.Show();
             }
             else
@@ -97,7 +97,66 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
             }
         }
 
-        //input cell click action here later
+        private void CategoryRecordsTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Check if the clicked cell is an image column
+            // if e.ColumnIndex value is 5 then its Delete
+            // if e.ColumnIndex value is 4 then its Edit
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+
+                string clickedColumnName = CategoryRecordsTable.Columns[e.ColumnIndex].Name;
+
+                DataGridViewRow selectedRow = CategoryRecordsTable.Rows[e.RowIndex];
+                int categoryId = Convert.ToInt32(selectedRow.Cells["CategoryID"].Value);
+
+                if (clickedColumnName == "Edit")
+                {
+                    //MessageBox.Show($"Edit clicked\nCategoryID: {categoryId}", "Action");
+
+                    //calls the add edit window
+                    if (addEditCategoryDialogBox == null || addEditCategoryDialogBox.IsDisposed) // Check if it's already open  
+                    {
+                        string value = "Edit"; // Set the mode to "Edit"
+
+                        //pass the data grid view to allow refreshing of inventory after adding/editing an item
+                        addEditCategoryDialogBox = new AddEditCategoryDialogBox(value, CategoryRecordsTable, categoryId);
+                        addEditCategoryDialogBox.Show();
+                    }
+                    else
+                    {
+                        addEditCategoryDialogBox.Focus(); // Bring existing form to front 
+                    }
+
+                }
+                else if (clickedColumnName == "Delete")
+                {
+                    //MessageBox.Show($"Delete clicked\nCategoryID: {categoryId}", "Action");
+                    // Show Delete Form Here
+
+                    // COMMENTED NO DELETE UI YET?
+                    // DO I USE DELETEITEMDIALOGBOX? AND JUST CHANGE THE VALUES?
+
+                    /*
+                    
+                    if (deleteItemDialogBox == null || deleteItemDialogBox.IsDisposed)
+                        {
+                            deleteItemDialogBox = new DeleteItemDialogBox(itemId, ItemRecordsTable);
+                            deleteItemDialogBox.Show();
+                        }
+                        else
+                        {
+                            deleteItemDialogBox.Focus(); // Bring to front if it's already open
+                        }
+
+                    */
+                }
+                else
+                {
+                    //empty for now
+                }
+            }
+        }
 
     }
 }

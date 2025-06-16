@@ -162,11 +162,11 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Category.Crud
                     {
                         conn.Open();
                         int rowsAffected = cmd.ExecuteNonQuery();
-                        Console.WriteLine($"{rowsAffected} row(s) inserted successfully.");
+                        MessageBox.Show($"{rowsAffected} row(s) inserted successfully.", "Insert Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (SqlException ex)
                     {
-                        Console.WriteLine("Database error during AddCategory: " + ex.Message);
+                        MessageBox.Show("Database error during AddCategory: " + ex.Message, "SQL Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         throw;
                     }
                 }
@@ -187,7 +187,12 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Category.Crud
 
         public void EditCategory(CategoryItem category)
         {
-            string query = "UPDATE Category SET categoryName = @categoryName, categoryDescription = @categoryDescription WHERE categoryId = @categoryId";
+            string query = @"
+                UPDATE Category SET
+                    categoryName = @categoryName,
+                    categoryDescription = @categoryDescription
+                WHERE categoryId = @categoryId;
+            ";
 
             using (SqlConnection conn = GetConnection())
             {
@@ -197,20 +202,26 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Category.Crud
                     cmd.Parameters.AddWithValue("@categoryName", category.categoryName);
                     cmd.Parameters.AddWithValue("@categoryDescription", category.categoryDescription);
 
+                    // debugging
                     try
                     {
                         conn.Open();
                         int rowsAffected = cmd.ExecuteNonQuery();
-                        Console.WriteLine($"{rowsAffected} row(s) updated successfully.");
+                        MessageBox.Show($"{rowsAffected} row(s) updated successfully.", "Update Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (SqlException ex)
                     {
-                        Console.WriteLine("Database error during EditCategory: " + ex.Message);
+                        MessageBox.Show("Database error during UpdateItemInInventory: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        throw new Exception("An error occurred while updating the item in the database.", ex);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("An unexpected error occurred: " + ex.Message, "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         throw;
                     }
-                }
-            }
-        }
+                }   // end of second using
+            }   // end of the first using
+        }   // end of method EditCategory
     } // end of cat edit
 
     // Class for deleting category
@@ -238,16 +249,32 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Category.Crud
                         conn.Open();
                         int rowsAffected = cmd.ExecuteNonQuery();
 
-                        MessageBox.Show($"{rowsAffected} row(s) deleted successfully.", "Deletion Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        // Inform the user via MessageBox
+                        MessageBox.Show(
+                            $"{rowsAffected} row(s) deleted successfully.",
+                            "Deletion Result",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information
+                        );
                     }
                     catch (SqlException ex)
                     {
-                        MessageBox.Show("SQL Error:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        throw;
+                        MessageBox.Show(
+                            "Database error during DeleteCategory:\n" + ex.Message,
+                            "SQL Error",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error
+                        );
+                        throw new Exception("An error occurred while deleting the category from the database.", ex);
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Unexpected Error:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(
+                            "An unexpected error occurred:\n" + ex.Message,
+                            "Unexpected Error",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error
+                        );
                         throw;
                     }
                 }

@@ -91,7 +91,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Edit
             }
 
             // --- If validation passes, proceed with editing the item ---
-            InventoryItem newItem = new InventoryItem(
+            InventoryItem itemToEdit = new InventoryItem(
                 itemId,
                 itemName,
                 itemCategory,
@@ -102,9 +102,9 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Edit
             );
 
             InventoryEdit edit = new InventoryEdit();
-            edit.EditItemInInventory(newItem);
+            edit.EditItemInInventory(itemToEdit);
 
-            MessageBox.Show("Item edited successfully!", "Item Editing Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //MessageBox.Show("Item edited successfully!", "Item Editing Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             // --- Reload DataGridView ---
             if (targetDataGridView != null)

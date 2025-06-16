@@ -230,17 +230,16 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
                         conn.Open();
                         int rowsAffected = cmd.ExecuteNonQuery();
 
-                        Console.WriteLine($"{rowsAffected} row(s) inserted successfully."); // For debugging/confirmation
+                        MessageBox.Show($"{rowsAffected} row(s) inserted successfully.", "Insert Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (SqlException ex)
                     {
-                        Console.WriteLine("Database error during AddItemToInventory: " + ex.Message);
-                        // IMPORTANT: Throw the exception so the calling code can handle it.
+                        MessageBox.Show("Database error during AddItemToInventory: " + ex.Message, "SQL Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         throw new Exception("An error occurred while adding the item to the database.", ex);
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine("An unexpected error occurred: " + ex.Message);
+                        MessageBox.Show("An unexpected error occurred: " + ex.Message, "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         throw;
                     }
                 }
@@ -289,20 +288,21 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
                     cmd.Parameters.AddWithValue("@itemBuyingPrice", item.itemBuyingPrice);
                     cmd.Parameters.AddWithValue("@itemSellingPrice", item.itemSellingPrice);
 
-                    try     //for debugging
+                    // for debugging
+                    try
                     {
                         conn.Open();
                         int rowsAffected = cmd.ExecuteNonQuery();
-                        Console.WriteLine($"{rowsAffected} row(s) updated successfully.");
+                        MessageBox.Show($"{rowsAffected} row(s) updated successfully.", "Update Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (SqlException ex)
                     {
-                        Console.WriteLine("Database error during UpdateItemInInventory: " + ex.Message);
+                        MessageBox.Show("Database error during UpdateItemInInventory: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         throw new Exception("An error occurred while updating the item in the database.", ex);
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine("An unexpected error occurred: " + ex.Message);
+                        MessageBox.Show("An unexpected error occurred: " + ex.Message, "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         throw;
                     }
                 }   // end of the second using in the nested using stuff
@@ -332,6 +332,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@itemId", itemId);
+
                     try
                     {
                         conn.Open();
