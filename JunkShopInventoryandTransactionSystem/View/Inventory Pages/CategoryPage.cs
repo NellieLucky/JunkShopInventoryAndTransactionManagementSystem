@@ -20,7 +20,7 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
     public partial class CategoryPage : UserControl
     {
         private AddEditCategoryDialogBox addEditCategoryDialogBox = null!; // Initialize with null-forgiving operator  
-        private DeleteItemDialogBox deleteItemDialogBox = null!;
+        private DeleteCategoryDialogBox deleteCategoryDialogBox = null!;
 
         public CategoryPage()
         {
@@ -139,14 +139,14 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
                     //MessageBox.Show($"Delete clicked\nCategoryID: {categoryId}", "Action");
                     
                     // calls the del window
-                    if (deleteItemDialogBox == null || deleteItemDialogBox.IsDisposed)
+                    if (deleteCategoryDialogBox == null || deleteCategoryDialogBox.IsDisposed)
                     {
-                        deleteItemDialogBox = new DeleteItemDialogBox(categoryId, CategoryRecordsTable);
-                        deleteItemDialogBox.Show();
+                        deleteCategoryDialogBox = new DeleteCategoryDialogBox(categoryId, CategoryRecordsTable);
+                        deleteCategoryDialogBox.Show();
                     }
                     else
                     {
-                        deleteItemDialogBox.Focus(); // Bring to front if it's already open
+                        deleteCategoryDialogBox .Focus(); // Bring to front if it's already open
                     }
 
                 }

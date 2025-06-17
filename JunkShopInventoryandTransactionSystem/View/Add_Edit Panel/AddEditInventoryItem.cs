@@ -199,7 +199,7 @@ namespace JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel
 
             TextBox_ofItemNameLabel.Content = item.itemName;
 
-            CategoryComboBox.SelectedItem = item.itemCategoryId;
+            CategoryComboBox.SelectedIndex = item.itemCategoryId;
 
             QtyTypeComboBox.Text = item.itemQtyType;
             TextBox_ofQtyLabel.Content = item.itemQuantity.ToString();

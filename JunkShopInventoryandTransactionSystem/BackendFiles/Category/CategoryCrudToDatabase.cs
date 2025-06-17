@@ -21,6 +21,7 @@ SELECT * FROM Category
 
 namespace JunkShopInventoryandTransactionSystem.BackendFiles.Category.Crud
 {
+    // THIS ISNT OPTIMIZED YET
     // Represents a category row in the database
     public class CategoryItem
     {
@@ -49,26 +50,32 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Category.Crud
         }
     } // constructors or something idk
 
-    // Class for reading category data
-    public class CategoryRead
+    // INPUT STRING HERE FOR LOCAL DB CONNECTION
+    public abstract class BaseRepository
     {
+        // Centralized connection string
         // remo string
-        private string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+        protected readonly string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
 
         //Arnel's connection string
-        //private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\source\repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
+        //protected readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\source\repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
 
-        public SqlConnection GetConnection()
+        // Shared method to open a new connection
+        protected SqlConnection GetConnection()
         {
             return new SqlConnection(connectionString);
         }
+    }
 
+    // Class for reading category data
+    public class CategoryRead : BaseRepository
+    {
         // get all unarchived categories
         public List<CategoryItem> GetAllCategories()
         {
             List<CategoryItem> categories = new List<CategoryItem>();
 
-            using (SqlConnection conn = GetConnection())
+            using ( SqlConnection conn = GetConnection() )
             {
                 string query = @"SELECT categoryId, categoryName, categoryDescription, isArchived 
                                  FROM Category 
@@ -224,23 +231,13 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Category.Crud
     } // end of cat reads //all n one
 
     // Class for adding new category
-    public class CategoryAdd
+    public class CategoryAdd : BaseRepository
     {
-        private string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
-
-        //Arnel's connection string
-        //private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\source\repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
-
-        public SqlConnection GetConnection()
-        {
-            return new SqlConnection(connectionString);
-        }
-
         public void AddCategory(CategoryItem category)
         {
             string query = "INSERT INTO Category (categoryName, categoryDescription) VALUES (@categoryName, @categoryDescription)";
 
-            using (SqlConnection conn = GetConnection())
+            using ( SqlConnection conn = GetConnection() )
             {
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
@@ -265,19 +262,8 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Category.Crud
     } // end of cat add
 
     // Class for updating existing category
-    public class CategoryEdit
+    public class CategoryEdit : BaseRepository
     {
-        //remo string
-        private string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
-
-        //Arnel's connection string
-        //private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\source\repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
-
-        public SqlConnection GetConnection()
-        {
-            return new SqlConnection(connectionString);
-        }
-
         public void EditCategory(CategoryItem category)
         {
             string query = @"
@@ -287,7 +273,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Category.Crud
                 WHERE categoryId = @categoryId;
             ";
 
-            using (SqlConnection conn = GetConnection())
+            using ( SqlConnection conn = GetConnection() )
             {
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
@@ -318,21 +304,13 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Category.Crud
     } // end of cat edit
 
     // soft delete category class
-    public class CategorySoftDelete
+    public class CategorySoftDelete : BaseRepository
     {
-        // Remo's connection string
-        private string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
-
-        public SqlConnection GetConnection()
-        {
-            return new SqlConnection(connectionString);
-        }
-
         public void SoftDeleteCategory(int categoryId)
         {
             string query = "UPDATE Category SET isArchived = 1 WHERE categoryId = @categoryId";
 
-            using (SqlConnection conn = GetConnection())
+            using ( SqlConnection conn = GetConnection() )
             {
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
@@ -376,20 +354,13 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Category.Crud
     }   // end of soft delete category
 
     // unarchiving it back
-    public class CategoryRestore
+    public class CategoryRestore : BaseRepository
     {
-        private string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
-
-        public SqlConnection GetConnection()
-        {
-            return new SqlConnection(connectionString);
-        }
-
         public void RestoreCategory(int categoryId)
         {
             string query = "UPDATE Category SET isArchived = 0 WHERE categoryId = @categoryId;";
 
-            using (SqlConnection conn = GetConnection())
+            using ( SqlConnection conn = GetConnection() )
             {
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
@@ -433,24 +404,14 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Category.Crud
     }   // unarchiving it back
 
     // Class for deleting category
-    public class CategoryDelete
+    public class CategoryDelete : BaseRepository
     {
-        //remo string
-        private string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
-
-        //Arnel's connection string
-        //private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\source\repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
-
-        public SqlConnection GetConnection()
-        {
-            return new SqlConnection(connectionString);
-        }
 
         public void DeleteCategory(int categoryId)
         {
             string query = "DELETE FROM Category WHERE categoryId = @categoryId";
 
-            using (SqlConnection conn = GetConnection())
+            using ( SqlConnection conn = GetConnection() )
             {
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {

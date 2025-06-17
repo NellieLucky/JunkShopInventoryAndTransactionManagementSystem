@@ -29,6 +29,7 @@ SELECT * FROM Inventory
 
 namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
 {
+    // THIS ISNT OPTIMIZED YET
     //is referencing to the data/holds the data
     public class InventoryItem
     {
@@ -79,31 +80,33 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
     }
     // eND of InventoryItem CLASS
 
-    // InventoryRead Class
-    public class InventoryRead
+    // INPUT STRING HERE FOR LOCAL DB CONNECTION
+    public abstract class BaseRepository
     {
-        //copy this to other classes that will use this connection string
+        // Centralized connection string
+        // remo string
+        protected readonly string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
 
-        //remostring
-        private string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+        //Arnel's connection string
+        //protected readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\source\repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
 
-        //arnels string
-        //private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
-        
-
-        // Method to get a connection object
-        public SqlConnection GetConnection()
+        // Shared method to open a new connection
+        protected SqlConnection GetConnection()
         {
             return new SqlConnection(connectionString);
         }
+    }
 
+    // InventoryRead Class
+    public class InventoryRead : BaseRepository
+    {
         // read all unarchived items
         // get all inventory items method with isArchived filter = 0 (not archived)
         public List<InventoryItem> GetAllInventoryItems()
         {
             List<InventoryItem> items = new List<InventoryItem>(); // Initialize an empty list
 
-            using (SqlConnection conn = GetConnection()) // Ensures connection is closed
+            using ( SqlConnection conn = GetConnection() ) // Ensures connection is closed
             {
                 // updated to read only non-archived items < isArchived = 0/FALSE >
                 string query = @"
@@ -165,7 +168,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
         {
             List<InventoryItem> items = new List<InventoryItem>();
 
-            using (SqlConnection conn = GetConnection())
+            using ( SqlConnection conn = GetConnection() )
             {
                 string query = @"
                     SELECT 
@@ -225,7 +228,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
         {
             InventoryItem? item = null; // Will remain null if no match is found
 
-            using (SqlConnection conn = GetConnection())
+            using ( SqlConnection conn = GetConnection() )
             {
                 string query = @"
                     SELECT 
@@ -284,19 +287,8 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
     // End of inventory Read
 
     // inventory add aaa
-    public class InventoryAdd
+    public class InventoryAdd : BaseRepository
     {
-        //remos string
-        private string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
-        
-        //arnels string
-        //private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
-        
-        public SqlConnection GetConnection()
-        {
-            return new SqlConnection(connectionString);
-        }
-
         public void AddItemToInventory(InventoryItem item)
         {
             string query = @"INSERT INTO Inventory 
@@ -305,7 +297,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
                             (@itemName, @itemCategoryId, @itemQtyType, @itemQuantity, @itemBuyingPrice, @itemSellingPrice);";
 
 
-            using (SqlConnection conn = GetConnection())
+            using ( SqlConnection conn = GetConnection() )
             {
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
@@ -341,19 +333,8 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
     // end of InventoryAdd
 
     //inventory edit
-    public class InventoryEdit
+    public class InventoryEdit : BaseRepository
     {
-        // remos string
-        private string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
-        
-        // arnels string
-        //private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
-
-        public SqlConnection GetConnection()
-        {
-            return new SqlConnection(connectionString);
-        }
-
         // Add your UpdateItemToInventory method here
         public void EditItemInInventory(InventoryItem item)
         {
@@ -404,21 +385,13 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
     // end of InventoryEdit
 
     // inventory soft delete
-    public class InventorySoftDelete
+    public class InventorySoftDelete : BaseRepository
     {
-        // Remo's connection string
-        private string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
-
-        public SqlConnection GetConnection()
-        {
-            return new SqlConnection(connectionString);
-        }
-
         public void SoftDeleteItemFromInventory(int itemId)
         {
             string query = "UPDATE Inventory SET isArchived = 1 WHERE itemId = @itemId;";
 
-            using (SqlConnection conn = GetConnection())
+            using ( SqlConnection conn = GetConnection() )
             {
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
@@ -462,20 +435,13 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
     } // end of InventorySoftDelete
 
     // unarchiving it back to inventory
-    public class InventoryRestore
+    public class InventoryRestore : BaseRepository
     {
-        private string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
-
-        public SqlConnection GetConnection()
-        {
-            return new SqlConnection(connectionString);
-        }
-
         public void RestoreItemToInventory(int itemId)
         {
             string query = "UPDATE Inventory SET isArchived = 0 WHERE itemId = @itemId;";
 
-            using (SqlConnection conn = GetConnection())
+            using ( SqlConnection conn = GetConnection() )
             {
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
@@ -519,24 +485,13 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
     }   // unarchiving it back
 
     // inventory delete
-    public class InventoryDelete
+    public class InventoryDelete : BaseRepository
     {
-        // remos string
-        private string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
-        
-        // arnels string
-        //private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
-
-        public SqlConnection GetConnection()
-        {
-            return new SqlConnection(connectionString);
-        }
-
         public void DeleteItemFromInventory(int itemId)
         {
             string query = "DELETE FROM Inventory WHERE itemId = @itemId;";
 
-            using (SqlConnection conn = GetConnection())
+            using ( SqlConnection conn = GetConnection() )
             {
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {

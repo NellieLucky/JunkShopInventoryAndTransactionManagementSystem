@@ -47,6 +47,22 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Edit
                 isValidInput = false;
             }
 
+            // Check for duplicate item name in the database
+            InventoryRead reader = new InventoryRead();
+            var allItems = reader.GetAllInventoryItems();
+
+            // Look for duplicate names (case-insensitive), excluding the item with the same ID
+            bool isDuplicate = allItems.Any(i =>
+                string.Equals(i.itemName, itemName, StringComparison.OrdinalIgnoreCase)
+                && i.itemId != itemId // <-- exclude the item being edited
+            );
+
+            if (isDuplicate)
+            {
+                errorMessage += "An item with the same name already exists.\n";
+                isValidInput = false;
+            }
+
             // validation for cat id
             //MessageBox.Show($"Category ID from ComboBox: _{itemCategoryId}_", "Debug - Category ID", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

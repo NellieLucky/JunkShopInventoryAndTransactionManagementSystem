@@ -36,6 +36,8 @@ namespace JunkShopInventoryandTransactionSystem.View.DeletionDialogs
             if (item == null)
             {
                 MessageBox.Show("Item not found in the database.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+                return;
             }
 
             //puts the values in the widgets
@@ -46,6 +48,12 @@ namespace JunkShopInventoryandTransactionSystem.View.DeletionDialogs
 
         private void AddItemButton_Click(object sender, EventArgs e)
         {
+            if (!itemId.HasValue)
+            {
+                MessageBox.Show("Item ID is missing. Cannot proceed with deletion.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             bool itemArchivingSuccess = ArchivingItemInInventory.HandleArchivingItem(itemId.Value, _targetDataGridView);
 
             if (itemArchivingSuccess)
