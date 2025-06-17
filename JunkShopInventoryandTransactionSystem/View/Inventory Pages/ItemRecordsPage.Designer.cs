@@ -286,6 +286,7 @@
             dataGridViewCellStyle2.NullValue = resources.GetObject("dataGridViewCellStyle2.NullValue");
             dataGridViewCellStyle2.Padding = new Padding(10);
             Edit.DefaultCellStyle = dataGridViewCellStyle2;
+            Edit.Description = "Edit";
             Edit.FillWeight = 5.618882F;
             Edit.HeaderText = "Edit";
             Edit.Image = Properties.Resources.green_edit;
@@ -301,6 +302,7 @@
             dataGridViewCellStyle3.NullValue = resources.GetObject("dataGridViewCellStyle3.NullValue");
             dataGridViewCellStyle3.Padding = new Padding(10);
             Delete.DefaultCellStyle = dataGridViewCellStyle3;
+            Delete.Description = "Delete";
             Delete.FillWeight = 5.618882F;
             Delete.HeaderText = "Delete";
             Delete.Image = Properties.Resources.delete;

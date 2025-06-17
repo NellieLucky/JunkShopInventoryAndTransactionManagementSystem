@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud;
-using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Delete;
+using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Archiving;
 
 namespace JunkShopInventoryandTransactionSystem.View.DeletionDialogs
 {
@@ -41,14 +41,14 @@ namespace JunkShopInventoryandTransactionSystem.View.DeletionDialogs
             //puts the values in the widgets
             ItemIDTextHolder.Text = item.itemId.ToString();
             ItemNameTextHolder.Text = item.itemName;
-            ItemcatTextHolder.Text = item.itemCategory;
+            ItemcatTextHolder.Text = item.itemCategoryName;
         }
 
         private void AddItemButton_Click(object sender, EventArgs e)
         {
-            bool itemDeleteSuccess = DeleteItemInInventory.HandleDeleteItem(itemId.Value, _targetDataGridView);
+            bool itemArchivingSuccess = ArchivingItemInInventory.HandleArchivingItem(itemId.Value, _targetDataGridView);
 
-            if (itemDeleteSuccess)
+            if (itemArchivingSuccess)
             {
                 // Closes the form
                 Close();
@@ -56,7 +56,7 @@ namespace JunkShopInventoryandTransactionSystem.View.DeletionDialogs
             else
             {
                 // Handle validation errors inside HandleDeleteItem
-                MessageBox.Show("Failed to delete the item.", "Deletion Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Failed to archive the item.", "Deletion Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

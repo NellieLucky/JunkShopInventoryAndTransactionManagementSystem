@@ -8,20 +8,14 @@ using System.Windows.Forms;
 
 /*  CODE FOR TABLE CREATION
 
+-- TABLE CREATION
 CREATE TABLE Category (
     categoryId INT IDENTITY(1,1) PRIMARY KEY,
     categoryName VARCHAR(50) NOT NULL,
-    categoryDescription NVARCHAR(250) NULL
+    categoryDescription NVARCHAR(250) NULL,
+    isArchived BIT NOT NULL DEFAULT 0  -- Soft delete flag
 );
--- AFTER TABLE CREATION, REFRESH DATA CONNECTIONS HERE IN VISUAL STUDIO AND CONNECT THE DB
 
--- Example of inserting a row into the Category table
--- <TEXT> = put any TEXT VALUE you want here , DO NOT FORGET TO ENCLOSE THEM IN SINGLE QUOTES
-
-INSERT INTO Category (categoryName, categoryDescription)
-VALUES ('<TEXT>', '<TEXT>');
-
--- to view datas directly on MS SQL SERVER 
 SELECT * FROM Category
 */
 
@@ -32,44 +26,54 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Category.Crud
     {
         public int categoryId { get; set; }
         public string categoryName { get; set; } = string.Empty;
+        // initialized to empty string to avoid null reference issues since this can be NULL
         public string? categoryDescription { get; set; }
+        // Soft delete flag to indicate if the category is archived
+        public bool isArchived { get; set; } = false;
 
         public CategoryItem() { }
 
-        public CategoryItem(string name, string description)
+        public CategoryItem(string name, string description, bool archived = false)
         {
             categoryName = name;
             categoryDescription = description;
+            isArchived = archived;
         }
 
-        public CategoryItem(int id, string name, string description)
+        public CategoryItem(int id, string name, string description, bool archived = false)
         {
             categoryId = id;
             categoryName = name;
             categoryDescription = description;
+            isArchived = archived;
         }
     } // constructors or something idk
 
     // Class for reading category data
     public class CategoryRead
     {
-        //private string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+        // remo string
+        private string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
 
         //Arnel's connection string
-        private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\source\repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
+        //private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\source\repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
 
         public SqlConnection GetConnection()
         {
             return new SqlConnection(connectionString);
         }
 
+        // get all unarchived categories
         public List<CategoryItem> GetAllCategories()
         {
             List<CategoryItem> categories = new List<CategoryItem>();
 
             using (SqlConnection conn = GetConnection())
             {
-                string query = "SELECT categoryId, categoryName, categoryDescription FROM Category";
+                string query = @"SELECT categoryId, categoryName, categoryDescription, isArchived 
+                                 FROM Category 
+                                 WHERE isArchived = 0";  // Only non-archived
+
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     try
@@ -83,7 +87,8 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Category.Crud
                                 {
                                     categoryId = Convert.ToInt32(reader["categoryId"]),
                                     categoryName = reader["categoryName"].ToString() ?? string.Empty,
-                                    categoryDescription = reader["categoryDescription"]?.ToString() ?? string.Empty
+                                    categoryDescription = reader["categoryDescription"]?.ToString() ?? string.Empty,
+                                    isArchived = Convert.ToBoolean(reader["isArchived"])
                                 };
                                 categories.Add(category);
                             }
@@ -99,6 +104,48 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Category.Crud
 
             return categories;
         } // end of get all cats
+
+        // get all archived categories
+        public List<CategoryItem> GetAllArchivedCategories()
+        {
+            List<CategoryItem> categories = new List<CategoryItem>();
+
+            using (SqlConnection conn = GetConnection())
+            {
+                string query = @"SELECT categoryId, categoryName, categoryDescription, isArchived 
+                                 FROM Category 
+                                 WHERE isArchived = 1";  // Archived only
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    try
+                    {
+                        conn.Open();
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                CategoryItem category = new CategoryItem
+                                {
+                                    categoryId = Convert.ToInt32(reader["categoryId"]),
+                                    categoryName = reader["categoryName"]?.ToString() ?? string.Empty,
+                                    categoryDescription = reader["categoryDescription"]?.ToString() ?? string.Empty,
+                                    isArchived = Convert.ToBoolean(reader["isArchived"])
+                                };
+                                categories.Add(category);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error reading archived Category data: " + ex.Message);
+                        throw new Exception("Failed to retrieve archived categories.", ex);
+                    }
+                }
+            }
+
+            return categories;
+        }   // end of get all archived cats
 
         public CategoryItem? GetOneCategory(int categoryId)
         {
@@ -138,15 +185,51 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Category.Crud
             return category;
         } // end of get one cat
 
+        /*
+        // get cat by catname // used for add / edit items in inventory
+        public int? GetCategoryIdByName(string categoryName)
+        {
+            int? categoryId = null;
+
+            using (SqlConnection conn = GetConnection())
+            {
+                string query = "SELECT categoryId FROM Category WHERE categoryName = @categoryName";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@categoryName", categoryName);
+
+                    try
+                    {
+                        conn.Open();
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                categoryId = Convert.ToInt32(reader["categoryId"]);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error fetching categoryId by name: " + ex.Message);
+                        throw;
+                    }
+                }
+            }
+
+            return categoryId;
+        }   // 
+        */
+
     } // end of cat reads //all n one
 
     // Class for adding new category
     public class CategoryAdd
     {
-        //private string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+        private string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
 
         //Arnel's connection string
-        private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\source\repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
+        //private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\source\repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
 
         public SqlConnection GetConnection()
         {
@@ -184,10 +267,11 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Category.Crud
     // Class for updating existing category
     public class CategoryEdit
     {
-        //private string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+        //remo string
+        private string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
 
         //Arnel's connection string
-        private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\source\repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
+        //private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\source\repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
 
         public SqlConnection GetConnection()
         {
@@ -233,13 +317,129 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Category.Crud
         }   // end of method EditCategory
     } // end of cat edit
 
+    // soft delete category class
+    public class CategorySoftDelete
+    {
+        // Remo's connection string
+        private string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+
+        public SqlConnection GetConnection()
+        {
+            return new SqlConnection(connectionString);
+        }
+
+        public void SoftDeleteCategory(int categoryId)
+        {
+            string query = "UPDATE Category SET isArchived = 1 WHERE categoryId = @categoryId";
+
+            using (SqlConnection conn = GetConnection())
+            {
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@categoryId", categoryId);
+
+                    try
+                    {
+                        conn.Open();
+                        int rowsAffected = cmd.ExecuteNonQuery();
+
+                        MessageBox.Show(
+                            $"{rowsAffected} category marked as archived.",
+                            "Soft Delete Successful",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information
+                        );
+                    }
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show(
+                            "Database error during SoftDeleteCategory:\n" + ex.Message,
+                            "SQL Error",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error
+                        );
+                        throw new Exception("An error occurred while archiving the category in the database.", ex);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(
+                            "An unexpected error occurred:\n" + ex.Message,
+                            "Unexpected Error",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error
+                        );
+                        throw;
+                    }
+                }
+            }
+        }
+    }   // end of soft delete category
+
+    // unarchiving it back
+    public class CategoryRestore
+    {
+        private string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+
+        public SqlConnection GetConnection()
+        {
+            return new SqlConnection(connectionString);
+        }
+
+        public void RestoreCategory(int categoryId)
+        {
+            string query = "UPDATE Category SET isArchived = 0 WHERE categoryId = @categoryId;";
+
+            using (SqlConnection conn = GetConnection())
+            {
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@categoryId", categoryId);
+
+                    try
+                    {
+                        conn.Open();
+                        int rowsAffected = cmd.ExecuteNonQuery();
+
+                        MessageBox.Show(
+                            $"{rowsAffected} category(ies) restored from archive.",
+                            "Restore Successful",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information
+                        );
+                    }
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show(
+                            "Database error during RestoreCategory:\n" + ex.Message,
+                            "SQL Error",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error
+                        );
+                        throw new Exception("An error occurred while restoring the category.", ex);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(
+                            "An unexpected error occurred:\n" + ex.Message,
+                            "Unexpected Error",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error
+                        );
+                        throw;
+                    }
+                }
+            }
+        }
+    }   // unarchiving it back
+
     // Class for deleting category
     public class CategoryDelete
     {
-        //private string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+        //remo string
+        private string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
 
         //Arnel's connection string
-        private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\source\repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
+        //private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\source\repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
 
         public SqlConnection GetConnection()
         {

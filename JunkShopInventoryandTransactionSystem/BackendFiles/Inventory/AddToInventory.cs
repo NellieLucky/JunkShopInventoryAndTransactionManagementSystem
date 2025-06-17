@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 //import backend file InventoryItem.cs
 using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud;
+using JunkShopInventoryandTransactionSystem.BackendFiles.Category.Crud;  
 
 namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Add
 {
@@ -16,7 +17,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Add
         // It takes the raw input values (strings) and the DataGridView to refresh
         public static bool HandleAddItem(
             string itemNameContent,
-            string itemCategorySelectedItem,
+            int itemCategoryId,
             string itemQtyTypeSelectedItem,
             string itemQuantity,
             string itemBuyingPrice,
@@ -26,7 +27,6 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Add
             //updated the validation for cleaner version
             // --- Retrieve and Trim the Values to remove the spaces ---
             string itemName = itemNameContent.Trim();
-            string itemCategory = itemCategorySelectedItem.Trim();
             string itemQtyType = itemQtyTypeSelectedItem.Trim();
 
             string STRitemQuantity = itemQuantity.Trim();
@@ -49,15 +49,38 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Add
                 errorMessage += "Item Name cannot be empty.\n";
                 isValidInput = false;
             }
-            if (string.IsNullOrWhiteSpace(itemCategory) || itemCategory.Equals("None", StringComparison.OrdinalIgnoreCase))
+
+            // validation for cat id
+            //MessageBox.Show($"Category ID from ComboBox: _{itemCategoryId}_", "Debug - Category ID", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            
+            bool isValidCategoryId = true;
+            string categoryErrorMessage = "";
+
+            if (itemCategoryId <= 0)
             {
-                errorMessage += "Item Category cannot be empty or 'None'.\n";
-                isValidInput = false;
+                categoryErrorMessage += "Invalid Category: No category selected.\n";
+                isValidCategoryId = false;
             }
-            if (string.IsNullOrWhiteSpace(itemQtyType))
+            else
             {
-                errorMessage += "Quantity Type cannot be empty.\n";
-                isValidInput = false;
+                // Checks if it exists in the DB
+                CategoryRead categoryReader = new CategoryRead();
+                var categoryList = categoryReader.GetAllCategories();
+
+                bool exists = categoryList.Any(cat => cat.categoryId == itemCategoryId);
+
+                if (!exists)
+                {
+                    categoryErrorMessage += $"Category ID {itemCategoryId} does not exist in the database.\n";
+                    isValidCategoryId = false;
+                }
+            }
+
+            // Show error if invalid
+            if (!isValidCategoryId)
+            {
+                MessageBox.Show(categoryErrorMessage, "Category Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
 
             // Integer validations using single TryParse
@@ -97,7 +120,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Add
             // --- If validation passes, proceed with adding the item ---
             InventoryItem newItem = new InventoryItem(
                 itemName,
-                itemCategory,
+                itemCategoryId,
                 itemQtyType,
                 parsedItemQuantity,
                 parsedItemBuyingPrice,

@@ -1,36 +1,31 @@
-﻿using System;
+﻿using JunkShopInventoryandTransactionSystem.BackendFiles.Category.Crud;
+using JunkShopInventoryandTransactionSystem.View.Inventory_Pages;
+using Microsoft.Data.SqlClient;
+using System;
+using System.Collections.Generic;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using System.Collections.Generic;
-using Microsoft.Data.SqlClient;
-
 /*  RUN THIS QUERY IN YOUR MS SQL SERVER MANAGEMENT STUDIO (SSMS) TO CREATE THE TABLE
-         *  
-            -- TABLE CREATION
-            CREATE TABLE Inventory (
-                itemId INT IDENTITY(1,1) PRIMARY KEY,
-                itemName VARCHAR(50) NOT NULL,
-                itemCategory VARCHAR(50) NOT NULL,
-                itemQtyType VARCHAR(50) NOT NULL,
-                itemQuantity INT NOT NULL,
-                itemBuyingPrice INT NOT NULL,
-                itemSellingPrice INT NOT NULL
-            );
-            -- AFTER TABLE CREATION, REFRESH DATA CONNECTIONS HERE IN VISUAL STUDIO AND CONNECT THE DB
 
-            -- Example of inserting a row into the Inventory table
-            -- <TEXT> = put any TEXT VALUE you want here , DO NOT FORGET TO ENCLOSE THEM IN SINGLE QUOTES
-            -- <INT> = put any INTEGER VALUE you want here
+-- TABLE CREATION
+CREATE TABLE Inventory (
+    itemId INT IDENTITY(1,1) PRIMARY KEY,
+    itemName VARCHAR(50) NOT NULL,
+    itemCategoryId INT NOT NULL,  -- CHANGED from VARCHAR to INT
+    itemQtyType VARCHAR(50) NOT NULL,
+    itemQuantity INT NOT NULL,
+    itemBuyingPrice INT NOT NULL,
+    itemSellingPrice INT NOT NULL,
+    isArchived BIT NOT NULL DEFAULT 0,
+    FOREIGN KEY (itemCategoryId) REFERENCES Category(categoryId)  -- FK reference
+);
 
-            INSERT INTO Inventory (itemName, itemCategory, itemQtyType, itemQuantity, itemBuyingPrice, itemSellingPrice)
-            VALUES ('<TEXT>', '<TEXT>', <INT>, <INT>, <INT>, <INT>);
+SELECT * FROM Inventory
 
-            -- to view datas directly on MS SQL SERVER 
-            SELECT * FROM Inventory
-        */
+*/
 
 namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
 {
@@ -38,36 +33,44 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
     public class InventoryItem
     {
         public int itemId { get; set; } // Database generates this for new items
-        // added " = string.Empty; " to remove warning about nullability
-        // incase it receives a NULL value from the database
+
         public string itemName { get; set; } = string.Empty;
-        public string itemCategory { get; set; } = string.Empty;
+        public int itemCategoryId { get; set; } 
+        public string itemCategoryName { get; set; } = string.Empty; // populated from JOIN
         public string itemQtyType { get; set; } = string.Empty;
         public int itemQuantity { get; set; }   
         public int itemBuyingPrice { get; set; }
         public int itemSellingPrice { get; set; }
 
+        //added isArchived property to handle soft deletes
+        // added isArchived column to the query, default is 0 (not archived)
+        //cmd.Parameters.AddWithValue("@isArchived", item.isArchived);
+        public bool isArchived { get; set; } = false; // or default to true if you want it archived by default
+
         // Parameterless constructor: Needed by InventoryRead when creating an empty object from DB reader
         // i actually dont know what this does, but is needed for the InventoryRead class to work properly 
         public InventoryItem() { }
 
-        // withoutID
-        public InventoryItem(string name, string category, string qtyType, int quantity, int buyingPrice, int sellingPrice)
+        // for add
+        // withoutID //added bool archived = false for isArchived property
+        public InventoryItem(string name, int category, string qtyType, int quantity, int buyingPrice, int sellingPrice, bool archived = false)
         {
             itemName = name;
-            itemCategory = category;
+            itemCategoryId = category;
             itemQtyType = qtyType;
             itemQuantity = quantity;
             itemBuyingPrice = buyingPrice;
             itemSellingPrice = sellingPrice;
+            isArchived = archived;
         }
 
-        // with ID
-        public InventoryItem(int id, string name, string category, string qtyType, int quantity, int buyingPrice, int sellingPrice)
+        // for edit
+        // with ID 
+        public InventoryItem(int id, string name, int categoryId, string qtyType, int quantity, int buyingPrice, int sellingPrice, bool archived = false)
         {
             itemId = id;
             itemName = name;
-            itemCategory = category;
+            itemCategoryId = categoryId;
             itemQtyType = qtyType;
             itemQuantity = quantity;
             itemBuyingPrice = buyingPrice;
@@ -82,10 +85,10 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
         //copy this to other classes that will use this connection string
 
         //remostring
-        //private string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+        private string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
 
         //arnels string
-        private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
+        //private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
         
 
         // Method to get a connection object
@@ -94,15 +97,30 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
             return new SqlConnection(connectionString);
         }
 
-        // Method to SELECT all rows from the Inventory table
-        // get all inventory items method
+        // read all unarchived items
+        // get all inventory items method with isArchived filter = 0 (not archived)
         public List<InventoryItem> GetAllInventoryItems()
         {
             List<InventoryItem> items = new List<InventoryItem>(); // Initialize an empty list
 
             using (SqlConnection conn = GetConnection()) // Ensures connection is closed
             {
-                string query = "SELECT itemId, itemName, itemCategory, itemQtyType, itemQuantity, itemBuyingPrice, itemSellingPrice FROM Inventory";
+                // updated to read only non-archived items < isArchived = 0/FALSE >
+                string query = @"
+                    SELECT 
+                        i.itemId,
+                        i.itemName,
+                        i.itemCategoryId,
+                        c.categoryName AS itemCategoryName,
+                        i.itemQtyType,
+                        i.itemQuantity,
+                        i.itemBuyingPrice,
+                        i.itemSellingPrice,
+                        i.isArchived
+                    FROM Inventory i
+                    INNER JOIN Category c ON i.itemCategoryId = c.categoryId
+                    WHERE i.isArchived = 0 AND c.isArchived = 0";
+
                 using (SqlCommand cmd = new SqlCommand(query, conn)) 
                 {
                     try
@@ -115,18 +133,14 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
                                 InventoryItem item = new InventoryItem
                                 {
                                     itemId = Convert.ToInt32(reader["itemId"]),
-                                    // Fix for CS8601: Possible null reference assignment.
-                                    // The issue occurs because the `reader["itemCategory"].ToString()` might return null.
-                                    // To fix this, we can use the null-coalescing operator (`??`) to provide a default value.
-
-                                    
                                     itemName = reader["itemName"].ToString() ?? string.Empty,
-                                    itemCategory = reader["itemCategory"]?.ToString() ?? string.Empty,
-                                    //itemCategory = reader["itemCategory"].ToString(),
+                                    itemCategoryId = Convert.ToInt32(reader["itemCategoryId"]),
+                                    itemCategoryName = reader["itemCategoryName"].ToString() ?? string.Empty,
                                     itemQtyType = reader["itemQtyType"].ToString() ?? string.Empty,
                                     itemQuantity = Convert.ToInt32(reader["itemQuantity"]),
                                     itemBuyingPrice = Convert.ToInt32(reader["itemBuyingPrice"]),
-                                    itemSellingPrice = Convert.ToInt32(reader["itemSellingPrice"])
+                                    itemSellingPrice = Convert.ToInt32(reader["itemSellingPrice"]),
+                                    isArchived = Convert.ToBoolean(reader["isArchived"])
                                 };
 
                                 //adds the content per row to item
@@ -143,7 +157,68 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
             }
             return items;
         }
-        // end of read all
+        // end of read all unarchived items
+
+        // read all archived items
+        // not yet used
+        public List<InventoryItem> GetAllArchivedInventoryItems()
+        {
+            List<InventoryItem> items = new List<InventoryItem>();
+
+            using (SqlConnection conn = GetConnection())
+            {
+                string query = @"
+                    SELECT 
+                        i.itemId,
+                        i.itemName,
+                        i.itemCategoryId,
+                        c.categoryName AS itemCategoryName,
+                        i.itemQtyType,
+                        i.itemQuantity,
+                        i.itemBuyingPrice,
+                        i.itemSellingPrice,
+                        i.isArchived
+                    FROM Inventory i
+                    INNER JOIN Category c ON i.itemCategoryId = c.categoryId
+                    WHERE i.isArchived = 1";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    try
+                    {
+                        conn.Open();
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                InventoryItem item = new InventoryItem
+                                {
+                                    itemId = Convert.ToInt32(reader["itemId"]),
+                                    itemName = reader["itemName"]?.ToString() ?? string.Empty,
+                                    itemCategoryId = Convert.ToInt32(reader["itemCategoryId"]),
+                                    itemCategoryName = reader["itemCategoryName"]?.ToString() ?? string.Empty,
+                                    itemQtyType = reader["itemQtyType"]?.ToString() ?? string.Empty,
+                                    itemQuantity = Convert.ToInt32(reader["itemQuantity"]),
+                                    itemBuyingPrice = Convert.ToInt32(reader["itemBuyingPrice"]),
+                                    itemSellingPrice = Convert.ToInt32(reader["itemSellingPrice"]),
+                                    isArchived = Convert.ToBoolean(reader["isArchived"])
+                                };
+
+                                items.Add(item);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error reading archived inventory items: " + ex.Message);
+                        throw new Exception("Failed to retrieve archived inventory items.", ex);
+                    }
+                }
+            }
+
+            return items;
+        }
+        // end of read all archived items
 
         // just get one
         public InventoryItem? GetOneInventoryItem(int itemId)
@@ -152,8 +227,20 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
 
             using (SqlConnection conn = GetConnection())
             {
-                string query = "SELECT itemId, itemName, itemCategory, itemQtyType, itemQuantity, itemBuyingPrice, itemSellingPrice " +
-                               "FROM Inventory WHERE itemId = @itemId";
+                string query = @"
+                    SELECT 
+                        i.itemId,
+                        i.itemName,
+                        i.itemCategoryId,
+                        c.categoryName AS itemCategoryName,
+                        i.itemQtyType,
+                        i.itemQuantity,
+                        i.itemBuyingPrice,
+                        i.itemSellingPrice,
+                        i.isArchived
+                    FROM Inventory i
+                    INNER JOIN Category c ON i.itemCategoryId = c.categoryId
+                    WHERE i.itemId = @itemId";
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
@@ -169,12 +256,14 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
                                 item = new InventoryItem
                                 {
                                     itemId = Convert.ToInt32(reader["itemId"]),
-                                    itemName = reader["itemName"].ToString() ?? string.Empty,
-                                    itemCategory = reader["itemCategory"]?.ToString() ?? string.Empty,
-                                    itemQtyType = reader["itemQtyType"].ToString() ?? string.Empty,
+                                    itemName = reader["itemName"]?.ToString() ?? string.Empty,
+                                    itemCategoryId = Convert.ToInt32(reader["itemCategoryId"]),
+                                    itemCategoryName = reader["itemCategoryName"]?.ToString() ?? string.Empty,
+                                    itemQtyType = reader["itemQtyType"]?.ToString() ?? string.Empty,
                                     itemQuantity = Convert.ToInt32(reader["itemQuantity"]),
                                     itemBuyingPrice = Convert.ToInt32(reader["itemBuyingPrice"]),
-                                    itemSellingPrice = Convert.ToInt32(reader["itemSellingPrice"])
+                                    itemSellingPrice = Convert.ToInt32(reader["itemSellingPrice"]),
+                                    isArchived = Convert.ToBoolean(reader["isArchived"])
                                 };
                             }
                         }
@@ -198,12 +287,11 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
     public class InventoryAdd
     {
         //remos string
-        //private string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+        private string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
         
         //arnels string
-        private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
+        //private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
         
-
         public SqlConnection GetConnection()
         {
             return new SqlConnection(connectionString);
@@ -211,8 +299,11 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
 
         public void AddItemToInventory(InventoryItem item)
         {
-            string query = "INSERT INTO Inventory (itemName, itemCategory, itemQtyType, itemQuantity, itemBuyingPrice, itemSellingPrice) " +
-                           "VALUES (@itemName, @itemCategory, @itemQtyType, @itemQuantity, @itemBuyingPrice, @itemSellingPrice);";
+            string query = @"INSERT INTO Inventory 
+                            (itemName, itemCategoryId, itemQtyType, itemQuantity, itemBuyingPrice, itemSellingPrice) 
+                            VALUES 
+                            (@itemName, @itemCategoryId, @itemQtyType, @itemQuantity, @itemBuyingPrice, @itemSellingPrice);";
+
 
             using (SqlConnection conn = GetConnection())
             {
@@ -220,7 +311,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
                 {
                     // Add parameters to prevent SQL Injection and handle data types correctly
                     cmd.Parameters.AddWithValue("@itemName", item.itemName);
-                    cmd.Parameters.AddWithValue("@itemCategory", item.itemCategory);
+                    cmd.Parameters.AddWithValue("@itemCategoryId", item.itemCategoryId);
                     cmd.Parameters.AddWithValue("@itemQtyType", item.itemQtyType);
                     cmd.Parameters.AddWithValue("@itemQuantity", item.itemQuantity);
                     cmd.Parameters.AddWithValue("@itemBuyingPrice", item.itemBuyingPrice);
@@ -253,10 +344,10 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
     public class InventoryEdit
     {
         // remos string
-        //private string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+        private string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
         
         // arnels string
-        private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
+        //private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
 
         public SqlConnection GetConnection()
         {
@@ -269,7 +360,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
             string query = @"
                 UPDATE Inventory SET 
                     itemName = @itemName, 
-                    itemCategory = @itemCategory, 
+                    itemCategoryId = @itemCategoryId, 
                     itemQtyType = @itemQtyType, 
                     itemQuantity = @itemQuantity, 
                     itemBuyingPrice = @itemBuyingPrice, 
@@ -283,7 +374,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
                 {
                     cmd.Parameters.AddWithValue("@itemId", item.itemId);
                     cmd.Parameters.AddWithValue("@itemName", item.itemName);
-                    cmd.Parameters.AddWithValue("@itemCategory", item.itemCategory);
+                    cmd.Parameters.AddWithValue("@itemCategoryId", item.itemCategoryId);
                     cmd.Parameters.AddWithValue("@itemQtyType", item.itemQtyType);
                     cmd.Parameters.AddWithValue("@itemQuantity", item.itemQuantity);
                     cmd.Parameters.AddWithValue("@itemBuyingPrice", item.itemBuyingPrice);
@@ -312,13 +403,129 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
     }
     // end of InventoryEdit
 
+    // inventory soft delete
+    public class InventorySoftDelete
+    {
+        // Remo's connection string
+        private string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+
+        public SqlConnection GetConnection()
+        {
+            return new SqlConnection(connectionString);
+        }
+
+        public void SoftDeleteItemFromInventory(int itemId)
+        {
+            string query = "UPDATE Inventory SET isArchived = 1 WHERE itemId = @itemId;";
+
+            using (SqlConnection conn = GetConnection())
+            {
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@itemId", itemId);
+
+                    try
+                    {
+                        conn.Open();
+                        int rowsAffected = cmd.ExecuteNonQuery();
+
+                        MessageBox.Show(
+                            $"{rowsAffected} item(s) marked as archived.",
+                            "Soft Delete Successful",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information
+                        );
+                    }
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show(
+                            "Database error during SoftDeleteItemFromInventory:\n" + ex.Message,
+                            "SQL Error",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error
+                        );
+                        throw new Exception("An error occurred while archiving the inventory item.", ex);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(
+                            "An unexpected error occurred:\n" + ex.Message,
+                            "Unexpected Error",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error
+                        );
+                        throw;
+                    }
+                }
+            }
+        }
+    } // end of InventorySoftDelete
+
+    // unarchiving it back to inventory
+    public class InventoryRestore
+    {
+        private string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+
+        public SqlConnection GetConnection()
+        {
+            return new SqlConnection(connectionString);
+        }
+
+        public void RestoreItemToInventory(int itemId)
+        {
+            string query = "UPDATE Inventory SET isArchived = 0 WHERE itemId = @itemId;";
+
+            using (SqlConnection conn = GetConnection())
+            {
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@itemId", itemId);
+
+                    try
+                    {
+                        conn.Open();
+                        int rowsAffected = cmd.ExecuteNonQuery();
+
+                        MessageBox.Show(
+                            $"{rowsAffected} item(s) restored from archive.",
+                            "Restore Successful",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information
+                        );
+                    }
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show(
+                            "Database error during RestoreItemToInventory:\n" + ex.Message,
+                            "SQL Error",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error
+                        );
+                        throw new Exception("An error occurred while restoring the inventory item.", ex);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(
+                            "An unexpected error occurred:\n" + ex.Message,
+                            "Unexpected Error",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error
+                        );
+                        throw;
+                    }
+                }
+            }
+        }
+    }   // unarchiving it back
+
     // inventory delete
     public class InventoryDelete
     {
         // remos string
-        //private string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+        private string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+        
         // arnels string
-        private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
+        //private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
 
         public SqlConnection GetConnection()
         {
@@ -328,6 +535,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
         public void DeleteItemFromInventory(int itemId)
         {
             string query = "DELETE FROM Inventory WHERE itemId = @itemId;";
+
             using (SqlConnection conn = GetConnection())
             {
                 using (SqlCommand cmd = new SqlCommand(query, conn))

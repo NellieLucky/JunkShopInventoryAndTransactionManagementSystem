@@ -2,6 +2,7 @@
 //imports the backend file ReloadCategory.cs
 using JunkShopInventoryandTransactionSystem.BackendFiles.Category.Reload;
 using JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel;
+using JunkShopInventoryandTransactionSystem.View.DeletionDialogs; 
 
 using System;
 using System.Collections.Generic;
@@ -19,12 +20,14 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
     public partial class CategoryPage : UserControl
     {
         private AddEditCategoryDialogBox addEditCategoryDialogBox = null!; // Initialize with null-forgiving operator  
+        private DeleteItemDialogBox deleteItemDialogBox = null!;
 
         public CategoryPage()
         {
             InitializeComponent();
 
             // Call the static LoadInventoryData method from ReloadInventory
+            // reads unarchived category data from the database and loads it into the DataGridView
             ReloadCategory.LoadCategoryData(CategoryRecordsTable);
 
             /*
@@ -83,6 +86,8 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
             }
         }
 
+        //add button
+
         private void AddCategoryButton_Click(object sender, EventArgs e)
         {
             if (addEditCategoryDialogBox == null || addEditCategoryDialogBox.IsDisposed) // Check if it's already open  
@@ -132,28 +137,22 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
                 else if (clickedColumnName == "Delete")
                 {
                     //MessageBox.Show($"Delete clicked\nCategoryID: {categoryId}", "Action");
-                    // Show Delete Form Here
-
-                    // COMMENTED NO DELETE UI YET?
-                    // DO I USE DELETEITEMDIALOGBOX? AND JUST CHANGE THE VALUES?
-
-                    /*
                     
+                    // calls the del window
                     if (deleteItemDialogBox == null || deleteItemDialogBox.IsDisposed)
-                        {
-                            deleteItemDialogBox = new DeleteItemDialogBox(itemId, ItemRecordsTable);
-                            deleteItemDialogBox.Show();
-                        }
-                        else
-                        {
-                            deleteItemDialogBox.Focus(); // Bring to front if it's already open
-                        }
+                    {
+                        deleteItemDialogBox = new DeleteItemDialogBox(categoryId, CategoryRecordsTable);
+                        deleteItemDialogBox.Show();
+                    }
+                    else
+                    {
+                        deleteItemDialogBox.Focus(); // Bring to front if it's already open
+                    }
 
-                    */
                 }
                 else
                 {
-                    //empty for now
+                    MessageBox.Show("An error occurred during the action.", "Action Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

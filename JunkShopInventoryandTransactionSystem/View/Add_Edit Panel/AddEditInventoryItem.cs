@@ -1,4 +1,10 @@
 ﻿
+// imports backend file of category for the category combobox
+using JunkShopInventoryandTransactionSystem.BackendFiles.Category.Crud;
+using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Add;
+//imports the backend file AddToInventory.cs
+using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud;
+using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Edit;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,27 +14,36 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
-//imports the backend file AddToInventory.cs
-using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud;
-using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Add;
-using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Edit;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel
 {
     public partial class AddEditInventoryItem : Form
     {
-        // will hold the value passed to the constructor
         private string value;
         private DataGridView _targetDataGridView;
-        private int? itemId; // This will hold the item ID if editing
-        //added ? to make it nullable, useful for edit mode as per gpt
+        private int? itemId;
+
+        public class Category
+        {
+            public int categoryId { get; set; }
+            public string categoryName { get; set; } = string.Empty;
+
+            public Category() { }
+
+            // override ToString so it displays properly in the ComboBox
+            public override string ToString()
+            {
+                return categoryName;
+            }
+        }
 
         // constructor for Add function only
         // Modified constructor to accept the DataGridView
         public AddEditInventoryItem(string value, DataGridView dgv)
         {
             InitializeComponent();
+            LoadCategoryComboBox();
 
             this.value = value;
             // Store the passed DataGridView instance
@@ -56,6 +71,7 @@ namespace JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel
         public AddEditInventoryItem(string value, DataGridView dgv, int itemId)
         {
             InitializeComponent();
+            LoadCategoryComboBox();
 
             this.value = value;     //receives "Edit"
             _targetDataGridView = dgv;  // receives the grid view to allow refresh after editing
@@ -81,46 +97,39 @@ namespace JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel
 
         private void AddEditButton_Click(object sender, EventArgs e)
         {
+            // Declare shared values
+            string itemName = TextBox_ofItemNameLabel.Content;
+            int itemCatId = Convert.ToInt32(CategoryComboBox.SelectedValue);
+            string itemQtyType = QtyTypeComboBox.SelectedItem as string ?? string.Empty;
+            string STRitemQuantity = TextBox_ofQtyLabel.Content;
+            string STRitemBuyingPrice = TextBox_ofBuyingPriceLabel.Content;
+            string STRitemSellingPrice = TextBox_ofSellingPriceLabel.Content;
+
             if (AddEditButton.Content == "Add Item")
             {
-                //moved them here to ensure they are only executed when adding an item
-                //stores the values of the widgets in variables
-                string itemName = TextBox_ofItemNameLabel.Content;
-
-                string itemCategory = CategoryComboBox.SelectedItem as string ?? string.Empty;
-                string itemQtyType = QtyTypeComboBox.SelectedItem as string ?? string.Empty;
-
-                string STRitemQuantity = TextBox_ofQtyLabel.Content;
-                string STRitemBuyingPrice = TextBox_ofBuyingPriceLabel.Content;
-                string STRitemSellingPrice = TextBox_ofSellingPriceLabel.Content;
-
-                // passes the values of the widgets to the AddToInventoryHandler 
                 bool addSuccess = AddToInventory.HandleAddItem(
                     itemName,
-                    itemCategory,
+                    itemCatId,
                     itemQtyType,
                     STRitemQuantity,
                     STRitemBuyingPrice,
                     STRitemSellingPrice,
-                    _targetDataGridView // Pass the stored DataGridView
+                    _targetDataGridView
                 );
 
-                //clear the input fields after adding and close the window
-                if (addSuccess) // Only clear and close if the item was added successfully
+                if (addSuccess)
                 {
+                    // Clear fields
                     TextBox_ofItemNameLabel.Content = string.Empty;
                     QtyTypeComboBox.Text = string.Empty;
-                    QtyTypeComboBox.Text = string.Empty;
-                    TextBox_ofQtyLabel.Content = string.Empty;      
+                    TextBox_ofQtyLabel.Content = string.Empty;
                     TextBox_ofBuyingPriceLabel.Content = string.Empty;
                     TextBox_ofSellingPriceLabel.Content = string.Empty;
 
-                    //Closes the form
                     this.Close();
                 }
                 else
                 {
-                    // added this for checking incase of error
                     MessageBox.Show("Cannot add item: Unknown Error.", "Add Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -128,34 +137,54 @@ namespace JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel
             {
                 if (itemId.HasValue)
                 {
-                    string upName = TextBox_ofItemNameLabel.Content;
-                    string upCat = CategoryComboBox.Text;
-                    string upQtyT = QtyTypeComboBox.Text;
-                    string upQty = TextBox_ofQtyLabel.Content;
-                    string upBuy = TextBox_ofBuyingPriceLabel.Content;
-                    string upSell = TextBox_ofSellingPriceLabel.Content;
-
-                    bool success = EditInventory.HandleEditItem(
-                        itemId.Value, upName, upCat, upQtyT, upQty, upBuy, upSell, _targetDataGridView
+                    bool editSuccess = EditInventory.HandleEditItem(
+                        itemId.Value,
+                        itemName,
+                        itemCatId,
+                        itemQtyType,
+                        STRitemQuantity,
+                        STRitemBuyingPrice,
+                        STRitemSellingPrice,
+                        _targetDataGridView
                     );
 
-                    if (success)
+                    if (editSuccess)
                     {
-                        //closes the form
-                        Close();
+                        TextBox_ofItemNameLabel.Content = string.Empty;
+                        QtyTypeComboBox.Text = string.Empty;
+                        TextBox_ofQtyLabel.Content = string.Empty;
+                        TextBox_ofBuyingPriceLabel.Content = string.Empty;
+                        TextBox_ofSellingPriceLabel.Content = string.Empty;
+
+                        this.Close();
                     }
                     else
                     {
-                        // Handle validation errors inside HandleEditItem
+                        MessageBox.Show("Cannot edit item: Unknown Error.", "Edit Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+                }
+                else
+                {
+                    MessageBox.Show("Item ID is not set.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             else
             {
                 MessageBox.Show("Unknown button state: " + AddEditButton.Text, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
+
+        private void LoadCategoryComboBox()
+        {
+            CategoryRead reader = new CategoryRead();
+            var categories = reader.GetAllCategories().ToList();
+
+            CategoryComboBox.DataSource = categories;
+            CategoryComboBox.DisplayMember = "categoryName";
+            CategoryComboBox.ValueMember = "categoryId";
+            CategoryComboBox.SelectedIndex = -1;
+        }
+
         private void LoadItemDetails()
         {
             if (!itemId.HasValue) return;
@@ -168,9 +197,10 @@ namespace JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel
                 return;
             }
 
-            // Populate widgets using .Text, not .Content
             TextBox_ofItemNameLabel.Content = item.itemName;
-            CategoryComboBox.Text = item.itemCategory;
+
+            CategoryComboBox.SelectedItem = item.itemCategoryId;
+
             QtyTypeComboBox.Text = item.itemQtyType;
             TextBox_ofQtyLabel.Content = item.itemQuantity.ToString();
             TextBox_ofBuyingPriceLabel.Content = item.itemBuyingPrice.ToString();
