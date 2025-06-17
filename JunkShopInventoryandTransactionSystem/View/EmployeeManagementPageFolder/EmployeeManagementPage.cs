@@ -23,6 +23,39 @@ namespace JunkShopInventoryandTransactionSystem.View.EmployeeManagementPageFolde
             InitializeComponent();
 
             LoadEmployeeData();
+
+            // Set header text for Edit and Delete columns to empty
+            dataGridView1.Columns["EditColumn"].HeaderText = "";
+            dataGridView1.Columns["RemoveColumn"].HeaderText = ""; // Set header text for Edit and Delete columns to empty
+            dataGridView1.Paint += DataGridView1_Paint; // Attach the Paint event handler to the DataGridView
+        }
+
+        private void DataGridView1_Paint(object sender, PaintEventArgs e)
+        {
+            // Get the rectangles for the Edit and Delete header cells  
+            var editRect = dataGridView1.GetCellDisplayRectangle(dataGridView1.Columns["EditColumn"].Index, -1, true);
+            var deleteRect = dataGridView1.GetCellDisplayRectangle(dataGridView1.Columns["RemoveColumn"].Index, -1, true);
+
+            // Calculate the merged rectangle  
+            Rectangle mergedRect = new Rectangle(
+                editRect.Left,
+                editRect.Top,
+                deleteRect.Right - editRect.Left,
+                editRect.Height
+            );
+
+            // Draw the merged header background  
+            using (SolidBrush backColorBrush = new SolidBrush(dataGridView1.ColumnHeadersDefaultCellStyle.BackColor))
+            {
+                e.Graphics.FillRectangle(backColorBrush, mergedRect);
+            }
+
+            // Draw the header text centered  
+            using (StringFormat format = new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center })
+            using (SolidBrush foreColorBrush = new SolidBrush(dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString("Actions", dataGridView1.ColumnHeadersDefaultCellStyle.Font, foreColorBrush, mergedRect, format);
+            }
         }
 
         private void LoadEmployeeData()

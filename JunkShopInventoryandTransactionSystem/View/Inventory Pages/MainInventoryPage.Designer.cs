@@ -31,7 +31,6 @@
             DashboardTitlePage = new Label();
             panel1 = new Panel();
             ItemNavButton = new CuoreUI.Controls.cuiButton();
-            AuditNavButton = new CuoreUI.Controls.cuiButton();
             CategoryNavButton = new CuoreUI.Controls.cuiButton();
             InventoryPanel = new Panel();
             panel1.SuspendLayout();
@@ -43,7 +42,7 @@
             DashboardTitlePage.BackColor = Color.FromArgb(0, 0, 0, 0);
             DashboardTitlePage.Font = new Font("Arial", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
             DashboardTitlePage.ForeColor = Color.FromArgb(16, 107, 23);
-            DashboardTitlePage.Location = new Point(17, 17);
+            DashboardTitlePage.Location = new Point(3, 22);
             DashboardTitlePage.Name = "DashboardTitlePage";
             DashboardTitlePage.Size = new Size(194, 46);
             DashboardTitlePage.TabIndex = 1;
@@ -52,7 +51,6 @@
             // panel1
             // 
             panel1.Controls.Add(ItemNavButton);
-            panel1.Controls.Add(AuditNavButton);
             panel1.Controls.Add(CategoryNavButton);
             panel1.Controls.Add(DashboardTitlePage);
             panel1.Location = new Point(3, 0);
@@ -81,7 +79,7 @@
             ItemNavButton.ImageAutoCenter = true;
             ItemNavButton.ImageExpand = new Point(0, 0);
             ItemNavButton.ImageOffset = new Point(0, 0);
-            ItemNavButton.Location = new Point(17, 81);
+            ItemNavButton.Location = new Point(169, 81);
             ItemNavButton.Name = "ItemNavButton";
             ItemNavButton.NormalBackground = Color.FromArgb(0, 157, 209);
             ItemNavButton.NormalForeColor = Color.White;
@@ -98,44 +96,6 @@
             ItemNavButton.TextAlignment = StringAlignment.Center;
             ItemNavButton.TextOffset = new Point(0, 0);
             ItemNavButton.Click += ItemNavButton_Click;
-            // 
-            // AuditNavButton
-            // 
-            AuditNavButton.BackColor = Color.FromArgb(0, 0, 0, 0);
-            AuditNavButton.CheckButton = false;
-            AuditNavButton.Checked = false;
-            AuditNavButton.CheckedBackground = Color.FromArgb(255, 106, 0);
-            AuditNavButton.CheckedForeColor = Color.White;
-            AuditNavButton.CheckedImageTint = Color.White;
-            AuditNavButton.CheckedOutline = Color.FromArgb(255, 106, 0);
-            AuditNavButton.Content = "Inventory Audit";
-            AuditNavButton.DialogResult = DialogResult.None;
-            AuditNavButton.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            AuditNavButton.ForeColor = Color.White;
-            AuditNavButton.HoverBackground = Color.White;
-            AuditNavButton.HoveredImageTint = Color.White;
-            AuditNavButton.HoverForeColor = Color.Black;
-            AuditNavButton.HoverOutline = Color.FromArgb(32, 128, 128, 128);
-            AuditNavButton.Image = null;
-            AuditNavButton.ImageAutoCenter = true;
-            AuditNavButton.ImageExpand = new Point(0, 0);
-            AuditNavButton.ImageOffset = new Point(0, 0);
-            AuditNavButton.Location = new Point(321, 81);
-            AuditNavButton.Name = "AuditNavButton";
-            AuditNavButton.NormalBackground = Color.FromArgb(0, 157, 209);
-            AuditNavButton.NormalForeColor = Color.White;
-            AuditNavButton.NormalImageTint = Color.White;
-            AuditNavButton.NormalOutline = Color.FromArgb(64, 128, 128, 128);
-            AuditNavButton.OutlineThickness = 1F;
-            AuditNavButton.PressedBackground = Color.WhiteSmoke;
-            AuditNavButton.PressedForeColor = Color.FromArgb(32, 32, 32);
-            AuditNavButton.PressedImageTint = Color.White;
-            AuditNavButton.PressedOutline = Color.FromArgb(64, 128, 128, 128);
-            AuditNavButton.Rounding = new Padding(8);
-            AuditNavButton.Size = new Size(146, 40);
-            AuditNavButton.TabIndex = 3;
-            AuditNavButton.TextAlignment = StringAlignment.Center;
-            AuditNavButton.TextOffset = new Point(0, 0);
             // 
             // CategoryNavButton
             // 
@@ -158,7 +118,7 @@
             CategoryNavButton.ImageAutoCenter = true;
             CategoryNavButton.ImageExpand = new Point(0, 0);
             CategoryNavButton.ImageOffset = new Point(0, 0);
-            CategoryNavButton.Location = new Point(169, 81);
+            CategoryNavButton.Location = new Point(17, 81);
             CategoryNavButton.Name = "CategoryNavButton";
             CategoryNavButton.NormalBackground = Color.FromArgb(0, 157, 209);
             CategoryNavButton.NormalForeColor = Color.White;
@@ -203,7 +163,6 @@
         private Panel panel1;
         private Panel InventoryPanel;
         private CuoreUI.Controls.cuiButton CategoryNavButton;
-        private CuoreUI.Controls.cuiButton AuditNavButton;
         private CuoreUI.Controls.cuiButton ItemNavButton;
     }
 }

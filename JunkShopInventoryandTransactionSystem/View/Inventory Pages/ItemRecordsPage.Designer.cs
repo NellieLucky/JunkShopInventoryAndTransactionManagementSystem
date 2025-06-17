@@ -235,18 +235,18 @@
             // 
             // ItemName
             // 
+            ItemName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             ItemName.HeaderText = "Item Name";
             ItemName.MinimumWidth = 6;
             ItemName.Name = "ItemName";
-            ItemName.Width = 150;
             // 
             // Category
             // 
+            Category.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             Category.FillWeight = 150F;
             Category.HeaderText = "Category";
             Category.MinimumWidth = 6;
             Category.Name = "Category";
-            Category.Width = 150;
             // 
             // QtyType
             // 
@@ -282,22 +282,21 @@
             // 
             // Edit
             // 
-            Edit.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.NullValue = resources.GetObject("dataGridViewCellStyle2.NullValue");
             dataGridViewCellStyle2.Padding = new Padding(10);
             Edit.DefaultCellStyle = dataGridViewCellStyle2;
             Edit.FillWeight = 5.618882F;
             Edit.HeaderText = "Edit";
-            Edit.Image = Properties.Resources.pen;
+            Edit.Image = Properties.Resources.green_edit;
             Edit.ImageLayout = DataGridViewImageCellLayout.Zoom;
             Edit.MinimumWidth = 6;
             Edit.Name = "Edit";
             Edit.Resizable = DataGridViewTriState.False;
+            Edit.Width = 60;
             // 
             // Delete
             // 
-            Delete.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.NullValue = resources.GetObject("dataGridViewCellStyle3.NullValue");
             dataGridViewCellStyle3.Padding = new Padding(10);
@@ -309,6 +308,7 @@
             Delete.MinimumWidth = 6;
             Delete.Name = "Delete";
             Delete.Resizable = DataGridViewTriState.False;
+            Delete.Width = 60;
             // 
             // ItemRecordsPage
             // 

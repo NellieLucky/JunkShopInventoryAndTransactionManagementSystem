@@ -8,17 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace JunkShopInventoryandTransactionSystem.View.FinancialReportsPageFolder
+namespace JunkShopInventoryandTransactionSystem.View.DeletionDialogs
 {
-    public partial class FinancialReportsPage : UserControl
+    public partial class DeleteCategoryDialogBox : Form
     {
-        public FinancialReportsPage()
+        public DeleteCategoryDialogBox()
         {
             InitializeComponent();
         }
-        private void FinancialReportsPage_Load(object sender, EventArgs e)
-        {
 
-        }
     }
 }

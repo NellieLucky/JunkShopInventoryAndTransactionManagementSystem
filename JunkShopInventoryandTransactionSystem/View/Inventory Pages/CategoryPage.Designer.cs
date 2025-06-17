@@ -34,12 +34,12 @@
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CategoryPage));
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DashboardTitlePage = new Label();
             CategoryRecordsTable = new DataGridView();
             cuiButton1 = new CuoreUI.Controls.cuiButton();
             cuiTextBox1 = new CuoreUI.Controls.cuiTextBox();
             AddCategoryButton = new CuoreUI.Controls.cuiButton();
             panel1 = new Panel();
+            DashboardTitlePage = new Label();
             CategoryID = new DataGridViewTextBoxColumn();
             CategoryName = new DataGridViewTextBoxColumn();
             CategoryDescription = new DataGridViewTextBoxColumn();
@@ -49,25 +49,12 @@
             panel1.SuspendLayout();
             SuspendLayout();
             // 
-            // DashboardTitlePage
-            // 
-            DashboardTitlePage.AutoSize = true;
-            DashboardTitlePage.BackColor = Color.FromArgb(0, 0, 0, 0);
-            DashboardTitlePage.Font = new Font("Arial", 24F, FontStyle.Bold);
-            DashboardTitlePage.ForeColor = Color.FromArgb(16, 107, 23);
-            DashboardTitlePage.Location = new Point(14, 20);
-            DashboardTitlePage.Name = "DashboardTitlePage";
-            DashboardTitlePage.Size = new Size(225, 46);
-            DashboardTitlePage.TabIndex = 31;
-            DashboardTitlePage.Text = "Categories";
-            // 
             // CategoryRecordsTable
             // 
             CategoryRecordsTable.AllowUserToAddRows = false;
             CategoryRecordsTable.AllowUserToDeleteRows = false;
             CategoryRecordsTable.AllowUserToResizeColumns = false;
             CategoryRecordsTable.AllowUserToResizeRows = false;
-            CategoryRecordsTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             CategoryRecordsTable.BackgroundColor = Color.White;
             CategoryRecordsTable.CellBorderStyle = DataGridViewCellBorderStyle.SunkenHorizontal;
             CategoryRecordsTable.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Sunken;
@@ -223,15 +210,29 @@
             panel1.Size = new Size(376, 40);
             panel1.TabIndex = 29;
             // 
+            // DashboardTitlePage
+            // 
+            DashboardTitlePage.AutoSize = true;
+            DashboardTitlePage.BackColor = Color.FromArgb(0, 0, 0, 0);
+            DashboardTitlePage.Font = new Font("Arial", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            DashboardTitlePage.ForeColor = Color.FromArgb(0, 157, 209);
+            DashboardTitlePage.Location = new Point(13, 22);
+            DashboardTitlePage.Name = "DashboardTitlePage";
+            DashboardTitlePage.Size = new Size(171, 35);
+            DashboardTitlePage.TabIndex = 31;
+            DashboardTitlePage.Text = "Categories";
+            // 
             // CategoryID
             // 
             CategoryID.FillWeight = 9.83041F;
             CategoryID.HeaderText = "CategoryID";
             CategoryID.MinimumWidth = 6;
             CategoryID.Name = "CategoryID";
+            CategoryID.Width = 113;
             // 
             // CategoryName
             // 
+            CategoryName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             CategoryName.FillWeight = 30.5142632F;
             CategoryName.HeaderText = "Category Name";
             CategoryName.MinimumWidth = 6;
@@ -239,6 +240,7 @@
             // 
             // CategoryDescription
             // 
+            CategoryDescription.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             CategoryDescription.FillWeight = 32.57976F;
             CategoryDescription.HeaderText = "Description";
             CategoryDescription.MinimumWidth = 6;
@@ -253,11 +255,12 @@
             Edit.Description = "Edit";
             Edit.FillWeight = 9.49495F;
             Edit.HeaderText = "Edit";
-            Edit.Image = Properties.Resources.pen;
+            Edit.Image = Properties.Resources.green_edit;
             Edit.ImageLayout = DataGridViewImageCellLayout.Zoom;
             Edit.MinimumWidth = 6;
             Edit.Name = "Edit";
             Edit.Resizable = DataGridViewTriState.False;
+            Edit.Width = 60;
             // 
             // Delete
             // 
@@ -273,6 +276,7 @@
             Delete.MinimumWidth = 6;
             Delete.Name = "Delete";
             Delete.Resizable = DataGridViewTriState.False;
+            Delete.Width = 60;
             // 
             // CategoryPage
             // 
@@ -291,13 +295,12 @@
         }
 
         #endregion
-
-        private Label DashboardTitlePage;
         private DataGridView CategoryRecordsTable;
         private CuoreUI.Controls.cuiButton cuiButton1;
         private CuoreUI.Controls.cuiTextBox cuiTextBox1;
         private CuoreUI.Controls.cuiButton AddCategoryButton;
         private Panel panel1;
+        private Label DashboardTitlePage;
         private DataGridViewTextBoxColumn CategoryID;
         private DataGridViewTextBoxColumn CategoryName;
         private DataGridViewTextBoxColumn CategoryDescription;

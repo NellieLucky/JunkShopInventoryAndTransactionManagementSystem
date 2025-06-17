@@ -46,6 +46,38 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
             dataGridView1.Rows.Add("1", "Copper A", "Tanso", "PerWeight", "10", "100", "1");
             dataGridView1.Rows.Add("1", "3F", "Batteries", "PerPiece", "10", "100", "1");
             */
+
+            ItemRecordsTable.Columns["Edit"].HeaderText = ""; 
+            ItemRecordsTable.Columns["Delete"].HeaderText = ""; // Set header text for Edit and Delete columns to empty
+            ItemRecordsTable.Paint += DataGridView1_Paint; // Attach the Paint event handler to the DataGridView
+        }
+
+        private void DataGridView1_Paint(object sender, PaintEventArgs e)
+        {
+            // Get the rectangles for the Edit and Delete header cells  
+            var editRect = ItemRecordsTable.GetCellDisplayRectangle(ItemRecordsTable.Columns["Edit"].Index, -1, true);
+            var deleteRect = ItemRecordsTable.GetCellDisplayRectangle(ItemRecordsTable.Columns["Delete"].Index, -1, true);
+
+            // Calculate the merged rectangle  
+            Rectangle mergedRect = new Rectangle(
+                editRect.Left,
+                editRect.Top,
+                deleteRect.Right - editRect.Left,
+                editRect.Height
+            );
+
+            // Draw the merged header background  
+            using (SolidBrush backColorBrush = new SolidBrush(ItemRecordsTable.ColumnHeadersDefaultCellStyle.BackColor))
+            {
+                e.Graphics.FillRectangle(backColorBrush, mergedRect);
+            }
+
+            // Draw the header text centered  
+            using (StringFormat format = new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center })
+            using (SolidBrush foreColorBrush = new SolidBrush(ItemRecordsTable.ColumnHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString("Actions", ItemRecordsTable.ColumnHeadersDefaultCellStyle.Font, foreColorBrush, mergedRect, format);
+            }
         }
 
         private void AddItemButton_Click(object sender, EventArgs e)

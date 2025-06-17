@@ -16,8 +16,13 @@ namespace JunkShopInventoryandTransactionSystem.View.UserInfo
 {
     public partial class UserInformationPage : UserControl
     {
+        // Add event for user info updates
+        public event EventHandler<string>? UserInfoUpdated;
+
         // To track if the user is editing or not
         private bool isEditing = false;
+
+        
 
         int userId = UserSession.UserId;
 
@@ -85,7 +90,10 @@ namespace JunkShopInventoryandTransactionSystem.View.UserInfo
             if (success)
             {
                 MessageBox.Show("User information updated successfully!");
-            }
+
+                // Trigger the event with the updated name
+                UserInfoUpdated?.Invoke(this, cuiTextBox2.Content);
+        }
             else
             {
                 MessageBox.Show("Failed to update user information.");
@@ -97,29 +105,5 @@ namespace JunkShopInventoryandTransactionSystem.View.UserInfo
             label6.Text = cuiTextBox2.Content.ToUpper();
         }
 
-        private void cuiTextBox3_ContentChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cuiTextBox4_ContentChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

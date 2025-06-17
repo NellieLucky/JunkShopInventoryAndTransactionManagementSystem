@@ -51,6 +51,7 @@
             RegisterEmployeeButton = new CuoreUI.Controls.cuiButton();
             cuiTextBox1 = new CuoreUI.Controls.cuiTextBox();
             cuiButton1 = new CuoreUI.Controls.cuiButton();
+            Emp_ID = new DataGridViewTextBoxColumn();
             DateRegisteredColumn = new DataGridViewTextBoxColumn();
             EmailColumn = new DataGridViewTextBoxColumn();
             NameColumn = new DataGridViewTextBoxColumn();
@@ -68,17 +69,17 @@
             DashboardTitlePage.BackColor = Color.FromArgb(0, 0, 0, 0);
             DashboardTitlePage.Font = new Font("Arial", 24F, FontStyle.Bold);
             DashboardTitlePage.ForeColor = Color.FromArgb(16, 107, 23);
-            DashboardTitlePage.Location = new Point(20, 16);
+            DashboardTitlePage.Location = new Point(3, 22);
             DashboardTitlePage.Name = "DashboardTitlePage";
-            DashboardTitlePage.Size = new Size(371, 37);
+            DashboardTitlePage.Size = new Size(459, 46);
             DashboardTitlePage.TabIndex = 6;
             DashboardTitlePage.Text = "Employee Management";
             // 
             // vScrollBar1
             // 
-            vScrollBar1.Location = new Point(900, 251);
+            vScrollBar1.Location = new Point(1029, 335);
             vScrollBar1.Name = "vScrollBar1";
-            vScrollBar1.Size = new Size(36, 323);
+            vScrollBar1.Size = new Size(36, 431);
             vScrollBar1.TabIndex = 29;
             // 
             // ItemID
@@ -184,12 +185,11 @@
             dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridView1.ColumnHeadersHeight = 60;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { DateRegisteredColumn, EmailColumn, NameColumn, PasswordColumn, ContactColumn, AddressColumn, EditColumn, RemoveColumn });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Emp_ID, DateRegisteredColumn, EmailColumn, NameColumn, PasswordColumn, ContactColumn, AddressColumn, EditColumn, RemoveColumn });
             dataGridView1.EditMode = DataGridViewEditMode.EditProgrammatically;
             dataGridView1.EnableHeadersVisualStyles = false;
             dataGridView1.GridColor = Color.FromArgb(99, 99, 99);
-            dataGridView1.Location = new Point(12, 102);
-            dataGridView1.Margin = new Padding(3, 2, 3, 2);
+            dataGridView1.Location = new Point(14, 136);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -208,7 +208,7 @@
             dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle7;
             dataGridView1.RowTemplate.Height = 50;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(924, 460);
+            dataGridView1.Size = new Size(1056, 613);
             dataGridView1.TabIndex = 39;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
@@ -233,8 +233,7 @@
             RegisterEmployeeButton.ImageAutoCenter = true;
             RegisterEmployeeButton.ImageExpand = new Point(0, 0);
             RegisterEmployeeButton.ImageOffset = new Point(0, 0);
-            RegisterEmployeeButton.Location = new Point(428, 60);
-            RegisterEmployeeButton.Margin = new Padding(3, 2, 3, 2);
+            RegisterEmployeeButton.Location = new Point(489, 80);
             RegisterEmployeeButton.Name = "RegisterEmployeeButton";
             RegisterEmployeeButton.NormalBackground = Color.FromArgb(0, 157, 209);
             RegisterEmployeeButton.NormalForeColor = Color.White;
@@ -246,7 +245,7 @@
             RegisterEmployeeButton.PressedImageTint = Color.White;
             RegisterEmployeeButton.PressedOutline = Color.FromArgb(64, 128, 128, 128);
             RegisterEmployeeButton.Rounding = new Padding(8);
-            RegisterEmployeeButton.Size = new Size(169, 30);
+            RegisterEmployeeButton.Size = new Size(193, 40);
             RegisterEmployeeButton.TabIndex = 40;
             RegisterEmployeeButton.TextAlignment = StringAlignment.Center;
             RegisterEmployeeButton.TextOffset = new Point(0, 0);
@@ -266,17 +265,17 @@
             cuiTextBox1.Image = null;
             cuiTextBox1.ImageExpand = new Point(0, 0);
             cuiTextBox1.ImageOffset = new Point(0, 0);
-            cuiTextBox1.Location = new Point(645, 64);
-            cuiTextBox1.Margin = new Padding(4, 3, 4, 3);
+            cuiTextBox1.Location = new Point(737, 85);
+            cuiTextBox1.Margin = new Padding(5, 4, 5, 4);
             cuiTextBox1.Multiline = false;
             cuiTextBox1.Name = "cuiTextBox1";
             cuiTextBox1.NormalImageTint = Color.White;
-            cuiTextBox1.Padding = new Padding(15, 6, 15, 0);
+            cuiTextBox1.Padding = new Padding(18, 8, 18, 0);
             cuiTextBox1.PasswordChar = false;
             cuiTextBox1.PlaceholderColor = Color.Gray;
             cuiTextBox1.PlaceholderText = "Search...";
             cuiTextBox1.Rounding = new Padding(2);
-            cuiTextBox1.Size = new Size(291, 26);
+            cuiTextBox1.Size = new Size(333, 35);
             cuiTextBox1.TabIndex = 41;
             cuiTextBox1.TextOffset = new Size(0, 0);
             cuiTextBox1.UnderlinedStyle = false;
@@ -301,8 +300,7 @@
             cuiButton1.ImageAutoCenter = true;
             cuiButton1.ImageExpand = new Point(5, 5);
             cuiButton1.ImageOffset = new Point(0, 0);
-            cuiButton1.Location = new Point(611, 64);
-            cuiButton1.Margin = new Padding(3, 2, 3, 2);
+            cuiButton1.Location = new Point(698, 85);
             cuiButton1.Name = "cuiButton1";
             cuiButton1.NormalBackground = Color.FromArgb(0, 157, 209);
             cuiButton1.NormalForeColor = Color.Black;
@@ -314,10 +312,17 @@
             cuiButton1.PressedImageTint = Color.White;
             cuiButton1.PressedOutline = Color.FromArgb(64, 128, 128, 128);
             cuiButton1.Rounding = new Padding(0, 5, 5, 0);
-            cuiButton1.Size = new Size(38, 26);
+            cuiButton1.Size = new Size(43, 35);
             cuiButton1.TabIndex = 42;
             cuiButton1.TextAlignment = StringAlignment.Center;
             cuiButton1.TextOffset = new Point(0, 0);
+            // 
+            // Emp_ID
+            // 
+            Emp_ID.HeaderText = "ID";
+            Emp_ID.MinimumWidth = 6;
+            Emp_ID.Name = "Emp_ID";
+            Emp_ID.Width = 50;
             // 
             // DateRegisteredColumn
             // 
@@ -332,7 +337,7 @@
             EmailColumn.HeaderText = "Email Account";
             EmailColumn.MinimumWidth = 6;
             EmailColumn.Name = "EmailColumn";
-            EmailColumn.Width = 170;
+            EmailColumn.Width = 130;
             // 
             // NameColumn
             // 
@@ -344,11 +349,11 @@
             // 
             // PasswordColumn
             // 
-            PasswordColumn.FillWeight = 130F;
+            PasswordColumn.FillWeight = 110F;
             PasswordColumn.HeaderText = "Password";
             PasswordColumn.MinimumWidth = 6;
             PasswordColumn.Name = "PasswordColumn";
-            PasswordColumn.Width = 150;
+            PasswordColumn.Width = 125;
             // 
             // ContactColumn
             // 
@@ -366,37 +371,37 @@
             // 
             // EditColumn
             // 
+            EditColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.NullValue = resources.GetObject("dataGridViewCellStyle4.NullValue");
+            dataGridViewCellStyle4.NullValue = null;
             dataGridViewCellStyle4.Padding = new Padding(10);
             EditColumn.DefaultCellStyle = dataGridViewCellStyle4;
             EditColumn.FillWeight = 5.618882F;
             EditColumn.HeaderText = "Edit";
-            EditColumn.Image = Properties.Resources.pen;
+            EditColumn.Image = Properties.Resources.green_edit;
             EditColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
             EditColumn.MinimumWidth = 6;
             EditColumn.Name = "EditColumn";
             EditColumn.Resizable = DataGridViewTriState.False;
-            EditColumn.Width = 80;
             // 
             // RemoveColumn
             // 
+            RemoveColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.NullValue = resources.GetObject("dataGridViewCellStyle5.NullValue");
+            dataGridViewCellStyle5.NullValue = null;
             dataGridViewCellStyle5.Padding = new Padding(10);
             RemoveColumn.DefaultCellStyle = dataGridViewCellStyle5;
             RemoveColumn.FillWeight = 5.618882F;
             RemoveColumn.HeaderText = "Remove";
-            RemoveColumn.Image = Properties.Resources.delete;
+            RemoveColumn.Image = Properties.Resources.people;
             RemoveColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
             RemoveColumn.MinimumWidth = 6;
             RemoveColumn.Name = "RemoveColumn";
             RemoveColumn.Resizable = DataGridViewTriState.False;
-            RemoveColumn.Width = 80;
             // 
             // EmployeeManagementPage
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(227, 244, 238);
             Controls.Add(cuiButton1);
@@ -405,9 +410,8 @@
             Controls.Add(dataGridView1);
             Controls.Add(vScrollBar1);
             Controls.Add(DashboardTitlePage);
-            Margin = new Padding(3, 2, 3, 2);
             Name = "EmployeeManagementPage";
-            Size = new Size(948, 598);
+            Size = new Size(1083, 797);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -431,6 +435,7 @@
         private CuoreUI.Controls.cuiButton RegisterEmployeeButton;
         private CuoreUI.Controls.cuiTextBox cuiTextBox1;
         private CuoreUI.Controls.cuiButton cuiButton1;
+        private DataGridViewTextBoxColumn Emp_ID;
         private DataGridViewTextBoxColumn DateRegisteredColumn;
         private DataGridViewTextBoxColumn EmailColumn;
         private DataGridViewTextBoxColumn NameColumn;

@@ -102,45 +102,53 @@ namespace JunkShopInventoryandTransactionSystem.View
 
         private void cuiPictureBox1_Click(object sender, EventArgs e)
         {
+            SetNavButtonChecked(cuiPictureBox1);
             navControlPanel.Controls.Clear();
             var userInfoPage = new UserInfo.UserInformationPage();
+
+            // Subscribe to the UserInfoUpdated event
+            userInfoPage.UserInfoUpdated += (s, updatedName) =>
+            {
+                // Update the label2 text when user info is updated
+                label2.Text = updatedName;
+            };
+
             userInfoPage.Dock = DockStyle.Fill;
             navControlPanel.Controls.Add(userInfoPage);
-
         }
 
         /// <summary>
         /// For UI lang yung code na nasa baba, para ma-set yung background color ng mga navigation buttons if they are checked or not.
         /// </summary>
-        /// <param name="checkedButton"></param>
-        private void SetNavButtonChecked(CuoreUI.Controls.cuiButton checkedButton)
+        /// <param name="checkedControl"></param>
+        private void SetNavButtonChecked(Control checkedControl)
         {
-            var activeColor = System.Drawing.Color.FromArgb(25, 219, 138); // active color
-            var inactiveColor = System.Drawing.Color.Transparent; // inactive color
+            var activeColor = Color.FromArgb(25, 219, 138); // active color
+            var inactiveColor = Color.Transparent; // inactive color
 
-            dashBoardNavButton1.Checked = checkedButton == dashBoardNavButton1;
+            dashBoardNavButton1.Checked = checkedControl == dashBoardNavButton1;
             dashBoardNavButton1.BackColor = dashBoardNavButton1.Checked ? activeColor : inactiveColor;
 
-            InventoryNavButton.Checked = checkedButton == InventoryNavButton;
+            InventoryNavButton.Checked = checkedControl == InventoryNavButton;
             InventoryNavButton.BackColor = InventoryNavButton.Checked ? activeColor : inactiveColor;
 
-            TransactionNavButton.Checked = checkedButton == TransactionNavButton;
+            TransactionNavButton.Checked = checkedControl == TransactionNavButton;
             TransactionNavButton.BackColor = TransactionNavButton.Checked ? activeColor : inactiveColor;
 
-            TransacRecordsNavButton.Checked = checkedButton == TransacRecordsNavButton;
+            TransacRecordsNavButton.Checked = checkedControl == TransacRecordsNavButton;
             TransacRecordsNavButton.BackColor = TransacRecordsNavButton.Checked ? activeColor : inactiveColor;
 
-            CustRecordsNavButton.Checked = checkedButton == CustRecordsNavButton;
+            CustRecordsNavButton.Checked = checkedControl == CustRecordsNavButton;
             CustRecordsNavButton.BackColor = CustRecordsNavButton.Checked ? activeColor : inactiveColor;
 
-            FinancialRecNavButton.Checked = checkedButton == FinancialRecNavButton;
+            FinancialRecNavButton.Checked = checkedControl == FinancialRecNavButton;
             FinancialRecNavButton.BackColor = FinancialRecNavButton.Checked ? activeColor : inactiveColor;
 
-            EmployeeManagementNavButton.Checked = checkedButton == EmployeeManagementNavButton;
+            EmployeeManagementNavButton.Checked = checkedControl == EmployeeManagementNavButton;
             EmployeeManagementNavButton.BackColor = EmployeeManagementNavButton.Checked ? activeColor : inactiveColor;
+
         }
 
-        //Pang logout button, this will clear the main panel and show the login page again.
         private void LogOutButton1_Click(object sender, EventArgs e)
         {
             UserSession.UserId = 0;  //To reset the logged-in user id
@@ -152,7 +160,5 @@ namespace JunkShopInventoryandTransactionSystem.View
             MainForm.MainPanel.Controls.Add(loginPage);
             loginPage.Show();
         }
-
-        
     }
 }

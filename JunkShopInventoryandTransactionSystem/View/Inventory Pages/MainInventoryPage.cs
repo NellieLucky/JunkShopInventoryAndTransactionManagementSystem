@@ -18,11 +18,11 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
         {
             InitializeComponent();
 
-            SetNavButtonChecked(ItemNavButton);  // Set the clicked button as checked
+            SetNavButtonChecked(CategoryNavButton);  // Set the clicked button as checked
             InventoryPanel.Controls.Clear();
-            var ItemInventoryPage = new ItemRecordsPage();
-            ItemInventoryPage.Dock = DockStyle.Fill;
-            InventoryPanel.Controls.Add(ItemInventoryPage);
+            var CategoryInventoryPage = new CategoryPage();
+            CategoryInventoryPage.Dock = DockStyle.Fill;
+            InventoryPanel.Controls.Add(CategoryInventoryPage);
 
             // Initialize the inventory page with the inventory user control
 

@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle15 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle16 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DashboardTitlePage = new Label();
             FromDate = new CodeeloUI.Controls.CodeeloDateTimePicker();
             customButton = new CuoreUI.Controls.cuiButton();
@@ -66,26 +66,27 @@
             Weight = new DataGridViewTextBoxColumn();
             label12 = new Label();
             panel3 = new Panel();
-            label13 = new Label();
-            cuiPictureBox5 = new CuoreUI.Controls.cuiPictureBox();
-            cuiPictureBox6 = new CuoreUI.Controls.cuiPictureBox();
-            cuiPictureBox7 = new CuoreUI.Controls.cuiPictureBox();
-            materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
-            materialDivider2 = new MaterialSkin.Controls.MaterialDivider();
-            label14 = new Label();
-            label15 = new Label();
-            label16 = new Label();
-            label17 = new Label();
-            cuiPictureBox8 = new CuoreUI.Controls.cuiPictureBox();
+            materialDivider4 = new MaterialSkin.Controls.MaterialDivider();
+            materialDivider3 = new MaterialSkin.Controls.MaterialDivider();
+            label23 = new Label();
+            label22 = new Label();
+            label21 = new Label();
+            label20 = new Label();
+            label19 = new Label();
             label18 = new Label();
             cuiPictureBox9 = new CuoreUI.Controls.cuiPictureBox();
-            label19 = new Label();
-            label20 = new Label();
-            label21 = new Label();
-            label22 = new Label();
-            label23 = new Label();
-            materialDivider3 = new MaterialSkin.Controls.MaterialDivider();
-            materialDivider4 = new MaterialSkin.Controls.MaterialDivider();
+            label17 = new Label();
+            cuiPictureBox8 = new CuoreUI.Controls.cuiPictureBox();
+            label16 = new Label();
+            label15 = new Label();
+            label14 = new Label();
+            materialDivider2 = new MaterialSkin.Controls.MaterialDivider();
+            materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
+            cuiPictureBox7 = new CuoreUI.Controls.cuiPictureBox();
+            cuiPictureBox6 = new CuoreUI.Controls.cuiPictureBox();
+            cuiPictureBox5 = new CuoreUI.Controls.cuiPictureBox();
+            label13 = new Label();
+            label24 = new Label();
             cuiPanel1.SuspendLayout();
             cuiPanel3.SuspendLayout();
             cuiPanel4.SuspendLayout();
@@ -102,7 +103,7 @@
             DashboardTitlePage.BackColor = Color.FromArgb(0, 0, 0, 0);
             DashboardTitlePage.Font = new Font("Arial", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
             DashboardTitlePage.ForeColor = Color.FromArgb(16, 107, 23);
-            DashboardTitlePage.Location = new Point(26, 26);
+            DashboardTitlePage.Location = new Point(3, 22);
             DashboardTitlePage.Name = "DashboardTitlePage";
             DashboardTitlePage.Size = new Size(226, 46);
             DashboardTitlePage.TabIndex = 0;
@@ -149,7 +150,7 @@
             customButton.ImageAutoCenter = true;
             customButton.ImageExpand = new Point(0, 0);
             customButton.ImageOffset = new Point(0, 0);
-            customButton.Location = new Point(390, 88);
+            customButton.Location = new Point(430, 88);
             customButton.Name = "customButton";
             customButton.NormalBackground = Color.White;
             customButton.NormalForeColor = Color.Black;
@@ -161,7 +162,7 @@
             customButton.PressedImageTint = Color.White;
             customButton.PressedOutline = Color.FromArgb(64, 128, 128, 128);
             customButton.Rounding = new Padding(8);
-            customButton.Size = new Size(131, 35);
+            customButton.Size = new Size(91, 35);
             customButton.TabIndex = 5;
             customButton.TextAlignment = StringAlignment.Center;
             customButton.TextOffset = new Point(0, 0);
@@ -325,7 +326,7 @@
             cuiPanel1.PanelColor = Color.White;
             cuiPanel1.PanelOutlineColor = Color.Empty;
             cuiPanel1.Rounding = new Padding(8);
-            cuiPanel1.Size = new Size(205, 81);
+            cuiPanel1.Size = new Size(236, 81);
             cuiPanel1.TabIndex = 10;
             // 
             // label2
@@ -349,9 +350,9 @@
             label1.ForeColor = Color.FromArgb(1, 55, 125);
             label1.Location = new Point(69, 14);
             label1.Name = "label1";
-            label1.Size = new Size(92, 19);
+            label1.Size = new Size(163, 19);
             label1.TabIndex = 1;
-            label1.Text = "Purchases";
+            label1.Text = "Cost of Good Solds";
             // 
             // cuiPictureBox1
             // 
@@ -376,13 +377,13 @@
             cuiPanel3.Controls.Add(label10);
             cuiPanel3.Controls.Add(cuiPictureBox3);
             cuiPanel3.Controls.Add(label8);
-            cuiPanel3.Location = new Point(759, 138);
+            cuiPanel3.Location = new Point(779, 138);
             cuiPanel3.Name = "cuiPanel3";
             cuiPanel3.OutlineThickness = 0F;
             cuiPanel3.PanelColor = Color.White;
             cuiPanel3.PanelOutlineColor = Color.Empty;
             cuiPanel3.Rounding = new Padding(8);
-            cuiPanel3.Size = new Size(300, 81);
+            cuiPanel3.Size = new Size(277, 81);
             cuiPanel3.TabIndex = 13;
             // 
             // label7
@@ -454,7 +455,7 @@
             codeeloDateTimePicker1.FillColor = Color.White;
             codeeloDateTimePicker1.Font = new Font("Segoe UI", 9.5F);
             codeeloDateTimePicker1.Format = DateTimePickerFormat.Short;
-            codeeloDateTimePicker1.Location = new Point(180, 88);
+            codeeloDateTimePicker1.Location = new Point(206, 88);
             codeeloDateTimePicker1.MinimumSize = new Size(0, 35);
             codeeloDateTimePicker1.Name = "codeeloDateTimePicker1";
             codeeloDateTimePicker1.Size = new Size(150, 35);
@@ -467,13 +468,13 @@
             cuiPanel4.Controls.Add(label5);
             cuiPanel4.Controls.Add(cuiPictureBox4);
             cuiPanel4.Controls.Add(label6);
-            cuiPanel4.Location = new Point(446, 138);
+            cuiPanel4.Location = new Point(508, 138);
             cuiPanel4.Name = "cuiPanel4";
             cuiPanel4.OutlineThickness = 0F;
             cuiPanel4.PanelColor = Color.White;
             cuiPanel4.PanelOutlineColor = Color.Empty;
             cuiPanel4.Rounding = new Padding(8);
-            cuiPanel4.Size = new Size(307, 81);
+            cuiPanel4.Size = new Size(263, 81);
             cuiPanel4.TabIndex = 15;
             // 
             // label9
@@ -537,13 +538,13 @@
             cuiPanel2.Controls.Add(label3);
             cuiPanel2.Controls.Add(label4);
             cuiPanel2.Controls.Add(cuiPictureBox2);
-            cuiPanel2.Location = new Point(235, 138);
+            cuiPanel2.Location = new Point(266, 138);
             cuiPanel2.Name = "cuiPanel2";
             cuiPanel2.OutlineThickness = 0F;
             cuiPanel2.PanelColor = Color.White;
             cuiPanel2.PanelOutlineColor = Color.Empty;
             cuiPanel2.Rounding = new Padding(8);
-            cuiPanel2.Size = new Size(205, 81);
+            cuiPanel2.Size = new Size(236, 81);
             cuiPanel2.TabIndex = 16;
             // 
             // label3
@@ -640,7 +641,7 @@
             cuiButton5.ImageAutoCenter = true;
             cuiButton5.ImageExpand = new Point(0, 0);
             cuiButton5.ImageOffset = new Point(0, 0);
-            cuiButton5.Location = new Point(341, 88);
+            cuiButton5.Location = new Point(366, 88);
             cuiButton5.Name = "cuiButton5";
             cuiButton5.NormalBackground = Color.White;
             cuiButton5.NormalForeColor = Color.Black;
@@ -652,7 +653,7 @@
             cuiButton5.PressedImageTint = Color.White;
             cuiButton5.PressedOutline = Color.FromArgb(64, 128, 128, 128);
             cuiButton5.Rounding = new Padding(8);
-            cuiButton5.Size = new Size(43, 35);
+            cuiButton5.Size = new Size(58, 35);
             cuiButton5.TabIndex = 20;
             cuiButton5.TextAlignment = StringAlignment.Center;
             cuiButton5.TextOffset = new Point(0, 0);
@@ -697,14 +698,14 @@
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.BackgroundColor = Color.FromArgb(227, 244, 238);
             dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle15.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = Color.FromArgb(38, 177, 112);
-            dataGridViewCellStyle15.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle15.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle15.SelectionBackColor = Color.FromArgb(0, 64, 0);
-            dataGridViewCellStyle15.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle15.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(38, 177, 112);
+            dataGridViewCellStyle1.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(0, 64, 0);
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Item, Weight });
             dataGridView1.EnableHeadersVisualStyles = false;
@@ -712,13 +713,13 @@
             dataGridView1.Location = new Point(25, 46);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle16.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle16.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle16.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle16.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle16.WrapMode = DataGridViewTriState.True;
-            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.Size = new Size(680, 146);
@@ -777,156 +778,94 @@
             panel3.Size = new Size(295, 541);
             panel3.TabIndex = 23;
             // 
-            // label13
+            // materialDivider4
             // 
-            label13.AutoSize = true;
-            label13.BackColor = Color.FromArgb(0, 0, 0, 0);
-            label13.Font = new Font("Arial", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label13.ForeColor = Color.FromArgb(126, 211, 72);
-            label13.Location = new Point(15, 13);
-            label13.Name = "label13";
-            label13.Size = new Size(177, 27);
-            label13.TabIndex = 20;
-            label13.Text = "Total Counters";
+            materialDivider4.BackColor = Color.DarkGray;
+            materialDivider4.Depth = 0;
+            materialDivider4.ForeColor = Color.Black;
+            materialDivider4.Location = new Point(3, 420);
+            materialDivider4.MouseState = MaterialSkin.MouseState.HOVER;
+            materialDivider4.Name = "materialDivider4";
+            materialDivider4.Size = new Size(289, 1);
+            materialDivider4.TabIndex = 39;
+            materialDivider4.Text = "materialDivider4";
             // 
-            // cuiPictureBox5
+            // materialDivider3
             // 
-            cuiPictureBox5.BackColor = Color.FromArgb(0, 0, 0, 0);
-            cuiPictureBox5.BackgroundImage = Properties.Resources.supplier;
-            cuiPictureBox5.BackgroundImageLayout = ImageLayout.Zoom;
-            cuiPictureBox5.Content = null;
-            cuiPictureBox5.ImageTint = Color.White;
-            cuiPictureBox5.Location = new Point(19, 73);
-            cuiPictureBox5.Margin = new Padding(4, 5, 4, 5);
-            cuiPictureBox5.Name = "cuiPictureBox5";
-            cuiPictureBox5.OutlineThickness = 1F;
-            cuiPictureBox5.PanelOutlineColor = Color.Empty;
-            cuiPictureBox5.Rotation = 0;
-            cuiPictureBox5.Rounding = new Padding(8);
-            cuiPictureBox5.Size = new Size(59, 53);
-            cuiPictureBox5.TabIndex = 21;
+            materialDivider3.BackColor = Color.DarkGray;
+            materialDivider3.Depth = 0;
+            materialDivider3.ForeColor = Color.Black;
+            materialDivider3.Location = new Point(6, 333);
+            materialDivider3.MouseState = MaterialSkin.MouseState.HOVER;
+            materialDivider3.Name = "materialDivider3";
+            materialDivider3.Size = new Size(289, 1);
+            materialDivider3.TabIndex = 38;
+            materialDivider3.Text = "materialDivider3";
             // 
-            // cuiPictureBox6
+            // label23
             // 
-            cuiPictureBox6.BackColor = Color.FromArgb(0, 0, 0, 0);
-            cuiPictureBox6.BackgroundImage = Properties.Resources.investor;
-            cuiPictureBox6.BackgroundImageLayout = ImageLayout.Zoom;
-            cuiPictureBox6.Content = null;
-            cuiPictureBox6.ImageTint = Color.White;
-            cuiPictureBox6.Location = new Point(18, 172);
-            cuiPictureBox6.Margin = new Padding(4, 5, 4, 5);
-            cuiPictureBox6.Name = "cuiPictureBox6";
-            cuiPictureBox6.OutlineThickness = 1F;
-            cuiPictureBox6.PanelOutlineColor = Color.Empty;
-            cuiPictureBox6.Rotation = 0;
-            cuiPictureBox6.Rounding = new Padding(8);
-            cuiPictureBox6.Size = new Size(59, 53);
-            cuiPictureBox6.TabIndex = 22;
+            label23.AutoSize = true;
+            label23.BackColor = Color.FromArgb(0, 0, 0, 0);
+            label23.Font = new Font("Arial", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label23.ForeColor = Color.DimGray;
+            label23.Location = new Point(85, 469);
+            label23.MaximumSize = new Size(135, 24);
+            label23.Name = "label23";
+            label23.Size = new Size(25, 24);
+            label23.TabIndex = 37;
+            label23.Text = "0";
             // 
-            // cuiPictureBox7
+            // label22
             // 
-            cuiPictureBox7.BackColor = Color.FromArgb(0, 0, 0, 0);
-            cuiPictureBox7.BackgroundImage = Properties.Resources.application;
-            cuiPictureBox7.BackgroundImageLayout = ImageLayout.Zoom;
-            cuiPictureBox7.Content = null;
-            cuiPictureBox7.ImageTint = Color.White;
-            cuiPictureBox7.Location = new Point(18, 261);
-            cuiPictureBox7.Margin = new Padding(4, 5, 4, 5);
-            cuiPictureBox7.Name = "cuiPictureBox7";
-            cuiPictureBox7.OutlineThickness = 1F;
-            cuiPictureBox7.PanelOutlineColor = Color.Empty;
-            cuiPictureBox7.Rotation = 0;
-            cuiPictureBox7.Rounding = new Padding(8);
-            cuiPictureBox7.Size = new Size(59, 53);
-            cuiPictureBox7.TabIndex = 23;
+            label22.AutoSize = true;
+            label22.BackColor = Color.FromArgb(0, 0, 0, 0);
+            label22.Font = new Font("Arial", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label22.ForeColor = Color.DimGray;
+            label22.Location = new Point(85, 379);
+            label22.MaximumSize = new Size(135, 24);
+            label22.Name = "label22";
+            label22.Size = new Size(25, 24);
+            label22.TabIndex = 36;
+            label22.Text = "0";
             // 
-            // materialDivider1
+            // label21
             // 
-            materialDivider1.BackColor = Color.DarkGray;
-            materialDivider1.Depth = 0;
-            materialDivider1.ForeColor = Color.Black;
-            materialDivider1.Location = new Point(6, 152);
-            materialDivider1.MouseState = MaterialSkin.MouseState.HOVER;
-            materialDivider1.Name = "materialDivider1";
-            materialDivider1.Size = new Size(289, 1);
-            materialDivider1.TabIndex = 24;
-            materialDivider1.Text = "materialDivider1";
+            label21.AutoSize = true;
+            label21.BackColor = Color.FromArgb(0, 0, 0, 0);
+            label21.Font = new Font("Arial", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label21.ForeColor = Color.DimGray;
+            label21.Location = new Point(85, 290);
+            label21.MaximumSize = new Size(135, 24);
+            label21.Name = "label21";
+            label21.Size = new Size(25, 24);
+            label21.TabIndex = 35;
+            label21.Text = "0";
             // 
-            // materialDivider2
+            // label20
             // 
-            materialDivider2.BackColor = Color.Gray;
-            materialDivider2.Depth = 0;
-            materialDivider2.Location = new Point(6, 242);
-            materialDivider2.MouseState = MaterialSkin.MouseState.HOVER;
-            materialDivider2.Name = "materialDivider2";
-            materialDivider2.Size = new Size(289, 1);
-            materialDivider2.TabIndex = 25;
-            materialDivider2.Text = "materialDivider2";
+            label20.AutoSize = true;
+            label20.BackColor = Color.FromArgb(0, 0, 0, 0);
+            label20.Font = new Font("Arial", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label20.ForeColor = Color.DimGray;
+            label20.Location = new Point(84, 201);
+            label20.MaximumSize = new Size(135, 24);
+            label20.Name = "label20";
+            label20.Size = new Size(25, 24);
+            label20.TabIndex = 34;
+            label20.Text = "0";
             // 
-            // label14
+            // label19
             // 
-            label14.AutoSize = true;
-            label14.BackColor = Color.FromArgb(0, 0, 0, 0);
-            label14.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label14.ForeColor = Color.Black;
-            label14.Location = new Point(78, 73);
-            label14.Name = "label14";
-            label14.Size = new Size(83, 19);
-            label14.TabIndex = 26;
-            label14.Text = "Suppliers";
-            // 
-            // label15
-            // 
-            label15.AutoSize = true;
-            label15.BackColor = Color.FromArgb(0, 0, 0, 0);
-            label15.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label15.ForeColor = Color.Black;
-            label15.Location = new Point(84, 172);
-            label15.Name = "label15";
-            label15.Size = new Size(95, 19);
-            label15.TabIndex = 27;
-            label15.Text = "Customers";
-            // 
-            // label16
-            // 
-            label16.AutoSize = true;
-            label16.BackColor = Color.FromArgb(0, 0, 0, 0);
-            label16.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label16.ForeColor = Color.Black;
-            label16.Location = new Point(85, 261);
-            label16.Name = "label16";
-            label16.Size = new Size(94, 19);
-            label16.TabIndex = 28;
-            label16.Text = "Categories";
-            // 
-            // label17
-            // 
-            label17.AutoSize = true;
-            label17.BackColor = Color.FromArgb(0, 0, 0, 0);
-            label17.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label17.ForeColor = Color.Black;
-            label17.Location = new Point(85, 350);
-            label17.Name = "label17";
-            label17.Size = new Size(51, 19);
-            label17.TabIndex = 30;
-            label17.Text = "Items";
-            // 
-            // cuiPictureBox8
-            // 
-            cuiPictureBox8.BackColor = Color.FromArgb(0, 0, 0, 0);
-            cuiPictureBox8.BackgroundImage = Properties.Resources.packaging;
-            cuiPictureBox8.BackgroundImageLayout = ImageLayout.Zoom;
-            cuiPictureBox8.Content = null;
-            cuiPictureBox8.ImageTint = Color.White;
-            cuiPictureBox8.Location = new Point(19, 350);
-            cuiPictureBox8.Margin = new Padding(4, 5, 4, 5);
-            cuiPictureBox8.Name = "cuiPictureBox8";
-            cuiPictureBox8.OutlineThickness = 1F;
-            cuiPictureBox8.PanelOutlineColor = Color.Empty;
-            cuiPictureBox8.Rotation = 0;
-            cuiPictureBox8.Rounding = new Padding(8);
-            cuiPictureBox8.Size = new Size(59, 53);
-            cuiPictureBox8.TabIndex = 29;
+            label19.AutoSize = true;
+            label19.BackColor = Color.FromArgb(0, 0, 0, 0);
+            label19.Font = new Font("Arial", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label19.ForeColor = Color.DimGray;
+            label19.Location = new Point(78, 102);
+            label19.MaximumSize = new Size(135, 24);
+            label19.Name = "label19";
+            label19.Size = new Size(25, 24);
+            label19.TabIndex = 33;
+            label19.Text = "0";
             // 
             // label18
             // 
@@ -957,100 +896,175 @@
             cuiPictureBox9.Size = new Size(59, 53);
             cuiPictureBox9.TabIndex = 31;
             // 
-            // label19
+            // label17
             // 
-            label19.AutoSize = true;
-            label19.BackColor = Color.FromArgb(0, 0, 0, 0);
-            label19.Font = new Font("Arial", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label19.ForeColor = Color.DimGray;
-            label19.Location = new Point(78, 102);
-            label19.MaximumSize = new Size(135, 24);
-            label19.Name = "label19";
-            label19.Size = new Size(25, 24);
-            label19.TabIndex = 33;
-            label19.Text = "0";
+            label17.AutoSize = true;
+            label17.BackColor = Color.FromArgb(0, 0, 0, 0);
+            label17.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label17.ForeColor = Color.Black;
+            label17.Location = new Point(85, 350);
+            label17.Name = "label17";
+            label17.Size = new Size(51, 19);
+            label17.TabIndex = 30;
+            label17.Text = "Items";
             // 
-            // label20
+            // cuiPictureBox8
             // 
-            label20.AutoSize = true;
-            label20.BackColor = Color.FromArgb(0, 0, 0, 0);
-            label20.Font = new Font("Arial", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label20.ForeColor = Color.DimGray;
-            label20.Location = new Point(84, 201);
-            label20.MaximumSize = new Size(135, 24);
-            label20.Name = "label20";
-            label20.Size = new Size(25, 24);
-            label20.TabIndex = 34;
-            label20.Text = "0";
+            cuiPictureBox8.BackColor = Color.FromArgb(0, 0, 0, 0);
+            cuiPictureBox8.BackgroundImage = Properties.Resources.packaging;
+            cuiPictureBox8.BackgroundImageLayout = ImageLayout.Zoom;
+            cuiPictureBox8.Content = null;
+            cuiPictureBox8.ImageTint = Color.White;
+            cuiPictureBox8.Location = new Point(19, 350);
+            cuiPictureBox8.Margin = new Padding(4, 5, 4, 5);
+            cuiPictureBox8.Name = "cuiPictureBox8";
+            cuiPictureBox8.OutlineThickness = 1F;
+            cuiPictureBox8.PanelOutlineColor = Color.Empty;
+            cuiPictureBox8.Rotation = 0;
+            cuiPictureBox8.Rounding = new Padding(8);
+            cuiPictureBox8.Size = new Size(59, 53);
+            cuiPictureBox8.TabIndex = 29;
             // 
-            // label21
+            // label16
             // 
-            label21.AutoSize = true;
-            label21.BackColor = Color.FromArgb(0, 0, 0, 0);
-            label21.Font = new Font("Arial", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label21.ForeColor = Color.DimGray;
-            label21.Location = new Point(85, 290);
-            label21.MaximumSize = new Size(135, 24);
-            label21.Name = "label21";
-            label21.Size = new Size(25, 24);
-            label21.TabIndex = 35;
-            label21.Text = "0";
+            label16.AutoSize = true;
+            label16.BackColor = Color.FromArgb(0, 0, 0, 0);
+            label16.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label16.ForeColor = Color.Black;
+            label16.Location = new Point(85, 261);
+            label16.Name = "label16";
+            label16.Size = new Size(94, 19);
+            label16.TabIndex = 28;
+            label16.Text = "Categories";
             // 
-            // label22
+            // label15
             // 
-            label22.AutoSize = true;
-            label22.BackColor = Color.FromArgb(0, 0, 0, 0);
-            label22.Font = new Font("Arial", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label22.ForeColor = Color.DimGray;
-            label22.Location = new Point(85, 379);
-            label22.MaximumSize = new Size(135, 24);
-            label22.Name = "label22";
-            label22.Size = new Size(25, 24);
-            label22.TabIndex = 36;
-            label22.Text = "0";
+            label15.AutoSize = true;
+            label15.BackColor = Color.FromArgb(0, 0, 0, 0);
+            label15.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label15.ForeColor = Color.Black;
+            label15.Location = new Point(84, 172);
+            label15.Name = "label15";
+            label15.Size = new Size(95, 19);
+            label15.TabIndex = 27;
+            label15.Text = "Customers";
             // 
-            // label23
+            // label14
             // 
-            label23.AutoSize = true;
-            label23.BackColor = Color.FromArgb(0, 0, 0, 0);
-            label23.Font = new Font("Arial", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label23.ForeColor = Color.DimGray;
-            label23.Location = new Point(85, 469);
-            label23.MaximumSize = new Size(135, 24);
-            label23.Name = "label23";
-            label23.Size = new Size(25, 24);
-            label23.TabIndex = 37;
-            label23.Text = "0";
+            label14.AutoSize = true;
+            label14.BackColor = Color.FromArgb(0, 0, 0, 0);
+            label14.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label14.ForeColor = Color.Black;
+            label14.Location = new Point(78, 73);
+            label14.Name = "label14";
+            label14.Size = new Size(83, 19);
+            label14.TabIndex = 26;
+            label14.Text = "Suppliers";
             // 
-            // materialDivider3
+            // materialDivider2
             // 
-            materialDivider3.BackColor = Color.DarkGray;
-            materialDivider3.Depth = 0;
-            materialDivider3.ForeColor = Color.Black;
-            materialDivider3.Location = new Point(6, 333);
-            materialDivider3.MouseState = MaterialSkin.MouseState.HOVER;
-            materialDivider3.Name = "materialDivider3";
-            materialDivider3.Size = new Size(289, 1);
-            materialDivider3.TabIndex = 38;
-            materialDivider3.Text = "materialDivider3";
+            materialDivider2.BackColor = Color.Gray;
+            materialDivider2.Depth = 0;
+            materialDivider2.Location = new Point(6, 242);
+            materialDivider2.MouseState = MaterialSkin.MouseState.HOVER;
+            materialDivider2.Name = "materialDivider2";
+            materialDivider2.Size = new Size(289, 1);
+            materialDivider2.TabIndex = 25;
+            materialDivider2.Text = "materialDivider2";
             // 
-            // materialDivider4
+            // materialDivider1
             // 
-            materialDivider4.BackColor = Color.DarkGray;
-            materialDivider4.Depth = 0;
-            materialDivider4.ForeColor = Color.Black;
-            materialDivider4.Location = new Point(3, 420);
-            materialDivider4.MouseState = MaterialSkin.MouseState.HOVER;
-            materialDivider4.Name = "materialDivider4";
-            materialDivider4.Size = new Size(289, 1);
-            materialDivider4.TabIndex = 39;
-            materialDivider4.Text = "materialDivider4";
+            materialDivider1.BackColor = Color.DarkGray;
+            materialDivider1.Depth = 0;
+            materialDivider1.ForeColor = Color.Black;
+            materialDivider1.Location = new Point(6, 152);
+            materialDivider1.MouseState = MaterialSkin.MouseState.HOVER;
+            materialDivider1.Name = "materialDivider1";
+            materialDivider1.Size = new Size(289, 1);
+            materialDivider1.TabIndex = 24;
+            materialDivider1.Text = "materialDivider1";
+            // 
+            // cuiPictureBox7
+            // 
+            cuiPictureBox7.BackColor = Color.FromArgb(0, 0, 0, 0);
+            cuiPictureBox7.BackgroundImage = Properties.Resources.application;
+            cuiPictureBox7.BackgroundImageLayout = ImageLayout.Zoom;
+            cuiPictureBox7.Content = null;
+            cuiPictureBox7.ImageTint = Color.White;
+            cuiPictureBox7.Location = new Point(18, 261);
+            cuiPictureBox7.Margin = new Padding(4, 5, 4, 5);
+            cuiPictureBox7.Name = "cuiPictureBox7";
+            cuiPictureBox7.OutlineThickness = 1F;
+            cuiPictureBox7.PanelOutlineColor = Color.Empty;
+            cuiPictureBox7.Rotation = 0;
+            cuiPictureBox7.Rounding = new Padding(8);
+            cuiPictureBox7.Size = new Size(59, 53);
+            cuiPictureBox7.TabIndex = 23;
+            // 
+            // cuiPictureBox6
+            // 
+            cuiPictureBox6.BackColor = Color.FromArgb(0, 0, 0, 0);
+            cuiPictureBox6.BackgroundImage = Properties.Resources.investor;
+            cuiPictureBox6.BackgroundImageLayout = ImageLayout.Zoom;
+            cuiPictureBox6.Content = null;
+            cuiPictureBox6.ImageTint = Color.White;
+            cuiPictureBox6.Location = new Point(18, 172);
+            cuiPictureBox6.Margin = new Padding(4, 5, 4, 5);
+            cuiPictureBox6.Name = "cuiPictureBox6";
+            cuiPictureBox6.OutlineThickness = 1F;
+            cuiPictureBox6.PanelOutlineColor = Color.Empty;
+            cuiPictureBox6.Rotation = 0;
+            cuiPictureBox6.Rounding = new Padding(8);
+            cuiPictureBox6.Size = new Size(59, 53);
+            cuiPictureBox6.TabIndex = 22;
+            // 
+            // cuiPictureBox5
+            // 
+            cuiPictureBox5.BackColor = Color.FromArgb(0, 0, 0, 0);
+            cuiPictureBox5.BackgroundImage = Properties.Resources.supplier;
+            cuiPictureBox5.BackgroundImageLayout = ImageLayout.Zoom;
+            cuiPictureBox5.Content = null;
+            cuiPictureBox5.ImageTint = Color.White;
+            cuiPictureBox5.Location = new Point(19, 73);
+            cuiPictureBox5.Margin = new Padding(4, 5, 4, 5);
+            cuiPictureBox5.Name = "cuiPictureBox5";
+            cuiPictureBox5.OutlineThickness = 1F;
+            cuiPictureBox5.PanelOutlineColor = Color.Empty;
+            cuiPictureBox5.Rotation = 0;
+            cuiPictureBox5.Rounding = new Padding(8);
+            cuiPictureBox5.Size = new Size(59, 53);
+            cuiPictureBox5.TabIndex = 21;
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.BackColor = Color.FromArgb(0, 0, 0, 0);
+            label13.Font = new Font("Arial", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label13.ForeColor = Color.FromArgb(126, 211, 72);
+            label13.Location = new Point(15, 13);
+            label13.Name = "label13";
+            label13.Size = new Size(177, 27);
+            label13.TabIndex = 20;
+            label13.Text = "Total Counters";
+            // 
+            // label24
+            // 
+            label24.AutoSize = true;
+            label24.BackColor = Color.FromArgb(0, 0, 0, 0);
+            label24.Font = new Font("Arial", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label24.ForeColor = Color.FromArgb(0, 157, 209);
+            label24.Location = new Point(180, 92);
+            label24.Name = "label24";
+            label24.Size = new Size(20, 27);
+            label24.TabIndex = 24;
+            label24.Text = "-";
             // 
             // DashboardPage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(227, 244, 238);
+            Controls.Add(label24);
             Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(cuiButton5);
@@ -1146,5 +1160,6 @@
         private MaterialSkin.Controls.MaterialDivider materialDivider3;
         private Label label23;
         private MaterialSkin.Controls.MaterialDivider materialDivider4;
+        private Label label24;
     }
 }

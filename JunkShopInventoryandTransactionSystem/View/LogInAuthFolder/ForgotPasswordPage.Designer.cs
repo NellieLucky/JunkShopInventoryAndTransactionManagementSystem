@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ForgotPasswordPage));
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             codeeloGradientPanel1 = new CodeeloUI.Controls.CodeeloGradientPanel();
@@ -63,24 +62,23 @@
             codeeloGradientPanel1.GradientBorderDirection = System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal;
             codeeloGradientPanel1.GradientDirection = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             codeeloGradientPanel1.Location = new Point(-1, 0);
-            codeeloGradientPanel1.Margin = new Padding(3, 2, 3, 2);
             codeeloGradientPanel1.Name = "codeeloGradientPanel1";
-            codeeloGradientPanel1.Size = new Size(1226, 600);
+            codeeloGradientPanel1.Size = new Size(1401, 800);
             codeeloGradientPanel1.TabIndex = 0;
             // 
             // cuiPictureBox1
             // 
             cuiPictureBox1.BackColor = Color.FromArgb(0, 0, 0, 0);
-            cuiPictureBox1.Content = (Image)resources.GetObject("cuiPictureBox1.Content");
+            cuiPictureBox1.Content = Properties.Resources.JUNKSHOP__9___1_;
             cuiPictureBox1.ImageTint = Color.White;
-            cuiPictureBox1.Location = new Point(78, 196);
-            cuiPictureBox1.Margin = new Padding(4);
+            cuiPictureBox1.Location = new Point(89, 261);
+            cuiPictureBox1.Margin = new Padding(5, 5, 5, 5);
             cuiPictureBox1.Name = "cuiPictureBox1";
             cuiPictureBox1.OutlineThickness = 1F;
             cuiPictureBox1.PanelOutlineColor = Color.Empty;
             cuiPictureBox1.Rotation = 0;
-            cuiPictureBox1.Rounding = new Padding(125);
-            cuiPictureBox1.Size = new Size(219, 188);
+            cuiPictureBox1.Rounding = new Padding(0);
+            cuiPictureBox1.Size = new Size(250, 251);
             cuiPictureBox1.TabIndex = 10;
             // 
             // cuiPanel1
@@ -91,14 +89,14 @@
             cuiPanel1.Controls.Add(SendLinkButton);
             cuiPanel1.Controls.Add(label1);
             cuiPanel1.Controls.Add(GoBack);
-            cuiPanel1.Location = new Point(368, 0);
+            cuiPanel1.Location = new Point(421, 0);
             cuiPanel1.Margin = new Padding(0);
             cuiPanel1.Name = "cuiPanel1";
             cuiPanel1.OutlineThickness = 1F;
             cuiPanel1.PanelColor = Color.White;
             cuiPanel1.PanelOutlineColor = Color.Empty;
             cuiPanel1.Rounding = new Padding(0, 50, 50, 0);
-            cuiPanel1.Size = new Size(858, 600);
+            cuiPanel1.Size = new Size(981, 800);
             cuiPanel1.TabIndex = 9;
             // 
             // SigInLabel
@@ -106,23 +104,22 @@
             SigInLabel.AutoSize = true;
             SigInLabel.Font = new Font("Arial", 28.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             SigInLabel.ForeColor = Color.FromArgb(16, 107, 23);
-            SigInLabel.Location = new Point(150, 99);
+            SigInLabel.Location = new Point(171, 132);
             SigInLabel.Name = "SigInLabel";
-            SigInLabel.Size = new Size(329, 45);
+            SigInLabel.Size = new Size(411, 55);
             SigInLabel.TabIndex = 0;
             SigInLabel.Text = "Forgot Password";
             // 
             // cuiPanel2
             // 
             cuiPanel2.Controls.Add(EmailTextBox);
-            cuiPanel2.Location = new Point(175, 266);
-            cuiPanel2.Margin = new Padding(3, 2, 3, 2);
+            cuiPanel2.Location = new Point(200, 355);
             cuiPanel2.Name = "cuiPanel2";
             cuiPanel2.OutlineThickness = 1F;
             cuiPanel2.PanelColor = Color.Green;
             cuiPanel2.PanelOutlineColor = Color.Green;
             cuiPanel2.Rounding = new Padding(24);
-            cuiPanel2.Size = new Size(563, 56);
+            cuiPanel2.Size = new Size(643, 75);
             cuiPanel2.TabIndex = 8;
             // 
             // EmailTextBox
@@ -141,17 +138,17 @@
             EmailTextBox.ImageExpand = new Point(0, 0);
             EmailTextBox.ImageOffset = new Point(0, 0);
             EmailTextBox.ImeMode = ImeMode.Off;
-            EmailTextBox.Location = new Point(2, 2);
+            EmailTextBox.Location = new Point(2, 3);
             EmailTextBox.Margin = new Padding(0);
             EmailTextBox.Multiline = false;
             EmailTextBox.Name = "EmailTextBox";
             EmailTextBox.NormalImageTint = Color.White;
-            EmailTextBox.Padding = new Padding(19, 16, 19, 0);
+            EmailTextBox.Padding = new Padding(23, 23, 23, 0);
             EmailTextBox.PasswordChar = false;
             EmailTextBox.PlaceholderColor = Color.Gray;
             EmailTextBox.PlaceholderText = "Enter your email...";
             EmailTextBox.Rounding = new Padding(24);
-            EmailTextBox.Size = new Size(558, 51);
+            EmailTextBox.Size = new Size(638, 68);
             EmailTextBox.TabIndex = 2;
             EmailTextBox.TextOffset = new Size(0, 0);
             EmailTextBox.UnderlinedStyle = false;
@@ -168,11 +165,10 @@
             SendLinkButton.FillColor = Color.FromArgb(7, 96, 14);
             SendLinkButton.Font = new Font("Arial", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             SendLinkButton.ForeColor = SystemColors.Window;
-            SendLinkButton.Location = new Point(178, 378);
-            SendLinkButton.Margin = new Padding(3, 2, 3, 2);
+            SendLinkButton.Location = new Point(203, 504);
             SendLinkButton.Name = "SendLinkButton";
             SendLinkButton.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            SendLinkButton.Size = new Size(560, 59);
+            SendLinkButton.Size = new Size(640, 79);
             SendLinkButton.TabIndex = 5;
             SendLinkButton.Text = "Send Mail";
             SendLinkButton.Click += SendLinkButton_Click;
@@ -181,9 +177,9 @@
             // 
             label1.Font = new Font("Arial", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.FromArgb(16, 107, 23);
-            label1.Location = new Point(159, 164);
+            label1.Location = new Point(182, 219);
             label1.Name = "label1";
-            label1.Size = new Size(563, 58);
+            label1.Size = new Size(643, 77);
             label1.TabIndex = 7;
             label1.Text = "Enter the email associated with your account. We will send you a reset token to reset your password.\n";
             // 
@@ -192,9 +188,9 @@
             GoBack.AutoSize = true;
             GoBack.Font = new Font("Arial", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             GoBack.ForeColor = Color.FromArgb(16, 107, 23);
-            GoBack.Location = new Point(332, 472);
+            GoBack.Location = new Point(379, 629);
             GoBack.Name = "GoBack";
-            GoBack.Size = new Size(253, 26);
+            GoBack.Size = new Size(330, 33);
             GoBack.TabIndex = 6;
             GoBack.Text = "Go Back to Log In Page";
             GoBack.Click += GoBack_Click_1;
@@ -203,12 +199,11 @@
             // 
             // ForgotPasswordPage
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1225, 600);
+            ClientSize = new Size(1400, 800);
             Controls.Add(codeeloGradientPanel1);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(3, 2, 3, 2);
             Name = "ForgotPasswordPage";
             Text = "ForgotPasswordPage";
             codeeloGradientPanel1.ResumeLayout(false);
