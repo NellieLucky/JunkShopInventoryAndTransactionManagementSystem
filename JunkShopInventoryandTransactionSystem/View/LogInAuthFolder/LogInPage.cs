@@ -1,16 +1,17 @@
 using JunkShopInventoryandTransactionSystem.View;
 using JunkShopInventoryandTransactionSystem.View.LogInAuthFolder;
 using Microsoft.Data.SqlClient;
+using static JunkShopInventoryandTransactionSystem.BackendFiles.UserSession.ForUser;
 
 namespace JunkShopInventoryandTransactionSystem.View.LogInAuthFolder
 {
     public partial class LogInPage : Form
     {
         // Connection string to connect to the local SQL Server database
-        //private readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Beetoy\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\Database1.mdf;Integrated Security=True";
+        private readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Beetoy\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\Database1.mdf;Integrated Security=True";
 
         //arnel's connstring
-        private readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
+        //private readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
 
         //remo string
         //private readonly string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
@@ -20,32 +21,6 @@ namespace JunkShopInventoryandTransactionSystem.View.LogInAuthFolder
         {
             InitializeComponent();
             // Make sure the cursor is not a wait cursor for the email textbox
-        }
-
-        // Validates login credentials against Employee and Management tables
-        private bool LoginValidation(string email, string password)
-        {
-            using (SqlConnection connect = new SqlConnection(connectionString))
-            {
-                connect.Open();
-
-                // Combine Employee and Management tables for authentication
-                string query = @"
-                    SELECT TOP 1 empEmail FROM Employees 
-                    WHERE empEmail = @Email AND empPassword = @Password
-                    UNION ALL   
-                    SELECT TOP 1 admEmail FROM Management 
-                    WHERE admEmail = @Email AND admPassword = @Password";
-                //TOP 1 is used to limit the result to one record, as we only need to check if a match exists.
-                using (SqlCommand cmd = new SqlCommand(query, connect))
-                {
-                    cmd.Parameters.AddWithValue("@Email", email);
-                    cmd.Parameters.AddWithValue("@Password", password);
-
-                    object result = cmd.ExecuteScalar();
-                    return result != null;
-                }
-            }
         }
 
         // This method is called when the Log In button is clicked
@@ -63,9 +38,14 @@ namespace JunkShopInventoryandTransactionSystem.View.LogInAuthFolder
             }
             try
             {
-                if (LoginValidation(email, password))
+                int? userId = AuthenticateUser(email, password);
+
+                if (userId.HasValue)
                 {
+                    UserSession.UserId = userId.Value;
+
                     MessageBox.Show("Login successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                     MainNavigationPage dashboardPage = new MainNavigationPage();
                     dashboardPage.Dock = DockStyle.Fill;
                     dashboardPage.TopLevel = false;
@@ -77,6 +57,7 @@ namespace JunkShopInventoryandTransactionSystem.View.LogInAuthFolder
                 {
                     // If login fails, show an error message and clear the password field
                     MessageBox.Show("Invalid email or password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                     PasswordTextBox.Content = string.Empty;
                 }
             }

@@ -1,4 +1,4 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using JunkShopInventoryandTransactionSystem.BackendFiles.UserSession;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,15 +16,6 @@ namespace JunkShopInventoryandTransactionSystem.View.LogInAuthFolder
 {
     public partial class ForgotPasswordPage : Form
     {
-        //private readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Beetoy\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\Database1.mdf;Integrated Security=True";
-
-        //arnel's connstring
-        private readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
-
-        //remo string
-        //private readonly string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
-
-
         public ForgotPasswordPage()
         {
             InitializeComponent();
@@ -49,34 +40,6 @@ namespace JunkShopInventoryandTransactionSystem.View.LogInAuthFolder
             MainForm.MainPanel.Controls.Add(loginpage);
             loginpage.Show();
         }
-
-        private bool IsEmailRegistered(string email)
-        {
-            using (SqlConnection connect = new SqlConnection(connectionString))
-            {
-                connect.Open();
-
-                string[] queries = {
-                    "SELECT TOP 1 empEmail FROM Employees WHERE empEmail = @Email",
-                    "SELECT TOP 1 admEmail FROM Management WHERE admEmail = @Email"
-                };
-
-                foreach (var query in queries)
-                {
-                    using (SqlCommand cmd = new SqlCommand(query, connect))
-                    {
-                        cmd.Parameters.Add("@Email", SqlDbType.VarChar).Value = email;
-                        object result = cmd.ExecuteScalar();
-                        if (result != null)
-                        {
-                            return true;
-                        }
-                    }
-                }
-                return false;
-            }
-        }
-
         private void SendLinkButton_Click(object sender, EventArgs e)
         {
             string email = EmailTextBox.Content.Trim().ToLower();
@@ -91,10 +54,10 @@ namespace JunkShopInventoryandTransactionSystem.View.LogInAuthFolder
             {
                 var validEmail = new MailAddress(email);
 
-                if (IsEmailRegistered(email))
+                if (ForUser.IsEmailRegistered(email))
                 {
                     string token = new Random().Next(100000, 1000000).ToString();
-                    StoreToken(email, token);
+                    ForUser.StoreToken(email, token);
 
                     MailMessage mail = new MailMessage("junkshopinventorysystem@gmail.com", email);
                     mail.Subject = "Junk Shop Inventory and Transaction System: Password Reset Token";
@@ -109,6 +72,7 @@ namespace JunkShopInventoryandTransactionSystem.View.LogInAuthFolder
                         UseDefaultCredentials = false
                     };
                     client.Send(mail);
+
                     MessageBox.Show("Password reset token has been sent to your email.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     NewPasswordPage newPasswordPage = new NewPasswordPage();
@@ -132,42 +96,6 @@ namespace JunkShopInventoryandTransactionSystem.View.LogInAuthFolder
                 MessageBox.Show($"Unexpected error: {ex.GetType().Name} - {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void StoreToken(string email, string token)
-        {
-            using (SqlConnection connect = new SqlConnection(connectionString))
-            {
-                connect.Open();
-
-                string employeeCheck = "SELECT COUNT(*) FROM Employees WHERE empEmail = @Email";
-                using (SqlCommand checkCmd = new SqlCommand(employeeCheck, connect))
-                {
-                    checkCmd.Parameters.Add("@Email", SqlDbType.VarChar).Value = email;
-                    int count = (int)checkCmd.ExecuteScalar();
-
-                    if (count > 0)
-                    {
-                        string updateEmp = "UPDATE Employees SET token = @Token WHERE empEmail = @Email";
-                        using (SqlCommand cmd = new SqlCommand(updateEmp, connect))
-                        {
-                            cmd.Parameters.Add("@Token", SqlDbType.VarChar).Value = token;
-                            cmd.Parameters.Add("@Email", SqlDbType.VarChar).Value = email;
-                            cmd.ExecuteNonQuery();
-                            return;
-                        }
-                    }
-                }
-
-                // If not found in Employees, update Management
-                string updateAdm = "UPDATE Management SET admToken = @Token WHERE admEmail = @Email";
-                using (SqlCommand cmd = new SqlCommand(updateAdm, connect))
-                {
-                    cmd.Parameters.Add("@Token", SqlDbType.VarChar).Value = token;
-                    cmd.Parameters.Add("@Email", SqlDbType.VarChar).Value = email;
-                    cmd.ExecuteNonQuery();
-                }
-            }
-        }
-
         private void EmailTextBox_ContentChanged(object sender, EventArgs e)
         {
 

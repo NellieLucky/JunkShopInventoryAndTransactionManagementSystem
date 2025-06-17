@@ -1,26 +1,41 @@
-﻿using JunkShopInventoryandTransactionSystem.View.CustomerRecordsPage;
+﻿using JunkShopInventoryandTransactionSystem.BackendFiles.UserSession;
+using JunkShopInventoryandTransactionSystem.View.CustomerRecordsPage;
 using JunkShopInventoryandTransactionSystem.View.EmployeeManagementPageFolder;
 using JunkShopInventoryandTransactionSystem.View.FinancialReportsPageFolder;
 using JunkShopInventoryandTransactionSystem.View.Inventory_Pages;
 using JunkShopInventoryandTransactionSystem.View.LogInAuthFolder;
 using System;
 using System.Windows.Forms;
+using static JunkShopInventoryandTransactionSystem.BackendFiles.UserSession.ForUser;
 
 namespace JunkShopInventoryandTransactionSystem.View
 {
     public partial class MainNavigationPage : Form
     {
-
         // This is the main navigation page that contains all the navigation buttons and panels for different pages.
         public MainNavigationPage()
         {
             InitializeComponent();
+            int userId = UserSession.UserId;
+
+            // Fetch user info based on userId
+            var userInfo = ForUser.GetUserInfo(userId);
+
+            // Set labels
+            label2.Text = userInfo.Name;  // Set name to label2
+            label1.Text = userInfo.Role;  // Set role to label1
 
             SetNavButtonChecked(dashBoardNavButton1);
             navControlPanel.Controls.Clear();
             var dashboardPage = new DashBoardPageFolder.DashboardPage();
             dashboardPage.Dock = DockStyle.Fill;
             navControlPanel.Controls.Add(dashboardPage);
+
+            if (userInfo.Role.ToLower() == "employee")
+            {
+                EmployeeManagementNavButton.Enabled = false;
+                EmployeeManagementNavButton.Visible = false;
+            }
         }
 
         private void dashBoardNavButton1_Click(object sender, EventArgs e)
@@ -128,6 +143,8 @@ namespace JunkShopInventoryandTransactionSystem.View
         //Pang logout button, this will clear the main panel and show the login page again.
         private void LogOutButton1_Click(object sender, EventArgs e)
         {
+            UserSession.UserId = 0;  //To reset the logged-in user id
+
             LogInPage loginPage = new LogInAuthFolder.LogInPage();
             loginPage.Dock = DockStyle.Fill;
             loginPage.TopLevel = false;

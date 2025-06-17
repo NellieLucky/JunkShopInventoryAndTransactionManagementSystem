@@ -1,5 +1,5 @@
-﻿using JunkShopInventoryandTransactionSystem.View.LogInAuthFolder;
-using Microsoft.Data.SqlClient;
+﻿using JunkShopInventoryandTransactionSystem.BackendFiles.UserSession;
+using JunkShopInventoryandTransactionSystem.View.LogInAuthFolder;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,14 +15,6 @@ namespace JunkShopInventoryandTransactionSystem.View.LogInAuthFolder
 {
     public partial class NewPasswordPage : Form
     {
-        //private readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Beetoy\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\Database1.mdf;Integrated Security=True";
-        //arnel's connstring
-
-        private readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
-
-        //remo string
-        //private readonly string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
-
 
         public NewPasswordPage()
         {
@@ -50,64 +42,18 @@ namespace JunkShopInventoryandTransactionSystem.View.LogInAuthFolder
                 return;
             }
 
-            using (SqlConnection connect = new SqlConnection(connectionString))
+            string userType;
+            string? email = ForUser.GetEmailByToken(token, out userType);
+            if (string.IsNullOrEmpty(email))
             {
-                connect.Open();
+                MessageBox.Show("Invalid or expired token. Please request a new password reset.",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-                string? email = null;
-                string? userType = null; // "Employee" or "Admin"
-
-                // Check Employees table
-                string empQuery = @"SELECT TOP 1 empEmail FROM Employees WHERE token = @Token";
-                using (SqlCommand empCmd = new SqlCommand(empQuery, connect))
-                {
-                    empCmd.Parameters.AddWithValue("@Token", token);
-                    using (SqlDataReader reader = empCmd.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            email = reader["empEmail"].ToString();
-                            userType = "Employee";
-                        }
-                    }
-                }
-
-                // If not found in Employees, check Management
-                if (string.IsNullOrEmpty(email))
-                {
-                    string admQuery = @"SELECT TOP 1 admEmail FROM Management WHERE admToken = @Token";
-                    using (SqlCommand admCmd = new SqlCommand(admQuery, connect))
-                    {
-                        admCmd.Parameters.AddWithValue("@Token", token);
-                        using (SqlDataReader reader = admCmd.ExecuteReader())
-                        {
-                            if (reader.Read())
-                            {
-                                email = reader["admEmail"].ToString();
-                                userType = "Admin";
-                            }
-                        }
-                    }
-                }
-
-                if (string.IsNullOrEmpty(email))
-                {
-                    MessageBox.Show("Invalid or expired token. Please request a new password reset.",
-                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                // Update the appropriate table
-                string update = userType == "Employee"
-                    ? "UPDATE Employees SET empPassword = @Password, token = NULL WHERE empEmail = @Email"
-                    : "UPDATE Management SET admPassword = @Password, admToken = NULL WHERE admEmail = @Email";
-
-                using (SqlCommand cmd = new SqlCommand(update, connect))
-                {
-                    cmd.Parameters.AddWithValue("@Password", newPassword);
-                    cmd.Parameters.AddWithValue("@Email", email);
-                    cmd.ExecuteNonQuery();
-                }
+            bool success = ForUser.UpdatePassword(email, newPassword, userType);
+            if (success)
+            {
                 MessageBox.Show("Password updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LogInPage loginpage = new LogInPage();
                 loginpage.Dock = DockStyle.Fill;
@@ -115,6 +61,10 @@ namespace JunkShopInventoryandTransactionSystem.View.LogInAuthFolder
                 MainForm.MainPanel.Controls.Clear();
                 MainForm.MainPanel.Controls.Add(loginpage);
                 loginpage.Show();
+            }
+            else
+            {
+                MessageBox.Show("An error occurred while updating the password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
