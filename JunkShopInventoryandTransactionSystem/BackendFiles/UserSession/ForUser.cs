@@ -11,10 +11,10 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.UserSession
 {
     internal class ForUser
     {
-        //private static readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Beetoy\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\Database1.mdf;Integrated Security=True";
+        private static readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Beetoy\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\Database1.mdf;Integrated Security=True";
 
         //arnel's connstring
-        private static readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
+        //private static readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
 
         //remo string
         //private readonly string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
@@ -93,8 +93,8 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.UserSession
                 using (SqlConnection connect = new SqlConnection(connectionString))
                 {
                     connect.Open();
-
-                    string query = "SELECT empDateRegistered, empEmail, empPassword, empName, empContact, empAddress FROM Employees WHERE IsRemoved = 0";
+                    
+                    string query = "SELECT empId, empDateRegistered, empEmail, empPassword, empName, empContact, empAddress FROM Employees WHERE IsRemoved = 0";
 
                     using (SqlDataAdapter dataAdapter = new SqlDataAdapter(query, connect))
                     {

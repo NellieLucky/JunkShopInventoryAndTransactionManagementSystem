@@ -70,6 +70,7 @@ namespace JunkShopInventoryandTransactionSystem.View.EmployeeManagementPageFolde
                 // Bind the DataTable to the DataGridView
                 dataGridView1.DataSource = dataTable;
 
+                dataGridView1.Columns["Emp_ID"].DataPropertyName = "empId";
                 dataGridView1.Columns["DateRegisteredColumn"].DataPropertyName = "empDateRegistered";
                 dataGridView1.Columns["EmailColumn"].DataPropertyName = "empEmail";
                 dataGridView1.Columns["NameColumn"].DataPropertyName = "empName";
