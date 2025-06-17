@@ -38,10 +38,12 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
     public class InventoryItem
     {
         public int itemId { get; set; } // Database generates this for new items
-        public string itemName { get; set; }
-        public string itemCategory { get; set; }
-        public string itemQtyType { get; set; } // is string for now
-        public int itemQuantity { get; set; }
+        // added " = string.Empty; " to remove warning about nullability
+        // incase it receives a NULL value from the database
+        public string itemName { get; set; } = string.Empty;
+        public string itemCategory { get; set; } = string.Empty;
+        public string itemQtyType { get; set; } = string.Empty;
+        public int itemQuantity { get; set; }   
         public int itemBuyingPrice { get; set; }
         public int itemSellingPrice { get; set; }
 
@@ -79,9 +81,10 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
     {
         //copy this to other classes that will use this connection string
         
-        //private string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+        //remostring
+        private string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
         
-        private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
+        //private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
         //arnels string
 
         // Method to get a connection object
@@ -194,10 +197,10 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
     public class InventoryAdd
     {
         //remos string
-        //private string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+        private string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
         
         //arnels string
-        private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
+        //private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
         
 
         public SqlConnection GetConnection()
@@ -227,17 +230,16 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
                         conn.Open();
                         int rowsAffected = cmd.ExecuteNonQuery();
 
-                        Console.WriteLine($"{rowsAffected} row(s) inserted successfully."); // For debugging/confirmation
+                        MessageBox.Show($"{rowsAffected} row(s) inserted successfully.", "Insert Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (SqlException ex)
                     {
-                        Console.WriteLine("Database error during AddItemToInventory: " + ex.Message);
-                        // IMPORTANT: Throw the exception so the calling code can handle it.
+                        MessageBox.Show("Database error during AddItemToInventory: " + ex.Message, "SQL Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         throw new Exception("An error occurred while adding the item to the database.", ex);
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine("An unexpected error occurred: " + ex.Message);
+                        MessageBox.Show("An unexpected error occurred: " + ex.Message, "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         throw;
                     }
                 }
@@ -250,10 +252,10 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
     public class InventoryEdit
     {
         // remos string
-        //private string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+        private string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
         
         // arnels string
-        private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
+        //private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
 
         public SqlConnection GetConnection()
         {
@@ -286,20 +288,21 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
                     cmd.Parameters.AddWithValue("@itemBuyingPrice", item.itemBuyingPrice);
                     cmd.Parameters.AddWithValue("@itemSellingPrice", item.itemSellingPrice);
 
-                    try     //for debugging
+                    // for debugging
+                    try
                     {
                         conn.Open();
                         int rowsAffected = cmd.ExecuteNonQuery();
-                        Console.WriteLine($"{rowsAffected} row(s) updated successfully.");
+                        MessageBox.Show($"{rowsAffected} row(s) updated successfully.", "Update Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (SqlException ex)
                     {
-                        Console.WriteLine("Database error during UpdateItemInInventory: " + ex.Message);
+                        MessageBox.Show("Database error during UpdateItemInInventory: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         throw new Exception("An error occurred while updating the item in the database.", ex);
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine("An unexpected error occurred: " + ex.Message);
+                        MessageBox.Show("An unexpected error occurred: " + ex.Message, "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         throw;
                     }
                 }   // end of the second using in the nested using stuff
@@ -311,9 +314,10 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
     // inventory delete
     public class InventoryDelete
     {
-        //private string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+        // remos string
+        private string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
         // arnels string
-        private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
+        //private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
 
         public SqlConnection GetConnection()
         {
@@ -328,6 +332,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@itemId", itemId);
+
                     try
                     {
                         conn.Open();

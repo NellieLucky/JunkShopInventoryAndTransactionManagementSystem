@@ -11,7 +11,9 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Delete
 {
     public class DeleteItemInInventory
     {
-        public static bool HandleDeleteItem(int itemId, DataGridView targetDataGridView)
+        public static bool HandleDeleteItem(
+            int itemId,
+            DataGridView targetDataGridView)
         {
             // --- If validation passes, proceed with editing the item ---
             // passes the id to find it in the database and delete it

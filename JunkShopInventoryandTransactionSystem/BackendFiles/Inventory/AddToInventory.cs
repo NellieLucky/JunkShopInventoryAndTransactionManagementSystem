@@ -107,7 +107,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Add
             InventoryAdd add = new InventoryAdd();
             add.AddItemToInventory(newItem);
 
-            MessageBox.Show("Item added successfully!", "Item Addition Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //MessageBox.Show("Item added successfully!", "Item Addition Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             // --- Reload DataGridView ---
             if (targetDataGridView != null)
