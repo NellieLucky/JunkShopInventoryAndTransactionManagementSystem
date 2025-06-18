@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             cuiPanel1 = new CuoreUI.Controls.cuiPanel();
+            label4 = new Label();
             cuiButton1 = new CuoreUI.Controls.cuiButton();
             ContinueDelButton = new CuoreUI.Controls.cuiButton();
-            ItemNameTextHolder = new Label();
-            ItemIDTextHolder = new Label();
+            CatNameTextHolder = new Label();
+            CatIDTextHolder = new Label();
             label2 = new Label();
             label1 = new Label();
             DashboardTitlePage = new Label();
             cuiPictureBox1 = new CuoreUI.Controls.cuiPictureBox();
             sqlCommandBuilder1 = new Microsoft.Data.SqlClient.SqlCommandBuilder();
-            label4 = new Label();
             cuiPanel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -47,8 +47,8 @@
             cuiPanel1.Controls.Add(label4);
             cuiPanel1.Controls.Add(cuiButton1);
             cuiPanel1.Controls.Add(ContinueDelButton);
-            cuiPanel1.Controls.Add(ItemNameTextHolder);
-            cuiPanel1.Controls.Add(ItemIDTextHolder);
+            cuiPanel1.Controls.Add(CatNameTextHolder);
+            cuiPanel1.Controls.Add(CatIDTextHolder);
             cuiPanel1.Controls.Add(label2);
             cuiPanel1.Controls.Add(label1);
             cuiPanel1.Controls.Add(DashboardTitlePage);
@@ -61,6 +61,18 @@
             cuiPanel1.Rounding = new Padding(8);
             cuiPanel1.Size = new Size(575, 424);
             cuiPanel1.TabIndex = 1;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.BackColor = Color.FromArgb(0, 0, 0, 0);
+            label4.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label4.ForeColor = Color.FromArgb(0, 157, 209);
+            label4.Location = new Point(126, 224);
+            label4.Name = "label4";
+            label4.Size = new Size(316, 19);
+            label4.TabIndex = 37;
+            label4.Text = "This action will also remove all linked items";
             // 
             // cuiButton1
             // 
@@ -99,6 +111,7 @@
             cuiButton1.TabIndex = 36;
             cuiButton1.TextAlignment = StringAlignment.Center;
             cuiButton1.TextOffset = new Point(0, 0);
+            cuiButton1.Click += cuiButton1_Click;
             // 
             // ContinueDelButton
             // 
@@ -137,30 +150,31 @@
             ContinueDelButton.TabIndex = 35;
             ContinueDelButton.TextAlignment = StringAlignment.Center;
             ContinueDelButton.TextOffset = new Point(0, 0);
+            ContinueDelButton.Click += ContinueDelButton_Click;
             // 
-            // ItemNameTextHolder
+            // CatNameTextHolder
             // 
-            ItemNameTextHolder.AutoSize = true;
-            ItemNameTextHolder.BackColor = Color.FromArgb(0, 0, 0, 0);
-            ItemNameTextHolder.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            ItemNameTextHolder.ForeColor = Color.FromArgb(0, 157, 209);
-            ItemNameTextHolder.Location = new Point(346, 303);
-            ItemNameTextHolder.Name = "ItemNameTextHolder";
-            ItemNameTextHolder.Size = new Size(63, 24);
-            ItemNameTextHolder.TabIndex = 33;
-            ItemNameTextHolder.Text = "Name";
+            CatNameTextHolder.AutoSize = true;
+            CatNameTextHolder.BackColor = Color.FromArgb(0, 0, 0, 0);
+            CatNameTextHolder.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            CatNameTextHolder.ForeColor = Color.FromArgb(0, 157, 209);
+            CatNameTextHolder.Location = new Point(346, 303);
+            CatNameTextHolder.Name = "CatNameTextHolder";
+            CatNameTextHolder.Size = new Size(63, 24);
+            CatNameTextHolder.TabIndex = 33;
+            CatNameTextHolder.Text = "Name";
             // 
-            // ItemIDTextHolder
+            // CatIDTextHolder
             // 
-            ItemIDTextHolder.AutoSize = true;
-            ItemIDTextHolder.BackColor = Color.FromArgb(0, 0, 0, 0);
-            ItemIDTextHolder.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            ItemIDTextHolder.ForeColor = Color.FromArgb(0, 157, 209);
-            ItemIDTextHolder.Location = new Point(346, 268);
-            ItemIDTextHolder.Name = "ItemIDTextHolder";
-            ItemIDTextHolder.Size = new Size(21, 24);
-            ItemIDTextHolder.TabIndex = 32;
-            ItemIDTextHolder.Text = "0";
+            CatIDTextHolder.AutoSize = true;
+            CatIDTextHolder.BackColor = Color.FromArgb(0, 0, 0, 0);
+            CatIDTextHolder.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            CatIDTextHolder.ForeColor = Color.FromArgb(0, 157, 209);
+            CatIDTextHolder.Location = new Point(346, 268);
+            CatIDTextHolder.Name = "CatIDTextHolder";
+            CatIDTextHolder.Size = new Size(21, 24);
+            CatIDTextHolder.TabIndex = 32;
+            CatIDTextHolder.Text = "0";
             // 
             // label2
             // 
@@ -215,18 +229,6 @@
             cuiPictureBox1.Size = new Size(187, 155);
             cuiPictureBox1.TabIndex = 0;
             // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.BackColor = Color.FromArgb(0, 0, 0, 0);
-            label4.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.ForeColor = Color.FromArgb(0, 157, 209);
-            label4.Location = new Point(126, 224);
-            label4.Name = "label4";
-            label4.Size = new Size(316, 19);
-            label4.TabIndex = 37;
-            label4.Text = "This action will also remove all linked items";
-            // 
             // DeleteCategoryDialogBox
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -245,8 +247,8 @@
         private CuoreUI.Controls.cuiPanel cuiPanel1;
         private CuoreUI.Controls.cuiButton cuiButton1;
         private CuoreUI.Controls.cuiButton ContinueDelButton;
-        private Label ItemNameTextHolder;
-        private Label ItemIDTextHolder;
+        private Label CatNameTextHolder;
+        private Label CatIDTextHolder;
         private Label label2;
         private Label label1;
         private Label DashboardTitlePage;

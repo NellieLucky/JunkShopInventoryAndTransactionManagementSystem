@@ -31,6 +31,22 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Category.Add
                 errorMessage += "Category Name cannot be empty.\n";
                 isValidInput = false;
             }
+
+            //validation for to see if same cat name
+            CategoryRead categoryReader = new CategoryRead();
+            var allCategories = categoryReader.GetAllCategories();
+
+            // Look for duplicate names (case-insensitive and trimmed)
+            bool isDuplicateCategory = allCategories.Any(c =>
+                string.Equals(c.categoryName.Trim(), categoryName, StringComparison.OrdinalIgnoreCase)
+            );
+
+            if (isDuplicateCategory)
+            {
+                errorMessage += "A category with the same name already exists.\n";
+                isValidInput = false;
+            }
+
             if (string.IsNullOrWhiteSpace(categoryDescription))
             {
                 errorMessage += "Category Description cannot be empty.\n";

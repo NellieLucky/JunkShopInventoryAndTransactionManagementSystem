@@ -10,8 +10,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Category.Reload
 {
     public class ReloadCategory
     {
-        // Make the method public and static if you don't need to instantiate ReloadInventory
-        // or just public if you plan to create an instance of ReloadInventory
+        // method to load unarchived inventory data into the DataGridView
         public static void LoadCategoryData(DataGridView dataGridView1)
         {
             // Clear existing rows before loading new data to prevent duplicates
@@ -28,6 +27,26 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Category.Reload
                     item.categoryDescription
                 );
             }
-        }
+        }   // end of LoadCategoryData method
+
+        // method to load archived inventory data into the DataGridView
+        // not yet used
+        public static void LoadArchivedCategoryData(DataGridView dataGridView1)
+        {
+            dataGridView1.Rows.Clear();
+
+            CategoryRead read = new CategoryRead();
+            List<CategoryItem> categories = read.GetAllArchivedCategories();
+
+            foreach (var cat in categories)
+            {
+                dataGridView1.Rows.Add(
+                    cat.categoryId,
+                    cat.categoryName,
+                    cat.categoryDescription
+                );
+            }
+        }   // end of LoadArchivedCategoryData method
+
     }
 }

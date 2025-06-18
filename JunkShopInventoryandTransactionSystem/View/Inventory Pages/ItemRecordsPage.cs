@@ -27,6 +27,7 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
             InitializeComponent();
 
             // Call the static LoadInventoryData method from ReloadInventory
+            // reads unarchived inventory data from the database and loads it into the DataGridView
             ReloadInventory.LoadInventoryData(ItemRecordsTable);
 
             /*
@@ -80,6 +81,8 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
             }
         }
 
+        // add checked
+
         private void AddItemButton_Click(object sender, EventArgs e)
         {
             // this .IsDisposed is causing the combobox error - have to do something with this
@@ -104,14 +107,17 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
             // if e.ColumnIndex value is 7 then its Edit
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
+                string clickedColumnName = ItemRecordsTable.Columns[e.ColumnIndex].Name;
+
                 // Get the itemID from the appropriate cell (e.g., column 0)
                 // Get the current row using e.RowIndex
                 DataGridViewRow selectedRow = ItemRecordsTable.Rows[e.RowIndex];
-                int itemId = Convert.ToInt32(selectedRow.Cells["itemID"].Value);
+                int itemId = Convert.ToInt32(selectedRow.Cells["ItemID"].Value);
+
 
                 if (ItemRecordsTable.Columns[e.ColumnIndex] is DataGridViewImageColumn)
                 {
-                    if (e.ColumnIndex == 7)
+                    if (clickedColumnName == "Edit")
                     {
                         //calls the add edit window
                         if (addEditInventoryItemDialogBox == null || addEditInventoryItemDialogBox.IsDisposed) // Check if it's already open  
@@ -127,7 +133,7 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
                             addEditInventoryItemDialogBox.Focus(); // Bring existing form to front 
                         }
                     }   // shows a temporary messagebox.show for delete confirmation
-                    else if (e.ColumnIndex == 8)
+                    else if (clickedColumnName == "Delete")
                     {
                         //calls the add edit window
                         if (deleteItemDialogBox == null || deleteItemDialogBox.IsDisposed)
@@ -144,7 +150,7 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
                 }
                 else
                 {
-                    //empty for now
+                    MessageBox.Show("An error occurred during the action.", "Action Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
