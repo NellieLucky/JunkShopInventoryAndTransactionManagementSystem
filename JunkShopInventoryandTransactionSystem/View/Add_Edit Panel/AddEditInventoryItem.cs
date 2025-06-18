@@ -1,5 +1,4 @@
-﻿
-// imports backend file of category for the category combobox
+﻿// imports backend file of category for the category combobox
 using JunkShopInventoryandTransactionSystem.BackendFiles.Category.Crud;
 using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Add;
 //imports the backend file AddToInventory.cs
@@ -176,18 +175,34 @@ namespace JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel
 
         private void LoadCategoryComboBox()
         {
-            CategoryRead reader = new CategoryRead();
-            var categories = reader.GetAllCategories().ToList();
+            try
+            {
+                CategoryRead reader = new CategoryRead();
+                var categories = reader.GetAllCategories().ToList();
 
-            CategoryComboBox.DataSource = categories;
-            CategoryComboBox.DisplayMember = "categoryName";
-            CategoryComboBox.ValueMember = "categoryId";
-            CategoryComboBox.SelectedIndex = -1;
+                if (categories == null || categories.Count == 0)
+                {
+                    MessageBox.Show("No categories found. Please add categories first.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                CategoryComboBox.DataSource = null; // Clear previous data source
+                CategoryComboBox.DataSource = categories;
+                CategoryComboBox.DisplayMember = "categoryName";
+                CategoryComboBox.ValueMember = "categoryId";
+                CategoryComboBox.SelectedIndex = -1; // No selection by default
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading categories: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void LoadItemDetails()
         {
             if (!itemId.HasValue) return;
+            
+            // Get the item details
             InventoryItem? item = new InventoryRead().GetOneInventoryItem(itemId.Value);
 
             if (item == null)
@@ -197,10 +212,23 @@ namespace JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel
                 return;
             }
 
+            // Set item name
             TextBox_ofItemNameLabel.Content = item.itemName;
 
-            CategoryComboBox.SelectedIndex = item.itemCategoryId;
+            // Load categories and select the correct one
+            CategoryRead categoryReader = new CategoryRead();
+            var categories = categoryReader.GetAllCategories().ToList();
+            
+            // Set the categories as the data source
+            CategoryComboBox.DataSource = null; // Clear previous data source
+            CategoryComboBox.DataSource = categories;
+            CategoryComboBox.DisplayMember = "categoryName";
+            CategoryComboBox.ValueMember = "categoryId";
 
+            // Set the selected category
+            CategoryComboBox.SelectedValue = item.itemCategoryId;
+
+            // Set other values
             QtyTypeComboBox.Text = item.itemQtyType;
             TextBox_ofQtyLabel.Content = item.itemQuantity.ToString();
             TextBox_ofBuyingPriceLabel.Content = item.itemBuyingPrice.ToString();

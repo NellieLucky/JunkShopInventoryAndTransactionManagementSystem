@@ -53,17 +53,19 @@
             cuiPanel1.Controls.Add(label1);
             cuiPanel1.Controls.Add(DashboardTitlePage);
             cuiPanel1.Controls.Add(cuiPictureBox1);
-            cuiPanel1.Location = new Point(0, -1);
+            cuiPanel1.Dock = DockStyle.Fill;
+            cuiPanel1.Location = new Point(0, 0);
             cuiPanel1.Name = "cuiPanel1";
             cuiPanel1.OutlineThickness = 1F;
             cuiPanel1.PanelColor = Color.White;
             cuiPanel1.PanelOutlineColor = Color.White;
             cuiPanel1.Rounding = new Padding(8);
-            cuiPanel1.Size = new Size(575, 424);
+            cuiPanel1.Size = new Size(575, 423);
             cuiPanel1.TabIndex = 1;
             // 
             // label4
             // 
+            label4.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label4.AutoSize = true;
             label4.BackColor = Color.FromArgb(0, 0, 0, 0);
             label4.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -76,6 +78,7 @@
             // 
             // cuiButton1
             // 
+            cuiButton1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             cuiButton1.BackColor = Color.FromArgb(0, 0, 0, 0);
             cuiButton1.CheckButton = false;
             cuiButton1.Checked = false;
@@ -96,6 +99,8 @@
             cuiButton1.ImageExpand = new Point(0, 0);
             cuiButton1.ImageOffset = new Point(0, 0);
             cuiButton1.Location = new Point(126, 370);
+            cuiButton1.MaximumSize = new Size(146, 40);
+            cuiButton1.MinimumSize = new Size(146, 40);
             cuiButton1.Name = "cuiButton1";
             cuiButton1.NormalBackground = Color.White;
             cuiButton1.NormalForeColor = Color.FromArgb(0, 157, 209);
@@ -115,6 +120,7 @@
             // 
             // ContinueDelButton
             // 
+            ContinueDelButton.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             ContinueDelButton.BackColor = Color.FromArgb(0, 0, 0, 0);
             ContinueDelButton.CheckButton = false;
             ContinueDelButton.Checked = false;
@@ -135,6 +141,8 @@
             ContinueDelButton.ImageExpand = new Point(0, 0);
             ContinueDelButton.ImageOffset = new Point(0, 0);
             ContinueDelButton.Location = new Point(300, 370);
+            ContinueDelButton.MaximumSize = new Size(146, 40);
+            ContinueDelButton.MinimumSize = new Size(146, 40);
             ContinueDelButton.Name = "ContinueDelButton";
             ContinueDelButton.NormalBackground = Color.FromArgb(0, 157, 209);
             ContinueDelButton.NormalForeColor = Color.White;
@@ -154,18 +162,20 @@
             // 
             // CatNameTextHolder
             // 
-            CatNameTextHolder.AutoSize = true;
+            CatNameTextHolder.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            CatNameTextHolder.AutoEllipsis = true;
             CatNameTextHolder.BackColor = Color.FromArgb(0, 0, 0, 0);
             CatNameTextHolder.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             CatNameTextHolder.ForeColor = Color.FromArgb(0, 157, 209);
             CatNameTextHolder.Location = new Point(346, 303);
             CatNameTextHolder.Name = "CatNameTextHolder";
-            CatNameTextHolder.Size = new Size(63, 24);
+            CatNameTextHolder.Size = new Size(174, 24);
             CatNameTextHolder.TabIndex = 33;
             CatNameTextHolder.Text = "Name";
             // 
             // CatIDTextHolder
             // 
+            CatIDTextHolder.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             CatIDTextHolder.AutoSize = true;
             CatIDTextHolder.BackColor = Color.FromArgb(0, 0, 0, 0);
             CatIDTextHolder.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -178,6 +188,7 @@
             // 
             // label2
             // 
+            label2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label2.AutoSize = true;
             label2.BackColor = Color.FromArgb(0, 0, 0, 0);
             label2.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -190,6 +201,7 @@
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label1.AutoSize = true;
             label1.BackColor = Color.FromArgb(0, 0, 0, 0);
             label1.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -202,6 +214,7 @@
             // 
             // DashboardTitlePage
             // 
+            DashboardTitlePage.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             DashboardTitlePage.AutoSize = true;
             DashboardTitlePage.BackColor = Color.FromArgb(0, 0, 0, 0);
             DashboardTitlePage.Font = new Font("Arial", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -214,6 +227,7 @@
             // 
             // cuiPictureBox1
             // 
+            cuiPictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             cuiPictureBox1.BackColor = Color.FromArgb(0, 0, 0, 0);
             cuiPictureBox1.BackgroundImage = Properties.Resources.bin;
             cuiPictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
@@ -221,6 +235,8 @@
             cuiPictureBox1.ImageTint = Color.White;
             cuiPictureBox1.Location = new Point(189, 29);
             cuiPictureBox1.Margin = new Padding(4, 5, 4, 5);
+            cuiPictureBox1.MaximumSize = new Size(187, 155);
+            cuiPictureBox1.MinimumSize = new Size(187, 155);
             cuiPictureBox1.Name = "cuiPictureBox1";
             cuiPictureBox1.OutlineThickness = 1F;
             cuiPictureBox1.PanelOutlineColor = Color.Empty;
@@ -235,8 +251,13 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(575, 423);
             Controls.Add(cuiPanel1);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
+            MaximumSize = new Size(593, 470);
+            MinimumSize = new Size(593, 470);
             Name = "DeleteCategoryDialogBox";
-            Text = "DeleteCategoryDialogBox";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Delete Category";
             cuiPanel1.ResumeLayout(false);
             cuiPanel1.PerformLayout();
             ResumeLayout(false);

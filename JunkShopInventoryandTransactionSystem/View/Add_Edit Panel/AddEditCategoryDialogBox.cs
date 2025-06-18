@@ -43,8 +43,10 @@ namespace JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel
                 proceedButton.Content = "Add Category";
 
                 // idk what these are yet
-                //this.Text = "Add Item";
-                //this.Icon = Icon.FromHandle(Properties.Resources.add.GetHicon());
+                //To Change the title of the form
+                this.Text = "Add Category";
+                // To Change the icon of the form
+                this.Icon = Icon.FromHandle(Properties.Resources.add.GetHicon());
             }
             else
             {
@@ -76,8 +78,10 @@ namespace JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel
                 proceedButton.Content = "Edit Category";
 
                 // idk what these are yet
-                //this.Text = "Add Item";
-                //this.Icon = Icon.FromHandle(Properties.Resources.add.GetHicon());
+                //To Change the title of the form
+                this.Text = "Edit Category";
+                // To Change the icon of the form
+                this.Icon = Icon.FromHandle(Properties.Resources.pen.GetHicon());
             }
             else
             {

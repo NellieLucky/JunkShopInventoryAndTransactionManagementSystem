@@ -35,6 +35,14 @@
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DashboardTitlePage = new Label();
             dataGridView1 = new DataGridView();
+            ItemID = new DataGridViewTextBoxColumn();
+            ItemName = new DataGridViewTextBoxColumn();
+            Category = new DataGridViewTextBoxColumn();
+            QtyType = new DataGridViewTextBoxColumn();
+            TransacQuantity = new DataGridViewTextBoxColumn();
+            ExchangeAmount = new DataGridViewTextBoxColumn();
+            Edit = new DataGridViewImageColumn();
+            Delete = new DataGridViewImageColumn();
             TransactionID = new Label();
             IdItem = new Label();
             TransactionQuantity = new Label();
@@ -48,14 +56,6 @@
             cuiButton3 = new CuoreUI.Controls.cuiButton();
             CategoryComboBox = new ComboBox();
             comboBox1 = new ComboBox();
-            ItemID = new DataGridViewTextBoxColumn();
-            ItemName = new DataGridViewTextBoxColumn();
-            Category = new DataGridViewTextBoxColumn();
-            QtyType = new DataGridViewTextBoxColumn();
-            TransacQuantity = new DataGridViewTextBoxColumn();
-            ExchangeAmount = new DataGridViewTextBoxColumn();
-            Edit = new DataGridViewImageColumn();
-            Delete = new DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -116,13 +116,89 @@
             dataGridView1.Size = new Size(1056, 438);
             dataGridView1.TabIndex = 30;
             // 
+            // ItemID
+            // 
+            ItemID.HeaderText = "ItemID";
+            ItemID.MinimumWidth = 6;
+            ItemID.Name = "ItemID";
+            ItemID.Width = 125;
+            // 
+            // ItemName
+            // 
+            ItemName.HeaderText = "Item Name";
+            ItemName.MinimumWidth = 6;
+            ItemName.Name = "ItemName";
+            ItemName.Width = 175;
+            // 
+            // Category
+            // 
+            Category.FillWeight = 150F;
+            Category.HeaderText = "Category";
+            Category.MinimumWidth = 6;
+            Category.Name = "Category";
+            Category.Width = 175;
+            // 
+            // QtyType
+            // 
+            QtyType.FillWeight = 125F;
+            QtyType.HeaderText = "QtyType";
+            QtyType.MinimumWidth = 6;
+            QtyType.Name = "QtyType";
+            QtyType.Width = 125;
+            // 
+            // TransacQuantity
+            // 
+            TransacQuantity.FillWeight = 59.177578F;
+            TransacQuantity.HeaderText = "Exchange Quantity";
+            TransacQuantity.MinimumWidth = 6;
+            TransacQuantity.Name = "TransacQuantity";
+            TransacQuantity.Width = 130;
+            // 
+            // ExchangeAmount
+            // 
+            ExchangeAmount.FillWeight = 59.177578F;
+            ExchangeAmount.HeaderText = "Exchange Amount";
+            ExchangeAmount.MinimumWidth = 6;
+            ExchangeAmount.Name = "ExchangeAmount";
+            ExchangeAmount.Width = 130;
+            // 
+            // Edit
+            // 
+            Edit.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.NullValue = null;
+            dataGridViewCellStyle2.Padding = new Padding(10);
+            Edit.DefaultCellStyle = dataGridViewCellStyle2;
+            Edit.FillWeight = 5.618882F;
+            Edit.HeaderText = "Edit";
+            Edit.Image = Properties.Resources.green_edit;
+            Edit.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            Edit.MinimumWidth = 6;
+            Edit.Name = "Edit";
+            Edit.Resizable = DataGridViewTriState.False;
+            // 
+            // Delete
+            // 
+            Delete.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.NullValue = null;
+            dataGridViewCellStyle3.Padding = new Padding(10);
+            Delete.DefaultCellStyle = dataGridViewCellStyle3;
+            Delete.FillWeight = 5.618882F;
+            Delete.HeaderText = "Delete";
+            Delete.Image = Properties.Resources.delete;
+            Delete.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            Delete.MinimumWidth = 6;
+            Delete.Name = "Delete";
+            Delete.Resizable = DataGridViewTriState.False;
+            // 
             // TransactionID
             // 
             TransactionID.AutoSize = true;
             TransactionID.BackColor = Color.FromArgb(0, 0, 0, 0);
             TransactionID.Font = new Font("Arial", 10.2F, FontStyle.Bold);
             TransactionID.ForeColor = Color.FromArgb(0, 157, 209);
-            TransactionID.Location = new Point(25, 90);
+            TransactionID.Location = new Point(584, 93);
             TransactionID.Name = "TransactionID";
             TransactionID.Size = new Size(143, 19);
             TransactionID.TabIndex = 32;
@@ -134,7 +210,7 @@
             IdItem.BackColor = Color.FromArgb(0, 0, 0, 0);
             IdItem.Font = new Font("Arial", 10.2F, FontStyle.Bold);
             IdItem.ForeColor = Color.FromArgb(0, 157, 209);
-            IdItem.Location = new Point(231, 92);
+            IdItem.Location = new Point(18, 195);
             IdItem.Name = "IdItem";
             IdItem.Size = new Size(63, 19);
             IdItem.TabIndex = 36;
@@ -146,7 +222,7 @@
             TransactionQuantity.BackColor = Color.FromArgb(0, 0, 0, 0);
             TransactionQuantity.Font = new Font("Arial", 10.2F, FontStyle.Bold);
             TransactionQuantity.ForeColor = Color.FromArgb(0, 157, 209);
-            TransactionQuantity.Location = new Point(438, 86);
+            TransactionQuantity.Location = new Point(225, 194);
             TransactionQuantity.Name = "TransactionQuantity";
             TransactionQuantity.Size = new Size(76, 19);
             TransactionQuantity.TabIndex = 38;
@@ -165,7 +241,7 @@
             cuiTextBox4.Image = null;
             cuiTextBox4.ImageExpand = new Point(0, 0);
             cuiTextBox4.ImageOffset = new Point(0, 0);
-            cuiTextBox4.Location = new Point(438, 109);
+            cuiTextBox4.Location = new Point(225, 217);
             cuiTextBox4.Margin = new Padding(4);
             cuiTextBox4.Multiline = false;
             cuiTextBox4.Name = "cuiTextBox4";
@@ -186,7 +262,7 @@
             CustomerName.BackColor = Color.FromArgb(0, 0, 0, 0);
             CustomerName.Font = new Font("Arial", 10.2F, FontStyle.Bold);
             CustomerName.ForeColor = Color.FromArgb(0, 157, 209);
-            CustomerName.Location = new Point(24, 179);
+            CustomerName.Location = new Point(18, 94);
             CustomerName.Name = "CustomerName";
             CustomerName.Size = new Size(135, 19);
             CustomerName.TabIndex = 40;
@@ -205,7 +281,7 @@
             cuiTextBox5.Image = null;
             cuiTextBox5.ImageExpand = new Point(0, 0);
             cuiTextBox5.ImageOffset = new Point(0, 0);
-            cuiTextBox5.Location = new Point(24, 202);
+            cuiTextBox5.Location = new Point(18, 117);
             cuiTextBox5.Margin = new Padding(4);
             cuiTextBox5.Multiline = false;
             cuiTextBox5.Name = "cuiTextBox5";
@@ -215,7 +291,7 @@
             cuiTextBox5.PlaceholderColor = Color.Gray;
             cuiTextBox5.PlaceholderText = "Item Name";
             cuiTextBox5.Rounding = new Padding(8);
-            cuiTextBox5.Size = new Size(477, 44);
+            cuiTextBox5.Size = new Size(259, 44);
             cuiTextBox5.TabIndex = 39;
             cuiTextBox5.TextOffset = new Size(0, 0);
             cuiTextBox5.UnderlinedStyle = false;
@@ -226,11 +302,11 @@
             CustomerContact.BackColor = Color.FromArgb(0, 0, 0, 0);
             CustomerContact.Font = new Font("Arial", 10.2F, FontStyle.Bold);
             CustomerContact.ForeColor = Color.FromArgb(0, 157, 209);
-            CustomerContact.Location = new Point(565, 179);
+            CustomerContact.Location = new Point(285, 94);
             CustomerContact.Name = "CustomerContact";
-            CustomerContact.Size = new Size(153, 19);
+            CustomerContact.Size = new Size(103, 19);
             CustomerContact.TabIndex = 42;
-            CustomerContact.Text = "Customer Contact";
+            CustomerContact.Text = "Contact No.";
             // 
             // cuiTextBox6
             // 
@@ -245,7 +321,7 @@
             cuiTextBox6.Image = null;
             cuiTextBox6.ImageExpand = new Point(0, 0);
             cuiTextBox6.ImageOffset = new Point(0, 0);
-            cuiTextBox6.Location = new Point(565, 202);
+            cuiTextBox6.Location = new Point(285, 117);
             cuiTextBox6.Margin = new Padding(4);
             cuiTextBox6.Multiline = false;
             cuiTextBox6.Name = "cuiTextBox6";
@@ -253,9 +329,9 @@
             cuiTextBox6.Padding = new Padding(20, 12, 20, 0);
             cuiTextBox6.PasswordChar = false;
             cuiTextBox6.PlaceholderColor = Color.Gray;
-            cuiTextBox6.PlaceholderText = "Item Name";
+            cuiTextBox6.PlaceholderText = "Contact No.";
             cuiTextBox6.Rounding = new Padding(8);
-            cuiTextBox6.Size = new Size(477, 44);
+            cuiTextBox6.Size = new Size(282, 44);
             cuiTextBox6.TabIndex = 41;
             cuiTextBox6.TextOffset = new Size(0, 0);
             cuiTextBox6.UnderlinedStyle = false;
@@ -281,7 +357,7 @@
             cuiButton2.ImageAutoCenter = true;
             cuiButton2.ImageExpand = new Point(0, 0);
             cuiButton2.ImageOffset = new Point(0, 0);
-            cuiButton2.Location = new Point(645, 109);
+            cuiButton2.Location = new Point(432, 221);
             cuiButton2.Name = "cuiButton2";
             cuiButton2.NormalBackground = Color.FromArgb(0, 157, 209);
             cuiButton2.NormalForeColor = Color.White;
@@ -382,8 +458,8 @@
             CategoryComboBox.ForeColor = Color.Gray;
             CategoryComboBox.FormattingEnabled = true;
             CategoryComboBox.IntegralHeight = false;
-            CategoryComboBox.Items.AddRange(new object[] { "Purchase to Seller", "Sold to Buyer" });
-            CategoryComboBox.Location = new Point(25, 114);
+            CategoryComboBox.Items.AddRange(new object[] { "Buyer", "Supplier" });
+            CategoryComboBox.Location = new Point(584, 117);
             CategoryComboBox.Name = "CategoryComboBox";
             CategoryComboBox.Size = new Size(200, 39);
             CategoryComboBox.TabIndex = 46;
@@ -397,86 +473,10 @@
             comboBox1.FormattingEnabled = true;
             comboBox1.IntegralHeight = false;
             comboBox1.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
-            comboBox1.Location = new Point(231, 114);
+            comboBox1.Location = new Point(18, 217);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(200, 39);
             comboBox1.TabIndex = 47;
-            // 
-            // ItemID
-            // 
-            ItemID.HeaderText = "ItemID";
-            ItemID.MinimumWidth = 6;
-            ItemID.Name = "ItemID";
-            ItemID.Width = 125;
-            // 
-            // ItemName
-            // 
-            ItemName.HeaderText = "Item Name";
-            ItemName.MinimumWidth = 6;
-            ItemName.Name = "ItemName";
-            ItemName.Width = 175;
-            // 
-            // Category
-            // 
-            Category.FillWeight = 150F;
-            Category.HeaderText = "Category";
-            Category.MinimumWidth = 6;
-            Category.Name = "Category";
-            Category.Width = 175;
-            // 
-            // QtyType
-            // 
-            QtyType.FillWeight = 125F;
-            QtyType.HeaderText = "QtyType";
-            QtyType.MinimumWidth = 6;
-            QtyType.Name = "QtyType";
-            QtyType.Width = 125;
-            // 
-            // TransacQuantity
-            // 
-            TransacQuantity.FillWeight = 59.177578F;
-            TransacQuantity.HeaderText = "Exchange Quantity";
-            TransacQuantity.MinimumWidth = 6;
-            TransacQuantity.Name = "TransacQuantity";
-            TransacQuantity.Width = 130;
-            // 
-            // ExchangeAmount
-            // 
-            ExchangeAmount.FillWeight = 59.177578F;
-            ExchangeAmount.HeaderText = "Exchange Amount";
-            ExchangeAmount.MinimumWidth = 6;
-            ExchangeAmount.Name = "ExchangeAmount";
-            ExchangeAmount.Width = 130;
-            // 
-            // Edit
-            // 
-            Edit.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.NullValue = null;
-            dataGridViewCellStyle2.Padding = new Padding(10);
-            Edit.DefaultCellStyle = dataGridViewCellStyle2;
-            Edit.FillWeight = 5.618882F;
-            Edit.HeaderText = "Edit";
-            Edit.Image = Properties.Resources.green_edit;
-            Edit.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            Edit.MinimumWidth = 6;
-            Edit.Name = "Edit";
-            Edit.Resizable = DataGridViewTriState.False;
-            // 
-            // Delete
-            // 
-            Delete.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.NullValue = null;
-            dataGridViewCellStyle3.Padding = new Padding(10);
-            Delete.DefaultCellStyle = dataGridViewCellStyle3;
-            Delete.FillWeight = 5.618882F;
-            Delete.HeaderText = "Delete";
-            Delete.Image = Properties.Resources.delete;
-            Delete.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            Delete.MinimumWidth = 6;
-            Delete.Name = "Delete";
-            Delete.Resizable = DataGridViewTriState.False;
             // 
             // GenerateTransactionPage
             // 
