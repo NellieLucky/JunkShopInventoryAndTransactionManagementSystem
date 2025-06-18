@@ -46,9 +46,6 @@
             cuiTextBox4 = new CuoreUI.Controls.cuiTextBox();
             IdItem = new Label();
             BuyersOrderTable = new DataGridView();
-            RegEmployeeTitlePage = new Label();
-            label2 = new Label();
-            label3 = new Label();
             ItemID = new DataGridViewTextBoxColumn();
             ItemName = new DataGridViewTextBoxColumn();
             QtyType = new DataGridViewTextBoxColumn();
@@ -57,6 +54,9 @@
             ExchangeAmount = new DataGridViewTextBoxColumn();
             Edit = new DataGridViewImageColumn();
             Remove = new DataGridViewImageColumn();
+            RegEmployeeTitlePage = new Label();
+            label2 = new Label();
+            label3 = new Label();
             ((System.ComponentModel.ISupportInitialize)BuyersOrderTable).BeginInit();
             SuspendLayout();
             // 
@@ -218,7 +218,7 @@
             BuyerContact.BackColor = Color.FromArgb(0, 0, 0, 0);
             BuyerContact.Font = new Font("Arial", 10.2F, FontStyle.Bold);
             BuyerContact.ForeColor = Color.FromArgb(0, 157, 209);
-            BuyerContact.Location = new Point(275, 531);
+            BuyerContact.Location = new Point(271, 529);
             BuyerContact.Name = "BuyerContact";
             BuyerContact.Size = new Size(103, 19);
             BuyerContact.TabIndex = 59;
@@ -237,7 +237,7 @@
             cuiTextBox6.Image = null;
             cuiTextBox6.ImageExpand = new Point(0, 0);
             cuiTextBox6.ImageOffset = new Point(0, 0);
-            cuiTextBox6.Location = new Point(275, 554);
+            cuiTextBox6.Location = new Point(271, 552);
             cuiTextBox6.Margin = new Padding(4);
             cuiTextBox6.Multiline = false;
             cuiTextBox6.Name = "cuiTextBox6";
@@ -258,7 +258,7 @@
             CustomerName.BackColor = Color.FromArgb(0, 0, 0, 0);
             CustomerName.Font = new Font("Arial", 10.2F, FontStyle.Bold);
             CustomerName.ForeColor = Color.FromArgb(0, 157, 209);
-            CustomerName.Location = new Point(8, 531);
+            CustomerName.Location = new Point(4, 529);
             CustomerName.Name = "CustomerName";
             CustomerName.Size = new Size(105, 19);
             CustomerName.TabIndex = 57;
@@ -277,7 +277,7 @@
             cuiTextBox5.Image = null;
             cuiTextBox5.ImageExpand = new Point(0, 0);
             cuiTextBox5.ImageOffset = new Point(0, 0);
-            cuiTextBox5.Location = new Point(8, 554);
+            cuiTextBox5.Location = new Point(4, 552);
             cuiTextBox5.Margin = new Padding(4);
             cuiTextBox5.Multiline = false;
             cuiTextBox5.Name = "cuiTextBox5";
@@ -389,42 +389,6 @@
             BuyersOrderTable.Size = new Size(1048, 390);
             BuyersOrderTable.TabIndex = 51;
             // 
-            // RegEmployeeTitlePage
-            // 
-            RegEmployeeTitlePage.AutoSize = true;
-            RegEmployeeTitlePage.BackColor = Color.FromArgb(0, 0, 0, 0);
-            RegEmployeeTitlePage.Font = new Font("Arial", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            RegEmployeeTitlePage.ForeColor = Color.FromArgb(0, 157, 209);
-            RegEmployeeTitlePage.Location = new Point(3, 7);
-            RegEmployeeTitlePage.Name = "RegEmployeeTitlePage";
-            RegEmployeeTitlePage.Size = new Size(275, 35);
-            RegEmployeeTitlePage.TabIndex = 67;
-            RegEmployeeTitlePage.Text = "Buyer Transaction";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.BackColor = Color.FromArgb(0, 0, 0, 0);
-            label2.Font = new Font("Arial", 10.2F, FontStyle.Bold);
-            label2.ForeColor = Color.FromArgb(0, 157, 209);
-            label2.Location = new Point(874, 537);
-            label2.Name = "label2";
-            label2.Size = new Size(94, 19);
-            label2.TabIndex = 69;
-            label2.Text = "Total Items";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.BackColor = Color.FromArgb(0, 0, 0, 0);
-            label3.Font = new Font("Arial", 10.2F, FontStyle.Bold);
-            label3.ForeColor = Color.FromArgb(0, 157, 209);
-            label3.Location = new Point(770, 537);
-            label3.Name = "label3";
-            label3.Size = new Size(100, 19);
-            label3.TabIndex = 68;
-            label3.Text = "Total Items:";
-            // 
             // ItemID
             // 
             ItemID.HeaderText = "ItemID";
@@ -493,6 +457,42 @@
             Remove.Name = "Remove";
             Remove.Resizable = DataGridViewTriState.False;
             Remove.Width = 70;
+            // 
+            // RegEmployeeTitlePage
+            // 
+            RegEmployeeTitlePage.AutoSize = true;
+            RegEmployeeTitlePage.BackColor = Color.FromArgb(0, 0, 0, 0);
+            RegEmployeeTitlePage.Font = new Font("Arial", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            RegEmployeeTitlePage.ForeColor = Color.FromArgb(0, 157, 209);
+            RegEmployeeTitlePage.Location = new Point(3, 7);
+            RegEmployeeTitlePage.Name = "RegEmployeeTitlePage";
+            RegEmployeeTitlePage.Size = new Size(275, 35);
+            RegEmployeeTitlePage.TabIndex = 67;
+            RegEmployeeTitlePage.Text = "Buyer Transaction";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.BackColor = Color.FromArgb(0, 0, 0, 0);
+            label2.Font = new Font("Arial", 10.2F, FontStyle.Bold);
+            label2.ForeColor = Color.FromArgb(0, 157, 209);
+            label2.Location = new Point(874, 537);
+            label2.Name = "label2";
+            label2.Size = new Size(94, 19);
+            label2.TabIndex = 69;
+            label2.Text = "Total Items";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.BackColor = Color.FromArgb(0, 0, 0, 0);
+            label3.Font = new Font("Arial", 10.2F, FontStyle.Bold);
+            label3.ForeColor = Color.FromArgb(0, 157, 209);
+            label3.Location = new Point(770, 537);
+            label3.Name = "label3";
+            label3.Size = new Size(100, 19);
+            label3.TabIndex = 68;
+            label3.Text = "Total Items:";
             // 
             // BuyerTransaction
             // 

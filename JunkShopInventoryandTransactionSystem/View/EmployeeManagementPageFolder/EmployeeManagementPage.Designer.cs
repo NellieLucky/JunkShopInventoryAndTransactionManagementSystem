@@ -28,14 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EmployeeManagementPage));
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle13 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle14 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
             DashboardTitlePage = new Label();
             vScrollBar1 = new VScrollBar();
             ItemID = new DataGridViewTextBoxColumn();
@@ -48,9 +48,6 @@
             Edit = new DataGridViewImageColumn();
             Delete = new DataGridViewImageColumn();
             dataGridView1 = new DataGridView();
-            RegisterEmployeeButton = new CuoreUI.Controls.cuiButton();
-            cuiTextBox1 = new CuoreUI.Controls.cuiTextBox();
-            cuiButton1 = new CuoreUI.Controls.cuiButton();
             Emp_ID = new DataGridViewTextBoxColumn();
             DateRegisteredColumn = new DataGridViewTextBoxColumn();
             EmailColumn = new DataGridViewTextBoxColumn();
@@ -60,6 +57,9 @@
             AddressColumn = new DataGridViewTextBoxColumn();
             EditColumn = new DataGridViewImageColumn();
             RemoveColumn = new DataGridViewImageColumn();
+            RegisterEmployeeButton = new CuoreUI.Controls.cuiButton();
+            SearchTextBox = new CuoreUI.Controls.cuiTextBox();
+            SearchButton = new CuoreUI.Controls.cuiButton();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -139,10 +139,10 @@
             // Edit
             // 
             Edit.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.NullValue = resources.GetObject("dataGridViewCellStyle1.NullValue");
-            dataGridViewCellStyle1.Padding = new Padding(10);
-            Edit.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.NullValue = resources.GetObject("dataGridViewCellStyle8.NullValue");
+            dataGridViewCellStyle8.Padding = new Padding(10);
+            Edit.DefaultCellStyle = dataGridViewCellStyle8;
             Edit.FillWeight = 5.618882F;
             Edit.HeaderText = "Edit";
             Edit.Image = Properties.Resources.pen;
@@ -154,10 +154,10 @@
             // Delete
             // 
             Delete.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.NullValue = resources.GetObject("dataGridViewCellStyle2.NullValue");
-            dataGridViewCellStyle2.Padding = new Padding(10);
-            Delete.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.NullValue = resources.GetObject("dataGridViewCellStyle9.NullValue");
+            dataGridViewCellStyle9.Padding = new Padding(10);
+            Delete.DefaultCellStyle = dataGridViewCellStyle9;
             Delete.FillWeight = 5.618882F;
             Delete.HeaderText = "Delete";
             Delete.Image = Properties.Resources.delete;
@@ -175,14 +175,14 @@
             dataGridView1.BackgroundColor = Color.White;
             dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.SunkenHorizontal;
             dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = Color.FromArgb(163, 244, 215);
-            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle3.ForeColor = Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(163, 244, 215);
-            dataGridViewCellStyle3.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = Color.FromArgb(163, 244, 215);
+            dataGridViewCellStyle10.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle10.ForeColor = Color.Black;
+            dataGridViewCellStyle10.SelectionBackColor = Color.FromArgb(163, 244, 215);
+            dataGridViewCellStyle10.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             dataGridView1.ColumnHeadersHeight = 60;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Emp_ID, DateRegisteredColumn, EmailColumn, NameColumn, PasswordColumn, ContactColumn, AddressColumn, EditColumn, RemoveColumn });
@@ -192,130 +192,25 @@
             dataGridView1.Location = new Point(14, 136);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
-            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle13.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle13.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle13.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = DataGridViewTriState.True;
+            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle13;
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.RowHeadersWidth = 50;
-            dataGridViewCellStyle7.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle7.ForeColor = Color.Black;
-            dataGridViewCellStyle7.SelectionBackColor = Color.FromArgb(0, 157, 209);
-            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
-            dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle14.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle14.ForeColor = Color.Black;
+            dataGridViewCellStyle14.SelectionBackColor = Color.FromArgb(0, 157, 209);
+            dataGridViewCellStyle14.WrapMode = DataGridViewTriState.True;
+            dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle14;
             dataGridView1.RowTemplate.Height = 50;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.Size = new Size(1056, 613);
             dataGridView1.TabIndex = 39;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
-            // 
-            // RegisterEmployeeButton
-            // 
-            RegisterEmployeeButton.BackColor = Color.FromArgb(0, 0, 0, 0);
-            RegisterEmployeeButton.CheckButton = false;
-            RegisterEmployeeButton.Checked = false;
-            RegisterEmployeeButton.CheckedBackground = Color.FromArgb(255, 106, 0);
-            RegisterEmployeeButton.CheckedForeColor = Color.White;
-            RegisterEmployeeButton.CheckedImageTint = Color.White;
-            RegisterEmployeeButton.CheckedOutline = Color.FromArgb(255, 106, 0);
-            RegisterEmployeeButton.Content = "Register Employee";
-            RegisterEmployeeButton.DialogResult = DialogResult.None;
-            RegisterEmployeeButton.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            RegisterEmployeeButton.ForeColor = Color.White;
-            RegisterEmployeeButton.HoverBackground = Color.White;
-            RegisterEmployeeButton.HoveredImageTint = Color.White;
-            RegisterEmployeeButton.HoverForeColor = Color.Black;
-            RegisterEmployeeButton.HoverOutline = Color.FromArgb(32, 128, 128, 128);
-            RegisterEmployeeButton.Image = null;
-            RegisterEmployeeButton.ImageAutoCenter = true;
-            RegisterEmployeeButton.ImageExpand = new Point(0, 0);
-            RegisterEmployeeButton.ImageOffset = new Point(0, 0);
-            RegisterEmployeeButton.Location = new Point(489, 80);
-            RegisterEmployeeButton.Name = "RegisterEmployeeButton";
-            RegisterEmployeeButton.NormalBackground = Color.FromArgb(0, 157, 209);
-            RegisterEmployeeButton.NormalForeColor = Color.White;
-            RegisterEmployeeButton.NormalImageTint = Color.White;
-            RegisterEmployeeButton.NormalOutline = Color.FromArgb(64, 128, 128, 128);
-            RegisterEmployeeButton.OutlineThickness = 1F;
-            RegisterEmployeeButton.PressedBackground = Color.WhiteSmoke;
-            RegisterEmployeeButton.PressedForeColor = Color.FromArgb(32, 32, 32);
-            RegisterEmployeeButton.PressedImageTint = Color.White;
-            RegisterEmployeeButton.PressedOutline = Color.FromArgb(64, 128, 128, 128);
-            RegisterEmployeeButton.Rounding = new Padding(8);
-            RegisterEmployeeButton.Size = new Size(193, 40);
-            RegisterEmployeeButton.TabIndex = 40;
-            RegisterEmployeeButton.TextAlignment = StringAlignment.Center;
-            RegisterEmployeeButton.TextOffset = new Point(0, 0);
-            RegisterEmployeeButton.Click += RegisterEmployeeButton_Click;
-            // 
-            // cuiTextBox1
-            // 
-            cuiTextBox1.BackColor = Color.FromArgb(0, 0, 0, 0);
-            cuiTextBox1.BackgroundColor = Color.White;
-            cuiTextBox1.BorderColor = Color.Empty;
-            cuiTextBox1.Content = "";
-            cuiTextBox1.FocusBackgroundColor = Color.White;
-            cuiTextBox1.FocusBorderColor = Color.Empty;
-            cuiTextBox1.FocusImageTint = Color.White;
-            cuiTextBox1.Font = new Font("Microsoft Sans Serif", 9.5F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            cuiTextBox1.ForeColor = Color.Gray;
-            cuiTextBox1.Image = null;
-            cuiTextBox1.ImageExpand = new Point(0, 0);
-            cuiTextBox1.ImageOffset = new Point(0, 0);
-            cuiTextBox1.Location = new Point(737, 85);
-            cuiTextBox1.Margin = new Padding(5, 4, 5, 4);
-            cuiTextBox1.Multiline = false;
-            cuiTextBox1.Name = "cuiTextBox1";
-            cuiTextBox1.NormalImageTint = Color.White;
-            cuiTextBox1.Padding = new Padding(18, 8, 18, 0);
-            cuiTextBox1.PasswordChar = false;
-            cuiTextBox1.PlaceholderColor = Color.Gray;
-            cuiTextBox1.PlaceholderText = "Search...";
-            cuiTextBox1.Rounding = new Padding(2);
-            cuiTextBox1.Size = new Size(333, 35);
-            cuiTextBox1.TabIndex = 41;
-            cuiTextBox1.TextOffset = new Size(0, 0);
-            cuiTextBox1.UnderlinedStyle = false;
-            // 
-            // cuiButton1
-            // 
-            cuiButton1.CheckButton = false;
-            cuiButton1.Checked = false;
-            cuiButton1.CheckedBackground = Color.FromArgb(255, 106, 0);
-            cuiButton1.CheckedForeColor = Color.White;
-            cuiButton1.CheckedImageTint = Color.White;
-            cuiButton1.CheckedOutline = Color.FromArgb(255, 106, 0);
-            cuiButton1.Content = "";
-            cuiButton1.DialogResult = DialogResult.None;
-            cuiButton1.Font = new Font("Microsoft Sans Serif", 9.75F);
-            cuiButton1.ForeColor = Color.Black;
-            cuiButton1.HoverBackground = Color.White;
-            cuiButton1.HoveredImageTint = Color.White;
-            cuiButton1.HoverForeColor = Color.Black;
-            cuiButton1.HoverOutline = Color.FromArgb(32, 128, 128, 128);
-            cuiButton1.Image = Properties.Resources.magnifying_glass;
-            cuiButton1.ImageAutoCenter = true;
-            cuiButton1.ImageExpand = new Point(5, 5);
-            cuiButton1.ImageOffset = new Point(0, 0);
-            cuiButton1.Location = new Point(698, 85);
-            cuiButton1.Name = "cuiButton1";
-            cuiButton1.NormalBackground = Color.FromArgb(0, 157, 209);
-            cuiButton1.NormalForeColor = Color.Black;
-            cuiButton1.NormalImageTint = Color.White;
-            cuiButton1.NormalOutline = Color.FromArgb(64, 128, 128, 128);
-            cuiButton1.OutlineThickness = 1F;
-            cuiButton1.PressedBackground = Color.WhiteSmoke;
-            cuiButton1.PressedForeColor = Color.FromArgb(32, 32, 32);
-            cuiButton1.PressedImageTint = Color.White;
-            cuiButton1.PressedOutline = Color.FromArgb(64, 128, 128, 128);
-            cuiButton1.Rounding = new Padding(0, 5, 5, 0);
-            cuiButton1.Size = new Size(43, 35);
-            cuiButton1.TabIndex = 42;
-            cuiButton1.TextAlignment = StringAlignment.Center;
-            cuiButton1.TextOffset = new Point(0, 0);
             // 
             // Emp_ID
             // 
@@ -372,10 +267,10 @@
             // EditColumn
             // 
             EditColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.NullValue = null;
-            dataGridViewCellStyle4.Padding = new Padding(10);
-            EditColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.NullValue = null;
+            dataGridViewCellStyle11.Padding = new Padding(10);
+            EditColumn.DefaultCellStyle = dataGridViewCellStyle11;
             EditColumn.FillWeight = 5.618882F;
             EditColumn.HeaderText = "Edit";
             EditColumn.Image = Properties.Resources.green_edit;
@@ -387,10 +282,10 @@
             // RemoveColumn
             // 
             RemoveColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.NullValue = null;
-            dataGridViewCellStyle5.Padding = new Padding(10);
-            RemoveColumn.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.NullValue = null;
+            dataGridViewCellStyle12.Padding = new Padding(10);
+            RemoveColumn.DefaultCellStyle = dataGridViewCellStyle12;
             RemoveColumn.FillWeight = 5.618882F;
             RemoveColumn.HeaderText = "Remove";
             RemoveColumn.Image = Properties.Resources.people;
@@ -399,13 +294,118 @@
             RemoveColumn.Name = "RemoveColumn";
             RemoveColumn.Resizable = DataGridViewTriState.False;
             // 
+            // RegisterEmployeeButton
+            // 
+            RegisterEmployeeButton.BackColor = Color.FromArgb(0, 0, 0, 0);
+            RegisterEmployeeButton.CheckButton = false;
+            RegisterEmployeeButton.Checked = false;
+            RegisterEmployeeButton.CheckedBackground = Color.FromArgb(255, 106, 0);
+            RegisterEmployeeButton.CheckedForeColor = Color.White;
+            RegisterEmployeeButton.CheckedImageTint = Color.White;
+            RegisterEmployeeButton.CheckedOutline = Color.FromArgb(255, 106, 0);
+            RegisterEmployeeButton.Content = "Register Employee";
+            RegisterEmployeeButton.DialogResult = DialogResult.None;
+            RegisterEmployeeButton.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            RegisterEmployeeButton.ForeColor = Color.White;
+            RegisterEmployeeButton.HoverBackground = Color.White;
+            RegisterEmployeeButton.HoveredImageTint = Color.White;
+            RegisterEmployeeButton.HoverForeColor = Color.Black;
+            RegisterEmployeeButton.HoverOutline = Color.FromArgb(32, 128, 128, 128);
+            RegisterEmployeeButton.Image = null;
+            RegisterEmployeeButton.ImageAutoCenter = true;
+            RegisterEmployeeButton.ImageExpand = new Point(0, 0);
+            RegisterEmployeeButton.ImageOffset = new Point(0, 0);
+            RegisterEmployeeButton.Location = new Point(489, 80);
+            RegisterEmployeeButton.Name = "RegisterEmployeeButton";
+            RegisterEmployeeButton.NormalBackground = Color.FromArgb(0, 157, 209);
+            RegisterEmployeeButton.NormalForeColor = Color.White;
+            RegisterEmployeeButton.NormalImageTint = Color.White;
+            RegisterEmployeeButton.NormalOutline = Color.FromArgb(64, 128, 128, 128);
+            RegisterEmployeeButton.OutlineThickness = 1F;
+            RegisterEmployeeButton.PressedBackground = Color.WhiteSmoke;
+            RegisterEmployeeButton.PressedForeColor = Color.FromArgb(32, 32, 32);
+            RegisterEmployeeButton.PressedImageTint = Color.White;
+            RegisterEmployeeButton.PressedOutline = Color.FromArgb(64, 128, 128, 128);
+            RegisterEmployeeButton.Rounding = new Padding(8);
+            RegisterEmployeeButton.Size = new Size(193, 40);
+            RegisterEmployeeButton.TabIndex = 40;
+            RegisterEmployeeButton.TextAlignment = StringAlignment.Center;
+            RegisterEmployeeButton.TextOffset = new Point(0, 0);
+            RegisterEmployeeButton.Click += RegisterEmployeeButton_Click;
+            // 
+            // SearchTextBox
+            // 
+            SearchTextBox.BackColor = Color.FromArgb(0, 0, 0, 0);
+            SearchTextBox.BackgroundColor = Color.White;
+            SearchTextBox.BorderColor = Color.Empty;
+            SearchTextBox.Content = "";
+            SearchTextBox.FocusBackgroundColor = Color.White;
+            SearchTextBox.FocusBorderColor = Color.Empty;
+            SearchTextBox.FocusImageTint = Color.White;
+            SearchTextBox.Font = new Font("Microsoft Sans Serif", 9.5F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            SearchTextBox.ForeColor = Color.Gray;
+            SearchTextBox.Image = null;
+            SearchTextBox.ImageExpand = new Point(0, 0);
+            SearchTextBox.ImageOffset = new Point(0, 0);
+            SearchTextBox.Location = new Point(737, 85);
+            SearchTextBox.Margin = new Padding(5, 4, 5, 4);
+            SearchTextBox.Multiline = false;
+            SearchTextBox.Name = "SearchTextBox";
+            SearchTextBox.NormalImageTint = Color.White;
+            SearchTextBox.Padding = new Padding(18, 8, 18, 0);
+            SearchTextBox.PasswordChar = false;
+            SearchTextBox.PlaceholderColor = Color.Gray;
+            SearchTextBox.PlaceholderText = "Search...";
+            SearchTextBox.Rounding = new Padding(2);
+            SearchTextBox.Size = new Size(333, 35);
+            SearchTextBox.TabIndex = 41;
+            SearchTextBox.TextOffset = new Size(0, 0);
+            SearchTextBox.UnderlinedStyle = false;
+            // 
+            // SearchButton
+            // 
+            SearchButton.CheckButton = false;
+            SearchButton.Checked = false;
+            SearchButton.CheckedBackground = Color.FromArgb(255, 106, 0);
+            SearchButton.CheckedForeColor = Color.White;
+            SearchButton.CheckedImageTint = Color.White;
+            SearchButton.CheckedOutline = Color.FromArgb(255, 106, 0);
+            SearchButton.Content = "";
+            SearchButton.DialogResult = DialogResult.None;
+            SearchButton.Font = new Font("Microsoft Sans Serif", 9.75F);
+            SearchButton.ForeColor = Color.Black;
+            SearchButton.HoverBackground = Color.White;
+            SearchButton.HoveredImageTint = Color.White;
+            SearchButton.HoverForeColor = Color.Black;
+            SearchButton.HoverOutline = Color.FromArgb(32, 128, 128, 128);
+            SearchButton.Image = Properties.Resources.magnifying_glass;
+            SearchButton.ImageAutoCenter = true;
+            SearchButton.ImageExpand = new Point(5, 5);
+            SearchButton.ImageOffset = new Point(0, 0);
+            SearchButton.Location = new Point(698, 85);
+            SearchButton.Name = "SearchButton";
+            SearchButton.NormalBackground = Color.FromArgb(0, 157, 209);
+            SearchButton.NormalForeColor = Color.Black;
+            SearchButton.NormalImageTint = Color.White;
+            SearchButton.NormalOutline = Color.FromArgb(64, 128, 128, 128);
+            SearchButton.OutlineThickness = 1F;
+            SearchButton.PressedBackground = Color.WhiteSmoke;
+            SearchButton.PressedForeColor = Color.FromArgb(32, 32, 32);
+            SearchButton.PressedImageTint = Color.White;
+            SearchButton.PressedOutline = Color.FromArgb(64, 128, 128, 128);
+            SearchButton.Rounding = new Padding(0, 5, 5, 0);
+            SearchButton.Size = new Size(43, 35);
+            SearchButton.TabIndex = 42;
+            SearchButton.TextAlignment = StringAlignment.Center;
+            SearchButton.TextOffset = new Point(0, 0);
+            // 
             // EmployeeManagementPage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(227, 244, 238);
-            Controls.Add(cuiButton1);
-            Controls.Add(cuiTextBox1);
+            Controls.Add(SearchButton);
+            Controls.Add(SearchTextBox);
             Controls.Add(RegisterEmployeeButton);
             Controls.Add(dataGridView1);
             Controls.Add(vScrollBar1);
@@ -433,8 +433,8 @@
         private DataGridViewImageColumn Edit;
         private DataGridViewImageColumn Delete;
         private CuoreUI.Controls.cuiButton RegisterEmployeeButton;
-        private CuoreUI.Controls.cuiTextBox cuiTextBox1;
-        private CuoreUI.Controls.cuiButton cuiButton1;
+        private CuoreUI.Controls.cuiTextBox SearchTextBox;
+        private CuoreUI.Controls.cuiButton SearchButton;
         private DataGridViewTextBoxColumn Emp_ID;
         private DataGridViewTextBoxColumn DateRegisteredColumn;
         private DataGridViewTextBoxColumn EmailColumn;

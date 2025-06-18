@@ -1,5 +1,4 @@
-﻿
-//imports the backend file ReloadInventory.cs
+﻿//imports the backend file ReloadInventory.cs
 using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Reload;
 using JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel;
 using JunkShopInventoryandTransactionSystem.View.DeletionDialogs;
@@ -25,6 +24,10 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
         public ItemRecordsPage()
         {
             InitializeComponent();
+
+            // Add these lines after InitializeComponent()
+            SearchButton.Click += SearchButton_Click;
+            SearchTextBox.ContentChanged += SearchTextBox_TextChanged; // Use ContentChanged instead of KeyPress
 
             // Call the static LoadInventoryData method from ReloadInventory
             // reads unarchived inventory data from the database and loads it into the DataGridView
@@ -53,7 +56,7 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
             ItemRecordsTable.Paint += DataGridView1_Paint; // Attach the Paint event handler to the DataGridView
         }
 
-        private void DataGridView1_Paint(object sender, PaintEventArgs e)
+        private void DataGridView1_Paint(object? sender, PaintEventArgs e)
         {
             // Get the rectangles for the Edit and Delete header cells  
             var editRect = ItemRecordsTable.GetCellDisplayRectangle(ItemRecordsTable.Columns["Edit"].Index, -1, true);
@@ -102,57 +105,98 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
         // Eto yung para sa Edit Delete naka img siya, bale eto yung lalagyan ng logic for edit and delete
         private void ItemRecordsTable_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Check if the clicked cell is an image column
-            // if e.ColumnIndex value is 8 then its Delete
-            // if e.ColumnIndex value is 7 then its Edit
-            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            // Only process if it's a valid row
+            if (e.RowIndex < 0) return;
+
+            // Only process clicks on image columns
+            if (!(ItemRecordsTable.Columns[e.ColumnIndex] is DataGridViewImageColumn)) return;
+
+            string clickedColumnName = ItemRecordsTable.Columns[e.ColumnIndex].Name;
+            DataGridViewRow selectedRow = ItemRecordsTable.Rows[e.RowIndex];
+            int itemId = Convert.ToInt32(selectedRow.Cells["ItemID"].Value);
+
+            if (clickedColumnName == "Edit")
             {
-                string clickedColumnName = ItemRecordsTable.Columns[e.ColumnIndex].Name;
-
-                // Get the itemID from the appropriate cell (e.g., column 0)
-                // Get the current row using e.RowIndex
-                DataGridViewRow selectedRow = ItemRecordsTable.Rows[e.RowIndex];
-                int itemId = Convert.ToInt32(selectedRow.Cells["ItemID"].Value);
-
-
-                if (ItemRecordsTable.Columns[e.ColumnIndex] is DataGridViewImageColumn)
+                if (addEditInventoryItemDialogBox == null || addEditInventoryItemDialogBox.IsDisposed)
                 {
-                    if (clickedColumnName == "Edit")
-                    {
-                        //calls the add edit window
-                        if (addEditInventoryItemDialogBox == null || addEditInventoryItemDialogBox.IsDisposed) // Check if it's already open  
-                        {
-                            string value = "Edit"; // Set the mode to "Edit"
-
-                            //pass the data grid view to allow refreshing of inventory after adding/editing an item
-                            addEditInventoryItemDialogBox = new AddEditInventoryItem(value, ItemRecordsTable, itemId);
-                            addEditInventoryItemDialogBox.Show();
-                        }
-                        else
-                        {
-                            addEditInventoryItemDialogBox.Focus(); // Bring existing form to front 
-                        }
-                    }   // shows a temporary messagebox.show for delete confirmation
-                    else if (clickedColumnName == "Delete")
-                    {
-                        //calls the add edit window
-                        if (deleteItemDialogBox == null || deleteItemDialogBox.IsDisposed)
-                        {
-                            deleteItemDialogBox = new DeleteItemDialogBox(itemId, ItemRecordsTable);
-                            deleteItemDialogBox.Show();
-                        }
-                        else
-                        {
-                            deleteItemDialogBox.Focus(); // Bring to front if it's already open
-                        }
-                        
-                    }
+                    string value = "Edit";
+                    addEditInventoryItemDialogBox = new AddEditInventoryItem(value, ItemRecordsTable, itemId);
+                    addEditInventoryItemDialogBox.Show();
                 }
                 else
                 {
-                    MessageBox.Show("An error occurred during the action.", "Action Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    addEditInventoryItemDialogBox.Focus();
                 }
             }
+            else if (clickedColumnName == "Delete")
+            {
+                if (deleteItemDialogBox == null || deleteItemDialogBox.IsDisposed)
+                {
+                    deleteItemDialogBox = new DeleteItemDialogBox(itemId, ItemRecordsTable);
+                    deleteItemDialogBox.Show();
+                }
+                else
+                {
+                    deleteItemDialogBox.Focus();
+                }
+            }
+        }
+
+        // Update the event handler methods to explicitly allow nullable sender parameters
+        private void SearchButton_Click(object? sender, EventArgs e)
+        {
+            FilterItemRecords(SearchTextBox.Content);
+        }
+
+        private void SearchTextBox_TextChanged(object? sender, EventArgs e)
+        {
+            FilterItemRecords(SearchTextBox.Content);
+        }
+
+        // Modify FilterItemRecords to be more efficient
+        private void FilterItemRecords(string searchText)
+        {
+            if (ItemRecordsTable.DataSource is DataTable dataTable)
+            {
+                try
+                {
+                    dataTable.DefaultView.RowFilter = string.IsNullOrWhiteSpace(searchText) ? "" :
+                        $"Convert(ItemID, 'System.String') LIKE '%{searchText}%' OR " +  // Added ID search
+                        $"itemName LIKE '%{searchText}%' OR " +
+                        $"itemCategoryName LIKE '%{searchText}%' OR " +
+                        $"itemQtyType LIKE '%{searchText}%' OR " +
+                        $"Convert(itemQuantity, 'System.String') LIKE '%{searchText}%' OR " +
+                        $"Convert(itemBuyingPrice, 'System.String') LIKE '%{searchText}%' OR " +
+                        $"Convert(itemSellingPrice, 'System.String') LIKE '%{searchText}%'";
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error filtering data: {ex.Message}", "Search Error", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                foreach (DataGridViewRow row in ItemRecordsTable.Rows)
+                {
+                    bool visible = string.IsNullOrWhiteSpace(searchText);
+                    if (!visible)
+                    {
+                        searchText = searchText.ToLower();
+                        visible = row.Cells["ItemID"]?.Value?.ToString()?.Contains(searchText) == true ||  // Added ID search
+                                 row.Cells["ItemName"]?.Value?.ToString()?.ToLower().Contains(searchText) == true ||
+                                 row.Cells["ItemCategoryName"]?.Value?.ToString()?.ToLower().Contains(searchText) == true ||
+                                 row.Cells["ItemQtyType"]?.Value?.ToString()?.ToLower().Contains(searchText) == true ||
+                                 row.Cells["ItemQuantity"]?.Value?.ToString()?.Contains(searchText) == true ||
+                                 row.Cells["ItemBuyingPrice"]?.Value?.ToString()?.Contains(searchText) == true ||
+                                 row.Cells["ItemSellingPrice"]?.Value?.ToString()?.Contains(searchText) == true;
+                    }
+                    row.Visible = visible;
+                }
+            }
+
+            // Refresh the view
+            ItemRecordsTable.Refresh();
         }
     }
 }

@@ -22,6 +22,10 @@ namespace JunkShopInventoryandTransactionSystem.View.EmployeeManagementPageFolde
         {
             InitializeComponent();
 
+            // Add search event handlers
+            SearchButton.Click += SearchButton_Click;
+            SearchTextBox.ContentChanged += SearchTextBox_TextChanged;
+
             LoadEmployeeData();
 
             // Set header text for Edit and Delete columns to empty
@@ -30,7 +34,7 @@ namespace JunkShopInventoryandTransactionSystem.View.EmployeeManagementPageFolde
             dataGridView1.Paint += DataGridView1_Paint; // Attach the Paint event handler to the DataGridView
         }
 
-        private void DataGridView1_Paint(object sender, PaintEventArgs e)
+        private void DataGridView1_Paint(object? sender, PaintEventArgs e)
         {
             // Get the rectangles for the Edit and Delete header cells  
             var editRect = dataGridView1.GetCellDisplayRectangle(dataGridView1.Columns["EditColumn"].Index, -1, true);
@@ -161,6 +165,54 @@ namespace JunkShopInventoryandTransactionSystem.View.EmployeeManagementPageFolde
             else
             {
                 addEditEmployeeDialogBox.Focus(); // Bring existing form to front  
+            }
+        }
+
+        private void SearchButton_Click(object? sender, EventArgs e)
+        {
+            FilterEmployees(SearchTextBox.Content);
+        }
+
+        private void SearchTextBox_TextChanged(object? sender, EventArgs e)
+        {
+            FilterEmployees(SearchTextBox.Content);
+        }
+
+        private void FilterEmployees(string searchText)
+        {
+            if (dataGridView1.DataSource is DataTable dataTable)
+            {
+                try
+                {
+                    dataTable.DefaultView.RowFilter = string.IsNullOrWhiteSpace(searchText) ? "" :
+                        $"Convert(empId, 'System.String') LIKE '%{searchText}%' OR " +  // Added ID search
+                        $"empEmail LIKE '%{searchText}%' OR " +
+                        $"empName LIKE '%{searchText}%' OR " +
+                        $"empContact LIKE '%{searchText}%' OR " +
+                        $"empAddress LIKE '%{searchText}%'";
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error filtering data: {ex.Message}", "Search Error", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    bool visible = string.IsNullOrWhiteSpace(searchText);
+                    if (!visible)
+                    {
+                        searchText = searchText.ToLower();
+                        visible = (row.Cells["Emp_ID"].Value?.ToString()?.Contains(searchText, StringComparison.OrdinalIgnoreCase) == true) ||  // Added ID search
+                                  (row.Cells["EmailColumn"].Value?.ToString()?.Contains(searchText, StringComparison.OrdinalIgnoreCase) == true) ||
+                                  (row.Cells["NameColumn"].Value?.ToString()?.Contains(searchText, StringComparison.OrdinalIgnoreCase) == true) ||
+                                  (row.Cells["ContactColumn"].Value?.ToString()?.Contains(searchText, StringComparison.OrdinalIgnoreCase) == true) ||
+                                  (row.Cells["AddressColumn"].Value?.ToString()?.Contains(searchText, StringComparison.OrdinalIgnoreCase) == true);
+                    }
+                    row.Visible = visible;
+                }
             }
         }
     }

@@ -28,14 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ItemRecordsPage));
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            cuiTextBox1 = new CuoreUI.Controls.cuiTextBox();
-            cuiButton1 = new CuoreUI.Controls.cuiButton();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            SearchTextBox = new CuoreUI.Controls.cuiTextBox();
+            SearchButton = new CuoreUI.Controls.cuiButton();
             panel1 = new Panel();
             AddItemButton = new CuoreUI.Controls.cuiButton();
             DashboardTitlePage = new Label();
@@ -53,77 +53,77 @@
             ((System.ComponentModel.ISupportInitialize)ItemRecordsTable).BeginInit();
             SuspendLayout();
             // 
-            // cuiTextBox1
+            // SearchTextBox
             // 
-            cuiTextBox1.BackColor = Color.FromArgb(0, 0, 0, 0);
-            cuiTextBox1.BackgroundColor = Color.White;
-            cuiTextBox1.BorderColor = Color.Empty;
-            cuiTextBox1.Content = "";
-            cuiTextBox1.FocusBackgroundColor = Color.White;
-            cuiTextBox1.FocusBorderColor = Color.Empty;
-            cuiTextBox1.FocusImageTint = Color.White;
-            cuiTextBox1.Font = new Font("Microsoft Sans Serif", 9.5F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            cuiTextBox1.ForeColor = Color.Gray;
-            cuiTextBox1.Image = null;
-            cuiTextBox1.ImageExpand = new Point(0, 0);
-            cuiTextBox1.ImageOffset = new Point(0, 0);
-            cuiTextBox1.Location = new Point(41, 2);
-            cuiTextBox1.Margin = new Padding(4);
-            cuiTextBox1.Multiline = false;
-            cuiTextBox1.Name = "cuiTextBox1";
-            cuiTextBox1.NormalImageTint = Color.White;
-            cuiTextBox1.Padding = new Padding(18, 8, 18, 0);
-            cuiTextBox1.PasswordChar = false;
-            cuiTextBox1.PlaceholderColor = Color.Gray;
-            cuiTextBox1.PlaceholderText = "Search...";
-            cuiTextBox1.Rounding = new Padding(2);
-            cuiTextBox1.Size = new Size(333, 35);
-            cuiTextBox1.TabIndex = 23;
-            cuiTextBox1.TextOffset = new Size(0, 0);
-            cuiTextBox1.UnderlinedStyle = false;
+            SearchTextBox.BackColor = Color.FromArgb(0, 0, 0, 0);
+            SearchTextBox.BackgroundColor = Color.White;
+            SearchTextBox.BorderColor = Color.Empty;
+            SearchTextBox.Content = "";
+            SearchTextBox.FocusBackgroundColor = Color.White;
+            SearchTextBox.FocusBorderColor = Color.Empty;
+            SearchTextBox.FocusImageTint = Color.White;
+            SearchTextBox.Font = new Font("Microsoft Sans Serif", 9.5F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            SearchTextBox.ForeColor = Color.Gray;
+            SearchTextBox.Image = null;
+            SearchTextBox.ImageExpand = new Point(0, 0);
+            SearchTextBox.ImageOffset = new Point(0, 0);
+            SearchTextBox.Location = new Point(41, 2);
+            SearchTextBox.Margin = new Padding(4);
+            SearchTextBox.Multiline = false;
+            SearchTextBox.Name = "SearchTextBox";
+            SearchTextBox.NormalImageTint = Color.White;
+            SearchTextBox.Padding = new Padding(18, 8, 18, 0);
+            SearchTextBox.PasswordChar = false;
+            SearchTextBox.PlaceholderColor = Color.Gray;
+            SearchTextBox.PlaceholderText = "Search...";
+            SearchTextBox.Rounding = new Padding(2);
+            SearchTextBox.Size = new Size(333, 35);
+            SearchTextBox.TabIndex = 23;
+            SearchTextBox.TextOffset = new Size(0, 0);
+            SearchTextBox.UnderlinedStyle = false;
             // 
-            // cuiButton1
+            // SearchButton
             // 
-            cuiButton1.CheckButton = false;
-            cuiButton1.Checked = false;
-            cuiButton1.CheckedBackground = Color.FromArgb(255, 106, 0);
-            cuiButton1.CheckedForeColor = Color.White;
-            cuiButton1.CheckedImageTint = Color.White;
-            cuiButton1.CheckedOutline = Color.FromArgb(255, 106, 0);
-            cuiButton1.Content = "";
-            cuiButton1.DialogResult = DialogResult.None;
-            cuiButton1.Font = new Font("Microsoft Sans Serif", 9.75F);
-            cuiButton1.ForeColor = Color.Black;
-            cuiButton1.HoverBackground = Color.White;
-            cuiButton1.HoveredImageTint = Color.White;
-            cuiButton1.HoverForeColor = Color.Black;
-            cuiButton1.HoverOutline = Color.FromArgb(32, 128, 128, 128);
-            cuiButton1.Image = Properties.Resources.magnifying_glass;
-            cuiButton1.ImageAutoCenter = true;
-            cuiButton1.ImageExpand = new Point(5, 5);
-            cuiButton1.ImageOffset = new Point(0, 0);
-            cuiButton1.Location = new Point(0, 0);
-            cuiButton1.Name = "cuiButton1";
-            cuiButton1.NormalBackground = Color.FromArgb(0, 157, 209);
-            cuiButton1.NormalForeColor = Color.Black;
-            cuiButton1.NormalImageTint = Color.White;
-            cuiButton1.NormalOutline = Color.FromArgb(64, 128, 128, 128);
-            cuiButton1.OutlineThickness = 1F;
-            cuiButton1.PressedBackground = Color.WhiteSmoke;
-            cuiButton1.PressedForeColor = Color.FromArgb(32, 32, 32);
-            cuiButton1.PressedImageTint = Color.White;
-            cuiButton1.PressedOutline = Color.FromArgb(64, 128, 128, 128);
-            cuiButton1.Rounding = new Padding(0, 5, 5, 0);
-            cuiButton1.Size = new Size(43, 39);
-            cuiButton1.TabIndex = 24;
-            cuiButton1.TextAlignment = StringAlignment.Center;
-            cuiButton1.TextOffset = new Point(0, 0);
+            SearchButton.CheckButton = false;
+            SearchButton.Checked = false;
+            SearchButton.CheckedBackground = Color.FromArgb(255, 106, 0);
+            SearchButton.CheckedForeColor = Color.White;
+            SearchButton.CheckedImageTint = Color.White;
+            SearchButton.CheckedOutline = Color.FromArgb(255, 106, 0);
+            SearchButton.Content = "";
+            SearchButton.DialogResult = DialogResult.None;
+            SearchButton.Font = new Font("Microsoft Sans Serif", 9.75F);
+            SearchButton.ForeColor = Color.Black;
+            SearchButton.HoverBackground = Color.White;
+            SearchButton.HoveredImageTint = Color.White;
+            SearchButton.HoverForeColor = Color.Black;
+            SearchButton.HoverOutline = Color.FromArgb(32, 128, 128, 128);
+            SearchButton.Image = Properties.Resources.magnifying_glass;
+            SearchButton.ImageAutoCenter = true;
+            SearchButton.ImageExpand = new Point(5, 5);
+            SearchButton.ImageOffset = new Point(0, 0);
+            SearchButton.Location = new Point(0, 0);
+            SearchButton.Name = "SearchButton";
+            SearchButton.NormalBackground = Color.FromArgb(0, 157, 209);
+            SearchButton.NormalForeColor = Color.Black;
+            SearchButton.NormalImageTint = Color.White;
+            SearchButton.NormalOutline = Color.FromArgb(64, 128, 128, 128);
+            SearchButton.OutlineThickness = 1F;
+            SearchButton.PressedBackground = Color.WhiteSmoke;
+            SearchButton.PressedForeColor = Color.FromArgb(32, 32, 32);
+            SearchButton.PressedImageTint = Color.White;
+            SearchButton.PressedOutline = Color.FromArgb(64, 128, 128, 128);
+            SearchButton.Rounding = new Padding(0, 5, 5, 0);
+            SearchButton.Size = new Size(43, 39);
+            SearchButton.TabIndex = 24;
+            SearchButton.TextAlignment = StringAlignment.Center;
+            SearchButton.TextOffset = new Point(0, 0);
             // 
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(0, 157, 209);
-            panel1.Controls.Add(cuiButton1);
-            panel1.Controls.Add(cuiTextBox1);
+            panel1.Controls.Add(SearchButton);
+            panel1.Controls.Add(SearchTextBox);
             panel1.Location = new Point(693, 22);
             panel1.Name = "panel1";
             panel1.Size = new Size(376, 40);
@@ -189,14 +189,14 @@
             ItemRecordsTable.BackgroundColor = Color.White;
             ItemRecordsTable.CellBorderStyle = DataGridViewCellBorderStyle.SunkenHorizontal;
             ItemRecordsTable.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(163, 244, 215);
-            dataGridViewCellStyle1.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(163, 244, 215);
-            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            ItemRecordsTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = Color.FromArgb(163, 244, 215);
+            dataGridViewCellStyle6.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle6.ForeColor = Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(163, 244, 215);
+            dataGridViewCellStyle6.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            ItemRecordsTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             ItemRecordsTable.ColumnHeadersHeight = 60;
             ItemRecordsTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             ItemRecordsTable.Columns.AddRange(new DataGridViewColumn[] { ItemID, ItemName, Category, QtyType, Quantity, BuyingPrice, SellingPrice, Edit, Delete });
@@ -206,20 +206,20 @@
             ItemRecordsTable.Location = new Point(14, 82);
             ItemRecordsTable.Name = "ItemRecordsTable";
             ItemRecordsTable.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            ItemRecordsTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle9.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
+            ItemRecordsTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             ItemRecordsTable.RowHeadersVisible = false;
             ItemRecordsTable.RowHeadersWidth = 50;
-            dataGridViewCellStyle5.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle5.ForeColor = Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(0, 157, 209);
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            ItemRecordsTable.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle10.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle10.ForeColor = Color.Black;
+            dataGridViewCellStyle10.SelectionBackColor = Color.FromArgb(0, 157, 209);
+            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.True;
+            ItemRecordsTable.RowsDefaultCellStyle = dataGridViewCellStyle10;
             ItemRecordsTable.RowTemplate.Height = 50;
             ItemRecordsTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             ItemRecordsTable.Size = new Size(1056, 538);
@@ -282,10 +282,10 @@
             // 
             // Edit
             // 
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.NullValue = resources.GetObject("dataGridViewCellStyle2.NullValue");
-            dataGridViewCellStyle2.Padding = new Padding(10);
-            Edit.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.NullValue = resources.GetObject("dataGridViewCellStyle7.NullValue");
+            dataGridViewCellStyle7.Padding = new Padding(10);
+            Edit.DefaultCellStyle = dataGridViewCellStyle7;
             Edit.Description = "Edit";
             Edit.FillWeight = 5.618882F;
             Edit.HeaderText = "Edit";
@@ -298,10 +298,10 @@
             // 
             // Delete
             // 
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.NullValue = resources.GetObject("dataGridViewCellStyle3.NullValue");
-            dataGridViewCellStyle3.Padding = new Padding(10);
-            Delete.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.NullValue = resources.GetObject("dataGridViewCellStyle8.NullValue");
+            dataGridViewCellStyle8.Padding = new Padding(10);
+            Delete.DefaultCellStyle = dataGridViewCellStyle8;
             Delete.Description = "Delete";
             Delete.FillWeight = 5.618882F;
             Delete.HeaderText = "Delete";
@@ -329,8 +329,8 @@
         }
 
         #endregion
-        private CuoreUI.Controls.cuiTextBox cuiTextBox1;
-        private CuoreUI.Controls.cuiButton cuiButton1;
+        private CuoreUI.Controls.cuiTextBox SearchTextBox;
+        private CuoreUI.Controls.cuiButton SearchButton;
         private Panel panel1;
         private CuoreUI.Controls.cuiButton AddItemButton;
         private Label DashboardTitlePage;

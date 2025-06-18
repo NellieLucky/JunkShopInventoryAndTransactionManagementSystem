@@ -1,5 +1,4 @@
-﻿
-//imports the backend file ReloadCategory.cs
+﻿//imports the backend file ReloadCategory.cs
 using JunkShopInventoryandTransactionSystem.BackendFiles.Category.Reload;
 using JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel;
 using JunkShopInventoryandTransactionSystem.View.DeletionDialogs; 
@@ -25,6 +24,10 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
         public CategoryPage()
         {
             InitializeComponent();
+
+            // Add search event handlers
+            SearchButton.Click += SearchButton_Click;
+            SearchTextBox.ContentChanged += SearchTextBox_TextChanged;
 
             // Call the static LoadInventoryData method from ReloadInventory
             // reads unarchived category data from the database and loads it into the DataGridView
@@ -58,7 +61,7 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
         }
 
         //Para to sa pag-merge ng Edit at Delete header cells kasi walang built-in support sa DataGridView para here  
-        private void DataGridView1_Paint(object sender, PaintEventArgs e)
+        private void DataGridView1_Paint(object? sender, PaintEventArgs e)
         {
             // Get the rectangles for the Edit and Delete header cells  
             var editRect = CategoryRecordsTable.GetCellDisplayRectangle(CategoryRecordsTable.Columns["Edit"].Index, -1, true);
@@ -157,5 +160,50 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
             }
         }
 
+        private void SearchButton_Click(object? sender, EventArgs e)
+        {
+            FilterCategories(SearchTextBox.Content);
+        }
+
+        private void SearchTextBox_TextChanged(object? sender, EventArgs e)
+        {
+            FilterCategories(SearchTextBox.Content);
+        }
+
+        private void FilterCategories(string searchText)
+        {
+            if (CategoryRecordsTable.DataSource is DataTable dataTable)
+            {
+                // Using DataTable filtering
+                try
+                {
+                    dataTable.DefaultView.RowFilter = string.IsNullOrWhiteSpace(searchText) ? "" :
+                        $"Convert(CategoryID, 'System.String') LIKE '%{searchText}%' OR " +  // Added ID search
+                        $"CategoryName LIKE '%{searchText}%' OR " +
+                        $"CategoryDescription LIKE '%{searchText}%'";
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error filtering data: {ex.Message}", "Search Error", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                // Fallback to row visibility approach
+                foreach (DataGridViewRow row in CategoryRecordsTable.Rows)
+                {
+                    bool visible = string.IsNullOrWhiteSpace(searchText);
+                    if (!visible)
+                    {
+                        searchText = searchText.ToLower();
+                        visible = (row.Cells["CategoryID"].Value?.ToString()?.Contains(searchText, StringComparison.OrdinalIgnoreCase) == true) ||  // Added ID search
+                                  (row.Cells["CategoryName"].Value?.ToString()?.Contains(searchText, StringComparison.OrdinalIgnoreCase) == true) ||
+                                  (row.Cells["CategoryDescription"].Value?.ToString()?.Contains(searchText, StringComparison.OrdinalIgnoreCase) == true);
+                    }
+                    row.Visible = visible;
+                }
+            }
+        }
     }
 }

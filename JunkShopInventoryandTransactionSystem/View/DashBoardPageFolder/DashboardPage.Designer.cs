@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             DashboardTitlePage = new Label();
             FromDate = new CodeeloUI.Controls.CodeeloDateTimePicker();
             customButton = new CuoreUI.Controls.cuiButton();
@@ -68,10 +68,10 @@
             panel3 = new Panel();
             materialDivider4 = new MaterialSkin.Controls.MaterialDivider();
             materialDivider3 = new MaterialSkin.Controls.MaterialDivider();
-            label23 = new Label();
-            label22 = new Label();
-            label21 = new Label();
-            label20 = new Label();
+            NumOfEmployees = new Label();
+            NumOfItems = new Label();
+            NumofCategories = new Label();
+            NumOfCustomers = new Label();
             label19 = new Label();
             label18 = new Label();
             cuiPictureBox9 = new CuoreUI.Controls.cuiPictureBox();
@@ -698,14 +698,14 @@
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.BackgroundColor = Color.FromArgb(227, 244, 238);
             dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(38, 177, 112);
-            dataGridViewCellStyle1.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(0, 64, 0);
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(38, 177, 112);
+            dataGridViewCellStyle3.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(0, 64, 0);
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Item, Weight });
             dataGridView1.EnableHeadersVisualStyles = false;
@@ -713,13 +713,13 @@
             dataGridView1.Location = new Point(25, 46);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.Size = new Size(680, 146);
@@ -755,10 +755,10 @@
             panel3.BackColor = Color.White;
             panel3.Controls.Add(materialDivider4);
             panel3.Controls.Add(materialDivider3);
-            panel3.Controls.Add(label23);
-            panel3.Controls.Add(label22);
-            panel3.Controls.Add(label21);
-            panel3.Controls.Add(label20);
+            panel3.Controls.Add(NumOfEmployees);
+            panel3.Controls.Add(NumOfItems);
+            panel3.Controls.Add(NumofCategories);
+            panel3.Controls.Add(NumOfCustomers);
             panel3.Controls.Add(label19);
             panel3.Controls.Add(label18);
             panel3.Controls.Add(cuiPictureBox9);
@@ -802,57 +802,57 @@
             materialDivider3.TabIndex = 38;
             materialDivider3.Text = "materialDivider3";
             // 
-            // label23
+            // NumOfEmployees
             // 
-            label23.AutoSize = true;
-            label23.BackColor = Color.FromArgb(0, 0, 0, 0);
-            label23.Font = new Font("Arial", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label23.ForeColor = Color.DimGray;
-            label23.Location = new Point(85, 469);
-            label23.MaximumSize = new Size(135, 24);
-            label23.Name = "label23";
-            label23.Size = new Size(25, 24);
-            label23.TabIndex = 37;
-            label23.Text = "0";
+            NumOfEmployees.AutoSize = true;
+            NumOfEmployees.BackColor = Color.FromArgb(0, 0, 0, 0);
+            NumOfEmployees.Font = new Font("Arial", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            NumOfEmployees.ForeColor = Color.DimGray;
+            NumOfEmployees.Location = new Point(85, 469);
+            NumOfEmployees.MaximumSize = new Size(135, 24);
+            NumOfEmployees.Name = "NumOfEmployees";
+            NumOfEmployees.Size = new Size(25, 24);
+            NumOfEmployees.TabIndex = 37;
+            NumOfEmployees.Text = "0";
             // 
-            // label22
+            // NumOfItems
             // 
-            label22.AutoSize = true;
-            label22.BackColor = Color.FromArgb(0, 0, 0, 0);
-            label22.Font = new Font("Arial", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label22.ForeColor = Color.DimGray;
-            label22.Location = new Point(85, 379);
-            label22.MaximumSize = new Size(135, 24);
-            label22.Name = "label22";
-            label22.Size = new Size(25, 24);
-            label22.TabIndex = 36;
-            label22.Text = "0";
+            NumOfItems.AutoSize = true;
+            NumOfItems.BackColor = Color.FromArgb(0, 0, 0, 0);
+            NumOfItems.Font = new Font("Arial", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            NumOfItems.ForeColor = Color.DimGray;
+            NumOfItems.Location = new Point(85, 379);
+            NumOfItems.MaximumSize = new Size(135, 24);
+            NumOfItems.Name = "NumOfItems";
+            NumOfItems.Size = new Size(25, 24);
+            NumOfItems.TabIndex = 36;
+            NumOfItems.Text = "0";
             // 
-            // label21
+            // NumofCategories
             // 
-            label21.AutoSize = true;
-            label21.BackColor = Color.FromArgb(0, 0, 0, 0);
-            label21.Font = new Font("Arial", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label21.ForeColor = Color.DimGray;
-            label21.Location = new Point(85, 290);
-            label21.MaximumSize = new Size(135, 24);
-            label21.Name = "label21";
-            label21.Size = new Size(25, 24);
-            label21.TabIndex = 35;
-            label21.Text = "0";
+            NumofCategories.AutoSize = true;
+            NumofCategories.BackColor = Color.FromArgb(0, 0, 0, 0);
+            NumofCategories.Font = new Font("Arial", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            NumofCategories.ForeColor = Color.DimGray;
+            NumofCategories.Location = new Point(85, 290);
+            NumofCategories.MaximumSize = new Size(135, 24);
+            NumofCategories.Name = "NumofCategories";
+            NumofCategories.Size = new Size(25, 24);
+            NumofCategories.TabIndex = 35;
+            NumofCategories.Text = "0";
             // 
-            // label20
+            // NumOfCustomers
             // 
-            label20.AutoSize = true;
-            label20.BackColor = Color.FromArgb(0, 0, 0, 0);
-            label20.Font = new Font("Arial", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label20.ForeColor = Color.DimGray;
-            label20.Location = new Point(84, 201);
-            label20.MaximumSize = new Size(135, 24);
-            label20.Name = "label20";
-            label20.Size = new Size(25, 24);
-            label20.TabIndex = 34;
-            label20.Text = "0";
+            NumOfCustomers.AutoSize = true;
+            NumOfCustomers.BackColor = Color.FromArgb(0, 0, 0, 0);
+            NumOfCustomers.Font = new Font("Arial", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            NumOfCustomers.ForeColor = Color.DimGray;
+            NumOfCustomers.Location = new Point(84, 201);
+            NumOfCustomers.MaximumSize = new Size(135, 24);
+            NumOfCustomers.Name = "NumOfCustomers";
+            NumOfCustomers.Size = new Size(25, 24);
+            NumOfCustomers.TabIndex = 34;
+            NumOfCustomers.Text = "0";
             // 
             // label19
             // 
@@ -1153,12 +1153,12 @@
         private Label label16;
         private Label label15;
         private Label label14;
-        private Label label22;
-        private Label label21;
-        private Label label20;
+        private Label NumOfItems;
+        private Label NumofCategories;
+        private Label NumOfCustomers;
         private Label label19;
         private MaterialSkin.Controls.MaterialDivider materialDivider3;
-        private Label label23;
+        private Label NumOfEmployees;
         private MaterialSkin.Controls.MaterialDivider materialDivider4;
         private Label label24;
     }
