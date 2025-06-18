@@ -31,6 +31,7 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainNavigationPage));
             panel1 = new Panel();
+            panel3 = new Panel();
             label1 = new Label();
             label2 = new Label();
             codeeloGradientPanel1 = new CodeeloUI.Controls.CodeeloGradientPanel();
@@ -47,14 +48,14 @@
             navControlPanel = new Panel();
             cuiControlDrag1 = new CuoreUI.Components.cuiControlDrag(components);
             panel1.SuspendLayout();
+            panel3.SuspendLayout();
             codeeloGradientPanel1.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(13, 158, 169);
-            panel1.Controls.Add(label1);
-            panel1.Controls.Add(label2);
+            panel1.Controls.Add(panel3);
             panel1.Controls.Add(codeeloGradientPanel1);
             panel1.Controls.Add(LogOutButton1);
             panel1.Controls.Add(TransacRecordsNavButton);
@@ -70,12 +71,23 @@
             panel1.Size = new Size(312, 801);
             panel1.TabIndex = 0;
             // 
+            // panel3
+            // 
+            panel3.Controls.Add(label1);
+            panel3.Controls.Add(label2);
+            panel3.Location = new Point(91, 26);
+            panel3.MaximumSize = new Size(400, 96);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(196, 64);
+            panel3.TabIndex = 0;
+            // 
             // label1
             // 
             label1.AutoSize = true;
+            label1.Dock = DockStyle.Bottom;
             label1.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(94, 71);
+            label1.Location = new Point(0, 45);
             label1.Name = "label1";
             label1.Size = new Size(61, 19);
             label1.TabIndex = 16;
@@ -83,14 +95,18 @@
             // 
             // label2
             // 
+            label2.AutoEllipsis = true;
             label2.AutoSize = true;
+            label2.Dock = DockStyle.Fill;
             label2.Font = new Font("Arial Black", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(94, 31);
+            label2.Location = new Point(0, 0);
+            label2.MaximumSize = new Size(200, 28);
+            label2.MinimumSize = new Size(81, 28);
             label2.Name = "label2";
-            label2.Size = new Size(81, 28);
+            label2.Size = new Size(146, 28);
             label2.TabIndex = 15;
-            label2.Text = "Admin";
+            label2.Text = "Admin22222";
             // 
             // codeeloGradientPanel1
             // 
@@ -477,7 +493,8 @@
             Name = "MainNavigationPage";
             Text = "DashboardPage";
             panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
             codeeloGradientPanel1.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -500,5 +517,6 @@
         private CodeeloUI.Controls.CodeeloGradientPanel codeeloGradientPanel1;
         private Label label2;
         private Label label1;
+        private Panel panel3;
     }
 }

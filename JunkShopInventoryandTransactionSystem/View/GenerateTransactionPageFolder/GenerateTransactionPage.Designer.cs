@@ -28,35 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DashboardTitlePage = new Label();
-            dataGridView1 = new DataGridView();
-            ItemID = new DataGridViewTextBoxColumn();
-            ItemName = new DataGridViewTextBoxColumn();
-            Category = new DataGridViewTextBoxColumn();
-            QtyType = new DataGridViewTextBoxColumn();
-            TransacQuantity = new DataGridViewTextBoxColumn();
-            ExchangeAmount = new DataGridViewTextBoxColumn();
-            Edit = new DataGridViewImageColumn();
-            Delete = new DataGridViewImageColumn();
-            TransactionID = new Label();
-            IdItem = new Label();
-            TransactionQuantity = new Label();
-            cuiTextBox4 = new CuoreUI.Controls.cuiTextBox();
-            CustomerName = new Label();
-            cuiTextBox5 = new CuoreUI.Controls.cuiTextBox();
-            CustomerContact = new Label();
-            cuiTextBox6 = new CuoreUI.Controls.cuiTextBox();
-            cuiButton2 = new CuoreUI.Controls.cuiButton();
-            cuiButton1 = new CuoreUI.Controls.cuiButton();
-            cuiButton3 = new CuoreUI.Controls.cuiButton();
-            CategoryComboBox = new ComboBox();
-            comboBox1 = new ComboBox();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            SellerBuyerPanel = new Panel();
+            SellerNavButton = new CuoreUI.Controls.cuiButton();
+            BuyerNavButton = new CuoreUI.Controls.cuiButton();
             SuspendLayout();
             // 
             // DashboardTitlePage
@@ -71,436 +46,103 @@
             DashboardTitlePage.TabIndex = 6;
             DashboardTitlePage.Text = "Generate Transaction";
             // 
-            // dataGridView1
+            // SellerBuyerPanel
             // 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.AllowUserToResizeColumns = false;
-            dataGridView1.AllowUserToResizeRows = false;
-            dataGridView1.BackgroundColor = Color.White;
-            dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.SunkenHorizontal;
-            dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(163, 244, 215);
-            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(163, 244, 215);
-            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridView1.ColumnHeadersHeight = 60;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { ItemID, ItemName, Category, QtyType, TransacQuantity, ExchangeAmount, Edit, Delete });
-            dataGridView1.EditMode = DataGridViewEditMode.EditProgrammatically;
-            dataGridView1.EnableHeadersVisualStyles = false;
-            dataGridView1.GridColor = Color.FromArgb(99, 99, 99);
-            dataGridView1.Location = new Point(13, 274);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            dataGridView1.RowHeadersVisible = false;
-            dataGridView1.RowHeadersWidth = 50;
-            dataGridViewCellStyle5.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle5.ForeColor = Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(0, 157, 209);
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
-            dataGridView1.RowTemplate.Height = 50;
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(1056, 438);
-            dataGridView1.TabIndex = 30;
+            SellerBuyerPanel.Location = new Point(15, 125);
+            SellerBuyerPanel.Name = "SellerBuyerPanel";
+            SellerBuyerPanel.Size = new Size(1054, 661);
+            SellerBuyerPanel.TabIndex = 7;
             // 
-            // ItemID
+            // SellerNavButton
             // 
-            ItemID.HeaderText = "ItemID";
-            ItemID.MinimumWidth = 6;
-            ItemID.Name = "ItemID";
-            ItemID.Width = 125;
+            SellerNavButton.BackColor = Color.FromArgb(0, 0, 0, 0);
+            SellerNavButton.CheckButton = false;
+            SellerNavButton.Checked = false;
+            SellerNavButton.CheckedBackground = Color.FromArgb(255, 106, 0);
+            SellerNavButton.CheckedForeColor = Color.White;
+            SellerNavButton.CheckedImageTint = Color.White;
+            SellerNavButton.CheckedOutline = Color.FromArgb(255, 106, 0);
+            SellerNavButton.Content = "Seller";
+            SellerNavButton.DialogResult = DialogResult.None;
+            SellerNavButton.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            SellerNavButton.ForeColor = Color.White;
+            SellerNavButton.HoverBackground = Color.White;
+            SellerNavButton.HoveredImageTint = Color.White;
+            SellerNavButton.HoverForeColor = Color.Black;
+            SellerNavButton.HoverOutline = Color.FromArgb(32, 128, 128, 128);
+            SellerNavButton.Image = null;
+            SellerNavButton.ImageAutoCenter = true;
+            SellerNavButton.ImageExpand = new Point(0, 0);
+            SellerNavButton.ImageOffset = new Point(0, 0);
+            SellerNavButton.Location = new Point(167, 71);
+            SellerNavButton.Name = "SellerNavButton";
+            SellerNavButton.NormalBackground = Color.FromArgb(0, 157, 209);
+            SellerNavButton.NormalForeColor = Color.White;
+            SellerNavButton.NormalImageTint = Color.White;
+            SellerNavButton.NormalOutline = Color.FromArgb(64, 128, 128, 128);
+            SellerNavButton.OutlineThickness = 1F;
+            SellerNavButton.PressedBackground = Color.WhiteSmoke;
+            SellerNavButton.PressedForeColor = Color.FromArgb(32, 32, 32);
+            SellerNavButton.PressedImageTint = Color.White;
+            SellerNavButton.PressedOutline = Color.FromArgb(64, 128, 128, 128);
+            SellerNavButton.Rounding = new Padding(8);
+            SellerNavButton.Size = new Size(146, 40);
+            SellerNavButton.TabIndex = 9;
+            SellerNavButton.Tag = "";
+            SellerNavButton.TextAlignment = StringAlignment.Center;
+            SellerNavButton.TextOffset = new Point(0, 0);
+            SellerNavButton.Click += SellerNavButton_Click;
             // 
-            // ItemName
+            // BuyerNavButton
             // 
-            ItemName.HeaderText = "Item Name";
-            ItemName.MinimumWidth = 6;
-            ItemName.Name = "ItemName";
-            ItemName.Width = 175;
-            // 
-            // Category
-            // 
-            Category.FillWeight = 150F;
-            Category.HeaderText = "Category";
-            Category.MinimumWidth = 6;
-            Category.Name = "Category";
-            Category.Width = 175;
-            // 
-            // QtyType
-            // 
-            QtyType.FillWeight = 125F;
-            QtyType.HeaderText = "QtyType";
-            QtyType.MinimumWidth = 6;
-            QtyType.Name = "QtyType";
-            QtyType.Width = 125;
-            // 
-            // TransacQuantity
-            // 
-            TransacQuantity.FillWeight = 59.177578F;
-            TransacQuantity.HeaderText = "Exchange Quantity";
-            TransacQuantity.MinimumWidth = 6;
-            TransacQuantity.Name = "TransacQuantity";
-            TransacQuantity.Width = 130;
-            // 
-            // ExchangeAmount
-            // 
-            ExchangeAmount.FillWeight = 59.177578F;
-            ExchangeAmount.HeaderText = "Exchange Amount";
-            ExchangeAmount.MinimumWidth = 6;
-            ExchangeAmount.Name = "ExchangeAmount";
-            ExchangeAmount.Width = 130;
-            // 
-            // Edit
-            // 
-            Edit.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.NullValue = null;
-            dataGridViewCellStyle2.Padding = new Padding(10);
-            Edit.DefaultCellStyle = dataGridViewCellStyle2;
-            Edit.FillWeight = 5.618882F;
-            Edit.HeaderText = "Edit";
-            Edit.Image = Properties.Resources.green_edit;
-            Edit.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            Edit.MinimumWidth = 6;
-            Edit.Name = "Edit";
-            Edit.Resizable = DataGridViewTriState.False;
-            // 
-            // Delete
-            // 
-            Delete.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.NullValue = null;
-            dataGridViewCellStyle3.Padding = new Padding(10);
-            Delete.DefaultCellStyle = dataGridViewCellStyle3;
-            Delete.FillWeight = 5.618882F;
-            Delete.HeaderText = "Delete";
-            Delete.Image = Properties.Resources.delete;
-            Delete.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            Delete.MinimumWidth = 6;
-            Delete.Name = "Delete";
-            Delete.Resizable = DataGridViewTriState.False;
-            // 
-            // TransactionID
-            // 
-            TransactionID.AutoSize = true;
-            TransactionID.BackColor = Color.FromArgb(0, 0, 0, 0);
-            TransactionID.Font = new Font("Arial", 10.2F, FontStyle.Bold);
-            TransactionID.ForeColor = Color.FromArgb(0, 157, 209);
-            TransactionID.Location = new Point(584, 93);
-            TransactionID.Name = "TransactionID";
-            TransactionID.Size = new Size(143, 19);
-            TransactionID.TabIndex = 32;
-            TransactionID.Text = "Transaction Type";
-            // 
-            // IdItem
-            // 
-            IdItem.AutoSize = true;
-            IdItem.BackColor = Color.FromArgb(0, 0, 0, 0);
-            IdItem.Font = new Font("Arial", 10.2F, FontStyle.Bold);
-            IdItem.ForeColor = Color.FromArgb(0, 157, 209);
-            IdItem.Location = new Point(18, 195);
-            IdItem.Name = "IdItem";
-            IdItem.Size = new Size(63, 19);
-            IdItem.TabIndex = 36;
-            IdItem.Text = "Item ID";
-            // 
-            // TransactionQuantity
-            // 
-            TransactionQuantity.AutoSize = true;
-            TransactionQuantity.BackColor = Color.FromArgb(0, 0, 0, 0);
-            TransactionQuantity.Font = new Font("Arial", 10.2F, FontStyle.Bold);
-            TransactionQuantity.ForeColor = Color.FromArgb(0, 157, 209);
-            TransactionQuantity.Location = new Point(225, 194);
-            TransactionQuantity.Name = "TransactionQuantity";
-            TransactionQuantity.Size = new Size(76, 19);
-            TransactionQuantity.TabIndex = 38;
-            TransactionQuantity.Text = "Quantity";
-            // 
-            // cuiTextBox4
-            // 
-            cuiTextBox4.BackgroundColor = Color.White;
-            cuiTextBox4.BorderColor = Color.FromArgb(0, 157, 209);
-            cuiTextBox4.Content = "";
-            cuiTextBox4.FocusBackgroundColor = Color.White;
-            cuiTextBox4.FocusBorderColor = Color.Empty;
-            cuiTextBox4.FocusImageTint = Color.White;
-            cuiTextBox4.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            cuiTextBox4.ForeColor = Color.Gray;
-            cuiTextBox4.Image = null;
-            cuiTextBox4.ImageExpand = new Point(0, 0);
-            cuiTextBox4.ImageOffset = new Point(0, 0);
-            cuiTextBox4.Location = new Point(225, 217);
-            cuiTextBox4.Margin = new Padding(4);
-            cuiTextBox4.Multiline = false;
-            cuiTextBox4.Name = "cuiTextBox4";
-            cuiTextBox4.NormalImageTint = Color.White;
-            cuiTextBox4.Padding = new Padding(20, 12, 20, 0);
-            cuiTextBox4.PasswordChar = false;
-            cuiTextBox4.PlaceholderColor = Color.Gray;
-            cuiTextBox4.PlaceholderText = "Quantity";
-            cuiTextBox4.Rounding = new Padding(8);
-            cuiTextBox4.Size = new Size(200, 44);
-            cuiTextBox4.TabIndex = 37;
-            cuiTextBox4.TextOffset = new Size(0, 0);
-            cuiTextBox4.UnderlinedStyle = false;
-            // 
-            // CustomerName
-            // 
-            CustomerName.AutoSize = true;
-            CustomerName.BackColor = Color.FromArgb(0, 0, 0, 0);
-            CustomerName.Font = new Font("Arial", 10.2F, FontStyle.Bold);
-            CustomerName.ForeColor = Color.FromArgb(0, 157, 209);
-            CustomerName.Location = new Point(18, 94);
-            CustomerName.Name = "CustomerName";
-            CustomerName.Size = new Size(135, 19);
-            CustomerName.TabIndex = 40;
-            CustomerName.Text = "Customer Name";
-            // 
-            // cuiTextBox5
-            // 
-            cuiTextBox5.BackgroundColor = Color.White;
-            cuiTextBox5.BorderColor = Color.FromArgb(0, 157, 209);
-            cuiTextBox5.Content = "";
-            cuiTextBox5.FocusBackgroundColor = Color.White;
-            cuiTextBox5.FocusBorderColor = Color.Empty;
-            cuiTextBox5.FocusImageTint = Color.White;
-            cuiTextBox5.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            cuiTextBox5.ForeColor = Color.Gray;
-            cuiTextBox5.Image = null;
-            cuiTextBox5.ImageExpand = new Point(0, 0);
-            cuiTextBox5.ImageOffset = new Point(0, 0);
-            cuiTextBox5.Location = new Point(18, 117);
-            cuiTextBox5.Margin = new Padding(4);
-            cuiTextBox5.Multiline = false;
-            cuiTextBox5.Name = "cuiTextBox5";
-            cuiTextBox5.NormalImageTint = Color.White;
-            cuiTextBox5.Padding = new Padding(20, 12, 20, 0);
-            cuiTextBox5.PasswordChar = false;
-            cuiTextBox5.PlaceholderColor = Color.Gray;
-            cuiTextBox5.PlaceholderText = "Item Name";
-            cuiTextBox5.Rounding = new Padding(8);
-            cuiTextBox5.Size = new Size(259, 44);
-            cuiTextBox5.TabIndex = 39;
-            cuiTextBox5.TextOffset = new Size(0, 0);
-            cuiTextBox5.UnderlinedStyle = false;
-            // 
-            // CustomerContact
-            // 
-            CustomerContact.AutoSize = true;
-            CustomerContact.BackColor = Color.FromArgb(0, 0, 0, 0);
-            CustomerContact.Font = new Font("Arial", 10.2F, FontStyle.Bold);
-            CustomerContact.ForeColor = Color.FromArgb(0, 157, 209);
-            CustomerContact.Location = new Point(285, 94);
-            CustomerContact.Name = "CustomerContact";
-            CustomerContact.Size = new Size(103, 19);
-            CustomerContact.TabIndex = 42;
-            CustomerContact.Text = "Contact No.";
-            // 
-            // cuiTextBox6
-            // 
-            cuiTextBox6.BackgroundColor = Color.White;
-            cuiTextBox6.BorderColor = Color.FromArgb(0, 157, 209);
-            cuiTextBox6.Content = "";
-            cuiTextBox6.FocusBackgroundColor = Color.White;
-            cuiTextBox6.FocusBorderColor = Color.Empty;
-            cuiTextBox6.FocusImageTint = Color.White;
-            cuiTextBox6.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            cuiTextBox6.ForeColor = Color.Gray;
-            cuiTextBox6.Image = null;
-            cuiTextBox6.ImageExpand = new Point(0, 0);
-            cuiTextBox6.ImageOffset = new Point(0, 0);
-            cuiTextBox6.Location = new Point(285, 117);
-            cuiTextBox6.Margin = new Padding(4);
-            cuiTextBox6.Multiline = false;
-            cuiTextBox6.Name = "cuiTextBox6";
-            cuiTextBox6.NormalImageTint = Color.White;
-            cuiTextBox6.Padding = new Padding(20, 12, 20, 0);
-            cuiTextBox6.PasswordChar = false;
-            cuiTextBox6.PlaceholderColor = Color.Gray;
-            cuiTextBox6.PlaceholderText = "Contact No.";
-            cuiTextBox6.Rounding = new Padding(8);
-            cuiTextBox6.Size = new Size(282, 44);
-            cuiTextBox6.TabIndex = 41;
-            cuiTextBox6.TextOffset = new Size(0, 0);
-            cuiTextBox6.UnderlinedStyle = false;
-            // 
-            // cuiButton2
-            // 
-            cuiButton2.BackColor = Color.FromArgb(0, 0, 0, 0);
-            cuiButton2.CheckButton = false;
-            cuiButton2.Checked = false;
-            cuiButton2.CheckedBackground = Color.FromArgb(255, 106, 0);
-            cuiButton2.CheckedForeColor = Color.White;
-            cuiButton2.CheckedImageTint = Color.White;
-            cuiButton2.CheckedOutline = Color.FromArgb(255, 106, 0);
-            cuiButton2.Content = "Add";
-            cuiButton2.DialogResult = DialogResult.None;
-            cuiButton2.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            cuiButton2.ForeColor = Color.White;
-            cuiButton2.HoverBackground = Color.White;
-            cuiButton2.HoveredImageTint = Color.White;
-            cuiButton2.HoverForeColor = Color.Black;
-            cuiButton2.HoverOutline = Color.FromArgb(32, 128, 128, 128);
-            cuiButton2.Image = null;
-            cuiButton2.ImageAutoCenter = true;
-            cuiButton2.ImageExpand = new Point(0, 0);
-            cuiButton2.ImageOffset = new Point(0, 0);
-            cuiButton2.Location = new Point(432, 221);
-            cuiButton2.Name = "cuiButton2";
-            cuiButton2.NormalBackground = Color.FromArgb(0, 157, 209);
-            cuiButton2.NormalForeColor = Color.White;
-            cuiButton2.NormalImageTint = Color.White;
-            cuiButton2.NormalOutline = Color.FromArgb(64, 128, 128, 128);
-            cuiButton2.OutlineThickness = 1F;
-            cuiButton2.PressedBackground = Color.WhiteSmoke;
-            cuiButton2.PressedForeColor = Color.FromArgb(32, 32, 32);
-            cuiButton2.PressedImageTint = Color.White;
-            cuiButton2.PressedOutline = Color.FromArgb(64, 128, 128, 128);
-            cuiButton2.Rounding = new Padding(8);
-            cuiButton2.Size = new Size(200, 40);
-            cuiButton2.TabIndex = 43;
-            cuiButton2.TextAlignment = StringAlignment.Center;
-            cuiButton2.TextOffset = new Point(0, 0);
-            // 
-            // cuiButton1
-            // 
-            cuiButton1.BackColor = Color.FromArgb(0, 0, 0, 0);
-            cuiButton1.CheckButton = false;
-            cuiButton1.Checked = false;
-            cuiButton1.CheckedBackground = Color.FromArgb(255, 106, 0);
-            cuiButton1.CheckedForeColor = Color.White;
-            cuiButton1.CheckedImageTint = Color.White;
-            cuiButton1.CheckedOutline = Color.FromArgb(255, 106, 0);
-            cuiButton1.Content = "Clear";
-            cuiButton1.DialogResult = DialogResult.None;
-            cuiButton1.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            cuiButton1.ForeColor = Color.Black;
-            cuiButton1.HoverBackground = Color.White;
-            cuiButton1.HoveredImageTint = Color.White;
-            cuiButton1.HoverForeColor = Color.Black;
-            cuiButton1.HoverOutline = Color.FromArgb(32, 128, 128, 128);
-            cuiButton1.Image = null;
-            cuiButton1.ImageAutoCenter = true;
-            cuiButton1.ImageExpand = new Point(0, 0);
-            cuiButton1.ImageOffset = new Point(0, 0);
-            cuiButton1.Location = new Point(927, 728);
-            cuiButton1.Name = "cuiButton1";
-            cuiButton1.NormalBackground = Color.White;
-            cuiButton1.NormalForeColor = Color.Black;
-            cuiButton1.NormalImageTint = Color.White;
-            cuiButton1.NormalOutline = Color.FromArgb(64, 128, 128, 128);
-            cuiButton1.OutlineThickness = 1F;
-            cuiButton1.PressedBackground = Color.WhiteSmoke;
-            cuiButton1.PressedForeColor = Color.FromArgb(32, 32, 32);
-            cuiButton1.PressedImageTint = Color.White;
-            cuiButton1.PressedOutline = Color.FromArgb(64, 128, 128, 128);
-            cuiButton1.Rounding = new Padding(8);
-            cuiButton1.Size = new Size(127, 40);
-            cuiButton1.TabIndex = 44;
-            cuiButton1.TextAlignment = StringAlignment.Center;
-            cuiButton1.TextOffset = new Point(0, 0);
-            // 
-            // cuiButton3
-            // 
-            cuiButton3.BackColor = Color.FromArgb(0, 0, 0, 0);
-            cuiButton3.CheckButton = false;
-            cuiButton3.Checked = false;
-            cuiButton3.CheckedBackground = Color.FromArgb(255, 106, 0);
-            cuiButton3.CheckedForeColor = Color.White;
-            cuiButton3.CheckedImageTint = Color.White;
-            cuiButton3.CheckedOutline = Color.FromArgb(255, 106, 0);
-            cuiButton3.Content = "Save";
-            cuiButton3.DialogResult = DialogResult.None;
-            cuiButton3.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            cuiButton3.ForeColor = Color.White;
-            cuiButton3.HoverBackground = Color.White;
-            cuiButton3.HoveredImageTint = Color.White;
-            cuiButton3.HoverForeColor = Color.Black;
-            cuiButton3.HoverOutline = Color.FromArgb(32, 128, 128, 128);
-            cuiButton3.Image = null;
-            cuiButton3.ImageAutoCenter = true;
-            cuiButton3.ImageExpand = new Point(0, 0);
-            cuiButton3.ImageOffset = new Point(0, 0);
-            cuiButton3.Location = new Point(794, 728);
-            cuiButton3.Name = "cuiButton3";
-            cuiButton3.NormalBackground = Color.FromArgb(0, 157, 209);
-            cuiButton3.NormalForeColor = Color.White;
-            cuiButton3.NormalImageTint = Color.White;
-            cuiButton3.NormalOutline = Color.FromArgb(64, 128, 128, 128);
-            cuiButton3.OutlineThickness = 1F;
-            cuiButton3.PressedBackground = Color.WhiteSmoke;
-            cuiButton3.PressedForeColor = Color.FromArgb(32, 32, 32);
-            cuiButton3.PressedImageTint = Color.White;
-            cuiButton3.PressedOutline = Color.FromArgb(64, 128, 128, 128);
-            cuiButton3.Rounding = new Padding(8);
-            cuiButton3.Size = new Size(127, 40);
-            cuiButton3.TabIndex = 45;
-            cuiButton3.TextAlignment = StringAlignment.Center;
-            cuiButton3.TextOffset = new Point(0, 0);
-            // 
-            // CategoryComboBox
-            // 
-            CategoryComboBox.DropDownHeight = 120;
-            CategoryComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            CategoryComboBox.Font = new Font("Arial Narrow", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            CategoryComboBox.ForeColor = Color.Gray;
-            CategoryComboBox.FormattingEnabled = true;
-            CategoryComboBox.IntegralHeight = false;
-            CategoryComboBox.Items.AddRange(new object[] { "Buyer", "Supplier" });
-            CategoryComboBox.Location = new Point(584, 117);
-            CategoryComboBox.Name = "CategoryComboBox";
-            CategoryComboBox.Size = new Size(200, 39);
-            CategoryComboBox.TabIndex = 46;
-            // 
-            // comboBox1
-            // 
-            comboBox1.DropDownHeight = 120;
-            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBox1.Font = new Font("Arial Narrow", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            comboBox1.ForeColor = Color.Gray;
-            comboBox1.FormattingEnabled = true;
-            comboBox1.IntegralHeight = false;
-            comboBox1.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
-            comboBox1.Location = new Point(18, 217);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(200, 39);
-            comboBox1.TabIndex = 47;
+            BuyerNavButton.BackColor = Color.FromArgb(0, 0, 0, 0);
+            BuyerNavButton.CheckButton = false;
+            BuyerNavButton.Checked = false;
+            BuyerNavButton.CheckedBackground = Color.FromArgb(255, 106, 0);
+            BuyerNavButton.CheckedForeColor = Color.White;
+            BuyerNavButton.CheckedImageTint = Color.White;
+            BuyerNavButton.CheckedOutline = Color.FromArgb(255, 106, 0);
+            BuyerNavButton.Content = "Buyer";
+            BuyerNavButton.DialogResult = DialogResult.None;
+            BuyerNavButton.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BuyerNavButton.ForeColor = Color.White;
+            BuyerNavButton.HoverBackground = Color.White;
+            BuyerNavButton.HoveredImageTint = Color.White;
+            BuyerNavButton.HoverForeColor = Color.Black;
+            BuyerNavButton.HoverOutline = Color.FromArgb(32, 128, 128, 128);
+            BuyerNavButton.Image = null;
+            BuyerNavButton.ImageAutoCenter = true;
+            BuyerNavButton.ImageExpand = new Point(0, 0);
+            BuyerNavButton.ImageOffset = new Point(0, 0);
+            BuyerNavButton.Location = new Point(15, 71);
+            BuyerNavButton.Name = "BuyerNavButton";
+            BuyerNavButton.NormalBackground = Color.FromArgb(0, 157, 209);
+            BuyerNavButton.NormalForeColor = Color.White;
+            BuyerNavButton.NormalImageTint = Color.White;
+            BuyerNavButton.NormalOutline = Color.FromArgb(64, 128, 128, 128);
+            BuyerNavButton.OutlineThickness = 1F;
+            BuyerNavButton.PressedBackground = Color.WhiteSmoke;
+            BuyerNavButton.PressedForeColor = Color.FromArgb(32, 32, 32);
+            BuyerNavButton.PressedImageTint = Color.White;
+            BuyerNavButton.PressedOutline = Color.FromArgb(64, 128, 128, 128);
+            BuyerNavButton.Rounding = new Padding(8);
+            BuyerNavButton.Size = new Size(146, 40);
+            BuyerNavButton.TabIndex = 8;
+            BuyerNavButton.TextAlignment = StringAlignment.Center;
+            BuyerNavButton.TextOffset = new Point(0, 0);
+            BuyerNavButton.Click += BuyerNavButton_Click;
             // 
             // GenerateTransactionPage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(227, 244, 238);
-            Controls.Add(comboBox1);
-            Controls.Add(CategoryComboBox);
-            Controls.Add(cuiButton3);
-            Controls.Add(cuiButton1);
-            Controls.Add(cuiButton2);
-            Controls.Add(CustomerContact);
-            Controls.Add(cuiTextBox6);
-            Controls.Add(CustomerName);
-            Controls.Add(cuiTextBox5);
-            Controls.Add(TransactionQuantity);
-            Controls.Add(cuiTextBox4);
-            Controls.Add(IdItem);
-            Controls.Add(TransactionID);
-            Controls.Add(dataGridView1);
+            Controls.Add(SellerNavButton);
+            Controls.Add(BuyerNavButton);
+            Controls.Add(SellerBuyerPanel);
             Controls.Add(DashboardTitlePage);
             Name = "GenerateTransactionPage";
             Size = new Size(1084, 798);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -508,27 +150,8 @@
         #endregion
 
         private Label DashboardTitlePage;
-        private DataGridView dataGridView1;
-        private Label TransactionID;
-        private Label IdItem;
-        private Label TransactionQuantity;
-        private CuoreUI.Controls.cuiTextBox cuiTextBox4;
-        private Label CustomerName;
-        private CuoreUI.Controls.cuiTextBox cuiTextBox5;
-        private Label CustomerContact;
-        private CuoreUI.Controls.cuiTextBox cuiTextBox6;
-        private CuoreUI.Controls.cuiButton cuiButton2;
-        private CuoreUI.Controls.cuiButton cuiButton1;
-        private CuoreUI.Controls.cuiButton cuiButton3;
-        private ComboBox CategoryComboBox;
-        private ComboBox comboBox1;
-        private DataGridViewTextBoxColumn ItemID;
-        private DataGridViewTextBoxColumn ItemName;
-        private DataGridViewTextBoxColumn Category;
-        private DataGridViewTextBoxColumn QtyType;
-        private DataGridViewTextBoxColumn TransacQuantity;
-        private DataGridViewTextBoxColumn ExchangeAmount;
-        private DataGridViewImageColumn Edit;
-        private DataGridViewImageColumn Delete;
+        private Panel SellerBuyerPanel;
+        private CuoreUI.Controls.cuiButton SellerNavButton;
+        private CuoreUI.Controls.cuiButton BuyerNavButton;
     }
 }

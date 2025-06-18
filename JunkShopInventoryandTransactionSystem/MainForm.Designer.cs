@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             panel1 = new Panel();
             SuspendLayout();
             // 
@@ -45,9 +46,10 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1400, 798);
             Controls.Add(panel1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "MainForm";
+            Text = "Junk Shop Inventory and Transaction Management System";
             Load += MainForm_Load;
             ResumeLayout(false);
         }

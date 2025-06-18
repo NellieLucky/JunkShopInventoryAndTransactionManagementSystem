@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JunkShopInventoryandTransactionSystem.View.Inventory_Pages;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,27 @@ namespace JunkShopInventoryandTransactionSystem.View.GenerateTransactionPageFold
         public GenerateTransactionPage()
         {
             InitializeComponent();
+
+            SellerBuyerPanel.Controls.Clear();
+            var BuyerPage = new BuyerTransaction();
+            BuyerPage.Dock = DockStyle.Fill;
+            SellerBuyerPanel.Controls.Add(BuyerPage);
+        }
+
+        private void BuyerNavButton_Click(object sender, EventArgs e)
+        {
+            SellerBuyerPanel.Controls.Clear();
+            var BuyerPage = new BuyerTransaction();
+            BuyerPage.Dock = DockStyle.Fill;
+            SellerBuyerPanel.Controls.Add(BuyerPage);
+        }
+
+        private void SellerNavButton_Click(object sender, EventArgs e)
+        {
+            SellerBuyerPanel.Controls.Clear();
+            var SellerPage = new SellerTransaction();
+            SellerPage.Dock = DockStyle.Fill;
+            SellerBuyerPanel.Controls.Add(SellerPage);
         }
     }
 }
