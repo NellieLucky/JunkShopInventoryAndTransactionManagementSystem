@@ -85,10 +85,10 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
     {
         // Centralized connection string
         // remo string
-        //protected readonly string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+        protected readonly string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
 
         //Arnel's connection string
-        protected readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\source\repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
+        //protected readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\source\repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
 
         // Shared method to open a new connection
         protected SqlConnection GetConnection()
@@ -432,6 +432,54 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
                 }
             }
         }
+
+        // soft deletion based on category Id
+        public void SoftDeleteItemsByCategory(int categoryId)
+        {
+            string query = "UPDATE Inventory SET isArchived = 1 WHERE itemCategoryId = @categoryId;";
+
+            using (SqlConnection conn = GetConnection())
+            {
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@categoryId", categoryId);
+
+                    try
+                    {
+                        conn.Open();
+                        int rowsAffected = cmd.ExecuteNonQuery();
+
+                        MessageBox.Show(
+                            $"{rowsAffected} item(s) under Category ID {categoryId} marked as archived.",
+                            "Category Soft Delete Successful",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information
+                        );
+                    }
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show(
+                            "Database error during SoftDeleteItemsByCategory:\n" + ex.Message,
+                            "SQL Error",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error
+                        );
+                        throw new Exception("An error occurred while archiving items by category.", ex);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(
+                            "An unexpected error occurred:\n" + ex.Message,
+                            "Unexpected Error",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error
+                        );
+                        throw;
+                    }
+                }
+            }
+        } // soft deletion based on cat Id
+
     } // end of InventorySoftDelete
 
     // unarchiving it back to inventory

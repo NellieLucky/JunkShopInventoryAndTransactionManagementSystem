@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using JunkShopInventoryandTransactionSystem.BackendFiles.Category.Crud;
+using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud;
 
 namespace JunkShopInventoryandTransactionSystem.BackendFiles.Category.Archiving
 {
@@ -15,7 +16,11 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Category.Archiving
             int categoryId,
             DataGridView targetDataGridView)
         {
-            // --- Perform soft delete on the category ---
+            // Soft delete all items first
+            InventorySoftDelete softDel_byCatId = new InventorySoftDelete();
+            softDel_byCatId.SoftDeleteItemsByCategory(categoryId);
+
+            // Then soft delete the category
             CategorySoftDelete softDelete = new CategorySoftDelete();
             softDelete.SoftDeleteCategory(categoryId);
 

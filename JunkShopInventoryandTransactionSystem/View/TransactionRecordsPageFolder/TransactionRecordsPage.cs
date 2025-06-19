@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Reload;
+
 namespace JunkShopInventoryandTransactionSystem.View.TransactionRecordsPageFolder
 {
     public partial class TransactionRecordsPage : UserControl
@@ -15,6 +18,8 @@ namespace JunkShopInventoryandTransactionSystem.View.TransactionRecordsPageFolde
         public TransactionRecordsPage()
         {
             InitializeComponent();
+
+            ReloadTransactions.LoadTransactionData(TransactionRecordsTable);
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
