@@ -1,20 +1,24 @@
-using JunkShopInventoryandTransactionSystem.View;
-using JunkShopInventoryandTransactionSystem.View.LogInAuthFolder;
-using Microsoft.Data.SqlClient;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 using static JunkShopInventoryandTransactionSystem.BackendFiles.UserSession.ForUser;
 
 namespace JunkShopInventoryandTransactionSystem.View.LogInAuthFolder
 {
-    public partial class LogInPage : Form
+    public partial class empLogInPage : Form
     {
-        public LogInPage()
+        public empLogInPage()
         {
             InitializeComponent();
-            // Make sure the cursor is not a wait cursor for the email textbox
         }
 
-        // This method is called when the Log In button is clicked
-        private void LogInButton_Click_1(object sender, EventArgs e)
+        private void LogInButton_Click(object sender, EventArgs e)
         {
             // Get the email and password entered by the user
             string email = EmailTextBox.Content;
@@ -28,7 +32,7 @@ namespace JunkShopInventoryandTransactionSystem.View.LogInAuthFolder
             }
             try
             {
-                int? userId = AuthenticateAdmin(email, password);
+                int? userId = AuthenticateEmployee(email, password);
 
                 if (userId.HasValue)
                 {
@@ -56,26 +60,6 @@ namespace JunkShopInventoryandTransactionSystem.View.LogInAuthFolder
                 // Show an error message if something goes wrong (e.g., database connection issue)
                 MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void ForgotPasswordButton_Click(object sender, EventArgs e)
-        {
-            ForgotPasswordPage forgotPasswordPage = new ForgotPasswordPage();
-            forgotPasswordPage.Dock = DockStyle.Fill;
-            forgotPasswordPage.TopLevel = false;
-            MainForm.MainPanel.Controls.Clear();
-            MainForm.MainPanel.Controls.Add(forgotPasswordPage);
-            forgotPasswordPage.Show();
-        }
-
-        private void ForgotPasswordButton_MouseEnter(object sender, EventArgs e)
-        {
-            ForgotPasswordButton.ForeColor = Color.FromArgb(13, 158, 169);
-        }
-
-        private void ForgotPasswordButton_MouseLeave(object sender, EventArgs e)
-        {
-            ForgotPasswordButton.ForeColor = Color.FromArgb(7, 96, 14);
         }
 
         private void EmailTextBox_ContentChanged(object sender, EventArgs e)

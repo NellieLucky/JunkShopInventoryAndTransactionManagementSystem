@@ -81,6 +81,8 @@ namespace JunkShopInventoryandTransactionSystem.View.EmployeeManagementPageFolde
                 dataGridView1.Columns["PasswordColumn"].DataPropertyName = "empPassword";
                 dataGridView1.Columns["ContactColumn"].DataPropertyName = "empContact";
                 dataGridView1.Columns["AddressColumn"].DataPropertyName = "empAddress";
+
+                dataGridView1.Columns["DateRegisteredColumn"].DefaultCellStyle.Format = "yyyy-MM-dd";
             }
             catch (Exception ex)
             {

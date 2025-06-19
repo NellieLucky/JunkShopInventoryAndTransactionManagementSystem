@@ -345,21 +345,15 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.UserSession
             }
         }
 
-        //Function to check if the user exists in either Employees or Management Tables(LogInPage.cs)
-        public static int? AuthenticateUser(string email, string password)
+        //Function to check if the user exists in employees Table(LogInPage.cs)
+        public static int? AuthenticateEmployee(string email, string password)
         {
             try
             {
                 using (SqlConnection connect = new SqlConnection(connectionString))
                 {
                     connect.Open();
-
-                    string query = @"
-                SELECT TOP 1 empId FROM Employees 
-                WHERE empEmail = @Email AND empPassword = @Password
-                UNION ALL
-                SELECT TOP 1 admId FROM Management 
-                WHERE admEmail = @Email AND admPassword = @Password";
+                    string query = "SELECT empId FROM Employees WHERE empEmail = @Email AND empPassword = @Password";
 
                     using (SqlCommand cmd = new SqlCommand(query, connect))
                     {
@@ -369,7 +363,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.UserSession
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
                             if (reader.Read())
-                                return reader.GetInt32(0); // Return user ID
+                                return reader.GetInt32(0);
                         }
                     }
                 }
@@ -378,7 +372,38 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.UserSession
             {
                 throw;
             }
-            return null; // No user found
+
+            return null;
+        }
+        //Function to check if the user exists in Management Tables(LogInPage.cs)
+        public static int? AuthenticateAdmin(string email, string password)
+        {
+            try
+            {
+                using (SqlConnection connect = new SqlConnection(connectionString))
+                {
+                    connect.Open();
+                    string query = "SELECT admId FROM Management WHERE admEmail = @Email AND admPassword = @Password";
+
+                    using (SqlCommand cmd = new SqlCommand(query, connect))
+                    {
+                        cmd.Parameters.AddWithValue("@Email", email);
+                        cmd.Parameters.AddWithValue("@Password", password);
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                                return reader.GetInt32(0);
+                        }
+                    }
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+
+            return null;
         }
 
         //Function to check if the email is registered in either Employees or Management Tables(ForgotPasswordPage.cs)

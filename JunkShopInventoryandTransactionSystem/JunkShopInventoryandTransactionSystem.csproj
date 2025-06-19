@@ -9,6 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="View\LogInAuthFolder\EmployeeOrAdmin.Designer.cs~RF489b353.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Model\" />
     <Folder Include="Presenter\" />
   </ItemGroup>
