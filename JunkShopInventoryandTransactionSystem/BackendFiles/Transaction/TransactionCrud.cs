@@ -1,9 +1,10 @@
-﻿using System;
+﻿using MaterialSkin;
+using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Data.SqlClient;
 
 /*  RUN THIS QUERY IN YOUR MS SQL SERVER MANAGEMENT STUDIO (SSMS) TO CREATE THE TABLE
 
@@ -33,7 +34,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Crud
     {
         public int transacId { get; set; }
         public int customerId { get; set; }
-        public string customerName { get; set; } = string.Empty; // ✅ Add this property
+        public string customerName { get; set; } = string.Empty; 
         public int employeeId { get; set; }
         public DateTime transacDate { get; set; }
         public int totalNumOfItems { get; set; }
@@ -112,7 +113,6 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Crud
     }
 
     //CRUD STARTS HERE
-
     public class TransactionRead : BaseRepository
     {
         // Read all UNARCHIVED transactions with Customer Name
@@ -238,5 +238,67 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Crud
         }
     } // end of read for archived
     // end of reads
+
+    // create / adds a transaction to the database
+    public class TransactionCreate : BaseRepository
+    {
+        public bool AddNewTransaction(
+            int customerId,
+            int employeeId,     //skips transacDate since it defaults to GETDATE()
+            int totalItems,
+            int totalQty,
+            decimal totalAmount,
+            string transacType  // pass either "Buyer" or "Seller" as a string
+                                // also skips isArchived since it defaults to 0 (false)
+            )
+        {
+            using (SqlConnection conn = GetConnection())
+            {
+                string query = @"
+                INSERT INTO Transactions (
+                    customerId,
+                    employeeId,
+                    transacDate,
+                    totalNumOfItems,
+                    totalNumOfQty,
+                    totalAmount,
+                    transacType
+                )
+                VALUES (
+                    @customerId,
+                    @employeeId,
+                    GETDATE(),
+                    @totalNumOfItems,
+                    @totalNumOfQty,
+                    @totalAmount,
+                    @transacType
+                )";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@customerId", customerId);
+                    cmd.Parameters.AddWithValue("@employeeId", employeeId);
+                    cmd.Parameters.AddWithValue("@totalNumOfItems", totalItems);
+                    cmd.Parameters.AddWithValue("@totalNumOfQty", totalQty);
+                    cmd.Parameters.AddWithValue("@totalAmount", totalAmount);
+                    cmd.Parameters.AddWithValue("@transacType", transacType); // "Buyer" or "Seller"
+
+                    try
+                    {
+                        conn.Open();
+                        int rowsAffected = cmd.ExecuteNonQuery();
+                        return rowsAffected > 0;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("❌ Error inserting new transaction: " + ex.Message);
+                        throw new Exception("Failed to insert new transaction.", ex);
+                    }
+                }
+            }
+        }
+
+    }
+    // end of create
 
 }

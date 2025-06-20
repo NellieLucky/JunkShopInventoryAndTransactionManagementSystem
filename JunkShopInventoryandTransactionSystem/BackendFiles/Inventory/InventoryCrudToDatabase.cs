@@ -223,7 +223,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
         }
         // end of read all archived items
 
-        // just get one
+        // just get one with cat name
         public InventoryItem? GetOneInventoryItem(int itemId)
         {
             InventoryItem? item = null; // Will remain null if no match is found
@@ -283,6 +283,110 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
         }
         //end of fetchone()
 
+        //read queries for transaction pages
+        public InventoryItem? GetItemForBuyer(int itemId)
+        {
+            InventoryItem? item = null;
+
+            using (SqlConnection conn = GetConnection())
+            {
+                string query = @"
+                    SELECT 
+                        itemId,
+                        itemName,
+                        itemQtyType,
+                        itemQuantity,
+                        itemSellingPrice,
+                        isArchived
+                    FROM Inventory
+                    WHERE itemId = @itemId";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@itemId", itemId);
+
+                    try
+                    {
+                        conn.Open();
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                item = new InventoryItem
+                                {
+                                    itemId = Convert.ToInt32(reader["itemId"]),
+                                    itemName = reader["itemName"]?.ToString() ?? string.Empty,
+                                    itemQtyType = reader["itemQtyType"]?.ToString() ?? string.Empty,
+                                    itemQuantity = Convert.ToInt32(reader["itemQuantity"]),
+                                    itemSellingPrice = Convert.ToInt32(reader["itemSellingPrice"]),
+                                    isArchived = Convert.ToBoolean(reader["isArchived"])
+                                };
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("❌ Error reading Inventory item for Buyer: " + ex.Message);
+                        throw new Exception("Failed to retrieve the buyer inventory item from the database.", ex);
+                    }
+                }
+            }
+
+            return item;
+        }
+
+        // Get one inventory item for Seller transactions (removes categoryName)
+        public InventoryItem? GetItemForSeller(int itemId)
+        {
+            InventoryItem? item = null;
+
+            using (SqlConnection conn = GetConnection())
+            {
+                string query = @"
+                    SELECT 
+                        itemId,
+                        itemName,
+                        itemQtyType,
+                        itemQuantity,
+                        itemBuyingPrice,
+                        isArchived
+                    FROM Inventory
+                    WHERE itemId = @itemId";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@itemId", itemId);
+
+                    try
+                    {
+                        conn.Open();
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                item = new InventoryItem
+                                {
+                                    itemId = Convert.ToInt32(reader["itemId"]),
+                                    itemName = reader["itemName"]?.ToString() ?? string.Empty,
+                                    itemQtyType = reader["itemQtyType"]?.ToString() ?? string.Empty,
+                                    itemQuantity = Convert.ToInt32(reader["itemQuantity"]),
+                                    itemBuyingPrice = Convert.ToInt32(reader["itemBuyingPrice"]),
+                                    isArchived = Convert.ToBoolean(reader["isArchived"])
+                                };
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("❌ Error reading Inventory item for Seller: " + ex.Message);
+                        throw new Exception("Failed to retrieve the seller inventory item from the database.", ex);
+                    }
+                }
+            }
+
+            return item;
+        }
+
     }
     // End of inventory Read
 
@@ -332,10 +436,10 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
     }
     // end of InventoryAdd
 
-    //inventory edit
+    //inventory edit / update
     public class InventoryEdit : BaseRepository
     {
-        // Add your UpdateItemToInventory method here
+        // for item inventory editing
         public void EditItemInInventory(InventoryItem item)
         {
             string query = @"
@@ -381,8 +485,77 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
                 }   // end of the second using in the nested using stuff
             }   //end of the first using
         }   //end of method EditItemInInventory
+
     }
     // end of InventoryEdit
+
+    // inventory update for Buyer/Seller Transaction
+    // for item inventory updating of itemQuantity
+    // - BuyerTransaction_Backend.cs to DECREMENT itemQuantity (customer buys from us)
+    // - SellerTransaction_Backend.cs to INCREMENT itemQuantity (we buy from seller)
+    public class InventoryUpdate : BaseRepository
+    {
+        // For Buyer transactions: subtracts stock (cannot go negative)
+        public bool UpdateItemQuantityForBuyer(int itemId, int quantityToSubtract)
+        {
+            using (SqlConnection conn = GetConnection())
+            {
+                string query = @"
+                UPDATE Inventory
+                SET itemQuantity = itemQuantity - @qty
+                WHERE itemId = @itemId AND (itemQuantity - @qty) >= 0";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@qty", quantityToSubtract);
+                    cmd.Parameters.AddWithValue("@itemId", itemId);
+
+                    try
+                    {
+                        conn.Open();
+                        int affectedRows = cmd.ExecuteNonQuery();
+                        return affectedRows > 0;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("❌ Error updating quantity for buyer: " + ex.Message);
+                        throw new Exception("Buyer stock update failed.", ex);
+                    }
+                }
+            }
+        }   // end of buyer update
+
+        // For Seller transactions: adds stock
+        public bool UpdateItemQuantityForSeller(int itemId, int quantityToAdd)
+        {
+            using (SqlConnection conn = GetConnection())
+            {
+                string query = @"
+                UPDATE Inventory
+                SET itemQuantity = itemQuantity + @qty
+                WHERE itemId = @itemId";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@qty", quantityToAdd);
+                    cmd.Parameters.AddWithValue("@itemId", itemId);
+
+                    try
+                    {
+                        conn.Open();
+                        int affectedRows = cmd.ExecuteNonQuery();
+                        return affectedRows > 0;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("❌ Error updating quantity for seller: " + ex.Message);
+                        throw new Exception("Seller stock update failed.", ex);
+                    }
+                }
+            }
+        }   // end of seller update
+
+    }   // end of inventory item update for transaction
 
     // inventory soft delete
     public class InventorySoftDelete : BaseRepository

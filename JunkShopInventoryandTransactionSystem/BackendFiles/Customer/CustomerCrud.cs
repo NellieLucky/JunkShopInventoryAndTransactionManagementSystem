@@ -76,5 +76,43 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Customer.Crud
         }
     }
 
+    //CRUD STARTS HERE
+    public class CustomerRead : BaseRepository
+    {
+        // READ and get customer Id by using passed customers name
+        // used in transaction<buyer/seller>.cs
+        public int? GetCustomerIdByName(string customerName)
+        {
+            using (SqlConnection conn = GetConnection())
+            {
+                string query = @"
+                SELECT customerId 
+                FROM Customer 
+                WHERE customerName = @customerName";
 
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@customerName", customerName.Trim());
+
+                    try
+                    {
+                        conn.Open();
+                        object? result = cmd.ExecuteScalar();
+
+                        if (result != null && int.TryParse(result.ToString(), out int customerId))
+                        {
+                            return customerId;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("❌ Error fetching customer ID: " + ex.Message);
+                        throw new Exception("Failed to retrieve customer ID.", ex);
+                    }
+                }
+            }
+
+            return null; // Customer not found
+        }
+    }
 }

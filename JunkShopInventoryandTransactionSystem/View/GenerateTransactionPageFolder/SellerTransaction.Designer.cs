@@ -32,27 +32,27 @@
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            label2 = new Label();
+            TotalItemsCounterLabel = new Label();
             label3 = new Label();
             RegEmployeeTitlePage = new Label();
-            TotalPriceAmount_Label = new Label();
+            TotalPriceAmntCounterLabel = new Label();
             label1 = new Label();
-            comboBox1 = new ComboBox();
-            SaveBuyerTransaction_Button = new CuoreUI.Controls.cuiButton();
-            cuiButton1 = new CuoreUI.Controls.cuiButton();
-            cuiButton2 = new CuoreUI.Controls.cuiButton();
+            SellerItemComboBox = new ComboBox();
+            SaveSellerTransaction_Button = new CuoreUI.Controls.cuiButton();
+            SellerClearBtn = new CuoreUI.Controls.cuiButton();
+            SellerAddTransacBtn = new CuoreUI.Controls.cuiButton();
             BuyerContact = new Label();
-            cuiTextBox6 = new CuoreUI.Controls.cuiTextBox();
+            SellerContactTextBox = new CuoreUI.Controls.cuiTextBox();
             CustomerName = new Label();
-            cuiTextBox5 = new CuoreUI.Controls.cuiTextBox();
+            SellerNameTextBox = new CuoreUI.Controls.cuiTextBox();
             TransactionQuantity = new Label();
-            cuiTextBox4 = new CuoreUI.Controls.cuiTextBox();
+            SellerQtyTextBox = new CuoreUI.Controls.cuiTextBox();
             IdItem = new Label();
             SellerOrdersTable = new DataGridView();
             ItemID = new DataGridViewTextBoxColumn();
             ItemName = new DataGridViewTextBoxColumn();
             QtyType = new DataGridViewTextBoxColumn();
-            SellingPrice = new DataGridViewTextBoxColumn();
+            BuyingPrice = new DataGridViewTextBoxColumn();
             TransacQuantity = new DataGridViewTextBoxColumn();
             ExchangeAmount = new DataGridViewTextBoxColumn();
             Edit = new DataGridViewImageColumn();
@@ -60,17 +60,17 @@
             ((System.ComponentModel.ISupportInitialize)SellerOrdersTable).BeginInit();
             SuspendLayout();
             // 
-            // label2
+            // TotalItemsCounterLabel
             // 
-            label2.AutoSize = true;
-            label2.BackColor = Color.FromArgb(0, 0, 0, 0);
-            label2.Font = new Font("Arial", 10.2F, FontStyle.Bold);
-            label2.ForeColor = Color.FromArgb(0, 157, 209);
-            label2.Location = new Point(872, 539);
-            label2.Name = "label2";
-            label2.Size = new Size(94, 19);
-            label2.TabIndex = 86;
-            label2.Text = "Total Items";
+            TotalItemsCounterLabel.AutoSize = true;
+            TotalItemsCounterLabel.BackColor = Color.FromArgb(0, 0, 0, 0);
+            TotalItemsCounterLabel.Font = new Font("Arial", 10.2F, FontStyle.Bold);
+            TotalItemsCounterLabel.ForeColor = Color.FromArgb(0, 157, 209);
+            TotalItemsCounterLabel.Location = new Point(872, 539);
+            TotalItemsCounterLabel.Name = "TotalItemsCounterLabel";
+            TotalItemsCounterLabel.Size = new Size(94, 19);
+            TotalItemsCounterLabel.TabIndex = 86;
+            TotalItemsCounterLabel.Text = "Total Items";
             // 
             // label3
             // 
@@ -96,17 +96,17 @@
             RegEmployeeTitlePage.TabIndex = 84;
             RegEmployeeTitlePage.Text = "Seller Transaction";
             // 
-            // TotalPriceAmount_Label
+            // TotalPriceAmntCounterLabel
             // 
-            TotalPriceAmount_Label.AutoSize = true;
-            TotalPriceAmount_Label.BackColor = Color.FromArgb(0, 0, 0, 0);
-            TotalPriceAmount_Label.Font = new Font("Arial", 10.2F, FontStyle.Bold);
-            TotalPriceAmount_Label.ForeColor = Color.FromArgb(0, 157, 209);
-            TotalPriceAmount_Label.Location = new Point(872, 564);
-            TotalPriceAmount_Label.Name = "TotalPriceAmount_Label";
-            TotalPriceAmount_Label.Size = new Size(157, 19);
-            TotalPriceAmount_Label.TabIndex = 83;
-            TotalPriceAmount_Label.Text = "Total Price Amount";
+            TotalPriceAmntCounterLabel.AutoSize = true;
+            TotalPriceAmntCounterLabel.BackColor = Color.FromArgb(0, 0, 0, 0);
+            TotalPriceAmntCounterLabel.Font = new Font("Arial", 10.2F, FontStyle.Bold);
+            TotalPriceAmntCounterLabel.ForeColor = Color.FromArgb(0, 157, 209);
+            TotalPriceAmntCounterLabel.Location = new Point(872, 564);
+            TotalPriceAmntCounterLabel.Name = "TotalPriceAmntCounterLabel";
+            TotalPriceAmntCounterLabel.Size = new Size(157, 19);
+            TotalPriceAmntCounterLabel.TabIndex = 83;
+            TotalPriceAmntCounterLabel.Text = "Total Price Amount";
             // 
             // label1
             // 
@@ -120,133 +120,136 @@
             label1.TabIndex = 82;
             label1.Text = "Total Price:";
             // 
-            // comboBox1
+            // SellerItemComboBox
             // 
-            comboBox1.DropDownHeight = 120;
-            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBox1.Font = new Font("Arial Narrow", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            comboBox1.ForeColor = Color.Gray;
-            comboBox1.FormattingEnabled = true;
-            comboBox1.IntegralHeight = false;
-            comboBox1.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
-            comboBox1.Location = new Point(3, 80);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(195, 39);
-            comboBox1.TabIndex = 81;
+            SellerItemComboBox.DropDownHeight = 120;
+            SellerItemComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            SellerItemComboBox.Font = new Font("Arial Narrow", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            SellerItemComboBox.ForeColor = Color.Gray;
+            SellerItemComboBox.FormattingEnabled = true;
+            SellerItemComboBox.IntegralHeight = false;
+            SellerItemComboBox.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
+            SellerItemComboBox.Location = new Point(3, 80);
+            SellerItemComboBox.Name = "SellerItemComboBox";
+            SellerItemComboBox.Size = new Size(195, 39);
+            SellerItemComboBox.TabIndex = 81;
             // 
-            // SaveBuyerTransaction_Button
+            // SaveSellerTransaction_Button
             // 
-            SaveBuyerTransaction_Button.BackColor = Color.FromArgb(0, 0, 0, 0);
-            SaveBuyerTransaction_Button.CheckButton = false;
-            SaveBuyerTransaction_Button.Checked = false;
-            SaveBuyerTransaction_Button.CheckedBackground = Color.FromArgb(255, 106, 0);
-            SaveBuyerTransaction_Button.CheckedForeColor = Color.White;
-            SaveBuyerTransaction_Button.CheckedImageTint = Color.White;
-            SaveBuyerTransaction_Button.CheckedOutline = Color.FromArgb(255, 106, 0);
-            SaveBuyerTransaction_Button.Content = "Save Seller Transaction";
-            SaveBuyerTransaction_Button.DialogResult = DialogResult.None;
-            SaveBuyerTransaction_Button.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            SaveBuyerTransaction_Button.ForeColor = Color.White;
-            SaveBuyerTransaction_Button.HoverBackground = Color.White;
-            SaveBuyerTransaction_Button.HoveredImageTint = Color.White;
-            SaveBuyerTransaction_Button.HoverForeColor = Color.Black;
-            SaveBuyerTransaction_Button.HoverOutline = Color.FromArgb(32, 128, 128, 128);
-            SaveBuyerTransaction_Button.Image = null;
-            SaveBuyerTransaction_Button.ImageAutoCenter = true;
-            SaveBuyerTransaction_Button.ImageExpand = new Point(0, 0);
-            SaveBuyerTransaction_Button.ImageOffset = new Point(0, 0);
-            SaveBuyerTransaction_Button.Location = new Point(664, 614);
-            SaveBuyerTransaction_Button.Name = "SaveBuyerTransaction_Button";
-            SaveBuyerTransaction_Button.NormalBackground = Color.FromArgb(0, 157, 209);
-            SaveBuyerTransaction_Button.NormalForeColor = Color.White;
-            SaveBuyerTransaction_Button.NormalImageTint = Color.White;
-            SaveBuyerTransaction_Button.NormalOutline = Color.FromArgb(64, 128, 128, 128);
-            SaveBuyerTransaction_Button.OutlineThickness = 1F;
-            SaveBuyerTransaction_Button.PressedBackground = Color.WhiteSmoke;
-            SaveBuyerTransaction_Button.PressedForeColor = Color.FromArgb(32, 32, 32);
-            SaveBuyerTransaction_Button.PressedImageTint = Color.White;
-            SaveBuyerTransaction_Button.PressedOutline = Color.FromArgb(64, 128, 128, 128);
-            SaveBuyerTransaction_Button.Rounding = new Padding(8);
-            SaveBuyerTransaction_Button.Size = new Size(227, 34);
-            SaveBuyerTransaction_Button.TabIndex = 80;
-            SaveBuyerTransaction_Button.TextAlignment = StringAlignment.Center;
-            SaveBuyerTransaction_Button.TextOffset = new Point(0, 0);
+            SaveSellerTransaction_Button.BackColor = Color.FromArgb(0, 0, 0, 0);
+            SaveSellerTransaction_Button.CheckButton = false;
+            SaveSellerTransaction_Button.Checked = false;
+            SaveSellerTransaction_Button.CheckedBackground = Color.FromArgb(255, 106, 0);
+            SaveSellerTransaction_Button.CheckedForeColor = Color.White;
+            SaveSellerTransaction_Button.CheckedImageTint = Color.White;
+            SaveSellerTransaction_Button.CheckedOutline = Color.FromArgb(255, 106, 0);
+            SaveSellerTransaction_Button.Content = "Save Seller Transaction";
+            SaveSellerTransaction_Button.DialogResult = DialogResult.None;
+            SaveSellerTransaction_Button.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            SaveSellerTransaction_Button.ForeColor = Color.White;
+            SaveSellerTransaction_Button.HoverBackground = Color.White;
+            SaveSellerTransaction_Button.HoveredImageTint = Color.White;
+            SaveSellerTransaction_Button.HoverForeColor = Color.Black;
+            SaveSellerTransaction_Button.HoverOutline = Color.FromArgb(32, 128, 128, 128);
+            SaveSellerTransaction_Button.Image = null;
+            SaveSellerTransaction_Button.ImageAutoCenter = true;
+            SaveSellerTransaction_Button.ImageExpand = new Point(0, 0);
+            SaveSellerTransaction_Button.ImageOffset = new Point(0, 0);
+            SaveSellerTransaction_Button.Location = new Point(664, 614);
+            SaveSellerTransaction_Button.Name = "SaveSellerTransaction_Button";
+            SaveSellerTransaction_Button.NormalBackground = Color.FromArgb(0, 157, 209);
+            SaveSellerTransaction_Button.NormalForeColor = Color.White;
+            SaveSellerTransaction_Button.NormalImageTint = Color.White;
+            SaveSellerTransaction_Button.NormalOutline = Color.FromArgb(64, 128, 128, 128);
+            SaveSellerTransaction_Button.OutlineThickness = 1F;
+            SaveSellerTransaction_Button.PressedBackground = Color.WhiteSmoke;
+            SaveSellerTransaction_Button.PressedForeColor = Color.FromArgb(32, 32, 32);
+            SaveSellerTransaction_Button.PressedImageTint = Color.White;
+            SaveSellerTransaction_Button.PressedOutline = Color.FromArgb(64, 128, 128, 128);
+            SaveSellerTransaction_Button.Rounding = new Padding(8);
+            SaveSellerTransaction_Button.Size = new Size(227, 34);
+            SaveSellerTransaction_Button.TabIndex = 80;
+            SaveSellerTransaction_Button.TextAlignment = StringAlignment.Center;
+            SaveSellerTransaction_Button.TextOffset = new Point(0, 0);
+            SaveSellerTransaction_Button.Click += SaveSellerTransaction_Button_Click;
             // 
-            // cuiButton1
+            // SellerClearBtn
             // 
-            cuiButton1.BackColor = Color.FromArgb(0, 0, 0, 0);
-            cuiButton1.CheckButton = false;
-            cuiButton1.Checked = false;
-            cuiButton1.CheckedBackground = Color.FromArgb(255, 106, 0);
-            cuiButton1.CheckedForeColor = Color.White;
-            cuiButton1.CheckedImageTint = Color.White;
-            cuiButton1.CheckedOutline = Color.FromArgb(255, 106, 0);
-            cuiButton1.Content = "Clear";
-            cuiButton1.DialogResult = DialogResult.None;
-            cuiButton1.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            cuiButton1.ForeColor = Color.Black;
-            cuiButton1.HoverBackground = Color.White;
-            cuiButton1.HoveredImageTint = Color.White;
-            cuiButton1.HoverForeColor = Color.Black;
-            cuiButton1.HoverOutline = Color.FromArgb(32, 128, 128, 128);
-            cuiButton1.Image = null;
-            cuiButton1.ImageAutoCenter = true;
-            cuiButton1.ImageExpand = new Point(0, 0);
-            cuiButton1.ImageOffset = new Point(0, 0);
-            cuiButton1.Location = new Point(902, 614);
-            cuiButton1.Name = "cuiButton1";
-            cuiButton1.NormalBackground = Color.White;
-            cuiButton1.NormalForeColor = Color.Black;
-            cuiButton1.NormalImageTint = Color.White;
-            cuiButton1.NormalOutline = Color.FromArgb(64, 128, 128, 128);
-            cuiButton1.OutlineThickness = 1F;
-            cuiButton1.PressedBackground = Color.WhiteSmoke;
-            cuiButton1.PressedForeColor = Color.FromArgb(32, 32, 32);
-            cuiButton1.PressedImageTint = Color.White;
-            cuiButton1.PressedOutline = Color.FromArgb(64, 128, 128, 128);
-            cuiButton1.Rounding = new Padding(8);
-            cuiButton1.Size = new Size(122, 34);
-            cuiButton1.TabIndex = 79;
-            cuiButton1.TextAlignment = StringAlignment.Center;
-            cuiButton1.TextOffset = new Point(0, 0);
+            SellerClearBtn.BackColor = Color.FromArgb(0, 0, 0, 0);
+            SellerClearBtn.CheckButton = false;
+            SellerClearBtn.Checked = false;
+            SellerClearBtn.CheckedBackground = Color.FromArgb(255, 106, 0);
+            SellerClearBtn.CheckedForeColor = Color.White;
+            SellerClearBtn.CheckedImageTint = Color.White;
+            SellerClearBtn.CheckedOutline = Color.FromArgb(255, 106, 0);
+            SellerClearBtn.Content = "Clear";
+            SellerClearBtn.DialogResult = DialogResult.None;
+            SellerClearBtn.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            SellerClearBtn.ForeColor = Color.Black;
+            SellerClearBtn.HoverBackground = Color.White;
+            SellerClearBtn.HoveredImageTint = Color.White;
+            SellerClearBtn.HoverForeColor = Color.Black;
+            SellerClearBtn.HoverOutline = Color.FromArgb(32, 128, 128, 128);
+            SellerClearBtn.Image = null;
+            SellerClearBtn.ImageAutoCenter = true;
+            SellerClearBtn.ImageExpand = new Point(0, 0);
+            SellerClearBtn.ImageOffset = new Point(0, 0);
+            SellerClearBtn.Location = new Point(902, 614);
+            SellerClearBtn.Name = "SellerClearBtn";
+            SellerClearBtn.NormalBackground = Color.White;
+            SellerClearBtn.NormalForeColor = Color.Black;
+            SellerClearBtn.NormalImageTint = Color.White;
+            SellerClearBtn.NormalOutline = Color.FromArgb(64, 128, 128, 128);
+            SellerClearBtn.OutlineThickness = 1F;
+            SellerClearBtn.PressedBackground = Color.WhiteSmoke;
+            SellerClearBtn.PressedForeColor = Color.FromArgb(32, 32, 32);
+            SellerClearBtn.PressedImageTint = Color.White;
+            SellerClearBtn.PressedOutline = Color.FromArgb(64, 128, 128, 128);
+            SellerClearBtn.Rounding = new Padding(8);
+            SellerClearBtn.Size = new Size(122, 34);
+            SellerClearBtn.TabIndex = 79;
+            SellerClearBtn.TextAlignment = StringAlignment.Center;
+            SellerClearBtn.TextOffset = new Point(0, 0);
+            SellerClearBtn.Click += SellerClearBtn_Click;
             // 
-            // cuiButton2
+            // SellerAddTransacBtn
             // 
-            cuiButton2.BackColor = Color.FromArgb(0, 0, 0, 0);
-            cuiButton2.CheckButton = false;
-            cuiButton2.Checked = false;
-            cuiButton2.CheckedBackground = Color.FromArgb(255, 106, 0);
-            cuiButton2.CheckedForeColor = Color.White;
-            cuiButton2.CheckedImageTint = Color.White;
-            cuiButton2.CheckedOutline = Color.FromArgb(255, 106, 0);
-            cuiButton2.Content = "Add";
-            cuiButton2.DialogResult = DialogResult.None;
-            cuiButton2.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            cuiButton2.ForeColor = Color.White;
-            cuiButton2.HoverBackground = Color.White;
-            cuiButton2.HoveredImageTint = Color.White;
-            cuiButton2.HoverForeColor = Color.Black;
-            cuiButton2.HoverOutline = Color.FromArgb(32, 128, 128, 128);
-            cuiButton2.Image = null;
-            cuiButton2.ImageAutoCenter = true;
-            cuiButton2.ImageExpand = new Point(0, 0);
-            cuiButton2.ImageOffset = new Point(0, 0);
-            cuiButton2.Location = new Point(417, 84);
-            cuiButton2.Name = "cuiButton2";
-            cuiButton2.NormalBackground = Color.FromArgb(0, 157, 209);
-            cuiButton2.NormalForeColor = Color.White;
-            cuiButton2.NormalImageTint = Color.White;
-            cuiButton2.NormalOutline = Color.FromArgb(64, 128, 128, 128);
-            cuiButton2.OutlineThickness = 1F;
-            cuiButton2.PressedBackground = Color.WhiteSmoke;
-            cuiButton2.PressedForeColor = Color.FromArgb(32, 32, 32);
-            cuiButton2.PressedImageTint = Color.White;
-            cuiButton2.PressedOutline = Color.FromArgb(64, 128, 128, 128);
-            cuiButton2.Rounding = new Padding(8);
-            cuiButton2.Size = new Size(123, 34);
-            cuiButton2.TabIndex = 78;
-            cuiButton2.TextAlignment = StringAlignment.Center;
-            cuiButton2.TextOffset = new Point(0, 0);
+            SellerAddTransacBtn.BackColor = Color.FromArgb(0, 0, 0, 0);
+            SellerAddTransacBtn.CheckButton = false;
+            SellerAddTransacBtn.Checked = false;
+            SellerAddTransacBtn.CheckedBackground = Color.FromArgb(255, 106, 0);
+            SellerAddTransacBtn.CheckedForeColor = Color.White;
+            SellerAddTransacBtn.CheckedImageTint = Color.White;
+            SellerAddTransacBtn.CheckedOutline = Color.FromArgb(255, 106, 0);
+            SellerAddTransacBtn.Content = "Add";
+            SellerAddTransacBtn.DialogResult = DialogResult.None;
+            SellerAddTransacBtn.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            SellerAddTransacBtn.ForeColor = Color.White;
+            SellerAddTransacBtn.HoverBackground = Color.White;
+            SellerAddTransacBtn.HoveredImageTint = Color.White;
+            SellerAddTransacBtn.HoverForeColor = Color.Black;
+            SellerAddTransacBtn.HoverOutline = Color.FromArgb(32, 128, 128, 128);
+            SellerAddTransacBtn.Image = null;
+            SellerAddTransacBtn.ImageAutoCenter = true;
+            SellerAddTransacBtn.ImageExpand = new Point(0, 0);
+            SellerAddTransacBtn.ImageOffset = new Point(0, 0);
+            SellerAddTransacBtn.Location = new Point(417, 84);
+            SellerAddTransacBtn.Name = "SellerAddTransacBtn";
+            SellerAddTransacBtn.NormalBackground = Color.FromArgb(0, 157, 209);
+            SellerAddTransacBtn.NormalForeColor = Color.White;
+            SellerAddTransacBtn.NormalImageTint = Color.White;
+            SellerAddTransacBtn.NormalOutline = Color.FromArgb(64, 128, 128, 128);
+            SellerAddTransacBtn.OutlineThickness = 1F;
+            SellerAddTransacBtn.PressedBackground = Color.WhiteSmoke;
+            SellerAddTransacBtn.PressedForeColor = Color.FromArgb(32, 32, 32);
+            SellerAddTransacBtn.PressedImageTint = Color.White;
+            SellerAddTransacBtn.PressedOutline = Color.FromArgb(64, 128, 128, 128);
+            SellerAddTransacBtn.Rounding = new Padding(8);
+            SellerAddTransacBtn.Size = new Size(123, 34);
+            SellerAddTransacBtn.TabIndex = 78;
+            SellerAddTransacBtn.TextAlignment = StringAlignment.Center;
+            SellerAddTransacBtn.TextOffset = new Point(0, 0);
+            SellerAddTransacBtn.Click += SellerAddTransacBtn_Click;
             // 
             // BuyerContact
             // 
@@ -260,33 +263,33 @@
             BuyerContact.TabIndex = 77;
             BuyerContact.Text = "Contact No.";
             // 
-            // cuiTextBox6
+            // SellerContactTextBox
             // 
-            cuiTextBox6.BackgroundColor = Color.White;
-            cuiTextBox6.BorderColor = Color.FromArgb(0, 157, 209);
-            cuiTextBox6.Content = "";
-            cuiTextBox6.FocusBackgroundColor = Color.White;
-            cuiTextBox6.FocusBorderColor = Color.Empty;
-            cuiTextBox6.FocusImageTint = Color.White;
-            cuiTextBox6.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            cuiTextBox6.ForeColor = Color.Gray;
-            cuiTextBox6.Image = null;
-            cuiTextBox6.ImageExpand = new Point(0, 0);
-            cuiTextBox6.ImageOffset = new Point(0, 0);
-            cuiTextBox6.Location = new Point(274, 549);
-            cuiTextBox6.Margin = new Padding(4);
-            cuiTextBox6.Multiline = false;
-            cuiTextBox6.Name = "cuiTextBox6";
-            cuiTextBox6.NormalImageTint = Color.White;
-            cuiTextBox6.Padding = new Padding(20, 9, 20, 0);
-            cuiTextBox6.PasswordChar = false;
-            cuiTextBox6.PlaceholderColor = Color.Gray;
-            cuiTextBox6.PlaceholderText = "Contact No.";
-            cuiTextBox6.Rounding = new Padding(8);
-            cuiTextBox6.Size = new Size(277, 38);
-            cuiTextBox6.TabIndex = 76;
-            cuiTextBox6.TextOffset = new Size(0, 0);
-            cuiTextBox6.UnderlinedStyle = false;
+            SellerContactTextBox.BackgroundColor = Color.White;
+            SellerContactTextBox.BorderColor = Color.FromArgb(0, 157, 209);
+            SellerContactTextBox.Content = "";
+            SellerContactTextBox.FocusBackgroundColor = Color.White;
+            SellerContactTextBox.FocusBorderColor = Color.Empty;
+            SellerContactTextBox.FocusImageTint = Color.White;
+            SellerContactTextBox.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            SellerContactTextBox.ForeColor = Color.Gray;
+            SellerContactTextBox.Image = null;
+            SellerContactTextBox.ImageExpand = new Point(0, 0);
+            SellerContactTextBox.ImageOffset = new Point(0, 0);
+            SellerContactTextBox.Location = new Point(274, 549);
+            SellerContactTextBox.Margin = new Padding(4);
+            SellerContactTextBox.Multiline = false;
+            SellerContactTextBox.Name = "SellerContactTextBox";
+            SellerContactTextBox.NormalImageTint = Color.White;
+            SellerContactTextBox.Padding = new Padding(20, 9, 20, 0);
+            SellerContactTextBox.PasswordChar = false;
+            SellerContactTextBox.PlaceholderColor = Color.Gray;
+            SellerContactTextBox.PlaceholderText = "Contact No.";
+            SellerContactTextBox.Rounding = new Padding(8);
+            SellerContactTextBox.Size = new Size(277, 38);
+            SellerContactTextBox.TabIndex = 76;
+            SellerContactTextBox.TextOffset = new Size(0, 0);
+            SellerContactTextBox.UnderlinedStyle = false;
             // 
             // CustomerName
             // 
@@ -300,33 +303,33 @@
             CustomerName.TabIndex = 75;
             CustomerName.Text = "Seller Name";
             // 
-            // cuiTextBox5
+            // SellerNameTextBox
             // 
-            cuiTextBox5.BackgroundColor = Color.White;
-            cuiTextBox5.BorderColor = Color.FromArgb(0, 157, 209);
-            cuiTextBox5.Content = "";
-            cuiTextBox5.FocusBackgroundColor = Color.White;
-            cuiTextBox5.FocusBorderColor = Color.Empty;
-            cuiTextBox5.FocusImageTint = Color.White;
-            cuiTextBox5.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            cuiTextBox5.ForeColor = Color.Gray;
-            cuiTextBox5.Image = null;
-            cuiTextBox5.ImageExpand = new Point(0, 0);
-            cuiTextBox5.ImageOffset = new Point(0, 0);
-            cuiTextBox5.Location = new Point(7, 549);
-            cuiTextBox5.Margin = new Padding(4);
-            cuiTextBox5.Multiline = false;
-            cuiTextBox5.Name = "cuiTextBox5";
-            cuiTextBox5.NormalImageTint = Color.White;
-            cuiTextBox5.Padding = new Padding(20, 9, 20, 0);
-            cuiTextBox5.PasswordChar = false;
-            cuiTextBox5.PlaceholderColor = Color.Gray;
-            cuiTextBox5.PlaceholderText = "Seller Name";
-            cuiTextBox5.Rounding = new Padding(8);
-            cuiTextBox5.Size = new Size(254, 38);
-            cuiTextBox5.TabIndex = 74;
-            cuiTextBox5.TextOffset = new Size(0, 0);
-            cuiTextBox5.UnderlinedStyle = false;
+            SellerNameTextBox.BackgroundColor = Color.White;
+            SellerNameTextBox.BorderColor = Color.FromArgb(0, 157, 209);
+            SellerNameTextBox.Content = "";
+            SellerNameTextBox.FocusBackgroundColor = Color.White;
+            SellerNameTextBox.FocusBorderColor = Color.Empty;
+            SellerNameTextBox.FocusImageTint = Color.White;
+            SellerNameTextBox.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            SellerNameTextBox.ForeColor = Color.Gray;
+            SellerNameTextBox.Image = null;
+            SellerNameTextBox.ImageExpand = new Point(0, 0);
+            SellerNameTextBox.ImageOffset = new Point(0, 0);
+            SellerNameTextBox.Location = new Point(7, 549);
+            SellerNameTextBox.Margin = new Padding(4);
+            SellerNameTextBox.Multiline = false;
+            SellerNameTextBox.Name = "SellerNameTextBox";
+            SellerNameTextBox.NormalImageTint = Color.White;
+            SellerNameTextBox.Padding = new Padding(20, 9, 20, 0);
+            SellerNameTextBox.PasswordChar = false;
+            SellerNameTextBox.PlaceholderColor = Color.Gray;
+            SellerNameTextBox.PlaceholderText = "Seller Name";
+            SellerNameTextBox.Rounding = new Padding(8);
+            SellerNameTextBox.Size = new Size(254, 38);
+            SellerNameTextBox.TabIndex = 74;
+            SellerNameTextBox.TextOffset = new Size(0, 0);
+            SellerNameTextBox.UnderlinedStyle = false;
             // 
             // TransactionQuantity
             // 
@@ -340,33 +343,33 @@
             TransactionQuantity.TabIndex = 73;
             TransactionQuantity.Text = "Quantity";
             // 
-            // cuiTextBox4
+            // SellerQtyTextBox
             // 
-            cuiTextBox4.BackgroundColor = Color.White;
-            cuiTextBox4.BorderColor = Color.FromArgb(0, 157, 209);
-            cuiTextBox4.Content = "";
-            cuiTextBox4.FocusBackgroundColor = Color.White;
-            cuiTextBox4.FocusBorderColor = Color.Empty;
-            cuiTextBox4.FocusImageTint = Color.White;
-            cuiTextBox4.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            cuiTextBox4.ForeColor = Color.Gray;
-            cuiTextBox4.Image = null;
-            cuiTextBox4.ImageExpand = new Point(0, 0);
-            cuiTextBox4.ImageOffset = new Point(0, 0);
-            cuiTextBox4.Location = new Point(210, 80);
-            cuiTextBox4.Margin = new Padding(4);
-            cuiTextBox4.Multiline = false;
-            cuiTextBox4.Name = "cuiTextBox4";
-            cuiTextBox4.NormalImageTint = Color.White;
-            cuiTextBox4.Padding = new Padding(20, 9, 20, 0);
-            cuiTextBox4.PasswordChar = false;
-            cuiTextBox4.PlaceholderColor = Color.Gray;
-            cuiTextBox4.PlaceholderText = "Quantity";
-            cuiTextBox4.Rounding = new Padding(8);
-            cuiTextBox4.Size = new Size(195, 38);
-            cuiTextBox4.TabIndex = 72;
-            cuiTextBox4.TextOffset = new Size(0, 0);
-            cuiTextBox4.UnderlinedStyle = false;
+            SellerQtyTextBox.BackgroundColor = Color.White;
+            SellerQtyTextBox.BorderColor = Color.FromArgb(0, 157, 209);
+            SellerQtyTextBox.Content = "";
+            SellerQtyTextBox.FocusBackgroundColor = Color.White;
+            SellerQtyTextBox.FocusBorderColor = Color.Empty;
+            SellerQtyTextBox.FocusImageTint = Color.White;
+            SellerQtyTextBox.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            SellerQtyTextBox.ForeColor = Color.Gray;
+            SellerQtyTextBox.Image = null;
+            SellerQtyTextBox.ImageExpand = new Point(0, 0);
+            SellerQtyTextBox.ImageOffset = new Point(0, 0);
+            SellerQtyTextBox.Location = new Point(210, 80);
+            SellerQtyTextBox.Margin = new Padding(4);
+            SellerQtyTextBox.Multiline = false;
+            SellerQtyTextBox.Name = "SellerQtyTextBox";
+            SellerQtyTextBox.NormalImageTint = Color.White;
+            SellerQtyTextBox.Padding = new Padding(20, 9, 20, 0);
+            SellerQtyTextBox.PasswordChar = false;
+            SellerQtyTextBox.PlaceholderColor = Color.Gray;
+            SellerQtyTextBox.PlaceholderText = "Quantity";
+            SellerQtyTextBox.Rounding = new Padding(8);
+            SellerQtyTextBox.Size = new Size(195, 38);
+            SellerQtyTextBox.TabIndex = 72;
+            SellerQtyTextBox.TextOffset = new Size(0, 0);
+            SellerQtyTextBox.UnderlinedStyle = false;
             // 
             // IdItem
             // 
@@ -399,7 +402,7 @@
             SellerOrdersTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             SellerOrdersTable.ColumnHeadersHeight = 60;
             SellerOrdersTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            SellerOrdersTable.Columns.AddRange(new DataGridViewColumn[] { ItemID, ItemName, QtyType, SellingPrice, TransacQuantity, ExchangeAmount, Edit, Remove });
+            SellerOrdersTable.Columns.AddRange(new DataGridViewColumn[] { ItemID, ItemName, QtyType, BuyingPrice, TransacQuantity, ExchangeAmount, Edit, Remove });
             SellerOrdersTable.EditMode = DataGridViewEditMode.EditProgrammatically;
             SellerOrdersTable.EnableHeadersVisualStyles = false;
             SellerOrdersTable.GridColor = Color.FromArgb(99, 99, 99);
@@ -447,13 +450,13 @@
             QtyType.Name = "QtyType";
             QtyType.Width = 125;
             // 
-            // SellingPrice
+            // BuyingPrice
             // 
-            SellingPrice.FillWeight = 150F;
-            SellingPrice.HeaderText = "Selling Price";
-            SellingPrice.MinimumWidth = 6;
-            SellingPrice.Name = "SellingPrice";
-            SellingPrice.Width = 150;
+            BuyingPrice.FillWeight = 150F;
+            BuyingPrice.HeaderText = "Buying Price";
+            BuyingPrice.MinimumWidth = 6;
+            BuyingPrice.Name = "BuyingPrice";
+            BuyingPrice.Width = 150;
             // 
             // TransacQuantity
             // 
@@ -501,21 +504,21 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(SellerOrdersTable);
-            Controls.Add(label2);
+            Controls.Add(TotalItemsCounterLabel);
             Controls.Add(label3);
             Controls.Add(RegEmployeeTitlePage);
-            Controls.Add(TotalPriceAmount_Label);
+            Controls.Add(TotalPriceAmntCounterLabel);
             Controls.Add(label1);
-            Controls.Add(comboBox1);
-            Controls.Add(SaveBuyerTransaction_Button);
-            Controls.Add(cuiButton1);
-            Controls.Add(cuiButton2);
+            Controls.Add(SellerItemComboBox);
+            Controls.Add(SaveSellerTransaction_Button);
+            Controls.Add(SellerClearBtn);
+            Controls.Add(SellerAddTransacBtn);
             Controls.Add(BuyerContact);
-            Controls.Add(cuiTextBox6);
+            Controls.Add(SellerContactTextBox);
             Controls.Add(CustomerName);
-            Controls.Add(cuiTextBox5);
+            Controls.Add(SellerNameTextBox);
             Controls.Add(TransactionQuantity);
-            Controls.Add(cuiTextBox4);
+            Controls.Add(SellerQtyTextBox);
             Controls.Add(IdItem);
             Name = "SellerTransaction";
             Size = new Size(1054, 661);
@@ -525,27 +528,27 @@
         }
 
         #endregion
-        private Label label2;
+        private Label TotalItemsCounterLabel;
         private Label label3;
         private Label RegEmployeeTitlePage;
-        private Label TotalPriceAmount_Label;
+        private Label TotalPriceAmntCounterLabel;
         private Label label1;
-        private ComboBox comboBox1;
-        private CuoreUI.Controls.cuiButton SaveBuyerTransaction_Button;
-        private CuoreUI.Controls.cuiButton cuiButton1;
-        private CuoreUI.Controls.cuiButton cuiButton2;
+        private ComboBox SellerItemComboBox;
+        private CuoreUI.Controls.cuiButton SaveSellerTransaction_Button;
+        private CuoreUI.Controls.cuiButton SellerClearBtn;
+        private CuoreUI.Controls.cuiButton SellerAddTransacBtn;
         private Label BuyerContact;
-        private CuoreUI.Controls.cuiTextBox cuiTextBox6;
+        private CuoreUI.Controls.cuiTextBox SellerContactTextBox;
         private Label CustomerName;
-        private CuoreUI.Controls.cuiTextBox cuiTextBox5;
+        private CuoreUI.Controls.cuiTextBox SellerNameTextBox;
         private Label TransactionQuantity;
-        private CuoreUI.Controls.cuiTextBox cuiTextBox4;
+        private CuoreUI.Controls.cuiTextBox SellerQtyTextBox;
         private Label IdItem;
         private DataGridView SellerOrdersTable;
         private DataGridViewTextBoxColumn ItemID;
         private DataGridViewTextBoxColumn ItemName;
         private DataGridViewTextBoxColumn QtyType;
-        private DataGridViewTextBoxColumn SellingPrice;
+        private DataGridViewTextBoxColumn BuyingPrice;
         private DataGridViewTextBoxColumn TransacQuantity;
         private DataGridViewTextBoxColumn ExchangeAmount;
         private DataGridViewImageColumn Edit;
