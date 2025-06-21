@@ -1,5 +1,6 @@
 ﻿//imports the backend file ReloadInventory.cs
 using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Reload;
+using JunkShopInventoryandTransactionSystem.BackendFiles.UserSession;
 using JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel;
 using JunkShopInventoryandTransactionSystem.View.DeletionDialogs;
 using System;
@@ -11,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static JunkShopInventoryandTransactionSystem.BackendFiles.UserSession.ForUser;
 
 namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
 {
@@ -54,6 +56,17 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
             ItemRecordsTable.Columns["Edit"].HeaderText = ""; 
             ItemRecordsTable.Columns["Delete"].HeaderText = ""; // Set header text for Edit and Delete columns to empty
             ItemRecordsTable.Paint += DataGridView1_Paint; // Attach the Paint event handler to the DataGridView
+
+            // Hide Add/Delete/Edit column if user is Employee
+            var userInfo = ForUser.GetUserInfo(UserSession.UserId);
+            if (userInfo.Role == "Employee")
+            {
+                ItemRecordsTable.Columns["Edit"].Visible = false;
+                ItemRecordsTable.Columns["Delete"].Visible = false;
+
+
+                AddItemButton.Visible = false;
+            }
         }
 
         private void DataGridView1_Paint(object? sender, PaintEventArgs e)
