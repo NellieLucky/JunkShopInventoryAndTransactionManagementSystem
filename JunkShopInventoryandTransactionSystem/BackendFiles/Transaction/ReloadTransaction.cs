@@ -35,31 +35,6 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Reload
             }
         }
 
-        // Load all archived transactions into the DataGridView
-        public static void LoadArchivedTransactionData(DataGridView dataGridView1)
-        {
-            dataGridView1.Rows.Clear(); // Clear previous rows
-
-            TransactionRead reader = new TransactionRead();
-            List<TransactionItem> transactions = reader.GetAllArchivedTransactions();
-
-            foreach (var transaction in transactions)
-            {
-                dataGridView1.Rows.Add(
-                    transaction.transacId,
-                    transaction.customerId,
-                    transaction.customerName,
-                    transaction.employeeId,
-                    transaction.transacDate.ToString("yyyy-MM-dd"),
-                    //transaction.transacDate.ToString("yyyy-MM-dd HH:mm"),
-                    transaction.totalNumOfItems,
-                    transaction.totalNumOfQty,
-                    transaction.totalAmount,
-                    transaction.transacType
-                );
-            }
-        }
-
     }
 
 }

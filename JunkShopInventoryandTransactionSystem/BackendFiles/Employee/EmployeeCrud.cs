@@ -25,7 +25,48 @@ CREATE TABLE Employees (
 namespace JunkShopInventoryandTransactionSystem.BackendFiles.Employee.Crud
 {
     // constructor here
+    public class EmployeeItem
+    {
+        public int empId { get; set; }
+        public string empName { get; set; } = string.Empty;
+        public string empPassword { get; set; } = string.Empty;
+        public string empEmail { get; set; } = string.Empty;
+        public string token { get; set; } = string.Empty;
+        public string empContact { get; set; } = string.Empty;
+        public string empAddress { get; set; } = string.Empty;
+        public string empRole { get; set; } = "Employee";
+        public DateTime empDateRegistered { get; set; } = DateTime.Now;
+        public bool IsRemoved { get; set; } = false;
 
+        // Constructor WITHOUT empId (for inserting new records)
+        public EmployeeItem(string name, string password, string email, string token,
+                            string contact, string address, string role)
+        {
+            empName = name;
+            empPassword = password;
+            empEmail = email;
+            this.token = token;
+            empContact = contact;
+            empAddress = address;
+            empRole = role;
+        }
+
+        // Constructor WITH empId (for retrieving or editing existing records)
+        public EmployeeItem(int id, string name, string password, string email, string token,
+                            string contact, string address, string role, DateTime dateRegistered, bool isRemoved)
+        {
+            empId = id;
+            empName = name;
+            empPassword = password;
+            empEmail = email;
+            this.token = token;
+            empContact = contact;
+            empAddress = address;
+            empRole = role;
+            empDateRegistered = dateRegistered;
+            IsRemoved = isRemoved;
+        }
+    }
 
     // db connection here
     public abstract class BaseRepository

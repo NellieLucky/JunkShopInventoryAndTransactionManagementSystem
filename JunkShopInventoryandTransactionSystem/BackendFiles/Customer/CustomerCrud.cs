@@ -11,15 +11,9 @@ CREATE TABLE Customer (
     customerId INT IDENTITY(1,1) PRIMARY KEY,
     customerName NVARCHAR(100) NOT NULL,
     customerType VARCHAR(10) NOT NULL CHECK (customerType IN ('Buyer', 'Seller', 'Both')),
-    customerContact NVARCHAR(50) NOT NULL,
-    customerAddress NVARCHAR(200) NOT NULL
+    customerContact NVARCHAR(50) NULL,
+    customerAddress NVARCHAR(200) NULL
 );
-
-INSERT INTO Customer (customerName, customerType, customerContact, customerAddress)
-VALUES 
-('Remo', 'Buyer', '09123456789', 'TEST1 Street'),
-('Abalos', 'Seller', '09998887766', 'TEST2 Avenue'),
-('Arnel', 'Both', '08881234567', 'TEST3 Boulevard');
 
 SELECT * FROM Customer;
 
@@ -115,4 +109,51 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Customer.Crud
             return null; // Customer not found
         }
     }
+    // end of read
+
+    //start of insertion / insert
+    public class CustomerInsert : BaseRepository
+    {
+        // READ and get customer Id by using passed customers name
+        // used in transaction<buyer/seller>.cs
+        public int InsertCustomer(string customerName, string? customerContact, string customerType)
+        {
+            using (SqlConnection conn = GetConnection())
+            {
+                string query = @"
+                    INSERT INTO Customer (customerName, customerType, customerContact)
+                    VALUES (@customerName, @customerType, @customerContact);
+                    SELECT SCOPE_IDENTITY();";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@customerName", customerName.Trim());
+                    cmd.Parameters.AddWithValue("@customerType", customerType);
+                    cmd.Parameters.AddWithValue("@customerContact", string.IsNullOrWhiteSpace(customerContact) ? (object)DBNull.Value : customerContact);
+
+                    try
+                    {
+                        conn.Open();
+                        object result = cmd.ExecuteScalar();
+                        if (result != null && int.TryParse(result.ToString(), out int newCustomerId))
+                        {
+                            return newCustomerId;
+                        }
+                        else
+                        {
+                            throw new Exception("Customer inserted, but failed to retrieve new ID.");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("❌ Error inserting customer: " + ex.Message);
+                        throw new Exception("Failed to insert new customer and retrieve ID.", ex);
+                    }
+                }
+            }
+        }
+
+    }
+
 }
+

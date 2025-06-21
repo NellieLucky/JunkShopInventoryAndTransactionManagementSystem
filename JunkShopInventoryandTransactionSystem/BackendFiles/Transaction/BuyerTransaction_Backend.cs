@@ -147,7 +147,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.BuyerLo
         public static bool FinalizeTransaction(
             List<CartItem> tempCart,
             string buyerName,
-            string buyerContact,    // what do we do with this?
+            string buyerContact,
             DataGridView targetDataGridView
             )
         {
@@ -183,29 +183,30 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.BuyerLo
                 MessageBox.Show(errorMessage, "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-            // end of validation
+            // end of validation for widgets
 
-            // Updates the quantity for each item in the cart
-            InventoryUpdate updater = new InventoryUpdate();
-            foreach (var cartItem in tempCart)
-            {
-                bool success = updater.UpdateItemQuantityForBuyer(cartItem.ItemId, cartItem.Quantity);
-                if (!success)
-                {
-                    MessageBox.Show($"Failed to update quantity for Item ID {cartItem.ItemId}", "Finalize Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false; // If any update fails, we stop the transaction finalization
-                }
-            }
+            // validation of customer and employee
 
-            // If all updates were successful, we can proceed to finalize the transaction and save it to the database
-
-            // get customer Id first
+            // Get customer ID by name
             CustomerRead reader = new CustomerRead();
             int? customerId = reader.GetCustomerIdByName(buyerName);
+
             if (customerId == null)
             {
-                MessageBox.Show("❌ Buyer not found in Customer table.", "Lookup Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                // If not found, insert the new customer
+                CustomerInsert addCustomer = new CustomerInsert();
+                try
+                {
+                    int newCustomerId = addCustomer.InsertCustomer(buyerName, buyerContact, "Buyer");
+
+                    MessageBox.Show("✅ New customer added as Buyer.", "Customer Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    customerId = newCustomerId; // Use the newly inserted ID
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("❌ Failed to save new customer details.", "Customer Insert Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
             }
             // un nulls the customerId for further processing
             int nonNullCustomerId = customerId.Value;
@@ -238,6 +239,18 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.BuyerLo
                 if (row.Cells[5].Value != null)
                 {
                     totalAmount += Convert.ToDecimal(row.Cells[5].Value);
+                }
+            }
+
+            // Updates the quantity for each item in the cart
+            InventoryUpdate updater = new InventoryUpdate();
+            foreach (var cartItem in tempCart)
+            {
+                bool success = updater.UpdateItemQuantityForBuyer(cartItem.ItemId, cartItem.Quantity);
+                if (!success)
+                {
+                    MessageBox.Show($"Failed to update quantity for Item ID {cartItem.ItemId}", "Finalize Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false; // If any update fails, we stop the transaction finalization
                 }
             }
 

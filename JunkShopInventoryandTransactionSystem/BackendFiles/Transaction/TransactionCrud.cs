@@ -17,8 +17,7 @@ CREATE TABLE Transactions (
     totalNumOfItems INT NOT NULL,
     totalNumOfQty INT NOT NULL,
     totalAmount DECIMAL(18, 2) NOT NULL,
-    transacType VARCHAR(10) NOT NULL CHECK (transacType IN ('Buyer', 'Seller')),
-    isArchived BIT NOT NULL DEFAULT 0,
+    transacType VARCHAR(10) NOT NULL CHECK (transacType IN ('Buyer', 'Seller'))
     FOREIGN KEY (customerId) REFERENCES Customer(customerId),  -- FK reference
     FOREIGN KEY (employeeId) REFERENCES Employees(empId)  -- FK reference
 );
@@ -115,7 +114,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Crud
     //CRUD STARTS HERE
     public class TransactionRead : BaseRepository
     {
-        // Read all UNARCHIVED transactions with Customer Name
+        // Read all transactions with Customer Name (since isArchived was removed)
         public List<TransactionItem> GetAllTransactions()
         {
             List<TransactionItem> transactions = new List<TransactionItem>();
@@ -123,20 +122,18 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Crud
             using (SqlConnection conn = GetConnection())
             {
                 string query = @"
-                    SELECT 
-                        t.transacId,
-                        t.customerId,
-                        c.customerName,
-                        t.employeeId,
-                        t.transacDate,
-                        t.totalNumOfItems,
-                        t.totalNumOfQty,
-                        t.totalAmount,
-                        t.transacType,
-                        t.isArchived
-                    FROM Transactions t
-                    INNER JOIN Customer c ON t.customerId = c.customerId
-                    WHERE t.isArchived = 0";
+                SELECT 
+                    t.transacId,
+                    t.customerId,
+                    c.customerName,
+                    t.employeeId,
+                    t.transacDate,
+                    t.totalNumOfItems,
+                    t.totalNumOfQty,
+                    t.totalAmount,
+                    t.transacType
+                FROM Transactions t
+                INNER JOIN Customer c ON t.customerId = c.customerId";
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
@@ -157,8 +154,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Crud
                                     totalNumOfItems = Convert.ToInt32(reader["totalNumOfItems"]),
                                     totalNumOfQty = Convert.ToInt32(reader["totalNumOfQty"]),
                                     totalAmount = Convert.ToDecimal(reader["totalAmount"]),
-                                    transacType = reader["transacType"]?.ToString() ?? string.Empty,
-                                    isArchived = Convert.ToBoolean(reader["isArchived"])
+                                    transacType = reader["transacType"]?.ToString() ?? string.Empty
                                 };
 
                                 transactions.Add(transaction);
@@ -175,68 +171,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Crud
 
             return transactions;
         }
-
-        // Read all ARCHIVED transactions with Customer Name
-        public List<TransactionItem> GetAllArchivedTransactions()
-        {
-            List<TransactionItem> transactions = new List<TransactionItem>();
-
-            using (SqlConnection conn = GetConnection())
-            {
-                string query = @"
-                    SELECT 
-                        t.transacId,
-                        t.customerId,
-                        c.customerName,
-                        t.employeeId,
-                        t.transacDate,
-                        t.totalNumOfItems,
-                        t.totalNumOfQty,
-                        t.totalAmount,
-                        t.transacType,
-                        t.isArchived
-                    FROM Transactions t
-                    INNER JOIN Customer c ON t.customerId = c.customerId
-                    WHERE t.isArchived = 1";
-
-                using (SqlCommand cmd = new SqlCommand(query, conn))
-                {
-                    try
-                    {
-                        conn.Open();
-                        using (SqlDataReader reader = cmd.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                TransactionItem transaction = new TransactionItem
-                                {
-                                    transacId = Convert.ToInt32(reader["transacId"]),
-                                    customerId = Convert.ToInt32(reader["customerId"]),
-                                    customerName = reader["customerName"]?.ToString() ?? string.Empty,
-                                    employeeId = Convert.ToInt32(reader["employeeId"]),
-                                    transacDate = Convert.ToDateTime(reader["transacDate"]),
-                                    totalNumOfItems = Convert.ToInt32(reader["totalNumOfItems"]),
-                                    totalNumOfQty = Convert.ToInt32(reader["totalNumOfQty"]),
-                                    totalAmount = Convert.ToDecimal(reader["totalAmount"]),
-                                    transacType = reader["transacType"]?.ToString() ?? string.Empty,
-                                    isArchived = Convert.ToBoolean(reader["isArchived"])
-                                };
-
-                                transactions.Add(transaction);
-                            }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine("Error reading archived Transactions: " + ex.Message);
-                        throw new Exception("Failed to retrieve archived transactions from the database.", ex);
-                    }
-                }
-            }
-
-            return transactions;
-        }
-    } // end of read for archived
+    }
     // end of reads
 
     // create / adds a transaction to the database
