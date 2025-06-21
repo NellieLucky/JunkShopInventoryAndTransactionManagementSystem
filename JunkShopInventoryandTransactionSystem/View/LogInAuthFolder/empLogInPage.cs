@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JunkShopInventoryandTransactionSystem.BackendFiles.UserSession;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -32,20 +33,23 @@ namespace JunkShopInventoryandTransactionSystem.View.LogInAuthFolder
             }
             try
             {
-                int? userId = AuthenticateEmployee(email, password);
+                int? employeeId = ForUser.AuthenticateEmployee(email, password);
 
-                if (userId.HasValue)
+                if (employeeId.HasValue)
                 {
-                    UserSession.UserId = userId.Value;
+                    // Set session user as employee
+                    ForUser.UserSession.SetUser(employeeId.Value, true);
 
-                    MessageBox.Show("Login successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Login successful as Employee!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                    // Load your main page here
                     MainNavigationPage dashboardPage = new MainNavigationPage();
                     dashboardPage.Dock = DockStyle.Fill;
                     dashboardPage.TopLevel = false;
                     MainForm.MainPanel.Controls.Clear();
                     MainForm.MainPanel.Controls.Add(dashboardPage);
                     dashboardPage.Show();
+                    return;
                 }
                 else
                 {

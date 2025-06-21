@@ -1,3 +1,4 @@
+using JunkShopInventoryandTransactionSystem.BackendFiles.UserSession;
 using JunkShopInventoryandTransactionSystem.View;
 using JunkShopInventoryandTransactionSystem.View.LogInAuthFolder;
 using Microsoft.Data.SqlClient;
@@ -32,7 +33,7 @@ namespace JunkShopInventoryandTransactionSystem.View.LogInAuthFolder
 
                 if (userId.HasValue)
                 {
-                    UserSession.UserId = userId.Value;
+                    ForUser.UserSession.SetUser(userId.Value, false);
 
                     MessageBox.Show("Login successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

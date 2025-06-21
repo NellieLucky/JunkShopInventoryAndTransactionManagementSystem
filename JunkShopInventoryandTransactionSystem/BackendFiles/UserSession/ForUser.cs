@@ -11,10 +11,10 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.UserSession
 {
     internal class ForUser
     {
-        //private static readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Beetoy\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\Database1.mdf;Integrated Security=True";
+        private static readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Beetoy\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\Database1.mdf;Integrated Security=True";
 
         //arnel's connstring
-        private static readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
+        //private static readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
 
         //remo string just added static to my string
         //private static readonly string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
@@ -22,6 +22,23 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.UserSession
         public static class UserSession
         {
             public static int UserId { get; set; }
+            public static int EmployeeId { get; private set; }   // Only set if user is employee
+
+            public static void SetUser(int userId, bool isEmployee)
+            {
+                UserId = userId;
+
+                if (isEmployee)
+                {
+                    EmployeeId = userId;
+                    MessageBox.Show($"SetUser called: EmployeeId set to {EmployeeId}", "Debug");
+                }
+                else
+                {
+                    EmployeeId = 0;
+                    MessageBox.Show($"SetUser called: User is not employee, EmployeeId reset to 0", "Debug");
+                }
+            }
         }
 
         //Function to update information of employee in edit mode(AddEditEmployee.cs)
