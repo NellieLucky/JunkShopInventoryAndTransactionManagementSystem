@@ -88,17 +88,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.BuyerLo
                 return false;
             }
 
-            /*
-            //update its quantity on the database here
-            InventoryUpdate updater = new InventoryUpdate();
-            bool updateSuccess = updater.UpdateItemQuantityForBuyer(itemId, parsedItemQty); // subtract stock
-
-            if (!updateSuccess)
-            {
-                MessageBox.Show("Failed to update item quantity for buyer transaction.", "Update Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-            */
+            //removed update quality here and moved it to FinalizeTransaction method
 
             // adds it to cart
             var existingCartItem = tempCart.FirstOrDefault(i => i.ItemId == itemId);
@@ -169,6 +159,19 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.BuyerLo
                 isValidInput = false;
             }
 
+            // make the customer NAME be lowered case and each first initial be capitalized
+
+            /* shorter ver but only for the first letter <DOESNT WORK IF FOR EXAMPLE = PRINCE REMO>
+            sellerName = sellerName.Trim();
+            sellerName = sellerName.ToLower();
+            // Step 3: Capitalize first letter
+            sellerName = char.ToUpper(sellerName[0]) + sellerName.Substring(1); 
+            */
+
+            // longer ver but works for all names
+            // <LIKE IF INPUT IS = PRINCE REMO> then it will be = Prince Remo
+            buyerName = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(buyerName.Trim().ToLower());
+
             /*
             // --- Validation: Buyer Contact (optional, uncomment if needed) ---
             if (string.IsNullOrWhiteSpace(buyerContact))
@@ -193,22 +196,28 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.BuyerLo
 
             if (customerId == null)
             {
-                // If not found, insert the new customer
                 CustomerInsert addCustomer = new CustomerInsert();
-                try
-                {
-                    int newCustomerId = addCustomer.InsertCustomer(buyerName, buyerContact, "Buyer");
+                bool insertSuccess = addCustomer.InsertCustomer(buyerName, buyerContact, "Seller");
 
-                    MessageBox.Show("✅ New customer added as Buyer.", "Customer Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    customerId = newCustomerId; // Use the newly inserted ID
-                }
-                catch (Exception)
+                if (insertSuccess)
                 {
-                    MessageBox.Show("❌ Failed to save new customer details.", "Customer Insert Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("✅ New customer added as Buyer.", "Customer Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Recheck ID after insert
+                    customerId = reader.GetCustomerIdByName(buyerName);
+
+                    if (customerId == null)
+                    {
+                        MessageBox.Show("❌ Failed to retrieve the new customer ID after insert.", "Customer ID Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false; // stop further processing
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("❌ Failed to insert new customer.", "Insert Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
             }
-            // un nulls the customerId for further processing
             int nonNullCustomerId = customerId.Value;
 
             // get employee Id next

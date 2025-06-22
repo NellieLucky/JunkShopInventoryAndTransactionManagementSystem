@@ -378,9 +378,9 @@
             IdItem.ForeColor = Color.FromArgb(0, 157, 209);
             IdItem.Location = new Point(3, 58);
             IdItem.Name = "IdItem";
-            IdItem.Size = new Size(63, 19);
+            IdItem.Size = new Size(91, 19);
             IdItem.TabIndex = 71;
-            IdItem.Text = "Item ID";
+            IdItem.Text = "Item Name";
             // 
             // SellerOrdersTable
             // 
@@ -426,6 +426,7 @@
             SellerOrdersTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             SellerOrdersTable.Size = new Size(1048, 376);
             SellerOrdersTable.TabIndex = 87;
+            SellerOrdersTable.CellContentClick += SellerOrdersTable_CellContentClick;
             // 
             // ItemID
             // 

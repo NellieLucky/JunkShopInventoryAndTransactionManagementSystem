@@ -46,9 +46,6 @@
             BuyerQtyTextBox = new CuoreUI.Controls.cuiTextBox();
             IdItem = new Label();
             BuyersOrderTable = new DataGridView();
-            RegEmployeeTitlePage = new Label();
-            TotalItemsCounterLabel = new Label();
-            label3 = new Label();
             ItemID = new DataGridViewTextBoxColumn();
             ItemName = new DataGridViewTextBoxColumn();
             QtyType = new DataGridViewTextBoxColumn();
@@ -56,6 +53,9 @@
             TransacQuantity = new DataGridViewTextBoxColumn();
             ExchangeAmount = new DataGridViewTextBoxColumn();
             Remove = new DataGridViewImageColumn();
+            RegEmployeeTitlePage = new Label();
+            TotalItemsCounterLabel = new Label();
+            label3 = new Label();
             ((System.ComponentModel.ISupportInitialize)BuyersOrderTable).BeginInit();
             SuspendLayout();
             // 
@@ -342,9 +342,9 @@
             IdItem.ForeColor = Color.FromArgb(0, 157, 209);
             IdItem.Location = new Point(4, 58);
             IdItem.Name = "IdItem";
-            IdItem.Size = new Size(63, 19);
+            IdItem.Size = new Size(91, 19);
             IdItem.TabIndex = 53;
-            IdItem.Text = "Item ID";
+            IdItem.Text = "Item Name";
             // 
             // BuyersOrderTable
             // 
@@ -390,42 +390,7 @@
             BuyersOrderTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             BuyersOrderTable.Size = new Size(1048, 390);
             BuyersOrderTable.TabIndex = 51;
-            // 
-            // RegEmployeeTitlePage
-            // 
-            RegEmployeeTitlePage.AutoSize = true;
-            RegEmployeeTitlePage.BackColor = Color.FromArgb(0, 0, 0, 0);
-            RegEmployeeTitlePage.Font = new Font("Arial", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            RegEmployeeTitlePage.ForeColor = Color.FromArgb(0, 157, 209);
-            RegEmployeeTitlePage.Location = new Point(3, 7);
-            RegEmployeeTitlePage.Name = "RegEmployeeTitlePage";
-            RegEmployeeTitlePage.Size = new Size(275, 35);
-            RegEmployeeTitlePage.TabIndex = 67;
-            RegEmployeeTitlePage.Text = "Buyer Transaction";
-            // 
-            // TotalItemsCounterLabel
-            // 
-            TotalItemsCounterLabel.AutoSize = true;
-            TotalItemsCounterLabel.BackColor = Color.FromArgb(0, 0, 0, 0);
-            TotalItemsCounterLabel.Font = new Font("Arial", 10.2F, FontStyle.Bold);
-            TotalItemsCounterLabel.ForeColor = Color.FromArgb(0, 157, 209);
-            TotalItemsCounterLabel.Location = new Point(874, 537);
-            TotalItemsCounterLabel.Name = "TotalItemsCounterLabel";
-            TotalItemsCounterLabel.Size = new Size(94, 19);
-            TotalItemsCounterLabel.TabIndex = 69;
-            TotalItemsCounterLabel.Text = "Total Items";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.BackColor = Color.FromArgb(0, 0, 0, 0);
-            label3.Font = new Font("Arial", 10.2F, FontStyle.Bold);
-            label3.ForeColor = Color.FromArgb(0, 157, 209);
-            label3.Location = new Point(770, 537);
-            label3.Name = "label3";
-            label3.Size = new Size(100, 19);
-            label3.TabIndex = 68;
-            label3.Text = "Total Items:";
+            BuyersOrderTable.CellContentClick += BuyersOrderTable_CellContentClick;
             // 
             // ItemID
             // 
@@ -487,6 +452,42 @@
             Remove.Name = "Remove";
             Remove.Resizable = DataGridViewTriState.False;
             Remove.Width = 70;
+            // 
+            // RegEmployeeTitlePage
+            // 
+            RegEmployeeTitlePage.AutoSize = true;
+            RegEmployeeTitlePage.BackColor = Color.FromArgb(0, 0, 0, 0);
+            RegEmployeeTitlePage.Font = new Font("Arial", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            RegEmployeeTitlePage.ForeColor = Color.FromArgb(0, 157, 209);
+            RegEmployeeTitlePage.Location = new Point(3, 7);
+            RegEmployeeTitlePage.Name = "RegEmployeeTitlePage";
+            RegEmployeeTitlePage.Size = new Size(275, 35);
+            RegEmployeeTitlePage.TabIndex = 67;
+            RegEmployeeTitlePage.Text = "Buyer Transaction";
+            // 
+            // TotalItemsCounterLabel
+            // 
+            TotalItemsCounterLabel.AutoSize = true;
+            TotalItemsCounterLabel.BackColor = Color.FromArgb(0, 0, 0, 0);
+            TotalItemsCounterLabel.Font = new Font("Arial", 10.2F, FontStyle.Bold);
+            TotalItemsCounterLabel.ForeColor = Color.FromArgb(0, 157, 209);
+            TotalItemsCounterLabel.Location = new Point(874, 537);
+            TotalItemsCounterLabel.Name = "TotalItemsCounterLabel";
+            TotalItemsCounterLabel.Size = new Size(94, 19);
+            TotalItemsCounterLabel.TabIndex = 69;
+            TotalItemsCounterLabel.Text = "Total Items";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.BackColor = Color.FromArgb(0, 0, 0, 0);
+            label3.Font = new Font("Arial", 10.2F, FontStyle.Bold);
+            label3.ForeColor = Color.FromArgb(0, 157, 209);
+            label3.Location = new Point(770, 537);
+            label3.Name = "label3";
+            label3.Size = new Size(100, 19);
+            label3.TabIndex = 68;
+            label3.Text = "Total Items:";
             // 
             // BuyerTransaction
             // 

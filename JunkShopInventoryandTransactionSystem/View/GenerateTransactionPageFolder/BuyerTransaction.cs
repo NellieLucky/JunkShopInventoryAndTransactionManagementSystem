@@ -1,4 +1,10 @@
 ﻿
+using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud;
+using JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.BuyerLogic;
+// access the constructor model for transaction cart
+using JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.ConstructorModel;
+using JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel;
+using JunkShopInventoryandTransactionSystem.View.DeletionDialogs;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,11 +14,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
-using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud;
-using JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.BuyerLogic;
-// access the constructor model for transaction cart
-using JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.ConstructorModel;
 
 namespace JunkShopInventoryandTransactionSystem.View.GenerateTransactionPageFolder
 {
@@ -100,7 +101,7 @@ namespace JunkShopInventoryandTransactionSystem.View.GenerateTransactionPageFold
 
             // Formats the total price with commas and no decimals for better readability.
             // Example: 12500 becomes "₱12,500"
-            TotalPriceAmntCounterLabel.Text = "₱ " + totalPrice.ToString("N0");  
+            TotalPriceAmntCounterLabel.Text = "₱ " + totalPrice.ToString("N0");
         }
         // end of the code for updating the transaction summary labels
 
@@ -140,8 +141,19 @@ namespace JunkShopInventoryandTransactionSystem.View.GenerateTransactionPageFold
 
             if (finalized)
             {
-                tempCart.Clear();
+                // the two widgets above will be cleared
+                BuyerItemComboBox.SelectedIndex = -1;
+                BuyerQtyTextBox.Content = string.Empty;
+
+                // clear the gridview
                 BuyersOrderTable.Rows.Clear();
+                // clears the temporary cart
+                tempCart.Clear();
+
+                // clears the two widgets below
+                BuyerNameTextBox.Content = string.Empty;
+                BuyerContactTextBox.Content = string.Empty;
+
                 MessageBox.Show("Transaction finalized successfully.");
             }
             else
@@ -150,5 +162,44 @@ namespace JunkShopInventoryandTransactionSystem.View.GenerateTransactionPageFold
             }
 
         }
+
+        private void BuyersOrderTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Only process if it's a valid row
+            if (e.RowIndex < 0) return;
+
+            // Only process clicks on image columns
+            if (!(BuyersOrderTable.Columns[e.ColumnIndex] is DataGridViewImageColumn)) return;
+
+            string clickedColumnName = BuyersOrderTable.Columns[e.ColumnIndex].Name;
+            DataGridViewRow selectedRow = BuyersOrderTable.Rows[e.RowIndex];
+            int itemId = Convert.ToInt32(selectedRow.Cells["ItemID"].Value);
+
+            if (clickedColumnName == "Remove")
+            {
+                // Show confirmation message with the itemId
+                DialogResult result = MessageBox.Show(
+                    $"Are you sure you want to remove item with ID: {itemId}?",
+                    "Confirm Item Removal",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
+                if (result == DialogResult.Yes)
+                {
+                    // 1. Remove from cart
+                    tempCart.RemoveAll(item => item.ItemId == itemId);
+
+                    // 2. Remove from grid view
+                    BuyersOrderTable.Rows.RemoveAt(e.RowIndex);
+
+                    // 3. Refresh totals
+                    UpdateTransactionSummaryLabels();
+                }
+
+            }
+
+        }
+
     }
 }

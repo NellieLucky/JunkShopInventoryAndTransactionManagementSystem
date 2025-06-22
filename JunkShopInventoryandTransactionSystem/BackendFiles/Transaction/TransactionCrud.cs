@@ -35,6 +35,8 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Crud
         public int customerId { get; set; }
         public string customerName { get; set; } = string.Empty; 
         public int employeeId { get; set; }
+        // added employeeName for transac read
+        public string employeeName { get; set; } = string.Empty;
         public DateTime transacDate { get; set; }
         public int totalNumOfItems { get; set; }
         public int totalNumOfQty { get; set; }
@@ -116,7 +118,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Crud
     //CRUD STARTS HERE
     public class TransactionRead : BaseRepository
     {
-        // Read all transactions with Customer Name (since isArchived was removed)
+        // Read all transactions with Customer Name and Employee Name
         public List<TransactionItem> GetAllTransactions()
         {
             List<TransactionItem> transactions = new List<TransactionItem>();
@@ -124,18 +126,20 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Crud
             using (SqlConnection conn = GetConnection())
             {
                 string query = @"
-                SELECT 
-                    t.transacId,
-                    t.customerId,
-                    c.customerName,
-                    t.employeeId,
-                    t.transacDate,
-                    t.totalNumOfItems,
-                    t.totalNumOfQty,
-                    t.totalAmount,
-                    t.transacType
-                FROM Transactions t
-                INNER JOIN Customer c ON t.customerId = c.customerId";
+            SELECT 
+                t.transacId,
+                t.customerId,
+                c.customerName,
+                t.employeeId,
+                e.empName AS employeeName,
+                t.transacDate,
+                t.totalNumOfItems,
+                t.totalNumOfQty,
+                t.totalAmount,
+                t.transacType
+            FROM Transactions t
+            INNER JOIN Customer c ON t.customerId = c.customerId
+            INNER JOIN Employees e ON t.employeeId = e.empId";
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
@@ -152,6 +156,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Crud
                                     customerId = Convert.ToInt32(reader["customerId"]),
                                     customerName = reader["customerName"]?.ToString() ?? string.Empty,
                                     employeeId = Convert.ToInt32(reader["employeeId"]),
+                                    employeeName = reader["employeeName"]?.ToString() ?? string.Empty,
                                     transacDate = Convert.ToDateTime(reader["transacDate"]),
                                     totalNumOfItems = Convert.ToInt32(reader["totalNumOfItems"]),
                                     totalNumOfQty = Convert.ToInt32(reader["totalNumOfQty"]),
@@ -238,4 +243,34 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Crud
     }
     // end of create
 
+    // delete a transaction from the database
+    public class TransactionDelete : BaseRepository
+    {
+        public bool DeleteTransaction(int transacId)
+        {
+            using (SqlConnection conn = GetConnection())
+            {
+                string query = @"DELETE FROM Transactions WHERE transacId = @transacId";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@transacId", transacId);
+
+                    try
+                    {
+                        conn.Open();
+                        int rowsAffected = cmd.ExecuteNonQuery();
+                        return rowsAffected > 0;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("❌ Error deleting transaction: " + ex.Message);
+                        throw new Exception("Failed to delete transaction.", ex);
+                    }
+                }
+            }
+        }
+
+    }
+    // end f delete
 }

@@ -1,4 +1,10 @@
 ﻿
+using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud;
+// access the constructor model for transaction cart
+using JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.ConstructorModel;
+using JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.SellerLogic;
+using JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel;
+using JunkShopInventoryandTransactionSystem.View.DeletionDialogs;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,11 +15,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Menu;
-
-using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud;
-// access the constructor model for transaction cart
-using JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.ConstructorModel;
-using JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.SellerLogic;
 
 namespace JunkShopInventoryandTransactionSystem.View.GenerateTransactionPageFolder
 {
@@ -93,7 +94,7 @@ namespace JunkShopInventoryandTransactionSystem.View.GenerateTransactionPageFold
             decimal totalPrice = 0;
             foreach (DataGridViewRow row in SellerOrdersTable.Rows)
             {
-                if (row.Cells[5].Value != null) 
+                if (row.Cells[5].Value != null)
                 {
                     totalPrice += Convert.ToDecimal(row.Cells[5].Value);
                 }
@@ -141,13 +142,59 @@ namespace JunkShopInventoryandTransactionSystem.View.GenerateTransactionPageFold
 
             if (finalized)
             {
-                tempCart.Clear();
+                // the two widgets above will be cleared
+                SellerItemComboBox.SelectedIndex = -1;
+                SellerQtyTextBox.Content = string.Empty;
+
+                // clear the gridview
+                // Clear the DataGridView
+                //SellerOrdersTable.DataSource = null;  //this wasnt working for some reason
                 SellerOrdersTable.Rows.Clear();
+                // clears the temporary cart
+                tempCart.Clear();
+
+                // clears the two widgets below
+                SellerNameTextBox.Content = string.Empty;
+                SellerContactTextBox.Content = string.Empty;
+
                 MessageBox.Show("Transaction finalized successfully.");
             }
             else
             {
                 MessageBox.Show("Something went wrong finalizing the transaction.");
+            }
+
+        }
+
+        private void SellerOrdersTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Only process if it's a valid row
+            if (e.RowIndex < 0) return;
+
+            // Only process clicks on image columns
+            if (!(SellerOrdersTable.Columns[e.ColumnIndex] is DataGridViewImageColumn)) return;
+
+            string clickedColumnName = SellerOrdersTable.Columns[e.ColumnIndex].Name;
+            DataGridViewRow selectedRow = SellerOrdersTable.Rows[e.RowIndex];
+            int itemId = Convert.ToInt32(selectedRow.Cells["ItemID"].Value);
+
+            if (clickedColumnName == "Remove")
+            {
+                // Show confirmation message with the itemId
+                DialogResult result = MessageBox.Show(
+                    $"Are you sure you want to remove item with ID: {itemId}?",
+                    "Confirm Item Removal",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
+                if (result == DialogResult.Yes)
+                {
+                    tempCart.RemoveAll(item => item.ItemId == itemId);
+                    SellerOrdersTable.Rows.RemoveAt(e.RowIndex);
+                    UpdateTransactionSummaryLabels();
+                }
+
             }
 
         }

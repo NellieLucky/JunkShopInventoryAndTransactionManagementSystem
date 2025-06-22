@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             cuiColorPicker1 = new CuoreUI.Components.cuiColorPicker(components);
             DashboardTitlePage = new Label();
             TransactionRecordsTable = new DataGridView();
@@ -78,14 +78,14 @@
             TransactionRecordsTable.BackgroundColor = Color.White;
             TransactionRecordsTable.CellBorderStyle = DataGridViewCellBorderStyle.SunkenHorizontal;
             TransactionRecordsTable.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = Color.FromArgb(163, 244, 215);
-            dataGridViewCellStyle4.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle4.ForeColor = Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(163, 244, 215);
-            dataGridViewCellStyle4.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            TransactionRecordsTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(163, 244, 215);
+            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(163, 244, 215);
+            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            TransactionRecordsTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             TransactionRecordsTable.ColumnHeadersHeight = 80;
             TransactionRecordsTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             TransactionRecordsTable.Columns.AddRange(new DataGridViewColumn[] { TransactionID, TransactionType, ExchangeDate, CustomerName, EmployeeAssigned, Num_Items, TotalQuantity, TotalAmount, Delete });
@@ -95,25 +95,25 @@
             TransactionRecordsTable.Location = new Point(13, 139);
             TransactionRecordsTable.Name = "TransactionRecordsTable";
             TransactionRecordsTable.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle5.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            TransactionRecordsTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            TransactionRecordsTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             TransactionRecordsTable.RowHeadersVisible = false;
             TransactionRecordsTable.RowHeadersWidth = 50;
-            dataGridViewCellStyle6.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle6.ForeColor = Color.Black;
-            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(0, 157, 209);
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
-            TransactionRecordsTable.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(0, 157, 209);
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            TransactionRecordsTable.RowsDefaultCellStyle = dataGridViewCellStyle3;
             TransactionRecordsTable.RowTemplate.Height = 50;
             TransactionRecordsTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             TransactionRecordsTable.Size = new Size(1056, 640);
             TransactionRecordsTable.TabIndex = 31;
-            TransactionRecordsTable.CellContentClick += dataGridView1_CellContentClick_1;
+            TransactionRecordsTable.CellContentClick += TransactionRecordsTable_CellContentClick;
             // 
             // TransactionID
             // 

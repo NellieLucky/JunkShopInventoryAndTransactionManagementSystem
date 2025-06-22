@@ -118,14 +118,13 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Customer.Crud
     {
         // READ and get customer Id by using passed customers name
         // used in transaction<buyer/seller>.cs
-        public int InsertCustomer(string customerName, string? customerContact, string customerType)
+        public bool InsertCustomer(string customerName, string? customerContact, string customerType)
         {
             using (SqlConnection conn = GetConnection())
             {
                 string query = @"
-                    INSERT INTO Customer (customerName, customerType, customerContact)
-                    VALUES (@customerName, @customerType, @customerContact);
-                    SELECT SCOPE_IDENTITY();";
+            INSERT INTO Customer (customerName, customerType, customerContact)
+            VALUES (@customerName, @customerType, @customerContact);";
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
@@ -136,26 +135,20 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Customer.Crud
                     try
                     {
                         conn.Open();
-                        object result = cmd.ExecuteScalar();
-                        if (result != null && int.TryParse(result.ToString(), out int newCustomerId))
-                        {
-                            return newCustomerId;
-                        }
-                        else
-                        {
-                            throw new Exception("Customer inserted, but failed to retrieve new ID.");
-                        }
+                        int rowsAffected = cmd.ExecuteNonQuery();
+                        return rowsAffected > 0;
                     }
                     catch (Exception ex)
                     {
                         Console.WriteLine("❌ Error inserting customer: " + ex.Message);
-                        throw new Exception("Failed to insert new customer and retrieve ID.", ex);
+                        throw new Exception("Failed to insert new customer.", ex);
                     }
                 }
             }
         }
 
     }
+    // end of insertion / insert
 
 }
 

@@ -22,15 +22,14 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Reload
             {
                 dataGridView1.Rows.Add(
                     transaction.transacId,
-                    transaction.customerId,
-                    transaction.customerName,
-                    transaction.employeeId,
+                    transaction.transacType,
                     transaction.transacDate.ToString("yyyy-MM-dd"),
                     //transaction.transacDate.ToString("yyyy-MM-dd HH:mm"),
+                    transaction.customerName,
+                    transaction.employeeName,
                     transaction.totalNumOfItems,
                     transaction.totalNumOfQty,
-                    transaction.totalAmount,
-                    transaction.transacType
+                    transaction.totalAmount
                 );
             }
         }
