@@ -65,9 +65,10 @@
             TotalItemsCounterLabel.BackColor = Color.FromArgb(0, 0, 0, 0);
             TotalItemsCounterLabel.Font = new Font("Arial", 10.2F, FontStyle.Bold);
             TotalItemsCounterLabel.ForeColor = Color.FromArgb(0, 157, 209);
-            TotalItemsCounterLabel.Location = new Point(872, 539);
+            TotalItemsCounterLabel.Location = new Point(1090, 674);
+            TotalItemsCounterLabel.Margin = new Padding(4, 0, 4, 0);
             TotalItemsCounterLabel.Name = "TotalItemsCounterLabel";
-            TotalItemsCounterLabel.Size = new Size(94, 19);
+            TotalItemsCounterLabel.Size = new Size(119, 24);
             TotalItemsCounterLabel.TabIndex = 86;
             TotalItemsCounterLabel.Text = "Total Items";
             // 
@@ -77,9 +78,10 @@
             label3.BackColor = Color.FromArgb(0, 0, 0, 0);
             label3.Font = new Font("Arial", 10.2F, FontStyle.Bold);
             label3.ForeColor = Color.FromArgb(0, 157, 209);
-            label3.Location = new Point(768, 539);
+            label3.Location = new Point(960, 674);
+            label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new Size(100, 19);
+            label3.Size = new Size(126, 24);
             label3.TabIndex = 85;
             label3.Text = "Total Items:";
             // 
@@ -89,9 +91,10 @@
             RegEmployeeTitlePage.BackColor = Color.FromArgb(0, 0, 0, 0);
             RegEmployeeTitlePage.Font = new Font("Arial", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             RegEmployeeTitlePage.ForeColor = Color.FromArgb(0, 157, 209);
-            RegEmployeeTitlePage.Location = new Point(3, 7);
+            RegEmployeeTitlePage.Location = new Point(4, 9);
+            RegEmployeeTitlePage.Margin = new Padding(4, 0, 4, 0);
             RegEmployeeTitlePage.Name = "RegEmployeeTitlePage";
-            RegEmployeeTitlePage.Size = new Size(273, 35);
+            RegEmployeeTitlePage.Size = new Size(326, 43);
             RegEmployeeTitlePage.TabIndex = 84;
             RegEmployeeTitlePage.Text = "Seller Transaction";
             // 
@@ -101,9 +104,10 @@
             TotalPriceAmntCounterLabel.BackColor = Color.FromArgb(0, 0, 0, 0);
             TotalPriceAmntCounterLabel.Font = new Font("Arial", 10.2F, FontStyle.Bold);
             TotalPriceAmntCounterLabel.ForeColor = Color.FromArgb(0, 157, 209);
-            TotalPriceAmntCounterLabel.Location = new Point(872, 564);
+            TotalPriceAmntCounterLabel.Location = new Point(1090, 705);
+            TotalPriceAmntCounterLabel.Margin = new Padding(4, 0, 4, 0);
             TotalPriceAmntCounterLabel.Name = "TotalPriceAmntCounterLabel";
-            TotalPriceAmntCounterLabel.Size = new Size(157, 19);
+            TotalPriceAmntCounterLabel.Size = new Size(200, 24);
             TotalPriceAmntCounterLabel.TabIndex = 83;
             TotalPriceAmntCounterLabel.Text = "Total Price Amount";
             // 
@@ -113,9 +117,10 @@
             label1.BackColor = Color.FromArgb(0, 0, 0, 0);
             label1.Font = new Font("Arial", 10.2F, FontStyle.Bold);
             label1.ForeColor = Color.FromArgb(0, 157, 209);
-            label1.Location = new Point(768, 564);
+            label1.Location = new Point(960, 705);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(98, 19);
+            label1.Size = new Size(122, 24);
             label1.TabIndex = 82;
             label1.Text = "Total Price:";
             // 
@@ -123,14 +128,15 @@
             // 
             SellerItemComboBox.DropDownHeight = 120;
             SellerItemComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            SellerItemComboBox.Font = new Font("Arial Narrow", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            SellerItemComboBox.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             SellerItemComboBox.ForeColor = Color.Gray;
             SellerItemComboBox.FormattingEnabled = true;
             SellerItemComboBox.IntegralHeight = false;
             SellerItemComboBox.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
-            SellerItemComboBox.Location = new Point(3, 80);
+            SellerItemComboBox.Location = new Point(4, 100);
+            SellerItemComboBox.Margin = new Padding(4, 4, 4, 4);
             SellerItemComboBox.Name = "SellerItemComboBox";
-            SellerItemComboBox.Size = new Size(195, 39);
+            SellerItemComboBox.Size = new Size(243, 45);
             SellerItemComboBox.TabIndex = 81;
             // 
             // SaveSellerTransaction_Button
@@ -154,7 +160,8 @@
             SaveSellerTransaction_Button.ImageAutoCenter = true;
             SaveSellerTransaction_Button.ImageExpand = new Point(0, 0);
             SaveSellerTransaction_Button.ImageOffset = new Point(0, 0);
-            SaveSellerTransaction_Button.Location = new Point(664, 614);
+            SaveSellerTransaction_Button.Location = new Point(830, 768);
+            SaveSellerTransaction_Button.Margin = new Padding(4, 4, 4, 4);
             SaveSellerTransaction_Button.Name = "SaveSellerTransaction_Button";
             SaveSellerTransaction_Button.NormalBackground = Color.FromArgb(0, 157, 209);
             SaveSellerTransaction_Button.NormalForeColor = Color.White;
@@ -166,7 +173,7 @@
             SaveSellerTransaction_Button.PressedImageTint = Color.White;
             SaveSellerTransaction_Button.PressedOutline = Color.FromArgb(64, 128, 128, 128);
             SaveSellerTransaction_Button.Rounding = new Padding(8);
-            SaveSellerTransaction_Button.Size = new Size(227, 34);
+            SaveSellerTransaction_Button.Size = new Size(284, 42);
             SaveSellerTransaction_Button.TabIndex = 80;
             SaveSellerTransaction_Button.TextAlignment = StringAlignment.Center;
             SaveSellerTransaction_Button.TextOffset = new Point(0, 0);
@@ -193,7 +200,8 @@
             SellerClearBtn.ImageAutoCenter = true;
             SellerClearBtn.ImageExpand = new Point(0, 0);
             SellerClearBtn.ImageOffset = new Point(0, 0);
-            SellerClearBtn.Location = new Point(902, 614);
+            SellerClearBtn.Location = new Point(1128, 768);
+            SellerClearBtn.Margin = new Padding(4, 4, 4, 4);
             SellerClearBtn.Name = "SellerClearBtn";
             SellerClearBtn.NormalBackground = Color.White;
             SellerClearBtn.NormalForeColor = Color.Black;
@@ -205,7 +213,7 @@
             SellerClearBtn.PressedImageTint = Color.White;
             SellerClearBtn.PressedOutline = Color.FromArgb(64, 128, 128, 128);
             SellerClearBtn.Rounding = new Padding(8);
-            SellerClearBtn.Size = new Size(122, 34);
+            SellerClearBtn.Size = new Size(152, 42);
             SellerClearBtn.TabIndex = 79;
             SellerClearBtn.TextAlignment = StringAlignment.Center;
             SellerClearBtn.TextOffset = new Point(0, 0);
@@ -232,7 +240,8 @@
             SellerAddTransacBtn.ImageAutoCenter = true;
             SellerAddTransacBtn.ImageExpand = new Point(0, 0);
             SellerAddTransacBtn.ImageOffset = new Point(0, 0);
-            SellerAddTransacBtn.Location = new Point(417, 84);
+            SellerAddTransacBtn.Location = new Point(521, 105);
+            SellerAddTransacBtn.Margin = new Padding(4, 4, 4, 4);
             SellerAddTransacBtn.Name = "SellerAddTransacBtn";
             SellerAddTransacBtn.NormalBackground = Color.FromArgb(0, 157, 209);
             SellerAddTransacBtn.NormalForeColor = Color.White;
@@ -244,7 +253,7 @@
             SellerAddTransacBtn.PressedImageTint = Color.White;
             SellerAddTransacBtn.PressedOutline = Color.FromArgb(64, 128, 128, 128);
             SellerAddTransacBtn.Rounding = new Padding(8);
-            SellerAddTransacBtn.Size = new Size(123, 34);
+            SellerAddTransacBtn.Size = new Size(154, 42);
             SellerAddTransacBtn.TabIndex = 78;
             SellerAddTransacBtn.TextAlignment = StringAlignment.Center;
             SellerAddTransacBtn.TextOffset = new Point(0, 0);
@@ -256,9 +265,10 @@
             BuyerContact.BackColor = Color.FromArgb(0, 0, 0, 0);
             BuyerContact.Font = new Font("Arial", 10.2F, FontStyle.Bold);
             BuyerContact.ForeColor = Color.FromArgb(0, 157, 209);
-            BuyerContact.Location = new Point(274, 526);
+            BuyerContact.Location = new Point(342, 658);
+            BuyerContact.Margin = new Padding(4, 0, 4, 0);
             BuyerContact.Name = "BuyerContact";
-            BuyerContact.Size = new Size(103, 19);
+            BuyerContact.Size = new Size(128, 24);
             BuyerContact.TabIndex = 77;
             BuyerContact.Text = "Contact No.";
             // 
@@ -275,17 +285,17 @@
             SellerContactTextBox.Image = null;
             SellerContactTextBox.ImageExpand = new Point(0, 0);
             SellerContactTextBox.ImageOffset = new Point(0, 0);
-            SellerContactTextBox.Location = new Point(274, 549);
-            SellerContactTextBox.Margin = new Padding(4);
+            SellerContactTextBox.Location = new Point(342, 686);
+            SellerContactTextBox.Margin = new Padding(5, 5, 5, 5);
             SellerContactTextBox.Multiline = false;
             SellerContactTextBox.Name = "SellerContactTextBox";
             SellerContactTextBox.NormalImageTint = Color.White;
-            SellerContactTextBox.Padding = new Padding(20, 9, 20, 0);
+            SellerContactTextBox.Padding = new Padding(24, 12, 24, 0);
             SellerContactTextBox.PasswordChar = false;
             SellerContactTextBox.PlaceholderColor = Color.Gray;
             SellerContactTextBox.PlaceholderText = "Contact No.";
             SellerContactTextBox.Rounding = new Padding(8);
-            SellerContactTextBox.Size = new Size(277, 38);
+            SellerContactTextBox.Size = new Size(346, 48);
             SellerContactTextBox.TabIndex = 76;
             SellerContactTextBox.TextOffset = new Size(0, 0);
             SellerContactTextBox.UnderlinedStyle = false;
@@ -296,9 +306,10 @@
             CustomerName.BackColor = Color.FromArgb(0, 0, 0, 0);
             CustomerName.Font = new Font("Arial", 10.2F, FontStyle.Bold);
             CustomerName.ForeColor = Color.FromArgb(0, 157, 209);
-            CustomerName.Location = new Point(7, 526);
+            CustomerName.Location = new Point(9, 658);
+            CustomerName.Margin = new Padding(4, 0, 4, 0);
             CustomerName.Name = "CustomerName";
-            CustomerName.Size = new Size(102, 19);
+            CustomerName.Size = new Size(129, 24);
             CustomerName.TabIndex = 75;
             CustomerName.Text = "Seller Name";
             // 
@@ -315,17 +326,17 @@
             SellerNameTextBox.Image = null;
             SellerNameTextBox.ImageExpand = new Point(0, 0);
             SellerNameTextBox.ImageOffset = new Point(0, 0);
-            SellerNameTextBox.Location = new Point(7, 549);
-            SellerNameTextBox.Margin = new Padding(4);
+            SellerNameTextBox.Location = new Point(9, 686);
+            SellerNameTextBox.Margin = new Padding(5, 5, 5, 5);
             SellerNameTextBox.Multiline = false;
             SellerNameTextBox.Name = "SellerNameTextBox";
             SellerNameTextBox.NormalImageTint = Color.White;
-            SellerNameTextBox.Padding = new Padding(20, 9, 20, 0);
+            SellerNameTextBox.Padding = new Padding(24, 12, 24, 0);
             SellerNameTextBox.PasswordChar = false;
             SellerNameTextBox.PlaceholderColor = Color.Gray;
             SellerNameTextBox.PlaceholderText = "Seller Name";
             SellerNameTextBox.Rounding = new Padding(8);
-            SellerNameTextBox.Size = new Size(254, 38);
+            SellerNameTextBox.Size = new Size(318, 48);
             SellerNameTextBox.TabIndex = 74;
             SellerNameTextBox.TextOffset = new Size(0, 0);
             SellerNameTextBox.UnderlinedStyle = false;
@@ -336,9 +347,10 @@
             TransactionQuantity.BackColor = Color.FromArgb(0, 0, 0, 0);
             TransactionQuantity.Font = new Font("Arial", 10.2F, FontStyle.Bold);
             TransactionQuantity.ForeColor = Color.FromArgb(0, 157, 209);
-            TransactionQuantity.Location = new Point(210, 57);
+            TransactionQuantity.Location = new Point(262, 71);
+            TransactionQuantity.Margin = new Padding(4, 0, 4, 0);
             TransactionQuantity.Name = "TransactionQuantity";
-            TransactionQuantity.Size = new Size(76, 19);
+            TransactionQuantity.Size = new Size(94, 24);
             TransactionQuantity.TabIndex = 73;
             TransactionQuantity.Text = "Quantity";
             // 
@@ -355,17 +367,17 @@
             SellerQtyTextBox.Image = null;
             SellerQtyTextBox.ImageExpand = new Point(0, 0);
             SellerQtyTextBox.ImageOffset = new Point(0, 0);
-            SellerQtyTextBox.Location = new Point(210, 80);
-            SellerQtyTextBox.Margin = new Padding(4);
+            SellerQtyTextBox.Location = new Point(262, 100);
+            SellerQtyTextBox.Margin = new Padding(5, 5, 5, 5);
             SellerQtyTextBox.Multiline = false;
             SellerQtyTextBox.Name = "SellerQtyTextBox";
             SellerQtyTextBox.NormalImageTint = Color.White;
-            SellerQtyTextBox.Padding = new Padding(20, 9, 20, 0);
+            SellerQtyTextBox.Padding = new Padding(24, 12, 24, 0);
             SellerQtyTextBox.PasswordChar = false;
             SellerQtyTextBox.PlaceholderColor = Color.Gray;
             SellerQtyTextBox.PlaceholderText = "Quantity";
             SellerQtyTextBox.Rounding = new Padding(8);
-            SellerQtyTextBox.Size = new Size(195, 38);
+            SellerQtyTextBox.Size = new Size(244, 48);
             SellerQtyTextBox.TabIndex = 72;
             SellerQtyTextBox.TextOffset = new Size(0, 0);
             SellerQtyTextBox.UnderlinedStyle = false;
@@ -376,11 +388,12 @@
             IdItem.BackColor = Color.FromArgb(0, 0, 0, 0);
             IdItem.Font = new Font("Arial", 10.2F, FontStyle.Bold);
             IdItem.ForeColor = Color.FromArgb(0, 157, 209);
-            IdItem.Location = new Point(3, 58);
+            IdItem.Location = new Point(4, 72);
+            IdItem.Margin = new Padding(4, 0, 4, 0);
             IdItem.Name = "IdItem";
-            IdItem.Size = new Size(63, 19);
+            IdItem.Size = new Size(116, 24);
             IdItem.TabIndex = 71;
-            IdItem.Text = "Item ID";
+            IdItem.Text = "Item Name";
             // 
             // SellerOrdersTable
             // 
@@ -405,7 +418,8 @@
             SellerOrdersTable.EditMode = DataGridViewEditMode.EditProgrammatically;
             SellerOrdersTable.EnableHeadersVisualStyles = false;
             SellerOrdersTable.GridColor = Color.FromArgb(99, 99, 99);
-            SellerOrdersTable.Location = new Point(3, 135);
+            SellerOrdersTable.Location = new Point(4, 169);
+            SellerOrdersTable.Margin = new Padding(4, 4, 4, 4);
             SellerOrdersTable.Name = "SellerOrdersTable";
             SellerOrdersTable.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -424,7 +438,7 @@
             SellerOrdersTable.RowsDefaultCellStyle = dataGridViewCellStyle4;
             SellerOrdersTable.RowTemplate.Height = 50;
             SellerOrdersTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            SellerOrdersTable.Size = new Size(1048, 376);
+            SellerOrdersTable.Size = new Size(1310, 470);
             SellerOrdersTable.TabIndex = 87;
             // 
             // ItemID
@@ -490,7 +504,7 @@
             // 
             // SellerTransaction
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(SellerOrdersTable);
             Controls.Add(TotalItemsCounterLabel);
@@ -509,8 +523,9 @@
             Controls.Add(TransactionQuantity);
             Controls.Add(SellerQtyTextBox);
             Controls.Add(IdItem);
+            Margin = new Padding(4, 4, 4, 4);
             Name = "SellerTransaction";
-            Size = new Size(1054, 661);
+            Size = new Size(1318, 826);
             ((System.ComponentModel.ISupportInitialize)SellerOrdersTable).EndInit();
             ResumeLayout(false);
             PerformLayout();

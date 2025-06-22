@@ -100,7 +100,7 @@ namespace JunkShopInventoryandTransactionSystem.View.GenerateTransactionPageFold
 
             // Formats the total price with commas and no decimals for better readability.
             // Example: 12500 becomes "₱12,500"
-            TotalPriceAmntCounterLabel.Text = "₱ " + totalPrice.ToString("N0");  
+            TotalPriceAmntCounterLabel.Text = "₱ " + totalPrice.ToString("N0");
         }
         // end of the code for updating the transaction summary labels
 
@@ -148,6 +148,11 @@ namespace JunkShopInventoryandTransactionSystem.View.GenerateTransactionPageFold
             {
                 MessageBox.Show("Something went wrong finalizing the transaction.");
             }
+
+        }
+
+        private void IdItem_Click(object sender, EventArgs e)
+        {
 
         }
     }
