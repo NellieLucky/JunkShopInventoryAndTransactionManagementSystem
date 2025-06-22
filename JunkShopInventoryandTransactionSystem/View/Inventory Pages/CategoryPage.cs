@@ -1,5 +1,6 @@
 ﻿//imports the backend file ReloadCategory.cs
 using JunkShopInventoryandTransactionSystem.BackendFiles.Category.Reload;
+using JunkShopInventoryandTransactionSystem.BackendFiles.UserSession;
 using JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel;
 using JunkShopInventoryandTransactionSystem.View.DeletionDialogs; 
 
@@ -12,6 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static JunkShopInventoryandTransactionSystem.BackendFiles.UserSession.ForUser;
 using static System.Windows.Forms.DataFormats;
 
 namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
@@ -56,8 +58,17 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
             // Set header text for Edit and Delete columns to empty  
             CategoryRecordsTable.Columns["Edit"].HeaderText = "";
             CategoryRecordsTable.Columns["Delete"].HeaderText = "";
-
             CategoryRecordsTable.Paint += DataGridView1_Paint;
+
+            // Hide Add/Delete/Edit column if user is Employee
+            var userInfo = ForUser.GetUserInfo(UserSession.UserId);
+            if (userInfo.Role == "Employee")
+            {
+                CategoryRecordsTable.Columns["Edit"].Visible = false;
+                CategoryRecordsTable.Columns["Delete"].Visible = false;
+
+                AddCategoryButton.Visible = false;
+            }
         }
 
         //Para to sa pag-merge ng Edit at Delete header cells kasi walang built-in support sa DataGridView para here  

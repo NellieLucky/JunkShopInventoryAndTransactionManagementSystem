@@ -153,12 +153,12 @@ namespace JunkShopInventoryandTransactionSystem.View
         {
             UserSession.UserId = 0;  //To reset the logged-in user id
 
-            LogInPage loginPage = new LogInAuthFolder.LogInPage();
-            loginPage.Dock = DockStyle.Fill;
-            loginPage.TopLevel = false;
+            EmployeeOrAdmin ChoosePage = new LogInAuthFolder.EmployeeOrAdmin();
+            ChoosePage.Dock = DockStyle.Fill;
+            ChoosePage.TopLevel = false;
             MainForm.MainPanel.Controls.Clear();
-            MainForm.MainPanel.Controls.Add(loginPage);
-            loginPage.Show();
+            MainForm.MainPanel.Controls.Add(ChoosePage);
+            ChoosePage.Show();
         }
     }
 }

@@ -39,11 +39,11 @@ namespace JunkShopInventoryandTransactionSystem
             }
             else
             {
-                LogInPage loginPage = new LogInPage();
-                loginPage.Dock = DockStyle.Fill;
-                loginPage.TopLevel = false;
-                panel1.Controls.Add(loginPage);
-                loginPage.Show();
+                EmployeeOrAdmin ChoosePage = new EmployeeOrAdmin();
+                ChoosePage.Dock = DockStyle.Fill;
+                ChoosePage.TopLevel = false;
+                panel1.Controls.Add(ChoosePage);
+                ChoosePage.Show();
             }
         }
     }

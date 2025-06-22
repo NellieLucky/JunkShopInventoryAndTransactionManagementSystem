@@ -29,7 +29,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.UserSession
 {
     internal class ForUser
     {
-        //private static readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Beetoy\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\Database1.mdf;Integrated Security=True";
+        private static readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Beetoy\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\Database1.mdf;Integrated Security=True";
 
         //arnel's connstring
         //private static readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
@@ -40,6 +40,23 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.UserSession
         public static class UserSession
         {
             public static int UserId { get; set; }
+            public static int EmployeeId { get; private set; }   // Only set if user is employee
+
+            public static void SetUser(int userId, bool isEmployee)
+            {
+                UserId = userId;
+
+                if (isEmployee)
+                {
+                    EmployeeId = userId;
+                    MessageBox.Show($"SetUser called: EmployeeId set to {EmployeeId}", "Debug");
+                }
+                else
+                {
+                    EmployeeId = 0;
+                    MessageBox.Show($"SetUser called: User is not employee, EmployeeId reset to 0", "Debug");
+                }
+            }
         }
 
         //Function to update information of employee in edit mode(AddEditEmployee.cs)
@@ -363,21 +380,15 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.UserSession
             }
         }
 
-        //Function to check if the user exists in either Employees or Management Tables(LogInPage.cs)
-        public static int? AuthenticateUser(string email, string password)
+        //Function to check if the user exists in employees Table(LogInPage.cs)
+        public static int? AuthenticateEmployee(string email, string password)
         {
             try
             {
                 using (SqlConnection connect = new SqlConnection(connectionString))
                 {
                     connect.Open();
-
-                    string query = @"
-                SELECT TOP 1 empId FROM Employees 
-                WHERE empEmail = @Email AND empPassword = @Password
-                UNION ALL
-                SELECT TOP 1 admId FROM Management 
-                WHERE admEmail = @Email AND admPassword = @Password";
+                    string query = "SELECT empId FROM Employees WHERE empEmail = @Email AND empPassword = @Password";
 
                     using (SqlCommand cmd = new SqlCommand(query, connect))
                     {
@@ -387,7 +398,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.UserSession
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
                             if (reader.Read())
-                                return reader.GetInt32(0); // Return user ID
+                                return reader.GetInt32(0);
                         }
                     }
                 }
@@ -396,7 +407,38 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.UserSession
             {
                 throw;
             }
-            return null; // No user found
+
+            return null;
+        }
+        //Function to check if the user exists in Management Tables(LogInPage.cs)
+        public static int? AuthenticateAdmin(string email, string password)
+        {
+            try
+            {
+                using (SqlConnection connect = new SqlConnection(connectionString))
+                {
+                    connect.Open();
+                    string query = "SELECT admId FROM Management WHERE admEmail = @Email AND admPassword = @Password";
+
+                    using (SqlCommand cmd = new SqlCommand(query, connect))
+                    {
+                        cmd.Parameters.AddWithValue("@Email", email);
+                        cmd.Parameters.AddWithValue("@Password", password);
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                                return reader.GetInt32(0);
+                        }
+                    }
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+
+            return null;
         }
 
         //Function to check if the email is registered in either Employees or Management Tables(ForgotPasswordPage.cs)
