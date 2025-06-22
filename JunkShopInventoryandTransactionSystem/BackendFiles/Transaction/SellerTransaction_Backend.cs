@@ -1,4 +1,11 @@
 ﻿
+using JunkShopInventoryandTransactionSystem.BackendFiles.Customer.Crud;
+using JunkShopInventoryandTransactionSystem.BackendFiles.Employee.Crud;
+using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud;
+// access the constructor model for transaction cart
+using JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.ConstructorModel;
+using JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Crud;
+using JunkShopInventoryandTransactionSystem.BackendFiles.UserSession;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,13 +13,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.ComponentModel.Design.ObjectSelectorEditor;
-
-using JunkShopInventoryandTransactionSystem.BackendFiles.Employee.Crud;
-using JunkShopInventoryandTransactionSystem.BackendFiles.Customer.Crud;
-using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud;
-// access the constructor model for transaction cart
-using JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.ConstructorModel;
-using JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Crud;
 
 namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.SellerLogic
 {
@@ -212,21 +212,13 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.SellerL
             int nonNullCustomerId = customerId.Value;
 
             // get employee Id next
+            int empId = ForUser.UserSession.EmployeeId;
 
-            /*
-            EmployeeRead empReader = new EmployeeRead();
-            // pass temporary email for now
-            int? empId = empReader.GetEmployeeIdByEmail("oeubxwaa@gmail.com");
-            */
-            int empId = 1; // For now, we assume employee ID is 1. Replace with actual logic to get employee ID.
-
-            /*
-            if (empId == null)
+            if (empId <= 0)
             {
                 MessageBox.Show("❌ Employee not found.", "Lookup Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-            */
 
             // calculate total items, total quantity, and total amount
             int totalItems = tempCart.Count;

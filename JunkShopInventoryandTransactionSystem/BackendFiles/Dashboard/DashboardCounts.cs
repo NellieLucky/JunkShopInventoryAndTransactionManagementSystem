@@ -14,6 +14,8 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Dashboard
         //arnel string
         //private static readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
 
+        //protected readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Beetoy\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\Database1.mdf;Integrated Security=True";
+
         public static (int Items, int Categories, int Employees) GetDashboardCounts()
         {
             int items = 0, categories = 0, employees = 0;
