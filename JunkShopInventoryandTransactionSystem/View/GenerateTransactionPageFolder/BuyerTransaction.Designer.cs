@@ -55,7 +55,6 @@
             SellingPrice = new DataGridViewTextBoxColumn();
             TransacQuantity = new DataGridViewTextBoxColumn();
             ExchangeAmount = new DataGridViewTextBoxColumn();
-            Edit = new DataGridViewImageColumn();
             Remove = new DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)BuyersOrderTable).BeginInit();
             SuspendLayout();
@@ -366,7 +365,7 @@
             BuyersOrderTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             BuyersOrderTable.ColumnHeadersHeight = 60;
             BuyersOrderTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            BuyersOrderTable.Columns.AddRange(new DataGridViewColumn[] { ItemID, ItemName, QtyType, SellingPrice, TransacQuantity, ExchangeAmount, Edit, Remove });
+            BuyersOrderTable.Columns.AddRange(new DataGridViewColumn[] { ItemID, ItemName, QtyType, SellingPrice, TransacQuantity, ExchangeAmount, Remove });
             BuyersOrderTable.EditMode = DataGridViewEditMode.EditProgrammatically;
             BuyersOrderTable.EnableHeadersVisualStyles = false;
             BuyersOrderTable.GridColor = Color.FromArgb(99, 99, 99);
@@ -474,14 +473,6 @@
             ExchangeAmount.Name = "ExchangeAmount";
             ExchangeAmount.Width = 150;
             // 
-            // Edit
-            // 
-            Edit.HeaderText = "Edit";
-            Edit.Image = Properties.Resources.green_edit;
-            Edit.MinimumWidth = 6;
-            Edit.Name = "Edit";
-            Edit.Width = 70;
-            // 
             // Remove
             // 
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -550,7 +541,6 @@
         private DataGridViewTextBoxColumn SellingPrice;
         private DataGridViewTextBoxColumn TransacQuantity;
         private DataGridViewTextBoxColumn ExchangeAmount;
-        private DataGridViewImageColumn Edit;
         private DataGridViewImageColumn Remove;
     }
 }

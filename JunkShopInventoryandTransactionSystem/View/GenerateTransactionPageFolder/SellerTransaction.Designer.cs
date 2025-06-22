@@ -55,7 +55,6 @@
             BuyingPrice = new DataGridViewTextBoxColumn();
             TransacQuantity = new DataGridViewTextBoxColumn();
             ExchangeAmount = new DataGridViewTextBoxColumn();
-            Edit = new DataGridViewImageColumn();
             Remove = new DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)SellerOrdersTable).BeginInit();
             SuspendLayout();
@@ -402,7 +401,7 @@
             SellerOrdersTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             SellerOrdersTable.ColumnHeadersHeight = 60;
             SellerOrdersTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            SellerOrdersTable.Columns.AddRange(new DataGridViewColumn[] { ItemID, ItemName, QtyType, BuyingPrice, TransacQuantity, ExchangeAmount, Edit, Remove });
+            SellerOrdersTable.Columns.AddRange(new DataGridViewColumn[] { ItemID, ItemName, QtyType, BuyingPrice, TransacQuantity, ExchangeAmount, Remove });
             SellerOrdersTable.EditMode = DataGridViewEditMode.EditProgrammatically;
             SellerOrdersTable.EnableHeadersVisualStyles = false;
             SellerOrdersTable.GridColor = Color.FromArgb(99, 99, 99);
@@ -474,16 +473,6 @@
             ExchangeAmount.Name = "ExchangeAmount";
             ExchangeAmount.Width = 150;
             // 
-            // Edit
-            // 
-            Edit.HeaderText = "Edit";
-            Edit.Image = Properties.Resources.green_edit;
-            Edit.MinimumWidth = 6;
-            Edit.Name = "Edit";
-            Edit.Resizable = DataGridViewTriState.True;
-            Edit.SortMode = DataGridViewColumnSortMode.Automatic;
-            Edit.Width = 70;
-            // 
             // Remove
             // 
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -551,7 +540,6 @@
         private DataGridViewTextBoxColumn BuyingPrice;
         private DataGridViewTextBoxColumn TransacQuantity;
         private DataGridViewTextBoxColumn ExchangeAmount;
-        private DataGridViewImageColumn Edit;
         private DataGridViewImageColumn Remove;
     }
 }
