@@ -442,7 +442,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.UserSession
             {
                 connect.Open();
 
-                string query = "SELECT TOP 1 empEmail FROM Employees WHERE empEmail = @Email";
+                string query = "SELECT TOP 1 empEmail FROM Employees WHERE empEmail = @Email AND empId = 1";
                 using (SqlCommand cmd = new SqlCommand(query, connect))
                 {
                     cmd.Parameters.AddWithValue("@Email", email);
