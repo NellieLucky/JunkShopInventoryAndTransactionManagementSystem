@@ -1,0 +1,322 @@
+﻿namespace JunkShopInventoryandTransactionSystem.View
+{
+    partial class receiptlogo
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            DataGridViewCellStyle dataGridViewCellStyle19 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle20 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle21 = new DataGridViewCellStyle();
+            BuyersOrderTable = new DataGridView();
+            ItemID = new DataGridViewTextBoxColumn();
+            ItemName = new DataGridViewTextBoxColumn();
+            QtyType = new DataGridViewTextBoxColumn();
+            SellingPrice = new DataGridViewTextBoxColumn();
+            TransacQuantity = new DataGridViewTextBoxColumn();
+            ExchangeAmount = new DataGridViewTextBoxColumn();
+            receiptname = new Label();
+            receiptInvoice = new Label();
+            pictureBox1 = new PictureBox();
+            ReceiptContactNo = new Label();
+            ReceiptCustName = new Label();
+            ReceiptCustNo = new Label();
+            ReceiptTotalItem = new Label();
+            ReceiptTotalPrice = new Label();
+            label1 = new Label();
+            label2 = new Label();
+            ((System.ComponentModel.ISupportInitialize)BuyersOrderTable).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            SuspendLayout();
+            // 
+            // BuyersOrderTable
+            // 
+            BuyersOrderTable.AllowUserToAddRows = false;
+            BuyersOrderTable.AllowUserToDeleteRows = false;
+            BuyersOrderTable.AllowUserToResizeColumns = false;
+            BuyersOrderTable.AllowUserToResizeRows = false;
+            BuyersOrderTable.BackgroundColor = Color.White;
+            BuyersOrderTable.CellBorderStyle = DataGridViewCellBorderStyle.SunkenHorizontal;
+            BuyersOrderTable.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle19.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle19.BackColor = SystemColors.ControlLight;
+            dataGridViewCellStyle19.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle19.ForeColor = Color.Black;
+            dataGridViewCellStyle19.SelectionBackColor = SystemColors.ControlLight;
+            dataGridViewCellStyle19.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle19.WrapMode = DataGridViewTriState.True;
+            BuyersOrderTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
+            BuyersOrderTable.ColumnHeadersHeight = 60;
+            BuyersOrderTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            BuyersOrderTable.Columns.AddRange(new DataGridViewColumn[] { ItemID, ItemName, QtyType, SellingPrice, TransacQuantity, ExchangeAmount });
+            BuyersOrderTable.EditMode = DataGridViewEditMode.EditProgrammatically;
+            BuyersOrderTable.EnableHeadersVisualStyles = false;
+            BuyersOrderTable.GridColor = Color.FromArgb(99, 99, 99);
+            BuyersOrderTable.Location = new Point(12, 241);
+            BuyersOrderTable.Margin = new Padding(4);
+            BuyersOrderTable.Name = "BuyersOrderTable";
+            BuyersOrderTable.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle20.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle20.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle20.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle20.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle20.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle20.WrapMode = DataGridViewTriState.True;
+            BuyersOrderTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle20;
+            BuyersOrderTable.RowHeadersVisible = false;
+            BuyersOrderTable.RowHeadersWidth = 50;
+            dataGridViewCellStyle21.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle21.ForeColor = Color.Black;
+            dataGridViewCellStyle21.SelectionBackColor = Color.FromArgb(0, 157, 209);
+            dataGridViewCellStyle21.WrapMode = DataGridViewTriState.True;
+            BuyersOrderTable.RowsDefaultCellStyle = dataGridViewCellStyle21;
+            BuyersOrderTable.RowTemplate.Height = 50;
+            BuyersOrderTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            BuyersOrderTable.Size = new Size(933, 254);
+            BuyersOrderTable.TabIndex = 52;
+            BuyersOrderTable.CellContentClick += BuyersOrderTable_CellContentClick;
+            // 
+            // ItemID
+            // 
+            ItemID.HeaderText = "ItemID";
+            ItemID.MinimumWidth = 6;
+            ItemID.Name = "ItemID";
+            ItemID.Width = 125;
+            // 
+            // ItemName
+            // 
+            ItemName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            ItemName.HeaderText = "Item Name";
+            ItemName.MinimumWidth = 6;
+            ItemName.Name = "ItemName";
+            // 
+            // QtyType
+            // 
+            QtyType.FillWeight = 125F;
+            QtyType.HeaderText = "QtyType";
+            QtyType.MinimumWidth = 6;
+            QtyType.Name = "QtyType";
+            QtyType.Width = 125;
+            // 
+            // SellingPrice
+            // 
+            SellingPrice.FillWeight = 150F;
+            SellingPrice.HeaderText = "Selling Price";
+            SellingPrice.MinimumWidth = 6;
+            SellingPrice.Name = "SellingPrice";
+            SellingPrice.Width = 150;
+            // 
+            // TransacQuantity
+            // 
+            TransacQuantity.FillWeight = 59.177578F;
+            TransacQuantity.HeaderText = "Exchange Quantity";
+            TransacQuantity.MinimumWidth = 6;
+            TransacQuantity.Name = "TransacQuantity";
+            TransacQuantity.Width = 150;
+            // 
+            // ExchangeAmount
+            // 
+            ExchangeAmount.FillWeight = 59.177578F;
+            ExchangeAmount.HeaderText = "Exchange Amount";
+            ExchangeAmount.MinimumWidth = 6;
+            ExchangeAmount.Name = "ExchangeAmount";
+            ExchangeAmount.Width = 150;
+            // 
+            // receiptname
+            // 
+            receiptname.AutoSize = true;
+            receiptname.BackColor = Color.FromArgb(0, 0, 0, 0);
+            receiptname.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            receiptname.ForeColor = Color.Black;
+            receiptname.Location = new Point(24, 157);
+            receiptname.Margin = new Padding(4, 0, 4, 0);
+            receiptname.Name = "receiptname";
+            receiptname.Size = new Size(159, 21);
+            receiptname.TabIndex = 54;
+            receiptname.Text = "Customer Name:";
+            receiptname.Click += IdItem_Click;
+            // 
+            // receiptInvoice
+            // 
+            receiptInvoice.AutoSize = true;
+            receiptInvoice.BackColor = Color.FromArgb(0, 0, 0, 0);
+            receiptInvoice.Font = new Font("Arial Rounded MT Bold", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            receiptInvoice.ForeColor = Color.FromArgb(0, 157, 209);
+            receiptInvoice.Location = new Point(719, 23);
+            receiptInvoice.Margin = new Padding(4, 0, 4, 0);
+            receiptInvoice.Name = "receiptInvoice";
+            receiptInvoice.Size = new Size(226, 42);
+            receiptInvoice.TabIndex = 55;
+            receiptInvoice.Text = "I N V O I C E";
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = Properties.Resources.JUNKSHOP__9___1_;
+            pictureBox1.Location = new Point(5, 3);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(118, 107);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 56;
+            pictureBox1.TabStop = false;
+            // 
+            // ReceiptContactNo
+            // 
+            ReceiptContactNo.AutoSize = true;
+            ReceiptContactNo.BackColor = Color.FromArgb(0, 0, 0, 0);
+            ReceiptContactNo.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            ReceiptContactNo.ForeColor = Color.Black;
+            ReceiptContactNo.Location = new Point(24, 193);
+            ReceiptContactNo.Margin = new Padding(4, 0, 4, 0);
+            ReceiptContactNo.Name = "ReceiptContactNo";
+            ReceiptContactNo.Size = new Size(159, 21);
+            ReceiptContactNo.TabIndex = 57;
+            ReceiptContactNo.Text = "Contact Number:";
+            // 
+            // ReceiptCustName
+            // 
+            ReceiptCustName.AutoSize = true;
+            ReceiptCustName.BackColor = Color.FromArgb(0, 0, 0, 0);
+            ReceiptCustName.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            ReceiptCustName.ForeColor = SystemColors.ControlDarkDark;
+            ReceiptCustName.Location = new Point(192, 157);
+            ReceiptCustName.Margin = new Padding(4, 0, 4, 0);
+            ReceiptCustName.Name = "ReceiptCustName";
+            ReceiptCustName.Size = new Size(139, 21);
+            ReceiptCustName.TabIndex = 58;
+            ReceiptCustName.Text = "Customer Name";
+            // 
+            // ReceiptCustNo
+            // 
+            ReceiptCustNo.AutoSize = true;
+            ReceiptCustNo.BackColor = Color.FromArgb(0, 0, 0, 0);
+            ReceiptCustNo.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            ReceiptCustNo.ForeColor = SystemColors.ControlDarkDark;
+            ReceiptCustNo.Location = new Point(192, 193);
+            ReceiptCustNo.Margin = new Padding(4, 0, 4, 0);
+            ReceiptCustNo.Name = "ReceiptCustNo";
+            ReceiptCustNo.Size = new Size(140, 21);
+            ReceiptCustNo.TabIndex = 59;
+            ReceiptCustNo.Text = "Contact Number";
+            // 
+            // ReceiptTotalItem
+            // 
+            ReceiptTotalItem.AutoSize = true;
+            ReceiptTotalItem.BackColor = Color.FromArgb(0, 0, 0, 0);
+            ReceiptTotalItem.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            ReceiptTotalItem.ForeColor = Color.Black;
+            ReceiptTotalItem.Location = new Point(589, 520);
+            ReceiptTotalItem.Margin = new Padding(4, 0, 4, 0);
+            ReceiptTotalItem.Name = "ReceiptTotalItem";
+            ReceiptTotalItem.Size = new Size(101, 21);
+            ReceiptTotalItem.TabIndex = 60;
+            ReceiptTotalItem.Text = "Total Item ";
+            ReceiptTotalItem.Click += ReceiptTotalItem_Click;
+            // 
+            // ReceiptTotalPrice
+            // 
+            ReceiptTotalPrice.AutoSize = true;
+            ReceiptTotalPrice.BackColor = Color.FromArgb(0, 0, 0, 0);
+            ReceiptTotalPrice.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            ReceiptTotalPrice.ForeColor = Color.Black;
+            ReceiptTotalPrice.Location = new Point(589, 560);
+            ReceiptTotalPrice.Margin = new Padding(4, 0, 4, 0);
+            ReceiptTotalPrice.Name = "ReceiptTotalPrice";
+            ReceiptTotalPrice.Size = new Size(102, 21);
+            ReceiptTotalPrice.TabIndex = 61;
+            ReceiptTotalPrice.Text = "Total Price";
+            ReceiptTotalPrice.Click += ReceiptTotalPrice_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.FromArgb(0, 0, 0, 0);
+            label1.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.ForeColor = SystemColors.ControlDarkDark;
+            label1.Location = new Point(800, 520);
+            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(87, 21);
+            label1.TabIndex = 62;
+            label1.Text = "Total Item";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.BackColor = Color.FromArgb(0, 0, 0, 0);
+            label2.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.ForeColor = SystemColors.ControlDarkDark;
+            label2.Location = new Point(800, 560);
+            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(95, 21);
+            label2.TabIndex = 63;
+            label2.Text = "Total Price";
+            // 
+            // receiptlogo
+            // 
+            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(958, 646);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Controls.Add(ReceiptTotalPrice);
+            Controls.Add(ReceiptTotalItem);
+            Controls.Add(ReceiptCustNo);
+            Controls.Add(ReceiptCustName);
+            Controls.Add(ReceiptContactNo);
+            Controls.Add(pictureBox1);
+            Controls.Add(receiptInvoice);
+            Controls.Add(receiptname);
+            Controls.Add(BuyersOrderTable);
+            Name = "receiptlogo";
+            Text = "receipt";
+            ((System.ComponentModel.ISupportInitialize)BuyersOrderTable).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
+        }
+
+        #endregion
+
+        private DataGridView BuyersOrderTable;
+        private DataGridViewTextBoxColumn ItemID;
+        private DataGridViewTextBoxColumn ItemName;
+        private DataGridViewTextBoxColumn QtyType;
+        private DataGridViewTextBoxColumn SellingPrice;
+        private DataGridViewTextBoxColumn TransacQuantity;
+        private DataGridViewTextBoxColumn ExchangeAmount;
+        private Label receiptname;
+        private Label receiptInvoice;
+        private PictureBox pictureBox1;
+        private Label ReceiptContactNo;
+        private Label ReceiptCustName;
+        private Label ReceiptCustNo;
+        private Label ReceiptTotalItem;
+        private Label ReceiptTotalPrice;
+        private Label label1;
+        private Label label2;
+    }
+}
