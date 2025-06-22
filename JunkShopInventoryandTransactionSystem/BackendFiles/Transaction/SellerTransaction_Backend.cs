@@ -54,6 +54,11 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.SellerL
                     : "Quantity must be greater than zero.\n";
                 isValidInput = false;
             }
+            else if (parsedItemQty > 9999) // Prevents more than 4 digits
+            {
+                errorMessage += "Quantity cannot exceed 6 digits (max: 9999).\n";
+                isValidInput = false;
+            }
 
             if (!isValidInput)
             {
