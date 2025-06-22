@@ -229,7 +229,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.SellerL
             int nonNullCustomerId = customerId.Value;
 
             // get employee Id next
-            int empId = ForUser.UserSession.EmployeeId;
+            int empId = ForUser.UserSession.UserId;
 
             if (empId <= 0)
             {
@@ -237,8 +237,9 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.SellerL
                 return false;
             }
 
-            // calculate total items, total quantity, and total amount
-            int totalItems = tempCart.Count;
+
+                // calculate total items, total quantity, and total amount
+                int totalItems = tempCart.Count;
             int totalQuantity = tempCart.Sum(item => item.Quantity);
 
             decimal totalAmount = 0;
