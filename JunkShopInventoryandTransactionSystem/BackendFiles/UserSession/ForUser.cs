@@ -19,7 +19,7 @@ CREATE TABLE [dbo].[Employees] (
     [token]             NVARCHAR (50) NULL,
     [empContact]        NVARCHAR (50) NULL,
     [empAddress]        NVARCHAR (50) NULL,
-    [empRole]           NVARCHAR (50) NOT NULL,
+    [empRole]           NVARCHAR (50) DEFAULT('Employee') NOT NULL,
     [empDateRegistered] DATETIME      DEFAULT (getdate()) NOT NULL,
     [IsRemoved]         BIT           DEFAULT ((0)) NOT NULL,
     PRIMARY KEY CLUSTERED ([empId] ASC)
@@ -91,8 +91,8 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.UserSession
 
                     // SQL query to insert data into the Employee table
                     string query = @"
-                        INSERT INTO Employees (empEmail, empPassword, empAddress, empName, empContact)
-                        VALUES (@Email, @Password, @Address, @Name, @ContactNo)";
+                                INSERT INTO Employees (empEmail, empPassword, empAddress, empName, empContact, empRole)
+                                VALUES (@Email, @Password, @Address, @Name, @ContactNo, @Role)";
 
                     using (SqlCommand cmd = new SqlCommand(query, connect))
                     {
@@ -102,6 +102,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.UserSession
                         cmd.Parameters.AddWithValue("@Address", address);
                         cmd.Parameters.AddWithValue("@Name", name);
                         cmd.Parameters.AddWithValue("@ContactNo", contactNo);
+                        cmd.Parameters.AddWithValue("@Role", "Employee");
 
                         // Execute the query and return whether the insertion was successful
                         int rowsAffected = cmd.ExecuteNonQuery();
