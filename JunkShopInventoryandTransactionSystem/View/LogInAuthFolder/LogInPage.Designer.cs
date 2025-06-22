@@ -31,6 +31,7 @@
             codeeloGradientPanel1 = new CodeeloUI.Controls.CodeeloGradientPanel();
             cuiPictureBox1 = new CuoreUI.Controls.cuiPictureBox();
             cuiPanel1 = new CuoreUI.Controls.cuiPanel();
+            BackButton = new NonoUI.Controls.NonoImageButton();
             ForgotPasswordButton = new Label();
             LogInButton = new CuoreUI.Controls.cuiButton();
             PasswordLabel = new Label();
@@ -42,6 +43,7 @@
             SignInLabel = new Label();
             codeeloGradientPanel1.SuspendLayout();
             cuiPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)BackButton).BeginInit();
             cuiPanel3.SuspendLayout();
             cuiPanel2.SuspendLayout();
             SuspendLayout();
@@ -75,7 +77,7 @@
             cuiPictureBox1.Content = Properties.Resources.JUNKSHOP__9___1_;
             cuiPictureBox1.ImageTint = Color.White;
             cuiPictureBox1.Location = new Point(89, 261);
-            cuiPictureBox1.Margin = new Padding(5, 5, 5, 5);
+            cuiPictureBox1.Margin = new Padding(5);
             cuiPictureBox1.Name = "cuiPictureBox1";
             cuiPictureBox1.OutlineThickness = 1F;
             cuiPictureBox1.PanelOutlineColor = Color.Empty;
@@ -87,6 +89,7 @@
             // cuiPanel1
             // 
             cuiPanel1.BackColor = Color.FromArgb(0, 0, 0, 0);
+            cuiPanel1.Controls.Add(BackButton);
             cuiPanel1.Controls.Add(ForgotPasswordButton);
             cuiPanel1.Controls.Add(LogInButton);
             cuiPanel1.Controls.Add(PasswordLabel);
@@ -103,6 +106,27 @@
             cuiPanel1.Rounding = new Padding(0, 50, 50, 0);
             cuiPanel1.Size = new Size(981, 800);
             cuiPanel1.TabIndex = 0;
+            // 
+            // BackButton
+            // 
+            BackButton.BackColor = Color.Transparent;
+            BackButton.BackgroundImageLayout = ImageLayout.None;
+            BackButton.Cursor = Cursors.Hand;
+            BackButton.Disabled = false;
+            BackButton.ErrorImage = Properties.Resources.left_arrow;
+            BackButton.Image = Properties.Resources.left_arrow;
+            BackButton.ImageClicked = null;
+            BackButton.ImageDisabled = null;
+            BackButton.ImageHover = null;
+            BackButton.ImageNormal = null;
+            BackButton.InitialImage = Properties.Resources.left_arrow;
+            BackButton.Location = new Point(38, 31);
+            BackButton.Name = "BackButton";
+            BackButton.Size = new Size(70, 70);
+            BackButton.SizeMode = PictureBoxSizeMode.StretchImage;
+            BackButton.TabIndex = 9;
+            BackButton.TabStop = false;
+            BackButton.Click += BackButton_Click_1;
             // 
             // ForgotPasswordButton
             // 
@@ -273,9 +297,9 @@
             SignInLabel.ForeColor = Color.FromArgb(16, 107, 23);
             SignInLabel.Location = new Point(171, 132);
             SignInLabel.Name = "SignInLabel";
-            SignInLabel.Size = new Size(181, 55);
+            SignInLabel.Size = new Size(340, 55);
             SignInLabel.TabIndex = 0;
-            SignInLabel.Text = "Sign In";
+            SignInLabel.Text = "Admin Sign In";
             // 
             // LogInPage
             // 
@@ -289,6 +313,7 @@
             codeeloGradientPanel1.ResumeLayout(false);
             cuiPanel1.ResumeLayout(false);
             cuiPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)BackButton).EndInit();
             cuiPanel3.ResumeLayout(false);
             cuiPanel2.ResumeLayout(false);
             ResumeLayout(false);
@@ -308,5 +333,6 @@
         private Label EmailLabel;
         private CuoreUI.Controls.cuiButton LogInButton;
         private Label ForgotPasswordButton;
+        private NonoUI.Controls.NonoImageButton BackButton;
     }
 }

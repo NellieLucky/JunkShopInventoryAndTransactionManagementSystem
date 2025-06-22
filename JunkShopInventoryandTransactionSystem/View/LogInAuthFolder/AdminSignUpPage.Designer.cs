@@ -90,7 +90,7 @@
             cuiPictureBox1.Content = Properties.Resources.JUNKSHOP__9___1_;
             cuiPictureBox1.ImageTint = Color.White;
             cuiPictureBox1.Location = new Point(89, 261);
-            cuiPictureBox1.Margin = new Padding(5, 5, 5, 5);
+            cuiPictureBox1.Margin = new Padding(5);
             cuiPictureBox1.Name = "cuiPictureBox1";
             cuiPictureBox1.OutlineThickness = 1F;
             cuiPictureBox1.PanelOutlineColor = Color.Empty;
@@ -500,7 +500,7 @@
             SignInLabel.AutoSize = true;
             SignInLabel.Font = new Font("Arial", 28.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             SignInLabel.ForeColor = Color.FromArgb(16, 107, 23);
-            SignInLabel.Location = new Point(165, 92);
+            SignInLabel.Location = new Point(119, 92);
             SignInLabel.Name = "SignInLabel";
             SignInLabel.Size = new Size(526, 55);
             SignInLabel.TabIndex = 0;

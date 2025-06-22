@@ -75,5 +75,15 @@ namespace JunkShopInventoryandTransactionSystem.View.LogInAuthFolder
         {
 
         }
+
+        private void BackButton_Click(object sender, EventArgs e)
+        {
+            EmployeeOrAdmin employeeOrAdmin = new EmployeeOrAdmin();
+            employeeOrAdmin.Dock = DockStyle.Fill;
+            employeeOrAdmin.TopLevel = false;
+            MainForm.MainPanel.Controls.Clear();
+            MainForm.MainPanel.Controls.Add(employeeOrAdmin);
+            employeeOrAdmin.Show();
+        }
     }
 }
