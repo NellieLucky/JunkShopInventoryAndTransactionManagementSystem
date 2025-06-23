@@ -48,7 +48,7 @@ namespace JunkShopInventoryandTransactionSystem.View.TransactionRecordsPageFolde
                 if (result == DialogResult.Yes)
                 {
                     TransactionDelete deleter = new TransactionDelete();
-                    bool wasDeleted = deleter.DeleteTransaction(transacId);
+                    bool wasDeleted = deleter.ArchiveTransaction(transacId);
 
                     if (wasDeleted)
                     {
