@@ -192,19 +192,19 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.BuyerLo
 
             // Get customer ID by name
             CustomerRead reader = new CustomerRead();
-            int? customerId = reader.GetCustomerIdByName(buyerName);
+            int? customerId = reader.GetCustomerIdByNameandType(buyerName, "Buyer");
 
             if (customerId == null)
             {
                 CustomerInsert addCustomer = new CustomerInsert();
-                bool insertSuccess = addCustomer.InsertCustomer(buyerName, buyerContact, "Seller");
+                bool insertSuccess = addCustomer.InsertCustomer(buyerName, buyerContact, "Buyer");
 
                 if (insertSuccess)
                 {
                     MessageBox.Show("✅ New customer added as Buyer.", "Customer Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     // Recheck ID after insert
-                    customerId = reader.GetCustomerIdByName(buyerName);
+                    customerId = reader.GetCustomerIdByNameandType(buyerName, "Buyer");
 
                     if (customerId == null)
                     {

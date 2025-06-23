@@ -200,7 +200,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.SellerL
 
             // Get customer ID by name
             CustomerRead reader = new CustomerRead();
-            int? customerId = reader.GetCustomerIdByName(sellerName);
+            int? customerId = reader.GetCustomerIdByNameandType(sellerName, "Seller");
 
             if (customerId == null)
             {
@@ -212,7 +212,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.SellerL
                     MessageBox.Show("✅ New customer added as Seller.", "Customer Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     // Recheck ID after insert
-                    customerId = reader.GetCustomerIdByName(sellerName);
+                    customerId = reader.GetCustomerIdByNameandType(sellerName, "Seller");
 
                     if (customerId == null)
                     {
