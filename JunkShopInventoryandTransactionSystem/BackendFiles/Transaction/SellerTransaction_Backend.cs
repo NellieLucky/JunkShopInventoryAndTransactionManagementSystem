@@ -200,7 +200,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.SellerL
 
             // Get customer ID by name
             CustomerRead reader = new CustomerRead();
-            int? customerId = reader.GetCustomerIdByName(sellerName);
+            int? customerId = reader.GetCustomerIdByNameandType(sellerName, "Seller");
 
             if (customerId == null)
             {
@@ -212,7 +212,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.SellerL
                     MessageBox.Show("✅ New customer added as Seller.", "Customer Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     // Recheck ID after insert
-                    customerId = reader.GetCustomerIdByName(sellerName);
+                    customerId = reader.GetCustomerIdByNameandType(sellerName, "Seller");
 
                     if (customerId == null)
                     {
@@ -265,24 +265,40 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.SellerL
             }
 
             TransactionCreate writer = new TransactionCreate();
-            bool isSuccess = writer.AddNewTransaction(
+            int transactionId = writer.AddNewTransactionAndReturnId(
                 nonNullCustomerId,
                 empId,     //skips transacDate since it defaults to GETDATE()
                 totalItems,
                 totalQuantity,
                 totalAmount,
-                "Seller"  // pass this for transacType "Buyer" or "Seller" as a string
+                "Seller"  // pass this for customerType "Buyer" or "Seller" as a string
             );
 
-            if (isSuccess)
+            if (transactionId > 0)
             {
+                // Insert each cart item into TransactionItems
+                foreach (var cartItem in tempCart)
+                {
+                    // Find the price from the DataGridView (assuming price is in column 3)
+                    decimal price = 0;
+                    foreach (DataGridViewRow row in targetDataGridView.Rows)
+                    {
+                        if (row.Cells[0].Value != null && Convert.ToInt32(row.Cells[0].Value) == cartItem.ItemId)
+                        {
+                            price = Convert.ToDecimal(row.Cells[3].Value);
+                            break;
+                        }
+                    }
+                    writer.AddTransactionItem(transactionId, cartItem.ItemId, cartItem.Quantity, price);
+                }
+
                 MessageBox.Show("Transaction finalized successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return true; // Return true if transaction was successful
+                return true;
             }
             else
             {
                 MessageBox.Show("❌ Failed to finalize transaction. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false; // Return false if transaction failed
+                return false;
             }
         }   // end of FinalizeTransaction method
 

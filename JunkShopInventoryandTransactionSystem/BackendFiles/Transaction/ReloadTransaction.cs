@@ -22,8 +22,8 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Reload
             {
                 dataGridView1.Rows.Add(
                     transaction.transacId,
-                    transaction.transacType,
                     transaction.transacDate.ToString("yyyy-MM-dd"),
+                    transaction.customerType,
                     //transaction.transacDate.ToString("yyyy-MM-dd HH:mm"),
                     transaction.customerName,
                     transaction.employeeName,

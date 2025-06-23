@@ -85,18 +85,20 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Customer.Crud
     {
         // READ and get customer Id by using passed customers name
         // used in transaction<buyer/seller>.cs
-        public int? GetCustomerIdByName(string customerName)
+        public int? GetCustomerIdByNameandType(string customerName, string customerType)
         {
             using (SqlConnection conn = GetConnection())
             {
                 string query = @"
                 SELECT customerId 
                 FROM Customer 
-                WHERE customerName = @customerName";
+                WHERE customerName = @customerName AND customerType = @customerType";
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@customerName", customerName.Trim());
+                    cmd.Parameters.AddWithValue("@customerType", customerType);
+
 
                     try
                     {

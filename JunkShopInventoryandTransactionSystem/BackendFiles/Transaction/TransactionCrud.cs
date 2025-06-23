@@ -17,37 +17,45 @@ CREATE TABLE Transactions (
     totalNumOfItems INT NOT NULL,
     totalNumOfQty INT NOT NULL,
     totalAmount DECIMAL(18, 2) NOT NULL,
-    transacType VARCHAR(10) NOT NULL CHECK (transacType IN ('Buyer', 'Seller'))
+    customerType VARCHAR(10) NOT NULL CHECK (customerType IN ('Buyer', 'Seller')),
+    isArchived BIT NOT NULL DEFAULT 0,
     FOREIGN KEY (customerId) REFERENCES Customer(customerId),  -- FK reference
     FOREIGN KEY (employeeId) REFERENCES Employees(empId)  -- FK reference
 );
 
-SELECT * FROM Transaction;
+CREATE TABLE TransactionItems (
+    transactionId INT NOT NULL,
+    itemId INT NOT NULL,
+    quantity INT NOT NULL,
+    price DECIMAL(18, 2) NOT NULL,
+    PRIMARY KEY (transactionId, itemId),
+    FOREIGN KEY (transactionId) REFERENCES Transactions(transacId),
+    FOREIGN KEY (itemId) REFERENCES Inventory(itemId)
+);
+
+SELECT * FROM Transactions;
+SELECT * FROM TransactionItems;
 
 */
 
 namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Crud
 {
-    //constructor here
     public class TransactionItem
     {
         public int transacId { get; set; }
         public int customerId { get; set; }
-        public string customerName { get; set; } = string.Empty; 
+        public string customerName { get; set; } = string.Empty;
         public int employeeId { get; set; }
-        // added employeeName for transac read
         public string employeeName { get; set; } = string.Empty;
         public DateTime transacDate { get; set; }
         public int totalNumOfItems { get; set; }
         public int totalNumOfQty { get; set; }
         public decimal totalAmount { get; set; }
-        public string transacType { get; set; } = string.Empty;
+        public string customerType { get; set; } = string.Empty;
         public bool isArchived { get; set; } = false;
 
-        // ✅ Parameterless constructor
         public TransactionItem() { }
 
-        // ✅ Constructor for adding (no ID)
         public TransactionItem(
             int customerId,
             string customerName,
@@ -56,7 +64,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Crud
             int totalNumOfItems,
             int totalNumOfQty,
             decimal totalAmount,
-            string transacType,
+            string customerType,
             bool isArchived = false)
         {
             this.customerId = customerId;
@@ -66,11 +74,10 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Crud
             this.totalNumOfItems = totalNumOfItems;
             this.totalNumOfQty = totalNumOfQty;
             this.totalAmount = totalAmount;
-            this.transacType = transacType;
+            this.customerType = customerType;
             this.isArchived = isArchived;
         }
 
-        // ✅ Constructor with ID (e.g., for editing/viewing)
         public TransactionItem(
             int transacId,
             int customerId,
@@ -80,7 +87,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Crud
             int totalNumOfItems,
             int totalNumOfQty,
             decimal totalAmount,
-            string transacType,
+            string customerType,
             bool isArchived = false)
         {
             this.transacId = transacId;
@@ -91,41 +98,24 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Crud
             this.totalNumOfItems = totalNumOfItems;
             this.totalNumOfQty = totalNumOfQty;
             this.totalAmount = totalAmount;
-            this.transacType = transacType;
+            this.customerType = customerType;
             this.isArchived = isArchived;
         }
     }
 
-    // for db
     public abstract class BaseRepository
     {
         // Centralized connection string
-        // remo string
-        // protected readonly string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
-
-        //nicole's connection string
-        //protected readonly string connectionString = @"Data Source = (LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\USER\source\repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\Database1.mdf;Integrated Security = True";
-
-        //Arnel's connection string
         protected readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\source\repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
 
-        //Abalos' connection string
-        //protected readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Beetoy\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\Database1.mdf;Integrated Security=True";
-
-        //Dara's connection string
-        //protected readonly string connectionString = @"Data Source = (LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Sandara Fillartos\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\Database1.mdf"";Integrated Security = True";
-
-        // Shared method to open a new connection
         protected SqlConnection GetConnection()
         {
             return new SqlConnection(connectionString);
         }
     }
 
-    //CRUD STARTS HERE
     public class TransactionRead : BaseRepository
     {
-        // Read all transactions with Customer Name and Employee Name
         public List<TransactionItem> GetAllTransactions()
         {
             List<TransactionItem> transactions = new List<TransactionItem>();
@@ -143,10 +133,11 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Crud
                 t.totalNumOfItems,
                 t.totalNumOfQty,
                 t.totalAmount,
-                t.transacType
+                t.customerType
             FROM Transactions t
             INNER JOIN Customer c ON t.customerId = c.customerId
-            INNER JOIN Employees e ON t.employeeId = e.empId";
+            INNER JOIN Employees e ON t.employeeId = e.empId
+            WHERE t.isArchived = 0";
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
@@ -168,7 +159,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Crud
                                     totalNumOfItems = Convert.ToInt32(reader["totalNumOfItems"]),
                                     totalNumOfQty = Convert.ToInt32(reader["totalNumOfQty"]),
                                     totalAmount = Convert.ToDecimal(reader["totalAmount"]),
-                                    transacType = reader["transacType"]?.ToString() ?? string.Empty
+                                    customerType = reader["customerType"]?.ToString() ?? string.Empty
                                 };
 
                                 transactions.Add(transaction);
@@ -186,20 +177,22 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Crud
             return transactions;
         }
     }
-    // end of reads
 
-    // create / adds a transaction to the database
     public class TransactionCreate : BaseRepository
     {
-        public bool AddNewTransaction(
+        // Original method (still available)
+        
+        
+
+        // New: Insert and return the new transaction's ID
+        public int AddNewTransactionAndReturnId(
             int customerId,
-            int employeeId,     //skips transacDate since it defaults to GETDATE()
+            int employeeId,
             int totalItems,
             int totalQty,
             decimal totalAmount,
-            string transacType  // pass either "Buyer" or "Seller" as a string
-                                // also skips isArchived since it defaults to 0 (false)
-            )
+            string customerType
+        )
         {
             using (SqlConnection conn = GetConnection())
             {
@@ -211,8 +204,9 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Crud
                     totalNumOfItems,
                     totalNumOfQty,
                     totalAmount,
-                    transacType
+                    customerType
                 )
+                OUTPUT INSERTED.transacId
                 VALUES (
                     @customerId,
                     @employeeId,
@@ -220,7 +214,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Crud
                     @totalNumOfItems,
                     @totalNumOfQty,
                     @totalAmount,
-                    @transacType
+                    @customerType
                 )";
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -230,13 +224,13 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Crud
                     cmd.Parameters.AddWithValue("@totalNumOfItems", totalItems);
                     cmd.Parameters.AddWithValue("@totalNumOfQty", totalQty);
                     cmd.Parameters.AddWithValue("@totalAmount", totalAmount);
-                    cmd.Parameters.AddWithValue("@transacType", transacType); // "Buyer" or "Seller"
+                    cmd.Parameters.AddWithValue("@customerType", customerType);
 
                     try
                     {
                         conn.Open();
-                        int rowsAffected = cmd.ExecuteNonQuery();
-                        return rowsAffected > 0;
+                        object? result = cmd.ExecuteScalar();
+                        return result != null ? Convert.ToInt32(result) : -1;
                     }
                     catch (Exception ex)
                     {
@@ -247,21 +241,21 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Crud
             }
         }
 
-    }
-    // end of create
-
-    // delete a transaction from the database
-    public class TransactionDelete : BaseRepository
-    {
-        public bool DeleteTransaction(int transacId)
+        // New: Insert a single item into TransactionItems
+        public bool AddTransactionItem(int transactionId, int itemId, int quantity, decimal price)
         {
             using (SqlConnection conn = GetConnection())
             {
-                string query = @"DELETE FROM Transactions WHERE transacId = @transacId";
+                string query = @"
+                INSERT INTO TransactionItems (transactionId, itemId, quantity, price)
+                VALUES (@transactionId, @itemId, @quantity, @price)";
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
-                    cmd.Parameters.AddWithValue("@transacId", transacId);
+                    cmd.Parameters.AddWithValue("@transactionId", transactionId);
+                    cmd.Parameters.AddWithValue("@itemId", itemId);
+                    cmd.Parameters.AddWithValue("@quantity", quantity);
+                    cmd.Parameters.AddWithValue("@price", price);
 
                     try
                     {
@@ -271,13 +265,116 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Crud
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine("❌ Error deleting transaction: " + ex.Message);
-                        throw new Exception("Failed to delete transaction.", ex);
+                        Console.WriteLine("❌ Error inserting transaction item: " + ex.Message);
+                        throw new Exception("Failed to insert transaction item.", ex);
                     }
                 }
             }
         }
-
     }
-    // end f delete
+
+    public class TransactionDelete : BaseRepository
+    {
+        //public bool DeleteTransaction(int transacId)
+        //{
+        //    using (SqlConnection conn = GetConnection())
+        //    {
+        //        string deleteItemsQuery = @"DELETE FROM TransactionItems WHERE transactionId = @transacId";
+        //        string deleteTransactionQuery = @"DELETE FROM Transactions WHERE transacId = @transacId";
+
+        //        using (SqlCommand cmd = new SqlCommand(deleteItemsQuery, conn))
+        //        {
+        //            cmd.Parameters.AddWithValue("@transacId", transacId);
+
+        //            try
+        //            {
+        //                conn.Open();
+        //                cmd.ExecuteNonQuery();
+
+        //                cmd.CommandText = deleteTransactionQuery;
+        //                int rowsAffected = cmd.ExecuteNonQuery();
+        //                return rowsAffected > 0;
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                Console.WriteLine("❌ Error deleting transaction: " + ex.Message);
+        //                throw new Exception("Failed to delete transaction.", ex);
+        //            }
+        //        }
+        //    }
+        //}
+
+        public bool ArchiveTransaction(int transacId)
+        {
+            using (SqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                using (var transaction = conn.BeginTransaction())
+                {
+                    try
+                    {
+                        // 1. Get transaction type (Buyer/Seller)
+                        string getTypeQuery = "SELECT customerType FROM Transactions WHERE transacId = @transacId";
+                        string customerType = "";
+                        using (var cmd = new SqlCommand(getTypeQuery, conn, transaction))
+                        {
+                            cmd.Parameters.AddWithValue("@transacId", transacId);
+                            var result = cmd.ExecuteScalar();
+                            if (result == null)
+                                throw new Exception("Transaction not found.");
+                            customerType = result?.ToString() ?? string.Empty;
+                        }
+
+                        // 2. Get all items in the transaction
+                        string getItemsQuery = "SELECT itemId, quantity FROM TransactionItems WHERE transactionId = @transacId";
+                        var items = new List<(int itemId, int quantity)>();
+                        using (var cmd = new SqlCommand(getItemsQuery, conn, transaction))
+                        {
+                            cmd.Parameters.AddWithValue("@transacId", transacId);
+                            using (var reader = cmd.ExecuteReader())
+                            {
+                                while (reader.Read())
+                                {
+                                    items.Add((reader.GetInt32(0), reader.GetInt32(1)));
+                                }
+                            }
+                        }
+
+                        // 3. Revert inventory changes
+                        foreach (var (itemId, quantity) in items)
+                        {
+                            string updateInventoryQuery = @"
+                        UPDATE Inventory
+                        SET itemQuantity = itemQuantity " +
+                                (customerType == "Buyer" ? "+" : "-") + " @quantity " +
+                                "WHERE itemId = @itemId";
+                            using (var cmd = new SqlCommand(updateInventoryQuery, conn, transaction))
+                            {
+                                cmd.Parameters.AddWithValue("@quantity", quantity);
+                                cmd.Parameters.AddWithValue("@itemId", itemId);
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+
+                        // 4. Archive the transaction
+                        string archiveQuery = "UPDATE Transactions SET isArchived = 1 WHERE transacId = @transacId";
+                        using (var cmd = new SqlCommand(archiveQuery, conn, transaction))
+                        {
+                            cmd.Parameters.AddWithValue("@transacId", transacId);
+                            cmd.ExecuteNonQuery();
+                        }
+
+                        transaction.Commit();
+                        return true;
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        Console.WriteLine("❌ Error archiving transaction: " + ex.Message);
+                        throw new Exception("Failed to archive transaction and revert inventory.", ex);
+                    }
+                }
+            }
+        }
+    }
 }
