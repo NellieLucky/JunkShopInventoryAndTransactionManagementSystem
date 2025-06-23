@@ -177,7 +177,7 @@
             // 
             pictureBox1.Image = Properties.Resources.JUNKSHOP__9___1_;
             pictureBox1.Location = new Point(4, 2);
-            pictureBox1.Margin = new Padding(2, 2, 2, 2);
+            pictureBox1.Margin = new Padding(2);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(94, 86);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -351,7 +351,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(766, 517);
+            ClientSize = new Size(766, 489);
             Controls.Add(panel1);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -364,7 +364,7 @@
             Controls.Add(receiptInvoice);
             Controls.Add(receiptname);
             Controls.Add(BuyersOrderTable);
-            Margin = new Padding(2, 2, 2, 2);
+            Margin = new Padding(2);
             Name = "receiptlogo";
             Text = "receipt";
             ((System.ComponentModel.ISupportInitialize)BuyersOrderTable).EndInit();
