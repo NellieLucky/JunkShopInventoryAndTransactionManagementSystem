@@ -307,22 +307,70 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Crud
         {
             using (SqlConnection conn = GetConnection())
             {
-                string query = @"UPDATE Transactions SET isArchived = 1 WHERE transacId = @transacId";
-
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                conn.Open();
+                using (var transaction = conn.BeginTransaction())
                 {
-                    cmd.Parameters.AddWithValue("@transacId", transacId);
-
                     try
                     {
-                        conn.Open();
-                        int rowsAffected = cmd.ExecuteNonQuery();
-                        return rowsAffected > 0;
+                        // 1. Get transaction type (Buyer/Seller)
+                        string getTypeQuery = "SELECT transacType FROM Transactions WHERE transacId = @transacId";
+                        string transacType = "";
+                        using (var cmd = new SqlCommand(getTypeQuery, conn, transaction))
+                        {
+                            cmd.Parameters.AddWithValue("@transacId", transacId);
+                            var result = cmd.ExecuteScalar();
+                            if (result == null)
+                                throw new Exception("Transaction not found.");
+                            transacType = result?.ToString() ?? string.Empty;
+                        }
+
+                        // 2. Get all items in the transaction
+                        string getItemsQuery = "SELECT itemId, quantity FROM TransactionItems WHERE transactionId = @transacId";
+                        var items = new List<(int itemId, int quantity)>();
+                        using (var cmd = new SqlCommand(getItemsQuery, conn, transaction))
+                        {
+                            cmd.Parameters.AddWithValue("@transacId", transacId);
+                            using (var reader = cmd.ExecuteReader())
+                            {
+                                while (reader.Read())
+                                {
+                                    items.Add((reader.GetInt32(0), reader.GetInt32(1)));
+                                }
+                            }
+                        }
+
+                        // 3. Revert inventory changes
+                        foreach (var (itemId, quantity) in items)
+                        {
+                            string updateInventoryQuery = @"
+                        UPDATE Inventory
+                        SET itemQuantity = itemQuantity " +
+                                (transacType == "Buyer" ? "+" : "-") + " @quantity " +
+                                "WHERE itemId = @itemId";
+                            using (var cmd = new SqlCommand(updateInventoryQuery, conn, transaction))
+                            {
+                                cmd.Parameters.AddWithValue("@quantity", quantity);
+                                cmd.Parameters.AddWithValue("@itemId", itemId);
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+
+                        // 4. Archive the transaction
+                        string archiveQuery = "UPDATE Transactions SET isArchived = 1 WHERE transacId = @transacId";
+                        using (var cmd = new SqlCommand(archiveQuery, conn, transaction))
+                        {
+                            cmd.Parameters.AddWithValue("@transacId", transacId);
+                            cmd.ExecuteNonQuery();
+                        }
+
+                        transaction.Commit();
+                        return true;
                     }
                     catch (Exception ex)
                     {
+                        transaction.Rollback();
                         Console.WriteLine("❌ Error archiving transaction: " + ex.Message);
-                        throw new Exception("Failed to archive transaction.", ex);
+                        throw new Exception("Failed to archive transaction and revert inventory.", ex);
                     }
                 }
             }
