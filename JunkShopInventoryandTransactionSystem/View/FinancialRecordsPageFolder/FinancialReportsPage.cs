@@ -20,5 +20,10 @@ namespace JunkShopInventoryandTransactionSystem.View.FinancialReportsPageFolder
         {
 
         }
+
+        private void codeeloDateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
