@@ -94,7 +94,7 @@
             SupplierButton.CheckedForeColor = Color.White;
             SupplierButton.CheckedImageTint = Color.White;
             SupplierButton.CheckedOutline = Color.FromArgb(255, 106, 0);
-            SupplierButton.Content = "Supplier";
+            SupplierButton.Content = "Seller";
             SupplierButton.DialogResult = DialogResult.None;
             SupplierButton.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             SupplierButton.ForeColor = Color.White;

@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             TotalPriceAmntCounterLabel = new Label();
             label1 = new Label();
             BuyerItemComboBox = new ComboBox();
@@ -65,10 +65,9 @@
             TotalPriceAmntCounterLabel.BackColor = Color.FromArgb(0, 0, 0, 0);
             TotalPriceAmntCounterLabel.Font = new Font("Arial", 10.2F, FontStyle.Bold);
             TotalPriceAmntCounterLabel.ForeColor = Color.FromArgb(0, 157, 209);
-            TotalPriceAmntCounterLabel.Location = new Point(1092, 702);
-            TotalPriceAmntCounterLabel.Margin = new Padding(4, 0, 4, 0);
+            TotalPriceAmntCounterLabel.Location = new Point(874, 562);
             TotalPriceAmntCounterLabel.Name = "TotalPriceAmntCounterLabel";
-            TotalPriceAmntCounterLabel.Size = new Size(200, 24);
+            TotalPriceAmntCounterLabel.Size = new Size(157, 19);
             TotalPriceAmntCounterLabel.TabIndex = 66;
             TotalPriceAmntCounterLabel.Text = "Total Price Amount";
             // 
@@ -78,10 +77,9 @@
             label1.BackColor = Color.FromArgb(0, 0, 0, 0);
             label1.Font = new Font("Arial", 10.2F, FontStyle.Bold);
             label1.ForeColor = Color.FromArgb(0, 157, 209);
-            label1.Location = new Point(962, 702);
-            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Location = new Point(770, 562);
             label1.Name = "label1";
-            label1.Size = new Size(122, 24);
+            label1.Size = new Size(98, 19);
             label1.TabIndex = 65;
             label1.Text = "Total Price:";
             // 
@@ -94,10 +92,9 @@
             BuyerItemComboBox.FormattingEnabled = true;
             BuyerItemComboBox.IntegralHeight = false;
             BuyerItemComboBox.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
-            BuyerItemComboBox.Location = new Point(5, 100);
-            BuyerItemComboBox.Margin = new Padding(4, 4, 4, 4);
+            BuyerItemComboBox.Location = new Point(4, 80);
             BuyerItemComboBox.Name = "BuyerItemComboBox";
-            BuyerItemComboBox.Size = new Size(243, 45);
+            BuyerItemComboBox.Size = new Size(195, 39);
             BuyerItemComboBox.TabIndex = 64;
             // 
             // SaveBuyerTransaction_Button
@@ -121,8 +118,7 @@
             SaveBuyerTransaction_Button.ImageAutoCenter = true;
             SaveBuyerTransaction_Button.ImageExpand = new Point(0, 0);
             SaveBuyerTransaction_Button.ImageOffset = new Point(0, 0);
-            SaveBuyerTransaction_Button.Location = new Point(832, 765);
-            SaveBuyerTransaction_Button.Margin = new Padding(4, 4, 4, 4);
+            SaveBuyerTransaction_Button.Location = new Point(666, 612);
             SaveBuyerTransaction_Button.Name = "SaveBuyerTransaction_Button";
             SaveBuyerTransaction_Button.NormalBackground = Color.FromArgb(0, 157, 209);
             SaveBuyerTransaction_Button.NormalForeColor = Color.White;
@@ -134,7 +130,7 @@
             SaveBuyerTransaction_Button.PressedImageTint = Color.White;
             SaveBuyerTransaction_Button.PressedOutline = Color.FromArgb(64, 128, 128, 128);
             SaveBuyerTransaction_Button.Rounding = new Padding(8);
-            SaveBuyerTransaction_Button.Size = new Size(284, 42);
+            SaveBuyerTransaction_Button.Size = new Size(227, 34);
             SaveBuyerTransaction_Button.TabIndex = 62;
             SaveBuyerTransaction_Button.TextAlignment = StringAlignment.Center;
             SaveBuyerTransaction_Button.TextOffset = new Point(0, 0);
@@ -161,8 +157,7 @@
             BuyerClearBtn.ImageAutoCenter = true;
             BuyerClearBtn.ImageExpand = new Point(0, 0);
             BuyerClearBtn.ImageOffset = new Point(0, 0);
-            BuyerClearBtn.Location = new Point(1130, 765);
-            BuyerClearBtn.Margin = new Padding(4, 4, 4, 4);
+            BuyerClearBtn.Location = new Point(904, 612);
             BuyerClearBtn.Name = "BuyerClearBtn";
             BuyerClearBtn.NormalBackground = Color.White;
             BuyerClearBtn.NormalForeColor = Color.Black;
@@ -174,7 +169,7 @@
             BuyerClearBtn.PressedImageTint = Color.White;
             BuyerClearBtn.PressedOutline = Color.FromArgb(64, 128, 128, 128);
             BuyerClearBtn.Rounding = new Padding(8);
-            BuyerClearBtn.Size = new Size(152, 42);
+            BuyerClearBtn.Size = new Size(122, 34);
             BuyerClearBtn.TabIndex = 61;
             BuyerClearBtn.TextAlignment = StringAlignment.Center;
             BuyerClearBtn.TextOffset = new Point(0, 0);
@@ -201,8 +196,7 @@
             BuyerAddTransacBtn.ImageAutoCenter = true;
             BuyerAddTransacBtn.ImageExpand = new Point(0, 0);
             BuyerAddTransacBtn.ImageOffset = new Point(0, 0);
-            BuyerAddTransacBtn.Location = new Point(522, 105);
-            BuyerAddTransacBtn.Margin = new Padding(4, 4, 4, 4);
+            BuyerAddTransacBtn.Location = new Point(418, 84);
             BuyerAddTransacBtn.Name = "BuyerAddTransacBtn";
             BuyerAddTransacBtn.NormalBackground = Color.FromArgb(0, 157, 209);
             BuyerAddTransacBtn.NormalForeColor = Color.White;
@@ -214,7 +208,7 @@
             BuyerAddTransacBtn.PressedImageTint = Color.White;
             BuyerAddTransacBtn.PressedOutline = Color.FromArgb(64, 128, 128, 128);
             BuyerAddTransacBtn.Rounding = new Padding(8);
-            BuyerAddTransacBtn.Size = new Size(154, 42);
+            BuyerAddTransacBtn.Size = new Size(123, 34);
             BuyerAddTransacBtn.TabIndex = 60;
             BuyerAddTransacBtn.TextAlignment = StringAlignment.Center;
             BuyerAddTransacBtn.TextOffset = new Point(0, 0);
@@ -226,10 +220,9 @@
             BuyerContact.BackColor = Color.FromArgb(0, 0, 0, 0);
             BuyerContact.Font = new Font("Arial", 10.2F, FontStyle.Bold);
             BuyerContact.ForeColor = Color.FromArgb(0, 157, 209);
-            BuyerContact.Location = new Point(339, 661);
-            BuyerContact.Margin = new Padding(4, 0, 4, 0);
+            BuyerContact.Location = new Point(271, 529);
             BuyerContact.Name = "BuyerContact";
-            BuyerContact.Size = new Size(128, 24);
+            BuyerContact.Size = new Size(103, 19);
             BuyerContact.TabIndex = 59;
             BuyerContact.Text = "Contact No.";
             // 
@@ -246,17 +239,17 @@
             BuyerContactTextBox.Image = null;
             BuyerContactTextBox.ImageExpand = new Point(0, 0);
             BuyerContactTextBox.ImageOffset = new Point(0, 0);
-            BuyerContactTextBox.Location = new Point(339, 690);
-            BuyerContactTextBox.Margin = new Padding(5, 5, 5, 5);
+            BuyerContactTextBox.Location = new Point(271, 552);
+            BuyerContactTextBox.Margin = new Padding(4, 4, 4, 4);
             BuyerContactTextBox.Multiline = false;
             BuyerContactTextBox.Name = "BuyerContactTextBox";
             BuyerContactTextBox.NormalImageTint = Color.White;
-            BuyerContactTextBox.Padding = new Padding(24, 12, 24, 0);
+            BuyerContactTextBox.Padding = new Padding(20, 9, 20, 0);
             BuyerContactTextBox.PasswordChar = false;
             BuyerContactTextBox.PlaceholderColor = Color.Gray;
             BuyerContactTextBox.PlaceholderText = "Contact No.";
             BuyerContactTextBox.Rounding = new Padding(8);
-            BuyerContactTextBox.Size = new Size(346, 48);
+            BuyerContactTextBox.Size = new Size(277, 38);
             BuyerContactTextBox.TabIndex = 58;
             BuyerContactTextBox.TextOffset = new Size(0, 0);
             BuyerContactTextBox.UnderlinedStyle = false;
@@ -267,10 +260,9 @@
             CustomerName.BackColor = Color.FromArgb(0, 0, 0, 0);
             CustomerName.Font = new Font("Arial", 10.2F, FontStyle.Bold);
             CustomerName.ForeColor = Color.FromArgb(0, 157, 209);
-            CustomerName.Location = new Point(5, 661);
-            CustomerName.Margin = new Padding(4, 0, 4, 0);
+            CustomerName.Location = new Point(4, 529);
             CustomerName.Name = "CustomerName";
-            CustomerName.Size = new Size(132, 24);
+            CustomerName.Size = new Size(105, 19);
             CustomerName.TabIndex = 57;
             CustomerName.Text = "Buyer Name";
             // 
@@ -287,17 +279,17 @@
             BuyerNameTextBox.Image = null;
             BuyerNameTextBox.ImageExpand = new Point(0, 0);
             BuyerNameTextBox.ImageOffset = new Point(0, 0);
-            BuyerNameTextBox.Location = new Point(5, 690);
-            BuyerNameTextBox.Margin = new Padding(5, 5, 5, 5);
+            BuyerNameTextBox.Location = new Point(4, 552);
+            BuyerNameTextBox.Margin = new Padding(4, 4, 4, 4);
             BuyerNameTextBox.Multiline = false;
             BuyerNameTextBox.Name = "BuyerNameTextBox";
             BuyerNameTextBox.NormalImageTint = Color.White;
-            BuyerNameTextBox.Padding = new Padding(24, 12, 24, 0);
+            BuyerNameTextBox.Padding = new Padding(20, 9, 20, 0);
             BuyerNameTextBox.PasswordChar = false;
             BuyerNameTextBox.PlaceholderColor = Color.Gray;
             BuyerNameTextBox.PlaceholderText = "Buyer Name";
             BuyerNameTextBox.Rounding = new Padding(8);
-            BuyerNameTextBox.Size = new Size(318, 48);
+            BuyerNameTextBox.Size = new Size(254, 38);
             BuyerNameTextBox.TabIndex = 56;
             BuyerNameTextBox.TextOffset = new Size(0, 0);
             BuyerNameTextBox.UnderlinedStyle = false;
@@ -308,10 +300,9 @@
             TransactionQuantity.BackColor = Color.FromArgb(0, 0, 0, 0);
             TransactionQuantity.Font = new Font("Arial", 10.2F, FontStyle.Bold);
             TransactionQuantity.ForeColor = Color.FromArgb(0, 157, 209);
-            TransactionQuantity.Location = new Point(264, 71);
-            TransactionQuantity.Margin = new Padding(4, 0, 4, 0);
+            TransactionQuantity.Location = new Point(211, 57);
             TransactionQuantity.Name = "TransactionQuantity";
-            TransactionQuantity.Size = new Size(94, 24);
+            TransactionQuantity.Size = new Size(76, 19);
             TransactionQuantity.TabIndex = 55;
             TransactionQuantity.Text = "Quantity";
             // 
@@ -328,21 +319,20 @@
             BuyerQtyTextBox.Image = null;
             BuyerQtyTextBox.ImageExpand = new Point(0, 0);
             BuyerQtyTextBox.ImageOffset = new Point(0, 0);
-            BuyerQtyTextBox.Location = new Point(264, 100);
-            BuyerQtyTextBox.Margin = new Padding(5, 5, 5, 5);
+            BuyerQtyTextBox.Location = new Point(211, 80);
+            BuyerQtyTextBox.Margin = new Padding(4, 4, 4, 4);
             BuyerQtyTextBox.Multiline = false;
             BuyerQtyTextBox.Name = "BuyerQtyTextBox";
             BuyerQtyTextBox.NormalImageTint = Color.White;
-            BuyerQtyTextBox.Padding = new Padding(24, 12, 24, 0);
+            BuyerQtyTextBox.Padding = new Padding(20, 9, 20, 0);
             BuyerQtyTextBox.PasswordChar = false;
             BuyerQtyTextBox.PlaceholderColor = Color.Gray;
             BuyerQtyTextBox.PlaceholderText = "Quantity";
             BuyerQtyTextBox.Rounding = new Padding(8);
-            BuyerQtyTextBox.Size = new Size(244, 48);
+            BuyerQtyTextBox.Size = new Size(195, 38);
             BuyerQtyTextBox.TabIndex = 54;
             BuyerQtyTextBox.TextOffset = new Size(0, 0);
             BuyerQtyTextBox.UnderlinedStyle = false;
-            BuyerQtyTextBox.ContentChanged += BuyerQtyTextBox_ContentChanged;
             // 
             // IdItem
             // 
@@ -350,10 +340,9 @@
             IdItem.BackColor = Color.FromArgb(0, 0, 0, 0);
             IdItem.Font = new Font("Arial", 10.2F, FontStyle.Bold);
             IdItem.ForeColor = Color.FromArgb(0, 157, 209);
-            IdItem.Location = new Point(5, 72);
-            IdItem.Margin = new Padding(4, 0, 4, 0);
+            IdItem.Location = new Point(4, 58);
             IdItem.Name = "IdItem";
-            IdItem.Size = new Size(79, 24);
+            IdItem.Size = new Size(91, 19);
             IdItem.TabIndex = 53;
             IdItem.Text = "Item Name";
             // 
@@ -366,41 +355,40 @@
             BuyersOrderTable.BackgroundColor = Color.White;
             BuyersOrderTable.CellBorderStyle = DataGridViewCellBorderStyle.SunkenHorizontal;
             BuyersOrderTable.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = Color.FromArgb(163, 244, 215);
-            dataGridViewCellStyle5.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle5.ForeColor = Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(163, 244, 215);
-            dataGridViewCellStyle5.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            BuyersOrderTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(163, 244, 215);
+            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(163, 244, 215);
+            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            BuyersOrderTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             BuyersOrderTable.ColumnHeadersHeight = 60;
             BuyersOrderTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             BuyersOrderTable.Columns.AddRange(new DataGridViewColumn[] { ItemID, ItemName, QtyType, SellingPrice, TransacQuantity, ExchangeAmount, Remove });
             BuyersOrderTable.EditMode = DataGridViewEditMode.EditProgrammatically;
             BuyersOrderTable.EnableHeadersVisualStyles = false;
             BuyersOrderTable.GridColor = Color.FromArgb(99, 99, 99);
-            BuyersOrderTable.Location = new Point(4, 156);
-            BuyersOrderTable.Margin = new Padding(4, 4, 4, 4);
+            BuyersOrderTable.Location = new Point(3, 125);
             BuyersOrderTable.Name = "BuyersOrderTable";
             BuyersOrderTable.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle7.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
-            BuyersOrderTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            BuyersOrderTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             BuyersOrderTable.RowHeadersVisible = false;
             BuyersOrderTable.RowHeadersWidth = 50;
-            dataGridViewCellStyle8.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle8.ForeColor = Color.Black;
-            dataGridViewCellStyle8.SelectionBackColor = Color.FromArgb(0, 157, 209);
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
-            BuyersOrderTable.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle4.ForeColor = Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(0, 157, 209);
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            BuyersOrderTable.RowsDefaultCellStyle = dataGridViewCellStyle4;
             BuyersOrderTable.RowTemplate.Height = 50;
             BuyersOrderTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            BuyersOrderTable.Size = new Size(1310, 488);
+            BuyersOrderTable.Size = new Size(1048, 390);
             BuyersOrderTable.TabIndex = 51;
             BuyersOrderTable.CellContentClick += BuyersOrderTable_CellContentClick;
             // 
@@ -452,10 +440,10 @@
             // 
             // Remove
             // 
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.NullValue = null;
-            dataGridViewCellStyle6.Padding = new Padding(10);
-            Remove.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.NullValue = null;
+            dataGridViewCellStyle2.Padding = new Padding(10);
+            Remove.DefaultCellStyle = dataGridViewCellStyle2;
             Remove.FillWeight = 5.618882F;
             Remove.HeaderText = "Remove";
             Remove.Image = Properties.Resources.delete;
@@ -471,7 +459,8 @@
             RegEmployeeTitlePage.BackColor = Color.FromArgb(0, 0, 0, 0);
             RegEmployeeTitlePage.Font = new Font("Arial", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             RegEmployeeTitlePage.ForeColor = Color.FromArgb(0, 157, 209);
-            RegEmployeeTitlePage.Location = new Point(3, 7);
+            RegEmployeeTitlePage.Location = new Point(2, 6);
+            RegEmployeeTitlePage.Margin = new Padding(2, 0, 2, 0);
             RegEmployeeTitlePage.Name = "RegEmployeeTitlePage";
             RegEmployeeTitlePage.Size = new Size(275, 35);
             RegEmployeeTitlePage.TabIndex = 67;
@@ -483,7 +472,8 @@
             TotalItemsCounterLabel.BackColor = Color.FromArgb(0, 0, 0, 0);
             TotalItemsCounterLabel.Font = new Font("Arial", 10.2F, FontStyle.Bold);
             TotalItemsCounterLabel.ForeColor = Color.FromArgb(0, 157, 209);
-            TotalItemsCounterLabel.Location = new Point(874, 537);
+            TotalItemsCounterLabel.Location = new Point(874, 543);
+            TotalItemsCounterLabel.Margin = new Padding(2, 0, 2, 0);
             TotalItemsCounterLabel.Name = "TotalItemsCounterLabel";
             TotalItemsCounterLabel.Size = new Size(94, 19);
             TotalItemsCounterLabel.TabIndex = 69;
@@ -495,7 +485,8 @@
             label3.BackColor = Color.FromArgb(0, 0, 0, 0);
             label3.Font = new Font("Arial", 10.2F, FontStyle.Bold);
             label3.ForeColor = Color.FromArgb(0, 157, 209);
-            label3.Location = new Point(770, 537);
+            label3.Location = new Point(770, 543);
+            label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
             label3.Size = new Size(100, 19);
             label3.TabIndex = 68;
@@ -503,7 +494,7 @@
             // 
             // BuyerTransaction
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(TotalItemsCounterLabel);
             Controls.Add(label3);
@@ -522,9 +513,8 @@
             Controls.Add(BuyerQtyTextBox);
             Controls.Add(IdItem);
             Controls.Add(BuyersOrderTable);
-            Margin = new Padding(4, 4, 4, 4);
             Name = "BuyerTransaction";
-            Size = new Size(1318, 826);
+            Size = new Size(1054, 661);
             ((System.ComponentModel.ISupportInitialize)BuyersOrderTable).EndInit();
             ResumeLayout(false);
             PerformLayout();

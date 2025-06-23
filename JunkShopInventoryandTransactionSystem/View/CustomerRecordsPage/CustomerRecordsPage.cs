@@ -24,7 +24,7 @@ namespace JunkShopInventoryandTransactionSystem.View.CustomerRecordsPage
         private void SupplierButton_Click(object sender, EventArgs e)
         {
             CustomerPanel.Controls.Clear();
-            var SupplierRecordsPage = new SupplierRecordsPage();
+            var SupplierRecordsPage = new SellerRecordsPage();
             SupplierRecordsPage.Dock = DockStyle.Fill;
             CustomerPanel.Controls.Add(SupplierRecordsPage);
 

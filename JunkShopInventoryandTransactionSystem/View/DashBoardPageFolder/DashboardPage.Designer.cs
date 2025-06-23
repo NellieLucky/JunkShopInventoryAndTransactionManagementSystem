@@ -71,14 +71,14 @@
             NumOfEmployees = new Label();
             NumOfItems = new Label();
             NumofCategories = new Label();
-            NumOfCustomers = new Label();
-            label19 = new Label();
+            NumOfBuyers = new Label();
+            NumOfSellers = new Label();
             label18 = new Label();
             cuiPictureBox9 = new CuoreUI.Controls.cuiPictureBox();
             label17 = new Label();
             cuiPictureBox8 = new CuoreUI.Controls.cuiPictureBox();
             label16 = new Label();
-            label15 = new Label();
+            Buyers = new Label();
             label14 = new Label();
             materialDivider2 = new MaterialSkin.Controls.MaterialDivider();
             materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
@@ -758,14 +758,14 @@
             panel3.Controls.Add(NumOfEmployees);
             panel3.Controls.Add(NumOfItems);
             panel3.Controls.Add(NumofCategories);
-            panel3.Controls.Add(NumOfCustomers);
-            panel3.Controls.Add(label19);
+            panel3.Controls.Add(NumOfBuyers);
+            panel3.Controls.Add(NumOfSellers);
             panel3.Controls.Add(label18);
             panel3.Controls.Add(cuiPictureBox9);
             panel3.Controls.Add(label17);
             panel3.Controls.Add(cuiPictureBox8);
             panel3.Controls.Add(label16);
-            panel3.Controls.Add(label15);
+            panel3.Controls.Add(Buyers);
             panel3.Controls.Add(label14);
             panel3.Controls.Add(materialDivider2);
             panel3.Controls.Add(materialDivider1);
@@ -841,31 +841,31 @@
             NumofCategories.TabIndex = 35;
             NumofCategories.Text = "0";
             // 
-            // NumOfCustomers
+            // NumOfBuyers
             // 
-            NumOfCustomers.AutoSize = true;
-            NumOfCustomers.BackColor = Color.FromArgb(0, 0, 0, 0);
-            NumOfCustomers.Font = new Font("Arial", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            NumOfCustomers.ForeColor = Color.DimGray;
-            NumOfCustomers.Location = new Point(84, 201);
-            NumOfCustomers.MaximumSize = new Size(135, 24);
-            NumOfCustomers.Name = "NumOfCustomers";
-            NumOfCustomers.Size = new Size(25, 24);
-            NumOfCustomers.TabIndex = 34;
-            NumOfCustomers.Text = "0";
+            NumOfBuyers.AutoSize = true;
+            NumOfBuyers.BackColor = Color.FromArgb(0, 0, 0, 0);
+            NumOfBuyers.Font = new Font("Arial", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            NumOfBuyers.ForeColor = Color.DimGray;
+            NumOfBuyers.Location = new Point(84, 201);
+            NumOfBuyers.MaximumSize = new Size(135, 24);
+            NumOfBuyers.Name = "NumOfBuyers";
+            NumOfBuyers.Size = new Size(25, 24);
+            NumOfBuyers.TabIndex = 34;
+            NumOfBuyers.Text = "0";
             // 
-            // label19
+            // NumOfSellers
             // 
-            label19.AutoSize = true;
-            label19.BackColor = Color.FromArgb(0, 0, 0, 0);
-            label19.Font = new Font("Arial", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label19.ForeColor = Color.DimGray;
-            label19.Location = new Point(78, 102);
-            label19.MaximumSize = new Size(135, 24);
-            label19.Name = "label19";
-            label19.Size = new Size(25, 24);
-            label19.TabIndex = 33;
-            label19.Text = "0";
+            NumOfSellers.AutoSize = true;
+            NumOfSellers.BackColor = Color.FromArgb(0, 0, 0, 0);
+            NumOfSellers.Font = new Font("Arial", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            NumOfSellers.ForeColor = Color.DimGray;
+            NumOfSellers.Location = new Point(78, 102);
+            NumOfSellers.MaximumSize = new Size(135, 24);
+            NumOfSellers.Name = "NumOfSellers";
+            NumOfSellers.Size = new Size(25, 24);
+            NumOfSellers.TabIndex = 33;
+            NumOfSellers.Text = "0";
             // 
             // label18
             // 
@@ -937,17 +937,17 @@
             label16.TabIndex = 28;
             label16.Text = "Categories";
             // 
-            // label15
+            // Buyers
             // 
-            label15.AutoSize = true;
-            label15.BackColor = Color.FromArgb(0, 0, 0, 0);
-            label15.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label15.ForeColor = Color.Black;
-            label15.Location = new Point(84, 172);
-            label15.Name = "label15";
-            label15.Size = new Size(95, 19);
-            label15.TabIndex = 27;
-            label15.Text = "Customers";
+            Buyers.AutoSize = true;
+            Buyers.BackColor = Color.FromArgb(0, 0, 0, 0);
+            Buyers.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Buyers.ForeColor = Color.Black;
+            Buyers.Location = new Point(84, 172);
+            Buyers.Name = "Buyers";
+            Buyers.Size = new Size(65, 19);
+            Buyers.TabIndex = 27;
+            Buyers.Text = "Buyers";
             // 
             // label14
             // 
@@ -957,9 +957,9 @@
             label14.ForeColor = Color.Black;
             label14.Location = new Point(78, 73);
             label14.Name = "label14";
-            label14.Size = new Size(83, 19);
+            label14.Size = new Size(62, 19);
             label14.TabIndex = 26;
-            label14.Text = "Suppliers";
+            label14.Text = "Sellers";
             // 
             // materialDivider2
             // 
@@ -1151,12 +1151,12 @@
         private Label label17;
         private CuoreUI.Controls.cuiPictureBox cuiPictureBox8;
         private Label label16;
-        private Label label15;
+        private Label Buyers;
         private Label label14;
         private Label NumOfItems;
         private Label NumofCategories;
-        private Label NumOfCustomers;
-        private Label label19;
+        private Label NumOfBuyers;
+        private Label NumOfSellers;
         private MaterialSkin.Controls.MaterialDivider materialDivider3;
         private Label NumOfEmployees;
         private MaterialSkin.Controls.MaterialDivider materialDivider4;
