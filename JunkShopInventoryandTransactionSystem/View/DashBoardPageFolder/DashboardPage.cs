@@ -23,12 +23,14 @@ namespace JunkShopInventoryandTransactionSystem.View.DashBoardPageFolder
         {
             try
             {
-                var (items, categories, employees) = DashboardCounts.GetDashboardCounts();
+                var (items, categories, employees, buyers, sellers) = DashboardCounts.GetDashboardCounts();
 
                 // Update the labels with the counts
                 NumOfItems.Text = items.ToString();
                 NumofCategories.Text = categories.ToString();
                 NumOfEmployees.Text = employees.ToString();
+                NumOfBuyers.Text = buyers.ToString();
+                NumOfSellers.Text = sellers.ToString();
             }
             catch (Exception ex)
             {

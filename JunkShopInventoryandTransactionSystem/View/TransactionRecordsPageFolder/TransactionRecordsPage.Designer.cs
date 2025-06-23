@@ -30,11 +30,16 @@
         {
             components = new System.ComponentModel.Container();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TransactionRecordsPage));
             cuiColorPicker1 = new CuoreUI.Components.cuiColorPicker(components);
             DashboardTitlePage = new Label();
             TransactionRecordsTable = new DataGridView();
+            panel1 = new Panel();
+            cuiButton1 = new CuoreUI.Controls.cuiButton();
+            cuiTextBox1 = new CuoreUI.Controls.cuiTextBox();
             TransactionID = new DataGridViewTextBoxColumn();
             TransactionType = new DataGridViewTextBoxColumn();
             ExchangeDate = new DataGridViewTextBoxColumn();
@@ -44,9 +49,6 @@
             TotalQuantity = new DataGridViewTextBoxColumn();
             TotalAmount = new DataGridViewTextBoxColumn();
             Delete = new DataGridViewImageColumn();
-            panel1 = new Panel();
-            cuiButton1 = new CuoreUI.Controls.cuiButton();
-            cuiTextBox1 = new CuoreUI.Controls.cuiTextBox();
             ((System.ComponentModel.ISupportInitialize)TransactionRecordsTable).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -95,94 +97,25 @@
             TransactionRecordsTable.Location = new Point(13, 139);
             TransactionRecordsTable.Name = "TransactionRecordsTable";
             TransactionRecordsTable.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            TransactionRecordsTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            TransactionRecordsTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             TransactionRecordsTable.RowHeadersVisible = false;
             TransactionRecordsTable.RowHeadersWidth = 50;
-            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle3.ForeColor = Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(0, 157, 209);
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            TransactionRecordsTable.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle4.ForeColor = Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(0, 157, 209);
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            TransactionRecordsTable.RowsDefaultCellStyle = dataGridViewCellStyle4;
             TransactionRecordsTable.RowTemplate.Height = 50;
             TransactionRecordsTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             TransactionRecordsTable.Size = new Size(1056, 640);
             TransactionRecordsTable.TabIndex = 31;
             TransactionRecordsTable.CellContentClick += TransactionRecordsTable_CellContentClick;
-            // 
-            // TransactionID
-            // 
-            TransactionID.HeaderText = "Transaction ID";
-            TransactionID.MinimumWidth = 6;
-            TransactionID.Name = "TransactionID";
-            TransactionID.Width = 105;
-            // 
-            // TransactionType
-            // 
-            TransactionType.HeaderText = "Transaction Type";
-            TransactionType.MinimumWidth = 6;
-            TransactionType.Name = "TransactionType";
-            TransactionType.Width = 105;
-            // 
-            // ExchangeDate
-            // 
-            ExchangeDate.FillWeight = 150F;
-            ExchangeDate.HeaderText = "Date";
-            ExchangeDate.MinimumWidth = 6;
-            ExchangeDate.Name = "ExchangeDate";
-            ExchangeDate.Width = 135;
-            // 
-            // CustomerName
-            // 
-            CustomerName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            CustomerName.HeaderText = "Customer Name";
-            CustomerName.MinimumWidth = 6;
-            CustomerName.Name = "CustomerName";
-            // 
-            // EmployeeAssigned
-            // 
-            EmployeeAssigned.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            EmployeeAssigned.HeaderText = "Employee Assigned";
-            EmployeeAssigned.MinimumWidth = 6;
-            EmployeeAssigned.Name = "EmployeeAssigned";
-            // 
-            // Num_Items
-            // 
-            Num_Items.HeaderText = "No. of items";
-            Num_Items.MinimumWidth = 6;
-            Num_Items.Name = "Num_Items";
-            Num_Items.Width = 60;
-            // 
-            // TotalQuantity
-            // 
-            TotalQuantity.HeaderText = "Total Quantity";
-            TotalQuantity.MinimumWidth = 6;
-            TotalQuantity.Name = "TotalQuantity";
-            TotalQuantity.Width = 110;
-            // 
-            // TotalAmount
-            // 
-            TotalAmount.FillWeight = 59.177578F;
-            TotalAmount.HeaderText = "Total Amount";
-            TotalAmount.MinimumWidth = 6;
-            TotalAmount.Name = "TotalAmount";
-            TotalAmount.Width = 120;
-            // 
-            // Delete
-            // 
-            Delete.FillWeight = 59.177578F;
-            Delete.HeaderText = "Delete";
-            Delete.Image = Properties.Resources.delete;
-            Delete.MinimumWidth = 6;
-            Delete.Name = "Delete";
-            Delete.Resizable = DataGridViewTriState.True;
-            Delete.SortMode = DataGridViewColumnSortMode.Automatic;
-            Delete.Width = 60;
             // 
             // panel1
             // 
@@ -260,6 +193,79 @@
             cuiTextBox1.TextOffset = new Size(0, 0);
             cuiTextBox1.UnderlinedStyle = false;
             // 
+            // TransactionID
+            // 
+            TransactionID.HeaderText = "Transaction ID";
+            TransactionID.MinimumWidth = 6;
+            TransactionID.Name = "TransactionID";
+            TransactionID.Width = 105;
+            // 
+            // TransactionType
+            // 
+            TransactionType.HeaderText = "Transaction Type";
+            TransactionType.MinimumWidth = 6;
+            TransactionType.Name = "TransactionType";
+            TransactionType.Width = 105;
+            // 
+            // ExchangeDate
+            // 
+            ExchangeDate.FillWeight = 150F;
+            ExchangeDate.HeaderText = "Date";
+            ExchangeDate.MinimumWidth = 6;
+            ExchangeDate.Name = "ExchangeDate";
+            ExchangeDate.Width = 135;
+            // 
+            // CustomerName
+            // 
+            CustomerName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            CustomerName.HeaderText = "Customer Name";
+            CustomerName.MinimumWidth = 6;
+            CustomerName.Name = "CustomerName";
+            // 
+            // EmployeeAssigned
+            // 
+            EmployeeAssigned.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            EmployeeAssigned.HeaderText = "Employee Assigned";
+            EmployeeAssigned.MinimumWidth = 6;
+            EmployeeAssigned.Name = "EmployeeAssigned";
+            // 
+            // Num_Items
+            // 
+            Num_Items.HeaderText = "No. of items";
+            Num_Items.MinimumWidth = 6;
+            Num_Items.Name = "Num_Items";
+            Num_Items.Width = 60;
+            // 
+            // TotalQuantity
+            // 
+            TotalQuantity.HeaderText = "Total Quantity";
+            TotalQuantity.MinimumWidth = 6;
+            TotalQuantity.Name = "TotalQuantity";
+            TotalQuantity.Width = 110;
+            // 
+            // TotalAmount
+            // 
+            TotalAmount.FillWeight = 59.177578F;
+            TotalAmount.HeaderText = "Total Amount";
+            TotalAmount.MinimumWidth = 6;
+            TotalAmount.Name = "TotalAmount";
+            TotalAmount.Width = 120;
+            // 
+            // Delete
+            // 
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.NullValue = resources.GetObject("dataGridViewCellStyle2.NullValue");
+            dataGridViewCellStyle2.Padding = new Padding(10);
+            Delete.DefaultCellStyle = dataGridViewCellStyle2;
+            Delete.FillWeight = 59.177578F;
+            Delete.HeaderText = "Delete";
+            Delete.Image = Properties.Resources.delete;
+            Delete.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            Delete.MinimumWidth = 6;
+            Delete.Name = "Delete";
+            Delete.SortMode = DataGridViewColumnSortMode.Automatic;
+            Delete.Width = 60;
+            // 
             // TransactionRecordsPage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -280,6 +286,9 @@
         private CuoreUI.Components.cuiColorPicker cuiColorPicker1;
         private Label DashboardTitlePage;
         private DataGridView TransactionRecordsTable;
+        private Panel panel1;
+        private CuoreUI.Controls.cuiButton cuiButton1;
+        private CuoreUI.Controls.cuiTextBox cuiTextBox1;
         private DataGridViewTextBoxColumn TransactionID;
         private DataGridViewTextBoxColumn TransactionType;
         private DataGridViewTextBoxColumn ExchangeDate;
@@ -289,8 +298,5 @@
         private DataGridViewTextBoxColumn TotalQuantity;
         private DataGridViewTextBoxColumn TotalAmount;
         private DataGridViewImageColumn Delete;
-        private Panel panel1;
-        private CuoreUI.Controls.cuiButton cuiButton1;
-        private CuoreUI.Controls.cuiTextBox cuiTextBox1;
     }
 }

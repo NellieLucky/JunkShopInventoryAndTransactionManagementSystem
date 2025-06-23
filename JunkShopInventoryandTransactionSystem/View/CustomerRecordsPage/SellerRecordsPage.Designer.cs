@@ -1,6 +1,6 @@
 ﻿namespace JunkShopInventoryandTransactionSystem.View.CustomerRecordsPage
 {
-    partial class SupplierRecordsPage
+    partial class SellerRecordsPage
     {
         /// <summary> 
         /// Required designer variable.
@@ -64,9 +64,9 @@
             BuyerRec.ForeColor = Color.FromArgb(0, 157, 209);
             BuyerRec.Location = new Point(23, 14);
             BuyerRec.Name = "BuyerRec";
-            BuyerRec.Size = new Size(263, 35);
+            BuyerRec.Size = new Size(226, 35);
             BuyerRec.TabIndex = 34;
-            BuyerRec.Text = "Supplier Records";
+            BuyerRec.Text = "Seller Records";
             BuyerRec.Click += BuyerRec_Click;
             // 
             // dataGridView1
@@ -318,7 +318,7 @@
             dataGridViewImageColumn1.SortMode = DataGridViewColumnSortMode.Automatic;
             dataGridViewImageColumn1.Width = 60;
             // 
-            // SupplierRecordsPage
+            // SellerRecordsPage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -326,8 +326,8 @@
             Controls.Add(dataGridView2);
             Controls.Add(BuyerRec);
             Controls.Add(dataGridView1);
-            Margin = new Padding(2, 2, 2, 2);
-            Name = "SupplierRecordsPage";
+            Margin = new Padding(2);
+            Name = "SellerRecordsPage";
             Size = new Size(1042, 628);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             panel1.ResumeLayout(false);

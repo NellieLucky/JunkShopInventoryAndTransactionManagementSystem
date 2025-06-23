@@ -221,7 +221,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.BuyerLo
             int nonNullCustomerId = customerId.Value;
 
             // get employee Id next
-            int empId = ForUser.UserSession.EmployeeId;
+            int empId = ForUser.UserSession.UserId;
 
             if (empId <= 0)
             {

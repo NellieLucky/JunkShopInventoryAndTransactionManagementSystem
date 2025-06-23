@@ -87,7 +87,7 @@
             // 
             BuyerItemComboBox.DropDownHeight = 120;
             BuyerItemComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            BuyerItemComboBox.Font = new Font("Arial Narrow", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BuyerItemComboBox.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             BuyerItemComboBox.ForeColor = Color.Gray;
             BuyerItemComboBox.FormattingEnabled = true;
             BuyerItemComboBox.IntegralHeight = false;
@@ -240,7 +240,7 @@
             BuyerContactTextBox.ImageExpand = new Point(0, 0);
             BuyerContactTextBox.ImageOffset = new Point(0, 0);
             BuyerContactTextBox.Location = new Point(271, 552);
-            BuyerContactTextBox.Margin = new Padding(4);
+            BuyerContactTextBox.Margin = new Padding(4, 4, 4, 4);
             BuyerContactTextBox.Multiline = false;
             BuyerContactTextBox.Name = "BuyerContactTextBox";
             BuyerContactTextBox.NormalImageTint = Color.White;
@@ -280,7 +280,7 @@
             BuyerNameTextBox.ImageExpand = new Point(0, 0);
             BuyerNameTextBox.ImageOffset = new Point(0, 0);
             BuyerNameTextBox.Location = new Point(4, 552);
-            BuyerNameTextBox.Margin = new Padding(4);
+            BuyerNameTextBox.Margin = new Padding(4, 4, 4, 4);
             BuyerNameTextBox.Multiline = false;
             BuyerNameTextBox.Name = "BuyerNameTextBox";
             BuyerNameTextBox.NormalImageTint = Color.White;
@@ -320,7 +320,7 @@
             BuyerQtyTextBox.ImageExpand = new Point(0, 0);
             BuyerQtyTextBox.ImageOffset = new Point(0, 0);
             BuyerQtyTextBox.Location = new Point(211, 80);
-            BuyerQtyTextBox.Margin = new Padding(4);
+            BuyerQtyTextBox.Margin = new Padding(4, 4, 4, 4);
             BuyerQtyTextBox.Multiline = false;
             BuyerQtyTextBox.Name = "BuyerQtyTextBox";
             BuyerQtyTextBox.NormalImageTint = Color.White;
@@ -459,7 +459,8 @@
             RegEmployeeTitlePage.BackColor = Color.FromArgb(0, 0, 0, 0);
             RegEmployeeTitlePage.Font = new Font("Arial", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             RegEmployeeTitlePage.ForeColor = Color.FromArgb(0, 157, 209);
-            RegEmployeeTitlePage.Location = new Point(3, 7);
+            RegEmployeeTitlePage.Location = new Point(2, 6);
+            RegEmployeeTitlePage.Margin = new Padding(2, 0, 2, 0);
             RegEmployeeTitlePage.Name = "RegEmployeeTitlePage";
             RegEmployeeTitlePage.Size = new Size(275, 35);
             RegEmployeeTitlePage.TabIndex = 67;
@@ -471,7 +472,8 @@
             TotalItemsCounterLabel.BackColor = Color.FromArgb(0, 0, 0, 0);
             TotalItemsCounterLabel.Font = new Font("Arial", 10.2F, FontStyle.Bold);
             TotalItemsCounterLabel.ForeColor = Color.FromArgb(0, 157, 209);
-            TotalItemsCounterLabel.Location = new Point(874, 537);
+            TotalItemsCounterLabel.Location = new Point(874, 543);
+            TotalItemsCounterLabel.Margin = new Padding(2, 0, 2, 0);
             TotalItemsCounterLabel.Name = "TotalItemsCounterLabel";
             TotalItemsCounterLabel.Size = new Size(94, 19);
             TotalItemsCounterLabel.TabIndex = 69;
@@ -483,7 +485,8 @@
             label3.BackColor = Color.FromArgb(0, 0, 0, 0);
             label3.Font = new Font("Arial", 10.2F, FontStyle.Bold);
             label3.ForeColor = Color.FromArgb(0, 157, 209);
-            label3.Location = new Point(770, 537);
+            label3.Location = new Point(770, 543);
+            label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
             label3.Size = new Size(100, 19);
             label3.TabIndex = 68;

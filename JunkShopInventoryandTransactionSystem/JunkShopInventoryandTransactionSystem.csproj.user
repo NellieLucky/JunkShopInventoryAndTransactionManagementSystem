@@ -10,7 +10,7 @@
     <Compile Update="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="View\CustomerRecordsPage\SupplierRecordsPage.cs">
+    <Compile Update="View\CustomerRecordsPage\SellerRecordsPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="View\Add_Edit Panel\AddEditCategoryDialogBox.cs">
@@ -86,6 +86,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="View\LogInAuthFolder\NewPasswordPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\receipt.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="View\TransactionRecordsPageFolder\TransactionRecordsPage.cs">
