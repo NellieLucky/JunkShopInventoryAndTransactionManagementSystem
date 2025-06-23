@@ -17,7 +17,8 @@ CREATE TABLE Transactions (
     totalNumOfItems INT NOT NULL,
     totalNumOfQty INT NOT NULL,
     totalAmount DECIMAL(18, 2) NOT NULL,
-    transacType VARCHAR(10) NOT NULL CHECK (transacType IN ('Buyer', 'Seller')),
+    customerType VARCHAR(10) NOT NULL CHECK (customerType IN ('Buyer', 'Seller')),
+    isArchived BIT NOT NULL DEFAULT 0,
     FOREIGN KEY (customerId) REFERENCES Customer(customerId),  -- FK reference
     FOREIGN KEY (employeeId) REFERENCES Employees(empId)  -- FK reference
 );
@@ -50,7 +51,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Crud
         public int totalNumOfItems { get; set; }
         public int totalNumOfQty { get; set; }
         public decimal totalAmount { get; set; }
-        public string transacType { get; set; } = string.Empty;
+        public string customerType { get; set; } = string.Empty;
         public bool isArchived { get; set; } = false;
 
         public TransactionItem() { }
@@ -63,7 +64,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Crud
             int totalNumOfItems,
             int totalNumOfQty,
             decimal totalAmount,
-            string transacType,
+            string customerType,
             bool isArchived = false)
         {
             this.customerId = customerId;
@@ -73,7 +74,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Crud
             this.totalNumOfItems = totalNumOfItems;
             this.totalNumOfQty = totalNumOfQty;
             this.totalAmount = totalAmount;
-            this.transacType = transacType;
+            this.customerType = customerType;
             this.isArchived = isArchived;
         }
 
@@ -86,7 +87,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Crud
             int totalNumOfItems,
             int totalNumOfQty,
             decimal totalAmount,
-            string transacType,
+            string customerType,
             bool isArchived = false)
         {
             this.transacId = transacId;
@@ -97,7 +98,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Crud
             this.totalNumOfItems = totalNumOfItems;
             this.totalNumOfQty = totalNumOfQty;
             this.totalAmount = totalAmount;
-            this.transacType = transacType;
+            this.customerType = customerType;
             this.isArchived = isArchived;
         }
     }
@@ -132,7 +133,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Crud
                 t.totalNumOfItems,
                 t.totalNumOfQty,
                 t.totalAmount,
-                t.transacType
+                t.customerType
             FROM Transactions t
             INNER JOIN Customer c ON t.customerId = c.customerId
             INNER JOIN Employees e ON t.employeeId = e.empId
@@ -158,7 +159,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Crud
                                     totalNumOfItems = Convert.ToInt32(reader["totalNumOfItems"]),
                                     totalNumOfQty = Convert.ToInt32(reader["totalNumOfQty"]),
                                     totalAmount = Convert.ToDecimal(reader["totalAmount"]),
-                                    transacType = reader["transacType"]?.ToString() ?? string.Empty
+                                    customerType = reader["customerType"]?.ToString() ?? string.Empty
                                 };
 
                                 transactions.Add(transaction);
@@ -190,7 +191,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Crud
             int totalItems,
             int totalQty,
             decimal totalAmount,
-            string transacType
+            string customerType
         )
         {
             using (SqlConnection conn = GetConnection())
@@ -203,7 +204,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Crud
                     totalNumOfItems,
                     totalNumOfQty,
                     totalAmount,
-                    transacType
+                    customerType
                 )
                 OUTPUT INSERTED.transacId
                 VALUES (
@@ -213,7 +214,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Crud
                     @totalNumOfItems,
                     @totalNumOfQty,
                     @totalAmount,
-                    @transacType
+                    @customerType
                 )";
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -223,7 +224,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Crud
                     cmd.Parameters.AddWithValue("@totalNumOfItems", totalItems);
                     cmd.Parameters.AddWithValue("@totalNumOfQty", totalQty);
                     cmd.Parameters.AddWithValue("@totalAmount", totalAmount);
-                    cmd.Parameters.AddWithValue("@transacType", transacType);
+                    cmd.Parameters.AddWithValue("@customerType", customerType);
 
                     try
                     {
@@ -313,15 +314,15 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Crud
                     try
                     {
                         // 1. Get transaction type (Buyer/Seller)
-                        string getTypeQuery = "SELECT transacType FROM Transactions WHERE transacId = @transacId";
-                        string transacType = "";
+                        string getTypeQuery = "SELECT customerType FROM Transactions WHERE transacId = @transacId";
+                        string customerType = "";
                         using (var cmd = new SqlCommand(getTypeQuery, conn, transaction))
                         {
                             cmd.Parameters.AddWithValue("@transacId", transacId);
                             var result = cmd.ExecuteScalar();
                             if (result == null)
                                 throw new Exception("Transaction not found.");
-                            transacType = result?.ToString() ?? string.Empty;
+                            customerType = result?.ToString() ?? string.Empty;
                         }
 
                         // 2. Get all items in the transaction
@@ -345,7 +346,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Crud
                             string updateInventoryQuery = @"
                         UPDATE Inventory
                         SET itemQuantity = itemQuantity " +
-                                (transacType == "Buyer" ? "+" : "-") + " @quantity " +
+                                (customerType == "Buyer" ? "+" : "-") + " @quantity " +
                                 "WHERE itemId = @itemId";
                             using (var cmd = new SqlCommand(updateInventoryQuery, conn, transaction))
                             {

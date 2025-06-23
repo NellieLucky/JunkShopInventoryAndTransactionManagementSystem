@@ -262,7 +262,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.BuyerLo
                 totalItems,
                 totalQuantity,
                 totalAmount,
-                "Buyer"  // pass this for transacType "Buyer" or "Seller" as a string
+                "Buyer"  // pass this for customerType "Buyer" or "Seller" as a string
             );
 
             if (transactionId > 0)

@@ -37,18 +37,18 @@
             cuiColorPicker1 = new CuoreUI.Components.cuiColorPicker(components);
             DashboardTitlePage = new Label();
             TransactionRecordsTable = new DataGridView();
-            panel1 = new Panel();
-            cuiButton1 = new CuoreUI.Controls.cuiButton();
-            cuiTextBox1 = new CuoreUI.Controls.cuiTextBox();
             TransactionID = new DataGridViewTextBoxColumn();
-            TransactionType = new DataGridViewTextBoxColumn();
             ExchangeDate = new DataGridViewTextBoxColumn();
+            CustomerType = new DataGridViewTextBoxColumn();
             CustomerName = new DataGridViewTextBoxColumn();
             EmployeeAssigned = new DataGridViewTextBoxColumn();
             Num_Items = new DataGridViewTextBoxColumn();
             TotalQuantity = new DataGridViewTextBoxColumn();
             TotalAmount = new DataGridViewTextBoxColumn();
             Delete = new DataGridViewImageColumn();
+            panel1 = new Panel();
+            SearchButton = new CuoreUI.Controls.cuiButton();
+            SearchTextBox = new CuoreUI.Controls.cuiTextBox();
             ((System.ComponentModel.ISupportInitialize)TransactionRecordsTable).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -90,7 +90,7 @@
             TransactionRecordsTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             TransactionRecordsTable.ColumnHeadersHeight = 80;
             TransactionRecordsTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            TransactionRecordsTable.Columns.AddRange(new DataGridViewColumn[] { TransactionID, TransactionType, ExchangeDate, CustomerName, EmployeeAssigned, Num_Items, TotalQuantity, TotalAmount, Delete });
+            TransactionRecordsTable.Columns.AddRange(new DataGridViewColumn[] { TransactionID, ExchangeDate, CustomerType, CustomerName, EmployeeAssigned, Num_Items, TotalQuantity, TotalAmount, Delete });
             TransactionRecordsTable.EditMode = DataGridViewEditMode.EditProgrammatically;
             TransactionRecordsTable.EnableHeadersVisualStyles = false;
             TransactionRecordsTable.GridColor = Color.FromArgb(99, 99, 99);
@@ -117,95 +117,12 @@
             TransactionRecordsTable.TabIndex = 31;
             TransactionRecordsTable.CellContentClick += TransactionRecordsTable_CellContentClick;
             // 
-            // panel1
-            // 
-            panel1.BackColor = Color.FromArgb(0, 157, 209);
-            panel1.Controls.Add(cuiButton1);
-            panel1.Controls.Add(cuiTextBox1);
-            panel1.Location = new Point(695, 83);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(376, 40);
-            panel1.TabIndex = 32;
-            // 
-            // cuiButton1
-            // 
-            cuiButton1.CheckButton = false;
-            cuiButton1.Checked = false;
-            cuiButton1.CheckedBackground = Color.FromArgb(255, 106, 0);
-            cuiButton1.CheckedForeColor = Color.White;
-            cuiButton1.CheckedImageTint = Color.White;
-            cuiButton1.CheckedOutline = Color.FromArgb(255, 106, 0);
-            cuiButton1.Content = "";
-            cuiButton1.DialogResult = DialogResult.None;
-            cuiButton1.Font = new Font("Microsoft Sans Serif", 9.75F);
-            cuiButton1.ForeColor = Color.Black;
-            cuiButton1.HoverBackground = Color.White;
-            cuiButton1.HoveredImageTint = Color.White;
-            cuiButton1.HoverForeColor = Color.Black;
-            cuiButton1.HoverOutline = Color.FromArgb(32, 128, 128, 128);
-            cuiButton1.Image = Properties.Resources.magnifying_glass;
-            cuiButton1.ImageAutoCenter = true;
-            cuiButton1.ImageExpand = new Point(5, 5);
-            cuiButton1.ImageOffset = new Point(0, 0);
-            cuiButton1.Location = new Point(0, 0);
-            cuiButton1.Name = "cuiButton1";
-            cuiButton1.NormalBackground = Color.FromArgb(0, 157, 209);
-            cuiButton1.NormalForeColor = Color.Black;
-            cuiButton1.NormalImageTint = Color.White;
-            cuiButton1.NormalOutline = Color.FromArgb(64, 128, 128, 128);
-            cuiButton1.OutlineThickness = 1F;
-            cuiButton1.PressedBackground = Color.WhiteSmoke;
-            cuiButton1.PressedForeColor = Color.FromArgb(32, 32, 32);
-            cuiButton1.PressedImageTint = Color.White;
-            cuiButton1.PressedOutline = Color.FromArgb(64, 128, 128, 128);
-            cuiButton1.Rounding = new Padding(0, 5, 5, 0);
-            cuiButton1.Size = new Size(43, 39);
-            cuiButton1.TabIndex = 24;
-            cuiButton1.TextAlignment = StringAlignment.Center;
-            cuiButton1.TextOffset = new Point(0, 0);
-            // 
-            // cuiTextBox1
-            // 
-            cuiTextBox1.BackColor = Color.FromArgb(0, 0, 0, 0);
-            cuiTextBox1.BackgroundColor = Color.White;
-            cuiTextBox1.BorderColor = Color.Empty;
-            cuiTextBox1.Content = "";
-            cuiTextBox1.FocusBackgroundColor = Color.White;
-            cuiTextBox1.FocusBorderColor = Color.Empty;
-            cuiTextBox1.FocusImageTint = Color.White;
-            cuiTextBox1.Font = new Font("Microsoft Sans Serif", 9.5F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            cuiTextBox1.ForeColor = Color.Gray;
-            cuiTextBox1.Image = null;
-            cuiTextBox1.ImageExpand = new Point(0, 0);
-            cuiTextBox1.ImageOffset = new Point(0, 0);
-            cuiTextBox1.Location = new Point(41, 2);
-            cuiTextBox1.Margin = new Padding(4);
-            cuiTextBox1.Multiline = false;
-            cuiTextBox1.Name = "cuiTextBox1";
-            cuiTextBox1.NormalImageTint = Color.White;
-            cuiTextBox1.Padding = new Padding(18, 8, 18, 0);
-            cuiTextBox1.PasswordChar = false;
-            cuiTextBox1.PlaceholderColor = Color.Gray;
-            cuiTextBox1.PlaceholderText = "Search...";
-            cuiTextBox1.Rounding = new Padding(2);
-            cuiTextBox1.Size = new Size(333, 35);
-            cuiTextBox1.TabIndex = 23;
-            cuiTextBox1.TextOffset = new Size(0, 0);
-            cuiTextBox1.UnderlinedStyle = false;
-            // 
             // TransactionID
             // 
             TransactionID.HeaderText = "Transaction ID";
             TransactionID.MinimumWidth = 6;
             TransactionID.Name = "TransactionID";
             TransactionID.Width = 105;
-            // 
-            // TransactionType
-            // 
-            TransactionType.HeaderText = "Transaction Type";
-            TransactionType.MinimumWidth = 6;
-            TransactionType.Name = "TransactionType";
-            TransactionType.Width = 105;
             // 
             // ExchangeDate
             // 
@@ -214,6 +131,13 @@
             ExchangeDate.MinimumWidth = 6;
             ExchangeDate.Name = "ExchangeDate";
             ExchangeDate.Width = 135;
+            // 
+            // CustomerType
+            // 
+            CustomerType.HeaderText = "Customer Type";
+            CustomerType.MinimumWidth = 6;
+            CustomerType.Name = "CustomerType";
+            CustomerType.Width = 105;
             // 
             // CustomerName
             // 
@@ -225,7 +149,7 @@
             // EmployeeAssigned
             // 
             EmployeeAssigned.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            EmployeeAssigned.HeaderText = "Employee Assigned";
+            EmployeeAssigned.HeaderText = "Employee in-charge";
             EmployeeAssigned.MinimumWidth = 6;
             EmployeeAssigned.Name = "EmployeeAssigned";
             // 
@@ -266,6 +190,84 @@
             Delete.SortMode = DataGridViewColumnSortMode.Automatic;
             Delete.Width = 60;
             // 
+            // panel1
+            // 
+            panel1.BackColor = Color.FromArgb(0, 157, 209);
+            panel1.Controls.Add(SearchButton);
+            panel1.Controls.Add(SearchTextBox);
+            panel1.Location = new Point(695, 83);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(376, 40);
+            panel1.TabIndex = 32;
+            // 
+            // SearchButton
+            // 
+            SearchButton.CheckButton = false;
+            SearchButton.Checked = false;
+            SearchButton.CheckedBackground = Color.FromArgb(255, 106, 0);
+            SearchButton.CheckedForeColor = Color.White;
+            SearchButton.CheckedImageTint = Color.White;
+            SearchButton.CheckedOutline = Color.FromArgb(255, 106, 0);
+            SearchButton.Content = "";
+            SearchButton.DialogResult = DialogResult.None;
+            SearchButton.Font = new Font("Microsoft Sans Serif", 9.75F);
+            SearchButton.ForeColor = Color.Black;
+            SearchButton.HoverBackground = Color.White;
+            SearchButton.HoveredImageTint = Color.White;
+            SearchButton.HoverForeColor = Color.Black;
+            SearchButton.HoverOutline = Color.FromArgb(32, 128, 128, 128);
+            SearchButton.Image = Properties.Resources.magnifying_glass;
+            SearchButton.ImageAutoCenter = true;
+            SearchButton.ImageExpand = new Point(5, 5);
+            SearchButton.ImageOffset = new Point(0, 0);
+            SearchButton.Location = new Point(0, 0);
+            SearchButton.Name = "SearchButton";
+            SearchButton.NormalBackground = Color.FromArgb(0, 157, 209);
+            SearchButton.NormalForeColor = Color.Black;
+            SearchButton.NormalImageTint = Color.White;
+            SearchButton.NormalOutline = Color.FromArgb(64, 128, 128, 128);
+            SearchButton.OutlineThickness = 1F;
+            SearchButton.PressedBackground = Color.WhiteSmoke;
+            SearchButton.PressedForeColor = Color.FromArgb(32, 32, 32);
+            SearchButton.PressedImageTint = Color.White;
+            SearchButton.PressedOutline = Color.FromArgb(64, 128, 128, 128);
+            SearchButton.Rounding = new Padding(0, 5, 5, 0);
+            SearchButton.Size = new Size(43, 39);
+            SearchButton.TabIndex = 24;
+            SearchButton.TextAlignment = StringAlignment.Center;
+            SearchButton.TextOffset = new Point(0, 0);
+            SearchButton.Click += SearchButton_Click_1;
+            // 
+            // SearchTextBox
+            // 
+            SearchTextBox.BackColor = Color.FromArgb(0, 0, 0, 0);
+            SearchTextBox.BackgroundColor = Color.White;
+            SearchTextBox.BorderColor = Color.Empty;
+            SearchTextBox.Content = "";
+            SearchTextBox.FocusBackgroundColor = Color.White;
+            SearchTextBox.FocusBorderColor = Color.Empty;
+            SearchTextBox.FocusImageTint = Color.White;
+            SearchTextBox.Font = new Font("Microsoft Sans Serif", 9.5F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            SearchTextBox.ForeColor = Color.Gray;
+            SearchTextBox.Image = null;
+            SearchTextBox.ImageExpand = new Point(0, 0);
+            SearchTextBox.ImageOffset = new Point(0, 0);
+            SearchTextBox.Location = new Point(41, 2);
+            SearchTextBox.Margin = new Padding(4);
+            SearchTextBox.Multiline = false;
+            SearchTextBox.Name = "SearchTextBox";
+            SearchTextBox.NormalImageTint = Color.White;
+            SearchTextBox.Padding = new Padding(18, 8, 18, 0);
+            SearchTextBox.PasswordChar = false;
+            SearchTextBox.PlaceholderColor = Color.Gray;
+            SearchTextBox.PlaceholderText = "Search...";
+            SearchTextBox.Rounding = new Padding(2);
+            SearchTextBox.Size = new Size(333, 35);
+            SearchTextBox.TabIndex = 23;
+            SearchTextBox.TextOffset = new Size(0, 0);
+            SearchTextBox.UnderlinedStyle = false;
+            SearchTextBox.TextChanged += SearchTextBox_TextChange;
+            // 
             // TransactionRecordsPage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -287,11 +289,11 @@
         private Label DashboardTitlePage;
         private DataGridView TransactionRecordsTable;
         private Panel panel1;
-        private CuoreUI.Controls.cuiButton cuiButton1;
-        private CuoreUI.Controls.cuiTextBox cuiTextBox1;
+        private CuoreUI.Controls.cuiButton SearchButton;
+        private CuoreUI.Controls.cuiTextBox SearchTextBox;
         private DataGridViewTextBoxColumn TransactionID;
-        private DataGridViewTextBoxColumn TransactionType;
         private DataGridViewTextBoxColumn ExchangeDate;
+        private DataGridViewTextBoxColumn CustomerType;
         private DataGridViewTextBoxColumn CustomerName;
         private DataGridViewTextBoxColumn EmployeeAssigned;
         private DataGridViewTextBoxColumn Num_Items;

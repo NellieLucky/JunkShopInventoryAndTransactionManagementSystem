@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,8 +18,9 @@ namespace JunkShopInventoryandTransactionSystem.View.TransactionRecordsPageFolde
         public TransactionRecordsPage()
         {
             InitializeComponent();
-
             ReloadTransactions.LoadTransactionData(TransactionRecordsTable);
+
+            SearchTextBox.ContentChanged += SearchTextBox_TextChange;
         }
 
         private void TransactionRecordsTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -65,6 +65,45 @@ namespace JunkShopInventoryandTransactionSystem.View.TransactionRecordsPageFolde
 
             }
 
+        }
+
+        private void SearchButton_Click_1(object sender, EventArgs e)
+        {
+            FilterCategories(SearchTextBox.Content);
+        }
+
+        private void SearchTextBox_TextChange(object? sender, EventArgs e)
+        {
+            FilterCategories(SearchTextBox.Content);
+        }
+
+        private void FilterCategories(string searchText)
+        {
+            string lowerSearch = searchText?.Trim().ToLower() ?? string.Empty;
+
+            foreach (DataGridViewRow row in TransactionRecordsTable.Rows)
+            {
+                if (row.IsNewRow) continue; // Skip the new row placeholder
+
+                bool visible = string.IsNullOrEmpty(lowerSearch);
+
+                if (!visible)
+                {
+                    foreach (DataGridViewColumn col in TransactionRecordsTable.Columns)
+                    {
+                        if (!col.Visible || col.Name == "Remove") continue; // Skip invisible and Remove columns
+
+                        var cellValue = row.Cells[col.Index].Value?.ToString();
+                        if (!string.IsNullOrEmpty(cellValue) && cellValue.ToLower().Contains(lowerSearch))
+                        {
+                            visible = true;
+                            break;
+                        }
+                    }
+                }
+
+                row.Visible = visible;
+            }
         }
     }
 }
