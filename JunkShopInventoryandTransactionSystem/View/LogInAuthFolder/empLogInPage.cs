@@ -1,4 +1,5 @@
 ﻿using JunkShopInventoryandTransactionSystem.BackendFiles.UserSession;
+using Microsoft.VisualBasic.ApplicationServices;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -33,12 +34,11 @@ namespace JunkShopInventoryandTransactionSystem.View.LogInAuthFolder
             }
             try
             {
-                int? employeeId = ForUser.AuthenticateEmployee(email, password);
+                int? userId = AuthenticateEmployee(email, password);
 
-                if (employeeId.HasValue)
+                if (userId.HasValue)
                 {
-                    // Set session user as employee
-                    ForUser.UserSession.SetUser(employeeId.Value, true);
+                    UserSession.UserId = userId.Value;
 
                     MessageBox.Show("Login successful as Employee!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

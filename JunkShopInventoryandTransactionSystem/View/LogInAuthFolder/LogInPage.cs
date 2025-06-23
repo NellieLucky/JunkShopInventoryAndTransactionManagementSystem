@@ -33,9 +33,9 @@ namespace JunkShopInventoryandTransactionSystem.View.LogInAuthFolder
 
                 if (userId.HasValue)
                 {
-                    ForUser.UserSession.SetUser(userId.Value, false);
+                    UserSession.UserId = userId.Value;
 
-                    MessageBox.Show("Login successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Login successful as Admin", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     MainNavigationPage dashboardPage = new MainNavigationPage();
                     dashboardPage.Dock = DockStyle.Fill;

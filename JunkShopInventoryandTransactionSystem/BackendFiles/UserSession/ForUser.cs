@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Runtime.InteropServices.JavaScript.JSType;
@@ -11,17 +12,18 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 /*
 
-CREATE TABLE Employees (
-    empId INT IDENTITY(1, 1) PRIMARY KEY,
-    empName NVARCHAR(50) NULL,
-    empPassword NVARCHAR(50) NOT NULL,
-    empEmail NVARCHAR(50) NOT NULL,
-    token NVARCHAR(50) NULL,
-    empContact NVARCHAR(50) NULL,
-    empAddress NVARCHAR(50) NULL,
-    empRole NVARCHAR(50) NOT NULL DEFAULT('Employee'),
-    empDateRegistered DATETIME NOT NULL DEFAULT(GETDATE()),
-    IsRemoved BIT NOT NULL DEFAULT(0)
+CREATE TABLE [dbo].[Employees] (
+    [empId]             INT           IDENTITY (2, 1) NOT NULL,
+    [empName]           NVARCHAR (50) NULL,
+    [empPassword]       NVARCHAR (50) NOT NULL,
+    [empEmail]          NVARCHAR (50) NOT NULL,
+    [token]             NVARCHAR (50) NULL,
+    [empContact]        NVARCHAR (50) NULL,
+    [empAddress]        NVARCHAR (50) NULL,
+    [empRole]           NVARCHAR (50) DEFAULT('Employee') NOT NULL,
+    [empDateRegistered] DATETIME      DEFAULT (getdate()) NOT NULL,
+    [IsRemoved]         BIT           DEFAULT ((0)) NOT NULL,
+    PRIMARY KEY CLUSTERED ([empId] ASC)
 );
 
 */
@@ -49,23 +51,19 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.UserSession
         public static class UserSession
         {
             public static int UserId { get; set; }
-            public static int EmployeeId { get; private set; }   // Only set if user is employee
+        }
 
-            public static void SetUser(int userId, bool isEmployee)
-            {
-                UserId = userId;
-
-                if (isEmployee)
-                {
-                    EmployeeId = userId;
-                    MessageBox.Show($"SetUser called: EmployeeId set to {EmployeeId}", "Debug");
-                }
-                else
-                {
-                    EmployeeId = 0;
-                    MessageBox.Show($"SetUser called: User is not employee, EmployeeId reset to 0", "Debug");
-                }
-            }
+        //Class to hold user details(UserInformationPage.cs)
+        public class UserDetails
+        {
+            public int UserId { get; set; }
+            public string? Name { get; set; }
+            public string? Contact { get; set; }
+            public string? Address { get; set; }
+            public string? Email { get; set; }
+            public string? Role { get; set; }
+            public DateTime DateRegistered { get; set; }
+            public string? Password { get; set; }
         }
 
         //Function to update information of employee in edit mode(AddEditEmployee.cs)
@@ -74,8 +72,8 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.UserSession
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 string query = @"UPDATE Employees
-                         SET empName = @name, empContact = @contact, empAddress = @address, empPassword = @Password
-                         WHERE empEmail = @originalEmail AND IsRemoved = 0";
+                               SET empName = @name, empContact = @contact, empAddress = @address, empPassword = @Password
+                               WHERE empEmail = @originalEmail AND empId > 1 AND IsRemoved = 0";
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
@@ -102,8 +100,8 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.UserSession
 
                     // SQL query to insert data into the Employee table
                     string query = @"
-                        INSERT INTO Employees (empEmail, empPassword, empAddress, empName, empContact)
-                        VALUES (@Email, @Password, @Address, @Name, @ContactNo)";
+                                INSERT INTO Employees (empEmail, empPassword, empAddress, empName, empContact, empRole)
+                                VALUES (@Email, @Password, @Address, @Name, @ContactNo, @Role)";
 
                     using (SqlCommand cmd = new SqlCommand(query, connect))
                     {
@@ -113,6 +111,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.UserSession
                         cmd.Parameters.AddWithValue("@Address", address);
                         cmd.Parameters.AddWithValue("@Name", name);
                         cmd.Parameters.AddWithValue("@ContactNo", contactNo);
+                        cmd.Parameters.AddWithValue("@Role", "Employee");
 
                         // Execute the query and return whether the insertion was successful
                         int rowsAffected = cmd.ExecuteNonQuery();
@@ -138,7 +137,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.UserSession
                 {
                     connect.Open();
                     
-                    string query = "SELECT empId, empDateRegistered, empEmail, empPassword, empName, empContact, empAddress FROM Employees WHERE IsRemoved = 0";
+                    string query = "SELECT empId, empDateRegistered, empEmail, empPassword, empName, empContact, empAddress FROM Employees WHERE IsRemoved = 0 AND empId > 1";
 
                     using (SqlDataAdapter dataAdapter = new SqlDataAdapter(query, connect))
                     {
@@ -163,7 +162,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.UserSession
                 {
                     connect.Open();
 
-                    string query = "UPDATE Employees SET IsRemoved = 1 WHERE empEmail = @Email";
+                    string query = "UPDATE Employees SET IsRemoved = 1 WHERE empEmail = @Email AND empId > 1";
 
                     using (SqlCommand cmd = new SqlCommand(query, connect))
                     {
@@ -188,7 +187,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.UserSession
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT COUNT(*) FROM Management";
+                    string query = "SELECT COUNT(*) FROM Employees WHERE empId = 1 OR empRole = 'Admin'";
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         int count = (int)command.ExecuteScalar();
@@ -213,10 +212,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.UserSession
                     connect.Open();
 
                     // Query to fetch employee or admin name and role based on userId
-                    string query = @"
-                        SELECT empName, 'Employee' AS Role FROM Employees WHERE empId = @UserId
-                        UNION ALL
-                        SELECT admName, 'Admin' AS Role FROM Management WHERE admId = @UserId";
+                    string query = @"SELECT empName, empRole FROM Employees WHERE empId = @UserId";
 
                     using (SqlCommand cmd = new SqlCommand(query, connect))
                     {
@@ -245,19 +241,6 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.UserSession
             }
         }
 
-        //Class to hold user details(UserInformationPage.cs)
-        public class UserDetails
-        {
-            public int UserId { get; set; }
-            public string? Name { get; set; }
-            public string? Contact { get; set; }
-            public string? Address { get; set; }
-            public string? Email { get; set; }
-            public string? Role { get; set; }
-            public DateTime DateRegistered { get; set; }
-            public string? Password { get; set; }
-        }
-
         //Function to get user details based on userId(UserInfromationPage.cs)
         public static UserDetails GetDetailedUserInfo(int userId)
         {
@@ -268,11 +251,9 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.UserSession
                     connect.Open();
 
                     string query = @"
-                SELECT empName, 'Employee' AS Role, empContact, empAddress, empDateRegistered
-                FROM Employees WHERE empId = @UserId
-                UNION ALL
-                SELECT admName, 'Admin' AS Role, admContact, admAddress, admDateRegistered
-                FROM Management WHERE admId = @UserId";
+                            SELECT empEmail, empName, empRole, empContact, empAddress, empDateRegistered
+                            FROM Employees 
+                            WHERE empId = @UserId";
 
                     using (SqlCommand cmd = new SqlCommand(query, connect))
                     {
@@ -284,11 +265,12 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.UserSession
                             {
                                 return new UserDetails
                                 {
-                                    Name = reader.GetString(0),
-                                    Role = reader.GetString(1),
-                                    Contact = reader.GetString(2),
-                                    Address = reader.GetString(3),
-                                    DateRegistered = reader.GetDateTime(4),
+                                    Email = reader.GetString(0),
+                                    Name = reader.GetString(1),
+                                    Role = reader.GetString(2),
+                                    Contact = reader.GetString(3),
+                                    Address = reader.GetString(4),
+                                    DateRegistered = reader.GetDateTime(5),
                                     UserId = userId
                                 };
                             }
@@ -313,15 +295,13 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.UserSession
                 {
                     connect.Open();
                     string query = @"
-                UPDATE Employees
-                SET empName = @Name, empContact = @Contact, empAddress = @Address
-                WHERE empId = @UserId;
-                UPDATE Management
-                SET admName = @Name, admContact = @Contact, admAddress = @Address
-                WHERE admId = @UserId;";
+                            UPDATE Employees
+                            SET empEmail = @Email, empName = @Name, empContact = @Contact, empAddress = @Address
+                            WHERE empId = @UserId";
 
                     using (SqlCommand cmd = new SqlCommand(query, connect))
                     {
+                        cmd.Parameters.AddWithValue("@Email", userInfo.Email);
                         cmd.Parameters.AddWithValue("@Name", userInfo.Name);
                         cmd.Parameters.AddWithValue("@Contact", userInfo.Contact);
                         cmd.Parameters.AddWithValue("@Address", userInfo.Address);
@@ -344,6 +324,11 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.UserSession
         {
             errorMessage = string.Empty;
 
+            if (string.IsNullOrWhiteSpace(email) || !Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
+            {
+                errorMessage = "Invalid email format. Please enter a valid email (e.g., name@example.com).";
+                return false;
+            }
             try
             {
                 using (SqlConnection connect = new SqlConnection(connectionString))
@@ -351,7 +336,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.UserSession
                     connect.Open();
 
                     // Check if email already exists
-                    string selectQuery = "SELECT COUNT(*) FROM Management WHERE admEmail = @Email";
+                    string selectQuery = "SELECT COUNT(*) FROM Employees WHERE empEmail = @Email";
                     using (SqlCommand checkCmd = new SqlCommand(selectQuery, connect))
                     {
                         checkCmd.Parameters.AddWithValue("@Email", email);
@@ -363,10 +348,16 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.UserSession
                         }
                     }
 
+                    // Enable IDENTITY_INSERT ON to manually insert empId = 1
+                    using (SqlCommand cmd = new SqlCommand("SET IDENTITY_INSERT Employees ON", connect))
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+
                     // Insert new admin
                     string insertQuery = @"
-                            INSERT INTO Management (admEmail, admPassword, admName, admContact, admAddress, admRole)
-                            VALUES (@Email, @Password, @Name, @Contact, @Address, @Role)";
+                            INSERT INTO Employees (empId, empEmail, empPassword, empName, empContact, empAddress, empRole)
+                            VALUES (1, @Email, @Password, @Name, @Contact, @Address, @Role)";
 
                     using (SqlCommand insertCmd = new SqlCommand(insertQuery, connect))
                     {
@@ -377,6 +368,10 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.UserSession
                         insertCmd.Parameters.AddWithValue("@Address", address);
                         insertCmd.Parameters.AddWithValue("@Role", "Admin");
                         insertCmd.ExecuteNonQuery();
+                    }
+                    using (SqlCommand cmd = new SqlCommand("SET IDENTITY_INSERT Employees OFF", connect))
+                    {
+                        cmd.ExecuteNonQuery();
                     }
 
                     return true;
@@ -397,7 +392,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.UserSession
                 using (SqlConnection connect = new SqlConnection(connectionString))
                 {
                     connect.Open();
-                    string query = "SELECT empId FROM Employees WHERE empEmail = @Email AND empPassword = @Password";
+                    string query = "SELECT empId FROM Employees WHERE empEmail = @Email AND empPassword = @Password AND empId > 1";
 
                     using (SqlCommand cmd = new SqlCommand(query, connect))
                     {
@@ -427,7 +422,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.UserSession
                 using (SqlConnection connect = new SqlConnection(connectionString))
                 {
                     connect.Open();
-                    string query = "SELECT admId FROM Management WHERE admEmail = @Email AND admPassword = @Password";
+                    string query = "SELECT empId FROM Employees WHERE empEmail = @Email AND empPassword = @Password AND empRole = 'Admin'";
 
                     using (SqlCommand cmd = new SqlCommand(query, connect))
                     {
@@ -457,23 +452,12 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.UserSession
             {
                 connect.Open();
 
-                string[] queries = {
-            "SELECT TOP 1 empEmail FROM Employees WHERE empEmail = @Email",
-            "SELECT TOP 1 admEmail FROM Management WHERE admEmail = @Email"
-        };
-
-                foreach (var query in queries)
+                string query = "SELECT TOP 1 empEmail FROM Employees WHERE empEmail = @Email AND empId = 1";
+                using (SqlCommand cmd = new SqlCommand(query, connect))
                 {
-                    using (SqlCommand cmd = new SqlCommand(query, connect))
-                    {
-                        cmd.Parameters.AddWithValue("@Email", email);
-                        var result = cmd.ExecuteScalar();
-                        if (result != null)
-                            return true;
-                    }
+                    cmd.Parameters.AddWithValue("@Email", email);
+                    return cmd.ExecuteScalar() != null;
                 }
-
-                return false;
             }
         }
 
@@ -484,7 +468,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.UserSession
             {
                 connect.Open();
 
-                string employeeCheck = "SELECT COUNT(*) FROM Employees WHERE empEmail = @Email";
+                string employeeCheck = "SELECT COUNT(*) FROM Employees WHERE empEmail = @Email AND empId = 1";
                 using (SqlCommand checkCmd = new SqlCommand(employeeCheck, connect))
                 {
                     checkCmd.Parameters.AddWithValue("@Email", email);
@@ -492,7 +476,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.UserSession
 
                     if (count > 0)
                     {
-                        string updateEmp = "UPDATE Employees SET token = @Token WHERE empEmail = @Email";
+                        string updateEmp = "UPDATE Employees SET token = @Token WHERE empEmail = @Email AND empId = 1";
                         using (SqlCommand cmd = new SqlCommand(updateEmp, connect))
                         {
                             cmd.Parameters.AddWithValue("@Token", token);
@@ -502,14 +486,6 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.UserSession
                         }
                     }
                 }
-
-                string updateAdm = "UPDATE Management SET admToken = @Token WHERE admEmail = @Email";
-                using (SqlCommand cmd = new SqlCommand(updateAdm, connect))
-                {
-                    cmd.Parameters.AddWithValue("@Token", token);
-                    cmd.Parameters.AddWithValue("@Email", email);
-                    cmd.ExecuteNonQuery();
-                }
             }
         }
 
@@ -517,34 +493,23 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.UserSession
         public static string? GetEmailByToken(string token, out string userType)
         {
             userType = null;
+
             using (SqlConnection connect = new SqlConnection(connectionString))
             {
                 connect.Open();
 
-                string empQuery = "SELECT empEmail FROM Employees WHERE token = @Token";
-                using (SqlCommand empCmd = new SqlCommand(empQuery, connect))
+                string query = "SELECT empEmail FROM Employees WHERE token = @Token AND empId = 1";
+                using (SqlCommand empCmd = new SqlCommand(query, connect))
                 {
                     empCmd.Parameters.AddWithValue("@Token", token);
                     object result = empCmd.ExecuteScalar();
-                    if (result != null)
-                    {
-                        userType = "Employee";
-                        return result.ToString();
-                    }
-                }
 
-                string admQuery = "SELECT admEmail FROM Management WHERE admToken = @Token";
-                using (SqlCommand admCmd = new SqlCommand(admQuery, connect))
-                {
-                    admCmd.Parameters.AddWithValue("@Token", token);
-                    object result = admCmd.ExecuteScalar();
                     if (result != null)
                     {
                         userType = "Admin";
                         return result.ToString();
                     }
                 }
-
                 return null;
             }
         }
@@ -556,16 +521,13 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.UserSession
             {
                 connect.Open();
 
-                string updateQuery = userType == "Employee"
-                    ? "UPDATE Employees SET empPassword = @Password, token = NULL WHERE empEmail = @Email"
-                    : "UPDATE Management SET admPassword = @Password, admToken = NULL WHERE admEmail = @Email";
+                string updateQuery = "UPDATE Employees SET empPassword = @Password, token = NULL WHERE empEmail = @Email";
 
                 using (SqlCommand cmd = new SqlCommand(updateQuery, connect))
                 {
                     cmd.Parameters.AddWithValue("@Password", newPassword);
                     cmd.Parameters.AddWithValue("@Email", email);
-                    int rows = cmd.ExecuteNonQuery();
-                    return rows > 0;
+                    return cmd.ExecuteNonQuery() > 0;
                 }
             }
         }
