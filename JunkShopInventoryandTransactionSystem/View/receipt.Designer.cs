@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle19 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle20 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle21 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             BuyersOrderTable = new DataGridView();
             ItemID = new DataGridViewTextBoxColumn();
             ItemName = new DataGridViewTextBoxColumn();
@@ -48,8 +48,12 @@
             ReceiptTotalPrice = new Label();
             label1 = new Label();
             label2 = new Label();
+            cuiButton1 = new CuoreUI.Controls.cuiButton();
+            cuiTextBox1 = new CuoreUI.Controls.cuiTextBox();
+            panel1 = new Panel();
             ((System.ComponentModel.ISupportInitialize)BuyersOrderTable).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // BuyersOrderTable
@@ -61,41 +65,40 @@
             BuyersOrderTable.BackgroundColor = Color.White;
             BuyersOrderTable.CellBorderStyle = DataGridViewCellBorderStyle.SunkenHorizontal;
             BuyersOrderTable.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle19.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle19.BackColor = SystemColors.ControlLight;
-            dataGridViewCellStyle19.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle19.ForeColor = Color.Black;
-            dataGridViewCellStyle19.SelectionBackColor = SystemColors.ControlLight;
-            dataGridViewCellStyle19.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle19.WrapMode = DataGridViewTriState.True;
-            BuyersOrderTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = SystemColors.ControlLight;
+            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.ControlLight;
+            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            BuyersOrderTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             BuyersOrderTable.ColumnHeadersHeight = 60;
             BuyersOrderTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             BuyersOrderTable.Columns.AddRange(new DataGridViewColumn[] { ItemID, ItemName, QtyType, SellingPrice, TransacQuantity, ExchangeAmount });
             BuyersOrderTable.EditMode = DataGridViewEditMode.EditProgrammatically;
             BuyersOrderTable.EnableHeadersVisualStyles = false;
             BuyersOrderTable.GridColor = Color.FromArgb(99, 99, 99);
-            BuyersOrderTable.Location = new Point(12, 241);
-            BuyersOrderTable.Margin = new Padding(4);
+            BuyersOrderTable.Location = new Point(10, 193);
             BuyersOrderTable.Name = "BuyersOrderTable";
             BuyersOrderTable.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle20.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle20.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle20.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle20.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle20.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle20.WrapMode = DataGridViewTriState.True;
-            BuyersOrderTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            BuyersOrderTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             BuyersOrderTable.RowHeadersVisible = false;
             BuyersOrderTable.RowHeadersWidth = 50;
-            dataGridViewCellStyle21.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle21.ForeColor = Color.Black;
-            dataGridViewCellStyle21.SelectionBackColor = Color.FromArgb(0, 157, 209);
-            dataGridViewCellStyle21.WrapMode = DataGridViewTriState.True;
-            BuyersOrderTable.RowsDefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(0, 157, 209);
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            BuyersOrderTable.RowsDefaultCellStyle = dataGridViewCellStyle3;
             BuyersOrderTable.RowTemplate.Height = 50;
             BuyersOrderTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            BuyersOrderTable.Size = new Size(933, 254);
+            BuyersOrderTable.Size = new Size(746, 203);
             BuyersOrderTable.TabIndex = 52;
             BuyersOrderTable.CellContentClick += BuyersOrderTable_CellContentClick;
             // 
@@ -151,10 +154,9 @@
             receiptname.BackColor = Color.FromArgb(0, 0, 0, 0);
             receiptname.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             receiptname.ForeColor = Color.Black;
-            receiptname.Location = new Point(24, 157);
-            receiptname.Margin = new Padding(4, 0, 4, 0);
+            receiptname.Location = new Point(19, 126);
             receiptname.Name = "receiptname";
-            receiptname.Size = new Size(159, 21);
+            receiptname.Size = new Size(125, 18);
             receiptname.TabIndex = 54;
             receiptname.Text = "Customer Name:";
             receiptname.Click += IdItem_Click;
@@ -165,19 +167,19 @@
             receiptInvoice.BackColor = Color.FromArgb(0, 0, 0, 0);
             receiptInvoice.Font = new Font("Arial Rounded MT Bold", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             receiptInvoice.ForeColor = Color.FromArgb(0, 157, 209);
-            receiptInvoice.Location = new Point(719, 23);
-            receiptInvoice.Margin = new Padding(4, 0, 4, 0);
+            receiptInvoice.Location = new Point(575, 18);
             receiptInvoice.Name = "receiptInvoice";
-            receiptInvoice.Size = new Size(226, 42);
+            receiptInvoice.Size = new Size(191, 34);
             receiptInvoice.TabIndex = 55;
             receiptInvoice.Text = "I N V O I C E";
             // 
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.JUNKSHOP__9___1_;
-            pictureBox1.Location = new Point(5, 3);
+            pictureBox1.Location = new Point(4, 2);
+            pictureBox1.Margin = new Padding(2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(118, 107);
+            pictureBox1.Size = new Size(94, 86);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 56;
             pictureBox1.TabStop = false;
@@ -188,10 +190,9 @@
             ReceiptContactNo.BackColor = Color.FromArgb(0, 0, 0, 0);
             ReceiptContactNo.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             ReceiptContactNo.ForeColor = Color.Black;
-            ReceiptContactNo.Location = new Point(24, 193);
-            ReceiptContactNo.Margin = new Padding(4, 0, 4, 0);
+            ReceiptContactNo.Location = new Point(19, 154);
             ReceiptContactNo.Name = "ReceiptContactNo";
-            ReceiptContactNo.Size = new Size(159, 21);
+            ReceiptContactNo.Size = new Size(127, 18);
             ReceiptContactNo.TabIndex = 57;
             ReceiptContactNo.Text = "Contact Number:";
             // 
@@ -201,10 +202,9 @@
             ReceiptCustName.BackColor = Color.FromArgb(0, 0, 0, 0);
             ReceiptCustName.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             ReceiptCustName.ForeColor = SystemColors.ControlDarkDark;
-            ReceiptCustName.Location = new Point(192, 157);
-            ReceiptCustName.Margin = new Padding(4, 0, 4, 0);
+            ReceiptCustName.Location = new Point(154, 126);
             ReceiptCustName.Name = "ReceiptCustName";
-            ReceiptCustName.Size = new Size(139, 21);
+            ReceiptCustName.Size = new Size(116, 17);
             ReceiptCustName.TabIndex = 58;
             ReceiptCustName.Text = "Customer Name";
             // 
@@ -214,10 +214,9 @@
             ReceiptCustNo.BackColor = Color.FromArgb(0, 0, 0, 0);
             ReceiptCustNo.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             ReceiptCustNo.ForeColor = SystemColors.ControlDarkDark;
-            ReceiptCustNo.Location = new Point(192, 193);
-            ReceiptCustNo.Margin = new Padding(4, 0, 4, 0);
+            ReceiptCustNo.Location = new Point(154, 154);
             ReceiptCustNo.Name = "ReceiptCustNo";
-            ReceiptCustNo.Size = new Size(140, 21);
+            ReceiptCustNo.Size = new Size(115, 17);
             ReceiptCustNo.TabIndex = 59;
             ReceiptCustNo.Text = "Contact Number";
             // 
@@ -227,10 +226,9 @@
             ReceiptTotalItem.BackColor = Color.FromArgb(0, 0, 0, 0);
             ReceiptTotalItem.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             ReceiptTotalItem.ForeColor = Color.Black;
-            ReceiptTotalItem.Location = new Point(589, 520);
-            ReceiptTotalItem.Margin = new Padding(4, 0, 4, 0);
+            ReceiptTotalItem.Location = new Point(471, 416);
             ReceiptTotalItem.Name = "ReceiptTotalItem";
-            ReceiptTotalItem.Size = new Size(101, 21);
+            ReceiptTotalItem.Size = new Size(81, 18);
             ReceiptTotalItem.TabIndex = 60;
             ReceiptTotalItem.Text = "Total Item ";
             ReceiptTotalItem.Click += ReceiptTotalItem_Click;
@@ -241,10 +239,9 @@
             ReceiptTotalPrice.BackColor = Color.FromArgb(0, 0, 0, 0);
             ReceiptTotalPrice.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             ReceiptTotalPrice.ForeColor = Color.Black;
-            ReceiptTotalPrice.Location = new Point(589, 560);
-            ReceiptTotalPrice.Margin = new Padding(4, 0, 4, 0);
+            ReceiptTotalPrice.Location = new Point(471, 448);
             ReceiptTotalPrice.Name = "ReceiptTotalPrice";
-            ReceiptTotalPrice.Size = new Size(102, 21);
+            ReceiptTotalPrice.Size = new Size(84, 18);
             ReceiptTotalPrice.TabIndex = 61;
             ReceiptTotalPrice.Text = "Total Price";
             ReceiptTotalPrice.Click += ReceiptTotalPrice_Click;
@@ -255,10 +252,9 @@
             label1.BackColor = Color.FromArgb(0, 0, 0, 0);
             label1.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = SystemColors.ControlDarkDark;
-            label1.Location = new Point(800, 520);
-            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Location = new Point(640, 416);
             label1.Name = "label1";
-            label1.Size = new Size(87, 21);
+            label1.Size = new Size(70, 17);
             label1.TabIndex = 62;
             label1.Text = "Total Item";
             // 
@@ -268,18 +264,95 @@
             label2.BackColor = Color.FromArgb(0, 0, 0, 0);
             label2.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.ForeColor = SystemColors.ControlDarkDark;
-            label2.Location = new Point(800, 560);
-            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Location = new Point(640, 448);
             label2.Name = "label2";
-            label2.Size = new Size(95, 21);
+            label2.Size = new Size(76, 17);
             label2.TabIndex = 63;
             label2.Text = "Total Price";
             // 
+            // cuiButton1
+            // 
+            cuiButton1.BackColor = SystemColors.ControlLight;
+            cuiButton1.CheckButton = false;
+            cuiButton1.Checked = false;
+            cuiButton1.CheckedBackground = Color.FromArgb(255, 106, 0);
+            cuiButton1.CheckedForeColor = Color.White;
+            cuiButton1.CheckedImageTint = Color.White;
+            cuiButton1.CheckedOutline = Color.FromArgb(255, 106, 0);
+            cuiButton1.Content = "";
+            cuiButton1.DialogResult = DialogResult.None;
+            cuiButton1.Font = new Font("Microsoft Sans Serif", 9.75F);
+            cuiButton1.ForeColor = Color.Black;
+            cuiButton1.HoverBackground = Color.White;
+            cuiButton1.HoveredImageTint = Color.White;
+            cuiButton1.HoverForeColor = Color.Black;
+            cuiButton1.HoverOutline = Color.FromArgb(32, 128, 128, 128);
+            cuiButton1.Image = Properties.Resources.magnifying_glass;
+            cuiButton1.ImageAutoCenter = true;
+            cuiButton1.ImageExpand = new Point(5, 5);
+            cuiButton1.ImageOffset = new Point(0, 0);
+            cuiButton1.Location = new Point(0, 0);
+            cuiButton1.Name = "cuiButton1";
+            cuiButton1.NormalBackground = SystemColors.ControlLight;
+            cuiButton1.NormalForeColor = Color.Black;
+            cuiButton1.NormalImageTint = Color.White;
+            cuiButton1.NormalOutline = Color.FromArgb(64, 128, 128, 128);
+            cuiButton1.OutlineThickness = 1F;
+            cuiButton1.PressedBackground = Color.WhiteSmoke;
+            cuiButton1.PressedForeColor = Color.FromArgb(32, 32, 32);
+            cuiButton1.PressedImageTint = Color.White;
+            cuiButton1.PressedOutline = Color.FromArgb(64, 128, 128, 128);
+            cuiButton1.Rounding = new Padding(0, 5, 5, 0);
+            cuiButton1.Size = new Size(43, 39);
+            cuiButton1.TabIndex = 24;
+            cuiButton1.TextAlignment = StringAlignment.Center;
+            cuiButton1.TextOffset = new Point(0, 0);
+            // 
+            // cuiTextBox1
+            // 
+            cuiTextBox1.BackColor = Color.FromArgb(0, 0, 0, 0);
+            cuiTextBox1.BackgroundColor = Color.White;
+            cuiTextBox1.BorderColor = Color.Empty;
+            cuiTextBox1.Content = "";
+            cuiTextBox1.FocusBackgroundColor = Color.White;
+            cuiTextBox1.FocusBorderColor = Color.Empty;
+            cuiTextBox1.FocusImageTint = Color.White;
+            cuiTextBox1.Font = new Font("Microsoft Sans Serif", 9.5F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            cuiTextBox1.ForeColor = Color.Gray;
+            cuiTextBox1.Image = null;
+            cuiTextBox1.ImageExpand = new Point(0, 0);
+            cuiTextBox1.ImageOffset = new Point(0, 0);
+            cuiTextBox1.Location = new Point(38, 1);
+            cuiTextBox1.Margin = new Padding(4);
+            cuiTextBox1.Multiline = false;
+            cuiTextBox1.Name = "cuiTextBox1";
+            cuiTextBox1.NormalImageTint = Color.White;
+            cuiTextBox1.Padding = new Padding(18, 8, 18, 0);
+            cuiTextBox1.PasswordChar = false;
+            cuiTextBox1.PlaceholderColor = Color.Gray;
+            cuiTextBox1.PlaceholderText = "Search...";
+            cuiTextBox1.Rounding = new Padding(2);
+            cuiTextBox1.Size = new Size(333, 35);
+            cuiTextBox1.TabIndex = 23;
+            cuiTextBox1.TextOffset = new Size(0, 0);
+            cuiTextBox1.UnderlinedStyle = false;
+            // 
+            // panel1
+            // 
+            panel1.BackColor = SystemColors.ControlLight;
+            panel1.Controls.Add(cuiButton1);
+            panel1.Controls.Add(cuiTextBox1);
+            panel1.Location = new Point(378, 73);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(376, 40);
+            panel1.TabIndex = 64;
+            // 
             // receiptlogo
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(958, 646);
+            ClientSize = new Size(766, 489);
+            Controls.Add(panel1);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(ReceiptTotalPrice);
@@ -291,10 +364,12 @@
             Controls.Add(receiptInvoice);
             Controls.Add(receiptname);
             Controls.Add(BuyersOrderTable);
+            Margin = new Padding(2);
             Name = "receiptlogo";
             Text = "receipt";
             ((System.ComponentModel.ISupportInitialize)BuyersOrderTable).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            panel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -318,5 +393,8 @@
         private Label ReceiptTotalPrice;
         private Label label1;
         private Label label2;
+        private CuoreUI.Controls.cuiButton cuiButton1;
+        private CuoreUI.Controls.cuiTextBox cuiTextBox1;
+        private Panel panel1;
     }
 }
