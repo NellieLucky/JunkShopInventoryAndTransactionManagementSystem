@@ -342,6 +342,7 @@
             BuyerQtyTextBox.TabIndex = 54;
             BuyerQtyTextBox.TextOffset = new Size(0, 0);
             BuyerQtyTextBox.UnderlinedStyle = false;
+            BuyerQtyTextBox.ContentChanged += BuyerQtyTextBox_ContentChanged;
             // 
             // IdItem
             // 
@@ -352,7 +353,7 @@
             IdItem.Location = new Point(5, 72);
             IdItem.Margin = new Padding(4, 0, 4, 0);
             IdItem.Name = "IdItem";
-            IdItem.Size = new Size(91, 19);
+            IdItem.Size = new Size(79, 24);
             IdItem.TabIndex = 53;
             IdItem.Text = "Item Name";
             // 
