@@ -362,3 +362,12 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /JunkShopInventoryandTransactionSystem/obj/Debug/net8.0-windows/JunkShopInventoryandTransactionSystem.AssemblyInfo.cs
+
+# Ignore build artifacts
+bin/
+obj/
+*.exe
+*.dll
+*.pdb
+*.cache
+*.log

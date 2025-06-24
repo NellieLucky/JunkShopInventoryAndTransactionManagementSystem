@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using JunkShopInventoryandTransactionSystem.View;
+using JunkShopInventoryandTransactionSystem.View.LogInAuthFolder;
+using JunkShopInventoryandTransactionSystem.BackendFiles.UserSession;
+using static JunkShopInventoryandTransactionSystem.BackendFiles.UserSession.ForUser;
 
 namespace JunkShopInventoryandTransactionSystem
 {
@@ -22,12 +25,26 @@ namespace JunkShopInventoryandTransactionSystem
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            LogInPage loginPage = new LogInPage();
-            loginPage.Dock = DockStyle.Fill;
-            loginPage.TopLevel = false;
+            bool isManagementTableEmpty = ForUser.IsManagementTableEmpty();
+
             panel1.Controls.Clear();
-            panel1.Controls.Add(loginPage);
-            loginPage.Show();
+
+            if (isManagementTableEmpty)
+            {
+                AdminSignUpPage adminSignUpPage = new AdminSignUpPage();
+                adminSignUpPage.Dock = DockStyle.Fill;
+                adminSignUpPage.TopLevel = false;
+                panel1.Controls.Add(adminSignUpPage);
+                adminSignUpPage.Show();
+            }
+            else
+            {
+                EmployeeOrAdmin ChoosePage = new EmployeeOrAdmin();
+                ChoosePage.Dock = DockStyle.Fill;
+                ChoosePage.TopLevel = false;
+                panel1.Controls.Add(ChoosePage);
+                ChoosePage.Show();
+            }
         }
     }
 }
