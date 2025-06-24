@@ -48,12 +48,8 @@
             ReceiptTotalPrice = new Label();
             label1 = new Label();
             label2 = new Label();
-            cuiButton1 = new CuoreUI.Controls.cuiButton();
-            cuiTextBox1 = new CuoreUI.Controls.cuiTextBox();
-            panel1 = new Panel();
             ((System.ComponentModel.ISupportInitialize)BuyersOrderTable).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // BuyersOrderTable
@@ -270,89 +266,11 @@
             label2.TabIndex = 63;
             label2.Text = "Total Price";
             // 
-            // cuiButton1
-            // 
-            cuiButton1.BackColor = SystemColors.ControlLight;
-            cuiButton1.CheckButton = false;
-            cuiButton1.Checked = false;
-            cuiButton1.CheckedBackground = Color.FromArgb(255, 106, 0);
-            cuiButton1.CheckedForeColor = Color.White;
-            cuiButton1.CheckedImageTint = Color.White;
-            cuiButton1.CheckedOutline = Color.FromArgb(255, 106, 0);
-            cuiButton1.Content = "";
-            cuiButton1.DialogResult = DialogResult.None;
-            cuiButton1.Font = new Font("Microsoft Sans Serif", 9.75F);
-            cuiButton1.ForeColor = Color.Black;
-            cuiButton1.HoverBackground = Color.White;
-            cuiButton1.HoveredImageTint = Color.White;
-            cuiButton1.HoverForeColor = Color.Black;
-            cuiButton1.HoverOutline = Color.FromArgb(32, 128, 128, 128);
-            cuiButton1.Image = Properties.Resources.magnifying_glass;
-            cuiButton1.ImageAutoCenter = true;
-            cuiButton1.ImageExpand = new Point(5, 5);
-            cuiButton1.ImageOffset = new Point(0, 0);
-            cuiButton1.Location = new Point(0, 0);
-            cuiButton1.Name = "cuiButton1";
-            cuiButton1.NormalBackground = SystemColors.ControlLight;
-            cuiButton1.NormalForeColor = Color.Black;
-            cuiButton1.NormalImageTint = Color.White;
-            cuiButton1.NormalOutline = Color.FromArgb(64, 128, 128, 128);
-            cuiButton1.OutlineThickness = 1F;
-            cuiButton1.PressedBackground = Color.WhiteSmoke;
-            cuiButton1.PressedForeColor = Color.FromArgb(32, 32, 32);
-            cuiButton1.PressedImageTint = Color.White;
-            cuiButton1.PressedOutline = Color.FromArgb(64, 128, 128, 128);
-            cuiButton1.Rounding = new Padding(0, 5, 5, 0);
-            cuiButton1.Size = new Size(43, 39);
-            cuiButton1.TabIndex = 24;
-            cuiButton1.TextAlignment = StringAlignment.Center;
-            cuiButton1.TextOffset = new Point(0, 0);
-            // 
-            // cuiTextBox1
-            // 
-            cuiTextBox1.BackColor = Color.FromArgb(0, 0, 0, 0);
-            cuiTextBox1.BackgroundColor = Color.White;
-            cuiTextBox1.BorderColor = Color.Empty;
-            cuiTextBox1.Content = "";
-            cuiTextBox1.FocusBackgroundColor = Color.White;
-            cuiTextBox1.FocusBorderColor = Color.Empty;
-            cuiTextBox1.FocusImageTint = Color.White;
-            cuiTextBox1.Font = new Font("Microsoft Sans Serif", 9.5F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            cuiTextBox1.ForeColor = Color.Gray;
-            cuiTextBox1.Image = null;
-            cuiTextBox1.ImageExpand = new Point(0, 0);
-            cuiTextBox1.ImageOffset = new Point(0, 0);
-            cuiTextBox1.Location = new Point(38, 1);
-            cuiTextBox1.Margin = new Padding(4);
-            cuiTextBox1.Multiline = false;
-            cuiTextBox1.Name = "cuiTextBox1";
-            cuiTextBox1.NormalImageTint = Color.White;
-            cuiTextBox1.Padding = new Padding(18, 8, 18, 0);
-            cuiTextBox1.PasswordChar = false;
-            cuiTextBox1.PlaceholderColor = Color.Gray;
-            cuiTextBox1.PlaceholderText = "Search...";
-            cuiTextBox1.Rounding = new Padding(2);
-            cuiTextBox1.Size = new Size(333, 35);
-            cuiTextBox1.TabIndex = 23;
-            cuiTextBox1.TextOffset = new Size(0, 0);
-            cuiTextBox1.UnderlinedStyle = false;
-            // 
-            // panel1
-            // 
-            panel1.BackColor = SystemColors.ControlLight;
-            panel1.Controls.Add(cuiButton1);
-            panel1.Controls.Add(cuiTextBox1);
-            panel1.Location = new Point(378, 73);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(376, 40);
-            panel1.TabIndex = 64;
-            // 
             // receiptlogo
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(766, 489);
-            Controls.Add(panel1);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(ReceiptTotalPrice);
@@ -369,7 +287,6 @@
             Text = "receipt";
             ((System.ComponentModel.ISupportInitialize)BuyersOrderTable).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            panel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -393,8 +310,5 @@
         private Label ReceiptTotalPrice;
         private Label label1;
         private Label label2;
-        private CuoreUI.Controls.cuiButton cuiButton1;
-        private CuoreUI.Controls.cuiTextBox cuiTextBox1;
-        private Panel panel1;
     }
 }
