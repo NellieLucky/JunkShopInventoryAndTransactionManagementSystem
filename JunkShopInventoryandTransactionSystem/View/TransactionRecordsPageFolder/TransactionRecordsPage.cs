@@ -71,7 +71,27 @@ namespace JunkShopInventoryandTransactionSystem.View.TransactionRecordsPageFolde
                 }
 
             }
+            if (clickedColumnName == "Receipt") 
+            {
+                // Show the receipt for the selected transaction
+                DialogResult result = MessageBox.Show(
+                    $"Are you sure you want to view receipt of transaction ID: {transacId}?",
+                    "Confirm Viewing of receipt",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+                if (result == DialogResult.Yes)
+                {
+                    string customerName = selectedRow.Cells["customerName"].Value?.ToString() ?? "";
 
+                    receiptlogo receipt = new receiptlogo(transacId, customerName);
+                    receipt.ShowDialog(); // Show the receipt form as a dialog
+                }
+                else
+                {
+                    Console.WriteLine("⚠️ Transaction not found or already deleted.");
+                }
+            }
         }
 
         private void SearchButton_Click_1(object sender, EventArgs e)

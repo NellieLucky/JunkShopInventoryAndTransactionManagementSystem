@@ -1,4 +1,6 @@
-﻿using System;
+﻿using JunkShopInventoryandTransactionSystem.BackendFiles.IndInvoice;
+using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,11 +14,23 @@ namespace JunkShopInventoryandTransactionSystem.View
 {
     public partial class receiptlogo : Form
     {
-        public receiptlogo()
+        public int TransacId { get; }
+        public string CustomerName { get; }
+
+        public receiptlogo(int transacId, string customerName)
         {
             InitializeComponent();
-        }
+            TransacId = transacId;
+            CustomerName = customerName;
 
+            string customerId = DataHelper.GetCustomerIdByName(CustomerName);
+
+            ReceiptCustName.Text = CustomerName;
+            ReceiptCustNo.Text = DataHelper.GetCustomerContactById(customerId);
+
+            // Load and display the receipt items
+            DataHelper.LoadReceiptItems(TransacId, BuyersOrderTable, label1, label2);
+        }
         private void BuyersOrderTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
