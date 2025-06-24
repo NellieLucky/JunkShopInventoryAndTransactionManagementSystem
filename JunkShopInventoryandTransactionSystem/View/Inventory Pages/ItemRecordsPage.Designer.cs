@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ItemRecordsPage));
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             SearchTextBox = new CuoreUI.Controls.cuiTextBox();
             SearchButton = new CuoreUI.Controls.cuiButton();
             panel1 = new Panel();
@@ -49,6 +49,7 @@
             SellingPrice = new DataGridViewTextBoxColumn();
             Edit = new DataGridViewImageColumn();
             Delete = new DataGridViewImageColumn();
+            archiveState = new ComboBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)ItemRecordsTable).BeginInit();
             SuspendLayout();
@@ -189,14 +190,14 @@
             ItemRecordsTable.BackgroundColor = Color.White;
             ItemRecordsTable.CellBorderStyle = DataGridViewCellBorderStyle.SunkenHorizontal;
             ItemRecordsTable.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = Color.FromArgb(163, 244, 215);
-            dataGridViewCellStyle6.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle6.ForeColor = Color.Black;
-            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(163, 244, 215);
-            dataGridViewCellStyle6.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
-            ItemRecordsTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(163, 244, 215);
+            dataGridViewCellStyle1.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(163, 244, 215);
+            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            ItemRecordsTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             ItemRecordsTable.ColumnHeadersHeight = 60;
             ItemRecordsTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             ItemRecordsTable.Columns.AddRange(new DataGridViewColumn[] { ItemID, ItemName, Category, QtyType, Quantity, BuyingPrice, SellingPrice, Edit, Delete });
@@ -206,20 +207,20 @@
             ItemRecordsTable.Location = new Point(14, 82);
             ItemRecordsTable.Name = "ItemRecordsTable";
             ItemRecordsTable.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle9.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
-            ItemRecordsTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            ItemRecordsTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             ItemRecordsTable.RowHeadersVisible = false;
             ItemRecordsTable.RowHeadersWidth = 50;
-            dataGridViewCellStyle10.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle10.ForeColor = Color.Black;
-            dataGridViewCellStyle10.SelectionBackColor = Color.FromArgb(0, 157, 209);
-            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.True;
-            ItemRecordsTable.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle5.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle5.ForeColor = Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(0, 157, 209);
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            ItemRecordsTable.RowsDefaultCellStyle = dataGridViewCellStyle5;
             ItemRecordsTable.RowTemplate.Height = 50;
             ItemRecordsTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             ItemRecordsTable.Size = new Size(1056, 538);
@@ -282,10 +283,10 @@
             // 
             // Edit
             // 
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.NullValue = resources.GetObject("dataGridViewCellStyle7.NullValue");
-            dataGridViewCellStyle7.Padding = new Padding(10);
-            Edit.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.NullValue = resources.GetObject("dataGridViewCellStyle2.NullValue");
+            dataGridViewCellStyle2.Padding = new Padding(10);
+            Edit.DefaultCellStyle = dataGridViewCellStyle2;
             Edit.Description = "Edit";
             Edit.FillWeight = 5.618882F;
             Edit.HeaderText = "Edit";
@@ -298,10 +299,10 @@
             // 
             // Delete
             // 
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.NullValue = resources.GetObject("dataGridViewCellStyle8.NullValue");
-            dataGridViewCellStyle8.Padding = new Padding(10);
-            Delete.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.NullValue = resources.GetObject("dataGridViewCellStyle3.NullValue");
+            dataGridViewCellStyle3.Padding = new Padding(10);
+            Delete.DefaultCellStyle = dataGridViewCellStyle3;
             Delete.Description = "Delete";
             Delete.FillWeight = 5.618882F;
             Delete.HeaderText = "Delete";
@@ -312,10 +313,21 @@
             Delete.Resizable = DataGridViewTriState.False;
             Delete.Width = 60;
             // 
+            // archiveState
+            // 
+            archiveState.DropDownStyle = ComboBoxStyle.DropDownList;
+            archiveState.FormattingEnabled = true;
+            archiveState.Items.AddRange(new object[] { "Non-archived", "Archived Items" });
+            archiveState.Location = new Point(374, 29);
+            archiveState.Name = "archiveState";
+            archiveState.Size = new Size(151, 28);
+            archiveState.TabIndex = 30;
+            // 
             // ItemRecordsPage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(archiveState);
             Controls.Add(ItemRecordsTable);
             Controls.Add(DashboardTitlePage);
             Controls.Add(AddItemButton);
@@ -344,5 +356,6 @@
         private DataGridViewTextBoxColumn SellingPrice;
         private DataGridViewImageColumn Edit;
         private DataGridViewImageColumn Delete;
+        private ComboBox archiveState;
     }
 }
