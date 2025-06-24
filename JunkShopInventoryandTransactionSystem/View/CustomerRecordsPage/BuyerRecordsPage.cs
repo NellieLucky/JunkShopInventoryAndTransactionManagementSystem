@@ -27,7 +27,7 @@ namespace JunkShopInventoryandTransactionSystem.View.CustomerRecordsPage
             var userInfo = ForUser.GetUserInfo(UserSession.UserId);
             if (userInfo.Role == "Employee")
             {
-                dataGridView1.Columns["CustomerDelete"].Visible = false; //Change dataGridView1 to actual name of grid view
+                BuyerRecordsTable.Columns["CustomerDelete"].Visible = false; //Change dataGridView1 to actual name of grid view
             }
         }
 

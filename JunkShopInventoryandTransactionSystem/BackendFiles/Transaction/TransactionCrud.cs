@@ -275,6 +275,37 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Crud
 
     public class TransactionDelete : BaseRepository
     {
+        public bool ArchiveTransaction(int transacId)
+        {
+            using (SqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                using (var transaction = conn.BeginTransaction())
+                {
+                    try
+                    {
+                        // Archive the transaction only (no inventory reversion)
+                        string archiveQuery = "UPDATE Transactions SET isArchived = 1 WHERE transacId = @transacId";
+                        using (var cmd = new SqlCommand(archiveQuery, conn, transaction))
+                        {
+                            cmd.Parameters.AddWithValue("@transacId", transacId);
+                            cmd.ExecuteNonQuery();
+                        }
+
+                        transaction.Commit();
+                        return true;
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        Console.WriteLine("❌ Error archiving transaction: " + ex.Message);
+                        throw new Exception("Failed to archive transaction.", ex);
+                    }
+                }
+            }
+        }
+
+
         //public bool DeleteTransaction(int transacId)
         //{
         //    using (SqlConnection conn = GetConnection())
@@ -304,77 +335,80 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Crud
         //    }
         //}
 
-        public bool ArchiveTransaction(int transacId)
-        {
-            using (SqlConnection conn = GetConnection())
-            {
-                conn.Open();
-                using (var transaction = conn.BeginTransaction())
-                {
-                    try
-                    {
-                        // 1. Get transaction type (Buyer/Seller)
-                        string getTypeQuery = "SELECT customerType FROM Transactions WHERE transacId = @transacId";
-                        string customerType = "";
-                        using (var cmd = new SqlCommand(getTypeQuery, conn, transaction))
-                        {
-                            cmd.Parameters.AddWithValue("@transacId", transacId);
-                            var result = cmd.ExecuteScalar();
-                            if (result == null)
-                                throw new Exception("Transaction not found.");
-                            customerType = result?.ToString() ?? string.Empty;
-                        }
+        // Uncomment this method if you want to revert inventory changes when archiving a transaction
+        // Note: This method is commented out because it may not be needed in the current context.
 
-                        // 2. Get all items in the transaction
-                        string getItemsQuery = "SELECT itemId, quantity FROM TransactionItems WHERE transactionId = @transacId";
-                        var items = new List<(int itemId, int quantity)>();
-                        using (var cmd = new SqlCommand(getItemsQuery, conn, transaction))
-                        {
-                            cmd.Parameters.AddWithValue("@transacId", transacId);
-                            using (var reader = cmd.ExecuteReader())
-                            {
-                                while (reader.Read())
-                                {
-                                    items.Add((reader.GetInt32(0), reader.GetInt32(1)));
-                                }
-                            }
-                        }
+        //public bool ArchiveTransaction(int transacId)
+        //{
+        //    using (SqlConnection conn = GetConnection())
+        //    {
+        //        conn.Open();
+        //        using (var transaction = conn.BeginTransaction())
+        //        {
+        //            try
+        //            {
+        //                // 1. Get transaction type (Buyer/Seller)
+        //                string getTypeQuery = "SELECT customerType FROM Transactions WHERE transacId = @transacId";
+        //                string customerType = "";
+        //                using (var cmd = new SqlCommand(getTypeQuery, conn, transaction))
+        //                {
+        //                    cmd.Parameters.AddWithValue("@transacId", transacId);
+        //                    var result = cmd.ExecuteScalar();
+        //                    if (result == null)
+        //                        throw new Exception("Transaction not found.");
+        //                    customerType = result?.ToString() ?? string.Empty;
+        //                }
 
-                        // 3. Revert inventory changes
-                        foreach (var (itemId, quantity) in items)
-                        {
-                            string updateInventoryQuery = @"
-                        UPDATE Inventory
-                        SET itemQuantity = itemQuantity " +
-                                (customerType == "Buyer" ? "+" : "-") + " @quantity " +
-                                "WHERE itemId = @itemId";
-                            using (var cmd = new SqlCommand(updateInventoryQuery, conn, transaction))
-                            {
-                                cmd.Parameters.AddWithValue("@quantity", quantity);
-                                cmd.Parameters.AddWithValue("@itemId", itemId);
-                                cmd.ExecuteNonQuery();
-                            }
-                        }
+        //                // 2. Get all items in the transaction
+        //                string getItemsQuery = "SELECT itemId, quantity FROM TransactionItems WHERE transactionId = @transacId";
+        //                var items = new List<(int itemId, int quantity)>();
+        //                using (var cmd = new SqlCommand(getItemsQuery, conn, transaction))
+        //                {
+        //                    cmd.Parameters.AddWithValue("@transacId", transacId);
+        //                    using (var reader = cmd.ExecuteReader())
+        //                    {
+        //                        while (reader.Read())
+        //                        {
+        //                            items.Add((reader.GetInt32(0), reader.GetInt32(1)));
+        //                        }
+        //                    }
+        //                }
 
-                        // 4. Archive the transaction
-                        string archiveQuery = "UPDATE Transactions SET isArchived = 1 WHERE transacId = @transacId";
-                        using (var cmd = new SqlCommand(archiveQuery, conn, transaction))
-                        {
-                            cmd.Parameters.AddWithValue("@transacId", transacId);
-                            cmd.ExecuteNonQuery();
-                        }
+        //                // 3. Revert inventory changes
+        //                foreach (var (itemId, quantity) in items)
+        //                {
+        //                    string updateInventoryQuery = @"
+        //                UPDATE Inventory
+        //                SET itemQuantity = itemQuantity " +
+        //                        (customerType == "Buyer" ? "+" : "-") + " @quantity " +
+        //                        "WHERE itemId = @itemId";
+        //                    using (var cmd = new SqlCommand(updateInventoryQuery, conn, transaction))
+        //                    {
+        //                        cmd.Parameters.AddWithValue("@quantity", quantity);
+        //                        cmd.Parameters.AddWithValue("@itemId", itemId);
+        //                        cmd.ExecuteNonQuery();
+        //                    }
+        //                }
 
-                        transaction.Commit();
-                        return true;
-                    }
-                    catch (Exception ex)
-                    {
-                        transaction.Rollback();
-                        Console.WriteLine("❌ Error archiving transaction: " + ex.Message);
-                        throw new Exception("Failed to archive transaction and revert inventory.", ex);
-                    }
-                }
-            }
-        }
+        //                // 4. Archive the transaction
+        //                string archiveQuery = "UPDATE Transactions SET isArchived = 1 WHERE transacId = @transacId";
+        //                using (var cmd = new SqlCommand(archiveQuery, conn, transaction))
+        //                {
+        //                    cmd.Parameters.AddWithValue("@transacId", transacId);
+        //                    cmd.ExecuteNonQuery();
+        //                }
+
+        //                transaction.Commit();
+        //                return true;
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                transaction.Rollback();
+        //                Console.WriteLine("❌ Error archiving transaction: " + ex.Message);
+        //                throw new Exception("Failed to archive transaction and revert inventory.", ex);
+        //            }
+        //        }
+        //    }
+        //}
     }
 }

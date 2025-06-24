@@ -17,6 +17,7 @@ namespace JunkShopInventoryandTransactionSystem.View.DashBoardPageFolder
         {
             InitializeComponent();
             LoadDashboardCounts();
+            LoadLowStockItems();
         }
 
         private void LoadDashboardCounts()
@@ -42,9 +43,27 @@ namespace JunkShopInventoryandTransactionSystem.View.DashBoardPageFolder
             }
         }
 
-        private void label5_Click(object sender, EventArgs e)
+        private void LoadLowStockItems()
         {
+            try
+            {
+                var repo = new InventoryRepository();
+                var lowStockItems = repo.GetLowStockItems();
 
+                LowStocksTable.Rows.Clear();
+                foreach (var item in lowStockItems)
+                {
+                    LowStocksTable.Rows.Add(item.itemName, item.itemQuantity);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"Error loading low stock items: {ex.Message}",
+                    "Low Stock Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
         }
     }
 }

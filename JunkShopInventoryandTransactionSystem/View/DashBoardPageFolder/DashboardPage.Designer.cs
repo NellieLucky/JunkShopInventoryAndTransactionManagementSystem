@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             DashboardTitlePage = new Label();
             FromDate = new CodeeloUI.Controls.CodeeloDateTimePicker();
             customButton = new CuoreUI.Controls.cuiButton();
@@ -56,14 +56,14 @@
             label3 = new Label();
             label4 = new Label();
             cuiPictureBox2 = new CuoreUI.Controls.cuiPictureBox();
-            cuiChartLine1 = new CuoreUI.Controls.Charts.cuiChartLine();
+            GrossRevenueChartLine = new CuoreUI.Controls.Charts.cuiChartLine();
             cuiButton5 = new CuoreUI.Controls.cuiButton();
             panel1 = new Panel();
             label11 = new Label();
             panel2 = new Panel();
-            dataGridView1 = new DataGridView();
+            LowStocksTable = new DataGridView();
             Item = new DataGridViewTextBoxColumn();
-            Weight = new DataGridViewTextBoxColumn();
+            Quantity = new DataGridViewTextBoxColumn();
             label12 = new Label();
             panel3 = new Panel();
             materialDivider4 = new MaterialSkin.Controls.MaterialDivider();
@@ -93,7 +93,7 @@
             cuiPanel2.SuspendLayout();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)LowStocksTable).BeginInit();
             panel3.SuspendLayout();
             SuspendLayout();
             // 
@@ -502,7 +502,6 @@
             label5.Size = new Size(103, 24);
             label5.TabIndex = 8;
             label5.Text = "0888888";
-            label5.Click += label5_Click;
             // 
             // cuiPictureBox4
             // 
@@ -589,37 +588,70 @@
             cuiPictureBox2.Size = new Size(59, 53);
             cuiPictureBox2.TabIndex = 3;
             // 
-            // cuiChartLine1
+            // GrossRevenueChartLine
             // 
-            cuiChartLine1.AutoMaxValue = false;
-            cuiChartLine1.AxisColor = Color.Gray;
-            cuiChartLine1.BackColor = Color.White;
-            cuiChartLine1.ChartLineColor = Color.FromArgb(1, 55, 125);
-            cuiChartLine1.ChartPadding = 40;
-            cuiChartLine1.DataPoints = new float[]
+            GrossRevenueChartLine.AutoMaxValue = false;
+            GrossRevenueChartLine.AxisColor = Color.Gray;
+            GrossRevenueChartLine.BackColor = Color.White;
+            GrossRevenueChartLine.ChartLineColor = Color.FromArgb(1, 55, 125);
+            GrossRevenueChartLine.ChartPadding = 35;
+            GrossRevenueChartLine.CustomXAxis = new string[]
+    {
+    "1  ",
+    "2  ",
+    "3  ",
+    "4  ",
+    "5  ",
+    "6  ",
+    "7  ",
+    "8  ",
+    "9  ",
+    "10  ",
+    "11  ",
+    "12  ",
+    "13  ",
+    "14  ",
+    "15  ",
+    "16  ",
+    "17  ",
+    "18  ",
+    "19  ",
+    "20  ",
+    "21  ",
+    "22  ",
+    "23  ",
+    "24  ",
+    "25  ",
+    "26  ",
+    "27  ",
+    "28  ",
+    "29  ",
+    "30",
+    "31"
+    };
+            GrossRevenueChartLine.DataPoints = new float[]
     {
     100F,
     90F,
     80F,
     75F,
-    70F,
     65F,
     60F,
-    50F
+    0F
     };
-            cuiChartLine1.DayColor = Color.Black;
-            cuiChartLine1.Font = new Font("Microsoft YaHei UI", 8.25F);
-            cuiChartLine1.GradientBackground = true;
-            cuiChartLine1.Location = new Point(4, 61);
-            cuiChartLine1.Margin = new Padding(4, 5, 4, 5);
-            cuiChartLine1.MaxValue = 100F;
-            cuiChartLine1.Name = "cuiChartLine1";
-            cuiChartLine1.PointColor = Color.FromArgb(1, 55, 125);
-            cuiChartLine1.ShortDates = true;
-            cuiChartLine1.Size = new Size(722, 249);
-            cuiChartLine1.TabIndex = 18;
-            cuiChartLine1.UseBezier = false;
-            cuiChartLine1.UsePercent = false;
+            GrossRevenueChartLine.DayColor = Color.Black;
+            GrossRevenueChartLine.Font = new Font("Microsoft YaHei UI", 6F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            GrossRevenueChartLine.GradientBackground = true;
+            GrossRevenueChartLine.Location = new Point(3, 41);
+            GrossRevenueChartLine.Margin = new Padding(0);
+            GrossRevenueChartLine.MaxValue = 10000F;
+            GrossRevenueChartLine.Name = "GrossRevenueChartLine";
+            GrossRevenueChartLine.PointColor = Color.FromArgb(1, 55, 125);
+            GrossRevenueChartLine.ShortDates = true;
+            GrossRevenueChartLine.Size = new Size(1022, 274);
+            GrossRevenueChartLine.TabIndex = 18;
+            GrossRevenueChartLine.UseBezier = false;
+            GrossRevenueChartLine.UsePercent = false;
             // 
             // cuiButton5
             // 
@@ -662,10 +694,10 @@
             // 
             panel1.BackColor = Color.White;
             panel1.Controls.Add(label11);
-            panel1.Controls.Add(cuiChartLine1);
+            panel1.Controls.Add(GrossRevenueChartLine);
             panel1.Location = new Point(26, 237);
             panel1.Name = "panel1";
-            panel1.Size = new Size(730, 315);
+            panel1.Size = new Size(1025, 315);
             panel1.TabIndex = 21;
             // 
             // label11
@@ -683,47 +715,47 @@
             // panel2
             // 
             panel2.BackColor = Color.White;
-            panel2.Controls.Add(dataGridView1);
+            panel2.Controls.Add(LowStocksTable);
             panel2.Controls.Add(label12);
             panel2.Location = new Point(25, 571);
             panel2.Name = "panel2";
-            panel2.Size = new Size(728, 208);
+            panel2.Size = new Size(477, 208);
             panel2.TabIndex = 22;
             // 
-            // dataGridView1
+            // LowStocksTable
             // 
-            dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.AllowUserToResizeColumns = false;
-            dataGridView1.AllowUserToResizeRows = false;
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.BackgroundColor = Color.FromArgb(227, 244, 238);
-            dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.FromArgb(38, 177, 112);
-            dataGridViewCellStyle3.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(0, 64, 0);
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Item, Weight });
-            dataGridView1.EnableHeadersVisualStyles = false;
-            dataGridView1.GridColor = SystemColors.Info;
-            dataGridView1.Location = new Point(25, 46);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            dataGridView1.RowHeadersVisible = false;
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(680, 146);
-            dataGridView1.TabIndex = 21;
+            LowStocksTable.AllowUserToDeleteRows = false;
+            LowStocksTable.AllowUserToResizeColumns = false;
+            LowStocksTable.AllowUserToResizeRows = false;
+            LowStocksTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            LowStocksTable.BackgroundColor = Color.FromArgb(227, 244, 238);
+            LowStocksTable.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(38, 177, 112);
+            dataGridViewCellStyle5.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle5.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(0, 64, 0);
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            LowStocksTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            LowStocksTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            LowStocksTable.Columns.AddRange(new DataGridViewColumn[] { Item, Quantity });
+            LowStocksTable.EnableHeadersVisualStyles = false;
+            LowStocksTable.GridColor = SystemColors.Info;
+            LowStocksTable.Location = new Point(25, 46);
+            LowStocksTable.Name = "LowStocksTable";
+            LowStocksTable.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            LowStocksTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            LowStocksTable.RowHeadersVisible = false;
+            LowStocksTable.RowHeadersWidth = 51;
+            LowStocksTable.Size = new Size(424, 146);
+            LowStocksTable.TabIndex = 21;
             // 
             // Item
             // 
@@ -732,11 +764,11 @@
             Item.MinimumWidth = 6;
             Item.Name = "Item";
             // 
-            // Weight
+            // Quantity
             // 
-            Weight.HeaderText = "Weight";
-            Weight.MinimumWidth = 6;
-            Weight.Name = "Weight";
+            Quantity.HeaderText = "Quantity";
+            Quantity.MinimumWidth = 6;
+            Quantity.Name = "Quantity";
             // 
             // label12
             // 
@@ -773,9 +805,9 @@
             panel3.Controls.Add(cuiPictureBox6);
             panel3.Controls.Add(cuiPictureBox5);
             panel3.Controls.Add(label13);
-            panel3.Location = new Point(764, 238);
+            panel3.Location = new Point(520, 571);
             panel3.Name = "panel3";
-            panel3.Size = new Size(295, 541);
+            panel3.Size = new Size(532, 208);
             panel3.TabIndex = 23;
             // 
             // materialDivider4
@@ -786,7 +818,7 @@
             materialDivider4.Location = new Point(3, 420);
             materialDivider4.MouseState = MaterialSkin.MouseState.HOVER;
             materialDivider4.Name = "materialDivider4";
-            materialDivider4.Size = new Size(289, 1);
+            materialDivider4.Size = new Size(0, 0);
             materialDivider4.TabIndex = 39;
             materialDivider4.Text = "materialDivider4";
             // 
@@ -798,7 +830,7 @@
             materialDivider3.Location = new Point(6, 333);
             materialDivider3.MouseState = MaterialSkin.MouseState.HOVER;
             materialDivider3.Name = "materialDivider3";
-            materialDivider3.Size = new Size(289, 1);
+            materialDivider3.Size = new Size(0, 0);
             materialDivider3.TabIndex = 38;
             materialDivider3.Text = "materialDivider3";
             // 
@@ -808,7 +840,7 @@
             NumOfEmployees.BackColor = Color.FromArgb(0, 0, 0, 0);
             NumOfEmployees.Font = new Font("Arial", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point, 0);
             NumOfEmployees.ForeColor = Color.DimGray;
-            NumOfEmployees.Location = new Point(85, 469);
+            NumOfEmployees.Location = new Point(380, 85);
             NumOfEmployees.MaximumSize = new Size(135, 24);
             NumOfEmployees.Name = "NumOfEmployees";
             NumOfEmployees.Size = new Size(25, 24);
@@ -821,7 +853,7 @@
             NumOfItems.BackColor = Color.FromArgb(0, 0, 0, 0);
             NumOfItems.Font = new Font("Arial", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point, 0);
             NumOfItems.ForeColor = Color.DimGray;
-            NumOfItems.Location = new Point(85, 379);
+            NumOfItems.Location = new Point(238, 166);
             NumOfItems.MaximumSize = new Size(135, 24);
             NumOfItems.Name = "NumOfItems";
             NumOfItems.Size = new Size(25, 24);
@@ -834,7 +866,7 @@
             NumofCategories.BackColor = Color.FromArgb(0, 0, 0, 0);
             NumofCategories.Font = new Font("Arial", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point, 0);
             NumofCategories.ForeColor = Color.DimGray;
-            NumofCategories.Location = new Point(85, 290);
+            NumofCategories.Location = new Point(66, 166);
             NumofCategories.MaximumSize = new Size(135, 24);
             NumofCategories.Name = "NumofCategories";
             NumofCategories.Size = new Size(25, 24);
@@ -847,7 +879,7 @@
             NumOfBuyers.BackColor = Color.FromArgb(0, 0, 0, 0);
             NumOfBuyers.Font = new Font("Arial", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point, 0);
             NumOfBuyers.ForeColor = Color.DimGray;
-            NumOfBuyers.Location = new Point(84, 201);
+            NumOfBuyers.Location = new Point(243, 85);
             NumOfBuyers.MaximumSize = new Size(135, 24);
             NumOfBuyers.Name = "NumOfBuyers";
             NumOfBuyers.Size = new Size(25, 24);
@@ -860,7 +892,7 @@
             NumOfSellers.BackColor = Color.FromArgb(0, 0, 0, 0);
             NumOfSellers.Font = new Font("Arial", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point, 0);
             NumOfSellers.ForeColor = Color.DimGray;
-            NumOfSellers.Location = new Point(78, 102);
+            NumOfSellers.Location = new Point(61, 85);
             NumOfSellers.MaximumSize = new Size(135, 24);
             NumOfSellers.Name = "NumOfSellers";
             NumOfSellers.Size = new Size(25, 24);
@@ -873,7 +905,7 @@
             label18.BackColor = Color.FromArgb(0, 0, 0, 0);
             label18.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label18.ForeColor = Color.Black;
-            label18.Location = new Point(85, 440);
+            label18.Location = new Point(378, 64);
             label18.Name = "label18";
             label18.Size = new Size(94, 19);
             label18.TabIndex = 32;
@@ -886,14 +918,14 @@
             cuiPictureBox9.BackgroundImageLayout = ImageLayout.Zoom;
             cuiPictureBox9.Content = null;
             cuiPictureBox9.ImageTint = Color.White;
-            cuiPictureBox9.Location = new Point(19, 440);
+            cuiPictureBox9.Location = new Point(336, 74);
             cuiPictureBox9.Margin = new Padding(4, 5, 4, 5);
             cuiPictureBox9.Name = "cuiPictureBox9";
             cuiPictureBox9.OutlineThickness = 1F;
             cuiPictureBox9.PanelOutlineColor = Color.Empty;
             cuiPictureBox9.Rotation = 0;
             cuiPictureBox9.Rounding = new Padding(8);
-            cuiPictureBox9.Size = new Size(59, 53);
+            cuiPictureBox9.Size = new Size(35, 35);
             cuiPictureBox9.TabIndex = 31;
             // 
             // label17
@@ -902,7 +934,7 @@
             label17.BackColor = Color.FromArgb(0, 0, 0, 0);
             label17.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label17.ForeColor = Color.Black;
-            label17.Location = new Point(85, 350);
+            label17.Location = new Point(238, 147);
             label17.Name = "label17";
             label17.Size = new Size(51, 19);
             label17.TabIndex = 30;
@@ -915,14 +947,14 @@
             cuiPictureBox8.BackgroundImageLayout = ImageLayout.Zoom;
             cuiPictureBox8.Content = null;
             cuiPictureBox8.ImageTint = Color.White;
-            cuiPictureBox8.Location = new Point(19, 350);
+            cuiPictureBox8.Location = new Point(184, 147);
             cuiPictureBox8.Margin = new Padding(4, 5, 4, 5);
             cuiPictureBox8.Name = "cuiPictureBox8";
             cuiPictureBox8.OutlineThickness = 1F;
             cuiPictureBox8.PanelOutlineColor = Color.Empty;
             cuiPictureBox8.Rotation = 0;
             cuiPictureBox8.Rounding = new Padding(8);
-            cuiPictureBox8.Size = new Size(59, 53);
+            cuiPictureBox8.Size = new Size(35, 35);
             cuiPictureBox8.TabIndex = 29;
             // 
             // label16
@@ -931,7 +963,7 @@
             label16.BackColor = Color.FromArgb(0, 0, 0, 0);
             label16.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label16.ForeColor = Color.Black;
-            label16.Location = new Point(85, 261);
+            label16.Location = new Point(66, 147);
             label16.Name = "label16";
             label16.Size = new Size(94, 19);
             label16.TabIndex = 28;
@@ -943,7 +975,7 @@
             Buyers.BackColor = Color.FromArgb(0, 0, 0, 0);
             Buyers.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Buyers.ForeColor = Color.Black;
-            Buyers.Location = new Point(84, 172);
+            Buyers.Location = new Point(236, 64);
             Buyers.Name = "Buyers";
             Buyers.Size = new Size(65, 19);
             Buyers.TabIndex = 27;
@@ -955,7 +987,7 @@
             label14.BackColor = Color.FromArgb(0, 0, 0, 0);
             label14.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label14.ForeColor = Color.Black;
-            label14.Location = new Point(78, 73);
+            label14.Location = new Point(61, 64);
             label14.Name = "label14";
             label14.Size = new Size(62, 19);
             label14.TabIndex = 26;
@@ -965,7 +997,7 @@
             // 
             materialDivider2.BackColor = Color.Gray;
             materialDivider2.Depth = 0;
-            materialDivider2.Location = new Point(6, 242);
+            materialDivider2.Location = new Point(0, 239);
             materialDivider2.MouseState = MaterialSkin.MouseState.HOVER;
             materialDivider2.Name = "materialDivider2";
             materialDivider2.Size = new Size(289, 1);
@@ -977,10 +1009,10 @@
             materialDivider1.BackColor = Color.DarkGray;
             materialDivider1.Depth = 0;
             materialDivider1.ForeColor = Color.Black;
-            materialDivider1.Location = new Point(6, 152);
+            materialDivider1.Location = new Point(0, 124);
             materialDivider1.MouseState = MaterialSkin.MouseState.HOVER;
             materialDivider1.Name = "materialDivider1";
-            materialDivider1.Size = new Size(289, 1);
+            materialDivider1.Size = new Size(531, 2);
             materialDivider1.TabIndex = 24;
             materialDivider1.Text = "materialDivider1";
             // 
@@ -991,14 +1023,14 @@
             cuiPictureBox7.BackgroundImageLayout = ImageLayout.Zoom;
             cuiPictureBox7.Content = null;
             cuiPictureBox7.ImageTint = Color.White;
-            cuiPictureBox7.Location = new Point(18, 261);
+            cuiPictureBox7.Location = new Point(16, 147);
             cuiPictureBox7.Margin = new Padding(4, 5, 4, 5);
             cuiPictureBox7.Name = "cuiPictureBox7";
             cuiPictureBox7.OutlineThickness = 1F;
             cuiPictureBox7.PanelOutlineColor = Color.Empty;
             cuiPictureBox7.Rotation = 0;
             cuiPictureBox7.Rounding = new Padding(8);
-            cuiPictureBox7.Size = new Size(59, 53);
+            cuiPictureBox7.Size = new Size(35, 35);
             cuiPictureBox7.TabIndex = 23;
             // 
             // cuiPictureBox6
@@ -1008,14 +1040,14 @@
             cuiPictureBox6.BackgroundImageLayout = ImageLayout.Zoom;
             cuiPictureBox6.Content = null;
             cuiPictureBox6.ImageTint = Color.White;
-            cuiPictureBox6.Location = new Point(18, 172);
+            cuiPictureBox6.Location = new Point(194, 74);
             cuiPictureBox6.Margin = new Padding(4, 5, 4, 5);
             cuiPictureBox6.Name = "cuiPictureBox6";
             cuiPictureBox6.OutlineThickness = 1F;
             cuiPictureBox6.PanelOutlineColor = Color.Empty;
             cuiPictureBox6.Rotation = 0;
             cuiPictureBox6.Rounding = new Padding(8);
-            cuiPictureBox6.Size = new Size(59, 53);
+            cuiPictureBox6.Size = new Size(35, 35);
             cuiPictureBox6.TabIndex = 22;
             // 
             // cuiPictureBox5
@@ -1025,14 +1057,14 @@
             cuiPictureBox5.BackgroundImageLayout = ImageLayout.Zoom;
             cuiPictureBox5.Content = null;
             cuiPictureBox5.ImageTint = Color.White;
-            cuiPictureBox5.Location = new Point(19, 73);
+            cuiPictureBox5.Location = new Point(19, 74);
             cuiPictureBox5.Margin = new Padding(4, 5, 4, 5);
             cuiPictureBox5.Name = "cuiPictureBox5";
             cuiPictureBox5.OutlineThickness = 1F;
             cuiPictureBox5.PanelOutlineColor = Color.Empty;
             cuiPictureBox5.Rotation = 0;
             cuiPictureBox5.Rounding = new Padding(8);
-            cuiPictureBox5.Size = new Size(59, 53);
+            cuiPictureBox5.Size = new Size(35, 35);
             cuiPictureBox5.TabIndex = 21;
             // 
             // label13
@@ -1041,7 +1073,7 @@
             label13.BackColor = Color.FromArgb(0, 0, 0, 0);
             label13.Font = new Font("Arial", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label13.ForeColor = Color.FromArgb(126, 211, 72);
-            label13.Location = new Point(15, 13);
+            label13.Location = new Point(14, 16);
             label13.Name = "label13";
             label13.Size = new Size(177, 27);
             label13.TabIndex = 20;
@@ -1095,7 +1127,7 @@
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)LowStocksTable).EndInit();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             ResumeLayout(false);
@@ -1130,15 +1162,13 @@
         private Label label7;
         private Label label10;
         private CuoreUI.Controls.cuiPictureBox cuiPictureBox3;
-        private CuoreUI.Controls.Charts.cuiChartLine cuiChartLine1;
+        private CuoreUI.Controls.Charts.cuiChartLine GrossRevenueChartLine;
         private CuoreUI.Controls.cuiButton cuiButton5;
         private Panel panel1;
         private Label label11;
         private Panel panel2;
-        private DataGridView dataGridView1;
+        private DataGridView LowStocksTable;
         private Label label12;
-        private DataGridViewTextBoxColumn Item;
-        private DataGridViewTextBoxColumn Weight;
         private Panel panel3;
         private Label label13;
         private MaterialSkin.Controls.MaterialDivider materialDivider2;
@@ -1161,5 +1191,7 @@
         private Label NumOfEmployees;
         private MaterialSkin.Controls.MaterialDivider materialDivider4;
         private Label label24;
+        private DataGridViewTextBoxColumn Item;
+        private DataGridViewTextBoxColumn Quantity;
     }
 }

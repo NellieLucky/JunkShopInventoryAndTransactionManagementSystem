@@ -55,14 +55,14 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Dashboard
 
                     // Get Buyers Count (where customerType is 'Buyer' and not archived)
                     using (SqlCommand cmd = new SqlCommand(
-                        "SELECT COUNT(*) FROM Customer WHERE customerType = 'Buyer'", conn))
+                        "SELECT COUNT(*) FROM Customer WHERE customerType = 'Buyer' AND IsArchived = 0", conn))
                     {
                         buyers = (int)cmd.ExecuteScalar();
                     }
 
                     // Get Suppliers Count (where customerType is 'Seller' and not archived)
                     using (SqlCommand cmd = new SqlCommand(
-                        "SELECT COUNT(*) FROM Customer WHERE customerType = 'Seller'", conn))
+                        "SELECT COUNT(*) FROM Customer WHERE customerType = 'Seller' AND IsArchived = 0", conn))
                     {
                         sellers = (int)cmd.ExecuteScalar();
                     }
