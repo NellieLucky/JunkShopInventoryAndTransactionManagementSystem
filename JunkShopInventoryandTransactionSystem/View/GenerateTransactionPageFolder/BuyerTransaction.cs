@@ -1,4 +1,5 @@
 ﻿
+using JunkShopInventoryandTransactionSystem.View.InvoiceReceipt;
 using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud;
 using JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.BuyerLogic;
 // access the constructor model for transaction cart
@@ -21,6 +22,8 @@ namespace JunkShopInventoryandTransactionSystem.View.GenerateTransactionPageFold
     {
         // constructor for the cart item
         private List<CartItem> tempCart = new List<CartItem>();
+        private int _totalItems;
+        private decimal _totalPrice;
 
         public BuyerTransaction()
         {
@@ -87,21 +90,21 @@ namespace JunkShopInventoryandTransactionSystem.View.GenerateTransactionPageFold
         private void UpdateTransactionSummaryLabels()
         {
             // TotalItemsCounterLabel: counts the number of unique items (rows) in the grid
-            int totalItems = BuyersOrderTable.Rows.Count;
-            TotalItemsCounterLabel.Text = totalItems.ToString();
+            _totalItems = BuyersOrderTable.Rows.Count;
+            TotalItemsCounterLabel.Text = _totalItems.ToString();
 
-            decimal totalPrice = 0;
+            _totalPrice = 0;
             foreach (DataGridViewRow row in BuyersOrderTable.Rows)
             {
                 if (row.Cells[5].Value != null)
                 {
-                    totalPrice += Convert.ToDecimal(row.Cells[5].Value);
+                    _totalPrice += Convert.ToDecimal(row.Cells[5].Value);
                 }
             }
 
             // Formats the total price with commas and no decimals for better readability.
             // Example: 12500 becomes "₱12,500"
-            TotalPriceAmntCounterLabel.Text = "₱ " + totalPrice.ToString("N0");
+            TotalPriceAmntCounterLabel.Text = "₱ " + _totalPrice.ToString("N2");
         }
         // end of the code for updating the transaction summary labels
 
@@ -141,6 +144,16 @@ namespace JunkShopInventoryandTransactionSystem.View.GenerateTransactionPageFold
 
             if (finalized)
             {
+                //call receipt.cs here
+                var receiptForm = new receiptlogo(
+                    BuyersOrderTable, // <-- the actual DataGridView where items were added
+                    buyerName,
+                    buyerContact,
+                     _totalItems,
+                     _totalPrice
+                );
+                receiptForm.Show();
+
                 // the two widgets above will be cleared
                 BuyerItemComboBox.SelectedIndex = -1;
                 BuyerQtyTextBox.Content = string.Empty;
@@ -153,6 +166,9 @@ namespace JunkShopInventoryandTransactionSystem.View.GenerateTransactionPageFold
                 // clears the two widgets below
                 BuyerNameTextBox.Content = string.Empty;
                 BuyerContactTextBox.Content = string.Empty;
+
+                TotalItemsCounterLabel.Text = string.Empty;
+                TotalPriceAmntCounterLabel.Text = string.Empty;
 
                 MessageBox.Show("Transaction finalized successfully.");
             }

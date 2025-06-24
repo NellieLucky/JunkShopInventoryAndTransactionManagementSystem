@@ -1,4 +1,7 @@
-﻿using System;
+﻿using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Archiving;
+using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud;
+using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Delete;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,9 +10,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
-using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud;
-using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Archiving;
 
 namespace JunkShopInventoryandTransactionSystem.View.DeletionDialogs
 {
@@ -54,17 +54,18 @@ namespace JunkShopInventoryandTransactionSystem.View.DeletionDialogs
                 return;
             }
 
-            bool itemArchivingSuccess = ArchivingItemInInventory.HandleArchivingItem(itemId.Value, _targetDataGridView);
+            //calls the unarchiving backend
+            bool deletingSuccess = DeleteItemInInventory.HandleDeleteItem(itemId.Value, _targetDataGridView);
 
-            if (itemArchivingSuccess)
+            if (deletingSuccess)
             {
+                MessageBox.Show("Item successfully deleted.", "Deletion Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 // Closes the form
                 Close();
             }
             else
             {
-                // Handle validation errors inside HandleDeleteItem
-                MessageBox.Show("Failed to archive the item.", "Deletion Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Failed to delete the item. Please try again.", "Deletion Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

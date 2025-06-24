@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 // imports crud
+using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud;
 using JunkShopInventoryandTransactionSystem.BackendFiles.Category.Crud;
 
 namespace JunkShopInventoryandTransactionSystem.BackendFiles.Category.Delete
@@ -17,6 +18,10 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Category.Delete
             DataGridView targetDataGridView
             )
         {
+            // delete the items first before the actual category deletion
+            InventoryDelete deleteItems = new InventoryDelete();
+            deleteItems.DeleteItemsByCategory(categoryId);
+
             // --- If validation passes, proceed with adding the item ---
             CategoryDelete delete = new CategoryDelete();
             delete.DeleteCategory(categoryId);
@@ -26,7 +31,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Category.Delete
             // reload cat dashboard here
             if (targetDataGridView != null)
             {
-                Reload.ReloadCategory.LoadCategoryData(targetDataGridView);
+                Reload.ReloadCategory.LoadArchivedCategoryData(targetDataGridView);
             }
 
             return true; // Indicate that the operation was successful

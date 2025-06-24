@@ -1,5 +1,9 @@
 ﻿//imports the backend file ReloadInventory.cs
+using JunkShopInventoryandTransactionSystem.BackendFiles.Category.Reload;
+using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Archiving;
+using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Delete;
 using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Reload;
+using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Unarchive;
 using JunkShopInventoryandTransactionSystem.BackendFiles.UserSession;
 using JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel;
 using JunkShopInventoryandTransactionSystem.View.DeletionDialogs;
@@ -7,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.DirectoryServices.ActiveDirectory;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -27,31 +32,30 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
         {
             InitializeComponent();
 
+            archiveState.SelectedIndexChanged += ArchiveState_SelectedIndexChanged;
+            archiveState.SelectedIndex = 0; // triggers default load
+
             // Add these lines after InitializeComponent()
             SearchButton.Click += SearchButton_Click;
             SearchTextBox.ContentChanged += SearchTextBox_TextChanged; // Use ContentChanged instead of KeyPress
 
-            // Call the static LoadInventoryData method from ReloadInventory
-            // reads unarchived inventory data from the database and loads it into the DataGridView
-            ReloadInventory.LoadInventoryData(ItemRecordsTable);
-
-            /*
-            //Pangtest lang to if msgkakalaman
-            dataGridView1.Rows.Add("1", "Copper A", "Tanso", "PerWeight", "10", "100", "1");
-            dataGridView1.Rows.Add("1", "3F", "Batteries", "PerPiece", "10", "100", "1");
-            dataGridView1.Rows.Add("1", "Copper A", "Tanso", "PerWeight", "10", "100", "1");
-            dataGridView1.Rows.Add("1", "3F", "Batteries", "PerPiece", "10", "100", "1");
-            dataGridView1.Rows.Add("1", "Copper A", "Tanso", "PerWeight", "10", "100", "1");
-            dataGridView1.Rows.Add("1", "3F", "Batteries", "PerPiece", "10", "100", "1");
-            dataGridView1.Rows.Add("1", "Copper A", "Tanso", "PerWeight", "10", "100", "1");
-            dataGridView1.Rows.Add("1", "3F", "Batteries", "PerPiece", "10", "100", "1");
-            dataGridView1.Rows.Add("1", "Copper A", "Tanso", "PerWeight", "10", "100", "1");
-            dataGridView1.Rows.Add("1", "3F", "Batteries", "PerPiece", "10", "100", "1");
-            dataGridView1.Rows.Add("1", "Copper A", "Tanso", "PerWeight", "10", "100", "1");
-            dataGridView1.Rows.Add("1", "3F", "Batteries", "PerPiece", "10", "100", "1");
-            dataGridView1.Rows.Add("1", "Copper A", "Tanso", "PerWeight", "10", "100", "1");
-            dataGridView1.Rows.Add("1", "3F", "Batteries", "PerPiece", "10", "100", "1");
-            */
+                /*
+                //Pangtest lang to if msgkakalaman
+                dataGridView1.Rows.Add("1", "Copper A", "Tanso", "PerWeight", "10", "100", "1");
+                dataGridView1.Rows.Add("1", "3F", "Batteries", "PerPiece", "10", "100", "1");
+                dataGridView1.Rows.Add("1", "Copper A", "Tanso", "PerWeight", "10", "100", "1");
+                dataGridView1.Rows.Add("1", "3F", "Batteries", "PerPiece", "10", "100", "1");
+                dataGridView1.Rows.Add("1", "Copper A", "Tanso", "PerWeight", "10", "100", "1");
+                dataGridView1.Rows.Add("1", "3F", "Batteries", "PerPiece", "10", "100", "1");
+                dataGridView1.Rows.Add("1", "Copper A", "Tanso", "PerWeight", "10", "100", "1");
+                dataGridView1.Rows.Add("1", "3F", "Batteries", "PerPiece", "10", "100", "1");
+                dataGridView1.Rows.Add("1", "Copper A", "Tanso", "PerWeight", "10", "100", "1");
+                dataGridView1.Rows.Add("1", "3F", "Batteries", "PerPiece", "10", "100", "1");
+                dataGridView1.Rows.Add("1", "Copper A", "Tanso", "PerWeight", "10", "100", "1");
+                dataGridView1.Rows.Add("1", "3F", "Batteries", "PerPiece", "10", "100", "1");
+                dataGridView1.Rows.Add("1", "Copper A", "Tanso", "PerWeight", "10", "100", "1");
+                dataGridView1.Rows.Add("1", "3F", "Batteries", "PerPiece", "10", "100", "1");
+                */
 
             ItemRecordsTable.Columns["Edit"].HeaderText = ""; 
             ItemRecordsTable.Columns["Delete"].HeaderText = ""; // Set header text for Edit and Delete columns to empty
@@ -66,6 +70,18 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
 
 
                 AddItemButton.Visible = false;
+            }
+        }
+
+        private void ArchiveState_SelectedIndexChanged(object? sender, EventArgs e)
+        {
+            if (archiveState.SelectedIndex == 0)
+            {
+                ReloadInventory.LoadInventoryData(ItemRecordsTable);
+            }
+            else
+            {
+                ReloadInventory.LoadArchivedInventoryData(ItemRecordsTable);
             }
         }
 
@@ -130,28 +146,90 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
 
             if (clickedColumnName == "Edit")
             {
-                if (addEditInventoryItemDialogBox == null || addEditInventoryItemDialogBox.IsDisposed)
+                // check first if the archiveState is 0 or 1, if 0 then edit, if 1 then unarchive
+                if (archiveState.SelectedIndex == 0)
                 {
-                    string value = "Edit";
-                    addEditInventoryItemDialogBox = new AddEditInventoryItem(value, ItemRecordsTable, itemId);
-                    addEditInventoryItemDialogBox.Show();
+                    if (addEditInventoryItemDialogBox == null || addEditInventoryItemDialogBox.IsDisposed)
+                    {
+                        string value = "Edit";
+                        addEditInventoryItemDialogBox = new AddEditInventoryItem(value, ItemRecordsTable, itemId);
+                        addEditInventoryItemDialogBox.Show();
+                    }
+                    else
+                    {
+                        addEditInventoryItemDialogBox.Focus();
+                    }
                 }
                 else
                 {
-                    addEditInventoryItemDialogBox.Focus();
+                    // Confirmation message box with item ID
+                    DialogResult confirmResult = MessageBox.Show(
+                        $"Are you sure you want to unarchive this item?\n\nItem ID: {itemId}",
+                        "Confirm Unarchiving",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question
+                    );
+
+                    if (confirmResult == DialogResult.Yes)
+                    {
+                        // calls the unarchiving backend
+                        bool unarchivingSuccess = UnarchivingItemInInventory.HandleUnarchivingItem(itemId, ItemRecordsTable);
+
+                        if (unarchivingSuccess)
+                        {
+                            MessageBox.Show("Item successfully unarchived.", "Unarchive Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Failed to unarchive item. Please try again.", "Unarchive Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+
                 }
+
             }
             else if (clickedColumnName == "Delete")
             {
-                if (deleteItemDialogBox == null || deleteItemDialogBox.IsDisposed)
+                // check first if the archiveState is 0 or 1, if 0 then delete, if 1 then perma delete
+                if (archiveState.SelectedIndex == 0)
                 {
-                    deleteItemDialogBox = new DeleteItemDialogBox(itemId, ItemRecordsTable);
-                    deleteItemDialogBox.Show();
+                    // Confirmation message box with item ID
+                    DialogResult confirmResult = MessageBox.Show(
+                        $"Are you sure you want to archive this item?\n\nItem ID: {itemId}",
+                        "Confirm Archiving",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question
+                    );
+
+                    if (confirmResult == DialogResult.Yes)
+                    {
+                        bool itemArchivingSuccess = ArchivingItemInInventory.HandleArchivingItem(itemId, ItemRecordsTable);
+
+                        if (itemArchivingSuccess)
+                        {
+                            MessageBox.Show("Successfully archived the item.", "Successful Archiving", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Failed to archive the item.", "Archiving Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+
                 }
                 else
                 {
-                    deleteItemDialogBox.Focus();
+                    if (deleteItemDialogBox == null || deleteItemDialogBox.IsDisposed)
+                    {
+                        deleteItemDialogBox = new DeleteItemDialogBox(itemId, ItemRecordsTable);
+                        deleteItemDialogBox.Show();
+                    }
+                    else
+                    {
+                        deleteItemDialogBox.Focus();
+                    }
+
                 }
+
             }
         }
 

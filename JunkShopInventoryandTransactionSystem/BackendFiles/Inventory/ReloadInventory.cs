@@ -24,9 +24,9 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Reload
                     item.itemName,
                     item.itemCategoryName,
                     item.itemQtyType,
-                    item.itemQuantity,
-                    item.itemBuyingPrice,
-                    item.itemSellingPrice
+                    item.itemQuantity.ToString("N2"),
+                    item.itemBuyingPrice.ToString("N2"),
+                    item.itemSellingPrice.ToString("N2")
                 );
             }
         }   // end of LoadInventoryData method
@@ -48,9 +48,9 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Reload
                     item.itemName,
                     item.itemCategoryName,
                     item.itemQtyType,
-                    item.itemQuantity,
-                    item.itemBuyingPrice,
-                    item.itemSellingPrice
+                    item.itemQuantity.ToString("N2"),
+                    item.itemBuyingPrice.ToString("N2"),
+                    item.itemSellingPrice.ToString("N2")
                 );
             }
         }   // end of LoadArchivedInventoryData method

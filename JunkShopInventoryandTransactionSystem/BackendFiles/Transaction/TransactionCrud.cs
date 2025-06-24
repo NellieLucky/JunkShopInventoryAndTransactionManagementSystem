@@ -15,13 +15,16 @@ CREATE TABLE Transactions (
     employeeId INT NOT NULL,
     transacDate DATETIME NOT NULL DEFAULT GETDATE(),
     totalNumOfItems INT NOT NULL,
-    totalNumOfQty INT NOT NULL,
+    totalNumOfQty DECIMAL(18, 2) NOT NULL,
     totalAmount DECIMAL(18, 2) NOT NULL,
     customerType VARCHAR(10) NOT NULL CHECK (customerType IN ('Buyer', 'Seller')),
     isArchived BIT NOT NULL DEFAULT 0,
     FOREIGN KEY (customerId) REFERENCES Customer(customerId),  -- FK reference
     FOREIGN KEY (employeeId) REFERENCES Employees(empId)  -- FK reference
 );
+
+ALTER TABLE Transactions
+ALTER COLUMN totalNumOfQty DECIMAL(18, 2);
 
 CREATE TABLE TransactionItems (
     transactionId INT NOT NULL,
@@ -49,7 +52,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Crud
         public string employeeName { get; set; } = string.Empty;
         public DateTime transacDate { get; set; }
         public int totalNumOfItems { get; set; }
-        public int totalNumOfQty { get; set; }
+        public decimal totalNumOfQty { get; set; }
         public decimal totalAmount { get; set; }
         public string customerType { get; set; } = string.Empty;
         public bool isArchived { get; set; } = false;
@@ -60,9 +63,10 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Crud
             int customerId,
             string customerName,
             int employeeId,
+            string employeeName,
             DateTime transacDate,
             int totalNumOfItems,
-            int totalNumOfQty,
+            decimal totalNumOfQty, // ← changed here
             decimal totalAmount,
             string customerType,
             bool isArchived = false)
@@ -70,9 +74,10 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Crud
             this.customerId = customerId;
             this.customerName = customerName;
             this.employeeId = employeeId;
+            this.employeeName = employeeName;
             this.transacDate = transacDate;
             this.totalNumOfItems = totalNumOfItems;
-            this.totalNumOfQty = totalNumOfQty;
+            this.totalNumOfQty = totalNumOfQty; // ← updated type
             this.totalAmount = totalAmount;
             this.customerType = customerType;
             this.isArchived = isArchived;
@@ -83,9 +88,10 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Crud
             int customerId,
             string customerName,
             int employeeId,
+            string employeeName,
             DateTime transacDate,
             int totalNumOfItems,
-            int totalNumOfQty,
+            decimal totalNumOfQty, // ← changed here
             decimal totalAmount,
             string customerType,
             bool isArchived = false)
@@ -94,9 +100,10 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Crud
             this.customerId = customerId;
             this.customerName = customerName;
             this.employeeId = employeeId;
+            this.employeeName = employeeName;
             this.transacDate = transacDate;
             this.totalNumOfItems = totalNumOfItems;
-            this.totalNumOfQty = totalNumOfQty;
+            this.totalNumOfQty = totalNumOfQty; // ← updated type
             this.totalAmount = totalAmount;
             this.customerType = customerType;
             this.isArchived = isArchived;
@@ -106,7 +113,11 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Crud
     public abstract class BaseRepository
     {
         // Centralized connection string
-        protected readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\source\repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
+        // arnels string?
+        //protected readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\source\repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
+
+        //remo string
+        protected readonly string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
 
         protected SqlConnection GetConnection()
         {
@@ -157,7 +168,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Crud
                                     employeeName = reader["employeeName"]?.ToString() ?? string.Empty,
                                     transacDate = Convert.ToDateTime(reader["transacDate"]),
                                     totalNumOfItems = Convert.ToInt32(reader["totalNumOfItems"]),
-                                    totalNumOfQty = Convert.ToInt32(reader["totalNumOfQty"]),
+                                    totalNumOfQty = Convert.ToDecimal(reader["totalNumOfQty"]),
                                     totalAmount = Convert.ToDecimal(reader["totalAmount"]),
                                     customerType = reader["customerType"]?.ToString() ?? string.Empty
                                 };
@@ -189,7 +200,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Crud
             int customerId,
             int employeeId,
             int totalItems,
-            int totalQty,
+            decimal totalQty,
             decimal totalAmount,
             string customerType
         )
@@ -242,7 +253,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Crud
         }
 
         // New: Insert a single item into TransactionItems
-        public bool AddTransactionItem(int transactionId, int itemId, int quantity, decimal price)
+        public bool AddTransactionItem(int transactionId, int itemId, decimal quantity, decimal price)
         {
             using (SqlConnection conn = GetConnection())
             {

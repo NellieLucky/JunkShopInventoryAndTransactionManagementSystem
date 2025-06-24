@@ -33,7 +33,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.SellerL
             int itemId = passedItemId;
 
             string StrItemQty = passeditemQty.Trim();
-            int parsedItemQty;
+            decimal parsedItemQty;
 
             // --- Validation ---
             bool isValidInput = true;
@@ -46,7 +46,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.SellerL
             }
 
             // Integer validations using single TryParse
-            bool parsedQty = int.TryParse(StrItemQty, out parsedItemQty);
+            bool parsedQty = decimal.TryParse(StrItemQty, out parsedItemQty);
             if (!parsedQty || parsedItemQty <= 0)
             {
                 errorMessage += !parsedQty
@@ -54,9 +54,9 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.SellerL
                     : "Quantity must be greater than zero.\n";
                 isValidInput = false;
             }
-            else if (parsedItemQty > 9999) // Prevents more than 4 digits
+            else if (parsedItemQty > 9999m)
             {
-                errorMessage += "Quantity cannot exceed 6 digits (max: 9999).\n";
+                errorMessage += "Quantity cannot exceed 9999.\n"; // Adjusted message
                 isValidInput = false;
             }
 
@@ -121,7 +121,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.SellerL
 
             if (item != null)
             {
-                int exchangeQty = parsedItemQty;
+                decimal exchangeQty = parsedItemQty;
                 decimal exchangeAmount = exchangeQty * item.itemBuyingPrice;
 
                 targetDataGridView.Rows.Add(
@@ -238,9 +238,9 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.SellerL
             }
 
 
-                // calculate total items, total quantity, and total amount
-                int totalItems = tempCart.Count;
-            int totalQuantity = tempCart.Sum(item => item.Quantity);
+           // calculate total items, total quantity, and total amount
+            int totalItems = tempCart.Count;
+            decimal totalQuantity = tempCart.Sum(item => item.Quantity);
 
             decimal totalAmount = 0;
             // Loop through all rows and sum the Exchange Amount column (assumed to be at index 5)
@@ -276,6 +276,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.SellerL
 
             if (transactionId > 0)
             {
+                /*
                 // Insert each cart item into TransactionItems
                 foreach (var cartItem in tempCart)
                 {
@@ -291,6 +292,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.SellerL
                     }
                     writer.AddTransactionItem(transactionId, cartItem.ItemId, cartItem.Quantity, price);
                 }
+                */
 
                 MessageBox.Show("Transaction finalized successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return true;

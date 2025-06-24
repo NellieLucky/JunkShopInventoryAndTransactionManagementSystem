@@ -35,9 +35,9 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Add
 
             // where to store them after converting them
             // Declare converted integer variables with different names
-            int parsedItemQuantity;
-            int parsedItemBuyingPrice;
-            int parsedItemSellingPrice;
+            decimal parsedItemQuantity;
+            decimal parsedItemBuyingPrice;
+            decimal parsedItemSellingPrice;
 
             // --- Validation ---
             bool isValidInput = true;
@@ -99,30 +99,30 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Add
                 return false;
             }
 
-            // Integer validations using single TryParse
-            bool parsedQty = int.TryParse(STRitemQuantity, out parsedItemQuantity);
+            // Decimal validations using TryParse
+            bool parsedQty = decimal.TryParse(STRitemQuantity, out parsedItemQuantity);
             if (!parsedQty || parsedItemQuantity <= 0)
             {
                 errorMessage += !parsedQty
-                    ? "Invalid quantity entered. Please enter a whole number.\n"
+                    ? "Invalid quantity entered. Please enter a number.\n"
                     : "Quantity must be greater than zero.\n";
                 isValidInput = false;
             }
 
-            bool parsedBuying = int.TryParse(STRitemBuyingPrice, out parsedItemBuyingPrice);
+            bool parsedBuying = decimal.TryParse(STRitemBuyingPrice, out parsedItemBuyingPrice);
             if (!parsedBuying || parsedItemBuyingPrice < 0)
             {
                 errorMessage += !parsedBuying
-                    ? "Invalid buying price entered. Please enter a whole number.\n"
+                    ? "Invalid buying price entered. Please enter a number.\n"
                     : "Buying price cannot be negative.\n";
                 isValidInput = false;
             }
 
-            bool parsedSelling = int.TryParse(STRitemSellingPrice, out parsedItemSellingPrice);
+            bool parsedSelling = decimal.TryParse(STRitemSellingPrice, out parsedItemSellingPrice);
             if (!parsedSelling || parsedItemSellingPrice < 0)
             {
                 errorMessage += !parsedSelling
-                    ? "Invalid selling price entered. Please enter a whole number.\n"
+                    ? "Invalid selling price entered. Please enter a number.\n"
                     : "Selling price cannot be negative.\n";
                 isValidInput = false;
             }

@@ -1,4 +1,8 @@
 ﻿
+using JunkShopInventoryandTransactionSystem.BackendFiles.Category.Archiving;
+using JunkShopInventoryandTransactionSystem.BackendFiles.Category.Crud;
+using JunkShopInventoryandTransactionSystem.BackendFiles.Category.Delete;
+using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Delete;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,9 +12,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
-using JunkShopInventoryandTransactionSystem.BackendFiles.Category.Crud;
-using JunkShopInventoryandTransactionSystem.BackendFiles.Category.Archiving;
 
 namespace JunkShopInventoryandTransactionSystem.View.DeletionDialogs
 {
@@ -28,7 +29,7 @@ namespace JunkShopInventoryandTransactionSystem.View.DeletionDialogs
 
             if (categoryId <= 0)
             {
-                MessageBox.Show("Invalid item ID.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Invalid category ID.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             //gets the details from the database itself and not from the DataGridView
@@ -36,7 +37,7 @@ namespace JunkShopInventoryandTransactionSystem.View.DeletionDialogs
 
             if (cat == null)
             {
-                MessageBox.Show("Item not found in the database.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Category not found in the database.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
                 return;
             }
@@ -50,23 +51,24 @@ namespace JunkShopInventoryandTransactionSystem.View.DeletionDialogs
         {
             if (!categoryId.HasValue)
             {
-                MessageBox.Show("Item ID is missing. Cannot proceed with deletion.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Category ID is missing. Cannot proceed with deletion.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            bool catArchivingSuccess = ArchivingCategory.HandleArchivingCategory(categoryId.Value, _targetDataGridView);
+            //calls the unarchiving backend
+            bool deletingSuccess = DeleteCategory.HandleDeleteCategory(categoryId.Value, _targetDataGridView);
 
             // add archiving of items that used the category
 
-            if (catArchivingSuccess)
+            if (deletingSuccess)
             {
+                MessageBox.Show("Category successfully deleted.", "Deletion Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 // Closes the form
                 Close();
             }
             else
             {
-                // Handle validation errors inside HandleDeleteCategory
-                MessageBox.Show("Failed to archive the category.", "Deletion Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Failed to delete the Category. Please try again.", "Deletion Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

@@ -1,9 +1,13 @@
 ﻿//imports the backend file ReloadCategory.cs
+using JunkShopInventoryandTransactionSystem.BackendFiles.Category.Delete;
 using JunkShopInventoryandTransactionSystem.BackendFiles.Category.Reload;
+using JunkShopInventoryandTransactionSystem.BackendFiles.Category.Unarchive;
+using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Delete;
+using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Reload;
+using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Unarchive;
 using JunkShopInventoryandTransactionSystem.BackendFiles.UserSession;
 using JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel;
 using JunkShopInventoryandTransactionSystem.View.DeletionDialogs; 
-
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,13 +31,12 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
         {
             InitializeComponent();
 
+            archiveState.SelectedIndexChanged += ArchiveState_SelectedIndexChanged;
+            archiveState.SelectedIndex = 0; // triggers default load
+
             // Add search event handlers
             SearchButton.Click += SearchButton_Click;
             SearchTextBox.ContentChanged += SearchTextBox_TextChanged;
-
-            // Call the static LoadInventoryData method from ReloadInventory
-            // reads unarchived category data from the database and loads it into the DataGridView
-            ReloadCategory.LoadCategoryData(CategoryRecordsTable);
 
             /*
             //Pangtest lang to if msgkakalaman  
@@ -68,6 +71,18 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
                 CategoryRecordsTable.Columns["Delete"].Visible = false;
 
                 AddCategoryButton.Visible = false;
+            }
+        }
+
+        private void ArchiveState_SelectedIndexChanged(object? sender, EventArgs e)
+        {
+            if (archiveState.SelectedIndex == 0)
+            {
+                ReloadCategory.LoadCategoryData(CategoryRecordsTable);
+            }
+            else
+            {
+                ReloadCategory.LoadArchivedCategoryData(CategoryRecordsTable);
             }
         }
 
@@ -134,33 +149,94 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
                     //MessageBox.Show($"Edit clicked\nCategoryID: {categoryId}", "Action");
 
                     //calls the add edit window
-                    if (addEditCategoryDialogBox == null || addEditCategoryDialogBox.IsDisposed) // Check if it's already open  
+                    // check first if the archiveState is 0 or 1, if 0 then edit, if 1 then unarchive
+                    if (archiveState.SelectedIndex == 0)
                     {
-                        string value = "Edit"; // Set the mode to "Edit"
+                        if (addEditCategoryDialogBox == null || addEditCategoryDialogBox.IsDisposed) // Check if it's already open  
+                        {
+                            string value = "Edit"; // Set the mode to "Edit"
 
-                        //pass the data grid view to allow refreshing of inventory after adding/editing an item
-                        addEditCategoryDialogBox = new AddEditCategoryDialogBox(value, CategoryRecordsTable, categoryId);
-                        addEditCategoryDialogBox.Show();
+                            //pass the data grid view to allow refreshing of inventory after adding/editing an item
+                            addEditCategoryDialogBox = new AddEditCategoryDialogBox(value, CategoryRecordsTable, categoryId);
+                            addEditCategoryDialogBox.Show();
+                        }
+                        else
+                        {
+                            addEditCategoryDialogBox.Focus(); // Bring existing form to front 
+                        }
                     }
                     else
                     {
-                        addEditCategoryDialogBox.Focus(); // Bring existing form to front 
+                        // Confirmation message box with item ID
+                        DialogResult confirmResult = MessageBox.Show(
+                            $"Are you sure you want to unarchive this category?\n\nCategory ID: {categoryId}",
+                            "Confirm Unarchiving",
+                            MessageBoxButtons.YesNo,
+                            MessageBoxIcon.Question
+                        );
+
+                        if (confirmResult == DialogResult.Yes)
+                        {
+                            //calls the unarchiving backend
+                            bool unarchivingSuccess = UnarchivingCategory.HandleUnarchivingCategory(categoryId, CategoryRecordsTable);
+
+                            if (unarchivingSuccess)
+                            {
+                                MessageBox.Show("Categoary successfully unarchived.", "Unarchive Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Failed to unarchive category. Please try again.", "Unarchive Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                            
                     }
 
                 }
                 else if (clickedColumnName == "Delete")
                 {
                     //MessageBox.Show($"Delete clicked\nCategoryID: {categoryId}", "Action");
-                    
-                    // calls the del window
-                    if (deleteCategoryDialogBox == null || deleteCategoryDialogBox.IsDisposed)
+
+                    // check first if the archiveState is 0 or 1, if 0 then delete, if 1 then perma delete
+                    if (archiveState.SelectedIndex == 0)
                     {
-                        deleteCategoryDialogBox = new DeleteCategoryDialogBox(categoryId, CategoryRecordsTable);
-                        deleteCategoryDialogBox.Show();
+                        // Confirmation message box with item ID
+                        DialogResult confirmResult = MessageBox.Show(
+                            $"Are you sure you want to delete this category?\n\nCategory ID: {categoryId}",
+                            "Confirm Archiving",
+                            MessageBoxButtons.YesNo,
+                            MessageBoxIcon.Question
+                        );
+
+                        if (confirmResult == DialogResult.Yes)
+                        {
+                            //calls the unarchiving backend
+                            bool deletingSuccess = DeleteCategory.HandleDeleteCategory(categoryId, CategoryRecordsTable);
+
+                            if (deletingSuccess)
+                            {
+                                MessageBox.Show("Category successfully unarchived.", "Unarchive Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Failed to unarchive Category. Please try again.", "Unarchive Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        
                     }
                     else
                     {
-                        deleteCategoryDialogBox .Focus(); // Bring to front if it's already open
+                        // calls the del window
+                        if (deleteCategoryDialogBox == null || deleteCategoryDialogBox.IsDisposed)
+                        {
+                            deleteCategoryDialogBox = new DeleteCategoryDialogBox(categoryId, CategoryRecordsTable);
+                            deleteCategoryDialogBox.Show();
+                        }
+                        else
+                        {
+                            deleteCategoryDialogBox.Focus(); // Bring to front if it's already open
+                        }
+
                     }
 
                 }

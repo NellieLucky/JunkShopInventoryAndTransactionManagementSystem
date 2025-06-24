@@ -23,9 +23,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Delete
             // --- Reload DataGridView ---
             if (targetDataGridView != null)
             {
-                //namespace.class.method since theyre both on the same folder
-                Reload.ReloadInventory.LoadInventoryData(targetDataGridView);
-                //<skip namespace>.class.method if not on the same folder
+                Reload.ReloadInventory.LoadArchivedInventoryData(targetDataGridView);
             }
 
             return true;
