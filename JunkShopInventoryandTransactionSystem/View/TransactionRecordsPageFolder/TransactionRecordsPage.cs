@@ -1,4 +1,7 @@
-﻿using System;
+﻿using JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Crud;
+using JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Reload;
+using JunkShopInventoryandTransactionSystem.BackendFiles.UserSession;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,9 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
-using JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Reload;
-using JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Crud;
+using static JunkShopInventoryandTransactionSystem.BackendFiles.UserSession.ForUser;
 
 namespace JunkShopInventoryandTransactionSystem.View.TransactionRecordsPageFolder
 {
@@ -21,6 +22,12 @@ namespace JunkShopInventoryandTransactionSystem.View.TransactionRecordsPageFolde
             ReloadTransactions.LoadTransactionData(TransactionRecordsTable);
 
             SearchTextBox.ContentChanged += SearchTextBox_TextChange;
+
+            var userInfo = ForUser.GetUserInfo(UserSession.UserId);
+            if (userInfo.Role == "Employee")
+            {
+                TransactionRecordsTable.Columns["Delete"].Visible = false;
+            }
         }
 
         private void TransactionRecordsTable_CellContentClick(object sender, DataGridViewCellEventArgs e)

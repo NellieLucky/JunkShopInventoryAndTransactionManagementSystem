@@ -64,9 +64,9 @@
             BuyerRec.BackColor = Color.FromArgb(0, 0, 0, 0);
             BuyerRec.Font = new Font("Arial", 18F, FontStyle.Bold);
             BuyerRec.ForeColor = Color.FromArgb(0, 157, 209);
-            BuyerRec.Location = new Point(23, 14);
+            BuyerRec.Location = new Point(20, 10);
             BuyerRec.Name = "BuyerRec";
-            BuyerRec.Size = new Size(226, 35);
+            BuyerRec.Size = new Size(180, 29);
             BuyerRec.TabIndex = 34;
             BuyerRec.Text = "Seller Records";
             // 
@@ -93,7 +93,8 @@
             dataGridView1.EditMode = DataGridViewEditMode.EditProgrammatically;
             dataGridView1.EnableHeadersVisualStyles = false;
             dataGridView1.GridColor = Color.FromArgb(99, 99, 99);
-            dataGridView1.Location = new Point(23, 51);
+            dataGridView1.Location = new Point(20, 38);
+            dataGridView1.Margin = new Padding(3, 2, 3, 2);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -153,7 +154,7 @@
             panel1.Controls.Add(searchTextBox);
             panel1.Location = new Point(649, 32);
             panel1.Name = "panel1";
-            panel1.Size = new Size(376, 40);
+            panel1.Size = new Size(329, 30);
             panel1.TabIndex = 36;
             // 
             // searchButton
@@ -328,7 +329,7 @@
             // 
             // SellerRecordsPage
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(panel1);
             Controls.Add(sellerRecordsTable);
@@ -336,7 +337,7 @@
             Controls.Add(dataGridView1);
             Margin = new Padding(2);
             Name = "SellerRecordsPage";
-            Size = new Size(1042, 628);
+            Size = new Size(912, 471);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)sellerRecordsTable).EndInit();

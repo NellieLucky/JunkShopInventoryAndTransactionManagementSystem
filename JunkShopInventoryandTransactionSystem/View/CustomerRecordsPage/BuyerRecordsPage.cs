@@ -1,6 +1,7 @@
 ﻿using JunkShopInventoryandTransactionSystem.BackendFiles.Customer;
 using JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Crud;
 using JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Reload;
+﻿using JunkShopInventoryandTransactionSystem.BackendFiles.UserSession;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static JunkShopInventoryandTransactionSystem.BackendFiles.UserSession.ForUser;
 
 namespace JunkShopInventoryandTransactionSystem.View.CustomerRecordsPage
 {
@@ -21,6 +23,12 @@ namespace JunkShopInventoryandTransactionSystem.View.CustomerRecordsPage
             searchTextBox.ContentChanged += SearchTextBox_ContentChanged;
             searchButton.Click += SearchButton_Click;
             LoadBuyerRecords();
+
+            var userInfo = ForUser.GetUserInfo(UserSession.UserId);
+            if (userInfo.Role == "Employee")
+            {
+                dataGridView1.Columns["CustomerDelete"].Visible = false; //Change dataGridView1 to actual name of grid view
+            }
         }
 
         private void LoadBuyerRecords()
