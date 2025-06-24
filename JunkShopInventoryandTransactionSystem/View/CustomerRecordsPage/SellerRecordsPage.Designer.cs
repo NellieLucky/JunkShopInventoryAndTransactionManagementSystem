@@ -50,7 +50,7 @@
             SupplierTotalSold = new DataGridViewTextBoxColumn();
             TotalPriceSold = new DataGridViewTextBoxColumn();
             TotalQuantityPurchases = new DataGridViewTextBoxColumn();
-            dataGridViewImageColumn1 = new DataGridViewImageColumn();
+            Delete = new DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
@@ -62,9 +62,9 @@
             BuyerRec.BackColor = Color.FromArgb(0, 0, 0, 0);
             BuyerRec.Font = new Font("Arial", 18F, FontStyle.Bold);
             BuyerRec.ForeColor = Color.FromArgb(0, 157, 209);
-            BuyerRec.Location = new Point(23, 14);
+            BuyerRec.Location = new Point(20, 10);
             BuyerRec.Name = "BuyerRec";
-            BuyerRec.Size = new Size(226, 35);
+            BuyerRec.Size = new Size(180, 29);
             BuyerRec.TabIndex = 34;
             BuyerRec.Text = "Seller Records";
             BuyerRec.Click += BuyerRec_Click;
@@ -92,7 +92,8 @@
             dataGridView1.EditMode = DataGridViewEditMode.EditProgrammatically;
             dataGridView1.EnableHeadersVisualStyles = false;
             dataGridView1.GridColor = Color.FromArgb(99, 99, 99);
-            dataGridView1.Location = new Point(23, 51);
+            dataGridView1.Location = new Point(20, 38);
+            dataGridView1.Margin = new Padding(3, 2, 3, 2);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -150,9 +151,10 @@
             panel1.BackColor = Color.FromArgb(0, 157, 209);
             panel1.Controls.Add(cuiButton1);
             panel1.Controls.Add(cuiTextBox1);
-            panel1.Location = new Point(649, 32);
+            panel1.Location = new Point(568, 24);
+            panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(376, 40);
+            panel1.Size = new Size(329, 30);
             panel1.TabIndex = 36;
             // 
             // cuiButton1
@@ -176,6 +178,7 @@
             cuiButton1.ImageExpand = new Point(5, 5);
             cuiButton1.ImageOffset = new Point(0, 0);
             cuiButton1.Location = new Point(0, 0);
+            cuiButton1.Margin = new Padding(3, 2, 3, 2);
             cuiButton1.Name = "cuiButton1";
             cuiButton1.NormalBackground = Color.FromArgb(0, 157, 209);
             cuiButton1.NormalForeColor = Color.Black;
@@ -187,7 +190,7 @@
             cuiButton1.PressedImageTint = Color.White;
             cuiButton1.PressedOutline = Color.FromArgb(64, 128, 128, 128);
             cuiButton1.Rounding = new Padding(0, 5, 5, 0);
-            cuiButton1.Size = new Size(43, 39);
+            cuiButton1.Size = new Size(38, 29);
             cuiButton1.TabIndex = 24;
             cuiButton1.TextAlignment = StringAlignment.Center;
             cuiButton1.TextOffset = new Point(0, 0);
@@ -206,17 +209,17 @@
             cuiTextBox1.Image = null;
             cuiTextBox1.ImageExpand = new Point(0, 0);
             cuiTextBox1.ImageOffset = new Point(0, 0);
-            cuiTextBox1.Location = new Point(41, 2);
-            cuiTextBox1.Margin = new Padding(4);
+            cuiTextBox1.Location = new Point(36, 2);
+            cuiTextBox1.Margin = new Padding(4, 3, 4, 3);
             cuiTextBox1.Multiline = false;
             cuiTextBox1.Name = "cuiTextBox1";
             cuiTextBox1.NormalImageTint = Color.White;
-            cuiTextBox1.Padding = new Padding(18, 8, 18, 0);
+            cuiTextBox1.Padding = new Padding(15, 6, 15, 0);
             cuiTextBox1.PasswordChar = false;
             cuiTextBox1.PlaceholderColor = Color.Gray;
             cuiTextBox1.PlaceholderText = "Search...";
             cuiTextBox1.Rounding = new Padding(2);
-            cuiTextBox1.Size = new Size(333, 35);
+            cuiTextBox1.Size = new Size(291, 26);
             cuiTextBox1.TabIndex = 23;
             cuiTextBox1.TextOffset = new Size(0, 0);
             cuiTextBox1.UnderlinedStyle = false;
@@ -240,11 +243,12 @@
             dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dataGridView2.ColumnHeadersHeight = 60;
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, SupplierTotalSold, TotalPriceSold, TotalQuantityPurchases, dataGridViewImageColumn1 });
+            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, SupplierTotalSold, TotalPriceSold, TotalQuantityPurchases, Delete });
             dataGridView2.EditMode = DataGridViewEditMode.EditProgrammatically;
             dataGridView2.EnableHeadersVisualStyles = false;
             dataGridView2.GridColor = Color.FromArgb(99, 99, 99);
-            dataGridView2.Location = new Point(18, 88);
+            dataGridView2.Location = new Point(16, 66);
+            dataGridView2.Margin = new Padding(3, 2, 3, 2);
             dataGridView2.Name = "dataGridView2";
             dataGridView2.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -263,7 +267,7 @@
             dataGridView2.RowsDefaultCellStyle = dataGridViewCellStyle6;
             dataGridView2.RowTemplate.Height = 50;
             dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView2.Size = new Size(1007, 508);
+            dataGridView2.Size = new Size(881, 381);
             dataGridView2.TabIndex = 35;
             // 
             // dataGridViewTextBoxColumn1
@@ -308,19 +312,19 @@
             TotalQuantityPurchases.MinimumWidth = 6;
             TotalQuantityPurchases.Name = "TotalQuantityPurchases";
             // 
-            // dataGridViewImageColumn1
+            // Delete
             // 
-            dataGridViewImageColumn1.HeaderText = "Delete";
-            dataGridViewImageColumn1.Image = Properties.Resources.delete;
-            dataGridViewImageColumn1.MinimumWidth = 8;
-            dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
-            dataGridViewImageColumn1.Resizable = DataGridViewTriState.True;
-            dataGridViewImageColumn1.SortMode = DataGridViewColumnSortMode.Automatic;
-            dataGridViewImageColumn1.Width = 60;
+            Delete.HeaderText = "Delete";
+            Delete.Image = Properties.Resources.delete;
+            Delete.MinimumWidth = 8;
+            Delete.Name = "Delete";
+            Delete.Resizable = DataGridViewTriState.True;
+            Delete.SortMode = DataGridViewColumnSortMode.Automatic;
+            Delete.Width = 60;
             // 
             // SellerRecordsPage
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(panel1);
             Controls.Add(dataGridView2);
@@ -328,7 +332,7 @@
             Controls.Add(dataGridView1);
             Margin = new Padding(2);
             Name = "SellerRecordsPage";
-            Size = new Size(1042, 628);
+            Size = new Size(912, 471);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
@@ -354,6 +358,6 @@
         private DataGridViewTextBoxColumn SupplierTotalSold;
         private DataGridViewTextBoxColumn TotalPriceSold;
         private DataGridViewTextBoxColumn TotalQuantityPurchases;
-        private DataGridViewImageColumn dataGridViewImageColumn1;
+        private DataGridViewImageColumn Delete;
     }
 }
