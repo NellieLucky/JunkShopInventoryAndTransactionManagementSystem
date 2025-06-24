@@ -87,6 +87,9 @@
             cuiPictureBox5 = new CuoreUI.Controls.cuiPictureBox();
             label13 = new Label();
             label24 = new Label();
+            NumOfTransactions = new Label();
+            label19 = new Label();
+            cuiPictureBox10 = new CuoreUI.Controls.cuiPictureBox();
             cuiPanel1.SuspendLayout();
             cuiPanel3.SuspendLayout();
             cuiPanel4.SuspendLayout();
@@ -785,6 +788,9 @@
             // panel3
             // 
             panel3.BackColor = Color.White;
+            panel3.Controls.Add(NumOfTransactions);
+            panel3.Controls.Add(label19);
+            panel3.Controls.Add(cuiPictureBox10);
             panel3.Controls.Add(materialDivider4);
             panel3.Controls.Add(materialDivider3);
             panel3.Controls.Add(NumOfEmployees);
@@ -840,7 +846,7 @@
             NumOfEmployees.BackColor = Color.FromArgb(0, 0, 0, 0);
             NumOfEmployees.Font = new Font("Arial", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point, 0);
             NumOfEmployees.ForeColor = Color.DimGray;
-            NumOfEmployees.Location = new Point(380, 85);
+            NumOfEmployees.Location = new Point(363, 85);
             NumOfEmployees.MaximumSize = new Size(135, 24);
             NumOfEmployees.Name = "NumOfEmployees";
             NumOfEmployees.Size = new Size(25, 24);
@@ -853,7 +859,7 @@
             NumOfItems.BackColor = Color.FromArgb(0, 0, 0, 0);
             NumOfItems.Font = new Font("Arial", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point, 0);
             NumOfItems.ForeColor = Color.DimGray;
-            NumOfItems.Location = new Point(238, 166);
+            NumOfItems.Location = new Point(225, 166);
             NumOfItems.MaximumSize = new Size(135, 24);
             NumOfItems.Name = "NumOfItems";
             NumOfItems.Size = new Size(25, 24);
@@ -879,7 +885,7 @@
             NumOfBuyers.BackColor = Color.FromArgb(0, 0, 0, 0);
             NumOfBuyers.Font = new Font("Arial", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point, 0);
             NumOfBuyers.ForeColor = Color.DimGray;
-            NumOfBuyers.Location = new Point(243, 85);
+            NumOfBuyers.Location = new Point(225, 85);
             NumOfBuyers.MaximumSize = new Size(135, 24);
             NumOfBuyers.Name = "NumOfBuyers";
             NumOfBuyers.Size = new Size(25, 24);
@@ -905,7 +911,7 @@
             label18.BackColor = Color.FromArgb(0, 0, 0, 0);
             label18.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label18.ForeColor = Color.Black;
-            label18.Location = new Point(378, 64);
+            label18.Location = new Point(361, 64);
             label18.Name = "label18";
             label18.Size = new Size(94, 19);
             label18.TabIndex = 32;
@@ -918,14 +924,14 @@
             cuiPictureBox9.BackgroundImageLayout = ImageLayout.Zoom;
             cuiPictureBox9.Content = null;
             cuiPictureBox9.ImageTint = Color.White;
-            cuiPictureBox9.Location = new Point(336, 74);
+            cuiPictureBox9.Location = new Point(314, 69);
             cuiPictureBox9.Margin = new Padding(4, 5, 4, 5);
             cuiPictureBox9.Name = "cuiPictureBox9";
             cuiPictureBox9.OutlineThickness = 1F;
             cuiPictureBox9.PanelOutlineColor = Color.Empty;
             cuiPictureBox9.Rotation = 0;
             cuiPictureBox9.Rounding = new Padding(8);
-            cuiPictureBox9.Size = new Size(35, 35);
+            cuiPictureBox9.Size = new Size(40, 40);
             cuiPictureBox9.TabIndex = 31;
             // 
             // label17
@@ -934,7 +940,7 @@
             label17.BackColor = Color.FromArgb(0, 0, 0, 0);
             label17.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label17.ForeColor = Color.Black;
-            label17.Location = new Point(238, 147);
+            label17.Location = new Point(225, 147);
             label17.Name = "label17";
             label17.Size = new Size(51, 19);
             label17.TabIndex = 30;
@@ -947,14 +953,14 @@
             cuiPictureBox8.BackgroundImageLayout = ImageLayout.Zoom;
             cuiPictureBox8.Content = null;
             cuiPictureBox8.ImageTint = Color.White;
-            cuiPictureBox8.Location = new Point(184, 147);
+            cuiPictureBox8.Location = new Point(178, 147);
             cuiPictureBox8.Margin = new Padding(4, 5, 4, 5);
             cuiPictureBox8.Name = "cuiPictureBox8";
             cuiPictureBox8.OutlineThickness = 1F;
             cuiPictureBox8.PanelOutlineColor = Color.Empty;
             cuiPictureBox8.Rotation = 0;
             cuiPictureBox8.Rounding = new Padding(8);
-            cuiPictureBox8.Size = new Size(35, 35);
+            cuiPictureBox8.Size = new Size(40, 40);
             cuiPictureBox8.TabIndex = 29;
             // 
             // label16
@@ -963,7 +969,7 @@
             label16.BackColor = Color.FromArgb(0, 0, 0, 0);
             label16.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label16.ForeColor = Color.Black;
-            label16.Location = new Point(66, 147);
+            label16.Location = new Point(61, 147);
             label16.Name = "label16";
             label16.Size = new Size(94, 19);
             label16.TabIndex = 28;
@@ -975,7 +981,7 @@
             Buyers.BackColor = Color.FromArgb(0, 0, 0, 0);
             Buyers.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Buyers.ForeColor = Color.Black;
-            Buyers.Location = new Point(236, 64);
+            Buyers.Location = new Point(225, 64);
             Buyers.Name = "Buyers";
             Buyers.Size = new Size(65, 19);
             Buyers.TabIndex = 27;
@@ -1023,14 +1029,14 @@
             cuiPictureBox7.BackgroundImageLayout = ImageLayout.Zoom;
             cuiPictureBox7.Content = null;
             cuiPictureBox7.ImageTint = Color.White;
-            cuiPictureBox7.Location = new Point(16, 147);
+            cuiPictureBox7.Location = new Point(11, 142);
             cuiPictureBox7.Margin = new Padding(4, 5, 4, 5);
             cuiPictureBox7.Name = "cuiPictureBox7";
             cuiPictureBox7.OutlineThickness = 1F;
             cuiPictureBox7.PanelOutlineColor = Color.Empty;
             cuiPictureBox7.Rotation = 0;
             cuiPictureBox7.Rounding = new Padding(8);
-            cuiPictureBox7.Size = new Size(35, 35);
+            cuiPictureBox7.Size = new Size(40, 40);
             cuiPictureBox7.TabIndex = 23;
             // 
             // cuiPictureBox6
@@ -1040,14 +1046,14 @@
             cuiPictureBox6.BackgroundImageLayout = ImageLayout.Zoom;
             cuiPictureBox6.Content = null;
             cuiPictureBox6.ImageTint = Color.White;
-            cuiPictureBox6.Location = new Point(194, 74);
+            cuiPictureBox6.Location = new Point(178, 69);
             cuiPictureBox6.Margin = new Padding(4, 5, 4, 5);
             cuiPictureBox6.Name = "cuiPictureBox6";
             cuiPictureBox6.OutlineThickness = 1F;
             cuiPictureBox6.PanelOutlineColor = Color.Empty;
             cuiPictureBox6.Rotation = 0;
             cuiPictureBox6.Rounding = new Padding(8);
-            cuiPictureBox6.Size = new Size(35, 35);
+            cuiPictureBox6.Size = new Size(40, 40);
             cuiPictureBox6.TabIndex = 22;
             // 
             // cuiPictureBox5
@@ -1057,14 +1063,14 @@
             cuiPictureBox5.BackgroundImageLayout = ImageLayout.Zoom;
             cuiPictureBox5.Content = null;
             cuiPictureBox5.ImageTint = Color.White;
-            cuiPictureBox5.Location = new Point(19, 74);
+            cuiPictureBox5.Location = new Point(14, 69);
             cuiPictureBox5.Margin = new Padding(4, 5, 4, 5);
             cuiPictureBox5.Name = "cuiPictureBox5";
             cuiPictureBox5.OutlineThickness = 1F;
             cuiPictureBox5.PanelOutlineColor = Color.Empty;
             cuiPictureBox5.Rotation = 0;
             cuiPictureBox5.Rounding = new Padding(8);
-            cuiPictureBox5.Size = new Size(35, 35);
+            cuiPictureBox5.Size = new Size(40, 40);
             cuiPictureBox5.TabIndex = 21;
             // 
             // label13
@@ -1090,6 +1096,48 @@
             label24.Size = new Size(20, 27);
             label24.TabIndex = 24;
             label24.Text = "-";
+            // 
+            // NumOfTransactions
+            // 
+            NumOfTransactions.AutoSize = true;
+            NumOfTransactions.BackColor = Color.FromArgb(0, 0, 0, 0);
+            NumOfTransactions.Font = new Font("Arial", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            NumOfTransactions.ForeColor = Color.DimGray;
+            NumOfTransactions.Location = new Point(363, 163);
+            NumOfTransactions.MaximumSize = new Size(135, 24);
+            NumOfTransactions.Name = "NumOfTransactions";
+            NumOfTransactions.Size = new Size(25, 24);
+            NumOfTransactions.TabIndex = 42;
+            NumOfTransactions.Text = "0";
+            // 
+            // label19
+            // 
+            label19.AutoSize = true;
+            label19.BackColor = Color.FromArgb(0, 0, 0, 0);
+            label19.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label19.ForeColor = Color.Black;
+            label19.Location = new Point(361, 142);
+            label19.Name = "label19";
+            label19.Size = new Size(110, 19);
+            label19.TabIndex = 41;
+            label19.Text = "Transactions";
+            // 
+            // cuiPictureBox10
+            // 
+            cuiPictureBox10.BackColor = Color.FromArgb(0, 0, 0, 0);
+            cuiPictureBox10.BackgroundImage = Properties.Resources.team_management;
+            cuiPictureBox10.BackgroundImageLayout = ImageLayout.Zoom;
+            cuiPictureBox10.Content = null;
+            cuiPictureBox10.ImageTint = Color.White;
+            cuiPictureBox10.Location = new Point(314, 147);
+            cuiPictureBox10.Margin = new Padding(4, 5, 4, 5);
+            cuiPictureBox10.Name = "cuiPictureBox10";
+            cuiPictureBox10.OutlineThickness = 1F;
+            cuiPictureBox10.PanelOutlineColor = Color.Empty;
+            cuiPictureBox10.Rotation = 0;
+            cuiPictureBox10.Rounding = new Padding(8);
+            cuiPictureBox10.Size = new Size(40, 40);
+            cuiPictureBox10.TabIndex = 40;
             // 
             // DashboardPage
             // 
@@ -1193,5 +1241,8 @@
         private Label label24;
         private DataGridViewTextBoxColumn Item;
         private DataGridViewTextBoxColumn Quantity;
+        private Label NumOfTransactions;
+        private Label label19;
+        private CuoreUI.Controls.cuiPictureBox cuiPictureBox10;
     }
 }
