@@ -12,7 +12,8 @@ CREATE TABLE Customer (
     customerName NVARCHAR(100) NOT NULL,
     customerType VARCHAR(10) NOT NULL CHECK (customerType IN ('Buyer', 'Seller', 'Both')),
     customerContact NVARCHAR(50) NULL,
-    customerAddress NVARCHAR(200) NULL
+    customerAddress NVARCHAR(200) NULL,
+    IsArchived BIT NOT NULL DEFAULT(0)
 );
 
 SELECT * FROM Customer;
@@ -159,6 +160,34 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Customer.Crud
 
     }
     // end of insertion / insert
+
+    public class CustomerDelete : BaseRepository
+    {
+        // Soft delete (archive) a customer by ID
+        public bool ArchiveCustomer(int customerId)
+        {
+            using (SqlConnection conn = GetConnection())
+            {
+                string query = "UPDATE Customer SET isArchived = 1 WHERE customerId = @customerId";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@customerId", customerId);
+                    try
+                    {
+                        conn.Open();
+                        int rowsAffected = cmd.ExecuteNonQuery();
+                        return rowsAffected > 0;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("❌ Error archiving customer: " + ex.Message);
+                        throw new Exception("Failed to archive customer.", ex);
+                    }
+                }
+            }
+        }
+    }
+    // end of soft delete
 
 }
 
