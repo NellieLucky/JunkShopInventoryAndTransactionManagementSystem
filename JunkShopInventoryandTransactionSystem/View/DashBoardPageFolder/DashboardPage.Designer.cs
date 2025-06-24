@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DashboardTitlePage = new Label();
             FromDate = new CodeeloUI.Controls.CodeeloDateTimePicker();
             customButton = new CuoreUI.Controls.cuiButton();
@@ -719,7 +719,7 @@
             panel2.Controls.Add(label12);
             panel2.Location = new Point(25, 571);
             panel2.Name = "panel2";
-            panel2.Size = new Size(477, 208);
+            panel2.Size = new Size(537, 208);
             panel2.TabIndex = 22;
             // 
             // LowStocksTable
@@ -730,31 +730,31 @@
             LowStocksTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             LowStocksTable.BackgroundColor = Color.FromArgb(227, 244, 238);
             LowStocksTable.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = Color.FromArgb(38, 177, 112);
-            dataGridViewCellStyle5.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle5.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(0, 64, 0);
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            LowStocksTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(38, 177, 112);
+            dataGridViewCellStyle1.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(0, 64, 0);
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            LowStocksTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             LowStocksTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             LowStocksTable.Columns.AddRange(new DataGridViewColumn[] { Item, Quantity });
             LowStocksTable.EnableHeadersVisualStyles = false;
             LowStocksTable.GridColor = SystemColors.Info;
-            LowStocksTable.Location = new Point(25, 46);
+            LowStocksTable.Location = new Point(13, 46);
             LowStocksTable.Name = "LowStocksTable";
             LowStocksTable.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
-            LowStocksTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            LowStocksTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             LowStocksTable.RowHeadersVisible = false;
             LowStocksTable.RowHeadersWidth = 51;
-            LowStocksTable.Size = new Size(424, 146);
+            LowStocksTable.Size = new Size(507, 146);
             LowStocksTable.TabIndex = 21;
             // 
             // Item
@@ -805,9 +805,9 @@
             panel3.Controls.Add(cuiPictureBox6);
             panel3.Controls.Add(cuiPictureBox5);
             panel3.Controls.Add(label13);
-            panel3.Location = new Point(520, 571);
+            panel3.Location = new Point(568, 571);
             panel3.Name = "panel3";
-            panel3.Size = new Size(532, 208);
+            panel3.Size = new Size(484, 208);
             panel3.TabIndex = 23;
             // 
             // materialDivider4
