@@ -24,7 +24,7 @@ namespace JunkShopInventoryandTransactionSystem.View.DashBoardPageFolder
         {
             try
             {
-                var (items, categories, employees, buyers, sellers) = DashboardCounts.GetDashboardCounts();
+                var (items, categories, employees, buyers, sellers, transactions) = DashboardCounts.GetDashboardCounts();
 
                 // Update the labels with the counts
                 NumOfItems.Text = items.ToString();
@@ -32,6 +32,7 @@ namespace JunkShopInventoryandTransactionSystem.View.DashBoardPageFolder
                 NumOfEmployees.Text = employees.ToString();
                 NumOfBuyers.Text = buyers.ToString();
                 NumOfSellers.Text = sellers.ToString();
+                NumOfTransactions.Text = transactions.ToString();
             }
             catch (Exception ex)
             {

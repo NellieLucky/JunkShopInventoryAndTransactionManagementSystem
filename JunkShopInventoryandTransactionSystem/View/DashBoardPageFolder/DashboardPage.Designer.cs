@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             DashboardTitlePage = new Label();
             FromDate = new CodeeloUI.Controls.CodeeloDateTimePicker();
             customButton = new CuoreUI.Controls.cuiButton();
@@ -733,14 +733,14 @@
             LowStocksTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             LowStocksTable.BackgroundColor = Color.FromArgb(227, 244, 238);
             LowStocksTable.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(38, 177, 112);
-            dataGridViewCellStyle1.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(0, 64, 0);
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            LowStocksTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(38, 177, 112);
+            dataGridViewCellStyle3.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(0, 64, 0);
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            LowStocksTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             LowStocksTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             LowStocksTable.Columns.AddRange(new DataGridViewColumn[] { Item, Quantity });
             LowStocksTable.EnableHeadersVisualStyles = false;
@@ -748,13 +748,13 @@
             LowStocksTable.Location = new Point(13, 46);
             LowStocksTable.Name = "LowStocksTable";
             LowStocksTable.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            LowStocksTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            LowStocksTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             LowStocksTable.RowHeadersVisible = false;
             LowStocksTable.RowHeadersWidth = 51;
             LowStocksTable.Size = new Size(507, 146);
@@ -1125,7 +1125,7 @@
             // cuiPictureBox10
             // 
             cuiPictureBox10.BackColor = Color.FromArgb(0, 0, 0, 0);
-            cuiPictureBox10.BackgroundImage = Properties.Resources.team_management;
+            cuiPictureBox10.BackgroundImage = Properties.Resources.transfer;
             cuiPictureBox10.BackgroundImageLayout = ImageLayout.Zoom;
             cuiPictureBox10.Content = null;
             cuiPictureBox10.ImageTint = Color.White;

@@ -22,9 +22,9 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Dashboard
         //private static readonly string connectionString = @"Data Source = (LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Sandara Fillartos\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\Database1.mdf"";Integrated Security = True";
 
 
-        public static (int Items, int Categories, int Employees, int Buyers, int Sellers) GetDashboardCounts()
+        public static (int Items, int Categories, int Employees, int Buyers, int Sellers, int Transactions) GetDashboardCounts()
         {
-            int items = 0, categories = 0, employees = 0, buyers = 0, sellers = 0;
+            int items = 0, categories = 0, employees = 0, buyers = 0, sellers = 0, transactions = 0;
 
             try
             {
@@ -66,6 +66,14 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Dashboard
                     {
                         sellers = (int)cmd.ExecuteScalar();
                     }
+
+                    // Get Transactions Count (not archived)
+                    using (SqlCommand cmd = new SqlCommand(
+                        "SELECT COUNT(*) FROM Transactions WHERE isArchived = 0", conn))
+                    {
+                        transactions = (int)cmd.ExecuteScalar();
+                    }
+
                 }
             }
             catch (Exception ex)
@@ -77,7 +85,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Dashboard
                     System.Windows.Forms.MessageBoxIcon.Error);
             }
 
-            return (items, categories, employees, buyers, sellers);
+            return (items, categories, employees, buyers, sellers, transactions);
         }
     }
 }
