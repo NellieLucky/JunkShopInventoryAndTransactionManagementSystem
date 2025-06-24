@@ -18,7 +18,7 @@ namespace JunkShopInventoryandTransactionSystem.View.CustomerRecordsPage
         public BuyerRecordsPage()
         {
             InitializeComponent();
-            searchTextBox.TextChanged += SearchTextBox_TextChanged;
+            searchTextBox.ContentChanged += SearchTextBox_ContentChanged;
             searchButton.Click += SearchButton_Click;
             LoadBuyerRecords();
         }
@@ -28,6 +28,7 @@ namespace JunkShopInventoryandTransactionSystem.View.CustomerRecordsPage
             BuyerRecordsTable.Rows.Clear();
             var buyerRead = new BuyerRead();
             var buyers = buyerRead.GetBuyerSummaries();
+
             foreach (var buyer in buyers)
             {
                 BuyerRecordsTable.Rows.Add(
@@ -43,12 +44,12 @@ namespace JunkShopInventoryandTransactionSystem.View.CustomerRecordsPage
 
         private void SearchButton_Click(object sender, EventArgs e)
         {
-            FilterRows(searchTextBox.Text);
+            FilterRows(searchTextBox.Content); // custom control property
         }
 
-        private void SearchTextBox_TextChanged(object sender, EventArgs e)
+        private void SearchTextBox_ContentChanged(object sender, EventArgs e)
         {
-            FilterRows(searchTextBox.Text);
+            FilterRows(searchTextBox.Content); // custom control property
         }
 
         private void FilterRows(string searchText)
@@ -79,17 +80,9 @@ namespace JunkShopInventoryandTransactionSystem.View.CustomerRecordsPage
             }
         }
 
-        private void DashboardTitlePage_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void BuyerRecordsTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Only process if it's a valid row
             if (e.RowIndex < 0) return;
-
-            // Only process clicks on image columns
             if (!(BuyerRecordsTable.Columns[e.ColumnIndex] is DataGridViewImageColumn)) return;
 
             string clickedColumnName = BuyerRecordsTable.Columns[e.ColumnIndex].Name;
@@ -119,7 +112,6 @@ namespace JunkShopInventoryandTransactionSystem.View.CustomerRecordsPage
                         MessageBox.Show("⚠️ Buyer not found or already archived.");
                     }
 
-                    // Reload the buyer records table
                     LoadBuyerRecords();
                 }
             }

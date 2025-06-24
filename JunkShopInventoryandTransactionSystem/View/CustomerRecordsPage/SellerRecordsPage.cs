@@ -15,14 +15,17 @@ namespace JunkShopInventoryandTransactionSystem.View.CustomerRecordsPage
         public SellerRecordsPage()
         {
             InitializeComponent();
-            LoadSellerREcords();
+            LoadSellerRecords();
+            searchTextBox.ContentChanged += SearchTextBox_ContentChanged;
+            searchButton.Click += searchButton_Click;
         }
 
-        private void LoadSellerREcords()
+        private void LoadSellerRecords()
         {
             sellerRecordsTable.Rows.Clear();
             var sellerRead = new BackendFiles.Customer.SellerRead();
             var sellers = sellerRead.GetSellerSummaries();
+
             foreach (var seller in sellers)
             {
                 sellerRecordsTable.Rows.Add(
@@ -36,17 +39,48 @@ namespace JunkShopInventoryandTransactionSystem.View.CustomerRecordsPage
             }
         }
 
-        private void BuyerRec_Click(object sender, EventArgs e)
+        private void FilterRows(string searchText)
         {
+            string lowerSearch = searchText?.Trim().ToLower() ?? string.Empty;
 
+            foreach (DataGridViewRow row in sellerRecordsTable.Rows)
+            {
+                if (row.IsNewRow) continue;
+
+                bool visible = string.IsNullOrEmpty(lowerSearch);
+
+                if (!visible)
+                {
+                    foreach (DataGridViewColumn col in sellerRecordsTable.Columns)
+                    {
+                        if (!col.Visible || col.Name == "DeleteColumn") continue;
+
+                        var cellValue = row.Cells[col.Index].Value?.ToString();
+                        if (!string.IsNullOrEmpty(cellValue) && cellValue.ToLower().Contains(lowerSearch))
+                        {
+                            visible = true;
+                            break;
+                        }
+                    }
+                }
+
+                row.Visible = visible;
+            }
+        }
+
+        private void SearchTextBox_ContentChanged(object sender, EventArgs e)
+        {
+            FilterRows(searchTextBox.Content);
+        }
+
+        private void searchButton_Click(object sender, EventArgs e)
+        {
+            FilterRows(searchTextBox.Content);
         }
 
         private void sellerRecordsTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Only process if it's a valid row
             if (e.RowIndex < 0) return;
-
-            // Only process clicks on image columns
             if (!(sellerRecordsTable.Columns[e.ColumnIndex] is DataGridViewImageColumn)) return;
 
             string clickedColumnName = sellerRecordsTable.Columns[e.ColumnIndex].Name;
@@ -76,8 +110,7 @@ namespace JunkShopInventoryandTransactionSystem.View.CustomerRecordsPage
                         MessageBox.Show("⚠️ Seller not found or already archived.");
                     }
 
-                    // Reload the seller records table
-                    LoadSellerREcords();
+                    LoadSellerRecords();
                 }
             }
         }

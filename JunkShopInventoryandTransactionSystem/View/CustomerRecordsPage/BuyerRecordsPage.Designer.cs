@@ -28,12 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BuyerRecordsPage));
             BuyerRecordsTable = new DataGridView();
+            BuyerRec = new Label();
+            panel1 = new Panel();
+            searchButton = new CuoreUI.Controls.cuiButton();
+            searchTextBox = new CuoreUI.Controls.cuiTextBox();
             CustID = new DataGridViewTextBoxColumn();
             CustName = new DataGridViewTextBoxColumn();
             ContactNo = new DataGridViewTextBoxColumn();
@@ -41,10 +45,6 @@
             TotalPricePurchases = new DataGridViewTextBoxColumn();
             TotalQuantityPurchases = new DataGridViewTextBoxColumn();
             CustomerDelete = new DataGridViewImageColumn();
-            BuyerRec = new Label();
-            panel1 = new Panel();
-            searchButton = new CuoreUI.Controls.cuiButton();
-            searchTextBox = new CuoreUI.Controls.cuiTextBox();
             ((System.ComponentModel.ISupportInitialize)BuyerRecordsTable).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -58,14 +58,14 @@
             BuyerRecordsTable.BackgroundColor = Color.White;
             BuyerRecordsTable.CellBorderStyle = DataGridViewCellBorderStyle.SunkenHorizontal;
             BuyerRecordsTable.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = Color.FromArgb(163, 244, 215);
-            dataGridViewCellStyle5.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle5.ForeColor = Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(163, 244, 215);
-            dataGridViewCellStyle5.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            BuyerRecordsTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(163, 244, 215);
+            dataGridViewCellStyle1.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(163, 244, 215);
+            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            BuyerRecordsTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             BuyerRecordsTable.ColumnHeadersHeight = 60;
             BuyerRecordsTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             BuyerRecordsTable.Columns.AddRange(new DataGridViewColumn[] { CustID, CustName, ContactNo, TotalNumTransaction, TotalPricePurchases, TotalQuantityPurchases, CustomerDelete });
@@ -75,82 +75,25 @@
             BuyerRecordsTable.Location = new Point(18, 88);
             BuyerRecordsTable.Name = "BuyerRecordsTable";
             BuyerRecordsTable.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle7.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
-            BuyerRecordsTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            BuyerRecordsTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             BuyerRecordsTable.RowHeadersVisible = false;
             BuyerRecordsTable.RowHeadersWidth = 50;
-            dataGridViewCellStyle8.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle8.ForeColor = Color.Black;
-            dataGridViewCellStyle8.SelectionBackColor = Color.FromArgb(0, 157, 209);
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
-            BuyerRecordsTable.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle4.ForeColor = Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(0, 157, 209);
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            BuyerRecordsTable.RowsDefaultCellStyle = dataGridViewCellStyle4;
             BuyerRecordsTable.RowTemplate.Height = 50;
             BuyerRecordsTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             BuyerRecordsTable.Size = new Size(1007, 508);
             BuyerRecordsTable.TabIndex = 31;
             BuyerRecordsTable.CellContentClick += BuyerRecordsTable_CellContentClick;
-            // 
-            // CustID
-            // 
-            CustID.HeaderText = "Customer ID";
-            CustID.MinimumWidth = 6;
-            CustID.Name = "CustID";
-            CustID.Width = 80;
-            // 
-            // CustName
-            // 
-            CustName.HeaderText = "Name";
-            CustName.MinimumWidth = 8;
-            CustName.Name = "CustName";
-            CustName.Width = 200;
-            // 
-            // ContactNo
-            // 
-            ContactNo.HeaderText = "Contact Number";
-            ContactNo.MinimumWidth = 6;
-            ContactNo.Name = "ContactNo";
-            ContactNo.Width = 200;
-            // 
-            // TotalNumTransaction
-            // 
-            TotalNumTransaction.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            TotalNumTransaction.HeaderText = "Total No. Purchases";
-            TotalNumTransaction.MinimumWidth = 6;
-            TotalNumTransaction.Name = "TotalNumTransaction";
-            // 
-            // TotalPricePurchases
-            // 
-            TotalPricePurchases.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            TotalPricePurchases.HeaderText = "Total Price of Purchases";
-            TotalPricePurchases.MinimumWidth = 6;
-            TotalPricePurchases.Name = "TotalPricePurchases";
-            // 
-            // TotalQuantityPurchases
-            // 
-            TotalQuantityPurchases.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            TotalQuantityPurchases.HeaderText = "Total Qty. of Purchases";
-            TotalQuantityPurchases.MinimumWidth = 6;
-            TotalQuantityPurchases.Name = "TotalQuantityPurchases";
-            // 
-            // CustomerDelete
-            // 
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.NullValue = resources.GetObject("dataGridViewCellStyle6.NullValue");
-            dataGridViewCellStyle6.Padding = new Padding(10);
-            CustomerDelete.DefaultCellStyle = dataGridViewCellStyle6;
-            CustomerDelete.HeaderText = "Delete";
-            CustomerDelete.Image = Properties.Resources.delete;
-            CustomerDelete.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            CustomerDelete.MinimumWidth = 8;
-            CustomerDelete.Name = "CustomerDelete";
-            CustomerDelete.Resizable = DataGridViewTriState.True;
-            CustomerDelete.SortMode = DataGridViewColumnSortMode.Automatic;
-            CustomerDelete.Width = 60;
             // 
             // BuyerRec
             // 
@@ -163,7 +106,6 @@
             BuyerRec.Size = new Size(228, 35);
             BuyerRec.TabIndex = 32;
             BuyerRec.Text = "Buyer Records";
-            BuyerRec.Click += DashboardTitlePage_Click;
             // 
             // panel1
             // 
@@ -211,7 +153,6 @@
             searchButton.TabIndex = 24;
             searchButton.TextAlignment = StringAlignment.Center;
             searchButton.TextOffset = new Point(0, 0);
-            searchTextBox.ContentChanged += SearchTextBox_TextChanged;
             // 
             // searchTextBox
             // 
@@ -241,7 +182,63 @@
             searchTextBox.TabIndex = 23;
             searchTextBox.TextOffset = new Size(0, 0);
             searchTextBox.UnderlinedStyle = false;
-            searchTextBox.TextChanged += SearchTextBox_TextChanged;
+            // 
+            // CustID
+            // 
+            CustID.HeaderText = "Customer ID";
+            CustID.MinimumWidth = 6;
+            CustID.Name = "CustID";
+            CustID.Width = 80;
+            // 
+            // CustName
+            // 
+            CustName.HeaderText = "Name";
+            CustName.MinimumWidth = 8;
+            CustName.Name = "CustName";
+            CustName.Width = 200;
+            // 
+            // ContactNo
+            // 
+            ContactNo.HeaderText = "Contact Number";
+            ContactNo.MinimumWidth = 6;
+            ContactNo.Name = "ContactNo";
+            ContactNo.Width = 200;
+            // 
+            // TotalNumTransaction
+            // 
+            TotalNumTransaction.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            TotalNumTransaction.HeaderText = "Total Number of Purchases";
+            TotalNumTransaction.MinimumWidth = 6;
+            TotalNumTransaction.Name = "TotalNumTransaction";
+            // 
+            // TotalPricePurchases
+            // 
+            TotalPricePurchases.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            TotalPricePurchases.HeaderText = "Total Price of Purchases";
+            TotalPricePurchases.MinimumWidth = 6;
+            TotalPricePurchases.Name = "TotalPricePurchases";
+            // 
+            // TotalQuantityPurchases
+            // 
+            TotalQuantityPurchases.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            TotalQuantityPurchases.HeaderText = "Total Amount of Purchases";
+            TotalQuantityPurchases.MinimumWidth = 6;
+            TotalQuantityPurchases.Name = "TotalQuantityPurchases";
+            // 
+            // CustomerDelete
+            // 
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.NullValue = resources.GetObject("dataGridViewCellStyle2.NullValue");
+            dataGridViewCellStyle2.Padding = new Padding(10);
+            CustomerDelete.DefaultCellStyle = dataGridViewCellStyle2;
+            CustomerDelete.HeaderText = "Delete";
+            CustomerDelete.Image = Properties.Resources.delete;
+            CustomerDelete.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            CustomerDelete.MinimumWidth = 8;
+            CustomerDelete.Name = "CustomerDelete";
+            CustomerDelete.Resizable = DataGridViewTriState.True;
+            CustomerDelete.SortMode = DataGridViewColumnSortMode.Automatic;
+            CustomerDelete.Width = 60;
             // 
             // BuyerRecordsPage
             // 
