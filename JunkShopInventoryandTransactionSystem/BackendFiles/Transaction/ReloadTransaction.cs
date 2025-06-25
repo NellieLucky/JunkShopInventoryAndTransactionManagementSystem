@@ -28,8 +28,8 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Reload
                     transaction.customerName,
                     transaction.employeeName,
                     transaction.totalNumOfItems,
-                    transaction.totalNumOfQty,
-                    transaction.totalAmount
+                    transaction.totalNumOfQty.ToString("N2"), //Format to Decimal
+                    transaction.totalAmount.ToString("N2") //Format to Decimal
                 );
             }
         }

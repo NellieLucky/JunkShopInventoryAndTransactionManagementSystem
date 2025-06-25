@@ -42,8 +42,8 @@
             CustName = new DataGridViewTextBoxColumn();
             ContactNo = new DataGridViewTextBoxColumn();
             TotalNumTransaction = new DataGridViewTextBoxColumn();
-            TotalPricePurchases = new DataGridViewTextBoxColumn();
             TotalQuantityPurchases = new DataGridViewTextBoxColumn();
+            TotalPricePurchases = new DataGridViewTextBoxColumn();
             CustomerDelete = new DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)BuyerRecordsTable).BeginInit();
             panel1.SuspendLayout();
@@ -68,7 +68,7 @@
             BuyerRecordsTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             BuyerRecordsTable.ColumnHeadersHeight = 60;
             BuyerRecordsTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            BuyerRecordsTable.Columns.AddRange(new DataGridViewColumn[] { CustID, CustName, ContactNo, TotalNumTransaction, TotalPricePurchases, TotalQuantityPurchases, CustomerDelete });
+            BuyerRecordsTable.Columns.AddRange(new DataGridViewColumn[] { CustID, CustName, ContactNo, TotalNumTransaction, TotalQuantityPurchases, TotalPricePurchases, CustomerDelete });
             BuyerRecordsTable.EditMode = DataGridViewEditMode.EditProgrammatically;
             BuyerRecordsTable.EnableHeadersVisualStyles = false;
             BuyerRecordsTable.GridColor = Color.FromArgb(99, 99, 99);
@@ -211,19 +211,19 @@
             TotalNumTransaction.MinimumWidth = 6;
             TotalNumTransaction.Name = "TotalNumTransaction";
             // 
+            // TotalQuantityPurchases
+            // 
+            TotalQuantityPurchases.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            TotalQuantityPurchases.HeaderText = "Total Quantity of Purchases";
+            TotalQuantityPurchases.MinimumWidth = 6;
+            TotalQuantityPurchases.Name = "TotalQuantityPurchases";
+            // 
             // TotalPricePurchases
             // 
             TotalPricePurchases.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             TotalPricePurchases.HeaderText = "Total Price of Purchases";
             TotalPricePurchases.MinimumWidth = 6;
             TotalPricePurchases.Name = "TotalPricePurchases";
-            // 
-            // TotalQuantityPurchases
-            // 
-            TotalQuantityPurchases.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            TotalQuantityPurchases.HeaderText = "Total Amount of Purchases";
-            TotalQuantityPurchases.MinimumWidth = 6;
-            TotalQuantityPurchases.Name = "TotalQuantityPurchases";
             // 
             // CustomerDelete
             // 
@@ -267,8 +267,8 @@
         private DataGridViewTextBoxColumn CustName;
         private DataGridViewTextBoxColumn ContactNo;
         private DataGridViewTextBoxColumn TotalNumTransaction;
-        private DataGridViewTextBoxColumn TotalPricePurchases;
         private DataGridViewTextBoxColumn TotalQuantityPurchases;
+        private DataGridViewTextBoxColumn TotalPricePurchases;
         private DataGridViewImageColumn CustomerDelete;
     }
 }

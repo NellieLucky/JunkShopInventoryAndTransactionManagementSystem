@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle13 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle14 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SellerRecordsPage));
             BuyerRec = new Label();
             dataGridView1 = new DataGridView();
@@ -50,8 +50,8 @@
             dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
             SupplierTotalSold = new DataGridViewTextBoxColumn();
-            TotalAmountSold = new DataGridViewTextBoxColumn();
             TotalQuantityPurchases = new DataGridViewTextBoxColumn();
+            TotalPriceSold = new DataGridViewTextBoxColumn();
             DeleteColumn = new DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel1.SuspendLayout();
@@ -79,14 +79,14 @@
             dataGridView1.BackgroundColor = Color.White;
             dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.SunkenHorizontal;
             dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = Color.FromArgb(163, 244, 215);
-            dataGridViewCellStyle8.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle8.ForeColor = Color.Black;
-            dataGridViewCellStyle8.SelectionBackColor = Color.FromArgb(163, 244, 215);
-            dataGridViewCellStyle8.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(163, 244, 215);
+            dataGridViewCellStyle1.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(163, 244, 215);
+            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.ColumnHeadersHeight = 60;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { CustID, CustName, ContactNo, CustomerDelete });
@@ -96,20 +96,20 @@
             dataGridView1.Location = new Point(23, 51);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle9.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
-            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.RowHeadersWidth = 50;
-            dataGridViewCellStyle10.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle10.ForeColor = Color.Black;
-            dataGridViewCellStyle10.SelectionBackColor = Color.FromArgb(0, 157, 209);
-            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.True;
-            dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle3.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(0, 157, 209);
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle3;
             dataGridView1.RowTemplate.Height = 50;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.Size = new Size(0, 0);
@@ -234,17 +234,17 @@
             sellerRecordsTable.BackgroundColor = Color.White;
             sellerRecordsTable.CellBorderStyle = DataGridViewCellBorderStyle.SunkenHorizontal;
             sellerRecordsTable.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.BackColor = Color.FromArgb(163, 244, 215);
-            dataGridViewCellStyle11.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle11.ForeColor = Color.Black;
-            dataGridViewCellStyle11.SelectionBackColor = Color.FromArgb(163, 244, 215);
-            dataGridViewCellStyle11.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.True;
-            sellerRecordsTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(163, 244, 215);
+            dataGridViewCellStyle4.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle4.ForeColor = Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(163, 244, 215);
+            dataGridViewCellStyle4.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            sellerRecordsTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             sellerRecordsTable.ColumnHeadersHeight = 60;
             sellerRecordsTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            sellerRecordsTable.Columns.AddRange(new DataGridViewColumn[] { CustomerID, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, SupplierTotalSold, TotalAmountSold, TotalQuantityPurchases, DeleteColumn });
+            sellerRecordsTable.Columns.AddRange(new DataGridViewColumn[] { CustomerID, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, SupplierTotalSold, TotalQuantityPurchases, TotalPriceSold, DeleteColumn });
             sellerRecordsTable.EditMode = DataGridViewEditMode.EditProgrammatically;
             sellerRecordsTable.EnableHeadersVisualStyles = false;
             sellerRecordsTable.GridColor = Color.FromArgb(99, 99, 99);
@@ -252,20 +252,20 @@
             sellerRecordsTable.Margin = new Padding(3, 4, 3, 4);
             sellerRecordsTable.Name = "sellerRecordsTable";
             sellerRecordsTable.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle13.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle13.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle13.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = DataGridViewTriState.True;
-            sellerRecordsTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            sellerRecordsTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             sellerRecordsTable.RowHeadersVisible = false;
             sellerRecordsTable.RowHeadersWidth = 50;
-            dataGridViewCellStyle14.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle14.ForeColor = Color.Black;
-            dataGridViewCellStyle14.SelectionBackColor = Color.FromArgb(0, 157, 209);
-            dataGridViewCellStyle14.WrapMode = DataGridViewTriState.True;
-            sellerRecordsTable.RowsDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle7.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle7.ForeColor = Color.Black;
+            dataGridViewCellStyle7.SelectionBackColor = Color.FromArgb(0, 157, 209);
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
+            sellerRecordsTable.RowsDefaultCellStyle = dataGridViewCellStyle7;
             sellerRecordsTable.RowTemplate.Height = 50;
             sellerRecordsTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             sellerRecordsTable.Size = new Size(1007, 508);
@@ -300,13 +300,6 @@
             SupplierTotalSold.MinimumWidth = 6;
             SupplierTotalSold.Name = "SupplierTotalSold";
             // 
-            // TotalAmountSold
-            // 
-            TotalAmountSold.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            TotalAmountSold.HeaderText = "Total amount Sold";
-            TotalAmountSold.MinimumWidth = 6;
-            TotalAmountSold.Name = "TotalAmountSold";
-            // 
             // TotalQuantityPurchases
             // 
             TotalQuantityPurchases.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -314,12 +307,19 @@
             TotalQuantityPurchases.MinimumWidth = 6;
             TotalQuantityPurchases.Name = "TotalQuantityPurchases";
             // 
+            // TotalPriceSold
+            // 
+            TotalPriceSold.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            TotalPriceSold.HeaderText = "Total Price Sold";
+            TotalPriceSold.MinimumWidth = 6;
+            TotalPriceSold.Name = "TotalPriceSold";
+            // 
             // DeleteColumn
             // 
-            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.NullValue = resources.GetObject("dataGridViewCellStyle12.NullValue");
-            dataGridViewCellStyle12.Padding = new Padding(10);
-            DeleteColumn.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.NullValue = resources.GetObject("dataGridViewCellStyle5.NullValue");
+            dataGridViewCellStyle5.Padding = new Padding(10);
+            DeleteColumn.DefaultCellStyle = dataGridViewCellStyle5;
             DeleteColumn.HeaderText = "Delete";
             DeleteColumn.Image = Properties.Resources.delete;
             DeleteColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
@@ -363,8 +363,8 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private DataGridViewTextBoxColumn SupplierTotalSold;
-        private DataGridViewTextBoxColumn TotalAmountSold;
         private DataGridViewTextBoxColumn TotalQuantityPurchases;
+        private DataGridViewTextBoxColumn TotalPriceSold;
         private DataGridViewImageColumn DeleteColumn;
     }
 }

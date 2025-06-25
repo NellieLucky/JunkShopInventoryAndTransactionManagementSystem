@@ -38,26 +38,6 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
             SearchButton.Click += SearchButton_Click;
             SearchTextBox.ContentChanged += SearchTextBox_TextChanged;
 
-            /*
-            //Pangtest lang to if msgkakalaman  
-            dataGridView1.Rows.Add("1", "Metal", "All types of scrap metal", Properties.Resources.pen, Properties.Resources.delete);
-            dataGridView1.Rows.Add("2", "Plastic", "Bottles, containers, and more", Properties.Resources.pen, Properties.Resources.delete);
-            dataGridView1.Rows.Add("1", "Metal", "All types of scrap metal", Properties.Resources.pen, Properties.Resources.delete);
-            dataGridView1.Rows.Add("2", "Plastic", "Bottles, containers, and more", Properties.Resources.pen, Properties.Resources.delete);
-            dataGridView1.Rows.Add("1", "Metal", "All types of scrap metal", Properties.Resources.pen, Properties.Resources.delete);
-            dataGridView1.Rows.Add("2", "Plastic", "Bottles, containers, and more", Properties.Resources.pen, Properties.Resources.delete);
-            dataGridView1.Rows.Add("1", "Metal", "All types of scrap metal", Properties.Resources.pen, Properties.Resources.delete);
-            dataGridView1.Rows.Add("2", "Plastic", "Bottles, containers, and more", Properties.Resources.pen, Properties.Resources.delete);
-            dataGridView1.Rows.Add("1", "Metal", "All types of scrap metal", Properties.Resources.pen, Properties.Resources.delete);
-            dataGridView1.Rows.Add("2", "Plastic", "Bottles, containers, and more", Properties.Resources.pen, Properties.Resources.delete);
-            dataGridView1.Rows.Add("1", "Metal", "All types of scrap metal", Properties.Resources.pen, Properties.Resources.delete);
-            dataGridView1.Rows.Add("2", "Plastic", "Bottles, containers, and more", Properties.Resources.pen, Properties.Resources.delete);
-            dataGridView1.Rows.Add("1", "Metal", "All types of scrap metal", Properties.Resources.pen, Properties.Resources.delete);
-            dataGridView1.Rows.Add("2", "Plastic", "Bottles, containers, and more", Properties.Resources.pen, Properties.Resources.delete);
-            dataGridView1.Rows.Add("1", "Metal", "All types of scrap metal", Properties.Resources.pen, Properties.Resources.delete);
-            dataGridView1.Rows.Add("2", "Plastic", "Bottles, containers, and more", Properties.Resources.pen, Properties.Resources.delete);
-            */
-
             // Set header text for Edit and Delete columns to empty  
             CategoryRecordsTable.Columns["Edit"].HeaderText = "";
             CategoryRecordsTable.Columns["Delete"].HeaderText = "";

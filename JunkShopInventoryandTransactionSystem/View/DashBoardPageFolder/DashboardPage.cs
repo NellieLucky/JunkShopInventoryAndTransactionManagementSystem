@@ -54,7 +54,7 @@ namespace JunkShopInventoryandTransactionSystem.View.DashBoardPageFolder
                 LowStocksTable.Rows.Clear();
                 foreach (var item in lowStockItems)
                 {
-                    LowStocksTable.Rows.Add(item.itemName, item.itemQuantity);
+                    LowStocksTable.Rows.Add(item.itemName, item.itemQuantity.ToString("F2"));
                 }
             }
             catch (Exception ex)
