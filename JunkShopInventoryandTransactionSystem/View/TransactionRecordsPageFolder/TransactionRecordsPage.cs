@@ -23,6 +23,9 @@ namespace JunkShopInventoryandTransactionSystem.View.TransactionRecordsPageFolde
             InitializeComponent();
             ReloadTransactions.LoadTransactionData(TransactionRecordsTable);
 
+            TransactionRecordsTable.CellFormatting += TransactionRecordsTable_CellFormatting;
+
+
             SearchTextBox.ContentChanged += SearchTextBox_TextChange;
 
             var userInfo = ForUser.GetUserInfo(UserSession.UserId);
@@ -132,6 +135,19 @@ namespace JunkShopInventoryandTransactionSystem.View.TransactionRecordsPageFolde
                 }
 
                 row.Visible = visible;
+            }
+        }
+
+        private void TransactionRecordsTable_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            // Replace "TotalAmount" with the actual column name if different
+            if (TransactionRecordsTable.Columns[e.ColumnIndex].Name == "TotalAmount" && e.Value != null)
+            {
+                if (decimal.TryParse(e.Value.ToString(), out decimal amount))
+                {
+                    e.Value = $"₱{amount:N2}";
+                    e.FormattingApplied = true;
+                }
             }
         }
     }
