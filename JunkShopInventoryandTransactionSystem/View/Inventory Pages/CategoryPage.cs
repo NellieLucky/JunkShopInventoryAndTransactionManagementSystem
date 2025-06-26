@@ -1,13 +1,17 @@
-﻿//imports the backend file ReloadCategory.cs
-using JunkShopInventoryandTransactionSystem.BackendFiles.Category.Delete;
-using JunkShopInventoryandTransactionSystem.BackendFiles.Category.Reload;
+﻿
+// imports for functions
+
+// imports for category actions
+// specific backend files consisting of actions
+using JunkShopInventoryandTransactionSystem.BackendFiles.Category.Archiving;
 using JunkShopInventoryandTransactionSystem.BackendFiles.Category.Unarchive;
-using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Delete;
-using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Reload;
-using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Unarchive;
+// for refreshing of values for the table grid view
+using JunkShopInventoryandTransactionSystem.BackendFiles.Category.Reload;
+// for frontend
 using JunkShopInventoryandTransactionSystem.BackendFiles.UserSession;
 using JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel;
 using JunkShopInventoryandTransactionSystem.View.DeletionDialogs; 
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -58,10 +62,16 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
         {
             if (archiveState.SelectedIndex == 0)
             {
+                // if archived state is 0
+                // we are in non-archived options
+                // were gonna see non-archived categories
                 ReloadCategory.LoadCategoryData(CategoryRecordsTable);
             }
             else
             {
+                // if archived state is 1
+                // we are in archived options
+                // were gonna see archived categories
                 ReloadCategory.LoadArchivedCategoryData(CategoryRecordsTable);
             }
         }
@@ -114,11 +124,8 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
         private void CategoryRecordsTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             // Check if the clicked cell is an image column
-            // if e.ColumnIndex value is 5 then its Delete
-            // if e.ColumnIndex value is 4 then its Edit
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
-
                 string clickedColumnName = CategoryRecordsTable.Columns[e.ColumnIndex].Name;
 
                 DataGridViewRow selectedRow = CategoryRecordsTable.Rows[e.RowIndex];
@@ -150,7 +157,7 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
                         // Confirmation message box with item ID
                         DialogResult confirmResult = MessageBox.Show(
                             $"Are you sure you want to unarchive this category?\n\nCategory ID: {categoryId}",
-                            "Confirm Unarchiving",
+                            "Unarchiving of Category",
                             MessageBoxButtons.YesNo,
                             MessageBoxIcon.Question
                         );
@@ -162,7 +169,7 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
 
                             if (unarchivingSuccess)
                             {
-                                MessageBox.Show("Categoary successfully unarchived.", "Unarchive Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                MessageBox.Show("Categoary successfully unarchived.", "Successful Unarchiving", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                             else
                             {
@@ -182,7 +189,7 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
                     {
                         // Confirmation message box with item ID
                         DialogResult confirmResult = MessageBox.Show(
-                            $"Are you sure you want to delete this category?\n\nCategory ID: {categoryId}",
+                            $"Are you sure you want to archive this category?\n\nCategory ID: {categoryId}",
                             "Confirm Archiving",
                             MessageBoxButtons.YesNo,
                             MessageBoxIcon.Question
@@ -191,15 +198,16 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
                         if (confirmResult == DialogResult.Yes)
                         {
                             //calls the unarchiving backend
-                            bool deletingSuccess = DeleteCategory.HandleDeleteCategory(categoryId, CategoryRecordsTable);
+                            // fix misreferenced perma delete instead of soft delete
+                            bool deletingSuccess = ArchivingCategory.HandleArchivingCategory(categoryId, CategoryRecordsTable);
 
                             if (deletingSuccess)
                             {
-                                MessageBox.Show("Category successfully unarchived.", "Unarchive Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                MessageBox.Show("Successfully archived the category.", "Successful Archiving", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                             else
                             {
-                                MessageBox.Show("Failed to unarchive Category. Please try again.", "Unarchive Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show("Failed to archive Category. Please try again.", "Archiving Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
                         

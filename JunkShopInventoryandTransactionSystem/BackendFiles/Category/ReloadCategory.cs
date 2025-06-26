@@ -1,5 +1,6 @@
-﻿using JunkShopInventoryandTransactionSystem.BackendFiles.Category.Crud;
-using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud;
+﻿
+using JunkShopInventoryandTransactionSystem.BackendFiles.Category.Crud;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +31,6 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Category.Reload
         }   // end of LoadCategoryData method
 
         // method to load archived inventory data into the DataGridView
-        // not yet used
         public static void LoadArchivedCategoryData(DataGridView dataGridView1)
         {
             dataGridView1.Rows.Clear();

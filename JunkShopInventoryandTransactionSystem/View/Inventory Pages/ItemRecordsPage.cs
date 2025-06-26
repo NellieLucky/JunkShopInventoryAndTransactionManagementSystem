@@ -1,12 +1,17 @@
-﻿//imports the backend file ReloadInventory.cs
-using JunkShopInventoryandTransactionSystem.BackendFiles.Category.Reload;
+﻿
+// imports for functions
+
+// imports for inventory actions
+// specific backend files consisting of actions
 using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Archiving;
-using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Delete;
-using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Reload;
 using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Unarchive;
+// for refreshing of values for the table grid view
+using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Reload;
+// for frontend
 using JunkShopInventoryandTransactionSystem.BackendFiles.UserSession;
 using JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel;
 using JunkShopInventoryandTransactionSystem.View.DeletionDialogs;
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -77,10 +82,16 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
         {
             if (archiveState.SelectedIndex == 0)
             {
+                // if archived state is 0
+                // we are in non-archived options
+                // were gonna see non-archived items
                 ReloadInventory.LoadInventoryData(ItemRecordsTable);
             }
             else
             {
+                // if archived state is 1
+                // we are in archived options
+                // were gonna see archived items
                 ReloadInventory.LoadArchivedInventoryData(ItemRecordsTable);
             }
         }
@@ -165,7 +176,7 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
                     // Confirmation message box with item ID
                     DialogResult confirmResult = MessageBox.Show(
                         $"Are you sure you want to unarchive this item?\n\nItem ID: {itemId}",
-                        "Confirm Unarchiving",
+                        "Unarchiving of Item",
                         MessageBoxButtons.YesNo,
                         MessageBoxIcon.Question
                     );
@@ -177,7 +188,7 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
 
                         if (unarchivingSuccess)
                         {
-                            MessageBox.Show("Item successfully unarchived.", "Unarchive Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Item successfully unarchived.", "Successful Unarchiving", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else
                         {
@@ -196,7 +207,7 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
                     // Confirmation message box with item ID
                     DialogResult confirmResult = MessageBox.Show(
                         $"Are you sure you want to archive this item?\n\nItem ID: {itemId}",
-                        "Confirm Archiving",
+                        "Archiving of Item",
                         MessageBoxButtons.YesNo,
                         MessageBoxIcon.Question
                     );

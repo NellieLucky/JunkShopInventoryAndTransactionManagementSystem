@@ -5,7 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-// imports crud
+// imports crud of ITEM and CATEGORY
+// since i needed to DELETE the items that used the archived category that were gonna DELETE here
 using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud;
 using JunkShopInventoryandTransactionSystem.BackendFiles.Category.Crud;
 
@@ -22,7 +23,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Category.Delete
             InventoryDelete deleteItems = new InventoryDelete();
             deleteItems.DeleteItemsByCategory(categoryId);
 
-            // --- If validation passes, proceed with adding the item ---
+            // proceed with DELETING the CATEGORY ---
             CategoryDelete delete = new CategoryDelete();
             delete.DeleteCategory(categoryId);
 

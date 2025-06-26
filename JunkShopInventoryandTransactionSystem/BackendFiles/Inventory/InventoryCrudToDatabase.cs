@@ -1,5 +1,6 @@
-﻿using JunkShopInventoryandTransactionSystem.BackendFiles.Category.Crud;
-using JunkShopInventoryandTransactionSystem.View.Inventory_Pages;
+﻿
+// removed unused imports
+
 using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
@@ -50,6 +51,7 @@ SELECT * FROM Inventory
 
 namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
 {
+    // constructors depending on what will be used
     // Optimized and updated to support decimal quantities and prices
     public class InventoryItem
     {
@@ -101,7 +103,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
     {
         // Centralized connection string
         // remo string
-        //protected readonly string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+        protected readonly string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
 
         //nicole's connection string
         //protected readonly string connectionString = @"Data Source = (LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\USER\source\repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\Database1.mdf;Integrated Security = True";
@@ -123,6 +125,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
     }
 
     // InventoryRead Class
+    // includes everything related to READING
     public class InventoryRead : BaseRepository
     {
         // read all unarchived items
@@ -188,7 +191,6 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
         // end of read all unarchived items
 
         // read all archived items
-        // not yet used
         public List<InventoryItem> GetAllArchivedInventoryItems()
         {
             List<InventoryItem> items = new List<InventoryItem>();
@@ -248,7 +250,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
         }
         // end of read all archived items
 
-        // just get one with cat name
+        // just get one ITEM with category name
         public InventoryItem? GetOneInventoryItem(int itemId)
         {
             InventoryItem? item = null; // Will remain null if no match is found
@@ -359,6 +361,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
 
             return item;
         }
+        // end of get item for buyer
 
         // Get one inventory item for Seller transactions (removes categoryName)
         public InventoryItem? GetItemForSeller(int itemId)
@@ -411,11 +414,13 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
 
             return item;
         }
+        // end of get item for seller
 
     }
     // End of inventory Read
 
     // inventory add aaa
+    // includes everything related to ADDING / INSERTION
     public class InventoryAdd : BaseRepository
     {
         public void AddItemToInventory(InventoryItem item)
@@ -458,6 +463,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
                 }
             }
         }
+        // end of item add one
     }
     // end of InventoryAdd
 
@@ -509,6 +515,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
                     }
                 }   // end of the second using in the nested using stuff
             }   //end of the first using
+
         }   //end of method EditItemInInventory
 
     }

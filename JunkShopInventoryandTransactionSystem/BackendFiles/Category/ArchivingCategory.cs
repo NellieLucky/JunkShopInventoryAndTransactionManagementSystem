@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+// imports crud of ITEM and CATEGORY
+// since i needed to ARCHIVE the items that used the UNARCHIVED category that were gonna ARCHIVE here
 using JunkShopInventoryandTransactionSystem.BackendFiles.Category.Crud;
 using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud;
 
@@ -16,11 +18,11 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Category.Archiving
             int categoryId,
             DataGridView targetDataGridView)
         {
-            // Soft delete all items first
+            // Soft deletes/ARCHIVES all items first
             InventorySoftDelete softDel_byCatId = new InventorySoftDelete();
             softDel_byCatId.SoftDeleteItemsByCategory(categoryId);
 
-            // Then soft delete the category
+            // Then soft delete/ARCHIVES the category
             CategorySoftDelete softDelete = new CategorySoftDelete();
             softDelete.SoftDeleteCategory(categoryId);
 

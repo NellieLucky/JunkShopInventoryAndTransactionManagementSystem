@@ -16,8 +16,9 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Archiving
             DataGridView targetDataGridView)
         {
             // --- If validation passes, proceed with soft deleting the item ---
+            // ARCHIVING THE ITEM
             InventorySoftDelete softDelete = new InventorySoftDelete();
-            softDelete.SoftDeleteItemFromInventory(itemId);  // Replaced hard delete
+            softDelete.SoftDeleteItemFromInventory(itemId);
 
             // --- Reload DataGridView to reflect updated state ---
             if (targetDataGridView != null)
