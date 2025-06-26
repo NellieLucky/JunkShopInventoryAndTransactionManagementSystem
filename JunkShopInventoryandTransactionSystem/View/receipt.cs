@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 ﻿
 using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud;
 using JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.ConstructorModel;
+=======
+﻿using JunkShopInventoryandTransactionSystem.BackendFiles.IndInvoice;
+using Microsoft.Data.SqlClient;
+>>>>>>> Receipt/Invoice
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -30,6 +35,17 @@ namespace JunkShopInventoryandTransactionSystem.View.InvoiceReceipt
             decimal totalPrice)
         {
             InitializeComponent();
+
+            TransacId = transacId;
+            CustomerName = customerName;
+
+            string customerId = DataHelper.GetCustomerIdByName(CustomerName);
+
+            ReceiptCustName.Text = CustomerName;
+            ReceiptCustNo.Text = DataHelper.GetCustomerContactById(customerId);
+
+            // Load and display the receipt items
+            DataHelper.LoadReceiptItems(TransacId, BuyersOrderTable, label1, label2);
 
             _cartTable = cartTable;
             _customerName = customerName;

@@ -264,7 +264,7 @@
             // 
             // receiptlogo
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(766, 489);
             Controls.Add(TotalPriceHolder);
