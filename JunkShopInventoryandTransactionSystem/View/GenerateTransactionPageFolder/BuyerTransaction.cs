@@ -1,5 +1,4 @@
-﻿
-using JunkShopInventoryandTransactionSystem.View.InvoiceReceipt;
+﻿using JunkShopInventoryandTransactionSystem.View.InvoiceReceipt;
 using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud;
 using JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.BuyerLogic;
 // access the constructor model for transaction cart
@@ -34,6 +33,8 @@ namespace JunkShopInventoryandTransactionSystem.View.GenerateTransactionPageFold
 
             // defaul zero value of the two labels below
             UpdateTransactionSummaryLabels();
+
+            BuyersOrderTable.CellFormatting += TransactionTable_CellFormatting;
         }
 
         private void BuyerAddTransacBtn_Click(object sender, EventArgs e)
@@ -217,5 +218,17 @@ namespace JunkShopInventoryandTransactionSystem.View.GenerateTransactionPageFold
 
         }
 
+        private void TransactionTable_CellFormatting(object? sender, DataGridViewCellFormattingEventArgs e)
+        {
+            var columnName = BuyersOrderTable.Columns[e.ColumnIndex].Name;
+            if (columnName == "SellingPrice" || columnName == "ExchangeAmount")
+            {
+                if (e.Value != null && decimal.TryParse(e.Value.ToString(), out decimal amount))
+                {
+                    e.Value = string.Format(new System.Globalization.CultureInfo("en-PH"), "{0:C2}", amount);
+                    e.FormattingApplied = true;
+                }
+            }
+        }
     }
 }
