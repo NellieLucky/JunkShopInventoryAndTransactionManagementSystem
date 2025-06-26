@@ -19,10 +19,10 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.IndInvoice
         // public static string ConnectionString = @"Data Source = (LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\USER\source\repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\Database1.mdf;Integrated Security = True";
 
         //Arnel's connection string
-        public static string ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\source\repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
+        //public static string ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\source\repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
 
         //Abalos' connection string
-        // public static string ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Beetoy\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\Database1.mdf;Integrated Security=True";
+        public static string ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Beetoy\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\Database1.mdf;Integrated Security=True";
 
         //Dara's connection string
         // public static string ConnectionString = @"Data Source = (LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Sandara Fillartos\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\Database1.mdf"";Integrated Security = True";
@@ -55,21 +55,21 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.IndInvoice
             return dt;
         }
 
-        public static void LoadReceiptItems(int transacId, DataGridView buyersOrderTable, Label totalQtyLabel, Label totalPriceLabel)
+        public static void LoadReceiptItems(int transacId, DataGridView InvoiceReceiptTable, Label TotalItemHolder, Label TotalPriceHolder)
         {
             try
             {
                 DataTable receipttable = GetReceiptItems(transacId);
-                buyersOrderTable.AutoGenerateColumns = false;
-                buyersOrderTable.DataSource = receipttable;
+                InvoiceReceiptTable.AutoGenerateColumns = false;
+                InvoiceReceiptTable.DataSource = receipttable;
 
                 // Optionally, set column headers for better readability
-                buyersOrderTable.Columns["ItemID"].DataPropertyName = "ItemID";
-                buyersOrderTable.Columns["ItemName"].DataPropertyName = "ItemName";
-                buyersOrderTable.Columns["QtyType"].DataPropertyName = "QtyType";
-                buyersOrderTable.Columns["SellingPrice"].DataPropertyName = "SellingPrice";
-                buyersOrderTable.Columns["TransacQuantity"].DataPropertyName = "ExchangeQuantity";
-                buyersOrderTable.Columns["ExchangeAmount"].DataPropertyName = "ExchangeAmount";
+                InvoiceReceiptTable.Columns["ItemID"].DataPropertyName = "ItemID";
+                InvoiceReceiptTable.Columns["ItemName"].DataPropertyName = "ItemName";
+                InvoiceReceiptTable.Columns["QtyType"].DataPropertyName = "QtyType";
+                InvoiceReceiptTable.Columns["Price"].DataPropertyName = "Price";
+                InvoiceReceiptTable.Columns["TransacQuantity"].DataPropertyName = "ExchangeQuantity";
+                InvoiceReceiptTable.Columns["TransacAmount"].DataPropertyName = "ExchangeAmount";
 
                 // Calculate totals
                 int totalQuantity = 0;
@@ -84,8 +84,8 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.IndInvoice
                 }
 
                 // Set the labels
-                totalQtyLabel.Text = totalQuantity.ToString();
-                totalPriceLabel.Text = "₱ " + totalPrice.ToString("N0");
+                TotalItemHolder.Text = totalQuantity.ToString();
+                TotalPriceHolder.Text = "₱ " + totalPrice.ToString("N0");
             }
             catch (Exception ex)
             {
@@ -93,7 +93,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.IndInvoice
             }
         }
 
-        public static string GetCustomerIdByName(string customerName)
+        public static string GetCustomerIdByName(string CustName)
         {
             string? customerId = "Unknown";
             string? query = "SELECT customerId FROM Customer WHERE customerName = @customerName";
@@ -101,7 +101,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.IndInvoice
             using (var conn = new SqlConnection(ConnectionString))
             using (var cmd = new SqlCommand(query, conn))
             {
-                cmd.Parameters.AddWithValue("@customerName", customerName);
+                cmd.Parameters.AddWithValue("@customerName", CustName);
                 conn.Open();
                 using (var reader = cmd.ExecuteReader())
                 {

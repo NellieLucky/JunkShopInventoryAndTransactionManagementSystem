@@ -1,6 +1,8 @@
-﻿using JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Crud;
+﻿using JunkShopInventoryandTransactionSystem.BackendFiles.IndInvoice;
+using JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Crud;
 using JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Reload;
 using JunkShopInventoryandTransactionSystem.BackendFiles.UserSession;
+using JunkShopInventoryandTransactionSystem.View.InvoiceReceipt;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -84,8 +86,8 @@ namespace JunkShopInventoryandTransactionSystem.View.TransactionRecordsPageFolde
                 {
                     string customerName = selectedRow.Cells["customerName"].Value?.ToString() ?? "";
 
-                    receiptlogo receipt = new receiptlogo(transacId, customerName);
-                    receipt.ShowDialog(); // Show the receipt form as a dialog
+                    HistoricalReceipt historicalreceipt = new HistoricalReceipt(transacId, customerName);
+                    historicalreceipt.ShowDialog(); // Show the receipt form as a dialog
                 }
                 else
                 {
