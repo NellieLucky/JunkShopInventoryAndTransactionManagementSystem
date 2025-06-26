@@ -1,6 +1,9 @@
 ﻿
-// imports cat add, edit, crud
+// imports for functions
+
+// CRUD mainly for QUERY
 using JunkShopInventoryandTransactionSystem.BackendFiles.Category.Crud;
+// mainly for BACKEND LOGIC, validation checking of values, also calls specific queries inside them
 using JunkShopInventoryandTransactionSystem.BackendFiles.Category.Add;
 using JunkShopInventoryandTransactionSystem.BackendFiles.Category.Edit;
 
@@ -25,7 +28,6 @@ namespace JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel
         private int? categoryId;
 
         // constructor for Add function only
-        // Modified constructor to accept the DataGridView
 
         public AddEditCategoryDialogBox(string value, DataGridView dgv)
         {
@@ -42,7 +44,6 @@ namespace JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel
                 // btn2 = OK button = add category
                 proceedButton.Content = "Add Category";
 
-                // idk what these are yet
                 //To Change the title of the form
                 this.Text = "Add Category";
                 // To Change the icon of the form
@@ -59,7 +60,6 @@ namespace JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel
         }
 
         // constructor for Edit function only
-        // Modified constructor to accept the DataGridView
 
         public AddEditCategoryDialogBox(string value, DataGridView dgv, int categoryId)
         {
@@ -77,7 +77,6 @@ namespace JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel
                 // btn2 = OK button = add category
                 proceedButton.Content = "Edit Category";
 
-                // idk what these are yet
                 //To Change the title of the form
                 this.Text = "Edit Category";
                 // To Change the icon of the form
@@ -102,7 +101,8 @@ namespace JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel
                 string categoryName = catNameTextBox.Content as string ?? string.Empty;
                 string categoryDescription  = catDescTextBox.Content as string ?? string.Empty;
 
-                // passes the values of the widgets to the AddToInventoryHandler 
+                // passes the values of the widgets to the Add
+                // goes to BACKEND FILE will return TRUE if successful
                 bool addSuccess = AddToCategory.HandleAddCategory(
                     categoryName,
                     categoryDescription,
@@ -132,7 +132,8 @@ namespace JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel
                 string categoryName = catNameTextBox.Content as string ?? string.Empty;
                 string categoryDescription = catDescTextBox.Content as string ?? string.Empty;
 
-                // passes the values of the widgets to the AddToInventoryHandler 
+                // passes the values of the widgets to the Edit
+                // goes to BACKEND FILE will return TRUE if successful
                 bool editSuccess = EditCategory.HandleEditCategory(
                     categoryId,
                     categoryName,
@@ -157,6 +158,8 @@ namespace JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel
             }
         }
 
+        // gets the category details using PASSED CATEGORY ID to get its value and place it in the widgets
+        // when EDITING / UDPATING
         private void LoadCategoryDetails()
         {
             // cat as in category but ight 

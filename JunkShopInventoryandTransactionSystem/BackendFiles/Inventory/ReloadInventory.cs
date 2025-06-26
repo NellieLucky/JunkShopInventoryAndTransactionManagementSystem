@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Forms;
 
-// imports the backend file InventoryCrud.cs
+// imports the backend file InventoryCrud.cs FOR READING
 using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud;
 
 namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Reload
@@ -32,7 +32,6 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Reload
         }   // end of LoadInventoryData method
 
         // method to load archived inventory data into the DataGridView
-        // not yet used
         public static void LoadArchivedInventoryData(DataGridView dataGridView1)
         {
             // Clear previous rows

@@ -14,7 +14,8 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Unarchive
             int itemId,
             DataGridView targetDataGridView)
         {
-            // --- Restore item by setting isArchived = 0 ---
+            // --- Restore item by setting isArchived = 0
+            // UNARCHIVING THE ITEM BACK---
             InventoryRestore restore = new InventoryRestore();
             restore.RestoreItemToInventory(itemId);
 

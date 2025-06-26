@@ -59,6 +59,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Category.Edit
                 MessageBox.Show(errorMessage, "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
+            // end of validations
 
             // --- If validation passes, proceed with adding the item ---
             CategoryItem catToEdit = new CategoryItem(

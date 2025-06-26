@@ -1,7 +1,7 @@
 ﻿
 // imports crud
 using JunkShopInventoryandTransactionSystem.BackendFiles.Category.Crud;
-using JunkShopInventoryandTransactionSystem.View.Inventory_Pages;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -58,6 +58,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Category.Add
                 MessageBox.Show(errorMessage, "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
+            // END OF VALIDATIONS
 
             // --- If validation passes, proceed with adding the item ---
             CategoryItem newCat = new CategoryItem(

@@ -134,6 +134,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Edit
                 MessageBox.Show(errorMessage, "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
+            // END OF VALIDATIONS
 
             // --- If validation passes, proceed with editing the item ---
             InventoryItem itemToEdit = new InventoryItem(

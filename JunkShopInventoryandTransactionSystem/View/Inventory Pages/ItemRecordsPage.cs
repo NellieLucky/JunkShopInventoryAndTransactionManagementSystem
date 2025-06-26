@@ -1,12 +1,17 @@
-﻿//imports the backend file ReloadInventory.cs
-using JunkShopInventoryandTransactionSystem.BackendFiles.Category.Reload;
+﻿
+// imports for functions
+
+// imports for inventory actions
+// specific backend files consisting of actions
 using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Archiving;
-using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Delete;
-using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Reload;
 using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Unarchive;
+// for refreshing of values for the table grid view
+using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Reload;
+// for frontend
 using JunkShopInventoryandTransactionSystem.BackendFiles.UserSession;
 using JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel;
 using JunkShopInventoryandTransactionSystem.View.DeletionDialogs;
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
