@@ -36,6 +36,9 @@ namespace JunkShopInventoryandTransactionSystem.View.InvoiceReceipt
             _totalItems = totalItems;
             _totalPrice = totalPrice;
 
+            // Attach the CellFormatting event handler
+            InvoiceReceiptTable.CellFormatting += InvoiceReceiptTable_CellFormatting;
+
             loadDetails_toInvoiceReceipt();
         }
 
@@ -68,5 +71,20 @@ namespace JunkShopInventoryandTransactionSystem.View.InvoiceReceipt
             TotalItemHolder.Text = _totalItems.ToString();
             TotalPriceHolder.Text = "₱ " + _totalPrice.ToString("N2");
         }
+
+        private void InvoiceReceiptTable_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            // Replace "Price" and "ExchangeAmount" with your actual column names if different
+            string colName = InvoiceReceiptTable.Columns[e.ColumnIndex].Name;
+            if ((colName == "Price" || colName == "TransacAmount") && e.Value != null)
+            {
+                if (decimal.TryParse(e.Value.ToString(), out decimal amount))
+                {
+                    e.Value = $"₱{amount:N2}";
+                    e.FormattingApplied = true;
+                }
+            }
+        }
+
     }
 }
