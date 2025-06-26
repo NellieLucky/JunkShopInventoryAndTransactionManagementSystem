@@ -276,7 +276,6 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.SellerL
 
             if (transactionId > 0)
             {
-                /*
                 // Insert each cart item into TransactionItems
                 foreach (var cartItem in tempCart)
                 {
@@ -292,7 +291,6 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.SellerL
                     }
                     writer.AddTransactionItem(transactionId, cartItem.ItemId, cartItem.Quantity, price);
                 }
-                */
 
                 MessageBox.Show("Transaction finalized successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return true;

@@ -212,9 +212,9 @@
             label1.ForeColor = Color.FromArgb(0, 157, 209);
             label1.Location = new Point(21, 14);
             label1.Name = "label1";
-            label1.Size = new Size(104, 16);
+            label1.Size = new Size(78, 16);
             label1.TabIndex = 29;
-            label1.Text = "Email Account";
+            label1.Text = "Username";
             // 
             // cuiButton1
             // 

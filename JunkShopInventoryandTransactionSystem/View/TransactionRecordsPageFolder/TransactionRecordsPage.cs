@@ -1,6 +1,8 @@
-﻿using JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Crud;
+﻿using JunkShopInventoryandTransactionSystem.BackendFiles.IndInvoice;
+using JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Crud;
 using JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Reload;
 using JunkShopInventoryandTransactionSystem.BackendFiles.UserSession;
+using JunkShopInventoryandTransactionSystem.View.InvoiceReceipt;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -71,7 +73,27 @@ namespace JunkShopInventoryandTransactionSystem.View.TransactionRecordsPageFolde
                 }
 
             }
+            if (clickedColumnName == "Receipt") 
+            {
+                // Show the receipt for the selected transaction
+                DialogResult result = MessageBox.Show(
+                    $"Are you sure you want to view receipt of transaction ID: {transacId}?",
+                    "Confirm Viewing of receipt",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+                if (result == DialogResult.Yes)
+                {
+                    string customerName = selectedRow.Cells["customerName"].Value?.ToString() ?? "";
 
+                    HistoricalReceipt historicalreceipt = new HistoricalReceipt(transacId, customerName);
+                    historicalreceipt.ShowDialog(); // Show the receipt form as a dialog
+                }
+                else
+                {
+                    Console.WriteLine("⚠️ Transaction not found or already deleted.");
+                }
+            }
         }
 
         private void SearchButton_Click_1(object sender, EventArgs e)

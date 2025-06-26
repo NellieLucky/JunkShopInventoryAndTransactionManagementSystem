@@ -1,6 +1,6 @@
-﻿namespace JunkShopInventoryandTransactionSystem.View.InvoiceReceipt
+﻿namespace JunkShopInventoryandTransactionSystem.View.TransactionRecordsPageFolder
 {
-    partial class receiptlogo
+    partial class HistoricalReceipt
     {
         /// <summary>
         /// Required designer variable.
@@ -31,26 +31,145 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            InvoiceReceiptTable = new DataGridView();
-            receiptname = new Label();
-            receiptInvoice = new Label();
-            pictureBox1 = new PictureBox();
-            ReceiptContactNo = new Label();
-            ReceiptCustName = new Label();
-            ReceiptCustNo = new Label();
-            ReceiptTotalItem = new Label();
-            ReceiptTotalPrice = new Label();
-            TotalItemHolder = new Label();
             TotalPriceHolder = new Label();
+            TotalItemHolder = new Label();
+            ReceiptTotalPrice = new Label();
+            ReceiptTotalItem = new Label();
+            ReceiptCustNo = new Label();
+            ReceiptCustName = new Label();
+            ReceiptContactNo = new Label();
+            pictureBox1 = new PictureBox();
+            receiptInvoice = new Label();
+            receiptname = new Label();
+            InvoiceReceiptTable = new DataGridView();
             ItemID = new DataGridViewTextBoxColumn();
             ItemName = new DataGridViewTextBoxColumn();
             QtyType = new DataGridViewTextBoxColumn();
             Price = new DataGridViewTextBoxColumn();
             TransacQuantity = new DataGridViewTextBoxColumn();
             TransacAmount = new DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)InvoiceReceiptTable).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)InvoiceReceiptTable).BeginInit();
             SuspendLayout();
+            // 
+            // TotalPriceHolder
+            // 
+            TotalPriceHolder.AutoSize = true;
+            TotalPriceHolder.BackColor = Color.FromArgb(0, 0, 0, 0);
+            TotalPriceHolder.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TotalPriceHolder.ForeColor = SystemColors.ControlDarkDark;
+            TotalPriceHolder.Location = new Point(643, 460);
+            TotalPriceHolder.Name = "TotalPriceHolder";
+            TotalPriceHolder.Size = new Size(64, 15);
+            TotalPriceHolder.TabIndex = 74;
+            TotalPriceHolder.Text = "Total Price";
+            // 
+            // TotalItemHolder
+            // 
+            TotalItemHolder.AutoSize = true;
+            TotalItemHolder.BackColor = Color.FromArgb(0, 0, 0, 0);
+            TotalItemHolder.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TotalItemHolder.ForeColor = SystemColors.ControlDarkDark;
+            TotalItemHolder.Location = new Point(643, 428);
+            TotalItemHolder.Name = "TotalItemHolder";
+            TotalItemHolder.Size = new Size(60, 15);
+            TotalItemHolder.TabIndex = 73;
+            TotalItemHolder.Text = "Total Item";
+            // 
+            // ReceiptTotalPrice
+            // 
+            ReceiptTotalPrice.AutoSize = true;
+            ReceiptTotalPrice.BackColor = Color.FromArgb(0, 0, 0, 0);
+            ReceiptTotalPrice.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            ReceiptTotalPrice.ForeColor = Color.Black;
+            ReceiptTotalPrice.Location = new Point(474, 460);
+            ReceiptTotalPrice.Name = "ReceiptTotalPrice";
+            ReceiptTotalPrice.Size = new Size(67, 15);
+            ReceiptTotalPrice.TabIndex = 72;
+            ReceiptTotalPrice.Text = "Total Price";
+            // 
+            // ReceiptTotalItem
+            // 
+            ReceiptTotalItem.AutoSize = true;
+            ReceiptTotalItem.BackColor = Color.FromArgb(0, 0, 0, 0);
+            ReceiptTotalItem.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            ReceiptTotalItem.ForeColor = Color.Black;
+            ReceiptTotalItem.Location = new Point(474, 428);
+            ReceiptTotalItem.Name = "ReceiptTotalItem";
+            ReceiptTotalItem.Size = new Size(65, 15);
+            ReceiptTotalItem.TabIndex = 71;
+            ReceiptTotalItem.Text = "Total Item ";
+            // 
+            // ReceiptCustNo
+            // 
+            ReceiptCustNo.AutoSize = true;
+            ReceiptCustNo.BackColor = Color.FromArgb(0, 0, 0, 0);
+            ReceiptCustNo.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            ReceiptCustNo.ForeColor = SystemColors.ControlDarkDark;
+            ReceiptCustNo.Location = new Point(157, 166);
+            ReceiptCustNo.Name = "ReceiptCustNo";
+            ReceiptCustNo.Size = new Size(97, 15);
+            ReceiptCustNo.TabIndex = 70;
+            ReceiptCustNo.Text = "Contact Number";
+            // 
+            // ReceiptCustName
+            // 
+            ReceiptCustName.AutoSize = true;
+            ReceiptCustName.BackColor = Color.FromArgb(0, 0, 0, 0);
+            ReceiptCustName.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            ReceiptCustName.ForeColor = SystemColors.ControlDarkDark;
+            ReceiptCustName.Location = new Point(157, 138);
+            ReceiptCustName.Name = "ReceiptCustName";
+            ReceiptCustName.Size = new Size(99, 15);
+            ReceiptCustName.TabIndex = 69;
+            ReceiptCustName.Text = "Customer Name";
+            // 
+            // ReceiptContactNo
+            // 
+            ReceiptContactNo.AutoSize = true;
+            ReceiptContactNo.BackColor = Color.FromArgb(0, 0, 0, 0);
+            ReceiptContactNo.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            ReceiptContactNo.ForeColor = Color.Black;
+            ReceiptContactNo.Location = new Point(22, 166);
+            ReceiptContactNo.Name = "ReceiptContactNo";
+            ReceiptContactNo.Size = new Size(102, 15);
+            ReceiptContactNo.TabIndex = 68;
+            ReceiptContactNo.Text = "Contact Number:";
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = Properties.Resources.JUNKSHOP__9___1_;
+            pictureBox1.Location = new Point(7, 14);
+            pictureBox1.Margin = new Padding(2);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(94, 86);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 67;
+            pictureBox1.TabStop = false;
+            // 
+            // receiptInvoice
+            // 
+            receiptInvoice.AutoSize = true;
+            receiptInvoice.BackColor = Color.FromArgb(0, 0, 0, 0);
+            receiptInvoice.Font = new Font("Arial Rounded MT Bold", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            receiptInvoice.ForeColor = Color.FromArgb(0, 157, 209);
+            receiptInvoice.Location = new Point(578, 30);
+            receiptInvoice.Name = "receiptInvoice";
+            receiptInvoice.Size = new Size(152, 28);
+            receiptInvoice.TabIndex = 66;
+            receiptInvoice.Text = "I N V O I C E";
+            // 
+            // receiptname
+            // 
+            receiptname.AutoSize = true;
+            receiptname.BackColor = Color.FromArgb(0, 0, 0, 0);
+            receiptname.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            receiptname.ForeColor = Color.Black;
+            receiptname.Location = new Point(22, 138);
+            receiptname.Name = "receiptname";
+            receiptname.Size = new Size(102, 15);
+            receiptname.TabIndex = 65;
+            receiptname.Text = "Customer Name:";
             // 
             // InvoiceReceiptTable
             // 
@@ -75,7 +194,7 @@
             InvoiceReceiptTable.EditMode = DataGridViewEditMode.EditProgrammatically;
             InvoiceReceiptTable.EnableHeadersVisualStyles = false;
             InvoiceReceiptTable.GridColor = Color.FromArgb(99, 99, 99);
-            InvoiceReceiptTable.Location = new Point(10, 193);
+            InvoiceReceiptTable.Location = new Point(13, 205);
             InvoiceReceiptTable.Name = "InvoiceReceiptTable";
             InvoiceReceiptTable.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -95,126 +214,7 @@
             InvoiceReceiptTable.RowTemplate.Height = 50;
             InvoiceReceiptTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             InvoiceReceiptTable.Size = new Size(746, 203);
-            InvoiceReceiptTable.TabIndex = 52;
-            // 
-            // receiptname
-            // 
-            receiptname.AutoSize = true;
-            receiptname.BackColor = Color.FromArgb(0, 0, 0, 0);
-            receiptname.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            receiptname.ForeColor = Color.Black;
-            receiptname.Location = new Point(19, 126);
-            receiptname.Name = "receiptname";
-            receiptname.Size = new Size(125, 18);
-            receiptname.TabIndex = 54;
-            receiptname.Text = "Customer Name:";
-            // 
-            // receiptInvoice
-            // 
-            receiptInvoice.AutoSize = true;
-            receiptInvoice.BackColor = Color.FromArgb(0, 0, 0, 0);
-            receiptInvoice.Font = new Font("Arial Rounded MT Bold", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            receiptInvoice.ForeColor = Color.FromArgb(0, 157, 209);
-            receiptInvoice.Location = new Point(575, 18);
-            receiptInvoice.Name = "receiptInvoice";
-            receiptInvoice.Size = new Size(191, 34);
-            receiptInvoice.TabIndex = 55;
-            receiptInvoice.Text = "I N V O I C E";
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = Properties.Resources.JUNKSHOP__9___1_;
-            pictureBox1.Location = new Point(4, 2);
-            pictureBox1.Margin = new Padding(2);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(94, 86);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 56;
-            pictureBox1.TabStop = false;
-            // 
-            // ReceiptContactNo
-            // 
-            ReceiptContactNo.AutoSize = true;
-            ReceiptContactNo.BackColor = Color.FromArgb(0, 0, 0, 0);
-            ReceiptContactNo.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            ReceiptContactNo.ForeColor = Color.Black;
-            ReceiptContactNo.Location = new Point(19, 154);
-            ReceiptContactNo.Name = "ReceiptContactNo";
-            ReceiptContactNo.Size = new Size(127, 18);
-            ReceiptContactNo.TabIndex = 57;
-            ReceiptContactNo.Text = "Contact Number:";
-            // 
-            // ReceiptCustName
-            // 
-            ReceiptCustName.AutoSize = true;
-            ReceiptCustName.BackColor = Color.FromArgb(0, 0, 0, 0);
-            ReceiptCustName.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            ReceiptCustName.ForeColor = SystemColors.ControlDarkDark;
-            ReceiptCustName.Location = new Point(154, 126);
-            ReceiptCustName.Name = "ReceiptCustName";
-            ReceiptCustName.Size = new Size(116, 17);
-            ReceiptCustName.TabIndex = 58;
-            ReceiptCustName.Text = "Customer Name";
-            // 
-            // ReceiptCustNo
-            // 
-            ReceiptCustNo.AutoSize = true;
-            ReceiptCustNo.BackColor = Color.FromArgb(0, 0, 0, 0);
-            ReceiptCustNo.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            ReceiptCustNo.ForeColor = SystemColors.ControlDarkDark;
-            ReceiptCustNo.Location = new Point(154, 154);
-            ReceiptCustNo.Name = "ReceiptCustNo";
-            ReceiptCustNo.Size = new Size(115, 17);
-            ReceiptCustNo.TabIndex = 59;
-            ReceiptCustNo.Text = "Contact Number";
-            // 
-            // ReceiptTotalItem
-            // 
-            ReceiptTotalItem.AutoSize = true;
-            ReceiptTotalItem.BackColor = Color.FromArgb(0, 0, 0, 0);
-            ReceiptTotalItem.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            ReceiptTotalItem.ForeColor = Color.Black;
-            ReceiptTotalItem.Location = new Point(471, 416);
-            ReceiptTotalItem.Name = "ReceiptTotalItem";
-            ReceiptTotalItem.Size = new Size(81, 18);
-            ReceiptTotalItem.TabIndex = 60;
-            ReceiptTotalItem.Text = "Total Item ";
-            // 
-            // ReceiptTotalPrice
-            // 
-            ReceiptTotalPrice.AutoSize = true;
-            ReceiptTotalPrice.BackColor = Color.FromArgb(0, 0, 0, 0);
-            ReceiptTotalPrice.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            ReceiptTotalPrice.ForeColor = Color.Black;
-            ReceiptTotalPrice.Location = new Point(471, 448);
-            ReceiptTotalPrice.Name = "ReceiptTotalPrice";
-            ReceiptTotalPrice.Size = new Size(84, 18);
-            ReceiptTotalPrice.TabIndex = 61;
-            ReceiptTotalPrice.Text = "Total Price";
-            // 
-            // TotalItemHolder
-            // 
-            TotalItemHolder.AutoSize = true;
-            TotalItemHolder.BackColor = Color.FromArgb(0, 0, 0, 0);
-            TotalItemHolder.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            TotalItemHolder.ForeColor = SystemColors.ControlDarkDark;
-            TotalItemHolder.Location = new Point(640, 416);
-            TotalItemHolder.Name = "TotalItemHolder";
-            TotalItemHolder.Size = new Size(70, 17);
-            TotalItemHolder.TabIndex = 62;
-            TotalItemHolder.Text = "Total Item";
-            // 
-            // TotalPriceHolder
-            // 
-            TotalPriceHolder.AutoSize = true;
-            TotalPriceHolder.BackColor = Color.FromArgb(0, 0, 0, 0);
-            TotalPriceHolder.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            TotalPriceHolder.ForeColor = SystemColors.ControlDarkDark;
-            TotalPriceHolder.Location = new Point(640, 448);
-            TotalPriceHolder.Name = "TotalPriceHolder";
-            TotalPriceHolder.Size = new Size(76, 17);
-            TotalPriceHolder.TabIndex = 63;
-            TotalPriceHolder.Text = "Total Price";
+            InvoiceReceiptTable.TabIndex = 64;
             // 
             // ItemID
             // 
@@ -262,7 +262,7 @@
             TransacAmount.Name = "TransacAmount";
             TransacAmount.Width = 150;
             // 
-            // receiptlogo
+            // HistoricalReceipt
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -278,28 +278,27 @@
             Controls.Add(receiptInvoice);
             Controls.Add(receiptname);
             Controls.Add(InvoiceReceiptTable);
-            Margin = new Padding(2);
-            Name = "receiptlogo";
-            Text = "receipt";
-            ((System.ComponentModel.ISupportInitialize)InvoiceReceiptTable).EndInit();
+            Name = "HistoricalReceipt";
+            Text = "HistoricalReceipt";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)InvoiceReceiptTable).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private DataGridView InvoiceReceiptTable;
-        private Label receiptname;
-        private Label receiptInvoice;
-        private PictureBox pictureBox1;
-        private Label ReceiptContactNo;
-        private Label ReceiptCustName;
-        private Label ReceiptCustNo;
-        private Label ReceiptTotalItem;
-        private Label ReceiptTotalPrice;
-        private Label TotalItemHolder;
         private Label TotalPriceHolder;
+        private Label TotalItemHolder;
+        private Label ReceiptTotalPrice;
+        private Label ReceiptTotalItem;
+        private Label ReceiptCustNo;
+        private Label ReceiptCustName;
+        private Label ReceiptContactNo;
+        private PictureBox pictureBox1;
+        private Label receiptInvoice;
+        private Label receiptname;
+        private DataGridView InvoiceReceiptTable;
         private DataGridViewTextBoxColumn ItemID;
         private DataGridViewTextBoxColumn ItemName;
         private DataGridViewTextBoxColumn QtyType;

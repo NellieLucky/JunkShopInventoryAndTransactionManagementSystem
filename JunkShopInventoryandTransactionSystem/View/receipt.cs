@@ -1,4 +1,3 @@
-﻿
 using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud;
 using JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.ConstructorModel;
 using System;
