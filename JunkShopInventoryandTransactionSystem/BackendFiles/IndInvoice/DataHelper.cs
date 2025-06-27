@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Data.SqlClient;
-using System.Data;
+using System.Windows.Forms;
 
 
 namespace JunkShopInventoryandTransactionSystem.BackendFiles.IndInvoice
@@ -35,6 +36,8 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.IndInvoice
             var dt = new DataTable();
             string query = @"
         SELECT 
+            t.transacId AS TransacID,
+            t.transacDate AS TransacDate,
             ti.itemId AS ItemID,
             i.itemName AS ItemName,
             i.itemQtyType AS QtyType,
@@ -119,12 +122,16 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.IndInvoice
                 InvoiceReceiptTable.DataSource = receipttable;
 
                 // Optionally, set column headers for better readability
+                InvoiceReceiptTable.Columns["TransacID"].DataPropertyName = "TransacID";
+                InvoiceReceiptTable.Columns["TransacDate"].DataPropertyName = "TransacDate";
                 InvoiceReceiptTable.Columns["ItemID"].DataPropertyName = "ItemID";
                 InvoiceReceiptTable.Columns["ItemName"].DataPropertyName = "ItemName";
                 InvoiceReceiptTable.Columns["QtyType"].DataPropertyName = "QtyType";
                 InvoiceReceiptTable.Columns["Price"].DataPropertyName = "Price";
                 InvoiceReceiptTable.Columns["TransacQuantity"].DataPropertyName = "ExchangeQuantity";
                 InvoiceReceiptTable.Columns["TransacAmount"].DataPropertyName = "ExchangeAmount";
+
+                InvoiceReceiptTable.Columns["TransacDate"].DefaultCellStyle.Format = "yyyy-MM-dd";
 
                 // Calculate totals
                 int totalQuantity = 0;

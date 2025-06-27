@@ -125,7 +125,7 @@ public class TransactionRead : BaseRepository
                             employeeName = reader.IsDBNull(4) ? "" : reader.GetString(4),
                             transacDate = reader.GetDateTime(5),
                             totalNumOfItems = reader.GetInt32(6),
-                            totalNumOfQty = reader.GetDecimal(7),
+                            totalNumOfQty = reader.GetInt32(7),
                             totalAmount = reader.GetDecimal(8),
                             customerType = reader.IsDBNull(9) ? "" : reader.GetString(9),
                             isArchived = reader.GetBoolean(10)

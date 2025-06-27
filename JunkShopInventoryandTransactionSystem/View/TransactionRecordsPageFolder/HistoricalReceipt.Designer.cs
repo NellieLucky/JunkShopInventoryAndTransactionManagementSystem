@@ -42,6 +42,8 @@
             receiptInvoice = new Label();
             receiptname = new Label();
             InvoiceReceiptTable = new DataGridView();
+            TransacID = new DataGridViewTextBoxColumn();
+            TransacDate = new DataGridViewTextBoxColumn();
             ItemID = new DataGridViewTextBoxColumn();
             ItemName = new DataGridViewTextBoxColumn();
             QtyType = new DataGridViewTextBoxColumn();
@@ -190,7 +192,7 @@
             InvoiceReceiptTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             InvoiceReceiptTable.ColumnHeadersHeight = 60;
             InvoiceReceiptTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            InvoiceReceiptTable.Columns.AddRange(new DataGridViewColumn[] { ItemID, ItemName, QtyType, Price, TransacQuantity, TransacAmount });
+            InvoiceReceiptTable.Columns.AddRange(new DataGridViewColumn[] { TransacID, TransacDate, ItemID, ItemName, QtyType, Price, TransacQuantity, TransacAmount });
             InvoiceReceiptTable.EditMode = DataGridViewEditMode.EditProgrammatically;
             InvoiceReceiptTable.EnableHeadersVisualStyles = false;
             InvoiceReceiptTable.GridColor = Color.FromArgb(99, 99, 99);
@@ -215,6 +217,18 @@
             InvoiceReceiptTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             InvoiceReceiptTable.Size = new Size(746, 203);
             InvoiceReceiptTable.TabIndex = 64;
+            // 
+            // TransacID
+            // 
+            TransacID.HeaderText = "TransacID";
+            TransacID.MinimumWidth = 6;
+            TransacID.Name = "TransacID";
+            // 
+            // TransacDate
+            // 
+            TransacDate.HeaderText = "Transaction Date";
+            TransacDate.MinimumWidth = 6;
+            TransacDate.Name = "TransacDate";
             // 
             // ItemID
             // 
@@ -299,6 +313,8 @@
         private Label receiptInvoice;
         private Label receiptname;
         private DataGridView InvoiceReceiptTable;
+        private DataGridViewTextBoxColumn TransacID;
+        private DataGridViewTextBoxColumn TransacDate;
         private DataGridViewTextBoxColumn ItemID;
         private DataGridViewTextBoxColumn ItemName;
         private DataGridViewTextBoxColumn QtyType;
