@@ -328,6 +328,19 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Crud
             }
         }
 
+        public bool UnarchiveTransaction(int transacId)
+        {
+            using (var connection = GetConnection())
+            {
+                connection.Open();
+                var query = "UPDATE Transactions SET isArchived = 0 WHERE transacId = @transacId";
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@transacId", transacId);
+                    return command.ExecuteNonQuery() > 0;
+                }
+            }
+        }
 
         //public bool DeleteTransaction(int transacId)
         //{

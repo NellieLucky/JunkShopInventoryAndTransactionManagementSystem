@@ -49,45 +49,74 @@ namespace JunkShopInventoryandTransactionSystem.View.TransactionRecordsPageFolde
 
         private void TransactionRecordsTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Only process if it's a valid row
             if (e.RowIndex < 0) return;
-
-            // Only process clicks on image columns
             if (!(TransactionRecordsTable.Columns[e.ColumnIndex] is DataGridViewImageColumn)) return;
 
             string clickedColumnName = TransactionRecordsTable.Columns[e.ColumnIndex].Name;
             DataGridViewRow selectedRow = TransactionRecordsTable.Rows[e.RowIndex];
             int transacId = Convert.ToInt32(selectedRow.Cells["TransactionID"].Value);
 
+            bool showArchived = archiveState.SelectedItem?.ToString() == "Archived";
+
             if (clickedColumnName == "Delete")
             {
-                // Show confirmation message with the itemId
-                DialogResult result = MessageBox.Show(
-                    $"Are you sure you want to delete records of transaction ID: {transacId}?",
-                    "Confirm Transaction Deletion",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question
-                );
-
-                if (result == DialogResult.Yes)
+                if (showArchived)
                 {
-                    TransactionDelete deleter = new TransactionDelete();
-                    bool wasDeleted = deleter.ArchiveTransaction(transacId);
+                    // Restore (Unarchive)
+                    DialogResult result = MessageBox.Show(
+                        $"Are you sure you want to restore transaction ID: {transacId}?",
+                        "Confirm Restore",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question
+                    );
 
-                    if (wasDeleted)
+                    if (result == DialogResult.Yes)
                     {
-                        Console.WriteLine("✅ Transaction deleted successfully.");
-                    }
-                    else
-                    {
-                        Console.WriteLine("⚠️ Transaction not found or already deleted.");
-                    }
+                        TransactionDelete deleter = new TransactionDelete();
+                        bool wasRestored = deleter.UnarchiveTransaction(transacId); // Implement this method
 
-                    // and then reload the transaction records
-                    ReloadTransactions.LoadTransactionData(TransactionRecordsTable);
+                        if (wasRestored)
+                        {
+                            Console.WriteLine("✅ Transaction restored successfully.");
+                        }
+                        else
+                        {
+                            Console.WriteLine("⚠️ Transaction not found or already active.");
+                        }
+
+                        ReloadTransactions.LoadTransactionData(TransactionRecordsTable, showArchived);
+                    }
                 }
+                else
+                {
+                    // Delete (Archive)
+                    DialogResult result = MessageBox.Show(
+                        $"Are you sure you want to delete records of transaction ID: {transacId}?",
+                        "Confirm Transaction Deletion",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question
+                    );
 
+                    if (result == DialogResult.Yes)
+                    {
+                        TransactionDelete deleter = new TransactionDelete();
+                        bool wasDeleted = deleter.ArchiveTransaction(transacId);
+
+                        if (wasDeleted)
+                        {
+                            Console.WriteLine("✅ Transaction deleted successfully.");
+                        }
+                        else
+                        {
+                            Console.WriteLine("⚠️ Transaction not found or already deleted.");
+                        }
+
+                        ReloadTransactions.LoadTransactionData(TransactionRecordsTable, showArchived);
+                    }
+                }
             }
+
+
             if (clickedColumnName == "Receipt") 
             {
                 // Show the receipt for the selected transaction
@@ -167,6 +196,22 @@ namespace JunkShopInventoryandTransactionSystem.View.TransactionRecordsPageFolde
         {
             bool showArchived = archiveState.SelectedItem?.ToString() == "Archived";
             ReloadTransactions.LoadTransactionData(TransactionRecordsTable, showArchived);
+
+            // Update Delete/Restore column
+            var deleteCol = TransactionRecordsTable.Columns["Delete"] as DataGridViewImageColumn;
+            if (deleteCol != null)
+            {
+                if (showArchived)
+                {
+                    deleteCol.HeaderText = "Restore";
+                    deleteCol.Image = Properties.Resources.restore; // Use your restore icon resource
+                }
+                else
+                {
+                    deleteCol.HeaderText = "Delete";
+                    deleteCol.Image = Properties.Resources.delete; // Use your delete icon resource
+                }
+            }
         }
     }
 
