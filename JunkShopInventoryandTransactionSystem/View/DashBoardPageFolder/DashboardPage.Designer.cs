@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DashboardPage));
             DashboardTitlePage = new Label();
             cuiPanel1 = new CuoreUI.Controls.cuiPanel();
@@ -46,7 +46,7 @@
             label6 = new Label();
             ChartLine = new CuoreUI.Controls.Charts.cuiChartLine();
             panel1 = new Panel();
-            label11 = new Label();
+            FilterLabel = new Label();
             panel2 = new Panel();
             LowStocksTable = new DataGridView();
             Item = new DataGridViewTextBoxColumn();
@@ -78,6 +78,9 @@
             label13 = new Label();
             SummaryofRevenueCogsOrTotalProfit = new CodeeloUI.Controls.CodeeloComboBox();
             Periodicity = new CodeeloUI.Controls.CodeeloComboBox();
+            label2 = new Label();
+            label3 = new Label();
+            label4 = new Label();
             cuiPanel1.SuspendLayout();
             cuiPanel3.SuspendLayout();
             cuiPanel4.SuspendLayout();
@@ -321,13 +324,13 @@
             ChartLine.DayColor = Color.Black;
             ChartLine.Font = new Font("Microsoft YaHei UI", 6F, FontStyle.Bold, GraphicsUnit.Point, 0);
             ChartLine.GradientBackground = true;
-            ChartLine.Location = new Point(3, 41);
+            ChartLine.Location = new Point(42, 41);
             ChartLine.Margin = new Padding(0);
             ChartLine.MaxValue = 10000F;
             ChartLine.Name = "ChartLine";
             ChartLine.PointColor = Color.FromArgb(1, 55, 125);
             ChartLine.ShortDates = true;
-            ChartLine.Size = new Size(1022, 274);
+            ChartLine.Size = new Size(983, 274);
             ChartLine.TabIndex = 18;
             ChartLine.UseBezier = false;
             ChartLine.UsePercent = false;
@@ -335,24 +338,25 @@
             // panel1
             // 
             panel1.BackColor = Color.White;
-            panel1.Controls.Add(label11);
+            panel1.Controls.Add(label4);
+            panel1.Controls.Add(FilterLabel);
             panel1.Controls.Add(ChartLine);
             panel1.Location = new Point(26, 237);
             panel1.Name = "panel1";
             panel1.Size = new Size(1025, 315);
             panel1.TabIndex = 21;
             // 
-            // label11
+            // FilterLabel
             // 
-            label11.AutoSize = true;
-            label11.BackColor = Color.FromArgb(0, 0, 0, 0);
-            label11.Font = new Font("Arial", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label11.ForeColor = Color.FromArgb(0, 157, 209);
-            label11.Location = new Point(12, 14);
-            label11.Name = "label11";
-            label11.Size = new Size(184, 27);
-            label11.TabIndex = 19;
-            label11.Text = "Gross Revenue";
+            FilterLabel.AutoSize = true;
+            FilterLabel.BackColor = Color.FromArgb(0, 0, 0, 0);
+            FilterLabel.Font = new Font("Arial", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            FilterLabel.ForeColor = Color.FromArgb(0, 157, 209);
+            FilterLabel.Location = new Point(12, 14);
+            FilterLabel.Name = "FilterLabel";
+            FilterLabel.Size = new Size(184, 27);
+            FilterLabel.TabIndex = 19;
+            FilterLabel.Text = "Gross Revenue";
             // 
             // panel2
             // 
@@ -372,14 +376,14 @@
             LowStocksTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             LowStocksTable.BackgroundColor = Color.FromArgb(227, 244, 238);
             LowStocksTable.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(38, 177, 112);
-            dataGridViewCellStyle1.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(0, 64, 0);
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            LowStocksTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(38, 177, 112);
+            dataGridViewCellStyle3.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(0, 64, 0);
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            LowStocksTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             LowStocksTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             LowStocksTable.Columns.AddRange(new DataGridViewColumn[] { Item, Quantity });
             LowStocksTable.EnableHeadersVisualStyles = false;
@@ -387,13 +391,13 @@
             LowStocksTable.Location = new Point(13, 46);
             LowStocksTable.Name = "LowStocksTable";
             LowStocksTable.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            LowStocksTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            LowStocksTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             LowStocksTable.RowHeadersVisible = false;
             LowStocksTable.RowHeadersWidth = 51;
             LowStocksTable.Size = new Size(507, 146);
@@ -780,7 +784,7 @@
             SummaryofRevenueCogsOrTotalProfit.ForeColor = Color.DimGray;
             SummaryofRevenueCogsOrTotalProfit.ListBackColor = Color.FromArgb(230, 228, 245);
             SummaryofRevenueCogsOrTotalProfit.ListTextColor = Color.WhiteSmoke;
-            SummaryofRevenueCogsOrTotalProfit.Location = new Point(806, 77);
+            SummaryofRevenueCogsOrTotalProfit.Location = new Point(539, 86);
             SummaryofRevenueCogsOrTotalProfit.Name = "SummaryofRevenueCogsOrTotalProfit";
             SummaryofRevenueCogsOrTotalProfit.Padding = new Padding(1);
             SummaryofRevenueCogsOrTotalProfit.SelectedIndex = -1;
@@ -806,7 +810,7 @@
             Periodicity.Items.AddRange(new object[] { resources.GetObject("Periodicity.Items"), resources.GetObject("Periodicity.Items1"), resources.GetObject("Periodicity.Items2") });
             Periodicity.ListBackColor = Color.FromArgb(230, 228, 245);
             Periodicity.ListTextColor = Color.WhiteSmoke;
-            Periodicity.Location = new Point(554, 77);
+            Periodicity.Location = new Point(158, 86);
             Periodicity.Name = "Periodicity";
             Periodicity.Padding = new Padding(1);
             Periodicity.SelectedIndex = -1;
@@ -817,11 +821,49 @@
             Periodicity.TabIndex = 27;
             Periodicity.Text = "Periodicity";
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.BackColor = Color.FromArgb(0, 0, 0, 0);
+            label2.Font = new Font("Arial", 12F, FontStyle.Bold);
+            label2.ForeColor = Color.FromArgb(0, 157, 209);
+            label2.Location = new Point(29, 94);
+            label2.Name = "label2";
+            label2.Size = new Size(123, 24);
+            label2.TabIndex = 35;
+            label2.Text = "Periodicity: ";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.BackColor = Color.FromArgb(0, 0, 0, 0);
+            label3.Font = new Font("Arial", 12F, FontStyle.Bold);
+            label3.ForeColor = Color.FromArgb(0, 157, 209);
+            label3.Location = new Point(462, 94);
+            label3.Name = "label3";
+            label3.Size = new Size(71, 24);
+            label3.TabIndex = 36;
+            label3.Text = "Filter: ";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.BackColor = Color.FromArgb(0, 0, 0, 0);
+            label4.Font = new Font("Arial", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.ForeColor = Color.FromArgb(0, 157, 209);
+            label4.Location = new Point(11, 165);
+            label4.Name = "label4";
+            label4.Size = new Size(27, 27);
+            label4.TabIndex = 20;
+            label4.Text = "₱";
+            // 
             // DashboardPage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(227, 244, 238);
+            Controls.Add(label3);
+            Controls.Add(label2);
             Controls.Add(Periodicity);
             Controls.Add(SummaryofRevenueCogsOrTotalProfit);
             Controls.Add(panel3);
@@ -867,7 +909,7 @@
         private CuoreUI.Controls.cuiPictureBox cuiPictureBox3;
         private CuoreUI.Controls.Charts.cuiChartLine ChartLine;
         private Panel panel1;
-        private Label label11;
+        private Label FilterLabel;
         private Panel panel2;
         private DataGridView LowStocksTable;
         private Label label12;
@@ -899,5 +941,8 @@
         private CuoreUI.Controls.cuiPictureBox cuiPictureBox10;
         private CodeeloUI.Controls.CodeeloComboBox SummaryofRevenueCogsOrTotalProfit;
         private CodeeloUI.Controls.CodeeloComboBox Periodicity;
+        private Label label2;
+        private Label label3;
+        private Label label4;
     }
 }

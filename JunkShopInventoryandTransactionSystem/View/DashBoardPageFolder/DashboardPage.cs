@@ -91,12 +91,31 @@ namespace JunkShopInventoryandTransactionSystem.View.DashBoardPageFolder
             }
         }
 
+        private float GetYAxisMax(string periodicity)
+        {
+            return periodicity switch
+            {
+                "Monthly" => 10000f,
+                "Quarterly" => 20000f,
+                "Yearly" => 50000f,
+                _ => 10000f // Default to Monthly max
+            };
+        }
+
         private void LoadDashboardSummary()
         {
             // Get filter values
             string summaryType = SummaryofRevenueCogsOrTotalProfit.SelectedItem?.ToString() ?? "COGS Summary";
             string periodicity = Periodicity.SelectedItem?.ToString() ?? "Yearly";
- 
+
+            // Update the filter label based on the summary type
+            FilterLabel.Text = summaryType switch
+            {
+                "COGS Summary" => "Cost of Goods Sold",
+                "Revenue Summary" => "Gross Revenue",
+                "Profit Summary" => "Total Profit",
+                _ => "Summary"
+            };
 
             var summary = DashboardDataRepository.GetSummary(summaryType, periodicity);
 
@@ -107,7 +126,6 @@ namespace JunkShopInventoryandTransactionSystem.View.DashBoardPageFolder
             // Defensive: Ensure at least two data points for the chart
             if (summary.ChartPoints.Count < 2)
             {
-                // Add a default second point if only one exists, or two zero points if none
                 if (summary.ChartPoints.Count == 1)
                 {
                     summary.ChartPoints.Add(new ChartPoint
@@ -125,6 +143,9 @@ namespace JunkShopInventoryandTransactionSystem.View.DashBoardPageFolder
 
             ChartLine.DataPoints = summary.ChartPoints.Select(p => (float)p.Value).ToArray();
             ChartLine.CustomXAxis = summary.ChartPoints.Select(p => p.Label).ToArray();
+
+            ChartLine.MaxValue = GetYAxisMax(periodicity);
+            ChartLine.UsePercent = false;
         }
 
         private void OkButton_Click(object sender, EventArgs e)
@@ -136,6 +157,5 @@ namespace JunkShopInventoryandTransactionSystem.View.DashBoardPageFolder
         {
             LoadDashboardSummary();
         }
-
     }
 }

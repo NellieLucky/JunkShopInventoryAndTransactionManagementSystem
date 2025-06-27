@@ -300,11 +300,11 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
                         searchText = searchText.ToLower();
                         visible = row.Cells["ItemID"]?.Value?.ToString()?.Contains(searchText) == true ||  // Added ID search
                                  row.Cells["ItemName"]?.Value?.ToString()?.ToLower().Contains(searchText) == true ||
-                                 row.Cells["ItemCategoryName"]?.Value?.ToString()?.ToLower().Contains(searchText) == true ||
-                                 row.Cells["ItemQtyType"]?.Value?.ToString()?.ToLower().Contains(searchText) == true ||
-                                 row.Cells["ItemQuantity"]?.Value?.ToString()?.Contains(searchText) == true ||
-                                 row.Cells["ItemBuyingPrice"]?.Value?.ToString()?.Contains(searchText) == true ||
-                                 row.Cells["ItemSellingPrice"]?.Value?.ToString()?.Contains(searchText) == true;
+                                 row.Cells["Category"]?.Value?.ToString()?.ToLower().Contains(searchText) == true ||
+                                 row.Cells["QtyType"]?.Value?.ToString()?.ToLower().Contains(searchText) == true ||
+                                 row.Cells["Quantity"]?.Value?.ToString()?.Contains(searchText) == true ||
+                                 row.Cells["BuyingPrice"]?.Value?.ToString()?.Contains(searchText) == true ||
+                                 row.Cells["SellingPrice"]?.Value?.ToString()?.Contains(searchText) == true;
                     }
                     row.Visible = visible;
                 }
