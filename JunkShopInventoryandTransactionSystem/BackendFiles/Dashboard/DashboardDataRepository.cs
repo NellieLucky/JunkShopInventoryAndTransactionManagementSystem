@@ -86,14 +86,13 @@ public static class DashboardDataRepository
 
 public class TransactionRead : BaseRepository
 {
-    public List<TransactionItem> GetAllTransactions()
+    public List<TransactionItem> GetAllTransactions(bool showArchived = false)
     {
         using (var connection = GetConnection())
         {
             var transactions = new List<TransactionItem>();
-            // Explicitly specify columns and their order
             var query = @"
-                SELECT 
+            SELECT 
                 t.transacId,
                 t.customerId,
                 c.customerName,
@@ -108,9 +107,10 @@ public class TransactionRead : BaseRepository
             FROM Transactions t
             INNER JOIN Customer c ON t.customerId = c.customerId
             INNER JOIN Employees e ON t.employeeId = e.empId
-            WHERE t.isArchived = 0";
+            WHERE t.isArchived = @isArchived";
             using (var command = new SqlCommand(query, connection))
             {
+                command.Parameters.AddWithValue("@isArchived", showArchived ? 1 : 0);
                 connection.Open();
                 using (var reader = command.ExecuteReader())
                 {
@@ -125,7 +125,7 @@ public class TransactionRead : BaseRepository
                             employeeName = reader.IsDBNull(4) ? "" : reader.GetString(4),
                             transacDate = reader.GetDateTime(5),
                             totalNumOfItems = reader.GetInt32(6),
-                            totalNumOfQty = reader.GetInt32(7),
+                            totalNumOfQty = reader.GetDecimal(7),
                             totalAmount = reader.GetDecimal(8),
                             customerType = reader.IsDBNull(9) ? "" : reader.GetString(9),
                             isArchived = reader.GetBoolean(10)

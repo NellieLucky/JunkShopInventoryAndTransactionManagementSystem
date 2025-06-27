@@ -21,12 +21,24 @@ namespace JunkShopInventoryandTransactionSystem.View.TransactionRecordsPageFolde
         public TransactionRecordsPage()
         {
             InitializeComponent();
-            ReloadTransactions.LoadTransactionData(TransactionRecordsTable);
+
+            // Ensure ComboBox items are set up before using SelectedIndex
+            archiveState.Items.Clear();
+            archiveState.Items.Add("Non-archived");
+            archiveState.Items.Add("Archived");
+
+            // Set default selection to the first item ("Non-archived")
+            archiveState.SelectedIndex = 0;
+
+            // Attach event handler AFTER setting default to avoid double loading
+            archiveState.SelectedIndexChanged += ArchiveState_SelectedIndexChanged;
+
+
+            ReloadTransactions.LoadTransactionData(TransactionRecordsTable, false);
 
             TransactionRecordsTable.CellFormatting += TransactionRecordsTable_CellFormatting;
-
-
             SearchTextBox.ContentChanged += SearchTextBox_TextChange;
+            archiveState.SelectedIndexChanged += ArchiveState_SelectedIndexChanged;
 
             var userInfo = ForUser.GetUserInfo(UserSession.UserId);
             if (userInfo.Role == "Employee")
@@ -150,5 +162,37 @@ namespace JunkShopInventoryandTransactionSystem.View.TransactionRecordsPageFolde
                 }
             }
         }
+
+        private void ArchiveState_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            bool showArchived = archiveState.SelectedItem?.ToString() == "Archived";
+            ReloadTransactions.LoadTransactionData(TransactionRecordsTable, showArchived);
+        }
     }
+
+    public static class ReloadTransactions
+    {
+        public static void LoadTransactionData(DataGridView dataGridView1, bool showArchived = false)
+        {
+            dataGridView1.Rows.Clear();
+            TransactionRead reader = new TransactionRead();
+            List<TransactionItem> transactions = reader.GetAllTransactions(showArchived);
+
+            foreach (var transaction in transactions)
+            {
+                dataGridView1.Rows.Add(
+                    transaction.transacId,
+                    transaction.transacDate.ToString("yyyy-MM-dd"),
+                    transaction.customerType,
+                    transaction.customerName,
+                    transaction.employeeName,
+                    transaction.totalNumOfItems,
+                    transaction.totalNumOfQty.ToString("N2"),
+                    transaction.totalAmount.ToString("N2")
+                );
+            }
+        }
+    }
+
+
 }

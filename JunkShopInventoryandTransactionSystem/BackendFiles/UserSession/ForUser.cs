@@ -15,12 +15,12 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 CREATE TABLE [dbo].[Employees] (
     [empId]             INT           IDENTITY (2, 1) NOT NULL,
     [empName]           NVARCHAR (50) NULL,
-    [empPassword]       NVARCHAR (50) NOT NULL,
+    [empPassword]       NVARCHAR (70) NOT NULL,
     [empEmail]          NVARCHAR (50) NOT NULL,
     [token]             NVARCHAR (50) NULL,
     [empContact]        NVARCHAR (50) NULL,
     [empAddress]        NVARCHAR (50) NULL,
-    [empRole]           NVARCHAR (50) DEFAULT('Employee') NOT NULL,
+    [empRole]           NVARCHAR (50) NOT NULL,
     [empDateRegistered] DATETIME      DEFAULT (getdate()) NOT NULL,
     [IsRemoved]         BIT           DEFAULT ((0)) NOT NULL,
     PRIMARY KEY CLUSTERED ([empId] ASC)
@@ -33,10 +33,10 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.UserSession
     internal class ForUser
     {
         //Abalos' connection string
-        private static readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Beetoy\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\Database1.mdf;Integrated Security=True";
+        //private static readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Beetoy\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\Database1.mdf;Integrated Security=True";
 
         //arnel's connstring
-        //private static readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
+        private static readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
 
         //remo string just added static to my string
         //private static readonly string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";

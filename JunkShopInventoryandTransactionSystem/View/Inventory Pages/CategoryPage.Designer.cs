@@ -283,7 +283,10 @@
             // 
             archiveState.DropDownStyle = ComboBoxStyle.DropDownList;
             archiveState.FormattingEnabled = true;
-            archiveState.Items.AddRange(new object[] { "Non-archived", "Archived Items" });
+            archiveState.Items.Clear();
+            archiveState.Items.Add("Non-Archived");
+            archiveState.Items.Add("Archived");
+            archiveState.SelectedItem = "Non-Archived";
             archiveState.Location = new Point(374, 29);
             archiveState.Name = "archiveState";
             archiveState.Size = new Size(151, 28);
