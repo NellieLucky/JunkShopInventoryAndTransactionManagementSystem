@@ -18,6 +18,9 @@ namespace JunkShopInventoryandTransactionSystem.View.CustomerRecordsPage
         {
             InitializeComponent();
             LoadSellerRecords();
+
+            sellerRecordsTable.CellFormatting += SellerRecordsTable_CellFormatting;
+
             searchTextBox.ContentChanged += SearchTextBox_ContentChanged;
             searchButton.Click += searchButton_Click;
 
@@ -122,5 +125,19 @@ namespace JunkShopInventoryandTransactionSystem.View.CustomerRecordsPage
                 }
             }
         }
+
+        private void SellerRecordsTable_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            // Replace "TotalPurchasePrice" with your actual column name if different
+            if (sellerRecordsTable.Columns[e.ColumnIndex].Name == "TotalPriceSold" && e.Value != null)
+            {
+                if (decimal.TryParse(e.Value.ToString(), out decimal amount))
+                {
+                    e.Value = $"₱{amount:N2}";
+                    e.FormattingApplied = true;
+                }
+            }
+        }
+
     }
 }

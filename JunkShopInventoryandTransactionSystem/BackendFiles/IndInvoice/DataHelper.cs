@@ -34,16 +34,25 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.IndInvoice
         {
             var dt = new DataTable();
             string query = @"
-                SELECT 
-                    ti.itemId AS ItemID,
-                    i.itemName AS ItemName,
-                    i.itemQtyType AS QtyType,
-                    i.itemSellingPrice AS SellingPrice,
-                    ti.quantity AS ExchangeQuantity,
-                    (ti.quantity * ti.price) AS ExchangeAmount
-                FROM TransactionItems ti
-                INNER JOIN Inventory i ON ti.itemId = i.itemId
-                WHERE ti.transactionId = @transacId";
+        SELECT 
+            ti.itemId AS ItemID,
+            i.itemName AS ItemName,
+            i.itemQtyType AS QtyType,
+            CASE 
+                WHEN t.customerType = 'Buyer' THEN i.itemBuyingPrice
+                ELSE i.itemSellingPrice
+            END AS Price,
+            ti.quantity AS ExchangeQuantity,
+            (ti.quantity * 
+                CASE 
+                    WHEN t.customerType = 'Buyer' THEN i.itemBuyingPrice
+                    ELSE i.itemSellingPrice
+                END
+            ) AS ExchangeAmount
+        FROM TransactionItems ti
+        INNER JOIN Inventory i ON ti.itemId = i.itemId
+        INNER JOIN Transactions t ON ti.transactionId = t.transacId
+        WHERE ti.transactionId = @transacId";
 
             using (var conn = new SqlConnection(ConnectionString))
             using (var cmd = new SqlCommand(query, conn))
@@ -57,6 +66,49 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.IndInvoice
             }
             return dt;
         }
+
+        //public static DataTable GetReceiptItems(int transacId)
+        //{
+        //    var dt = new DataTable();
+
+        //    // 1. Get the customerType for this transaction
+        //    string customerType = "Seller"; // default
+        //    using (var conn = new SqlConnection(ConnectionString))
+        //    using (var cmd = new SqlCommand("SELECT customerType FROM Transactions WHERE transacId = @transacId", conn))
+        //    {
+        //        cmd.Parameters.AddWithValue("@transacId", transacId);
+        //        conn.Open();
+        //        var result = cmd.ExecuteScalar();
+        //        if (result != null)
+        //            customerType = result.ToString() ?? "Seller";
+        //    }
+
+        //    // 2. Build the query based on customerType
+        //    string priceColumn = customerType == "Buyer" ? "i.itemBuyingPrice" : "i.itemSellingPrice";
+        //    string query = $@"
+        //SELECT 
+        //    ti.itemId AS ItemID,
+        //    i.itemName AS ItemName,
+        //    i.itemQtyType AS QtyType,
+        //    {priceColumn} AS Price,
+        //    ti.quantity AS ExchangeQuantity,
+        //    (ti.quantity * {priceColumn}) AS ExchangeAmount
+        //FROM TransactionItems ti
+        //INNER JOIN Inventory i ON ti.itemId = i.itemId
+        //WHERE ti.transactionId = @transacId";
+
+        //    using (var conn = new SqlConnection(ConnectionString))
+        //    using (var cmd = new SqlCommand(query, conn))
+        //    {
+        //        cmd.Parameters.AddWithValue("@transacId", transacId);
+        //        conn.Open();
+        //        using (var reader = cmd.ExecuteReader())
+        //        {
+        //            dt.Load(reader);
+        //        }
+        //    }
+        //    return dt;
+        //}
 
         public static void LoadReceiptItems(int transacId, DataGridView InvoiceReceiptTable, Label TotalItemHolder, Label TotalPriceHolder)
         {
