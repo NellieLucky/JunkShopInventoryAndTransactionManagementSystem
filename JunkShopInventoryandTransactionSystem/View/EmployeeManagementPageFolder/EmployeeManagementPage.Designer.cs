@@ -68,17 +68,18 @@
             DashboardTitlePage.BackColor = Color.FromArgb(0, 0, 0, 0);
             DashboardTitlePage.Font = new Font("Arial", 24F, FontStyle.Bold);
             DashboardTitlePage.ForeColor = Color.FromArgb(16, 107, 23);
-            DashboardTitlePage.Location = new Point(3, 16);
+            DashboardTitlePage.Location = new Point(4, 27);
+            DashboardTitlePage.Margin = new Padding(4, 0, 4, 0);
             DashboardTitlePage.Name = "DashboardTitlePage";
-            DashboardTitlePage.Size = new Size(371, 37);
+            DashboardTitlePage.Size = new Size(559, 56);
             DashboardTitlePage.TabIndex = 6;
             DashboardTitlePage.Text = "Employee Management";
             // 
             // vScrollBar1
             // 
-            vScrollBar1.Location = new Point(900, 251);
+            vScrollBar1.Location = new Point(1286, 418);
             vScrollBar1.Name = "vScrollBar1";
-            vScrollBar1.Size = new Size(36, 323);
+            vScrollBar1.Size = new Size(36, 538);
             vScrollBar1.TabIndex = 29;
             // 
             // ItemID
@@ -188,8 +189,8 @@
             dataGridView1.EditMode = DataGridViewEditMode.EditProgrammatically;
             dataGridView1.EnableHeadersVisualStyles = false;
             dataGridView1.GridColor = Color.FromArgb(99, 99, 99);
-            dataGridView1.Location = new Point(12, 102);
-            dataGridView1.Margin = new Padding(3, 2, 3, 2);
+            dataGridView1.Location = new Point(17, 170);
+            dataGridView1.Margin = new Padding(4, 3, 4, 3);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -208,7 +209,7 @@
             dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle7;
             dataGridView1.RowTemplate.Height = 50;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(924, 460);
+            dataGridView1.Size = new Size(1320, 767);
             dataGridView1.TabIndex = 39;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
@@ -233,8 +234,8 @@
             RegisterEmployeeButton.ImageAutoCenter = true;
             RegisterEmployeeButton.ImageExpand = new Point(0, 0);
             RegisterEmployeeButton.ImageOffset = new Point(0, 0);
-            RegisterEmployeeButton.Location = new Point(428, 60);
-            RegisterEmployeeButton.Margin = new Padding(3, 2, 3, 2);
+            RegisterEmployeeButton.Location = new Point(611, 100);
+            RegisterEmployeeButton.Margin = new Padding(4, 3, 4, 3);
             RegisterEmployeeButton.Name = "RegisterEmployeeButton";
             RegisterEmployeeButton.NormalBackground = Color.FromArgb(0, 157, 209);
             RegisterEmployeeButton.NormalForeColor = Color.White;
@@ -246,7 +247,7 @@
             RegisterEmployeeButton.PressedImageTint = Color.White;
             RegisterEmployeeButton.PressedOutline = Color.FromArgb(64, 128, 128, 128);
             RegisterEmployeeButton.Rounding = new Padding(8);
-            RegisterEmployeeButton.Size = new Size(169, 30);
+            RegisterEmployeeButton.Size = new Size(241, 50);
             RegisterEmployeeButton.TabIndex = 40;
             RegisterEmployeeButton.TextAlignment = StringAlignment.Center;
             RegisterEmployeeButton.TextOffset = new Point(0, 0);
@@ -266,17 +267,17 @@
             SearchTextBox.Image = null;
             SearchTextBox.ImageExpand = new Point(0, 0);
             SearchTextBox.ImageOffset = new Point(0, 0);
-            SearchTextBox.Location = new Point(645, 64);
-            SearchTextBox.Margin = new Padding(4, 3, 4, 3);
+            SearchTextBox.Location = new Point(921, 107);
+            SearchTextBox.Margin = new Padding(6, 5, 6, 5);
             SearchTextBox.Multiline = false;
             SearchTextBox.Name = "SearchTextBox";
             SearchTextBox.NormalImageTint = Color.White;
-            SearchTextBox.Padding = new Padding(15, 6, 15, 0);
+            SearchTextBox.Padding = new Padding(22, 10, 22, 0);
             SearchTextBox.PasswordChar = false;
             SearchTextBox.PlaceholderColor = Color.Gray;
             SearchTextBox.PlaceholderText = "Search...";
             SearchTextBox.Rounding = new Padding(2);
-            SearchTextBox.Size = new Size(291, 26);
+            SearchTextBox.Size = new Size(416, 43);
             SearchTextBox.TabIndex = 41;
             SearchTextBox.TextOffset = new Size(0, 0);
             SearchTextBox.UnderlinedStyle = false;
@@ -301,8 +302,8 @@
             SearchButton.ImageAutoCenter = true;
             SearchButton.ImageExpand = new Point(5, 5);
             SearchButton.ImageOffset = new Point(0, 0);
-            SearchButton.Location = new Point(611, 64);
-            SearchButton.Margin = new Padding(3, 2, 3, 2);
+            SearchButton.Location = new Point(873, 107);
+            SearchButton.Margin = new Padding(4, 3, 4, 3);
             SearchButton.Name = "SearchButton";
             SearchButton.NormalBackground = Color.FromArgb(0, 157, 209);
             SearchButton.NormalForeColor = Color.Black;
@@ -314,7 +315,7 @@
             SearchButton.PressedImageTint = Color.White;
             SearchButton.PressedOutline = Color.FromArgb(64, 128, 128, 128);
             SearchButton.Rounding = new Padding(0, 5, 5, 0);
-            SearchButton.Size = new Size(38, 26);
+            SearchButton.Size = new Size(54, 43);
             SearchButton.TabIndex = 42;
             SearchButton.TextAlignment = StringAlignment.Center;
             SearchButton.TextOffset = new Point(0, 0);
@@ -331,7 +332,7 @@
             DateRegisteredColumn.HeaderText = "Date Registered";
             DateRegisteredColumn.MinimumWidth = 6;
             DateRegisteredColumn.Name = "DateRegisteredColumn";
-            DateRegisteredColumn.Width = 105;
+            DateRegisteredColumn.Width = 150;
             // 
             // EmailColumn
             // 
@@ -339,7 +340,12 @@
             EmailColumn.HeaderText = "Username";
             EmailColumn.MinimumWidth = 6;
             EmailColumn.Name = "EmailColumn";
-            EmailColumn.Width = 130;
+            EmailColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            EmailColumn.Width = 150;
+            EmailColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            EmailColumn.Width = 150;
+            EmailColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            EmailColumn.Width = 150;
             // 
             // NameColumn
             // 
@@ -362,7 +368,7 @@
             ContactColumn.HeaderText = "Contact Number";
             ContactColumn.MinimumWidth = 6;
             ContactColumn.Name = "ContactColumn";
-            ContactColumn.Width = 140;
+            ContactColumn.Width = 250;
             // 
             // AddressColumn
             // 
@@ -373,7 +379,6 @@
             // 
             // EditColumn
             // 
-            EditColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle4.NullValue = null;
             dataGridViewCellStyle4.Padding = new Padding(10);
@@ -385,10 +390,10 @@
             EditColumn.MinimumWidth = 6;
             EditColumn.Name = "EditColumn";
             EditColumn.Resizable = DataGridViewTriState.False;
+            EditColumn.Width = 122;
             // 
             // RemoveColumn
             // 
-            RemoveColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle5.NullValue = null;
             dataGridViewCellStyle5.Padding = new Padding(10);
@@ -400,10 +405,11 @@
             RemoveColumn.MinimumWidth = 6;
             RemoveColumn.Name = "RemoveColumn";
             RemoveColumn.Resizable = DataGridViewTriState.False;
+            RemoveColumn.Width = 121;
             // 
             // EmployeeManagementPage
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(227, 244, 238);
             Controls.Add(SearchButton);
@@ -412,9 +418,9 @@
             Controls.Add(dataGridView1);
             Controls.Add(vScrollBar1);
             Controls.Add(DashboardTitlePage);
-            Margin = new Padding(3, 2, 3, 2);
+            Margin = new Padding(4, 3, 4, 3);
             Name = "EmployeeManagementPage";
-            Size = new Size(948, 598);
+            Size = new Size(1354, 997);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
