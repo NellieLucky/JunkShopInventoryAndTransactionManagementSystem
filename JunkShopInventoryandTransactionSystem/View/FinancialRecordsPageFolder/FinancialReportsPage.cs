@@ -20,6 +20,7 @@ namespace JunkShopInventoryandTransactionSystem.View.FinancialReportsPageFolder
             InitializeComponent();
             _repository = new FinancialReportRepository();
             LoadFinancialReports();
+            FinancialRecordsTable.CellFormatting += FinancialRecordsTable_CellFormatting;
         }
 
         private void LoadFinancialReports()
@@ -46,6 +47,19 @@ namespace JunkShopInventoryandTransactionSystem.View.FinancialReportsPageFolder
         private void codeeloDateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void FinancialRecordsTable_CellFormatting(object? sender, DataGridViewCellFormattingEventArgs e)
+        {
+            var columnName = FinancialRecordsTable.Columns[e.ColumnIndex].Name;
+            if (columnName == "CostOfGoodSolds" || columnName == "Revenue" || columnName == "Profit")
+            {
+                if (e.Value != null && decimal.TryParse(e.Value.ToString(), out decimal amount))
+                {
+                    e.Value = string.Format(new System.Globalization.CultureInfo("en-PH"), "{0:C2}", amount);
+                    e.FormattingApplied = true;
+                }
+            }
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿
-// imports for functions
+﻿// imports for functions
 
 // imports for inventory actions
 // specific backend files consisting of actions
@@ -44,27 +43,30 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
             SearchButton.Click += SearchButton_Click;
             SearchTextBox.ContentChanged += SearchTextBox_TextChanged; // Use ContentChanged instead of KeyPress
 
-                /*
-                //Pangtest lang to if msgkakalaman
-                dataGridView1.Rows.Add("1", "Copper A", "Tanso", "PerWeight", "10", "100", "1");
-                dataGridView1.Rows.Add("1", "3F", "Batteries", "PerPiece", "10", "100", "1");
-                dataGridView1.Rows.Add("1", "Copper A", "Tanso", "PerWeight", "10", "100", "1");
-                dataGridView1.Rows.Add("1", "3F", "Batteries", "PerPiece", "10", "100", "1");
-                dataGridView1.Rows.Add("1", "Copper A", "Tanso", "PerWeight", "10", "100", "1");
-                dataGridView1.Rows.Add("1", "3F", "Batteries", "PerPiece", "10", "100", "1");
-                dataGridView1.Rows.Add("1", "Copper A", "Tanso", "PerWeight", "10", "100", "1");
-                dataGridView1.Rows.Add("1", "3F", "Batteries", "PerPiece", "10", "100", "1");
-                dataGridView1.Rows.Add("1", "Copper A", "Tanso", "PerWeight", "10", "100", "1");
-                dataGridView1.Rows.Add("1", "3F", "Batteries", "PerPiece", "10", "100", "1");
-                dataGridView1.Rows.Add("1", "Copper A", "Tanso", "PerWeight", "10", "100", "1");
-                dataGridView1.Rows.Add("1", "3F", "Batteries", "PerPiece", "10", "100", "1");
-                dataGridView1.Rows.Add("1", "Copper A", "Tanso", "PerWeight", "10", "100", "1");
-                dataGridView1.Rows.Add("1", "3F", "Batteries", "PerPiece", "10", "100", "1");
-                */
+            ItemRecordsTable.CellFormatting += ItemRecordsTable_CellFormatting;
+
+            /*
+            //Pangtest lang to if msgkakalaman
+            dataGridView1.Rows.Add("1", "Copper A", "Tanso", "PerWeight", "10", "100", "1");
+            dataGridView1.Rows.Add("1", "3F", "Batteries", "PerPiece", "10", "100", "1");
+            dataGridView1.Rows.Add("1", "Copper A", "Tanso", "PerWeight", "10", "100", "1");
+            dataGridView1.Rows.Add("1", "3F", "Batteries", "PerPiece", "10", "100", "1");
+            dataGridView1.Rows.Add("1", "Copper A", "Tanso", "PerWeight", "10", "100", "1");
+            dataGridView1.Rows.Add("1", "3F", "Batteries", "PerPiece", "10", "100", "1");
+            dataGridView1.Rows.Add("1", "Copper A", "Tanso", "PerWeight", "10", "100", "1");
+            dataGridView1.Rows.Add("1", "3F", "Batteries", "PerPiece", "10", "100", "1");
+            dataGridView1.Rows.Add("1", "Copper A", "Tanso", "PerWeight", "10", "100", "1");
+            dataGridView1.Rows.Add("1", "3F", "Batteries", "PerPiece", "10", "100", "1");
+            dataGridView1.Rows.Add("1", "Copper A", "Tanso", "PerWeight", "10", "100", "1");
+            dataGridView1.Rows.Add("1", "3F", "Batteries", "PerPiece", "10", "100", "1");
+            dataGridView1.Rows.Add("1", "Copper A", "Tanso", "PerWeight", "10", "100", "1");
+            dataGridView1.Rows.Add("1", "3F", "Batteries", "PerPiece", "10", "100", "1");
+            */
 
             ItemRecordsTable.Columns["Edit"].HeaderText = ""; 
             ItemRecordsTable.Columns["Delete"].HeaderText = ""; // Set header text for Edit and Delete columns to empty
             ItemRecordsTable.Paint += DataGridView1_Paint; // Attach the Paint event handler to the DataGridView
+            ItemRecordsTable.CellFormatting += ItemRecordsTable_CellFormatting; // Attach the CellFormatting event handler
 
             // Hide Add/Delete/Edit column if user is Employee
             var userInfo = ForUser.GetUserInfo(UserSession.UserId);
@@ -75,6 +77,17 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
 
 
                 AddItemButton.Visible = false;
+            }
+
+            if (ItemRecordsTable.Columns.Contains("BuyingPrice"))
+            {
+                ItemRecordsTable.Columns["BuyingPrice"].DefaultCellStyle.Format = "C2";
+                ItemRecordsTable.Columns["BuyingPrice"].DefaultCellStyle.FormatProvider = new System.Globalization.CultureInfo("en-PH");
+            }
+            if (ItemRecordsTable.Columns.Contains("SellingPrice"))
+            {
+                ItemRecordsTable.Columns["SellingPrice"].DefaultCellStyle.Format = "C2";
+                ItemRecordsTable.Columns["SellingPrice"].DefaultCellStyle.FormatProvider = new System.Globalization.CultureInfo("en-PH");
             }
         }
 
@@ -299,6 +312,19 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
 
             // Refresh the view
             ItemRecordsTable.Refresh();
+        }
+
+        private void ItemRecordsTable_CellFormatting(object? sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (ItemRecordsTable.Columns[e.ColumnIndex].Name == "BuyingPrice" ||
+                ItemRecordsTable.Columns[e.ColumnIndex].Name == "SellingPrice")
+            {
+                if (e.Value != null && decimal.TryParse(e.Value.ToString(), out decimal amount))
+                {
+                    e.Value = string.Format(new System.Globalization.CultureInfo("en-PH"), "{0:C2}", amount);
+                    e.FormattingApplied = true;
+                }
+            }
         }
     }
 }
