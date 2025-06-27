@@ -34,10 +34,12 @@
             VerifyTokenTextBox = new CuoreUI.Controls.cuiTextBox();
             label1 = new Label();
             cuiPanel2 = new CuoreUI.Controls.cuiPanel();
+            ConfirmPasswordToggle = new CuoreUI.Controls.cuiPictureBox();
             ConfirmPasswordTextBox = new CuoreUI.Controls.cuiTextBox();
             UpdatePass_Button = new CuoreUI.Controls.cuiButton();
             PasswordLabel = new Label();
             cuiPanel3 = new CuoreUI.Controls.cuiPanel();
+            NewPasswordToggle = new CuoreUI.Controls.cuiPictureBox();
             PasswordTextBox = new CuoreUI.Controls.cuiTextBox();
             SignInLabel = new Label();
             codeeloGradientPanel1 = new CodeeloUI.Controls.CodeeloGradientPanel();
@@ -123,7 +125,6 @@
             VerifyTokenTextBox.TabIndex = 2;
             VerifyTokenTextBox.TextOffset = new Size(0, 0);
             VerifyTokenTextBox.UnderlinedStyle = false;
-            VerifyTokenTextBox.ContentChanged += VerifyTokenTextBox_ContentChanged;
             // 
             // label1
             // 
@@ -138,6 +139,7 @@
             // 
             // cuiPanel2
             // 
+            cuiPanel2.Controls.Add(ConfirmPasswordToggle);
             cuiPanel2.Controls.Add(ConfirmPasswordTextBox);
             cuiPanel2.Location = new Point(182, 481);
             cuiPanel2.Name = "cuiPanel2";
@@ -147,6 +149,23 @@
             cuiPanel2.Rounding = new Padding(24);
             cuiPanel2.Size = new Size(643, 75);
             cuiPanel2.TabIndex = 9;
+            // 
+            // ConfirmPasswordToggle
+            // 
+            ConfirmPasswordToggle.BackColor = Color.White;
+            ConfirmPasswordToggle.BackgroundImage = Properties.Resources.view;
+            ConfirmPasswordToggle.BackgroundImageLayout = ImageLayout.Zoom;
+            ConfirmPasswordToggle.Content = null;
+            ConfirmPasswordToggle.ImageTint = Color.White;
+            ConfirmPasswordToggle.Location = new Point(556, 9);
+            ConfirmPasswordToggle.Margin = new Padding(4, 5, 4, 5);
+            ConfirmPasswordToggle.Name = "ConfirmPasswordToggle";
+            ConfirmPasswordToggle.OutlineThickness = 1F;
+            ConfirmPasswordToggle.PanelOutlineColor = Color.Empty;
+            ConfirmPasswordToggle.Rotation = 0;
+            ConfirmPasswordToggle.Rounding = new Padding(50);
+            ConfirmPasswordToggle.Size = new Size(72, 57);
+            ConfirmPasswordToggle.TabIndex = 23;
             // 
             // ConfirmPasswordTextBox
             // 
@@ -178,7 +197,6 @@
             ConfirmPasswordTextBox.TabIndex = 2;
             ConfirmPasswordTextBox.TextOffset = new Size(0, 0);
             ConfirmPasswordTextBox.UnderlinedStyle = false;
-            ConfirmPasswordTextBox.ContentChanged += ConfirmPasswordTextBox_ContentChanged;
             // 
             // UpdatePass_Button
             // 
@@ -231,6 +249,7 @@
             // 
             // cuiPanel3
             // 
+            cuiPanel3.Controls.Add(NewPasswordToggle);
             cuiPanel3.Controls.Add(PasswordTextBox);
             cuiPanel3.Location = new Point(182, 337);
             cuiPanel3.Name = "cuiPanel3";
@@ -240,6 +259,23 @@
             cuiPanel3.Rounding = new Padding(24);
             cuiPanel3.Size = new Size(643, 75);
             cuiPanel3.TabIndex = 4;
+            // 
+            // NewPasswordToggle
+            // 
+            NewPasswordToggle.BackColor = Color.White;
+            NewPasswordToggle.BackgroundImage = Properties.Resources.view;
+            NewPasswordToggle.BackgroundImageLayout = ImageLayout.Zoom;
+            NewPasswordToggle.Content = null;
+            NewPasswordToggle.ImageTint = Color.White;
+            NewPasswordToggle.Location = new Point(556, 9);
+            NewPasswordToggle.Margin = new Padding(4, 5, 4, 5);
+            NewPasswordToggle.Name = "NewPasswordToggle";
+            NewPasswordToggle.OutlineThickness = 1F;
+            NewPasswordToggle.PanelOutlineColor = Color.Empty;
+            NewPasswordToggle.Rotation = 0;
+            NewPasswordToggle.Rounding = new Padding(50);
+            NewPasswordToggle.Size = new Size(72, 57);
+            NewPasswordToggle.TabIndex = 23;
             // 
             // PasswordTextBox
             // 
@@ -271,7 +307,6 @@
             PasswordTextBox.TabIndex = 2;
             PasswordTextBox.TextOffset = new Size(0, 0);
             PasswordTextBox.UnderlinedStyle = false;
-            PasswordTextBox.ContentChanged += PasswordTextBox_ContentChanged;
             // 
             // SignInLabel
             // 
@@ -313,7 +348,7 @@
             cuiPictureBox1.Content = Properties.Resources.JUNKSHOP__9___1_;
             cuiPictureBox1.ImageTint = Color.White;
             cuiPictureBox1.Location = new Point(89, 261);
-            cuiPictureBox1.Margin = new Padding(5, 5, 5, 5);
+            cuiPictureBox1.Margin = new Padding(5);
             cuiPictureBox1.Name = "cuiPictureBox1";
             cuiPictureBox1.OutlineThickness = 1F;
             cuiPictureBox1.PanelOutlineColor = Color.Empty;
@@ -358,5 +393,7 @@
         private Label VerifyTokenLabel;
         private CuoreUI.Controls.cuiPanel cuiPanel4;
         private CuoreUI.Controls.cuiTextBox VerifyTokenTextBox;
+        private CuoreUI.Controls.cuiPictureBox ConfirmPasswordToggle;
+        private CuoreUI.Controls.cuiPictureBox NewPasswordToggle;
     }
 }

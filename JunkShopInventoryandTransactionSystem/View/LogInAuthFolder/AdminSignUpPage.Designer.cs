@@ -51,6 +51,8 @@
             SignInLabel = new Label();
             cuiPictureBox1 = new CuoreUI.Controls.cuiPictureBox();
             codeeloGradientPanel1 = new CodeeloUI.Controls.CodeeloGradientPanel();
+            PasswordToggle = new CuoreUI.Controls.cuiPictureBox();
+            ConfirmPasswordToggle = new CuoreUI.Controls.cuiPictureBox();
             cuiPanel1.SuspendLayout();
             cuiPanel5.SuspendLayout();
             cuiPanel4.SuspendLayout();
@@ -190,6 +192,7 @@
             // 
             // cuiPanel3
             // 
+            cuiPanel3.Controls.Add(ConfirmPasswordToggle);
             cuiPanel3.Controls.Add(ConfirmPasswordTextBox);
             cuiPanel3.Location = new Point(182, 417);
             cuiPanel3.Name = "cuiPanel3";
@@ -222,7 +225,7 @@
             ConfirmPasswordTextBox.Name = "ConfirmPasswordTextBox";
             ConfirmPasswordTextBox.NormalImageTint = Color.White;
             ConfirmPasswordTextBox.Padding = new Padding(20, 14, 20, 0);
-            ConfirmPasswordTextBox.PasswordChar = false;
+            ConfirmPasswordTextBox.PasswordChar = true;
             ConfirmPasswordTextBox.PlaceholderColor = Color.Gray;
             ConfirmPasswordTextBox.PlaceholderText = "Confirm your password...";
             ConfirmPasswordTextBox.Rounding = new Padding(24);
@@ -245,6 +248,7 @@
             // 
             // cuiPanel8
             // 
+            cuiPanel8.Controls.Add(PasswordToggle);
             cuiPanel8.Controls.Add(PasswordTextBox);
             cuiPanel8.Location = new Point(182, 318);
             cuiPanel8.Name = "cuiPanel8";
@@ -277,7 +281,7 @@
             PasswordTextBox.Name = "PasswordTextBox";
             PasswordTextBox.NormalImageTint = Color.White;
             PasswordTextBox.Padding = new Padding(20, 14, 20, 0);
-            PasswordTextBox.PasswordChar = false;
+            PasswordTextBox.PasswordChar = true;
             PasswordTextBox.PlaceholderColor = Color.Gray;
             PasswordTextBox.PlaceholderText = "Enter your password...";
             PasswordTextBox.Rounding = new Padding(24);
@@ -506,6 +510,40 @@
             codeeloGradientPanel1.Size = new Size(1400, 800);
             codeeloGradientPanel1.TabIndex = 1;
             // 
+            // PasswordToggle
+            // 
+            PasswordToggle.BackColor = Color.White;
+            PasswordToggle.BackgroundImage = Properties.Resources.view;
+            PasswordToggle.BackgroundImageLayout = ImageLayout.Zoom;
+            PasswordToggle.Content = null;
+            PasswordToggle.ImageTint = Color.White;
+            PasswordToggle.Location = new Point(562, 9);
+            PasswordToggle.Margin = new Padding(4, 5, 4, 5);
+            PasswordToggle.Name = "PasswordToggle";
+            PasswordToggle.OutlineThickness = 1F;
+            PasswordToggle.PanelOutlineColor = Color.Empty;
+            PasswordToggle.Rotation = 0;
+            PasswordToggle.Rounding = new Padding(50);
+            PasswordToggle.Size = new Size(47, 35);
+            PasswordToggle.TabIndex = 20;
+            // 
+            // ConfirmPasswordToggle
+            // 
+            ConfirmPasswordToggle.BackColor = Color.White;
+            ConfirmPasswordToggle.BackgroundImage = Properties.Resources.view;
+            ConfirmPasswordToggle.BackgroundImageLayout = ImageLayout.Zoom;
+            ConfirmPasswordToggle.Content = null;
+            ConfirmPasswordToggle.ImageTint = Color.White;
+            ConfirmPasswordToggle.Location = new Point(562, 9);
+            ConfirmPasswordToggle.Margin = new Padding(4, 5, 4, 5);
+            ConfirmPasswordToggle.Name = "ConfirmPasswordToggle";
+            ConfirmPasswordToggle.OutlineThickness = 1F;
+            ConfirmPasswordToggle.PanelOutlineColor = Color.Empty;
+            ConfirmPasswordToggle.Rotation = 0;
+            ConfirmPasswordToggle.Rounding = new Padding(50);
+            ConfirmPasswordToggle.Size = new Size(47, 35);
+            ConfirmPasswordToggle.TabIndex = 21;
+            // 
             // AdminSignUpPage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -553,5 +591,7 @@
         private CuoreUI.Controls.cuiPanel cuiPanel3;
         private CuoreUI.Controls.cuiPanel cuiPanel5;
         private CuoreUI.Controls.cuiPanel cuiPanel4;
+        private CuoreUI.Controls.cuiPictureBox PasswordToggle;
+        private CuoreUI.Controls.cuiPictureBox ConfirmPasswordToggle;
     }
 }

@@ -28,36 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DashboardPage));
             DashboardTitlePage = new Label();
-            FromDate = new CodeeloUI.Controls.CodeeloDateTimePicker();
-            customButton = new CuoreUI.Controls.cuiButton();
-            cuiButton1 = new CuoreUI.Controls.cuiButton();
-            cuiButton2 = new CuoreUI.Controls.cuiButton();
-            cuiButton3 = new CuoreUI.Controls.cuiButton();
-            cuiButton4 = new CuoreUI.Controls.cuiButton();
             cuiPanel1 = new CuoreUI.Controls.cuiPanel();
-            label2 = new Label();
+            CostOfGoodSoldsLabel = new Label();
             label1 = new Label();
             cuiPictureBox1 = new CuoreUI.Controls.cuiPictureBox();
             cuiPanel3 = new CuoreUI.Controls.cuiPanel();
-            label7 = new Label();
-            label10 = new Label();
+            TotalProfitLabel = new Label();
             cuiPictureBox3 = new CuoreUI.Controls.cuiPictureBox();
             label8 = new Label();
-            codeeloDateTimePicker1 = new CodeeloUI.Controls.CodeeloDateTimePicker();
             cuiPanel4 = new CuoreUI.Controls.cuiPanel();
-            label9 = new Label();
-            label5 = new Label();
+            TotalRevenueLabel = new Label();
             cuiPictureBox4 = new CuoreUI.Controls.cuiPictureBox();
             label6 = new Label();
-            cuiPanel2 = new CuoreUI.Controls.cuiPanel();
-            label3 = new Label();
-            label4 = new Label();
-            cuiPictureBox2 = new CuoreUI.Controls.cuiPictureBox();
-            GrossRevenueChartLine = new CuoreUI.Controls.Charts.cuiChartLine();
-            cuiButton5 = new CuoreUI.Controls.cuiButton();
+            ChartLine = new CuoreUI.Controls.Charts.cuiChartLine();
             panel1 = new Panel();
             label11 = new Label();
             panel2 = new Panel();
@@ -66,6 +53,9 @@
             Quantity = new DataGridViewTextBoxColumn();
             label12 = new Label();
             panel3 = new Panel();
+            NumOfTransactions = new Label();
+            label19 = new Label();
+            cuiPictureBox10 = new CuoreUI.Controls.cuiPictureBox();
             materialDivider4 = new MaterialSkin.Controls.MaterialDivider();
             materialDivider3 = new MaterialSkin.Controls.MaterialDivider();
             NumOfEmployees = new Label();
@@ -86,14 +76,11 @@
             cuiPictureBox6 = new CuoreUI.Controls.cuiPictureBox();
             cuiPictureBox5 = new CuoreUI.Controls.cuiPictureBox();
             label13 = new Label();
-            label24 = new Label();
-            NumOfTransactions = new Label();
-            label19 = new Label();
-            cuiPictureBox10 = new CuoreUI.Controls.cuiPictureBox();
+            SummaryofRevenueCogsOrTotalProfit = new CodeeloUI.Controls.CodeeloComboBox();
+            Periodicity = new CodeeloUI.Controls.CodeeloComboBox();
             cuiPanel1.SuspendLayout();
             cuiPanel3.SuspendLayout();
             cuiPanel4.SuspendLayout();
-            cuiPanel2.SuspendLayout();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)LowStocksTable).BeginInit();
@@ -112,215 +99,9 @@
             DashboardTitlePage.TabIndex = 0;
             DashboardTitlePage.Text = "Dashboard";
             // 
-            // FromDate
-            // 
-            FromDate.BorderColor = Color.Black;
-            FromDate.BorderSize = 1;
-            FromDate.CalendarFont = null;
-            FromDate.CalendarForeColor = Color.Empty;
-            FromDate.CalendarMonthBackground = Color.Empty;
-            FromDate.CalendarTitleBackColor = Color.Empty;
-            FromDate.CalendarTitleForeColor = Color.Empty;
-            FromDate.CalendarTrailingForeColor = Color.Empty;
-            FromDate.Checked = false;
-            FromDate.FillColor = Color.White;
-            FromDate.Font = new Font("Segoe UI", 9.5F);
-            FromDate.Format = DateTimePickerFormat.Short;
-            FromDate.Location = new Point(24, 88);
-            FromDate.MinimumSize = new Size(0, 35);
-            FromDate.Name = "FromDate";
-            FromDate.Size = new Size(150, 35);
-            FromDate.TabIndex = 3;
-            FromDate.TextColor = Color.Black;
-            // 
-            // customButton
-            // 
-            customButton.CheckButton = false;
-            customButton.Checked = false;
-            customButton.CheckedBackground = Color.FromArgb(255, 106, 0);
-            customButton.CheckedForeColor = Color.White;
-            customButton.CheckedImageTint = Color.White;
-            customButton.CheckedOutline = Color.FromArgb(255, 106, 0);
-            customButton.Content = "Custom";
-            customButton.DialogResult = DialogResult.None;
-            customButton.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            customButton.ForeColor = Color.Black;
-            customButton.HoverBackground = Color.White;
-            customButton.HoveredImageTint = Color.White;
-            customButton.HoverForeColor = Color.Black;
-            customButton.HoverOutline = Color.FromArgb(32, 128, 128, 128);
-            customButton.Image = null;
-            customButton.ImageAutoCenter = true;
-            customButton.ImageExpand = new Point(0, 0);
-            customButton.ImageOffset = new Point(0, 0);
-            customButton.Location = new Point(430, 88);
-            customButton.Name = "customButton";
-            customButton.NormalBackground = Color.White;
-            customButton.NormalForeColor = Color.Black;
-            customButton.NormalImageTint = Color.White;
-            customButton.NormalOutline = Color.FromArgb(64, 128, 128, 128);
-            customButton.OutlineThickness = 1F;
-            customButton.PressedBackground = Color.WhiteSmoke;
-            customButton.PressedForeColor = Color.FromArgb(32, 32, 32);
-            customButton.PressedImageTint = Color.White;
-            customButton.PressedOutline = Color.FromArgb(64, 128, 128, 128);
-            customButton.Rounding = new Padding(8);
-            customButton.Size = new Size(91, 35);
-            customButton.TabIndex = 5;
-            customButton.TextAlignment = StringAlignment.Center;
-            customButton.TextOffset = new Point(0, 0);
-            // 
-            // cuiButton1
-            // 
-            cuiButton1.CheckButton = false;
-            cuiButton1.Checked = false;
-            cuiButton1.CheckedBackground = Color.FromArgb(255, 106, 0);
-            cuiButton1.CheckedForeColor = Color.White;
-            cuiButton1.CheckedImageTint = Color.White;
-            cuiButton1.CheckedOutline = Color.FromArgb(255, 106, 0);
-            cuiButton1.Content = "Last 7 days";
-            cuiButton1.DialogResult = DialogResult.None;
-            cuiButton1.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            cuiButton1.ForeColor = Color.Black;
-            cuiButton1.HoverBackground = Color.White;
-            cuiButton1.HoveredImageTint = Color.White;
-            cuiButton1.HoverForeColor = Color.Black;
-            cuiButton1.HoverOutline = Color.FromArgb(32, 128, 128, 128);
-            cuiButton1.Image = null;
-            cuiButton1.ImageAutoCenter = true;
-            cuiButton1.ImageExpand = new Point(0, 0);
-            cuiButton1.ImageOffset = new Point(0, 0);
-            cuiButton1.Location = new Point(527, 88);
-            cuiButton1.Name = "cuiButton1";
-            cuiButton1.NormalBackground = Color.White;
-            cuiButton1.NormalForeColor = Color.Black;
-            cuiButton1.NormalImageTint = Color.White;
-            cuiButton1.NormalOutline = Color.FromArgb(64, 128, 128, 128);
-            cuiButton1.OutlineThickness = 1F;
-            cuiButton1.PressedBackground = Color.WhiteSmoke;
-            cuiButton1.PressedForeColor = Color.FromArgb(32, 32, 32);
-            cuiButton1.PressedImageTint = Color.White;
-            cuiButton1.PressedOutline = Color.FromArgb(64, 128, 128, 128);
-            cuiButton1.Rounding = new Padding(8);
-            cuiButton1.Size = new Size(131, 35);
-            cuiButton1.TabIndex = 6;
-            cuiButton1.TextAlignment = StringAlignment.Center;
-            cuiButton1.TextOffset = new Point(0, 0);
-            // 
-            // cuiButton2
-            // 
-            cuiButton2.CheckButton = false;
-            cuiButton2.Checked = false;
-            cuiButton2.CheckedBackground = Color.FromArgb(255, 106, 0);
-            cuiButton2.CheckedForeColor = Color.White;
-            cuiButton2.CheckedImageTint = Color.White;
-            cuiButton2.CheckedOutline = Color.FromArgb(255, 106, 0);
-            cuiButton2.Content = "Last 30 Days";
-            cuiButton2.DialogResult = DialogResult.None;
-            cuiButton2.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            cuiButton2.ForeColor = Color.Black;
-            cuiButton2.HoverBackground = Color.White;
-            cuiButton2.HoveredImageTint = Color.White;
-            cuiButton2.HoverForeColor = Color.Black;
-            cuiButton2.HoverOutline = Color.FromArgb(32, 128, 128, 128);
-            cuiButton2.Image = null;
-            cuiButton2.ImageAutoCenter = true;
-            cuiButton2.ImageExpand = new Point(0, 0);
-            cuiButton2.ImageOffset = new Point(0, 0);
-            cuiButton2.Location = new Point(664, 88);
-            cuiButton2.Name = "cuiButton2";
-            cuiButton2.NormalBackground = Color.White;
-            cuiButton2.NormalForeColor = Color.Black;
-            cuiButton2.NormalImageTint = Color.White;
-            cuiButton2.NormalOutline = Color.FromArgb(64, 128, 128, 128);
-            cuiButton2.OutlineThickness = 1F;
-            cuiButton2.PressedBackground = Color.WhiteSmoke;
-            cuiButton2.PressedForeColor = Color.FromArgb(32, 32, 32);
-            cuiButton2.PressedImageTint = Color.White;
-            cuiButton2.PressedOutline = Color.FromArgb(64, 128, 128, 128);
-            cuiButton2.Rounding = new Padding(8);
-            cuiButton2.Size = new Size(131, 35);
-            cuiButton2.TabIndex = 7;
-            cuiButton2.TextAlignment = StringAlignment.Center;
-            cuiButton2.TextOffset = new Point(0, 0);
-            // 
-            // cuiButton3
-            // 
-            cuiButton3.CheckButton = false;
-            cuiButton3.Checked = false;
-            cuiButton3.CheckedBackground = Color.FromArgb(255, 106, 0);
-            cuiButton3.CheckedForeColor = Color.White;
-            cuiButton3.CheckedImageTint = Color.White;
-            cuiButton3.CheckedOutline = Color.FromArgb(255, 106, 0);
-            cuiButton3.Content = "This month";
-            cuiButton3.DialogResult = DialogResult.None;
-            cuiButton3.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            cuiButton3.ForeColor = Color.Black;
-            cuiButton3.HoverBackground = Color.White;
-            cuiButton3.HoveredImageTint = Color.White;
-            cuiButton3.HoverForeColor = Color.Black;
-            cuiButton3.HoverOutline = Color.FromArgb(32, 128, 128, 128);
-            cuiButton3.Image = null;
-            cuiButton3.ImageAutoCenter = true;
-            cuiButton3.ImageExpand = new Point(0, 0);
-            cuiButton3.ImageOffset = new Point(0, 0);
-            cuiButton3.Location = new Point(801, 88);
-            cuiButton3.Name = "cuiButton3";
-            cuiButton3.NormalBackground = Color.White;
-            cuiButton3.NormalForeColor = Color.Black;
-            cuiButton3.NormalImageTint = Color.White;
-            cuiButton3.NormalOutline = Color.FromArgb(64, 128, 128, 128);
-            cuiButton3.OutlineThickness = 1F;
-            cuiButton3.PressedBackground = Color.WhiteSmoke;
-            cuiButton3.PressedForeColor = Color.FromArgb(32, 32, 32);
-            cuiButton3.PressedImageTint = Color.White;
-            cuiButton3.PressedOutline = Color.FromArgb(64, 128, 128, 128);
-            cuiButton3.Rounding = new Padding(8);
-            cuiButton3.Size = new Size(131, 35);
-            cuiButton3.TabIndex = 8;
-            cuiButton3.TextAlignment = StringAlignment.Center;
-            cuiButton3.TextOffset = new Point(0, 0);
-            // 
-            // cuiButton4
-            // 
-            cuiButton4.CheckButton = false;
-            cuiButton4.Checked = false;
-            cuiButton4.CheckedBackground = Color.FromArgb(255, 106, 0);
-            cuiButton4.CheckedForeColor = Color.White;
-            cuiButton4.CheckedImageTint = Color.White;
-            cuiButton4.CheckedOutline = Color.FromArgb(255, 106, 0);
-            cuiButton4.Content = "This Day";
-            cuiButton4.DialogResult = DialogResult.None;
-            cuiButton4.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            cuiButton4.ForeColor = Color.Black;
-            cuiButton4.HoverBackground = Color.White;
-            cuiButton4.HoveredImageTint = Color.White;
-            cuiButton4.HoverForeColor = Color.Black;
-            cuiButton4.HoverOutline = Color.FromArgb(32, 128, 128, 128);
-            cuiButton4.Image = null;
-            cuiButton4.ImageAutoCenter = true;
-            cuiButton4.ImageExpand = new Point(0, 0);
-            cuiButton4.ImageOffset = new Point(0, 0);
-            cuiButton4.Location = new Point(938, 88);
-            cuiButton4.Name = "cuiButton4";
-            cuiButton4.NormalBackground = Color.White;
-            cuiButton4.NormalForeColor = Color.Black;
-            cuiButton4.NormalImageTint = Color.White;
-            cuiButton4.NormalOutline = Color.FromArgb(64, 128, 128, 128);
-            cuiButton4.OutlineThickness = 1F;
-            cuiButton4.PressedBackground = Color.WhiteSmoke;
-            cuiButton4.PressedForeColor = Color.FromArgb(32, 32, 32);
-            cuiButton4.PressedImageTint = Color.White;
-            cuiButton4.PressedOutline = Color.FromArgb(64, 128, 128, 128);
-            cuiButton4.Rounding = new Padding(8);
-            cuiButton4.Size = new Size(131, 35);
-            cuiButton4.TabIndex = 9;
-            cuiButton4.TextAlignment = StringAlignment.Center;
-            cuiButton4.TextOffset = new Point(0, 0);
-            // 
             // cuiPanel1
             // 
-            cuiPanel1.Controls.Add(label2);
+            cuiPanel1.Controls.Add(CostOfGoodSoldsLabel);
             cuiPanel1.Controls.Add(label1);
             cuiPanel1.Controls.Add(cuiPictureBox1);
             cuiPanel1.Location = new Point(24, 138);
@@ -329,21 +110,21 @@
             cuiPanel1.PanelColor = Color.White;
             cuiPanel1.PanelOutlineColor = Color.Empty;
             cuiPanel1.Rounding = new Padding(8);
-            cuiPanel1.Size = new Size(236, 81);
+            cuiPanel1.Size = new Size(332, 81);
             cuiPanel1.TabIndex = 10;
             // 
-            // label2
+            // CostOfGoodSoldsLabel
             // 
-            label2.AutoSize = true;
-            label2.BackColor = Color.FromArgb(0, 0, 0, 0);
-            label2.Font = new Font("Arial", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.ForeColor = Color.DimGray;
-            label2.Location = new Point(69, 43);
-            label2.MaximumSize = new Size(135, 24);
-            label2.Name = "label2";
-            label2.Size = new Size(129, 24);
-            label2.TabIndex = 2;
-            label2.Text = "088888888888888";
+            CostOfGoodSoldsLabel.AutoSize = true;
+            CostOfGoodSoldsLabel.BackColor = Color.FromArgb(0, 0, 0, 0);
+            CostOfGoodSoldsLabel.Font = new Font("Arial", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            CostOfGoodSoldsLabel.ForeColor = Color.DimGray;
+            CostOfGoodSoldsLabel.Location = new Point(69, 43);
+            CostOfGoodSoldsLabel.MaximumSize = new Size(300, 24);
+            CostOfGoodSoldsLabel.Name = "CostOfGoodSoldsLabel";
+            CostOfGoodSoldsLabel.Size = new Size(207, 24);
+            CostOfGoodSoldsLabel.TabIndex = 2;
+            CostOfGoodSoldsLabel.Text = "088888888888888";
             // 
             // label1
             // 
@@ -376,44 +157,30 @@
             // 
             // cuiPanel3
             // 
-            cuiPanel3.Controls.Add(label7);
-            cuiPanel3.Controls.Add(label10);
+            cuiPanel3.Controls.Add(TotalProfitLabel);
             cuiPanel3.Controls.Add(cuiPictureBox3);
             cuiPanel3.Controls.Add(label8);
-            cuiPanel3.Location = new Point(779, 138);
+            cuiPanel3.Location = new Point(719, 138);
             cuiPanel3.Name = "cuiPanel3";
             cuiPanel3.OutlineThickness = 0F;
             cuiPanel3.PanelColor = Color.White;
             cuiPanel3.PanelOutlineColor = Color.Empty;
             cuiPanel3.Rounding = new Padding(8);
-            cuiPanel3.Size = new Size(277, 81);
+            cuiPanel3.Size = new Size(332, 81);
             cuiPanel3.TabIndex = 13;
             // 
-            // label7
+            // TotalProfitLabel
             // 
-            label7.AutoSize = true;
-            label7.BackColor = Color.FromArgb(0, 0, 0, 0);
-            label7.Font = new Font("Arial", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.ForeColor = Color.DimGray;
-            label7.Location = new Point(79, 43);
-            label7.MaximumSize = new Size(135, 24);
-            label7.Name = "label7";
-            label7.Size = new Size(27, 24);
-            label7.TabIndex = 14;
-            label7.Text = "₱";
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.BackColor = Color.FromArgb(0, 0, 0, 0);
-            label10.Font = new Font("Arial", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label10.ForeColor = Color.DimGray;
-            label10.Location = new Point(101, 43);
-            label10.MaximumSize = new Size(135, 24);
-            label10.Name = "label10";
-            label10.Size = new Size(103, 24);
-            label10.TabIndex = 13;
-            label10.Text = "0888888";
+            TotalProfitLabel.AutoSize = true;
+            TotalProfitLabel.BackColor = Color.FromArgb(0, 0, 0, 0);
+            TotalProfitLabel.Font = new Font("Arial", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            TotalProfitLabel.ForeColor = Color.DimGray;
+            TotalProfitLabel.Location = new Point(80, 43);
+            TotalProfitLabel.MaximumSize = new Size(300, 24);
+            TotalProfitLabel.Name = "TotalProfitLabel";
+            TotalProfitLabel.Size = new Size(103, 24);
+            TotalProfitLabel.TabIndex = 13;
+            TotalProfitLabel.Text = "0888888";
             // 
             // cuiPictureBox3
             // 
@@ -444,67 +211,32 @@
             label8.TabIndex = 10;
             label8.Text = "Total Profit";
             // 
-            // codeeloDateTimePicker1
-            // 
-            codeeloDateTimePicker1.BorderColor = Color.Black;
-            codeeloDateTimePicker1.BorderSize = 1;
-            codeeloDateTimePicker1.CalendarFont = null;
-            codeeloDateTimePicker1.CalendarForeColor = Color.Empty;
-            codeeloDateTimePicker1.CalendarMonthBackground = Color.Empty;
-            codeeloDateTimePicker1.CalendarTitleBackColor = Color.Empty;
-            codeeloDateTimePicker1.CalendarTitleForeColor = Color.Empty;
-            codeeloDateTimePicker1.CalendarTrailingForeColor = Color.Empty;
-            codeeloDateTimePicker1.Checked = false;
-            codeeloDateTimePicker1.FillColor = Color.White;
-            codeeloDateTimePicker1.Font = new Font("Segoe UI", 9.5F);
-            codeeloDateTimePicker1.Format = DateTimePickerFormat.Short;
-            codeeloDateTimePicker1.Location = new Point(206, 88);
-            codeeloDateTimePicker1.MinimumSize = new Size(0, 35);
-            codeeloDateTimePicker1.Name = "codeeloDateTimePicker1";
-            codeeloDateTimePicker1.Size = new Size(150, 35);
-            codeeloDateTimePicker1.TabIndex = 14;
-            codeeloDateTimePicker1.TextColor = Color.Black;
-            // 
             // cuiPanel4
             // 
-            cuiPanel4.Controls.Add(label9);
-            cuiPanel4.Controls.Add(label5);
+            cuiPanel4.Controls.Add(TotalRevenueLabel);
             cuiPanel4.Controls.Add(cuiPictureBox4);
             cuiPanel4.Controls.Add(label6);
-            cuiPanel4.Location = new Point(508, 138);
+            cuiPanel4.Location = new Point(374, 138);
             cuiPanel4.Name = "cuiPanel4";
             cuiPanel4.OutlineThickness = 0F;
             cuiPanel4.PanelColor = Color.White;
             cuiPanel4.PanelOutlineColor = Color.Empty;
             cuiPanel4.Rounding = new Padding(8);
-            cuiPanel4.Size = new Size(263, 81);
+            cuiPanel4.Size = new Size(330, 81);
             cuiPanel4.TabIndex = 15;
             // 
-            // label9
+            // TotalRevenueLabel
             // 
-            label9.AutoSize = true;
-            label9.BackColor = Color.FromArgb(0, 0, 0, 0);
-            label9.Font = new Font("Arial", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label9.ForeColor = Color.DimGray;
-            label9.Location = new Point(78, 43);
-            label9.MaximumSize = new Size(135, 24);
-            label9.Name = "label9";
-            label9.Size = new Size(27, 24);
-            label9.TabIndex = 9;
-            label9.Text = "₱";
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.BackColor = Color.FromArgb(0, 0, 0, 0);
-            label5.Font = new Font("Arial", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.ForeColor = Color.DimGray;
-            label5.Location = new Point(100, 43);
-            label5.MaximumSize = new Size(135, 24);
-            label5.Name = "label5";
-            label5.Size = new Size(103, 24);
-            label5.TabIndex = 8;
-            label5.Text = "0888888";
+            TotalRevenueLabel.AutoSize = true;
+            TotalRevenueLabel.BackColor = Color.FromArgb(0, 0, 0, 0);
+            TotalRevenueLabel.Font = new Font("Arial", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            TotalRevenueLabel.ForeColor = Color.DimGray;
+            TotalRevenueLabel.Location = new Point(78, 43);
+            TotalRevenueLabel.MaximumSize = new Size(300, 24);
+            TotalRevenueLabel.Name = "TotalRevenueLabel";
+            TotalRevenueLabel.Size = new Size(103, 24);
+            TotalRevenueLabel.TabIndex = 8;
+            TotalRevenueLabel.Text = "0888888";
             // 
             // cuiPictureBox4
             // 
@@ -535,70 +267,14 @@
             label6.TabIndex = 7;
             label6.Text = "Total Revenue";
             // 
-            // cuiPanel2
+            // ChartLine
             // 
-            cuiPanel2.Controls.Add(label3);
-            cuiPanel2.Controls.Add(label4);
-            cuiPanel2.Controls.Add(cuiPictureBox2);
-            cuiPanel2.Location = new Point(266, 138);
-            cuiPanel2.Name = "cuiPanel2";
-            cuiPanel2.OutlineThickness = 0F;
-            cuiPanel2.PanelColor = Color.White;
-            cuiPanel2.PanelOutlineColor = Color.Empty;
-            cuiPanel2.Rounding = new Padding(8);
-            cuiPanel2.Size = new Size(236, 81);
-            cuiPanel2.TabIndex = 16;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.BackColor = Color.FromArgb(0, 0, 0, 0);
-            label3.Font = new Font("Arial", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.ForeColor = Color.DimGray;
-            label3.Location = new Point(66, 43);
-            label3.MaximumSize = new Size(135, 24);
-            label3.Name = "label3";
-            label3.Size = new Size(129, 24);
-            label3.TabIndex = 5;
-            label3.Text = "088888888888888";
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.BackColor = Color.FromArgb(0, 0, 0, 0);
-            label4.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.ForeColor = Color.FromArgb(126, 211, 72);
-            label4.Location = new Point(66, 14);
-            label4.Name = "label4";
-            label4.Size = new Size(51, 19);
-            label4.TabIndex = 4;
-            label4.Text = "Sales";
-            // 
-            // cuiPictureBox2
-            // 
-            cuiPictureBox2.BackColor = Color.FromArgb(0, 0, 0, 0);
-            cuiPictureBox2.BackgroundImage = Properties.Resources.growth;
-            cuiPictureBox2.BackgroundImageLayout = ImageLayout.Zoom;
-            cuiPictureBox2.Content = null;
-            cuiPictureBox2.ImageTint = Color.White;
-            cuiPictureBox2.Location = new Point(10, 14);
-            cuiPictureBox2.Margin = new Padding(4, 5, 4, 5);
-            cuiPictureBox2.Name = "cuiPictureBox2";
-            cuiPictureBox2.OutlineThickness = 1F;
-            cuiPictureBox2.PanelOutlineColor = Color.Empty;
-            cuiPictureBox2.Rotation = 0;
-            cuiPictureBox2.Rounding = new Padding(8);
-            cuiPictureBox2.Size = new Size(59, 53);
-            cuiPictureBox2.TabIndex = 3;
-            // 
-            // GrossRevenueChartLine
-            // 
-            GrossRevenueChartLine.AutoMaxValue = false;
-            GrossRevenueChartLine.AxisColor = Color.Gray;
-            GrossRevenueChartLine.BackColor = Color.White;
-            GrossRevenueChartLine.ChartLineColor = Color.FromArgb(1, 55, 125);
-            GrossRevenueChartLine.ChartPadding = 35;
-            GrossRevenueChartLine.CustomXAxis = new string[]
+            ChartLine.AutoMaxValue = false;
+            ChartLine.AxisColor = Color.Gray;
+            ChartLine.BackColor = Color.White;
+            ChartLine.ChartLineColor = Color.FromArgb(1, 55, 125);
+            ChartLine.ChartPadding = 35;
+            ChartLine.CustomXAxis = new string[]
     {
     "1  ",
     "2  ",
@@ -632,7 +308,7 @@
     "30",
     "31"
     };
-            GrossRevenueChartLine.DataPoints = new float[]
+            ChartLine.DataPoints = new float[]
     {
     100F,
     90F,
@@ -642,62 +318,25 @@
     60F,
     0F
     };
-            GrossRevenueChartLine.DayColor = Color.Black;
-            GrossRevenueChartLine.Font = new Font("Microsoft YaHei UI", 6F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            GrossRevenueChartLine.GradientBackground = true;
-            GrossRevenueChartLine.Location = new Point(3, 41);
-            GrossRevenueChartLine.Margin = new Padding(0);
-            GrossRevenueChartLine.MaxValue = 10000F;
-            GrossRevenueChartLine.Name = "GrossRevenueChartLine";
-            GrossRevenueChartLine.PointColor = Color.FromArgb(1, 55, 125);
-            GrossRevenueChartLine.ShortDates = true;
-            GrossRevenueChartLine.Size = new Size(1022, 274);
-            GrossRevenueChartLine.TabIndex = 18;
-            GrossRevenueChartLine.UseBezier = false;
-            GrossRevenueChartLine.UsePercent = false;
-            // 
-            // cuiButton5
-            // 
-            cuiButton5.CheckButton = false;
-            cuiButton5.Checked = false;
-            cuiButton5.CheckedBackground = Color.FromArgb(255, 106, 0);
-            cuiButton5.CheckedForeColor = Color.White;
-            cuiButton5.CheckedImageTint = Color.White;
-            cuiButton5.CheckedOutline = Color.FromArgb(255, 106, 0);
-            cuiButton5.Content = "Ok";
-            cuiButton5.DialogResult = DialogResult.None;
-            cuiButton5.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            cuiButton5.ForeColor = Color.Black;
-            cuiButton5.HoverBackground = Color.White;
-            cuiButton5.HoveredImageTint = Color.White;
-            cuiButton5.HoverForeColor = Color.Black;
-            cuiButton5.HoverOutline = Color.FromArgb(32, 128, 128, 128);
-            cuiButton5.Image = null;
-            cuiButton5.ImageAutoCenter = true;
-            cuiButton5.ImageExpand = new Point(0, 0);
-            cuiButton5.ImageOffset = new Point(0, 0);
-            cuiButton5.Location = new Point(366, 88);
-            cuiButton5.Name = "cuiButton5";
-            cuiButton5.NormalBackground = Color.White;
-            cuiButton5.NormalForeColor = Color.Black;
-            cuiButton5.NormalImageTint = Color.White;
-            cuiButton5.NormalOutline = Color.FromArgb(64, 128, 128, 128);
-            cuiButton5.OutlineThickness = 1F;
-            cuiButton5.PressedBackground = Color.WhiteSmoke;
-            cuiButton5.PressedForeColor = Color.FromArgb(32, 32, 32);
-            cuiButton5.PressedImageTint = Color.White;
-            cuiButton5.PressedOutline = Color.FromArgb(64, 128, 128, 128);
-            cuiButton5.Rounding = new Padding(8);
-            cuiButton5.Size = new Size(58, 35);
-            cuiButton5.TabIndex = 20;
-            cuiButton5.TextAlignment = StringAlignment.Center;
-            cuiButton5.TextOffset = new Point(0, 0);
+            ChartLine.DayColor = Color.Black;
+            ChartLine.Font = new Font("Microsoft YaHei UI", 6F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            ChartLine.GradientBackground = true;
+            ChartLine.Location = new Point(3, 41);
+            ChartLine.Margin = new Padding(0);
+            ChartLine.MaxValue = 10000F;
+            ChartLine.Name = "ChartLine";
+            ChartLine.PointColor = Color.FromArgb(1, 55, 125);
+            ChartLine.ShortDates = true;
+            ChartLine.Size = new Size(1022, 274);
+            ChartLine.TabIndex = 18;
+            ChartLine.UseBezier = false;
+            ChartLine.UsePercent = false;
             // 
             // panel1
             // 
             panel1.BackColor = Color.White;
             panel1.Controls.Add(label11);
-            panel1.Controls.Add(GrossRevenueChartLine);
+            panel1.Controls.Add(ChartLine);
             panel1.Location = new Point(26, 237);
             panel1.Name = "panel1";
             panel1.Size = new Size(1025, 315);
@@ -733,14 +372,14 @@
             LowStocksTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             LowStocksTable.BackgroundColor = Color.FromArgb(227, 244, 238);
             LowStocksTable.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.FromArgb(38, 177, 112);
-            dataGridViewCellStyle3.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(0, 64, 0);
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            LowStocksTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(38, 177, 112);
+            dataGridViewCellStyle1.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(0, 64, 0);
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            LowStocksTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             LowStocksTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             LowStocksTable.Columns.AddRange(new DataGridViewColumn[] { Item, Quantity });
             LowStocksTable.EnableHeadersVisualStyles = false;
@@ -748,13 +387,13 @@
             LowStocksTable.Location = new Point(13, 46);
             LowStocksTable.Name = "LowStocksTable";
             LowStocksTable.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            LowStocksTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            LowStocksTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             LowStocksTable.RowHeadersVisible = false;
             LowStocksTable.RowHeadersWidth = 51;
             LowStocksTable.Size = new Size(507, 146);
@@ -815,6 +454,48 @@
             panel3.Name = "panel3";
             panel3.Size = new Size(484, 208);
             panel3.TabIndex = 23;
+            // 
+            // NumOfTransactions
+            // 
+            NumOfTransactions.AutoSize = true;
+            NumOfTransactions.BackColor = Color.FromArgb(0, 0, 0, 0);
+            NumOfTransactions.Font = new Font("Arial", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            NumOfTransactions.ForeColor = Color.DimGray;
+            NumOfTransactions.Location = new Point(363, 163);
+            NumOfTransactions.MaximumSize = new Size(135, 24);
+            NumOfTransactions.Name = "NumOfTransactions";
+            NumOfTransactions.Size = new Size(25, 24);
+            NumOfTransactions.TabIndex = 42;
+            NumOfTransactions.Text = "0";
+            // 
+            // label19
+            // 
+            label19.AutoSize = true;
+            label19.BackColor = Color.FromArgb(0, 0, 0, 0);
+            label19.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label19.ForeColor = Color.Black;
+            label19.Location = new Point(361, 142);
+            label19.Name = "label19";
+            label19.Size = new Size(110, 19);
+            label19.TabIndex = 41;
+            label19.Text = "Transactions";
+            // 
+            // cuiPictureBox10
+            // 
+            cuiPictureBox10.BackColor = Color.FromArgb(0, 0, 0, 0);
+            cuiPictureBox10.BackgroundImage = Properties.Resources.transfer;
+            cuiPictureBox10.BackgroundImageLayout = ImageLayout.Zoom;
+            cuiPictureBox10.Content = null;
+            cuiPictureBox10.ImageTint = Color.White;
+            cuiPictureBox10.Location = new Point(314, 147);
+            cuiPictureBox10.Margin = new Padding(4, 5, 4, 5);
+            cuiPictureBox10.Name = "cuiPictureBox10";
+            cuiPictureBox10.OutlineThickness = 1F;
+            cuiPictureBox10.PanelOutlineColor = Color.Empty;
+            cuiPictureBox10.Rotation = 0;
+            cuiPictureBox10.Rounding = new Padding(8);
+            cuiPictureBox10.Size = new Size(40, 40);
+            cuiPictureBox10.TabIndex = 40;
             // 
             // materialDivider4
             // 
@@ -1085,80 +766,69 @@
             label13.TabIndex = 20;
             label13.Text = "Total Counters";
             // 
-            // label24
+            // SummaryofRevenueCogsOrTotalProfit
             // 
-            label24.AutoSize = true;
-            label24.BackColor = Color.FromArgb(0, 0, 0, 0);
-            label24.Font = new Font("Arial", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label24.ForeColor = Color.FromArgb(0, 157, 209);
-            label24.Location = new Point(180, 92);
-            label24.Name = "label24";
-            label24.Size = new Size(20, 27);
-            label24.TabIndex = 24;
-            label24.Text = "-";
+            SummaryofRevenueCogsOrTotalProfit.ArrowColor = Color.MediumSlateBlue;
+            SummaryofRevenueCogsOrTotalProfit.BackColor = Color.MediumSlateBlue;
+            SummaryofRevenueCogsOrTotalProfit.BorderColor = Color.MediumSlateBlue;
+            SummaryofRevenueCogsOrTotalProfit.BorderSize = 1;
+            SummaryofRevenueCogsOrTotalProfit.DropDownStyle = ComboBoxStyle.DropDown;
+            SummaryofRevenueCogsOrTotalProfit.DropDownWidth = 212;
+            SummaryofRevenueCogsOrTotalProfit.DroppedDown = false;
+            SummaryofRevenueCogsOrTotalProfit.FillColor = Color.White;
+            SummaryofRevenueCogsOrTotalProfit.Font = new Font("Segoe UI", 10F);
+            SummaryofRevenueCogsOrTotalProfit.ForeColor = Color.DimGray;
+            SummaryofRevenueCogsOrTotalProfit.ListBackColor = Color.FromArgb(230, 228, 245);
+            SummaryofRevenueCogsOrTotalProfit.ListTextColor = Color.WhiteSmoke;
+            SummaryofRevenueCogsOrTotalProfit.Location = new Point(806, 77);
+            SummaryofRevenueCogsOrTotalProfit.Name = "SummaryofRevenueCogsOrTotalProfit";
+            SummaryofRevenueCogsOrTotalProfit.Padding = new Padding(1);
+            SummaryofRevenueCogsOrTotalProfit.SelectedIndex = -1;
+            SummaryofRevenueCogsOrTotalProfit.SelectedItem = null;
+            SummaryofRevenueCogsOrTotalProfit.SelectedText = "";
+            SummaryofRevenueCogsOrTotalProfit.SelectedValue = null;
+            SummaryofRevenueCogsOrTotalProfit.Size = new Size(242, 44);
+            SummaryofRevenueCogsOrTotalProfit.TabIndex = 26;
+            SummaryofRevenueCogsOrTotalProfit.Text = "Filter";
             // 
-            // NumOfTransactions
+            // Periodicity
             // 
-            NumOfTransactions.AutoSize = true;
-            NumOfTransactions.BackColor = Color.FromArgb(0, 0, 0, 0);
-            NumOfTransactions.Font = new Font("Arial", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            NumOfTransactions.ForeColor = Color.DimGray;
-            NumOfTransactions.Location = new Point(363, 163);
-            NumOfTransactions.MaximumSize = new Size(135, 24);
-            NumOfTransactions.Name = "NumOfTransactions";
-            NumOfTransactions.Size = new Size(25, 24);
-            NumOfTransactions.TabIndex = 42;
-            NumOfTransactions.Text = "0";
-            // 
-            // label19
-            // 
-            label19.AutoSize = true;
-            label19.BackColor = Color.FromArgb(0, 0, 0, 0);
-            label19.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label19.ForeColor = Color.Black;
-            label19.Location = new Point(361, 142);
-            label19.Name = "label19";
-            label19.Size = new Size(110, 19);
-            label19.TabIndex = 41;
-            label19.Text = "Transactions";
-            // 
-            // cuiPictureBox10
-            // 
-            cuiPictureBox10.BackColor = Color.FromArgb(0, 0, 0, 0);
-            cuiPictureBox10.BackgroundImage = Properties.Resources.transfer;
-            cuiPictureBox10.BackgroundImageLayout = ImageLayout.Zoom;
-            cuiPictureBox10.Content = null;
-            cuiPictureBox10.ImageTint = Color.White;
-            cuiPictureBox10.Location = new Point(314, 147);
-            cuiPictureBox10.Margin = new Padding(4, 5, 4, 5);
-            cuiPictureBox10.Name = "cuiPictureBox10";
-            cuiPictureBox10.OutlineThickness = 1F;
-            cuiPictureBox10.PanelOutlineColor = Color.Empty;
-            cuiPictureBox10.Rotation = 0;
-            cuiPictureBox10.Rounding = new Padding(8);
-            cuiPictureBox10.Size = new Size(40, 40);
-            cuiPictureBox10.TabIndex = 40;
+            Periodicity.ArrowColor = Color.MediumSlateBlue;
+            Periodicity.BackColor = Color.MediumSlateBlue;
+            Periodicity.BorderColor = Color.MediumSlateBlue;
+            Periodicity.BorderSize = 1;
+            Periodicity.DropDownStyle = ComboBoxStyle.DropDown;
+            Periodicity.DropDownWidth = 136;
+            Periodicity.DroppedDown = false;
+            Periodicity.FillColor = Color.White;
+            Periodicity.Font = new Font("Segoe UI", 10F);
+            Periodicity.ForeColor = Color.DimGray;
+            Periodicity.Items.AddRange(new object[] { resources.GetObject("Periodicity.Items"), resources.GetObject("Periodicity.Items1"), resources.GetObject("Periodicity.Items2") });
+            Periodicity.ListBackColor = Color.FromArgb(230, 228, 245);
+            Periodicity.ListTextColor = Color.WhiteSmoke;
+            Periodicity.Location = new Point(554, 77);
+            Periodicity.Name = "Periodicity";
+            Periodicity.Padding = new Padding(1);
+            Periodicity.SelectedIndex = -1;
+            Periodicity.SelectedItem = null;
+            Periodicity.SelectedText = "";
+            Periodicity.SelectedValue = null;
+            Periodicity.Size = new Size(246, 42);
+            Periodicity.TabIndex = 27;
+            Periodicity.Text = "Periodicity";
             // 
             // DashboardPage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(227, 244, 238);
-            Controls.Add(label24);
+            Controls.Add(Periodicity);
+            Controls.Add(SummaryofRevenueCogsOrTotalProfit);
             Controls.Add(panel3);
             Controls.Add(panel2);
-            Controls.Add(cuiButton5);
-            Controls.Add(cuiPanel2);
             Controls.Add(cuiPanel4);
-            Controls.Add(codeeloDateTimePicker1);
             Controls.Add(cuiPanel3);
             Controls.Add(cuiPanel1);
-            Controls.Add(cuiButton4);
-            Controls.Add(cuiButton3);
-            Controls.Add(cuiButton2);
-            Controls.Add(cuiButton1);
-            Controls.Add(customButton);
-            Controls.Add(FromDate);
             Controls.Add(DashboardTitlePage);
             Controls.Add(panel1);
             Name = "DashboardPage";
@@ -1169,8 +839,6 @@
             cuiPanel3.PerformLayout();
             cuiPanel4.ResumeLayout(false);
             cuiPanel4.PerformLayout();
-            cuiPanel2.ResumeLayout(false);
-            cuiPanel2.PerformLayout();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
@@ -1185,33 +853,19 @@
         #endregion
 
         private Label DashboardTitlePage;
-        private CodeeloUI.Controls.CodeeloDateTimePicker FromDate;
-        private CuoreUI.Controls.cuiButton customButton;
-        private CuoreUI.Controls.cuiButton cuiButton1;
-        private CuoreUI.Controls.cuiButton cuiButton2;
-        private CuoreUI.Controls.cuiButton cuiButton3;
-        private CuoreUI.Controls.cuiButton cuiButton4;
         private CuoreUI.Controls.cuiPanel cuiPanel1;
         private CuoreUI.Controls.cuiPanel cuiPanel3;
-        private CodeeloUI.Controls.CodeeloDateTimePicker codeeloDateTimePicker1;
         private CuoreUI.Controls.cuiPanel cuiPanel4;
-        private CuoreUI.Controls.cuiPanel cuiPanel2;
         private CuoreUI.Controls.cuiPictureBox cuiPictureBox1;
-        private Label label2;
+        private Label CostOfGoodSoldsLabel;
         private Label label1;
-        private Label label3;
-        private Label label4;
-        private CuoreUI.Controls.cuiPictureBox cuiPictureBox2;
         private Label label8;
         private CuoreUI.Controls.cuiPictureBox cuiPictureBox4;
-        private Label label5;
+        private Label TotalRevenueLabel;
         private Label label6;
-        private Label label9;
-        private Label label7;
-        private Label label10;
+        private Label TotalProfitLabel;
         private CuoreUI.Controls.cuiPictureBox cuiPictureBox3;
-        private CuoreUI.Controls.Charts.cuiChartLine GrossRevenueChartLine;
-        private CuoreUI.Controls.cuiButton cuiButton5;
+        private CuoreUI.Controls.Charts.cuiChartLine ChartLine;
         private Panel panel1;
         private Label label11;
         private Panel panel2;
@@ -1238,11 +892,12 @@
         private MaterialSkin.Controls.MaterialDivider materialDivider3;
         private Label NumOfEmployees;
         private MaterialSkin.Controls.MaterialDivider materialDivider4;
-        private Label label24;
         private DataGridViewTextBoxColumn Item;
         private DataGridViewTextBoxColumn Quantity;
         private Label NumOfTransactions;
         private Label label19;
         private CuoreUI.Controls.cuiPictureBox cuiPictureBox10;
+        private CodeeloUI.Controls.CodeeloComboBox SummaryofRevenueCogsOrTotalProfit;
+        private CodeeloUI.Controls.CodeeloComboBox Periodicity;
     }
 }

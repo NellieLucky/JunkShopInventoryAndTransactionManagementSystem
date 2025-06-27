@@ -15,10 +15,18 @@ namespace JunkShopInventoryandTransactionSystem.View.LogInAuthFolder
 {
     public partial class NewPasswordPage : Form
     {
+        private bool isNewPasswordVisible = false;
+        private bool isConfirmPasswordVisible = false;
 
         public NewPasswordPage()
         {
             InitializeComponent();
+            PasswordTextBox.PasswordChar = true;
+            ConfirmPasswordTextBox.PasswordChar = true;
+            NewPasswordToggle.BackgroundImage = Properties.Resources.hide;
+            ConfirmPasswordToggle.BackgroundImage = Properties.Resources.hide;
+            NewPasswordToggle.Click += NewPasswordToggle_Click;
+            ConfirmPasswordToggle.Click += ConfirmPasswordToggle_Click;
         }
         protected override void OnFormClosed(FormClosedEventArgs e)
         {
@@ -68,19 +76,25 @@ namespace JunkShopInventoryandTransactionSystem.View.LogInAuthFolder
             }
         }
 
-        private void VerifyTokenTextBox_ContentChanged(object sender, EventArgs e)
+        private void NewPasswordToggle_Click(object? sender, EventArgs e)
         {
-
+            isNewPasswordVisible = !isNewPasswordVisible;
+            // Try PasswordChar property
+            PasswordTextBox.PasswordChar = !isNewPasswordVisible;
+            // Try BackgroundImage property
+            NewPasswordToggle.BackgroundImage = isNewPasswordVisible
+                ? Properties.Resources.view
+                : Properties.Resources.hide;
         }
 
-        private void PasswordTextBox_ContentChanged(object sender, EventArgs e)
+        // Confirm password toggle click event
+        private void ConfirmPasswordToggle_Click(object? sender, EventArgs e)
         {
-
-        }
-
-        private void ConfirmPasswordTextBox_ContentChanged(object sender, EventArgs e)
-        {
-
+            isConfirmPasswordVisible = !isConfirmPasswordVisible;
+            ConfirmPasswordTextBox.PasswordChar = !isConfirmPasswordVisible;
+            ConfirmPasswordToggle.BackgroundImage = isConfirmPasswordVisible
+                ? Properties.Resources.view
+                : Properties.Resources.hide;
         }
     }
 }

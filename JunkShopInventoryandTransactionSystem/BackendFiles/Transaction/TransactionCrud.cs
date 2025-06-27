@@ -155,7 +155,8 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Crud
                 t.totalNumOfItems,
                 t.totalNumOfQty,
                 t.totalAmount,
-                t.customerType
+                t.customerType,
+                t.isArchived
             FROM Transactions t
             INNER JOIN Customer c ON t.customerId = c.customerId
             INNER JOIN Employees e ON t.employeeId = e.empId

@@ -40,6 +40,7 @@
             cuiPanel2 = new CuoreUI.Controls.cuiPanel();
             EmailTextBox = new CuoreUI.Controls.cuiTextBox();
             SignInLabel = new Label();
+            PasswordToggle = new CuoreUI.Controls.cuiPictureBox();
             codeeloGradientPanel1.SuspendLayout();
             cuiPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)BackButton).BeginInit();
@@ -66,9 +67,8 @@
             codeeloGradientPanel1.GradientBorderDirection = System.Drawing.Drawing2D.LinearGradientMode.Horizontal;
             codeeloGradientPanel1.GradientDirection = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             codeeloGradientPanel1.Location = new Point(0, 0);
-            codeeloGradientPanel1.Margin = new Padding(3, 2, 3, 2);
             codeeloGradientPanel1.Name = "codeeloGradientPanel1";
-            codeeloGradientPanel1.Size = new Size(1225, 601);
+            codeeloGradientPanel1.Size = new Size(1400, 801);
             codeeloGradientPanel1.TabIndex = 0;
             // 
             // cuiPictureBox1
@@ -76,14 +76,14 @@
             cuiPictureBox1.BackColor = Color.FromArgb(0, 0, 0, 0);
             cuiPictureBox1.Content = Properties.Resources.JUNKSHOP__9___1_;
             cuiPictureBox1.ImageTint = Color.White;
-            cuiPictureBox1.Location = new Point(78, 196);
-            cuiPictureBox1.Margin = new Padding(4, 4, 4, 4);
+            cuiPictureBox1.Location = new Point(89, 261);
+            cuiPictureBox1.Margin = new Padding(5, 5, 5, 5);
             cuiPictureBox1.Name = "cuiPictureBox1";
             cuiPictureBox1.OutlineThickness = 1F;
             cuiPictureBox1.PanelOutlineColor = Color.Empty;
             cuiPictureBox1.Rotation = 0;
             cuiPictureBox1.Rounding = new Padding(0);
-            cuiPictureBox1.Size = new Size(219, 188);
+            cuiPictureBox1.Size = new Size(250, 251);
             cuiPictureBox1.TabIndex = 1;
             // 
             // cuiPanel1
@@ -96,14 +96,14 @@
             cuiPanel1.Controls.Add(cuiPanel3);
             cuiPanel1.Controls.Add(cuiPanel2);
             cuiPanel1.Controls.Add(SignInLabel);
-            cuiPanel1.Location = new Point(368, 0);
+            cuiPanel1.Location = new Point(421, 0);
             cuiPanel1.Margin = new Padding(0);
             cuiPanel1.Name = "cuiPanel1";
             cuiPanel1.OutlineThickness = 1F;
             cuiPanel1.PanelColor = Color.White;
             cuiPanel1.PanelOutlineColor = Color.Empty;
             cuiPanel1.Rounding = new Padding(0, 50, 50, 0);
-            cuiPanel1.Size = new Size(858, 600);
+            cuiPanel1.Size = new Size(981, 800);
             cuiPanel1.TabIndex = 0;
             // 
             // BackButton
@@ -119,10 +119,9 @@
             BackButton.ImageHover = null;
             BackButton.ImageNormal = null;
             BackButton.InitialImage = Properties.Resources.left_arrow;
-            BackButton.Location = new Point(33, 23);
-            BackButton.Margin = new Padding(3, 2, 3, 2);
+            BackButton.Location = new Point(38, 31);
             BackButton.Name = "BackButton";
-            BackButton.Size = new Size(61, 52);
+            BackButton.Size = new Size(70, 69);
             BackButton.SizeMode = PictureBoxSizeMode.StretchImage;
             BackButton.TabIndex = 10;
             BackButton.TabStop = false;
@@ -148,8 +147,7 @@
             LogInButton.ImageAutoCenter = true;
             LogInButton.ImageExpand = new Point(0, 0);
             LogInButton.ImageOffset = new Point(0, 0);
-            LogInButton.Location = new Point(161, 392);
-            LogInButton.Margin = new Padding(3, 2, 3, 2);
+            LogInButton.Location = new Point(184, 523);
             LogInButton.Name = "LogInButton";
             LogInButton.NormalBackground = Color.FromArgb(7, 96, 14);
             LogInButton.NormalForeColor = Color.White;
@@ -161,7 +159,7 @@
             LogInButton.PressedImageTint = Color.White;
             LogInButton.PressedOutline = Color.FromArgb(64, 128, 128, 128);
             LogInButton.Rounding = new Padding(24);
-            LogInButton.Size = new Size(561, 59);
+            LogInButton.Size = new Size(641, 79);
             LogInButton.TabIndex = 7;
             LogInButton.TextAlignment = StringAlignment.Center;
             LogInButton.TextOffset = new Point(0, 0);
@@ -172,9 +170,9 @@
             PasswordLabel.AutoSize = true;
             PasswordLabel.Font = new Font("Arial", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             PasswordLabel.ForeColor = Color.FromArgb(16, 107, 23);
-            PasswordLabel.Location = new Point(161, 273);
+            PasswordLabel.Location = new Point(184, 364);
             PasswordLabel.Name = "PasswordLabel";
-            PasswordLabel.Size = new Size(133, 29);
+            PasswordLabel.Size = new Size(169, 35);
             PasswordLabel.TabIndex = 6;
             PasswordLabel.Text = "Password:";
             // 
@@ -183,23 +181,23 @@
             EmailLabel.AutoSize = true;
             EmailLabel.Font = new Font("Arial", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             EmailLabel.ForeColor = Color.FromArgb(16, 107, 23);
-            EmailLabel.Location = new Point(159, 165);
+            EmailLabel.Location = new Point(182, 220);
             EmailLabel.Name = "EmailLabel";
-            EmailLabel.Size = new Size(134, 29);
+            EmailLabel.Size = new Size(171, 35);
             EmailLabel.TabIndex = 5;
             EmailLabel.Text = "Username:";
             // 
             // cuiPanel3
             // 
+            cuiPanel3.Controls.Add(PasswordToggle);
             cuiPanel3.Controls.Add(PasswordTextBox);
-            cuiPanel3.Location = new Point(159, 302);
-            cuiPanel3.Margin = new Padding(3, 2, 3, 2);
+            cuiPanel3.Location = new Point(182, 403);
             cuiPanel3.Name = "cuiPanel3";
             cuiPanel3.OutlineThickness = 1F;
             cuiPanel3.PanelColor = Color.Green;
             cuiPanel3.PanelOutlineColor = Color.Green;
             cuiPanel3.Rounding = new Padding(24);
-            cuiPanel3.Size = new Size(563, 56);
+            cuiPanel3.Size = new Size(643, 75);
             cuiPanel3.TabIndex = 4;
             // 
             // PasswordTextBox
@@ -218,17 +216,17 @@
             PasswordTextBox.ImageExpand = new Point(0, 0);
             PasswordTextBox.ImageOffset = new Point(0, 0);
             PasswordTextBox.ImeMode = ImeMode.Off;
-            PasswordTextBox.Location = new Point(2, 2);
+            PasswordTextBox.Location = new Point(2, 3);
             PasswordTextBox.Margin = new Padding(0);
             PasswordTextBox.Multiline = false;
             PasswordTextBox.Name = "PasswordTextBox";
             PasswordTextBox.NormalImageTint = Color.White;
-            PasswordTextBox.Padding = new Padding(19, 16, 19, 0);
+            PasswordTextBox.Padding = new Padding(23, 23, 23, 0);
             PasswordTextBox.PasswordChar = true;
             PasswordTextBox.PlaceholderColor = Color.Gray;
             PasswordTextBox.PlaceholderText = "Enter your password...";
             PasswordTextBox.Rounding = new Padding(24);
-            PasswordTextBox.Size = new Size(558, 51);
+            PasswordTextBox.Size = new Size(638, 68);
             PasswordTextBox.TabIndex = 2;
             PasswordTextBox.TextOffset = new Size(0, 0);
             PasswordTextBox.UnderlinedStyle = false;
@@ -237,14 +235,13 @@
             // cuiPanel2
             // 
             cuiPanel2.Controls.Add(EmailTextBox);
-            cuiPanel2.Location = new Point(159, 194);
-            cuiPanel2.Margin = new Padding(3, 2, 3, 2);
+            cuiPanel2.Location = new Point(182, 259);
             cuiPanel2.Name = "cuiPanel2";
             cuiPanel2.OutlineThickness = 1F;
             cuiPanel2.PanelColor = Color.Green;
             cuiPanel2.PanelOutlineColor = Color.Green;
             cuiPanel2.Rounding = new Padding(24);
-            cuiPanel2.Size = new Size(563, 56);
+            cuiPanel2.Size = new Size(643, 75);
             cuiPanel2.TabIndex = 3;
             // 
             // EmailTextBox
@@ -263,17 +260,17 @@
             EmailTextBox.ImageExpand = new Point(0, 0);
             EmailTextBox.ImageOffset = new Point(0, 0);
             EmailTextBox.ImeMode = ImeMode.Off;
-            EmailTextBox.Location = new Point(2, 2);
+            EmailTextBox.Location = new Point(2, 3);
             EmailTextBox.Margin = new Padding(0);
             EmailTextBox.Multiline = false;
             EmailTextBox.Name = "EmailTextBox";
             EmailTextBox.NormalImageTint = Color.White;
-            EmailTextBox.Padding = new Padding(19, 16, 19, 0);
+            EmailTextBox.Padding = new Padding(23, 23, 23, 0);
             EmailTextBox.PasswordChar = false;
             EmailTextBox.PlaceholderColor = Color.Gray;
             EmailTextBox.PlaceholderText = "Enter your username...";
             EmailTextBox.Rounding = new Padding(24);
-            EmailTextBox.Size = new Size(558, 51);
+            EmailTextBox.Size = new Size(638, 68);
             EmailTextBox.TabIndex = 2;
             EmailTextBox.TextOffset = new Size(0, 0);
             EmailTextBox.UnderlinedStyle = false;
@@ -284,19 +281,37 @@
             SignInLabel.AutoSize = true;
             SignInLabel.Font = new Font("Arial", 28.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             SignInLabel.ForeColor = Color.FromArgb(16, 107, 23);
-            SignInLabel.Location = new Point(150, 99);
+            SignInLabel.Location = new Point(171, 132);
             SignInLabel.Name = "SignInLabel";
-            SignInLabel.Size = new Size(337, 45);
+            SignInLabel.Size = new Size(416, 55);
             SignInLabel.TabIndex = 0;
             SignInLabel.Text = "Employee Sign In";
             // 
+            // PasswordToggle
+            // 
+            PasswordToggle.BackColor = Color.White;
+            PasswordToggle.BackgroundImage = Properties.Resources.view;
+            PasswordToggle.BackgroundImageLayout = ImageLayout.Zoom;
+            PasswordToggle.Content = null;
+            PasswordToggle.ImageTint = Color.White;
+            PasswordToggle.Location = new Point(558, 9);
+            PasswordToggle.Margin = new Padding(4, 5, 4, 5);
+            PasswordToggle.Name = "PasswordToggle";
+            PasswordToggle.OutlineThickness = 1F;
+            PasswordToggle.PanelOutlineColor = Color.Empty;
+            PasswordToggle.Rotation = 0;
+            PasswordToggle.Rounding = new Padding(50);
+            PasswordToggle.Size = new Size(72, 57);
+            PasswordToggle.TabIndex = 22;
+            // 
             // empLogInPage
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1225, 600);
+            ClientSize = new Size(1400, 800);
             Controls.Add(codeeloGradientPanel1);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(3, 4, 3, 4);
             Name = "empLogInPage";
             Text = "Junk Shop Inventory and Transaction Management System";
             codeeloGradientPanel1.ResumeLayout(false);
@@ -322,5 +337,6 @@
         private CuoreUI.Controls.cuiTextBox EmailTextBox;
         private Label SignInLabel;
         private NonoUI.Controls.NonoImageButton BackButton;
+        private CuoreUI.Controls.cuiPictureBox PasswordToggle;
     }
 }

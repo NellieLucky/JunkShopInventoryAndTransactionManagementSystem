@@ -18,6 +18,30 @@ namespace JunkShopInventoryandTransactionSystem.View.DashBoardPageFolder
             InitializeComponent();
             LoadDashboardCounts();
             LoadLowStockItems();
+
+            // Populate Summary ComboBox
+            SummaryofRevenueCogsOrTotalProfit.Items.Clear();
+            SummaryofRevenueCogsOrTotalProfit.Items.AddRange(new object[] {
+                "COGS Summary",
+                "Revenue Summary",
+                "Profit Summary"
+            });
+            SummaryofRevenueCogsOrTotalProfit.SelectedIndex = 0; // Default
+
+            // Populate Periodicity ComboBox
+            Periodicity.Items.Clear();
+            Periodicity.Items.AddRange(new object[] {
+                "Yearly",
+                "Quarterly",
+                "Monthly"
+            });
+            Periodicity.SelectedIndex = 0; // Default
+
+            SummaryofRevenueCogsOrTotalProfit.OnSelectedIndexChanged += FilterChanged;
+            Periodicity.OnSelectedIndexChanged += FilterChanged;
+
+            // Load default dashboard data
+            LoadDashboardSummary();
         }
 
         private void LoadDashboardCounts()
@@ -66,5 +90,52 @@ namespace JunkShopInventoryandTransactionSystem.View.DashBoardPageFolder
                     MessageBoxIcon.Error);
             }
         }
+
+        private void LoadDashboardSummary()
+        {
+            // Get filter values
+            string summaryType = SummaryofRevenueCogsOrTotalProfit.SelectedItem?.ToString() ?? "COGS Summary";
+            string periodicity = Periodicity.SelectedItem?.ToString() ?? "Yearly";
+ 
+
+            var summary = DashboardDataRepository.GetSummary(summaryType, periodicity);
+
+            CostOfGoodSoldsLabel.Text = $"₱ {summary.COGS:N2}";
+            TotalRevenueLabel.Text = $"₱ {summary.Revenue:N2}";
+            TotalProfitLabel.Text = $"₱ {summary.Profit:N2}";
+
+            // Defensive: Ensure at least two data points for the chart
+            if (summary.ChartPoints.Count < 2)
+            {
+                // Add a default second point if only one exists, or two zero points if none
+                if (summary.ChartPoints.Count == 1)
+                {
+                    summary.ChartPoints.Add(new ChartPoint
+                    {
+                        Label = summary.ChartPoints[0].Label + " (copy)",
+                        Value = summary.ChartPoints[0].Value
+                    });
+                }
+                else if (summary.ChartPoints.Count == 0)
+                {
+                    summary.ChartPoints.Add(new ChartPoint { Label = "N/A", Value = 0 });
+                    summary.ChartPoints.Add(new ChartPoint { Label = "N/A", Value = 0 });
+                }
+            }
+
+            ChartLine.DataPoints = summary.ChartPoints.Select(p => (float)p.Value).ToArray();
+            ChartLine.CustomXAxis = summary.ChartPoints.Select(p => p.Label).ToArray();
+        }
+
+        private void OkButton_Click(object sender, EventArgs e)
+        {
+            LoadDashboardSummary();
+        }
+
+        private void FilterChanged(object sender, EventArgs e)
+        {
+            LoadDashboardSummary();
+        }
+
     }
 }

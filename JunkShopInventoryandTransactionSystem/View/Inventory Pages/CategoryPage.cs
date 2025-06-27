@@ -23,6 +23,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static JunkShopInventoryandTransactionSystem.BackendFiles.UserSession.ForUser;
 using static System.Windows.Forms.DataFormats;
+using JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.ConstructorModel;
 
 namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
 {
@@ -46,6 +47,9 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
             CategoryRecordsTable.Columns["Edit"].HeaderText = "";
             CategoryRecordsTable.Columns["Delete"].HeaderText = "";
             CategoryRecordsTable.Paint += DataGridView1_Paint;
+            
+            CategoryRecordsTable.CellFormatting += CategoryRecordsTable_CellFormatting;
+
 
             // Hide Add/Delete/Edit column if user is Employee
             var userInfo = ForUser.GetUserInfo(UserSession.UserId);
@@ -176,7 +180,7 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
                                 MessageBox.Show("Failed to unarchive category. Please try again.", "Unarchive Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
-                            
+
                     }
 
                 }
@@ -210,7 +214,7 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
                                 MessageBox.Show("Failed to archive Category. Please try again.", "Archiving Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
-                        
+
                     }
                     else
                     {
@@ -259,7 +263,7 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Error filtering data: {ex.Message}", "Search Error", 
+                    MessageBox.Show($"Error filtering data: {ex.Message}", "Search Error",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -278,6 +282,25 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
                     }
                     row.Visible = visible;
                 }
+            }
+        }
+
+        private void CategoryRecordsTable_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            // Check if the column is CategoryID and format it as a string
+            if (CategoryRecordsTable.Columns[e.ColumnIndex].Name == "Edit")
+            {
+                if (archiveState.SelectedIndex == 0)
+                {
+                    // Non-archived: normal delete icon
+                    e.Value = Properties.Resources.green_edit; // Replace with your resource name
+                }
+                else
+                {
+                    // Archived: permanent delete icon
+                    e.Value = Properties.Resources.restore; // Replace with your resource name
+                }
+                e.FormattingApplied = true;
             }
         }
     }

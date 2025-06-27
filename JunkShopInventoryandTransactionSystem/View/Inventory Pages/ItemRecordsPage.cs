@@ -325,6 +325,22 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
                     e.FormattingApplied = true;
                 }
             }
+
+            //Pang change ng image ng icon ng edit if our view is in archived or non-archived state
+            if (ItemRecordsTable.Columns[e.ColumnIndex].Name == "Edit")
+            {
+                if (archiveState.SelectedIndex == 0)
+                {
+                    // Non-archived: normal delete icon
+                    e.Value = Properties.Resources.green_edit; // Replace with your resource name
+                }
+                else
+                {
+                    // Archived: permanent delete icon
+                    e.Value = Properties.Resources.restore; // Replace with your resource name
+                }
+                e.FormattingApplied = true;
+            }
         }
     }
 }

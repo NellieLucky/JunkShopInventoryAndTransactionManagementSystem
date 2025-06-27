@@ -13,9 +13,19 @@ namespace JunkShopInventoryandTransactionSystem.View.LogInAuthFolder
 {
     public partial class AdminSignUpPage : Form
     {
+        // Add these fields to track state
+        private bool isPasswordVisible = false;
+        private bool isConfirmPasswordVisible = false;
+
         public AdminSignUpPage()
         {
             InitializeComponent();
+            PasswordTextBox.PasswordChar = true;
+            ConfirmPasswordTextBox.PasswordChar = true;
+            PasswordToggle.BackgroundImage = Properties.Resources.hide;
+            ConfirmPasswordToggle.BackgroundImage = Properties.Resources.hide;
+            PasswordToggle.Click += PasswordToggle_Click;
+            ConfirmPasswordToggle.Click += ConfirmPasswordToggle_Click;
         }
 
         private void SignUpButton_Click(object sender, EventArgs e)
@@ -83,6 +93,28 @@ namespace JunkShopInventoryandTransactionSystem.View.LogInAuthFolder
             {
                 MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        // Password toggle click event
+        private void PasswordToggle_Click(object sender, EventArgs e)
+        {
+            isPasswordVisible = !isPasswordVisible;
+            // Try PasswordChar property
+            PasswordTextBox.PasswordChar = !isPasswordVisible;
+            // Try BackgroundImage property
+            PasswordToggle.BackgroundImage = isPasswordVisible 
+                ? Properties.Resources.view 
+                : Properties.Resources.hide;
+        }
+
+        // Confirm password toggle click event
+        private void ConfirmPasswordToggle_Click(object sender, EventArgs e)
+        {
+            isConfirmPasswordVisible = !isConfirmPasswordVisible;
+            ConfirmPasswordTextBox.PasswordChar = !isConfirmPasswordVisible;
+            ConfirmPasswordToggle.BackgroundImage = isConfirmPasswordVisible 
+                ? Properties.Resources.view 
+                : Properties.Resources.hide;
         }
 
         private void EmailTextBox_ContentChanged(object sender, EventArgs e)
