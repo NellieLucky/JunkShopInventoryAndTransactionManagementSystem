@@ -10,7 +10,7 @@
         /// <summary> 
         /// Clean up any resources being used.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">true if managed resources should be disposed.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -67,9 +67,10 @@
             DashboardTitlePage.BackColor = Color.FromArgb(0, 0, 0, 0);
             DashboardTitlePage.Font = new Font("Arial", 24F, FontStyle.Bold);
             DashboardTitlePage.ForeColor = Color.FromArgb(16, 107, 23);
-            DashboardTitlePage.Location = new Point(3, 16);
+            DashboardTitlePage.Location = new Point(4, 27);
+            DashboardTitlePage.Margin = new Padding(4, 0, 4, 0);
             DashboardTitlePage.Name = "DashboardTitlePage";
-            DashboardTitlePage.Size = new Size(334, 37);
+            DashboardTitlePage.Size = new Size(500, 56);
             DashboardTitlePage.TabIndex = 5;
             DashboardTitlePage.Text = "Transaction Records";
             // 
@@ -96,8 +97,8 @@
             TransactionRecordsTable.EditMode = DataGridViewEditMode.EditProgrammatically;
             TransactionRecordsTable.EnableHeadersVisualStyles = false;
             TransactionRecordsTable.GridColor = Color.FromArgb(99, 99, 99);
-            TransactionRecordsTable.Location = new Point(11, 104);
-            TransactionRecordsTable.Margin = new Padding(3, 2, 3, 2);
+            TransactionRecordsTable.Location = new Point(16, 173);
+            TransactionRecordsTable.Margin = new Padding(4, 3, 4, 3);
             TransactionRecordsTable.Name = "TransactionRecordsTable";
             TransactionRecordsTable.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -116,7 +117,7 @@
             TransactionRecordsTable.RowsDefaultCellStyle = dataGridViewCellStyle5;
             TransactionRecordsTable.RowTemplate.Height = 50;
             TransactionRecordsTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            TransactionRecordsTable.Size = new Size(924, 480);
+            TransactionRecordsTable.Size = new Size(1320, 800);
             TransactionRecordsTable.TabIndex = 31;
             TransactionRecordsTable.CellContentClick += TransactionRecordsTable_CellContentClick;
             // 
@@ -125,10 +126,10 @@
             panel1.BackColor = Color.FromArgb(0, 157, 209);
             panel1.Controls.Add(SearchButton);
             panel1.Controls.Add(SearchTextBox);
-            panel1.Location = new Point(608, 62);
-            panel1.Margin = new Padding(3, 2, 3, 2);
+            panel1.Location = new Point(869, 103);
+            panel1.Margin = new Padding(4, 3, 4, 3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(329, 30);
+            panel1.Size = new Size(470, 50);
             panel1.TabIndex = 32;
             // 
             // SearchButton
@@ -152,7 +153,7 @@
             SearchButton.ImageExpand = new Point(5, 5);
             SearchButton.ImageOffset = new Point(0, 0);
             SearchButton.Location = new Point(0, 0);
-            SearchButton.Margin = new Padding(3, 2, 3, 2);
+            SearchButton.Margin = new Padding(4, 3, 4, 3);
             SearchButton.Name = "SearchButton";
             SearchButton.NormalBackground = Color.FromArgb(0, 157, 209);
             SearchButton.NormalForeColor = Color.Black;
@@ -164,7 +165,7 @@
             SearchButton.PressedImageTint = Color.White;
             SearchButton.PressedOutline = Color.FromArgb(64, 128, 128, 128);
             SearchButton.Rounding = new Padding(0, 5, 5, 0);
-            SearchButton.Size = new Size(38, 29);
+            SearchButton.Size = new Size(54, 48);
             SearchButton.TabIndex = 24;
             SearchButton.TextAlignment = StringAlignment.Center;
             SearchButton.TextOffset = new Point(0, 0);
@@ -184,17 +185,17 @@
             SearchTextBox.Image = null;
             SearchTextBox.ImageExpand = new Point(0, 0);
             SearchTextBox.ImageOffset = new Point(0, 0);
-            SearchTextBox.Location = new Point(36, 2);
-            SearchTextBox.Margin = new Padding(4, 3, 4, 3);
+            SearchTextBox.Location = new Point(51, 3);
+            SearchTextBox.Margin = new Padding(6, 5, 6, 5);
             SearchTextBox.Multiline = false;
             SearchTextBox.Name = "SearchTextBox";
             SearchTextBox.NormalImageTint = Color.White;
-            SearchTextBox.Padding = new Padding(15, 6, 15, 0);
+            SearchTextBox.Padding = new Padding(22, 10, 22, 0);
             SearchTextBox.PasswordChar = false;
             SearchTextBox.PlaceholderColor = Color.Gray;
             SearchTextBox.PlaceholderText = "Search...";
             SearchTextBox.Rounding = new Padding(2);
-            SearchTextBox.Size = new Size(291, 26);
+            SearchTextBox.Size = new Size(416, 43);
             SearchTextBox.TabIndex = 23;
             SearchTextBox.TextOffset = new Size(0, 0);
             SearchTextBox.UnderlinedStyle = false;
@@ -205,7 +206,7 @@
             TransactionID.HeaderText = "Transaction ID";
             TransactionID.MinimumWidth = 6;
             TransactionID.Name = "TransactionID";
-            TransactionID.Width = 105;
+            TransactionID.Width = 135;
             // 
             // ExchangeDate
             // 
@@ -224,24 +225,24 @@
             // 
             // CustomerName
             // 
-            CustomerName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             CustomerName.HeaderText = "Customer Name";
             CustomerName.MinimumWidth = 6;
             CustomerName.Name = "CustomerName";
+            CustomerName.Width = 250;
             // 
             // EmployeeAssigned
             // 
-            EmployeeAssigned.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            EmployeeAssigned.HeaderText = "Employee in-charge";
+            EmployeeAssigned.HeaderText = "   Employee in-charge";
             EmployeeAssigned.MinimumWidth = 6;
             EmployeeAssigned.Name = "EmployeeAssigned";
+            EmployeeAssigned.Width = 281;
             // 
             // Num_Items
             // 
             Num_Items.HeaderText = "No. of items";
             Num_Items.MinimumWidth = 6;
             Num_Items.Name = "Num_Items";
-            Num_Items.Width = 60;
+            Num_Items.Width = 200;
             // 
             // TotalQuantity
             // 
@@ -271,7 +272,7 @@
             Receipt.MinimumWidth = 6;
             Receipt.Name = "Receipt";
             Receipt.SortMode = DataGridViewColumnSortMode.Automatic;
-            Receipt.Width = 60;
+            Receipt.Width = 85;
             // 
             // Delete
             // 
@@ -286,19 +287,19 @@
             Delete.MinimumWidth = 6;
             Delete.Name = "Delete";
             Delete.SortMode = DataGridViewColumnSortMode.Automatic;
-            Delete.Width = 60;
+            Delete.Width = 70;
             // 
             // TransactionRecordsPage
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(227, 244, 238);
             Controls.Add(panel1);
             Controls.Add(TransactionRecordsTable);
             Controls.Add(DashboardTitlePage);
-            Margin = new Padding(3, 2, 3, 2);
+            Margin = new Padding(4, 3, 4, 3);
             Name = "TransactionRecordsPage";
-            Size = new Size(948, 598);
+            Size = new Size(1354, 997);
             ((System.ComponentModel.ISupportInitialize)TransactionRecordsTable).EndInit();
             panel1.ResumeLayout(false);
             ResumeLayout(false);
