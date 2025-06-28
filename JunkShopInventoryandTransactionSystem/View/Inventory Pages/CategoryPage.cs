@@ -1,5 +1,4 @@
-﻿
-// imports for functions
+﻿// imports for functions
 
 // imports for category actions
 // specific backend files consisting of actions
@@ -39,6 +38,8 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
             archiveState.SelectedIndexChanged += ArchiveState_SelectedIndexChanged;
             archiveState.SelectedIndex = 0; // triggers default load
 
+            ArchiveState_SelectedIndexChanged(null, EventArgs.Empty);
+
             // Add search event handlers
             SearchButton.Click += SearchButton_Click;
             SearchTextBox.ContentChanged += SearchTextBox_TextChanged;
@@ -50,7 +51,6 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
             
             CategoryRecordsTable.CellFormatting += CategoryRecordsTable_CellFormatting;
 
-
             // Hide Add/Delete/Edit column if user is Employee
             var userInfo = ForUser.GetUserInfo(UserSession.UserId);
             if (userInfo.Role == "Employee")
@@ -60,23 +60,24 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
 
                 AddCategoryButton.Visible = false;
             }
+            else
+            {
+                // Set Delete column visibility based on archive state
+                CategoryRecordsTable.Columns["Delete"].Visible = (archiveState.SelectedIndex == 0);
+            }
         }
 
         private void ArchiveState_SelectedIndexChanged(object? sender, EventArgs e)
         {
             if (archiveState.SelectedIndex == 0)
             {
-                // if archived state is 0
-                // we are in non-archived options
-                // were gonna see non-archived categories
                 ReloadCategory.LoadCategoryData(CategoryRecordsTable);
+                CategoryRecordsTable.Columns["Delete"].Visible = true;
             }
             else
             {
-                // if archived state is 1
-                // we are in archived options
-                // were gonna see archived categories
                 ReloadCategory.LoadArchivedCategoryData(CategoryRecordsTable);
+                CategoryRecordsTable.Columns["Delete"].Visible = false;
             }
         }
 

@@ -42,14 +42,14 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.IndInvoice
             i.itemName AS ItemName,
             i.itemQtyType AS QtyType,
             CASE 
-                WHEN t.customerType = 'Buyer' THEN i.itemBuyingPrice
-                ELSE i.itemSellingPrice
+                WHEN t.customerType = 'Buyer' THEN i.itemSellingPrice
+                ELSE i.itemBuyingPrice
             END AS Price,
             ti.quantity AS ExchangeQuantity,
             (ti.quantity * 
                 CASE 
-                    WHEN t.customerType = 'Buyer' THEN i.itemBuyingPrice
-                    ELSE i.itemSellingPrice
+                    WHEN t.customerType = 'Buyer' THEN i.itemSellingPrice
+                    ELSE i.itemBuyingPrice
                 END
             ) AS ExchangeAmount
         FROM TransactionItems ti

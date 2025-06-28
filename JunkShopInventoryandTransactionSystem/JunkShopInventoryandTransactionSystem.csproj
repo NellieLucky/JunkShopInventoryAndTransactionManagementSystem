@@ -9,12 +9,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="View\LogInAuthFolder\EmployeeOrAdmin.Designer.cs~RF489b353.TMP" />
+    <Compile Remove="Model\**" />
+    <Compile Remove="Presenter\**" />
+    <EmbeddedResource Remove="Model\**" />
+    <EmbeddedResource Remove="Presenter\**" />
+    <None Remove="Model\**" />
+    <None Remove="Presenter\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Model\" />
-    <Folder Include="Presenter\" />
+    <None Remove="View\LogInAuthFolder\EmployeeOrAdmin.Designer.cs~RF489b353.TMP" />
   </ItemGroup>
 
   <ItemGroup>

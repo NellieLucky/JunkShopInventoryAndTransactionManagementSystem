@@ -95,17 +95,15 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
         {
             if (archiveState.SelectedIndex == 0)
             {
-                // if archived state is 0
-                // we are in non-archived options
-                // were gonna see non-archived items
+                // Non-archived items
                 ReloadInventory.LoadInventoryData(ItemRecordsTable);
+                ItemRecordsTable.Columns["Delete"].Visible = true;
             }
             else
             {
-                // if archived state is 1
-                // we are in archived options
-                // were gonna see archived items
+                // Archived items
                 ReloadInventory.LoadArchivedInventoryData(ItemRecordsTable);
+                ItemRecordsTable.Columns["Delete"].Visible = false;
             }
         }
 

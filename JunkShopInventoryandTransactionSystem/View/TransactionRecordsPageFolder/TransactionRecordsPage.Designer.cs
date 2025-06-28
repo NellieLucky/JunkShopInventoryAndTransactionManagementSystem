@@ -38,6 +38,10 @@
             cuiColorPicker1 = new CuoreUI.Components.cuiColorPicker(components);
             DashboardTitlePage = new Label();
             TransactionRecordsTable = new DataGridView();
+            panel1 = new Panel();
+            SearchButton = new CuoreUI.Controls.cuiButton();
+            SearchTextBox = new CuoreUI.Controls.cuiTextBox();
+            archiveState = new ComboBox();
             TransactionID = new DataGridViewTextBoxColumn();
             ExchangeDate = new DataGridViewTextBoxColumn();
             CustomerType = new DataGridViewTextBoxColumn();
@@ -48,10 +52,6 @@
             TotalAmount = new DataGridViewTextBoxColumn();
             Receipt = new DataGridViewImageColumn();
             Delete = new DataGridViewImageColumn();
-            panel1 = new Panel();
-            SearchButton = new CuoreUI.Controls.cuiButton();
-            SearchTextBox = new CuoreUI.Controls.cuiTextBox();
-            archiveState = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)TransactionRecordsTable).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -120,94 +120,6 @@
             TransactionRecordsTable.Size = new Size(1056, 640);
             TransactionRecordsTable.TabIndex = 31;
             TransactionRecordsTable.CellContentClick += TransactionRecordsTable_CellContentClick;
-            // 
-            // TransactionID
-            // 
-            TransactionID.HeaderText = "Transaction ID";
-            TransactionID.MinimumWidth = 6;
-            TransactionID.Name = "TransactionID";
-            TransactionID.Width = 135;
-            // 
-            // ExchangeDate
-            // 
-            ExchangeDate.FillWeight = 150F;
-            ExchangeDate.HeaderText = "Date";
-            ExchangeDate.MinimumWidth = 6;
-            ExchangeDate.Name = "ExchangeDate";
-            ExchangeDate.Width = 135;
-            // 
-            // CustomerType
-            // 
-            CustomerType.HeaderText = "Customer Type";
-            CustomerType.MinimumWidth = 6;
-            CustomerType.Name = "CustomerType";
-            CustomerType.Width = 105;
-            // 
-            // CustomerName
-            // 
-            CustomerName.HeaderText = "Customer Name";
-            CustomerName.MinimumWidth = 6;
-            CustomerName.Name = "CustomerName";
-            CustomerName.Width = 250;
-            // 
-            // EmployeeAssigned
-            // 
-            EmployeeAssigned.HeaderText = "   Employee in-charge";
-            EmployeeAssigned.MinimumWidth = 6;
-            EmployeeAssigned.Name = "EmployeeAssigned";
-            EmployeeAssigned.Width = 281;
-            // 
-            // Num_Items
-            // 
-            Num_Items.HeaderText = "No. of items";
-            Num_Items.MinimumWidth = 6;
-            Num_Items.Name = "Num_Items";
-            Num_Items.Width = 200;
-            // 
-            // TotalQuantity
-            // 
-            TotalQuantity.HeaderText = "Total Quantity";
-            TotalQuantity.MinimumWidth = 6;
-            TotalQuantity.Name = "TotalQuantity";
-            TotalQuantity.Width = 110;
-            // 
-            // TotalAmount
-            // 
-            TotalAmount.FillWeight = 59.177578F;
-            TotalAmount.HeaderText = "Total Amount";
-            TotalAmount.MinimumWidth = 6;
-            TotalAmount.Name = "TotalAmount";
-            TotalAmount.Width = 120;
-            // 
-            // Receipt
-            // 
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.NullValue = resources.GetObject("dataGridViewCellStyle2.NullValue");
-            dataGridViewCellStyle2.Padding = new Padding(10);
-            Receipt.DefaultCellStyle = dataGridViewCellStyle2;
-            Receipt.FillWeight = 59.177578F;
-            Receipt.HeaderText = "Receipt";
-            Receipt.Image = Properties.Resources.receipt;
-            Receipt.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            Receipt.MinimumWidth = 6;
-            Receipt.Name = "Receipt";
-            Receipt.SortMode = DataGridViewColumnSortMode.Automatic;
-            Receipt.Width = 85;
-            // 
-            // Delete
-            // 
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.NullValue = resources.GetObject("dataGridViewCellStyle3.NullValue");
-            dataGridViewCellStyle3.Padding = new Padding(10);
-            Delete.DefaultCellStyle = dataGridViewCellStyle3;
-            Delete.FillWeight = 59.177578F;
-            Delete.HeaderText = "Delete";
-            Delete.Image = Properties.Resources.delete;
-            Delete.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            Delete.MinimumWidth = 6;
-            Delete.Name = "Delete";
-            Delete.SortMode = DataGridViewColumnSortMode.Automatic;
-            Delete.Width = 70;
             // 
             // panel1
             // 
@@ -295,10 +207,98 @@
             archiveState.FormattingEnabled = true;
             archiveState.Items.AddRange(new object[] { "Non-archived", "Archived Items" });
             archiveState.Location = new Point(623, 92);
-            archiveState.Margin = new Padding(2, 2, 2, 2);
+            archiveState.Margin = new Padding(2);
             archiveState.Name = "archiveState";
             archiveState.Size = new Size(122, 28);
             archiveState.TabIndex = 33;
+            // 
+            // TransactionID
+            // 
+            TransactionID.HeaderText = "Transaction ID";
+            TransactionID.MinimumWidth = 6;
+            TransactionID.Name = "TransactionID";
+            TransactionID.Width = 135;
+            // 
+            // ExchangeDate
+            // 
+            ExchangeDate.FillWeight = 150F;
+            ExchangeDate.HeaderText = "Date";
+            ExchangeDate.MinimumWidth = 6;
+            ExchangeDate.Name = "ExchangeDate";
+            ExchangeDate.Width = 135;
+            // 
+            // CustomerType
+            // 
+            CustomerType.HeaderText = "Customer Type";
+            CustomerType.MinimumWidth = 6;
+            CustomerType.Name = "CustomerType";
+            CustomerType.Width = 105;
+            // 
+            // CustomerName
+            // 
+            CustomerName.HeaderText = "Customer Name";
+            CustomerName.MinimumWidth = 6;
+            CustomerName.Name = "CustomerName";
+            CustomerName.Width = 250;
+            // 
+            // EmployeeAssigned
+            // 
+            EmployeeAssigned.HeaderText = "   Employee in-charge";
+            EmployeeAssigned.MinimumWidth = 6;
+            EmployeeAssigned.Name = "EmployeeAssigned";
+            EmployeeAssigned.Width = 281;
+            // 
+            // Num_Items
+            // 
+            Num_Items.HeaderText = "No. of items";
+            Num_Items.MinimumWidth = 6;
+            Num_Items.Name = "Num_Items";
+            Num_Items.Width = 200;
+            // 
+            // TotalQuantity
+            // 
+            TotalQuantity.HeaderText = "Total Quantity";
+            TotalQuantity.MinimumWidth = 6;
+            TotalQuantity.Name = "TotalQuantity";
+            TotalQuantity.Width = 110;
+            // 
+            // TotalAmount
+            // 
+            TotalAmount.FillWeight = 59.177578F;
+            TotalAmount.HeaderText = "Total Amount";
+            TotalAmount.MinimumWidth = 6;
+            TotalAmount.Name = "TotalAmount";
+            TotalAmount.Width = 120;
+            // 
+            // Receipt
+            // 
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.NullValue = resources.GetObject("dataGridViewCellStyle2.NullValue");
+            dataGridViewCellStyle2.Padding = new Padding(10);
+            Receipt.DefaultCellStyle = dataGridViewCellStyle2;
+            Receipt.FillWeight = 59.177578F;
+            Receipt.HeaderText = "Receipt";
+            Receipt.Image = Properties.Resources.invoice;
+            Receipt.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            Receipt.MinimumWidth = 6;
+            Receipt.Name = "Receipt";
+            Receipt.SortMode = DataGridViewColumnSortMode.Automatic;
+            Receipt.Width = 85;
+            // 
+            // Delete
+            // 
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.NullValue = resources.GetObject("dataGridViewCellStyle3.NullValue");
+            dataGridViewCellStyle3.Padding = new Padding(10);
+            Delete.DefaultCellStyle = dataGridViewCellStyle3;
+            Delete.FillWeight = 59.177578F;
+            Delete.HeaderText = "Delete";
+            Delete.Image = Properties.Resources.delete;
+            Delete.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            Delete.MinimumWidth = 6;
+            Delete.Name = "Delete";
+            Delete.SortMode = DataGridViewColumnSortMode.Automatic;
+            Delete.Width = 70;
             // 
             // TransactionRecordsPage
             // 
@@ -325,6 +325,7 @@
         private Panel panel1;
         private CuoreUI.Controls.cuiButton SearchButton;
         private CuoreUI.Controls.cuiTextBox SearchTextBox;
+        private ComboBox archiveState;
         private DataGridViewTextBoxColumn TransactionID;
         private DataGridViewTextBoxColumn ExchangeDate;
         private DataGridViewTextBoxColumn CustomerType;
@@ -335,6 +336,5 @@
         private DataGridViewTextBoxColumn TotalAmount;
         private DataGridViewImageColumn Receipt;
         private DataGridViewImageColumn Delete;
-        private ComboBox archiveState;
     }
 }
