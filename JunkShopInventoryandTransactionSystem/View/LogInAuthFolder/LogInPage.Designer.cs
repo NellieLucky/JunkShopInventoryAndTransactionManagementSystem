@@ -41,6 +41,7 @@
             cuiPanel2 = new CuoreUI.Controls.cuiPanel();
             EmailTextBox = new CuoreUI.Controls.cuiTextBox();
             SignInLabel = new Label();
+            PasswordToggle = new CuoreUI.Controls.cuiPictureBox();
             codeeloGradientPanel1.SuspendLayout();
             cuiPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)BackButton).BeginInit();
@@ -204,6 +205,7 @@
             // 
             // cuiPanel3
             // 
+            cuiPanel3.Controls.Add(PasswordToggle);
             cuiPanel3.Controls.Add(PasswordTextBox);
             cuiPanel3.Location = new Point(182, 403);
             cuiPanel3.Name = "cuiPanel3";
@@ -301,6 +303,23 @@
             SignInLabel.TabIndex = 0;
             SignInLabel.Text = "Admin Sign In";
             // 
+            // PasswordToggle
+            // 
+            PasswordToggle.BackColor = Color.White;
+            PasswordToggle.BackgroundImage = Properties.Resources.view;
+            PasswordToggle.BackgroundImageLayout = ImageLayout.Zoom;
+            PasswordToggle.Content = null;
+            PasswordToggle.ImageTint = Color.White;
+            PasswordToggle.Location = new Point(555, 9);
+            PasswordToggle.Margin = new Padding(4, 5, 4, 5);
+            PasswordToggle.Name = "PasswordToggle";
+            PasswordToggle.OutlineThickness = 1F;
+            PasswordToggle.PanelOutlineColor = Color.Empty;
+            PasswordToggle.Rotation = 0;
+            PasswordToggle.Rounding = new Padding(50);
+            PasswordToggle.Size = new Size(72, 57);
+            PasswordToggle.TabIndex = 21;
+            // 
             // LogInPage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -334,5 +353,6 @@
         private CuoreUI.Controls.cuiButton LogInButton;
         private Label ForgotPasswordButton;
         private NonoUI.Controls.NonoImageButton BackButton;
+        private CuoreUI.Controls.cuiPictureBox PasswordToggle;
     }
 }

@@ -21,7 +21,7 @@ public class InventoryRepository : BaseRepository
                         {
                             itemId = reader.GetInt32(0),
                             itemName = reader.GetString(1),
-                            itemQuantity = reader.GetInt32(2)
+                            itemQuantity = reader.GetDecimal(2)
                         });
                     }
                 }

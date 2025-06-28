@@ -9,6 +9,6 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.Constru
     public class CartItem
     {
         public int ItemId { get; set; }
-        public int Quantity { get; set; }
+        public decimal Quantity { get; set; }
     }
 }

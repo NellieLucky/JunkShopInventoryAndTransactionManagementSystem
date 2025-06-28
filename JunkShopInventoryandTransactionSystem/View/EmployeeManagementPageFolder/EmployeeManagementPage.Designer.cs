@@ -28,14 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EmployeeManagementPage));
-            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle13 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle14 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             DashboardTitlePage = new Label();
             vScrollBar1 = new VScrollBar();
             ItemID = new DataGridViewTextBoxColumn();
@@ -48,6 +47,9 @@
             Edit = new DataGridViewImageColumn();
             Delete = new DataGridViewImageColumn();
             dataGridView1 = new DataGridView();
+            RegisterEmployeeButton = new CuoreUI.Controls.cuiButton();
+            SearchTextBox = new CuoreUI.Controls.cuiTextBox();
+            SearchButton = new CuoreUI.Controls.cuiButton();
             Emp_ID = new DataGridViewTextBoxColumn();
             DateRegisteredColumn = new DataGridViewTextBoxColumn();
             EmailColumn = new DataGridViewTextBoxColumn();
@@ -57,9 +59,6 @@
             AddressColumn = new DataGridViewTextBoxColumn();
             EditColumn = new DataGridViewImageColumn();
             RemoveColumn = new DataGridViewImageColumn();
-            RegisterEmployeeButton = new CuoreUI.Controls.cuiButton();
-            SearchTextBox = new CuoreUI.Controls.cuiTextBox();
-            SearchButton = new CuoreUI.Controls.cuiButton();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -77,9 +76,9 @@
             // 
             // vScrollBar1
             // 
-            vScrollBar1.Location = new Point(1029, 335);
+            vScrollBar1.Location = new Point(1029, 334);
             vScrollBar1.Name = "vScrollBar1";
-            vScrollBar1.Size = new Size(36, 431);
+            vScrollBar1.Size = new Size(36, 430);
             vScrollBar1.TabIndex = 29;
             // 
             // ItemID
@@ -139,10 +138,10 @@
             // Edit
             // 
             Edit.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.NullValue = resources.GetObject("dataGridViewCellStyle8.NullValue");
-            dataGridViewCellStyle8.Padding = new Padding(10);
-            Edit.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.NullValue = null;
+            dataGridViewCellStyle1.Padding = new Padding(10);
+            Edit.DefaultCellStyle = dataGridViewCellStyle1;
             Edit.FillWeight = 5.618882F;
             Edit.HeaderText = "Edit";
             Edit.Image = Properties.Resources.pen;
@@ -154,10 +153,10 @@
             // Delete
             // 
             Delete.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.NullValue = resources.GetObject("dataGridViewCellStyle9.NullValue");
-            dataGridViewCellStyle9.Padding = new Padding(10);
-            Delete.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.NullValue = null;
+            dataGridViewCellStyle2.Padding = new Padding(10);
+            Delete.DefaultCellStyle = dataGridViewCellStyle2;
             Delete.FillWeight = 5.618882F;
             Delete.HeaderText = "Delete";
             Delete.Image = Properties.Resources.delete;
@@ -175,14 +174,14 @@
             dataGridView1.BackgroundColor = Color.White;
             dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.SunkenHorizontal;
             dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = Color.FromArgb(163, 244, 215);
-            dataGridViewCellStyle10.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle10.ForeColor = Color.Black;
-            dataGridViewCellStyle10.SelectionBackColor = Color.FromArgb(163, 244, 215);
-            dataGridViewCellStyle10.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(163, 244, 215);
+            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(163, 244, 215);
+            dataGridViewCellStyle3.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridView1.ColumnHeadersHeight = 60;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Emp_ID, DateRegisteredColumn, EmailColumn, NameColumn, PasswordColumn, ContactColumn, AddressColumn, EditColumn, RemoveColumn });
@@ -190,109 +189,28 @@
             dataGridView1.EnableHeadersVisualStyles = false;
             dataGridView1.GridColor = Color.FromArgb(99, 99, 99);
             dataGridView1.Location = new Point(14, 136);
+            dataGridView1.Margin = new Padding(3, 2, 3, 2);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle13.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle13.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle13.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = DataGridViewTriState.True;
-            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.RowHeadersWidth = 50;
-            dataGridViewCellStyle14.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle14.ForeColor = Color.Black;
-            dataGridViewCellStyle14.SelectionBackColor = Color.FromArgb(0, 157, 209);
-            dataGridViewCellStyle14.WrapMode = DataGridViewTriState.True;
-            dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle7.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle7.ForeColor = Color.Black;
+            dataGridViewCellStyle7.SelectionBackColor = Color.FromArgb(0, 157, 209);
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
+            dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle7;
             dataGridView1.RowTemplate.Height = 50;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(1056, 613);
+            dataGridView1.Size = new Size(1056, 614);
             dataGridView1.TabIndex = 39;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
-            // 
-            // Emp_ID
-            // 
-            Emp_ID.HeaderText = "ID";
-            Emp_ID.MinimumWidth = 6;
-            Emp_ID.Name = "Emp_ID";
-            Emp_ID.Width = 50;
-            // 
-            // DateRegisteredColumn
-            // 
-            DateRegisteredColumn.HeaderText = "Date Registered";
-            DateRegisteredColumn.MinimumWidth = 6;
-            DateRegisteredColumn.Name = "DateRegisteredColumn";
-            DateRegisteredColumn.Width = 105;
-            // 
-            // EmailColumn
-            // 
-            EmailColumn.FillWeight = 120F;
-            EmailColumn.HeaderText = "Email Account";
-            EmailColumn.MinimumWidth = 6;
-            EmailColumn.Name = "EmailColumn";
-            EmailColumn.Width = 130;
-            // 
-            // NameColumn
-            // 
-            NameColumn.FillWeight = 120F;
-            NameColumn.HeaderText = "Name";
-            NameColumn.MinimumWidth = 6;
-            NameColumn.Name = "NameColumn";
-            NameColumn.Width = 170;
-            // 
-            // PasswordColumn
-            // 
-            PasswordColumn.FillWeight = 110F;
-            PasswordColumn.HeaderText = "Password";
-            PasswordColumn.MinimumWidth = 6;
-            PasswordColumn.Name = "PasswordColumn";
-            PasswordColumn.Width = 125;
-            // 
-            // ContactColumn
-            // 
-            ContactColumn.HeaderText = "Contact Number";
-            ContactColumn.MinimumWidth = 6;
-            ContactColumn.Name = "ContactColumn";
-            ContactColumn.Width = 140;
-            // 
-            // AddressColumn
-            // 
-            AddressColumn.HeaderText = "Address";
-            AddressColumn.MinimumWidth = 6;
-            AddressColumn.Name = "AddressColumn";
-            AddressColumn.Width = 200;
-            // 
-            // EditColumn
-            // 
-            EditColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.NullValue = null;
-            dataGridViewCellStyle11.Padding = new Padding(10);
-            EditColumn.DefaultCellStyle = dataGridViewCellStyle11;
-            EditColumn.FillWeight = 5.618882F;
-            EditColumn.HeaderText = "Edit";
-            EditColumn.Image = Properties.Resources.green_edit;
-            EditColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            EditColumn.MinimumWidth = 6;
-            EditColumn.Name = "EditColumn";
-            EditColumn.Resizable = DataGridViewTriState.False;
-            // 
-            // RemoveColumn
-            // 
-            RemoveColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.NullValue = null;
-            dataGridViewCellStyle12.Padding = new Padding(10);
-            RemoveColumn.DefaultCellStyle = dataGridViewCellStyle12;
-            RemoveColumn.FillWeight = 5.618882F;
-            RemoveColumn.HeaderText = "Remove";
-            RemoveColumn.Image = Properties.Resources.people;
-            RemoveColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            RemoveColumn.MinimumWidth = 6;
-            RemoveColumn.Name = "RemoveColumn";
-            RemoveColumn.Resizable = DataGridViewTriState.False;
             // 
             // RegisterEmployeeButton
             // 
@@ -316,6 +234,7 @@
             RegisterEmployeeButton.ImageExpand = new Point(0, 0);
             RegisterEmployeeButton.ImageOffset = new Point(0, 0);
             RegisterEmployeeButton.Location = new Point(489, 80);
+            RegisterEmployeeButton.Margin = new Padding(3, 2, 3, 2);
             RegisterEmployeeButton.Name = "RegisterEmployeeButton";
             RegisterEmployeeButton.NormalBackground = Color.FromArgb(0, 157, 209);
             RegisterEmployeeButton.NormalForeColor = Color.White;
@@ -347,7 +266,7 @@
             SearchTextBox.Image = null;
             SearchTextBox.ImageExpand = new Point(0, 0);
             SearchTextBox.ImageOffset = new Point(0, 0);
-            SearchTextBox.Location = new Point(737, 85);
+            SearchTextBox.Location = new Point(737, 86);
             SearchTextBox.Margin = new Padding(5, 4, 5, 4);
             SearchTextBox.Multiline = false;
             SearchTextBox.Name = "SearchTextBox";
@@ -357,7 +276,7 @@
             SearchTextBox.PlaceholderColor = Color.Gray;
             SearchTextBox.PlaceholderText = "Search...";
             SearchTextBox.Rounding = new Padding(2);
-            SearchTextBox.Size = new Size(333, 35);
+            SearchTextBox.Size = new Size(333, 34);
             SearchTextBox.TabIndex = 41;
             SearchTextBox.TextOffset = new Size(0, 0);
             SearchTextBox.UnderlinedStyle = false;
@@ -382,7 +301,8 @@
             SearchButton.ImageAutoCenter = true;
             SearchButton.ImageExpand = new Point(5, 5);
             SearchButton.ImageOffset = new Point(0, 0);
-            SearchButton.Location = new Point(698, 85);
+            SearchButton.Location = new Point(698, 86);
+            SearchButton.Margin = new Padding(3, 2, 3, 2);
             SearchButton.Name = "SearchButton";
             SearchButton.NormalBackground = Color.FromArgb(0, 157, 209);
             SearchButton.NormalForeColor = Color.Black;
@@ -394,10 +314,93 @@
             SearchButton.PressedImageTint = Color.White;
             SearchButton.PressedOutline = Color.FromArgb(64, 128, 128, 128);
             SearchButton.Rounding = new Padding(0, 5, 5, 0);
-            SearchButton.Size = new Size(43, 35);
+            SearchButton.Size = new Size(43, 34);
             SearchButton.TabIndex = 42;
             SearchButton.TextAlignment = StringAlignment.Center;
             SearchButton.TextOffset = new Point(0, 0);
+            // 
+            // Emp_ID
+            // 
+            Emp_ID.HeaderText = "ID";
+            Emp_ID.MinimumWidth = 6;
+            Emp_ID.Name = "Emp_ID";
+            Emp_ID.Width = 50;
+            // 
+            // DateRegisteredColumn
+            // 
+            DateRegisteredColumn.HeaderText = "Date Registered";
+            DateRegisteredColumn.MinimumWidth = 6;
+            DateRegisteredColumn.Name = "DateRegisteredColumn";
+            DateRegisteredColumn.Width = 150;
+            // 
+            // EmailColumn
+            // 
+            EmailColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            EmailColumn.FillWeight = 120F;
+            EmailColumn.HeaderText = "Username";
+            EmailColumn.MinimumWidth = 6;
+            EmailColumn.Name = "EmailColumn";
+            EmailColumn.Width = 150;
+            // 
+            // NameColumn
+            // 
+            NameColumn.FillWeight = 120F;
+            NameColumn.HeaderText = "Name";
+            NameColumn.MinimumWidth = 6;
+            NameColumn.Name = "NameColumn";
+            NameColumn.Width = 170;
+            // 
+            // PasswordColumn
+            // 
+            PasswordColumn.FillWeight = 110F;
+            PasswordColumn.HeaderText = "Password";
+            PasswordColumn.MinimumWidth = 6;
+            PasswordColumn.Name = "PasswordColumn";
+            PasswordColumn.Width = 125;
+            // 
+            // ContactColumn
+            // 
+            ContactColumn.HeaderText = "Contact Number";
+            ContactColumn.MinimumWidth = 6;
+            ContactColumn.Name = "ContactColumn";
+            ContactColumn.Width = 250;
+            // 
+            // AddressColumn
+            // 
+            AddressColumn.HeaderText = "Address";
+            AddressColumn.MinimumWidth = 6;
+            AddressColumn.Name = "AddressColumn";
+            AddressColumn.Width = 200;
+            // 
+            // EditColumn
+            // 
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.NullValue = null;
+            dataGridViewCellStyle4.Padding = new Padding(10);
+            EditColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            EditColumn.FillWeight = 5.618882F;
+            EditColumn.HeaderText = "Edit";
+            EditColumn.Image = Properties.Resources.green_edit;
+            EditColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            EditColumn.MinimumWidth = 6;
+            EditColumn.Name = "EditColumn";
+            EditColumn.Resizable = DataGridViewTriState.False;
+            EditColumn.Width = 60;
+            // 
+            // RemoveColumn
+            // 
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.NullValue = null;
+            dataGridViewCellStyle5.Padding = new Padding(10);
+            RemoveColumn.DefaultCellStyle = dataGridViewCellStyle5;
+            RemoveColumn.FillWeight = 5.618882F;
+            RemoveColumn.HeaderText = "Remove";
+            RemoveColumn.Image = Properties.Resources.people;
+            RemoveColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            RemoveColumn.MinimumWidth = 6;
+            RemoveColumn.Name = "RemoveColumn";
+            RemoveColumn.Resizable = DataGridViewTriState.False;
+            RemoveColumn.Width = 60;
             // 
             // EmployeeManagementPage
             // 
@@ -410,8 +413,9 @@
             Controls.Add(dataGridView1);
             Controls.Add(vScrollBar1);
             Controls.Add(DashboardTitlePage);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "EmployeeManagementPage";
-            Size = new Size(1083, 797);
+            Size = new Size(1083, 798);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();

@@ -5,7 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-// imports crud
+// imports crud of ITEM and CATEGORY
+// since i needed to DELETE the items that used the archived category that were gonna DELETE here
+using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud;
 using JunkShopInventoryandTransactionSystem.BackendFiles.Category.Crud;
 
 namespace JunkShopInventoryandTransactionSystem.BackendFiles.Category.Delete
@@ -17,7 +19,11 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Category.Delete
             DataGridView targetDataGridView
             )
         {
-            // --- If validation passes, proceed with adding the item ---
+            // delete the items first before the actual category deletion
+            InventoryDelete deleteItems = new InventoryDelete();
+            deleteItems.DeleteItemsByCategory(categoryId);
+
+            // proceed with DELETING the CATEGORY ---
             CategoryDelete delete = new CategoryDelete();
             delete.DeleteCategory(categoryId);
 
@@ -26,7 +32,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Category.Delete
             // reload cat dashboard here
             if (targetDataGridView != null)
             {
-                Reload.ReloadCategory.LoadCategoryData(targetDataGridView);
+                Reload.ReloadCategory.LoadArchivedCategoryData(targetDataGridView);
             }
 
             return true; // Indicate that the operation was successful

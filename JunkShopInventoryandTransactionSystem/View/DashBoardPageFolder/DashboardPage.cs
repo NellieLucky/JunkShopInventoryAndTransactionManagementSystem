@@ -18,6 +18,30 @@ namespace JunkShopInventoryandTransactionSystem.View.DashBoardPageFolder
             InitializeComponent();
             LoadDashboardCounts();
             LoadLowStockItems();
+
+            // Populate Summary ComboBox
+            SummaryofRevenueCogsOrTotalProfit.Items.Clear();
+            SummaryofRevenueCogsOrTotalProfit.Items.AddRange(new object[] {
+                "COGS Summary",
+                "Revenue Summary",
+                "Profit Summary"
+            });
+            SummaryofRevenueCogsOrTotalProfit.SelectedIndex = 0; // Default
+
+            // Populate Periodicity ComboBox
+            Periodicity.Items.Clear();
+            Periodicity.Items.AddRange(new object[] {
+                "Yearly",
+                "Quarterly",
+                "Monthly"
+            });
+            Periodicity.SelectedIndex = 0; // Default
+
+            SummaryofRevenueCogsOrTotalProfit.OnSelectedIndexChanged += FilterChanged;
+            Periodicity.OnSelectedIndexChanged += FilterChanged;
+
+            // Load default dashboard data
+            LoadDashboardSummary();
         }
 
         private void LoadDashboardCounts()
@@ -54,7 +78,7 @@ namespace JunkShopInventoryandTransactionSystem.View.DashBoardPageFolder
                 LowStocksTable.Rows.Clear();
                 foreach (var item in lowStockItems)
                 {
-                    LowStocksTable.Rows.Add(item.itemName, item.itemQuantity);
+                    LowStocksTable.Rows.Add(item.itemName, item.itemQuantity.ToString("F2"));
                 }
             }
             catch (Exception ex)
@@ -65,6 +89,73 @@ namespace JunkShopInventoryandTransactionSystem.View.DashBoardPageFolder
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
+        }
+
+        private float GetYAxisMax(string periodicity)
+        {
+            return periodicity switch
+            {
+                "Monthly" => 10000f,
+                "Quarterly" => 20000f,
+                "Yearly" => 50000f,
+                _ => 10000f // Default to Monthly max
+            };
+        }
+
+        private void LoadDashboardSummary()
+        {
+            // Get filter values
+            string summaryType = SummaryofRevenueCogsOrTotalProfit.SelectedItem?.ToString() ?? "COGS Summary";
+            string periodicity = Periodicity.SelectedItem?.ToString() ?? "Yearly";
+
+            // Update the filter label based on the summary type
+            FilterLabel.Text = summaryType switch
+            {
+                "COGS Summary" => "Cost of Goods Sold",
+                "Revenue Summary" => "Gross Revenue",
+                "Profit Summary" => "Total Profit",
+                _ => "Summary"
+            };
+
+            var summary = DashboardDataRepository.GetSummary(summaryType, periodicity);
+
+            CostOfGoodSoldsLabel.Text = $"₱ {summary.COGS:N2}";
+            TotalRevenueLabel.Text = $"₱ {summary.Revenue:N2}";
+            TotalProfitLabel.Text = $"₱ {summary.Profit:N2}";
+
+            // Defensive: Ensure at least two data points for the chart
+            if (summary.ChartPoints.Count < 2)
+            {
+                if (summary.ChartPoints.Count == 1)
+                {
+                    summary.ChartPoints.Add(new ChartPoint
+                    {
+                        Label = summary.ChartPoints[0].Label + " (copy)",
+                        Value = summary.ChartPoints[0].Value
+                    });
+                }
+                else if (summary.ChartPoints.Count == 0)
+                {
+                    summary.ChartPoints.Add(new ChartPoint { Label = "N/A", Value = 0 });
+                    summary.ChartPoints.Add(new ChartPoint { Label = "N/A", Value = 0 });
+                }
+            }
+
+            ChartLine.DataPoints = summary.ChartPoints.Select(p => (float)p.Value).ToArray();
+            ChartLine.CustomXAxis = summary.ChartPoints.Select(p => p.Label).ToArray();
+
+            ChartLine.MaxValue = GetYAxisMax(periodicity);
+            ChartLine.UsePercent = false;
+        }
+
+        private void OkButton_Click(object sender, EventArgs e)
+        {
+            LoadDashboardSummary();
+        }
+
+        private void FilterChanged(object sender, EventArgs e)
+        {
+            LoadDashboardSummary();
         }
     }
 }

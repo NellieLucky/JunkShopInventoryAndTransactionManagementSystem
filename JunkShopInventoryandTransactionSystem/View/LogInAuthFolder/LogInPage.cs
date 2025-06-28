@@ -8,9 +8,16 @@ namespace JunkShopInventoryandTransactionSystem.View.LogInAuthFolder
 {
     public partial class LogInPage : Form
     {
+
+        private bool isPasswordVisible = false;
+
         public LogInPage()
         {
+
             InitializeComponent();
+            PasswordTextBox.PasswordChar = true;
+            PasswordToggle.BackgroundImage = Properties.Resources.hide;
+            PasswordToggle.Click += PasswordToggle_Click;
             // Make sure the cursor is not a wait cursor for the email textbox
         }
 
@@ -59,6 +66,19 @@ namespace JunkShopInventoryandTransactionSystem.View.LogInAuthFolder
             }
         }
 
+
+        private void PasswordToggle_Click(object sender, EventArgs e)
+        {
+            isPasswordVisible = !isPasswordVisible;
+            // Try PasswordChar property
+            PasswordTextBox.PasswordChar = !isPasswordVisible;
+            // Try BackgroundImage property
+            PasswordToggle.BackgroundImage = isPasswordVisible
+                ? Properties.Resources.view
+                : Properties.Resources.hide;
+        }
+
+
         private void ForgotPasswordButton_Click(object sender, EventArgs e)
         {
             ForgotPasswordPage forgotPasswordPage = new ForgotPasswordPage();
@@ -78,6 +98,10 @@ namespace JunkShopInventoryandTransactionSystem.View.LogInAuthFolder
         {
             ForgotPasswordButton.ForeColor = Color.FromArgb(7, 96, 14);
         }
+
+
+
+
 
         private void EmailTextBox_ContentChanged(object sender, EventArgs e)
         {

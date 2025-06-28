@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Forms;
 
-// imports the backend file InventoryCrud.cs
+// imports the backend file InventoryCrud.cs FOR READING
 using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud;
 
 namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Reload
@@ -24,15 +24,14 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Reload
                     item.itemName,
                     item.itemCategoryName,
                     item.itemQtyType,
-                    item.itemQuantity,
-                    item.itemBuyingPrice,
-                    item.itemSellingPrice
+                    item.itemQuantity.ToString("N2"),
+                    item.itemBuyingPrice.ToString("N2"),
+                    item.itemSellingPrice.ToString("N2")
                 );
             }
         }   // end of LoadInventoryData method
 
         // method to load archived inventory data into the DataGridView
-        // not yet used
         public static void LoadArchivedInventoryData(DataGridView dataGridView1)
         {
             // Clear previous rows
@@ -48,9 +47,9 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Reload
                     item.itemName,
                     item.itemCategoryName,
                     item.itemQtyType,
-                    item.itemQuantity,
-                    item.itemBuyingPrice,
-                    item.itemSellingPrice
+                    item.itemQuantity.ToString("N2"),
+                    item.itemBuyingPrice.ToString("N2"),
+                    item.itemSellingPrice.ToString("N2")
                 );
             }
         }   // end of LoadArchivedInventoryData method

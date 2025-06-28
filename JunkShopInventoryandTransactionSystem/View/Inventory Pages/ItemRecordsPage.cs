@@ -1,12 +1,21 @@
-﻿//imports the backend file ReloadInventory.cs
+﻿// imports for functions
+
+// imports for inventory actions
+// specific backend files consisting of actions
+using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Archiving;
+using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Unarchive;
+// for refreshing of values for the table grid view
 using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Reload;
+// for frontend
 using JunkShopInventoryandTransactionSystem.BackendFiles.UserSession;
 using JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel;
 using JunkShopInventoryandTransactionSystem.View.DeletionDialogs;
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.DirectoryServices.ActiveDirectory;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -27,13 +36,14 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
         {
             InitializeComponent();
 
+            archiveState.SelectedIndexChanged += ArchiveState_SelectedIndexChanged;
+            archiveState.SelectedIndex = 0; // triggers default load
+
             // Add these lines after InitializeComponent()
             SearchButton.Click += SearchButton_Click;
             SearchTextBox.ContentChanged += SearchTextBox_TextChanged; // Use ContentChanged instead of KeyPress
 
-            // Call the static LoadInventoryData method from ReloadInventory
-            // reads unarchived inventory data from the database and loads it into the DataGridView
-            ReloadInventory.LoadInventoryData(ItemRecordsTable);
+            ItemRecordsTable.CellFormatting += ItemRecordsTable_CellFormatting;
 
             /*
             //Pangtest lang to if msgkakalaman
@@ -56,6 +66,7 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
             ItemRecordsTable.Columns["Edit"].HeaderText = ""; 
             ItemRecordsTable.Columns["Delete"].HeaderText = ""; // Set header text for Edit and Delete columns to empty
             ItemRecordsTable.Paint += DataGridView1_Paint; // Attach the Paint event handler to the DataGridView
+            ItemRecordsTable.CellFormatting += ItemRecordsTable_CellFormatting; // Attach the CellFormatting event handler
 
             // Hide Add/Delete/Edit column if user is Employee
             var userInfo = ForUser.GetUserInfo(UserSession.UserId);
@@ -66,6 +77,33 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
 
 
                 AddItemButton.Visible = false;
+            }
+
+            if (ItemRecordsTable.Columns.Contains("BuyingPrice"))
+            {
+                ItemRecordsTable.Columns["BuyingPrice"].DefaultCellStyle.Format = "C2";
+                ItemRecordsTable.Columns["BuyingPrice"].DefaultCellStyle.FormatProvider = new System.Globalization.CultureInfo("en-PH");
+            }
+            if (ItemRecordsTable.Columns.Contains("SellingPrice"))
+            {
+                ItemRecordsTable.Columns["SellingPrice"].DefaultCellStyle.Format = "C2";
+                ItemRecordsTable.Columns["SellingPrice"].DefaultCellStyle.FormatProvider = new System.Globalization.CultureInfo("en-PH");
+            }
+        }
+
+        private void ArchiveState_SelectedIndexChanged(object? sender, EventArgs e)
+        {
+            if (archiveState.SelectedIndex == 0)
+            {
+                // Non-archived items
+                ReloadInventory.LoadInventoryData(ItemRecordsTable);
+                ItemRecordsTable.Columns["Delete"].Visible = true;
+            }
+            else
+            {
+                // Archived items
+                ReloadInventory.LoadArchivedInventoryData(ItemRecordsTable);
+                ItemRecordsTable.Columns["Delete"].Visible = false;
             }
         }
 
@@ -130,28 +168,90 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
 
             if (clickedColumnName == "Edit")
             {
-                if (addEditInventoryItemDialogBox == null || addEditInventoryItemDialogBox.IsDisposed)
+                // check first if the archiveState is 0 or 1, if 0 then edit, if 1 then unarchive
+                if (archiveState.SelectedIndex == 0)
                 {
-                    string value = "Edit";
-                    addEditInventoryItemDialogBox = new AddEditInventoryItem(value, ItemRecordsTable, itemId);
-                    addEditInventoryItemDialogBox.Show();
+                    if (addEditInventoryItemDialogBox == null || addEditInventoryItemDialogBox.IsDisposed)
+                    {
+                        string value = "Edit";
+                        addEditInventoryItemDialogBox = new AddEditInventoryItem(value, ItemRecordsTable, itemId);
+                        addEditInventoryItemDialogBox.Show();
+                    }
+                    else
+                    {
+                        addEditInventoryItemDialogBox.Focus();
+                    }
                 }
                 else
                 {
-                    addEditInventoryItemDialogBox.Focus();
+                    // Confirmation message box with item ID
+                    DialogResult confirmResult = MessageBox.Show(
+                        $"Are you sure you want to unarchive this item?\n\nItem ID: {itemId}",
+                        "Unarchiving of Item",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question
+                    );
+
+                    if (confirmResult == DialogResult.Yes)
+                    {
+                        // calls the unarchiving backend
+                        bool unarchivingSuccess = UnarchivingItemInInventory.HandleUnarchivingItem(itemId, ItemRecordsTable);
+
+                        if (unarchivingSuccess)
+                        {
+                            MessageBox.Show("Item successfully unarchived.", "Successful Unarchiving", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Failed to unarchive item. Please try again.", "Unarchive Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+
                 }
+
             }
             else if (clickedColumnName == "Delete")
             {
-                if (deleteItemDialogBox == null || deleteItemDialogBox.IsDisposed)
+                // check first if the archiveState is 0 or 1, if 0 then delete, if 1 then perma delete
+                if (archiveState.SelectedIndex == 0)
                 {
-                    deleteItemDialogBox = new DeleteItemDialogBox(itemId, ItemRecordsTable);
-                    deleteItemDialogBox.Show();
+                    // Confirmation message box with item ID
+                    DialogResult confirmResult = MessageBox.Show(
+                        $"Are you sure you want to archive this item?\n\nItem ID: {itemId}",
+                        "Archiving of Item",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question
+                    );
+
+                    if (confirmResult == DialogResult.Yes)
+                    {
+                        bool itemArchivingSuccess = ArchivingItemInInventory.HandleArchivingItem(itemId, ItemRecordsTable);
+
+                        if (itemArchivingSuccess)
+                        {
+                            MessageBox.Show("Successfully archived the item.", "Successful Archiving", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Failed to archive the item.", "Archiving Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+
                 }
                 else
                 {
-                    deleteItemDialogBox.Focus();
+                    if (deleteItemDialogBox == null || deleteItemDialogBox.IsDisposed)
+                    {
+                        deleteItemDialogBox = new DeleteItemDialogBox(itemId, ItemRecordsTable);
+                        deleteItemDialogBox.Show();
+                    }
+                    else
+                    {
+                        deleteItemDialogBox.Focus();
+                    }
+
                 }
+
             }
         }
 
@@ -198,11 +298,11 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
                         searchText = searchText.ToLower();
                         visible = row.Cells["ItemID"]?.Value?.ToString()?.Contains(searchText) == true ||  // Added ID search
                                  row.Cells["ItemName"]?.Value?.ToString()?.ToLower().Contains(searchText) == true ||
-                                 row.Cells["ItemCategoryName"]?.Value?.ToString()?.ToLower().Contains(searchText) == true ||
-                                 row.Cells["ItemQtyType"]?.Value?.ToString()?.ToLower().Contains(searchText) == true ||
-                                 row.Cells["ItemQuantity"]?.Value?.ToString()?.Contains(searchText) == true ||
-                                 row.Cells["ItemBuyingPrice"]?.Value?.ToString()?.Contains(searchText) == true ||
-                                 row.Cells["ItemSellingPrice"]?.Value?.ToString()?.Contains(searchText) == true;
+                                 row.Cells["Category"]?.Value?.ToString()?.ToLower().Contains(searchText) == true ||
+                                 row.Cells["QtyType"]?.Value?.ToString()?.ToLower().Contains(searchText) == true ||
+                                 row.Cells["Quantity"]?.Value?.ToString()?.Contains(searchText) == true ||
+                                 row.Cells["BuyingPrice"]?.Value?.ToString()?.Contains(searchText) == true ||
+                                 row.Cells["SellingPrice"]?.Value?.ToString()?.Contains(searchText) == true;
                     }
                     row.Visible = visible;
                 }
@@ -210,6 +310,35 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
 
             // Refresh the view
             ItemRecordsTable.Refresh();
+        }
+
+        private void ItemRecordsTable_CellFormatting(object? sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (ItemRecordsTable.Columns[e.ColumnIndex].Name == "BuyingPrice" ||
+                ItemRecordsTable.Columns[e.ColumnIndex].Name == "SellingPrice")
+            {
+                if (e.Value != null && decimal.TryParse(e.Value.ToString(), out decimal amount))
+                {
+                    e.Value = string.Format(new System.Globalization.CultureInfo("en-PH"), "{0:C2}", amount);
+                    e.FormattingApplied = true;
+                }
+            }
+
+            //Pang change ng image ng icon ng edit if our view is in archived or non-archived state
+            if (ItemRecordsTable.Columns[e.ColumnIndex].Name == "Edit")
+            {
+                if (archiveState.SelectedIndex == 0)
+                {
+                    // Non-archived: normal delete icon
+                    e.Value = Properties.Resources.green_edit; // Replace with your resource name
+                }
+                else
+                {
+                    // Archived: permanent delete icon
+                    e.Value = Properties.Resources.restore; // Replace with your resource name
+                }
+                e.FormattingApplied = true;
+            }
         }
     }
 }

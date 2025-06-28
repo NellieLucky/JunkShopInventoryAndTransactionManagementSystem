@@ -1,5 +1,12 @@
-﻿//imports the backend file ReloadCategory.cs
+﻿// imports for functions
+
+// imports for category actions
+// specific backend files consisting of actions
+using JunkShopInventoryandTransactionSystem.BackendFiles.Category.Archiving;
+using JunkShopInventoryandTransactionSystem.BackendFiles.Category.Unarchive;
+// for refreshing of values for the table grid view
 using JunkShopInventoryandTransactionSystem.BackendFiles.Category.Reload;
+// for frontend
 using JunkShopInventoryandTransactionSystem.BackendFiles.UserSession;
 using JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel;
 using JunkShopInventoryandTransactionSystem.View.DeletionDialogs; 
@@ -15,6 +22,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static JunkShopInventoryandTransactionSystem.BackendFiles.UserSession.ForUser;
 using static System.Windows.Forms.DataFormats;
+using JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.ConstructorModel;
 
 namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
 {
@@ -27,38 +35,21 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
         {
             InitializeComponent();
 
+            archiveState.SelectedIndexChanged += ArchiveState_SelectedIndexChanged;
+            archiveState.SelectedIndex = 0; // triggers default load
+
+            ArchiveState_SelectedIndexChanged(null, EventArgs.Empty);
+
             // Add search event handlers
             SearchButton.Click += SearchButton_Click;
             SearchTextBox.ContentChanged += SearchTextBox_TextChanged;
-
-            // Call the static LoadInventoryData method from ReloadInventory
-            // reads unarchived category data from the database and loads it into the DataGridView
-            ReloadCategory.LoadCategoryData(CategoryRecordsTable);
-
-            /*
-            //Pangtest lang to if msgkakalaman  
-            dataGridView1.Rows.Add("1", "Metal", "All types of scrap metal", Properties.Resources.pen, Properties.Resources.delete);
-            dataGridView1.Rows.Add("2", "Plastic", "Bottles, containers, and more", Properties.Resources.pen, Properties.Resources.delete);
-            dataGridView1.Rows.Add("1", "Metal", "All types of scrap metal", Properties.Resources.pen, Properties.Resources.delete);
-            dataGridView1.Rows.Add("2", "Plastic", "Bottles, containers, and more", Properties.Resources.pen, Properties.Resources.delete);
-            dataGridView1.Rows.Add("1", "Metal", "All types of scrap metal", Properties.Resources.pen, Properties.Resources.delete);
-            dataGridView1.Rows.Add("2", "Plastic", "Bottles, containers, and more", Properties.Resources.pen, Properties.Resources.delete);
-            dataGridView1.Rows.Add("1", "Metal", "All types of scrap metal", Properties.Resources.pen, Properties.Resources.delete);
-            dataGridView1.Rows.Add("2", "Plastic", "Bottles, containers, and more", Properties.Resources.pen, Properties.Resources.delete);
-            dataGridView1.Rows.Add("1", "Metal", "All types of scrap metal", Properties.Resources.pen, Properties.Resources.delete);
-            dataGridView1.Rows.Add("2", "Plastic", "Bottles, containers, and more", Properties.Resources.pen, Properties.Resources.delete);
-            dataGridView1.Rows.Add("1", "Metal", "All types of scrap metal", Properties.Resources.pen, Properties.Resources.delete);
-            dataGridView1.Rows.Add("2", "Plastic", "Bottles, containers, and more", Properties.Resources.pen, Properties.Resources.delete);
-            dataGridView1.Rows.Add("1", "Metal", "All types of scrap metal", Properties.Resources.pen, Properties.Resources.delete);
-            dataGridView1.Rows.Add("2", "Plastic", "Bottles, containers, and more", Properties.Resources.pen, Properties.Resources.delete);
-            dataGridView1.Rows.Add("1", "Metal", "All types of scrap metal", Properties.Resources.pen, Properties.Resources.delete);
-            dataGridView1.Rows.Add("2", "Plastic", "Bottles, containers, and more", Properties.Resources.pen, Properties.Resources.delete);
-            */
 
             // Set header text for Edit and Delete columns to empty  
             CategoryRecordsTable.Columns["Edit"].HeaderText = "";
             CategoryRecordsTable.Columns["Delete"].HeaderText = "";
             CategoryRecordsTable.Paint += DataGridView1_Paint;
+            
+            CategoryRecordsTable.CellFormatting += CategoryRecordsTable_CellFormatting;
 
             // Hide Add/Delete/Edit column if user is Employee
             var userInfo = ForUser.GetUserInfo(UserSession.UserId);
@@ -68,6 +59,25 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
                 CategoryRecordsTable.Columns["Delete"].Visible = false;
 
                 AddCategoryButton.Visible = false;
+            }
+            else
+            {
+                // Set Delete column visibility based on archive state
+                CategoryRecordsTable.Columns["Delete"].Visible = (archiveState.SelectedIndex == 0);
+            }
+        }
+
+        private void ArchiveState_SelectedIndexChanged(object? sender, EventArgs e)
+        {
+            if (archiveState.SelectedIndex == 0)
+            {
+                ReloadCategory.LoadCategoryData(CategoryRecordsTable);
+                CategoryRecordsTable.Columns["Delete"].Visible = true;
+            }
+            else
+            {
+                ReloadCategory.LoadArchivedCategoryData(CategoryRecordsTable);
+                CategoryRecordsTable.Columns["Delete"].Visible = false;
             }
         }
 
@@ -119,11 +129,8 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
         private void CategoryRecordsTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             // Check if the clicked cell is an image column
-            // if e.ColumnIndex value is 5 then its Delete
-            // if e.ColumnIndex value is 4 then its Edit
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
-
                 string clickedColumnName = CategoryRecordsTable.Columns[e.ColumnIndex].Name;
 
                 DataGridViewRow selectedRow = CategoryRecordsTable.Rows[e.RowIndex];
@@ -134,33 +141,95 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
                     //MessageBox.Show($"Edit clicked\nCategoryID: {categoryId}", "Action");
 
                     //calls the add edit window
-                    if (addEditCategoryDialogBox == null || addEditCategoryDialogBox.IsDisposed) // Check if it's already open  
+                    // check first if the archiveState is 0 or 1, if 0 then edit, if 1 then unarchive
+                    if (archiveState.SelectedIndex == 0)
                     {
-                        string value = "Edit"; // Set the mode to "Edit"
+                        if (addEditCategoryDialogBox == null || addEditCategoryDialogBox.IsDisposed) // Check if it's already open  
+                        {
+                            string value = "Edit"; // Set the mode to "Edit"
 
-                        //pass the data grid view to allow refreshing of inventory after adding/editing an item
-                        addEditCategoryDialogBox = new AddEditCategoryDialogBox(value, CategoryRecordsTable, categoryId);
-                        addEditCategoryDialogBox.Show();
+                            //pass the data grid view to allow refreshing of inventory after adding/editing an item
+                            addEditCategoryDialogBox = new AddEditCategoryDialogBox(value, CategoryRecordsTable, categoryId);
+                            addEditCategoryDialogBox.Show();
+                        }
+                        else
+                        {
+                            addEditCategoryDialogBox.Focus(); // Bring existing form to front 
+                        }
                     }
                     else
                     {
-                        addEditCategoryDialogBox.Focus(); // Bring existing form to front 
+                        // Confirmation message box with item ID
+                        DialogResult confirmResult = MessageBox.Show(
+                            $"Are you sure you want to unarchive this category?\n\nCategory ID: {categoryId}",
+                            "Unarchiving of Category",
+                            MessageBoxButtons.YesNo,
+                            MessageBoxIcon.Question
+                        );
+
+                        if (confirmResult == DialogResult.Yes)
+                        {
+                            //calls the unarchiving backend
+                            bool unarchivingSuccess = UnarchivingCategory.HandleUnarchivingCategory(categoryId, CategoryRecordsTable);
+
+                            if (unarchivingSuccess)
+                            {
+                                MessageBox.Show("Categoary successfully unarchived.", "Successful Unarchiving", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Failed to unarchive category. Please try again.", "Unarchive Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+
                     }
 
                 }
                 else if (clickedColumnName == "Delete")
                 {
                     //MessageBox.Show($"Delete clicked\nCategoryID: {categoryId}", "Action");
-                    
-                    // calls the del window
-                    if (deleteCategoryDialogBox == null || deleteCategoryDialogBox.IsDisposed)
+
+                    // check first if the archiveState is 0 or 1, if 0 then delete, if 1 then perma delete
+                    if (archiveState.SelectedIndex == 0)
                     {
-                        deleteCategoryDialogBox = new DeleteCategoryDialogBox(categoryId, CategoryRecordsTable);
-                        deleteCategoryDialogBox.Show();
+                        // Confirmation message box with item ID
+                        DialogResult confirmResult = MessageBox.Show(
+                            $"Are you sure you want to archive this category?\n\nCategory ID: {categoryId}",
+                            "Confirm Archiving",
+                            MessageBoxButtons.YesNo,
+                            MessageBoxIcon.Question
+                        );
+
+                        if (confirmResult == DialogResult.Yes)
+                        {
+                            //calls the unarchiving backend
+                            // fix misreferenced perma delete instead of soft delete
+                            bool deletingSuccess = ArchivingCategory.HandleArchivingCategory(categoryId, CategoryRecordsTable);
+
+                            if (deletingSuccess)
+                            {
+                                MessageBox.Show("Successfully archived the category.", "Successful Archiving", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Failed to archive Category. Please try again.", "Archiving Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+
                     }
                     else
                     {
-                        deleteCategoryDialogBox .Focus(); // Bring to front if it's already open
+                        // calls the del window
+                        if (deleteCategoryDialogBox == null || deleteCategoryDialogBox.IsDisposed)
+                        {
+                            deleteCategoryDialogBox = new DeleteCategoryDialogBox(categoryId, CategoryRecordsTable);
+                            deleteCategoryDialogBox.Show();
+                        }
+                        else
+                        {
+                            deleteCategoryDialogBox.Focus(); // Bring to front if it's already open
+                        }
+
                     }
 
                 }
@@ -195,7 +264,7 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Error filtering data: {ex.Message}", "Search Error", 
+                    MessageBox.Show($"Error filtering data: {ex.Message}", "Search Error",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -214,6 +283,25 @@ namespace JunkShopInventoryandTransactionSystem.View.Inventory_Pages
                     }
                     row.Visible = visible;
                 }
+            }
+        }
+
+        private void CategoryRecordsTable_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            // Check if the column is CategoryID and format it as a string
+            if (CategoryRecordsTable.Columns[e.ColumnIndex].Name == "Edit")
+            {
+                if (archiveState.SelectedIndex == 0)
+                {
+                    // Non-archived: normal delete icon
+                    e.Value = Properties.Resources.green_edit; // Replace with your resource name
+                }
+                else
+                {
+                    // Archived: permanent delete icon
+                    e.Value = Properties.Resources.restore; // Replace with your resource name
+                }
+                e.FormattingApplied = true;
             }
         }
     }

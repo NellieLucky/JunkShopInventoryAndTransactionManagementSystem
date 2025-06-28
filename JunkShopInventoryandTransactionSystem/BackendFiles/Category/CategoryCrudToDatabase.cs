@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Data.SqlClient;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolTip;
 
 /*  CODE FOR TABLE CREATION
 
@@ -21,7 +22,7 @@ SELECT * FROM Category
 
 namespace JunkShopInventoryandTransactionSystem.BackendFiles.Category.Crud
 {
-    // THIS ISNT OPTIMIZED YET
+    // constructors depending on what will be used
     // Represents a category row in the database
     public class CategoryItem
     {
@@ -58,8 +59,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Category.Crud
         //protected readonly string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
 
         //nicole's connection string
-        //protected readonly string connectionString = @"Data Source = (LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\USER\source\repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\Database1.mdf;Integrated Security = True";
-
+        //protected readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\USER\source\repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
 
         //Arnel's connection string
         protected readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\source\repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
@@ -67,8 +67,11 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Category.Crud
         //Abalos' connection string
         //protected readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Beetoy\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\Database1.mdf;Integrated Security=True";
 
+        //Ethan's connection string
+        //protected readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Acer\source\repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
+
         //Dara's connection string
-        //protected readonly string connectionString = @"Data Source = (LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Sandara Fillartos\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\Database1.mdf"";Integrated Security = True";
+        //protected readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Sandara Fillartos\source\repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf"";Integrated Security=True";
 
         // Shared method to open a new connection
         protected SqlConnection GetConnection()
@@ -78,6 +81,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Category.Crud
     }
 
     // Class for reading category data
+    // includes everything related to READING
     public class CategoryRead : BaseRepository
     {
         // get all unarchived categories
@@ -120,7 +124,8 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Category.Crud
             }
 
             return categories;
-        } // end of get all cats
+        }
+        // end of get all cats
 
         // get all archived categories
         public List<CategoryItem> GetAllArchivedCategories()
@@ -162,8 +167,10 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Category.Crud
             }
 
             return categories;
-        }   // end of get all archived cats
+        }
+        // end of get all archived cats
 
+        // READ and GET one CATEGORY only
         public CategoryItem? GetOneCategory(int categoryId)
         {
             CategoryItem? category = null;
@@ -200,7 +207,8 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Category.Crud
             }
 
             return category;
-        } // end of get one cat
+        }
+        // end of get one cat
 
         /*
         // get cat by catname // used for add / edit items in inventory
@@ -241,8 +249,10 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Category.Crud
     } // end of cat reads //all n one
 
     // Class for adding new category
+    // includes everything related to ADDING / INSERTION
     public class CategoryAdd : BaseRepository
     {
+        // add one
         public void AddCategory(CategoryItem category)
         {
             string query = "INSERT INTO Category (categoryName, categoryDescription) VALUES (@categoryName, @categoryDescription)";
@@ -268,10 +278,13 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Category.Crud
                 }
             }
         }
+        // end of cat add one
 
-    } // end of cat add
+    }
+    // end of cat add
 
     // Class for updating existing category
+    // includes everything related to EDITING / UPDATING
     public class CategoryEdit : BaseRepository
     {
         public void EditCategory(CategoryItem category)
@@ -309,8 +322,11 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Category.Crud
                         throw;
                     }
                 }   // end of second using
+
             }   // end of the first using
+
         }   // end of method EditCategory
+
     } // end of cat edit
 
     // soft delete category class

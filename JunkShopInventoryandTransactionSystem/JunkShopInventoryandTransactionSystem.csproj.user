@@ -91,6 +91,9 @@
     <Compile Update="View\receipt.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="View\TransactionRecordsPageFolder\HistoricalReceipt.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="View\TransactionRecordsPageFolder\TransactionRecordsPage.cs">
       <SubType>UserControl</SubType>
     </Compile>

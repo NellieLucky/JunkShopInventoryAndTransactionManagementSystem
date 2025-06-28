@@ -1,5 +1,6 @@
-﻿using JunkShopInventoryandTransactionSystem.BackendFiles.Category.Crud;
-using JunkShopInventoryandTransactionSystem.View.Inventory_Pages;
+﻿
+// removed unused imports
+
 using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
@@ -23,38 +24,55 @@ CREATE TABLE Inventory (
     FOREIGN KEY (itemCategoryId) REFERENCES Category(categoryId)  -- FK reference
 );
 
+ALTER TABLE Inventory
+ALTER COLUMN itemQuantity DECIMAL(18, 2);
+
+ALTER TABLE Inventory
+ALTER COLUMN itemBuyingPrice DECIMAL(18, 2);
+
+ALTER TABLE Inventory
+ALTER COLUMN itemSellingPrice DECIMAL(18, 2);
+
+CREATE TABLE Inventory (
+    itemId INT IDENTITY(1,1) PRIMARY KEY,
+    itemName VARCHAR(50) NOT NULL,
+    itemCategoryId INT NOT NULL,  -- FK to Category table
+    itemQtyType VARCHAR(50) NOT NULL,
+    itemQuantity DECIMAL(18, 2) NOT NULL,
+    itemBuyingPrice DECIMAL(18, 2) NOT NULL,
+    itemSellingPrice DECIMAL(18, 2) NOT NULL,
+    isArchived BIT NOT NULL DEFAULT 0,
+    FOREIGN KEY (itemCategoryId) REFERENCES Category(categoryId)
+);
+
 SELECT * FROM Inventory
 
 */
 
 namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
 {
-    // THIS ISNT OPTIMIZED YET
-    //is referencing to the data/holds the data
+    // constructors depending on what will be used
+    // Optimized and updated to support decimal quantities and prices
     public class InventoryItem
     {
-        public int itemId { get; set; } // Database generates this for new items
+        public int itemId { get; set; } // Database-generated ID for new items
 
         public string itemName { get; set; } = string.Empty;
-        public int itemCategoryId { get; set; } 
-        public string itemCategoryName { get; set; } = string.Empty; // populated from JOIN
+        public int itemCategoryId { get; set; }
+        public string itemCategoryName { get; set; } = string.Empty; // Populated via JOIN
         public string itemQtyType { get; set; } = string.Empty;
-        public int itemQuantity { get; set; }   
-        public int itemBuyingPrice { get; set; }
-        public int itemSellingPrice { get; set; }
 
-        //added isArchived property to handle soft deletes
-        // added isArchived column to the query, default is 0 (not archived)
-        //cmd.Parameters.AddWithValue("@isArchived", item.isArchived);
-        public bool isArchived { get; set; } = false; // or default to true if you want it archived by default
+        public decimal itemQuantity { get; set; }           // CHANGED from int to decimal
+        public decimal itemBuyingPrice { get; set; }        // CHANGED from int to decimal
+        public decimal itemSellingPrice { get; set; }       // CHANGED from int to decimal
 
-        // Parameterless constructor: Needed by InventoryRead when creating an empty object from DB reader
-        // i actually dont know what this does, but is needed for the InventoryRead class to work properly 
+        public bool isArchived { get; set; } = false; // Soft delete flag
+
+        // Parameterless constructor — required for DB mapping (e.g., SqlDataReader)
         public InventoryItem() { }
 
-        // for add
-        // withoutID //added bool archived = false for isArchived property
-        public InventoryItem(string name, int category, string qtyType, int quantity, int buyingPrice, int sellingPrice, bool archived = false)
+        // Constructor for Add (no itemId yet)
+        public InventoryItem(string name, int category, string qtyType, decimal quantity, decimal buyingPrice, decimal sellingPrice, bool archived = false)
         {
             itemName = name;
             itemCategoryId = category;
@@ -65,9 +83,8 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
             isArchived = archived;
         }
 
-        // for edit
-        // with ID 
-        public InventoryItem(int id, string name, int categoryId, string qtyType, int quantity, int buyingPrice, int sellingPrice, bool archived = false)
+        // Constructor for Edit/View (includes itemId)
+        public InventoryItem(int id, string name, int categoryId, string qtyType, decimal quantity, decimal buyingPrice, decimal sellingPrice, bool archived = false)
         {
             itemId = id;
             itemName = name;
@@ -76,6 +93,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
             itemQuantity = quantity;
             itemBuyingPrice = buyingPrice;
             itemSellingPrice = sellingPrice;
+            isArchived = archived;
         }
     }
     // eND of InventoryItem CLASS
@@ -88,7 +106,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
         //protected readonly string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
 
         //nicole's connection string
-        //protected readonly string connectionString = @"Data Source = (LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\USER\source\repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\Database1.mdf;Integrated Security = True";
+        //protected readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\USER\source\repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
 
         //Arnel's connection string
         protected readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\source\repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
@@ -97,7 +115,10 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
         //protected readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Beetoy\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\Database1.mdf;Integrated Security=True";
 
         //Dara's connection string
-        //protected readonly string connectionString = @"Data Source = (LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Sandara Fillartos\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\Database1.mdf"";Integrated Security = True";
+        //protected readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Sandara Fillartos\source\repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf"";Integrated Security=True";
+
+        //Ethan's connection string
+        //protected readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Acer\source\repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
 
         // Shared method to open a new connection
         protected SqlConnection GetConnection()
@@ -107,6 +128,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
     }
 
     // InventoryRead Class
+    // includes everything related to READING
     public class InventoryRead : BaseRepository
     {
         // read all unarchived items
@@ -149,9 +171,9 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
                                     itemCategoryId = Convert.ToInt32(reader["itemCategoryId"]),
                                     itemCategoryName = reader["itemCategoryName"].ToString() ?? string.Empty,
                                     itemQtyType = reader["itemQtyType"].ToString() ?? string.Empty,
-                                    itemQuantity = Convert.ToInt32(reader["itemQuantity"]),
-                                    itemBuyingPrice = Convert.ToInt32(reader["itemBuyingPrice"]),
-                                    itemSellingPrice = Convert.ToInt32(reader["itemSellingPrice"]),
+                                    itemQuantity = Convert.ToDecimal(reader["itemQuantity"]),
+                                    itemBuyingPrice = Convert.ToDecimal(reader["itemBuyingPrice"]),
+                                    itemSellingPrice = Convert.ToDecimal(reader["itemSellingPrice"]),
                                     isArchived = Convert.ToBoolean(reader["isArchived"])
                                 };
 
@@ -172,7 +194,6 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
         // end of read all unarchived items
 
         // read all archived items
-        // not yet used
         public List<InventoryItem> GetAllArchivedInventoryItems()
         {
             List<InventoryItem> items = new List<InventoryItem>();
@@ -210,9 +231,9 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
                                     itemCategoryId = Convert.ToInt32(reader["itemCategoryId"]),
                                     itemCategoryName = reader["itemCategoryName"]?.ToString() ?? string.Empty,
                                     itemQtyType = reader["itemQtyType"]?.ToString() ?? string.Empty,
-                                    itemQuantity = Convert.ToInt32(reader["itemQuantity"]),
-                                    itemBuyingPrice = Convert.ToInt32(reader["itemBuyingPrice"]),
-                                    itemSellingPrice = Convert.ToInt32(reader["itemSellingPrice"]),
+                                    itemQuantity = Convert.ToDecimal(reader["itemQuantity"]),
+                                    itemBuyingPrice = Convert.ToDecimal(reader["itemBuyingPrice"]),
+                                    itemSellingPrice = Convert.ToDecimal(reader["itemSellingPrice"]),
                                     isArchived = Convert.ToBoolean(reader["isArchived"])
                                 };
 
@@ -232,7 +253,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
         }
         // end of read all archived items
 
-        // just get one with cat name
+        // just get one ITEM with category name
         public InventoryItem? GetOneInventoryItem(int itemId)
         {
             InventoryItem? item = null; // Will remain null if no match is found
@@ -272,9 +293,9 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
                                     itemCategoryId = Convert.ToInt32(reader["itemCategoryId"]),
                                     itemCategoryName = reader["itemCategoryName"]?.ToString() ?? string.Empty,
                                     itemQtyType = reader["itemQtyType"]?.ToString() ?? string.Empty,
-                                    itemQuantity = Convert.ToInt32(reader["itemQuantity"]),
-                                    itemBuyingPrice = Convert.ToInt32(reader["itemBuyingPrice"]),
-                                    itemSellingPrice = Convert.ToInt32(reader["itemSellingPrice"]),
+                                    itemQuantity = Convert.ToDecimal(reader["itemQuantity"]),
+                                    itemBuyingPrice = Convert.ToDecimal(reader["itemBuyingPrice"]),
+                                    itemSellingPrice = Convert.ToDecimal(reader["itemSellingPrice"]),
                                     isArchived = Convert.ToBoolean(reader["isArchived"])
                                 };
                             }
@@ -326,8 +347,8 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
                                     itemId = Convert.ToInt32(reader["itemId"]),
                                     itemName = reader["itemName"]?.ToString() ?? string.Empty,
                                     itemQtyType = reader["itemQtyType"]?.ToString() ?? string.Empty,
-                                    itemQuantity = Convert.ToInt32(reader["itemQuantity"]),
-                                    itemSellingPrice = Convert.ToInt32(reader["itemSellingPrice"]),
+                                    itemQuantity = Convert.ToDecimal(reader["itemQuantity"]),
+                                    itemSellingPrice = Convert.ToDecimal(reader["itemSellingPrice"]),
                                     isArchived = Convert.ToBoolean(reader["isArchived"])
                                 };
                             }
@@ -343,6 +364,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
 
             return item;
         }
+        // end of get item for buyer
 
         // Get one inventory item for Seller transactions (removes categoryName)
         public InventoryItem? GetItemForSeller(int itemId)
@@ -378,8 +400,8 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
                                     itemId = Convert.ToInt32(reader["itemId"]),
                                     itemName = reader["itemName"]?.ToString() ?? string.Empty,
                                     itemQtyType = reader["itemQtyType"]?.ToString() ?? string.Empty,
-                                    itemQuantity = Convert.ToInt32(reader["itemQuantity"]),
-                                    itemBuyingPrice = Convert.ToInt32(reader["itemBuyingPrice"]),
+                                    itemQuantity = Convert.ToDecimal(reader["itemQuantity"]),
+                                    itemBuyingPrice = Convert.ToDecimal(reader["itemBuyingPrice"]),
                                     isArchived = Convert.ToBoolean(reader["isArchived"])
                                 };
                             }
@@ -395,11 +417,13 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
 
             return item;
         }
+        // end of get item for seller
 
     }
     // End of inventory Read
 
     // inventory add aaa
+    // includes everything related to ADDING / INSERTION
     public class InventoryAdd : BaseRepository
     {
         public void AddItemToInventory(InventoryItem item)
@@ -442,6 +466,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
                 }
             }
         }
+        // end of item add one
     }
     // end of InventoryAdd
 
@@ -493,6 +518,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
                     }
                 }   // end of the second using in the nested using stuff
             }   //end of the first using
+
         }   //end of method EditItemInInventory
 
     }
@@ -505,7 +531,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
     public class InventoryUpdate : BaseRepository
     {
         // For Buyer transactions: subtracts stock (cannot go negative)
-        public bool UpdateItemQuantityForBuyer(int itemId, int quantityToSubtract)
+        public bool UpdateItemQuantityForBuyer(int itemId, decimal quantityToSubtract)
         {
             using (SqlConnection conn = GetConnection())
             {
@@ -535,7 +561,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
         }   // end of buyer update
 
         // For Seller transactions: adds stock
-        public bool UpdateItemQuantityForSeller(int itemId, int quantityToAdd)
+        public bool UpdateItemQuantityForSeller(int itemId, decimal quantityToAdd)
         {
             using (SqlConnection conn = GetConnection())
             {
@@ -711,7 +737,55 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
                     }
                 }
             }
-        }
+        }   // by item ID
+
+        // by cat ID
+        public void RestoreItemsByCategory(int categoryId)
+        {
+            string query = "UPDATE Inventory SET isArchived = 0 WHERE itemCategoryId = @categoryId;";
+
+            using (SqlConnection conn = GetConnection())
+            {
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@categoryId", categoryId);
+
+                    try
+                    {
+                        conn.Open();
+                        int rowsAffected = cmd.ExecuteNonQuery();
+
+                        MessageBox.Show(
+                            $"{rowsAffected} item(s) from the selected category restored from archive.",
+                            "Restore Successful",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information
+                        );
+                    }
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show(
+                            "Database error during RestoreItemsByCategory:\n" + ex.Message,
+                            "SQL Error",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error
+                        );
+                        throw new Exception("An error occurred while restoring inventory items by category.", ex);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(
+                            "An unexpected error occurred:\n" + ex.Message,
+                            "Unexpected Error",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error
+                        );
+                        throw;
+                    }
+                }
+            }
+        }   // end of restoring by Cat ID
+
     }   // unarchiving it back
 
     // inventory delete
@@ -762,7 +836,56 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud
                     }
                 }
             }
-        }
+        }   // end of delete item by ID
+
+        // deletion by cat ID
+        public void DeleteItemsByCategory(int categoryId)
+        {
+            string query = "DELETE FROM Inventory WHERE itemCategoryId = @categoryId;";
+
+            using (SqlConnection conn = GetConnection())
+            {
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@categoryId", categoryId);
+
+                    try
+                    {
+                        conn.Open();
+                        int rowsAffected = cmd.ExecuteNonQuery();
+
+                        // Inform the user via MessageBox
+                        MessageBox.Show(
+                            $"{rowsAffected} row(s) deleted successfully for category ID {categoryId}.",
+                            "Deletion Result",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information
+                        );
+                    }
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show(
+                            "Database error during DeleteItemsByCategory:\n" + ex.Message,
+                            "SQL Error",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error
+                        );
+                        throw new Exception("An error occurred while deleting items from the database by category.", ex);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(
+                            "An unexpected error occurred:\n" + ex.Message,
+                            "Unexpected Error",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error
+                        );
+                        throw;
+                    }
+                }
+            }
+        }   // end of delete by CAT ID
+
     }
     //end of inventory delete
 }

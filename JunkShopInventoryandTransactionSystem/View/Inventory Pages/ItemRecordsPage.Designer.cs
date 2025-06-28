@@ -40,6 +40,7 @@
             AddItemButton = new CuoreUI.Controls.cuiButton();
             DashboardTitlePage = new Label();
             ItemRecordsTable = new DataGridView();
+            archiveState = new ComboBox();
             ItemID = new DataGridViewTextBoxColumn();
             ItemName = new DataGridViewTextBoxColumn();
             Category = new DataGridViewTextBoxColumn();
@@ -49,7 +50,6 @@
             SellingPrice = new DataGridViewTextBoxColumn();
             Edit = new DataGridViewImageColumn();
             Delete = new DataGridViewImageColumn();
-            archiveState = new ComboBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)ItemRecordsTable).BeginInit();
             SuspendLayout();
@@ -227,6 +227,16 @@
             ItemRecordsTable.TabIndex = 29;
             ItemRecordsTable.CellClick += ItemRecordsTable_CellClick;
             // 
+            // archiveState
+            // 
+            archiveState.DropDownStyle = ComboBoxStyle.DropDownList;
+            archiveState.FormattingEnabled = true;
+            archiveState.Items.AddRange(new object[] { "Non-archived", "Archived Items" });
+            archiveState.Location = new Point(374, 29);
+            archiveState.Name = "archiveState";
+            archiveState.Size = new Size(151, 28);
+            archiveState.TabIndex = 30;
+            // 
             // ItemID
             // 
             ItemID.HeaderText = "ItemID";
@@ -290,7 +300,7 @@
             Edit.Description = "Edit";
             Edit.FillWeight = 5.618882F;
             Edit.HeaderText = "Edit";
-            Edit.Image = Properties.Resources.green_edit;
+            Edit.Image = Properties.Resources.restore;
             Edit.ImageLayout = DataGridViewImageCellLayout.Zoom;
             Edit.MinimumWidth = 6;
             Edit.Name = "Edit";
@@ -312,16 +322,6 @@
             Delete.Name = "Delete";
             Delete.Resizable = DataGridViewTriState.False;
             Delete.Width = 60;
-            // 
-            // archiveState
-            // 
-            archiveState.DropDownStyle = ComboBoxStyle.DropDownList;
-            archiveState.FormattingEnabled = true;
-            archiveState.Items.AddRange(new object[] { "Non-archived", "Archived Items" });
-            archiveState.Location = new Point(374, 29);
-            archiveState.Name = "archiveState";
-            archiveState.Size = new Size(151, 28);
-            archiveState.TabIndex = 30;
             // 
             // ItemRecordsPage
             // 
@@ -347,6 +347,7 @@
         private CuoreUI.Controls.cuiButton AddItemButton;
         private Label DashboardTitlePage;
         private DataGridView ItemRecordsTable;
+        private ComboBox archiveState;
         private DataGridViewTextBoxColumn ItemID;
         private DataGridViewTextBoxColumn ItemName;
         private DataGridViewTextBoxColumn Category;
@@ -356,6 +357,5 @@
         private DataGridViewTextBoxColumn SellingPrice;
         private DataGridViewImageColumn Edit;
         private DataGridViewImageColumn Delete;
-        private ComboBox archiveState;
     }
 }

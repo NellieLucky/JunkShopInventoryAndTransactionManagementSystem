@@ -28,19 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FinancialReportsPage));
             DashboardTitlePage = new Label();
             FinancialRecordsTable = new DataGridView();
             Date = new DataGridViewTextBoxColumn();
             CostOfGoodSolds = new DataGridViewTextBoxColumn();
             Revenue = new DataGridViewTextBoxColumn();
             Profit = new DataGridViewTextBoxColumn();
-            ToDate = new CodeeloUI.Controls.CodeeloDateTimePicker();
-            FromDate = new CodeeloUI.Controls.CodeeloDateTimePicker();
             label1 = new Label();
-            label2 = new Label();
+            Periodicity = new CodeeloUI.Controls.CodeeloComboBox();
             ((System.ComponentModel.ISupportInitialize)FinancialRecordsTable).BeginInit();
             SuspendLayout();
             // 
@@ -65,37 +64,37 @@
             FinancialRecordsTable.BackgroundColor = Color.White;
             FinancialRecordsTable.CellBorderStyle = DataGridViewCellBorderStyle.SunkenHorizontal;
             FinancialRecordsTable.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = Color.FromArgb(163, 244, 215);
-            dataGridViewCellStyle4.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle4.ForeColor = Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(163, 244, 215);
-            dataGridViewCellStyle4.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            FinancialRecordsTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(163, 244, 215);
+            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(163, 244, 215);
+            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            FinancialRecordsTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             FinancialRecordsTable.ColumnHeadersHeight = 60;
             FinancialRecordsTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             FinancialRecordsTable.Columns.AddRange(new DataGridViewColumn[] { Date, CostOfGoodSolds, Revenue, Profit });
             FinancialRecordsTable.EditMode = DataGridViewEditMode.EditProgrammatically;
             FinancialRecordsTable.EnableHeadersVisualStyles = false;
             FinancialRecordsTable.GridColor = Color.FromArgb(99, 99, 99);
-            FinancialRecordsTable.Location = new Point(14, 136);
+            FinancialRecordsTable.Location = new Point(14, 168);
             FinancialRecordsTable.Name = "FinancialRecordsTable";
             FinancialRecordsTable.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle5.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            FinancialRecordsTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            FinancialRecordsTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             FinancialRecordsTable.RowHeadersVisible = false;
             FinancialRecordsTable.RowHeadersWidth = 50;
-            dataGridViewCellStyle6.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle6.ForeColor = Color.Black;
-            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(0, 157, 209);
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
-            FinancialRecordsTable.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(0, 157, 209);
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            FinancialRecordsTable.RowsDefaultCellStyle = dataGridViewCellStyle3;
             FinancialRecordsTable.RowTemplate.Height = 50;
             FinancialRecordsTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             FinancialRecordsTable.Size = new Size(1056, 578);
@@ -132,82 +131,51 @@
             Profit.Name = "Profit";
             Profit.Width = 300;
             // 
-            // ToDate
-            // 
-            ToDate.BorderColor = Color.Black;
-            ToDate.BorderSize = 1;
-            ToDate.CalendarFont = null;
-            ToDate.CalendarForeColor = Color.Empty;
-            ToDate.CalendarMonthBackground = Color.Empty;
-            ToDate.CalendarTitleBackColor = Color.Empty;
-            ToDate.CalendarTitleForeColor = Color.Empty;
-            ToDate.CalendarTrailingForeColor = Color.Empty;
-            ToDate.Checked = false;
-            ToDate.FillColor = Color.White;
-            ToDate.Font = new Font("Segoe UI", 9.5F);
-            ToDate.Format = DateTimePickerFormat.Short;
-            ToDate.Location = new Point(316, 87);
-            ToDate.MinimumSize = new Size(4, 35);
-            ToDate.Name = "ToDate";
-            ToDate.Size = new Size(150, 35);
-            ToDate.TabIndex = 33;
-            ToDate.TextColor = Color.Black;
-            ToDate.ValueChanged += codeeloDateTimePicker1_ValueChanged;
-            // 
-            // FromDate
-            // 
-            FromDate.BorderColor = Color.Black;
-            FromDate.BorderSize = 1;
-            FromDate.CalendarFont = null;
-            FromDate.CalendarForeColor = Color.Empty;
-            FromDate.CalendarMonthBackground = Color.Empty;
-            FromDate.CalendarTitleBackColor = Color.Empty;
-            FromDate.CalendarTitleForeColor = Color.Empty;
-            FromDate.CalendarTrailingForeColor = Color.Empty;
-            FromDate.Checked = false;
-            FromDate.FillColor = Color.White;
-            FromDate.Font = new Font("Segoe UI", 9.5F);
-            FromDate.Format = DateTimePickerFormat.Short;
-            FromDate.Location = new Point(85, 87);
-            FromDate.MinimumSize = new Size(4, 35);
-            FromDate.Name = "FromDate";
-            FromDate.Size = new Size(150, 35);
-            FromDate.TabIndex = 32;
-            FromDate.TextColor = Color.Black;
-            // 
             // label1
             // 
             label1.AutoSize = true;
             label1.BackColor = Color.FromArgb(0, 0, 0, 0);
             label1.Font = new Font("Arial", 12F, FontStyle.Bold);
             label1.ForeColor = Color.FromArgb(0, 157, 209);
-            label1.Location = new Point(14, 87);
+            label1.Location = new Point(14, 91);
             label1.Name = "label1";
-            label1.Size = new Size(66, 24);
+            label1.Size = new Size(110, 24);
             label1.TabIndex = 34;
-            label1.Text = "From:";
+            label1.Text = "Periodicity";
             // 
-            // label2
+            // Periodicity
             // 
-            label2.AutoSize = true;
-            label2.BackColor = Color.FromArgb(0, 0, 0, 0);
-            label2.Font = new Font("Arial", 12F, FontStyle.Bold);
-            label2.ForeColor = Color.FromArgb(0, 157, 209);
-            label2.Location = new Point(271, 90);
-            label2.Name = "label2";
-            label2.Size = new Size(41, 24);
-            label2.TabIndex = 35;
-            label2.Text = "To:";
+            Periodicity.ArrowColor = Color.MediumSlateBlue;
+            Periodicity.BackColor = Color.MediumSlateBlue;
+            Periodicity.BorderColor = Color.MediumSlateBlue;
+            Periodicity.BorderSize = 1;
+            Periodicity.DropDownStyle = ComboBoxStyle.DropDown;
+            Periodicity.DropDownWidth = 136;
+            Periodicity.DroppedDown = false;
+            Periodicity.FillColor = Color.White;
+            Periodicity.Font = new Font("Segoe UI", 10F);
+            Periodicity.ForeColor = Color.DimGray;
+            Periodicity.Items.AddRange(new object[] { resources.GetObject("Periodicity.Items"), resources.GetObject("Periodicity.Items1"), resources.GetObject("Periodicity.Items2") });
+            Periodicity.ListBackColor = Color.FromArgb(230, 228, 245);
+            Periodicity.ListTextColor = Color.WhiteSmoke;
+            Periodicity.Location = new Point(14, 118);
+            Periodicity.Name = "Periodicity";
+            Periodicity.Padding = new Padding(1);
+            Periodicity.SelectedIndex = -1;
+            Periodicity.SelectedItem = null;
+            Periodicity.SelectedText = "";
+            Periodicity.SelectedValue = null;
+            Periodicity.Size = new Size(246, 35);
+            Periodicity.TabIndex = 35;
+            Periodicity.Text = "Periodicity";
             // 
             // FinancialReportsPage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(227, 244, 238);
-            Controls.Add(label2);
+            Controls.Add(Periodicity);
             Controls.Add(label1);
-            Controls.Add(ToDate);
-            Controls.Add(FromDate);
             Controls.Add(FinancialRecordsTable);
             Controls.Add(DashboardTitlePage);
             Name = "FinancialReportsPage";
@@ -226,9 +194,7 @@
         private DataGridViewTextBoxColumn CostOfGoodSolds;
         private DataGridViewTextBoxColumn Revenue;
         private DataGridViewTextBoxColumn Profit;
-        private CodeeloUI.Controls.CodeeloDateTimePicker ToDate;
-        private CodeeloUI.Controls.CodeeloDateTimePicker FromDate;
         private Label label1;
-        private Label label2;
+        private CodeeloUI.Controls.CodeeloComboBox Periodicity;
     }
 }

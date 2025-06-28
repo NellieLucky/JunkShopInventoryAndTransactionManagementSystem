@@ -15,7 +15,6 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Delete
             int itemId,
             DataGridView targetDataGridView)
         {
-            // --- If validation passes, proceed with editing the item ---
             // passes the id to find it in the database and delete it
             InventoryDelete delete = new InventoryDelete();
             delete.DeleteItemFromInventory(itemId);
@@ -23,13 +22,12 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Delete
             // --- Reload DataGridView ---
             if (targetDataGridView != null)
             {
-                //namespace.class.method since theyre both on the same folder
-                Reload.ReloadInventory.LoadInventoryData(targetDataGridView);
-                //<skip namespace>.class.method if not on the same folder
+
+                //reload it before returning
+                Reload.ReloadInventory.LoadArchivedInventoryData(targetDataGridView);
             }
 
             return true;
-            //reload it before returning
         }
     }
 

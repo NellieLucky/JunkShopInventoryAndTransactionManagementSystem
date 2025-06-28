@@ -15,9 +15,15 @@ namespace JunkShopInventoryandTransactionSystem.View.LogInAuthFolder
 {
     public partial class empLogInPage : Form
     {
+
+        private bool isPasswordVisible = false;
+
         public empLogInPage()
         {
             InitializeComponent();
+            PasswordTextBox.PasswordChar = true;
+            PasswordToggle.BackgroundImage = Properties.Resources.hide;
+            PasswordToggle.Click += PasswordToggle_Click;
         }
 
         private void LogInButton_Click(object sender, EventArgs e)
@@ -64,6 +70,17 @@ namespace JunkShopInventoryandTransactionSystem.View.LogInAuthFolder
                 // Show an error message if something goes wrong (e.g., database connection issue)
                 MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void PasswordToggle_Click(object sender, EventArgs e)
+        {
+            isPasswordVisible = !isPasswordVisible;
+            // Try PasswordChar property
+            PasswordTextBox.PasswordChar = !isPasswordVisible;
+            // Try BackgroundImage property
+            PasswordToggle.BackgroundImage = isPasswordVisible
+                ? Properties.Resources.view
+                : Properties.Resources.hide;
         }
 
         private void EmailTextBox_ContentChanged(object sender, EventArgs e)

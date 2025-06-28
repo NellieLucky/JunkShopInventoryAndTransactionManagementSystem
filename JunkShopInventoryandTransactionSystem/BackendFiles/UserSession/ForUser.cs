@@ -15,12 +15,12 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 CREATE TABLE [dbo].[Employees] (
     [empId]             INT           IDENTITY (2, 1) NOT NULL,
     [empName]           NVARCHAR (50) NULL,
-    [empPassword]       NVARCHAR (50) NOT NULL,
+    [empPassword]       NVARCHAR (70) NOT NULL,
     [empEmail]          NVARCHAR (50) NOT NULL,
     [token]             NVARCHAR (50) NULL,
     [empContact]        NVARCHAR (50) NULL,
     [empAddress]        NVARCHAR (50) NULL,
-    [empRole]           NVARCHAR (50) DEFAULT('Employee') NOT NULL,
+    [empRole]           NVARCHAR (50) NOT NULL,
     [empDateRegistered] DATETIME      DEFAULT (getdate()) NOT NULL,
     [IsRemoved]         BIT           DEFAULT ((0)) NOT NULL,
     PRIMARY KEY CLUSTERED ([empId] ASC)
@@ -40,13 +40,19 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.UserSession
 
         //remo string just added static to my string
         //private static readonly string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+        //private static readonly string connectionString = @"Data Source=LAPTOP-M4LNTBNL\SQLEXPRESS;Initial Catalog=Junkshop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
 
         //Sandara's connection string
         //private static readonly string connectionString = @"Data Source = (LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Sandara Fillartos\Source\Repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\Database1.mdf"";Integrated Security = True";
-        
-        //nicole's connection string
-        //private static readonly string connectionString = @"Data Source = (LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\USER\source\repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\Database1.mdf;Integrated Security = True";
 
+        //nicole's connection string
+        //private static readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\USER\source\repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
+
+        //Ethan's connection string
+        //private static readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Acer\source\repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf;Integrated Security=True";
+
+        //Sandara's connection string
+        //private static readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Sandara Fillartos\source\repos\JunkShopInventoryAndTransactionManagementSystem\JunkShopInventoryandTransactionSystem\JunkShopDB.mdf"";Integrated Security=True";
 
         public static class UserSession
         {
@@ -354,6 +360,9 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.UserSession
                         cmd.ExecuteNonQuery();
                     }
 
+                    // Hash the password
+                    string hashedPassword = HashPassword(password);
+
                     // Insert new admin
                     string insertQuery = @"
                             INSERT INTO Employees (empId, empEmail, empPassword, empName, empContact, empAddress, empRole)
@@ -362,7 +371,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.UserSession
                     using (SqlCommand insertCmd = new SqlCommand(insertQuery, connect))
                     {
                         insertCmd.Parameters.AddWithValue("@Email", email);
-                        insertCmd.Parameters.AddWithValue("@Password", password);
+                        insertCmd.Parameters.AddWithValue("@Password", hashedPassword);
                         insertCmd.Parameters.AddWithValue("@Name", name);
                         insertCmd.Parameters.AddWithValue("@Contact", contact);
                         insertCmd.Parameters.AddWithValue("@Address", address);
@@ -422,17 +431,30 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.UserSession
                 using (SqlConnection connect = new SqlConnection(connectionString))
                 {
                     connect.Open();
-                    string query = "SELECT empId FROM Employees WHERE empEmail = @Email AND empPassword = @Password AND empRole = 'Admin'";
+                    string query = "SELECT empId, empPassword FROM Employees WHERE empEmail = @Email AND empRole = 'Admin'";
 
                     using (SqlCommand cmd = new SqlCommand(query, connect))
                     {
                         cmd.Parameters.AddWithValue("@Email", email);
-                        cmd.Parameters.AddWithValue("@Password", password);
 
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
                             if (reader.Read())
-                                return reader.GetInt32(0);
+                            {   //Get the stored hashed password from the database
+                                string storedHash = reader.GetString(1);
+
+                                //Verify the entered password against the stored hash using bcrypt
+                                if (BCrypt.Net.BCrypt.Verify(password, storedHash))
+                                {
+                                    //Password matches, return the empId of the admin
+                                    return reader.GetInt32(0);
+                                }
+                                else
+                                {
+                                    //Password doesn't match, return null
+                                    return null;
+                                }
+                            }
                         }
                     }
                 }
@@ -517,19 +539,38 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.UserSession
         //Function to update the password in the database if the token is valid (NewPasswordPage.cs)
         public static bool UpdatePassword(string email, string newPassword, string userType)
         {
-            using (SqlConnection connect = new SqlConnection(connectionString))
+            try
             {
-                connect.Open();
+                //Hashing the new password using bcrypt before storing it in the database
+                string hashedPassword = BCrypt.Net.BCrypt.HashPassword(newPassword, workFactor: 12);
 
-                string updateQuery = "UPDATE Employees SET empPassword = @Password, token = NULL WHERE empEmail = @Email";
-
-                using (SqlCommand cmd = new SqlCommand(updateQuery, connect))
+                using (SqlConnection connect = new SqlConnection(connectionString))
                 {
-                    cmd.Parameters.AddWithValue("@Password", newPassword);
-                    cmd.Parameters.AddWithValue("@Email", email);
-                    return cmd.ExecuteNonQuery() > 0;
+                    connect.Open();
+
+                    string updateQuery = "UPDATE Employees SET empPassword = @Password, token = NULL WHERE empEmail = @Email";
+
+                    using (SqlCommand cmd = new SqlCommand(updateQuery, connect))
+                    {
+                        cmd.Parameters.AddWithValue("@Password", hashedPassword);
+                        cmd.Parameters.AddWithValue("@Email", email);
+                        return cmd.ExecuteNonQuery() > 0;
+                    }
                 }
             }
+            catch (SqlException ex)
+            {
+                // Optionally log the exception or handle it based on your app's requirements
+                throw new Exception("Error updating password: " + ex.Message);
+            }
+        }
+
+        // Helper method to hash the password using bcrypt
+        private static string HashPassword(string password)
+        {
+            // Hash the password using bcrypt and a default work factor (12 rounds)
+            string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password, workFactor: 12);
+            return hashedPassword;
         }
     }
 }

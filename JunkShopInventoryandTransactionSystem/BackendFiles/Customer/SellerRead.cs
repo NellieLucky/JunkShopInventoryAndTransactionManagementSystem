@@ -16,7 +16,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Customer
         public string customerContact { get; set; } = string.Empty;
         public int TotalSalesTransaction { get; set; }
         public decimal TotalAmountSold { get; set; }
-        public int TotalQuantitySold { get; set; }
+        public decimal TotalQuantitySold { get; set; }
     }
 
     public class SellerRead: BaseRepository
@@ -58,8 +58,9 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Customer
                                 Name = reader.GetString(1),
                                 customerContact = reader.GetString(2),
                                 TotalSalesTransaction = reader.GetInt32(3),
-                                TotalAmountSold = reader.GetDecimal(4),
-                                TotalQuantitySold = reader.GetInt32(5)
+                                TotalQuantitySold = reader.GetDecimal(4),
+                                TotalAmountSold = reader.GetDecimal(5)
+                                
                             });
                         }
                     }

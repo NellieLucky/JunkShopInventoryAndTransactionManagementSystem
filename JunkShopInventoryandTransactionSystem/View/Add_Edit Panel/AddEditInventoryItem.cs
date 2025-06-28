@@ -1,9 +1,15 @@
-﻿// imports backend file of category for the category combobox
+﻿
+// imports for functions
+
+// imports the whole query of category but only calls the necessary query for the category combobox
 using JunkShopInventoryandTransactionSystem.BackendFiles.Category.Crud;
+// imports for INVENTORY ACTIONS
+// mainly for BACKEND LOGIC, validation checking of values, also calls specific queries inside them
 using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Add;
-//imports the backend file AddToInventory.cs
-using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud;
 using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Edit;
+// CRUD mainly for QUERY
+using JunkShopInventoryandTransactionSystem.BackendFiles.Inventory.Crud;
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -38,7 +44,6 @@ namespace JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel
         }
 
         // constructor for Add function only
-        // Modified constructor to accept the DataGridView
         public AddEditInventoryItem(string value, DataGridView dgv)
         {
             InitializeComponent();
@@ -48,7 +53,7 @@ namespace JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel
             // Store the passed DataGridView instance
             _targetDataGridView = dgv;
 
-            // checks the value
+            // checks the value and updates the label widgets accordingly for ADD FUNCTION
             if (this.value == "Add")
             {
                 //replaces the dashboard title and button with "Add Item"
@@ -76,6 +81,7 @@ namespace JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel
             _targetDataGridView = dgv;  // receives the grid view to allow refresh after editing
             this.itemId = itemId;   //receives the item ID to edit
 
+            // checks the value and updates the label widgets accordingly for EDIT / UPDATE FUNCTION
             if (this.value == "Edit")
             {
                 //replaces the dashboard title and button with "Edit Item" 
@@ -96,7 +102,7 @@ namespace JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel
 
         private void AddEditButton_Click(object sender, EventArgs e)
         {
-            // Declare shared values
+            // Declare variables to store values inside widgets
             string itemName = TextBox_ofItemNameLabel.Content;
             int itemCatId = Convert.ToInt32(CategoryComboBox.SelectedValue);
             string itemQtyType = QtyTypeComboBox.SelectedItem as string ?? string.Empty;
@@ -104,8 +110,10 @@ namespace JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel
             string STRitemBuyingPrice = TextBox_ofBuyingPriceLabel.Content;
             string STRitemSellingPrice = TextBox_ofSellingPriceLabel.Content;
 
+            // checks if its content is ADD to do ADD BACKEND LOGIC
             if (AddEditButton.Content == "Add Item")
             {
+                // goes to BACKEND FILE will return TRUE if successful
                 bool addSuccess = AddToInventory.HandleAddItem(
                     itemName,
                     itemCatId,
@@ -132,10 +140,12 @@ namespace JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel
                     MessageBox.Show("Cannot add item: Unknown Error.", "Add Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+            // checks if its content is EDIT to do EDIT/UPDATE BACKEND LOGIC
             else if (AddEditButton.Content == "Edit Item")
             {
                 if (itemId.HasValue)
                 {
+                    // goes to BACKEND FILE will return TRUE if successful
                     bool editSuccess = EditInventory.HandleEditItem(
                         itemId.Value,
                         itemName,
@@ -162,6 +172,7 @@ namespace JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel
                         MessageBox.Show("Cannot edit item: Unknown Error.", "Edit Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
+                // checks if its content is EITHER ADD OR EDIT
                 else
                 {
                     MessageBox.Show("Item ID is not set.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -173,6 +184,8 @@ namespace JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel
             }
         }
 
+        // loads values on category combo box
+        // is a reference to the category database
         private void LoadCategoryComboBox()
         {
             try
@@ -198,6 +211,8 @@ namespace JunkShopInventoryandTransactionSystem.View.Add_Edit_Panel
             }
         }
 
+        // gets the item details using PASSED ITEM ID to get its value and place it in the widgets
+        // when EDITING / UDPATING
         private void LoadItemDetails()
         {
             if (!itemId.HasValue) return;

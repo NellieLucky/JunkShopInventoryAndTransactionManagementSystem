@@ -33,7 +33,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.BuyerLo
             int itemId = passedItemId;
 
             string StrItemQty = passeditemQty.Trim();
-            int parsedItemQty;
+            decimal parsedItemQty;
 
             // --- Validation ---
             bool isValidInput = true;
@@ -46,7 +46,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.BuyerLo
             }
 
             // Integer validations using single TryParse
-            bool parsedQty = int.TryParse(StrItemQty, out parsedItemQty);
+            bool parsedQty = decimal.TryParse(StrItemQty, out parsedItemQty);
             if (!parsedQty || parsedItemQty <= 0)
             {
                 errorMessage += !parsedQty
@@ -113,7 +113,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.BuyerLo
 
             if (item != null)
             {
-                int exchangeQty = parsedItemQty;
+                decimal exchangeQty = parsedItemQty;
                 decimal exchangeAmount = exchangeQty * item.itemSellingPrice;
 
                 targetDataGridView.Rows.Add(
@@ -231,7 +231,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.BuyerLo
 
             // calculate total items, total quantity, and total amount
             int totalItems = tempCart.Count;
-            int totalQuantity = tempCart.Sum(item => item.Quantity);
+            decimal totalQuantity = tempCart.Sum(item => item.Quantity);
 
             decimal totalAmount = 0;
             // Loop through all rows and sum the Exchange Amount column (assumed to be at index 5)
@@ -267,6 +267,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.BuyerLo
 
             if (transactionId > 0)
             {
+
                 // Insert each cart item into TransactionItems
                 foreach (var cartItem in tempCart)
                 {
@@ -282,6 +283,7 @@ namespace JunkShopInventoryandTransactionSystem.BackendFiles.Transaction.BuyerLo
                     }
                     writer.AddTransactionItem(transactionId, cartItem.ItemId, cartItem.Quantity, price);
                 }
+
 
                 MessageBox.Show("Transaction finalized successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return true;
